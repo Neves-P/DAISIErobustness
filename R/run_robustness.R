@@ -117,7 +117,7 @@ run_robustness <- function(parameter_space) {
       )
       for (i in seq_along(geodynamics_simulations)) {
         try(
-          geodynamics_ML_results[[i]] <- DAISIE_ML_CS(
+          geodynamics_ML_results[[i]] <- DAISIE::DAISIE_ML_CS(
             datalist = geodynamics_simulations[[i]],
             datatype = "single",
             initparsopt = c(
@@ -140,7 +140,7 @@ run_robustness <- function(parameter_space) {
 
       constant_simulations_1 <- list()
       for (i in seq_along(geodynamics_ML_results)) {
-        constant_simulations_1[[i]] <- DAISIE_sim_constant_rate(
+        constant_simulations_1[[i]] <- DAISIE::DAISIE_sim_constant_rate(
           time = simulation_pars$time,
           M = simulation_pars$M,
           pars = as.numeric(geodynamics_ML_results[[i]][1:5]),
@@ -192,7 +192,7 @@ run_robustness <- function(parameter_space) {
       for (i in seq_along(constant_simulations_1)) {
         for(j in seq_along(constant_simulations_1[[i]]))
           try(
-            constant_results[[i]] <- DAISIE_ML_CS(
+            constant_results[[i]] <- DAISIE::DAISIE_ML_CS(
               datalist = constant_simulations_1[[i]][[j]],
               datatype = "single",
               initparsopt = c(
@@ -216,7 +216,7 @@ run_robustness <- function(parameter_space) {
 
       constant_simulations_2 <- list()
       for (i in seq_along(constant_results)) {
-        constant_simulations_2[[i]] <- DAISIE_sim_constant_rate(
+        constant_simulations_2[[i]] <- DAISIE::DAISIE_sim_constant_rate(
           time = simulation_pars$time,
           M = simulation_pars$M,
           pars = as.numeric(constant_results[[i]][1:5]),
