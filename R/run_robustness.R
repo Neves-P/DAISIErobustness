@@ -1,68 +1,23 @@
-### Pre-pilot ###
+run_robustness <- function(parameter_space) {
 
-user <- "Josh"
-user <- "Pedro"
+# "oceanic_ontogeny"
+# "oceanic_sea_level"
+# "oceanic_ontogeny_sea_level"
+# "nonoceanic"
+# "nonoceanic_sea_level"
+# "nonoceanic_land_bridge"
 
-parameter_space <- "oceanic_ontogeny"
-parameter_space <- "oceanic_sea_level"
-parameter_space <- "oceanic_ontogeny_sea_level"
-parameter_space <- "nonoceanic"
-parameter_space <- "nonoceanic_sea_level"
-parameter_space <- "nonoceanic_land_bridge"
 
+file_domain <- "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
+file <- paste0(file_domain, parameter_space, ".txt")
 
 ### Pilot ###
+parameters <- readr::read_delim(
+  file = file, delim = "  "
+)
 
-require(DAISIE)
-require(nLTT)
 set.seed(1)
-if (user == "Pedro") {
-  if (parameter_space == "oceanic_ontogeny") {
-    parameters <- read.csv(
-      "D:/code/eustatgeo/R/oceanic_ontogeny.csv",
-      stringsAsFactors = FALSE
-    )
-  }
-}
 
-if (user == "Josh") {
-  if (parameter_space == "oceanic_ontogeny") {
-    parameters <- read.csv(
-      "C:/Users/user/Documents/github/eustatgeo/data/oceanic_ontogeny.csv",
-      stringsAsFactors = FALSE
-    )
-  }
-  if (parameter_space == "oceanic_sea_level") {
-    parameters <- read.csv(
-      "C:/Users/user/Documents/github/eustatgeo/R/oceanic_sea_level.csv",
-      stringsAsFactors = FALSE
-    )
-  }
-  if (parameter_space == "oceanic_ontogeny_sea_level") {
-    parameters <- read.csv(
-      "C:/Users/user/Documents/github/eustatgeo/R/oceanic_ontogeny_sea_level.csv",
-      stringsAsFactors = FALSE
-    )
-  }
-  if (parameter_space == "nonoceanic") {
-    parameters <- read.csv(
-      "",
-      stringsAsFactors = FALSE
-    )
-  }
-  if (parameter_space == "nonoceanic_sea_level") {
-    parameters <- read.csv(
-     "",
-     stringsAsFactors = FALSE
-   )
-  }
-  if (parameter_space == "nonoceanic_land_bridge") {
-    parameters <- read.csv(
-      "",
-      stringsAsFactors = FALSE
-    )
-  }
-}
 
 geodynamics_simulations_output <- list()
 geodynamics_ML_output <- list()
@@ -77,8 +32,8 @@ constant_simulations_2_output <- list()
 num_spec_error <- list()
 num_spec_baseline_error <- list()
 for (l in seq_len(nrow(parameters))) {
-  area_pars <- create_area_pars(
-    max_area = parameters$max_are[l],
+  area_pars <- DAISIE::create_area_pars(
+    max_area = parameters$max_area[l],
     proportional_peak_t = parameters$peak_time[l],
     peak_sharpness = parameters$sharpness[l],
     total_island_age = parameters$total_island_age[l],
@@ -282,3 +237,4 @@ constant_results <- list()
   }
 
 # save.image(file = "pilot_results.RData")
+}
