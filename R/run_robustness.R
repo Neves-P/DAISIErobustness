@@ -56,8 +56,8 @@ run_robustness <- function(parameter_space) {
               parameters$laa[l]
     )
     simulation_pars <- DAISIE::create_default_pars(
-      island_ontogeny = translate_island_ontogeny(parameters$island_ontogeny),
-      sea_level = translate_sea_level(parameters$sea_level),
+      island_ontogeny = DAISIE::translate_island_ontogeny(parameters$island_ontogeny),
+      sea_level = DAISIE::translate_sea_level(parameters$sea_level),
       area_pars = area_pars,
       hyper_pars = hyper_pars,
       dist_pars = dist_pars,
@@ -109,7 +109,7 @@ run_robustness <- function(parameter_space) {
             did not have 5 colonisation to the present")
     } else {
       geodynamics_ML_results <- list()
-      mean_medians <- DAISIE_calc_sumstats_pcrates(
+      mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
         pars = simulation_pars$pars,
         area_pars = simulation_pars$area_pars,
         ext_pars = simulation_pars$ext_pars,
@@ -154,7 +154,6 @@ run_robustness <- function(parameter_space) {
           sample_freq = Inf
         )
       }
-
 
 
       # Conduct error -----------------------------------------------------------
@@ -272,5 +271,16 @@ run_robustness <- function(parameter_space) {
     cat("parameter set", l, "\n")
   }
 
-  # save.image(file = "pilot_results.RData")
+  output_list <- list(
+    error = error,
+    baseline_error = baseline_error,
+    geodynamics_simulations_output = geodynamics_simulations_output,
+    geodynamics_ML_output = geodynamics_ML_output,
+    constant_simulations_1 = constant_simulations_1,
+    constant_results = constant_results,
+    constant_simulations_2 = constant_simulations_2
+  )
+
+  return(output_list)
+
 }
