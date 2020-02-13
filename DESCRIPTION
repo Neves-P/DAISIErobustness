@@ -1,15 +1,24 @@
 Package: DAISIErobustness
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R: c(
+    person(given = "Joshua",
+           family = "Lambert",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "j.w.l.lambert@rug.nl"),
+    person(given = "Pedro",
+           family = "Neves",
+           role = c("aut"),
+           email = "p.m.santos.neves@rug.nl"))
 Description: What the package does (one paragraph).
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
+URL: https://github.com/Neves-P/DAISIErobustness
+BugReports: https://github.com/Neves-P/DAISIErobustness/issues
+Imports: 
+    DAISIE
+Remotes: rsetienne/DAISIE@geodynamics
+RoxygenNote: 7.0.2
