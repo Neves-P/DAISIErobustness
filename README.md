@@ -1,4 +1,3 @@
-
 # DAISIErobustness
 
 <!-- badges: start -->
@@ -13,3 +12,6 @@ The goal of DAISIErobustness is to run robustness studies using the DAISIE model
 install.packages("remotes")
 remotes::install_github("Neves-P/DAISIErobustness")
 ```
+
+# Support/Questions
+Contact [@Neves-P](https://github.com/Neves-P) or [@joshwlambert](https://github.com/joshwlambert).
