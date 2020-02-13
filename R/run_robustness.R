@@ -4,7 +4,6 @@
 #'
 #' @export
 run_robustness <- function(parameter_space) {
-
   # "oceanic_ontogeny"
   # "oceanic_sea_level"
   # "oceanic_ontogeny_sea_level"
@@ -73,7 +72,7 @@ run_robustness <- function(parameter_space) {
     simulation_pars$sea_level_frequency <- parameters$sea_level_frequency[l]
     simulation_pars$extcutoff <- parameters$extcutoff
 
-    replicates <- 2
+    replicates <- 1000
 
     geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
       time = simulation_pars$time,
@@ -279,7 +278,6 @@ run_robustness <- function(parameter_space) {
     constant_results = constant_results,
     constant_simulations_2 = constant_simulations_2
   )
-
+  save(output_list, file = "pipeline_result.RData")
   return(output_list)
-
 }
