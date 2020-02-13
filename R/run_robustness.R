@@ -1,6 +1,6 @@
-#' Title
+#' Run robustness analysis pipeline
 #'
-#' @param parameter_space stub
+#' @param parameter_space A string with the parameter space to run.
 #'
 #' @export
 run_robustness <- function(parameter_space) {

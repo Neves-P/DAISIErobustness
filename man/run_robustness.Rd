@@ -2,13 +2,13 @@
 % Please edit documentation in R/run_robustness.R
 \name{run_robustness}
 \alias{run_robustness}
-\title{Title}
+\title{Run robustness analysis pipeline}
 \usage{
 run_robustness(parameter_space)
 }
 \arguments{
-\item{parameter_space}{stub}
+\item{parameter_space}{A string with the parameter space to run.}
 }
 \description{
-Title
+Run robustness analysis pipeline
 }
