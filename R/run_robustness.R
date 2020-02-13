@@ -36,6 +36,7 @@ run_robustness <- function(parameter_space) {
   error <- list()
   baseline_error <- list()
   for (l in seq_len(nrow(parameters))) {
+    cat("parameter set", l, "\n")
     area_pars <- DAISIE::create_area_pars(
       max_area = parameters$max_area[l],
       proportional_peak_t = parameters$peak_time[l],
@@ -87,7 +88,7 @@ run_robustness <- function(parameter_space) {
       ext_pars = simulation_pars$ext_pars,
       extcutoff = simulation_pars$extcutoff,
       plot_sims = FALSE,
-      verbose = TRUE, #FALSE
+      verbose = FALSE,
       sample_freq = Inf
     )
 
@@ -129,7 +130,7 @@ run_robustness <- function(parameter_space) {
             idparsopt = c(1:5),
             parsfix = NULL,
             idparsfix = NULL,
-            verbose = 1 #0
+            verbose = 0
           )
         )
         if (class(geodynamics_ML_results[[i]]) == 'try-error') {
@@ -149,7 +150,7 @@ run_robustness <- function(parameter_space) {
           sea_level = "const",
           area_pars = NULL,
           plot_sims = FALSE,
-          verbose = TRUE, #FALSE
+          verbose = FALSE,
           sample_freq = Inf
         )
       }
@@ -267,7 +268,6 @@ run_robustness <- function(parameter_space) {
         baseline_error$num_colonist_error <- num_colonist_geodynamamics - num_colonist_constant_1
       }
     }
-    cat("parameter set", l, "\n")
   }
 
   output_list <- list(
