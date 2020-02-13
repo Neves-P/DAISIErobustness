@@ -74,7 +74,7 @@ run_robustness <- function(parameter_space) {
     simulation_pars$sea_level_frequency <- parameters$sea_level_frequency[l]
     simulation_pars$extcutoff <- parameters$extcutoff
 
-    replicates <- 1
+    replicates <- 2
 
     geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
       time = simulation_pars$time,
