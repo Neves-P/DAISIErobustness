@@ -4,12 +4,16 @@
 #' be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-#' \code{"nonoceanic_land_bridge"}
+#' \code{"nonoceanic_land_bridge"}.
 #' @param param_set A numeric with the line corresponding to parameter set to
 #' run, as found in the file named in \code{param_space}.
+#' @param rates A string with set of rates to be tested, can either be
+#' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
+#' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
+#' simulation.
 #'
 #' @export
-run_robustness <- function(param_space, param_set) {
+run_robustness <- function(param_space, param_set, rates) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -35,6 +39,19 @@ run_robustness <- function(param_space, param_set) {
   error <- list()
   baseline_error <- list()
 
+  if (rates == "const") {
+    area_pars <- NULL
+    hyper_pars <- NULL
+    dist_pars <- NULL
+    ext_pars <- NULL
+    pars <- c(param_space$lac[param_set],
+              param_space$mu[param_set],
+              param_space$K[param_set],
+              param_space$gam[param_set],
+              param_space$laa[param_set]
+    )
+  }
+  if (rates == "time_dep") {
   area_pars <- DAISIE::create_area_pars(
     max_area = param_space$max_area[param_set],
     proportional_peak_t = param_space$peak_time[param_set],
@@ -53,6 +70,7 @@ run_robustness <- function(param_space, param_set) {
             param_space$gam[param_set],
             param_space$laa[param_set]
   )
+  }
   simulation_pars <- DAISIE::create_default_pars(
     island_ontogeny = DAISIE::translate_island_ontogeny(
       param_space$island_ontogeny),
@@ -76,20 +94,34 @@ run_robustness <- function(param_space, param_set) {
   replicates <- 2
 
   # Geodynamics simulations -------------------------------------------------
-  geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
+  if (rate == "time_dep") {
+    geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
+      time = simulation_pars$time,
+      M = simulation_pars$M,
+      pars = simulation_pars$pars,
+      replicates = replicates,
+      island_type = simulation_pars$island_type,
+      island_ontogeny = simulation_pars$island_ontogeny,
+      sea_level = simulation_pars$sea_level,
+      area_pars = simulation_pars$area_pars,
+      ext_pars = simulation_pars$ext_pars,
+      extcutoff = simulation_pars$extcutoff,
+      plot_sims = FALSE,
+      verbose = FALSE,
+      sample_freq = Inf
+    )
+  }
+
+# Nonoceanic simulations --------------------------------------------------
+  geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate(
     time = simulation_pars$time,
     M = simulation_pars$M,
     pars = simulation_pars$pars,
     replicates = replicates,
-    island_type = simulation_pars$island_type,
-    island_ontogeny = simulation_pars$island_ontogeny,
-    sea_level = simulation_pars$sea_level,
-    area_pars = simulation_pars$area_pars,
-    ext_pars = simulation_pars$ext_pars,
-    extcutoff = simulation_pars$extcutoff,
+    nonoceanic_pars = simulation_pars$nonoceanic_pars,
+    sample_freq  = Inf,
     plot_sims = FALSE,
-    verbose = FALSE,
-    sample_freq = Inf
+    verbose = FALSE
   )
 
   # Conditioning simulation -------------------------------------------------
@@ -109,7 +141,7 @@ run_robustness <- function(param_space, param_set) {
             did not have 5 colonisation to the present")
   } else {
 
-    # Maximum likelihood estimation -------------------------------------------
+    # Maximum likelihood estimation 1 -----------------------------------------
     geodynamics_ML_results <- list()
     mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
       pars = simulation_pars$pars,
@@ -192,7 +224,7 @@ run_robustness <- function(param_space, param_set) {
     }
 
 
-    # Maximum likelihood estimation -------------------------------------------
+    # Maximum likelihood estimation 2 -----------------------------------------
     constant_results <- list()
     for (i in seq_along(constant_simulations_1)) {
       for (j in seq_along(constant_simulations_1[[i]]))
@@ -218,6 +250,16 @@ run_robustness <- function(param_space, param_set) {
       }
     }
 
+
+# Calculate rates error ---------------------------------------------------
+    rates_error <- list()
+    for (i in seq_len(geodynamics_ML_output)) {
+      rates_error$clado_error <- geodynamics_ML_output[[i]]$lambda_c - constant_rate[[i]]$lambda_c
+      rates_error$ext_error <- geodynamics_ML_output[[i]]$mu - constant_rate[[i]]$mu
+      rates_error$K_error <- geodynamics_ML_output[[i]]$K - constant_rate[[i]]$K
+      rates_error$immig_error <- geodynamics_ML_output[[i]]$gamma - constant_rate[[i]]$gamma
+      rates_error$ana_error <- geodynamics_ML_output[[i]]$lambda_a - constant_rate[[i]]$lambda_a
+    }
 
     # Second constant rate simulations ----------------------------------------
     constant_simulations_2 <- list()
@@ -279,6 +321,31 @@ run_robustness <- function(param_space, param_set) {
     }
   }
 
+# Maximum likelihood estimation 3 -------------------------------------------
+  constant_ML_2 <- list()
+  for (i in seq_along(constant_simulations_2)) {
+    for (j in seq_along(constant_simulations_2[[i]]))
+      try(
+        constant_ML_2[[i]] <- DAISIE::DAISIE_ML_CS(
+          datalist = constant_simulations_2[[i]][[j]],
+          datatype = "single",
+          initparsopt = c(
+            mean_medians$medians[1],
+            mean_medians$medians[2],
+            40,
+            mean_medians$medians[3],
+            1
+          ),
+          idparsopt = c(1:5),
+          parsfix = NULL,
+          idparsfix = NULL,
+          verbose = 0
+        )
+      )
+    if (class(constant_results[[i]]) == "try-error") {
+      constant_results[[i]] <- "No convergence"
+    }
+  }
 
   output_list <- list(
     error = error,
