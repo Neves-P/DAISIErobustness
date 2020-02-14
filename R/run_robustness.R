@@ -389,14 +389,11 @@ run_robustness <- function(param_space, param_set, rates) {
       )
       stt_last_row_constant_1 <- nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_geodynamics, 5]
-
       stt_last_row_constant_1 <-
         nrow(constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-
-      #TODO: Better error calculations
-      baseline_error$num_spec_error$num_spec_error <- num_spec_geodynamics - num_spec_constant_1
+      baseline_error$num_spec_error <- abs(num_spec_constant_1 - num_spec_constant_2)
 
 
       num_colonist_geodynamamics <-
