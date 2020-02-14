@@ -142,7 +142,7 @@ run_robustness <- function(param_space, param_set, rates) {
   } else {
 
     # Maximum likelihood estimation 1 -----------------------------------------
-    geodynamics_ML_results <- list()
+    geodynamics_ML <- list()
     mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
       pars = simulation_pars$pars,
       area_pars = simulation_pars$area_pars,
@@ -151,7 +151,7 @@ run_robustness <- function(param_space, param_set, rates) {
     )
     for (i in seq_along(geodynamics_simulations)) {
       try(
-        geodynamics_ML_results[[i]] <- DAISIE::DAISIE_ML_CS(
+        geodynamics_ML[[i]] <- DAISIE::DAISIE_ML_CS(
           datalist = geodynamics_simulations[[i]],
           datatype = "single",
           initparsopt = c(
@@ -167,19 +167,19 @@ run_robustness <- function(param_space, param_set, rates) {
           verbose = 0
         )
       )
-      if (class(geodynamics_ML_results[[i]]) == "try-error") {
-        geodynamics_ML_results[[i]] <- "No convergence"
+      if (class(geodynamics_ML[[i]]) == "try-error") {
+        geodynamics_ML[[i]] <- "No convergence"
       }
     }
 
 
     # First constant rate simulations -----------------------------------------
     constant_simulations_1 <- list()
-    for (i in seq_along(geodynamics_ML_results)) {
+    for (i in seq_along(geodynamics_ML)) {
       constant_simulations_1[[i]] <- DAISIE::DAISIE_sim_constant_rate(
         time = simulation_pars$time,
         M = simulation_pars$M,
-        pars = as.numeric(geodynamics_ML_results[[i]][1:5]),
+        pars = as.numeric(geodynamics_ML[[i]][1:5]),
         replicates = 1,
         island_type = "oceanic",
         island_ontogeny = "const",
@@ -225,11 +225,11 @@ run_robustness <- function(param_space, param_set, rates) {
 
 
     # Maximum likelihood estimation 2 -----------------------------------------
-    constant_results <- list()
+    constant_ML_1 <- list()
     for (i in seq_along(constant_simulations_1)) {
       for (j in seq_along(constant_simulations_1[[i]]))
         try(
-          constant_results[[i]] <- DAISIE::DAISIE_ML_CS(
+          constant_ML_1[[i]] <- DAISIE::DAISIE_ML_CS(
             datalist = constant_simulations_1[[i]][[j]],
             datatype = "single",
             initparsopt = c(
@@ -245,8 +245,8 @@ run_robustness <- function(param_space, param_set, rates) {
             verbose = 0
           )
         )
-      if (class(constant_results[[i]]) == "try-error") {
-        constant_results[[i]] <- "No convergence"
+      if (class(constant_ML_1[[i]]) == "try-error") {
+        constant_ML_1[[i]] <- "No convergence"
       }
     }
 
@@ -263,11 +263,11 @@ run_robustness <- function(param_space, param_set, rates) {
 
     # Second constant rate simulations ----------------------------------------
     constant_simulations_2 <- list()
-    for (i in seq_along(constant_results)) {
+    for (i in seq_along(constant_ML_1)) {
       constant_simulations_2[[i]] <- DAISIE::DAISIE_sim_constant_rate(
         time = simulation_pars$time,
         M = simulation_pars$M,
-        pars = as.numeric(constant_results[[i]][1:5]),
+        pars = as.numeric(constant_ML_1[[i]][1:5]),
         replicates = 1,
         island_type = "oceanic",
         island_ontogeny = "const",
@@ -278,11 +278,7 @@ run_robustness <- function(param_space, param_set, rates) {
         sample_freq = Inf
       )
     }
-    geodynamics_simulations_output[param_set] <- geodynamics_simulations
-    geodynamics_ML_output[param_set] <- geodynamics_ML_results
-    constant_simulations_output[param_set] <- constant_simulations_1
-    constant_results_output[param_set] <- constant_results
-    constant_simulations_2_output[param_set] <- constant_simulations_2
+
 
     # Calculate baseline error --------------------------------------------------
     baseline_error[[param_set]] <- list()
@@ -342,19 +338,20 @@ run_robustness <- function(param_space, param_set, rates) {
           verbose = 0
         )
       )
-    if (class(constant_results[[i]]) == "try-error") {
-      constant_results[[i]] <- "No convergence"
+    if (class(constant_ML_2[[i]]) == "try-error") {
+      constant_ML_2[[i]] <- "No convergence"
     }
   }
 
   output_list <- list(
     error = error,
     baseline_error = baseline_error,
-    geodynamics_simulations_output = geodynamics_simulations_output,
-    geodynamics_ML_output = geodynamics_ML_output,
+    geodynamics_simulations = geodynamics_simulations,
+    geodynamics_ML = geodynamics_ML,
     constant_simulations_1 = constant_simulations_1,
-    constant_results = constant_results,
-    constant_simulations_2 = constant_simulations_2
+    constant_ML_1 = constant_ML_1,
+    constant_simulations_2 = constant_simulations_2,
+    constant_ML_2 = constant_ML_2
   )
   save(output_list, file = "pipeline_result.RData")
   return(output_list)

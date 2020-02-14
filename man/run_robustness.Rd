@@ -4,17 +4,22 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space, param_set)
+run_robustness(param_space, param_set, rates)
 }
 \arguments{
 \item{param_space}{A string with the parameter space to run. Can
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}}
+\code{"nonoceanic_land_bridge"}.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
+
+\item{rates}{A string with set of rates to be tested, can either be
+\code{"const"} for a constant rate simulation, \code{"time_dep"} for a
+time-dependent simulation, or \code{"rate_shift"} for a rate-shift
+simulation.}
 }
 \description{
 Run robustness analysis pipeline
