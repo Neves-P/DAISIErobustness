@@ -108,7 +108,7 @@ run_robustness <- function(param_space, param_set, rates) {
       ext_pars = simulation_pars$ext_pars,
       extcutoff = simulation_pars$extcutoff,
       plot_sims = FALSE,
-      verbose = FALSE,
+      verbose = TRUE,#FALSE,
       sample_freq = Inf
     )
   }
@@ -123,7 +123,7 @@ run_robustness <- function(param_space, param_set, rates) {
       nonoceanic_pars = simulation_pars$nonoceanic_pars,
       sample_freq  = Inf,
       plot_sims = FALSE,
-      verbose = FALSE
+      verbose = TRUE#FALSE
     )
   }
 
@@ -139,7 +139,7 @@ run_robustness <- function(param_space, param_set, rates) {
       shift_times = simulation_pars$shift_times,
       sample_freq  = Inf,
       plot_sims = FALSE,
-      verbose = FALSE
+      verbose = TRUE#FALSE
     )
   }
 
@@ -160,8 +160,8 @@ run_robustness <- function(param_space, param_set, rates) {
             did not have 5 colonisation to the present")
   } else {
 
-    # Maximum likelihood estimation 1 -----------------------------------------
-    geodynamics_ML <- list()
+    # Maximum likelihood estimation 1 DD --------------------------------------
+    geodynamics_ML_DD <- list()
     mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
       pars = simulation_pars$pars,
       area_pars = simulation_pars$area_pars,
@@ -170,7 +170,7 @@ run_robustness <- function(param_space, param_set, rates) {
     )
     for (i in seq_along(geodynamics_simulations)) {
       try(
-        geodynamics_ML[[i]] <- DAISIE::DAISIE_ML_CS(
+        geodynamics_ML_DD[[i]] <- DAISIE::DAISIE_ML_CS(
           datalist = geodynamics_simulations[[i]],
           datatype = "single",
           initparsopt = c(
@@ -183,14 +183,54 @@ run_robustness <- function(param_space, param_set, rates) {
           idparsopt = c(1:5),
           parsfix = NULL,
           idparsfix = NULL,
-          verbose = 0
+          verbose = 1#0
         )
       )
-      if (class(geodynamics_ML[[i]]) == "try-error") {
-        geodynamics_ML[[i]] <- "No convergence"
+      if (class(geodynamics_ML_DD[[i]]) == "try-error") {
+        geodynamics_ML_DD[[i]] <- "No convergence"
       }
     }
 
+    # Maximum likelihood estimation 1 DI --------------------------------------
+    geodynamics_ML_DI <- list()
+    mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
+      pars = simulation_pars$pars,
+      area_pars = simulation_pars$area_pars,
+      ext_pars = simulation_pars$ext_pars,
+      totaltime = simulation_pars$time
+    )
+    DD_AICc <- c()
+    DI_AICc <- c()
+    n_spec <- c()
+    for (i in seq_along(geodynamics_simulations)) {
+      try(
+        geodynamics_ML_DI[[i]] <- DAISIE::DAISIE_ML_CS(
+          datalist = geodynamics_simulations[[i]],
+          datatype = "single",
+          initparsopt = c(
+            mean_medians$medians[1],
+            mean_medians$medians[2],
+            mean_medians$medians[3],
+            1
+          ),
+          idparsopt = c(1, 2, 4, 5),
+          parsfix = Inf,
+          idparsfix = 3,
+          verbose = 1#0
+        )
+      )
+      if (class(geodynamics_ML_DI[[i]]) == "try-error") {
+        geodynamics_ML_DI[[i]] <- "No convergence"
+      }
+      stt_rows[i] <- nrow(geodynamics_simulations[[i]][[1]]$stt_all)
+      n_spec[i] <- as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "present"])
+      DD_AICc[i] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
+      DI_AICc[i] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
+    }
+
+    mean_DD_AICc <- mean(DD_AICc)
+    mean_DI_AICc <- mean(DI_AICc)
+    best_fit_model <- min(mean_DD_AICc, mean_DI_AICc)
 
     # First constant rate simulations -----------------------------------------
     constant_simulations_1 <- list()
@@ -205,7 +245,7 @@ run_robustness <- function(param_space, param_set, rates) {
         sea_level = "const",
         area_pars = NULL,
         plot_sims = FALSE,
-        verbose = FALSE,
+        verbose = TRUE,#FALSE,
         sample_freq = Inf
       )
     }
@@ -261,7 +301,7 @@ run_robustness <- function(param_space, param_set, rates) {
             idparsopt = c(1:5),
             parsfix = NULL,
             idparsfix = NULL,
-            verbose = 0
+            verbose = 1#0
           )
         )
       if (class(constant_ML_1[[i]]) == "try-error") {
@@ -293,7 +333,7 @@ run_robustness <- function(param_space, param_set, rates) {
         sea_level = "const",
         area_pars = NULL,
         plot_sims = FALSE,
-        verbose = FALSE,
+        verbose = TRUE,#FALSE,
         sample_freq = Inf
       )
     }
@@ -354,7 +394,7 @@ run_robustness <- function(param_space, param_set, rates) {
           idparsopt = c(1:5),
           parsfix = NULL,
           idparsfix = NULL,
-          verbose = 0
+          verbose = 1#0
         )
       )
     if (class(constant_ML_2[[i]]) == "try-error") {
