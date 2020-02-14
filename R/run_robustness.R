@@ -464,43 +464,29 @@ run_robustness <- function(param_space, param_set, rates) {
   }
 
   # Calculate nonendemic baseline error ---------------------------------------------
-  nonendemic_error <- list()
+  nonendemic_baseline_error <- list()
   n_colonists <- c()
   for (n_reps in 1:replicates) {
-    geodynamics_event_times <-
-      geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
-    geodynamics_nonendemic_spec <-
-      geodynamics_simulations[[n_reps]][[1]]$stt_all[, 3] +
-      geodynamics_simulations[[n_reps]][[1]]$stt_all[, 4]
     constant_1_event_times <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_simulations_1[[n_reps]][[1]]$stt_all[, 1]
     constant_1_nonendemic_spec <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
+      constant_simulations_1[[n_reps]][[1]]$stt_all[, 3] +
       constant_simulations_1[[n_reps]][[1]]$stt_all[, 4]
+    constant_2_event_times <-
+      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+    constant_2_nonendemic_spec <-
+      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 3] +
+      constant_simulations_2[[n_reps]][[1]]$stt_all[, 4]
     nonendemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
-      event_times = geodynamics_event_times,
-      species_number = geodynamics_num_spec,
-      event_times2 = constant_1_event_times,
-      species_number2 = constant_1_num_spec,
+      event_times = constant_1_event_times,
+      species_number = constant_1_nonendemic_spec,
+      event_times2 = constant_2_event_times,
+      species_number2 = constant_2_nonendemic_spec,
       distance_method = "abs",
       time_unit = "ago",
       normalize = FALSE
     )
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Maximum likelihood estimation 3 -------------------------------------------
   constant_ML_2 <- list()
