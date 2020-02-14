@@ -272,11 +272,11 @@ run_robustness <- function(param_space, param_set, rates) {
 # Calculate rates error ---------------------------------------------------
     rates_error <- list()
     for (i in seq_len(geodynamics_ML_output)) {
-      rates_error$clado_error <- geodynamics_ML_output[[i]]$lambda_c - constant_rate[[i]]$lambda_c
-      rates_error$ext_error <- geodynamics_ML_output[[i]]$mu - constant_rate[[i]]$mu
-      rates_error$K_error <- geodynamics_ML_output[[i]]$K - constant_rate[[i]]$K
-      rates_error$immig_error <- geodynamics_ML_output[[i]]$gamma - constant_rate[[i]]$gamma
-      rates_error$ana_error <- geodynamics_ML_output[[i]]$lambda_a - constant_rate[[i]]$lambda_a
+      rates_error$clado_error <- geodynamics_ML_output[[i]]$lambda_c - constant_ML_1[[i]]$lambda_c
+      rates_error$ext_error <- geodynamics_ML_output[[i]]$mu - constant_ML_1[[i]]$mu
+      rates_error$K_error <- geodynamics_ML_output[[i]]$K - constant_ML_1[[i]]$K
+      rates_error$immig_error <- geodynamics_ML_output[[i]]$gamma - constant_ML_1[[i]]$gamma
+      rates_error$ana_error <- geodynamics_ML_output[[i]]$lambda_a - constant_ML_1[[i]]$lambda_a
     }
 
     # Second constant rate simulations ----------------------------------------
@@ -361,9 +361,21 @@ run_robustness <- function(param_space, param_set, rates) {
     }
   }
 
+  # Calculate rates baseline error --------------------------------------------
+  rates_baseline_error <- list()
+  for (i in seq_len(geodynamics_ML_output)) {
+    rates_error$clado_error <- constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c
+    rates_error$ext_error <- constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu
+    rates_error$K_error <- constant_ML_1[[i]]$K - constant_ML_2[[i]]$K
+    rates_error$immig_error <- constant_ML_1[[i]]$gamma - constant_ML_2[[i]]$gamma
+    rates_error$ana_error <- constant_ML_1[[i]]$lambda_a - constant_ML_2[[i]]$lambda_a
+  }
+
   output_list <- list(
     error = error,
     baseline_error = baseline_error,
+    rates_error = rates_error,
+    rates_baseline_error = rates_baseline_error,
     geodynamics_simulations = geodynamics_simulations,
     geodynamics_ML = geodynamics_ML,
     constant_simulations_1 = constant_simulations_1,
