@@ -9,7 +9,6 @@
 #' @export
 run_robustness <- function(parameter_space) {
 
-
 # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
@@ -290,5 +289,6 @@ run_robustness <- function(parameter_space) {
     constant_results = constant_results,
     constant_simulations_2 = constant_simulations_2
   )
+  save(output_list, file = "pipeline_result.RData")
   return(output_list)
 }
