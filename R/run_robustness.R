@@ -26,16 +26,7 @@ run_robustness <- function(param_space, param_set, rates) {
   set.seed(1)
 
   # Initialising objects ----------------------------------------------------
-  geodynamics_simulations_output <- list()
   geodynamics_ML_output <- list()
-  constant_simulations_output <- list()
-  constant_results_output <- list()
-  constant_simulations_2_output <- list()
-  geodynamics_simulations_output <- list()
-  geodynamics_ML_output <- list()
-  constant_simulations_output <- list()
-  constant_results_output <- list()
-  constant_simulations_2_output <- list()
   error <- list()
   baseline_error <- list()
 
@@ -230,9 +221,9 @@ run_robustness <- function(param_space, param_set, rates) {
 
     mean_DD_AICc <- mean(unlist(DD_AICc))
     mean_DI_AICc <- mean(unlist(DI_AICc))
-    best_fit_model <- min(mean_DD_AICc, mean_DI_AICc)
+    mean_DD_AICc_smaller <- mean_DD_AICc < mean_DI_AICc
 
-    if (best_fit_model == mean_DD_AICc) {
+    if (mean_DD_AICc_smaller) {
       geodynamics_ML <- geodynamics_ML_DD
     } else {
       geodynamics_ML <- geodynamics_ML_DI
