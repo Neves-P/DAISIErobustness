@@ -111,7 +111,7 @@ run_robustness <- function(param_space, param_set, rates) {
       M = simulation_pars$M,
       pars = simulation_pars$pars,
       replicates = replicates,
-      nonoceanic_pars = simulation_pars$nonoceanic_pars,
+      nonoceanic_pars = c(simulation_pars$x_s, simulation_pars$x_nonend),
       sample_freq  = Inf,
       plot_sims = FALSE,
       verbose = TRUE#FALSE
