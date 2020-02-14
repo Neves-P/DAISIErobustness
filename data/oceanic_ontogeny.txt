@@ -1,5 +1,5 @@
-"time" "M" "lac" "mu_min" "mu_p" "K" "gam" "laa" "island_ontogeny" "sea_level" "max_area" "peak_time" "sharpness" "total_island_age" "sea_level_amplitude" "sea_level_frequency" "island_gradient_angle" "extcutoff" "x_s" "x_nonend"
-2.1 1000 0.00015 0.5 25 0.015 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000 0 0
-2.1 1000 0.00015 0.5 25 Inf 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000 0 0
-2.1 1000 0.00015 0.5 50 0.015 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000 0 0
-2.1 1000 0.00015 0.5 50 Inf 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000 0 0
+"time" "M" "lac" "mu_min" "mu_p" "K" "gam" "laa" "island_ontogeny" "sea_level" "max_area" "peak_time" "sharpness" "total_island_age" "sea_level_amplitude" "sea_level_frequency" "island_gradient_angle" "extcutoff"	"x_s"	"x_nonend"
+2.1 1000 0.00015 0.5 25 0.015 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000	0	0
+2.1 1000 0.00015 0.5 25 Inf 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000	0	0
+2.1 1000 0.00015 0.5 50 0.015 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000	0	0
+2.1 1000 0.00015 0.5 50 Inf 0.01 1 "beta" "const" 13500 0.4 1 2.4 0 0 0 1000	0	0
