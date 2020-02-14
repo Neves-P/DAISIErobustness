@@ -26,7 +26,6 @@ run_robustness <- function(param_space, param_set, rates) {
   set.seed(1)
 
   # Initialising objects ----------------------------------------------------
-  geodynamics_ML_output <- list()
   error <- list()
   baseline_error <- list()
 
@@ -401,7 +400,7 @@ run_robustness <- function(param_space, param_set, rates) {
 
   # Calculate rates baseline error --------------------------------------------
   rates_baseline_error <- list()
-  for (i in seq_len(geodynamics_ML_output)) {
+  for (i in seq_len(constant_ML_1)) {
     rates_error$clado_error <- constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c
     rates_error$ext_error <- constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu
     rates_error$K_error <- constant_ML_1[[i]]$K - constant_ML_2[[i]]$K
