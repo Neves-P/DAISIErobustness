@@ -113,16 +113,34 @@ run_robustness <- function(param_space, param_set, rates) {
   }
 
 # Nonoceanic simulations --------------------------------------------------
-  geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate(
-    time = simulation_pars$time,
-    M = simulation_pars$M,
-    pars = simulation_pars$pars,
-    replicates = replicates,
-    nonoceanic_pars = simulation_pars$nonoceanic_pars,
-    sample_freq  = Inf,
-    plot_sims = FALSE,
-    verbose = FALSE
-  )
+  if (rates == "const") {
+    geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate(
+      time = simulation_pars$time,
+      M = simulation_pars$M,
+      pars = simulation_pars$pars,
+      replicates = replicates,
+      nonoceanic_pars = simulation_pars$nonoceanic_pars,
+      sample_freq  = Inf,
+      plot_sims = FALSE,
+      verbose = FALSE
+    )
+  }
+
+
+# Land-bridge simulation --------------------------------------------------
+  if (rates == "rate_shift") {
+    geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate_shift(
+      time = simulation_pars$time,
+      M = simulation_pars$M,
+      pars = simulation_pars$pars,
+      replicates = replicates,
+      nonoceanic_pars = simulation_pars$nonoceanic_pars,
+      shift_times = simulation_pars$shift_times,
+      sample_freq  = Inf,
+      plot_sims = FALSE,
+      verbose = FALSE
+    )
+  }
 
   # Conditioning simulation -------------------------------------------------
   stt_rows <- c()
