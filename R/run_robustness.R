@@ -119,7 +119,6 @@ run_robustness <- function(param_space, param_set, rates) {
     )
   }
 
-
 # Land-bridge simulation --------------------------------------------------
   if (rates == "rate_shift") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate_shift(
@@ -252,11 +251,15 @@ run_robustness <- function(param_space, param_set, rates) {
     species_error <- list()
     n_colonists <- c()
     for (n_reps in 1:replicates) {
-      geodynamics_event_times <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
-      geodynamics_num_spec <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5]
-      constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
-      constant_1_num_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
-      species_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+      geodynamics_event_times <-
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
+      geodynamics_num_spec <-
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5]
+      constant_1_event_times <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_num_spec <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
+      species_error$nltt[nreps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_num_spec,
         event_times2 = constant_1_event_times,
@@ -265,14 +268,22 @@ run_robustness <- function(param_space, param_set, rates) {
         time_unit = "ago",
         normalize = FALSE
       )
-      stt_last_row_geodynamics <- nrow(geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5])
-      num_spec_geodynamics <- geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_last_row_geodynamics, 5]
-      stt_last_row_constant_1 <- nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
-      num_spec_constant_1 <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-      species_error$num_spec_error <- abs(num_spec_geodynamics - num_spec_constant_1)
-      num_colonist_geodynamamics <- length(geodynamics_simulations[[n_reps]]) - 1
-      num_colonist_constant_1 <- length(constant_simulations_1[[n_reps]]) - 1
-      error$num_colonist_error <- abs(num_colonist_geodynamamics - num_colonist_constant_1)
+      stt_last_row_geodynamics <-
+        nrow(geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5])
+      num_spec_geodynamics <-
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_last_row_geodynamics, 5]
+      stt_last_row_constant_1 <-
+        nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
+      num_spec_constant_1 <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
+      species_error$num_spec_error[nreps] <-
+        abs(num_spec_geodynamics - num_spec_constant_1)
+      num_colonist_geodynamamics <-
+        length(geodynamics_simulations[[n_reps]]) - 1
+      num_colonist_constant_1 <-
+        length(constant_simulations_1[[n_reps]]) - 1
+      error$num_colonist_error[nreps] <-
+        abs(num_colonist_geodynamamics - num_colonist_constant_1)
     }
 
     # Calculate endemic error -----------------------------------------------
@@ -282,7 +293,7 @@ run_robustness <- function(param_space, param_set, rates) {
       geodynamics_endemic_spec <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 2] #check
       constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_endemic_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2] #check
-      endemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+      endemic_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_num_spec,
         event_times2 = constant_1_event_times,
@@ -320,6 +331,7 @@ run_robustness <- function(param_space, param_set, rates) {
 
     # Maximum likelihood estimation 2 -----------------------------------------
     constant_ML_1 <- list()
+    if (mean_DD_AICc_smaller) {
     for (i in seq_along(constant_simulations_1)) {
       for (j in seq_along(constant_simulations_1[[i]]))
         try(
@@ -343,16 +355,39 @@ run_robustness <- function(param_space, param_set, rates) {
         constant_ML_1[[i]] <- "No convergence"
       }
     }
-
+    } else {
+      for (i in seq_along(constant_simulations_1)) {
+        for (j in seq_along(constant_simulations_1[[i]]))
+          try(
+            constant_ML_1[[i]] <- DAISIE::DAISIE_ML_CS(
+              datalist = constant_simulations_1[[i]][[j]],
+              datatype = "single",
+              initparsopt = c(
+                mean_medians$medians[1],
+                mean_medians$medians[2],
+                mean_medians$medians[3],
+                1
+              ),
+              idparsopt = c(1, 2, 4, 5),
+              parsfix = Inf,
+              idparsfix = 3,
+              verbose = 1#0
+            )
+          )
+        if (class(constant_ML_1[[i]]) == "try-error") {
+          constant_ML_1[[i]] <- "No convergence"
+        }
+      }
+    }
 
 # Calculate rates error ---------------------------------------------------
     rates_error <- list()
     for (i in 1:length(geodynamics_ML)) {
-      rates_error$clado_error <- geodynamics_ML[[i]]$lambda_c - constant_ML_1[[i]]$lambda_c
-      rates_error$ext_error <- geodynamics_ML[[i]]$mu - constant_ML_1[[i]]$mu
-      rates_error$K_error <- geodynamics_ML[[i]]$K - constant_ML_1[[i]]$K
-      rates_error$immig_error <- geodynamics_ML[[i]]$gamma - constant_ML_1[[i]]$gamma
-      rates_error$ana_error <- geodynamics_ML[[i]]$lambda_a - constant_ML_1[[i]]$lambda_a
+      rates_error$clado_error <- abs(geodynamics_ML[[i]]$lambda_c - constant_ML_1[[i]]$lambda_c)
+      rates_error$ext_error <- abs(geodynamics_ML[[i]]$mu - constant_ML_1[[i]]$mu)
+      rates_error$K_error <- abs(geodynamics_ML[[i]]$K - constant_ML_1[[i]]$K)
+      rates_error$immig_error <- abs(geodynamics_ML[[i]]$gamma - constant_ML_1[[i]]$gamma)
+      rates_error$ana_error <- abs(geodynamics_ML[[i]]$lambda_a - constant_ML_1[[i]]$lambda_a)
     }
 
     # Second constant rate simulations ----------------------------------------
@@ -370,15 +405,18 @@ run_robustness <- function(param_space, param_set, rates) {
       )
     }
 
-
     # Calculate baseline error --------------------------------------------------
     baseline_error <- list()
     for (n_reps in 1:replicates) {
-      constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
-      constant_1_num_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
-      constant_2_event_times <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
-      constant_2_num_spec <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5]
-      baseline_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+      constant_1_event_times <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_num_spec <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
+      constant_2_event_times <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_2_num_spec <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5]
+      baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = constant_1_event_times,
         species_number = constant_1_num_spec,
         event_times2 = constant_2_event_times,
@@ -387,26 +425,27 @@ run_robustness <- function(param_space, param_set, rates) {
         time_unit = "ago",
         normalize = FALSE
       )
-      stt_last_row_constant_1 <- nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
-      num_spec_constant_1 <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_geodynamics, 5]
+      stt_last_row_constant_1 <-
+        nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
+      num_spec_constant_1 <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_geodynamics, 5]
       stt_last_row_constant_1 <-
         nrow(constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-      baseline_error$num_spec_error <- abs(num_spec_constant_1 - num_spec_constant_2)
-
-
+      baseline_error$num_spec_error[n_reps] <- abs(num_spec_constant_1 - num_spec_constant_2)
       num_colonist_geodynamamics <-
         length(geodynamics_simulations[[n_reps]]) - 1
       num_colonist_constant_1 <-
         length(constant_simulations_1[[n_reps]]) - 1
-      baseline_error$num_colonist_error <-
-        num_colonist_geodynamamics - num_colonist_constant_1
+      baseline_error$num_colonist_error[n_reps] <-
+        abs(num_colonist_constant_1 - num_colonist_constant_2)
     }
   }
 
 # Maximum likelihood estimation 3 -------------------------------------------
   constant_ML_2 <- list()
+  if (mean_DD_AICc_smaller) {
   for (i in seq_along(constant_simulations_2)) {
     for (j in seq_along(constant_simulations_2[[i]]))
       try(
@@ -430,15 +469,39 @@ run_robustness <- function(param_space, param_set, rates) {
       constant_ML_2[[i]] <- "No convergence"
     }
   }
+  } else {
+    for (i in seq_along(constant_simulations_2)) {
+      for (j in seq_along(constant_simulations_2[[i]]))
+        try(
+          constant_ML_2[[i]] <- DAISIE::DAISIE_ML_CS(
+            datalist = constant_simulations_2[[i]][[j]],
+            datatype = "single",
+            initparsopt = c(
+              mean_medians$medians[1],
+              mean_medians$medians[2],
+              mean_medians$medians[3],
+              1
+            ),
+            idparsopt = c(1, 2, 4, 5),
+            parsfix = Inf,
+            idparsfix = 3,
+            verbose = 1#0
+          )
+        )
+      if (class(constant_ML_2[[i]]) == "try-error") {
+        constant_ML_2[[i]] <- "No convergence"
+      }
+    }
+  }
 
   # Calculate rates baseline error --------------------------------------------
   rates_baseline_error <- list()
   for (i in 1:length(constant_ML_1)) {
-    rates_error$clado_error <- constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c
-    rates_error$ext_error <- constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu
-    rates_error$K_error <- constant_ML_1[[i]]$K - constant_ML_2[[i]]$K
-    rates_error$immig_error <- constant_ML_1[[i]]$gamma - constant_ML_2[[i]]$gamma
-    rates_error$ana_error <- constant_ML_1[[i]]$lambda_a - constant_ML_2[[i]]$lambda_a
+    rates_baseline_error$clado_error[i] <- abs(constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c)
+    rates_baseline_error$ext_error[i] <- abs(constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu)
+    rates_baseline_error$K_error[i] <- abs(constant_ML_1[[i]]$K - constant_ML_2[[i]]$K)
+    rates_baseline_error$immig_error[i] <- abs(constant_ML_1[[i]]$gamma - constant_ML_2[[i]]$gamma)
+    rates_baseline_error$ana_error[i] <- abs(constant_ML_1[[i]]$lambda_a - constant_ML_2[[i]]$lambda_a)
   }
 
   output_list <- list(
