@@ -94,7 +94,7 @@ run_robustness <- function(param_space, param_set, rates) {
   replicates <- 2
 
   # Geodynamics simulations -------------------------------------------------
-  if (rate == "time_dep") {
+  if (rates == "time_dep") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
       time = simulation_pars$time,
       M = simulation_pars$M,
