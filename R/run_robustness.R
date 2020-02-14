@@ -199,8 +199,8 @@ run_robustness <- function(param_space, param_set, rates) {
       ext_pars = simulation_pars$ext_pars,
       totaltime = simulation_pars$time
     )
-    DD_AICc <- c()
-    DI_AICc <- c()
+    DD_AICc <- list()
+    DI_AICc <- list()
     n_spec <- c()
     for (i in seq_along(geodynamics_simulations)) {
       try(
@@ -224,13 +224,19 @@ run_robustness <- function(param_space, param_set, rates) {
       }
       stt_rows[i] <- nrow(geodynamics_simulations[[i]][[1]]$stt_all)
       n_spec[i] <- as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "present"])
-      DD_AICc[i] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
-      DI_AICc[i] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
+      DD_AICc[[i]] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
+      DI_AICc[[i]] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
     }
 
-    mean_DD_AICc <- mean(DD_AICc)
-    mean_DI_AICc <- mean(DI_AICc)
+    mean_DD_AICc <- mean(unlist(DD_AICc))
+    mean_DI_AICc <- mean(unlist(DI_AICc))
     best_fit_model <- min(mean_DD_AICc, mean_DI_AICc)
+
+    if (best_fit_model == mean_DD_AICc) {
+      geodynamics_ML <- geodynamics_ML_DD
+    } else {
+      geodynamics_ML <- geodynamics_ML_DI
+    }
 
     # First constant rate simulations -----------------------------------------
     constant_simulations_1 <- list()
