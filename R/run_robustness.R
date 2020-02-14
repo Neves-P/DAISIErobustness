@@ -63,8 +63,9 @@ run_robustness <- function(param_space, param_set, rates) {
   }
   simulation_pars <- DAISIE::create_default_pars(
     island_ontogeny = DAISIE::translate_island_ontogeny(
-      param_space$island_ontogeny),
-    sea_level = DAISIE::translate_sea_level(param_space$sea_level),
+      param_space$island_ontogeny[param_set]),
+    sea_level = DAISIE::translate_sea_level(
+      param_space$sea_level[param_set]),
     area_pars = area_pars,
     hyper_pars = hyper_pars,
     dist_pars = dist_pars,
@@ -190,8 +191,8 @@ run_robustness <- function(param_space, param_set, rates) {
       ext_pars = simulation_pars$ext_pars,
       totaltime = simulation_pars$time
     )
-    DD_AICc <- list()
-    DI_AICc <- list()
+    DD_AICc <- c()
+    DI_AICc <- c()
     n_spec <- c()
     for (i in seq_along(geodynamics_simulations)) {
       try(
@@ -215,12 +216,12 @@ run_robustness <- function(param_space, param_set, rates) {
       }
       stt_rows[i] <- nrow(geodynamics_simulations[[i]][[1]]$stt_all)
       n_spec[i] <- as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "present"])
-      DD_AICc[[i]] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
-      DI_AICc[[i]] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
+      DD_AICc[i] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
+      DI_AICc[i] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
     }
 
-    mean_DD_AICc <- mean(unlist(DD_AICc))
-    mean_DI_AICc <- mean(unlist(DI_AICc))
+    mean_DD_AICc <- mean(DD_AICc)
+    mean_DI_AICc <- mean(DI_AICc)
     mean_DD_AICc_smaller <- mean_DD_AICc < mean_DI_AICc
 
     if (mean_DD_AICc_smaller) {
@@ -247,15 +248,15 @@ run_robustness <- function(param_space, param_set, rates) {
       )
     }
 
-    # Calculate error -----------------------------------------------------------
-    error[[param_set]] <- list()
+    # Calculate species and colonists error -----------------------------------
+    species_error <- list()
     n_colonists <- c()
     for (n_reps in 1:replicates) {
       geodynamics_event_times <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
       geodynamics_num_spec <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5]
       constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_num_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
-      error[[param_set]][n_reps] <- nLTT::nltt_diff_exact_extinct(
+      species_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_num_spec,
         event_times2 = constant_1_event_times,
@@ -266,19 +267,56 @@ run_robustness <- function(param_space, param_set, rates) {
       )
       stt_last_row_geodynamics <- nrow(geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5])
       num_spec_geodynamics <- geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_last_row_geodynamics, 5]
-
       stt_last_row_constant_1 <- nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-
-      #TODO: Better error calculations
-      error$num_spec_error <- num_spec_geodynamics - num_spec_constant_1
-
-
+      species_error$num_spec_error <- abs(num_spec_geodynamics - num_spec_constant_1)
       num_colonist_geodynamamics <- length(geodynamics_simulations[[n_reps]]) - 1
       num_colonist_constant_1 <- length(constant_simulations_1[[n_reps]]) - 1
-      error$num_colonist_error <- num_colonist_geodynamamics - num_colonist_constant_1
+      error$num_colonist_error <- abs(num_colonist_geodynamamics - num_colonist_constant_1)
     }
 
+    # Calculate endemic error -----------------------------------------------
+    endemic_error <- list()
+    for (n_reps in 1:replicates) {
+      geodynamics_event_times <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
+      geodynamics_endemic_spec <- geodynamics_simulations[[n_reps]][[1]]$stt_all[, 2] #check
+      constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_endemic_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2] #check
+      endemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+        event_times = geodynamics_event_times,
+        species_number = geodynamics_num_spec,
+        event_times2 = constant_1_event_times,
+        species_number2 = constant_1_num_spec,
+        distance_method = "abs",
+        time_unit = "ago",
+        normalize = FALSE
+      )
+    }
+
+    # Calculate nonendemic error ---------------------------------------------
+    nonendemic_error <- list()
+    n_colonists <- c()
+    for (n_reps in 1:replicates) {
+      geodynamics_event_times <-
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[, 1]
+      geodynamics_nonendemic_spec <-
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[, 3] +
+        geodynamics_simulations[[n_reps]][[1]]$stt_all[, 4]
+      constant_1_event_times <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_nonendemic_spec <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
+        constant_simulations_1[[n_reps]][[1]]$stt_all[, 4]
+      nonendemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+        event_times = geodynamics_event_times,
+        species_number = geodynamics_num_spec,
+        event_times2 = constant_1_event_times,
+        species_number2 = constant_1_num_spec,
+        distance_method = "abs",
+        time_unit = "ago",
+        normalize = FALSE
+      )
+    }
 
     # Maximum likelihood estimation 2 -----------------------------------------
     constant_ML_1 <- list()
@@ -325,9 +363,6 @@ run_robustness <- function(param_space, param_set, rates) {
         M = simulation_pars$M,
         pars = as.numeric(constant_ML_1[[i]][1:5]),
         replicates = 1,
-        island_type = "oceanic",
-        island_ontogeny = "const",
-        sea_level = "const",
         area_pars = NULL,
         plot_sims = FALSE,
         verbose = TRUE,#FALSE,
@@ -337,13 +372,13 @@ run_robustness <- function(param_space, param_set, rates) {
 
 
     # Calculate baseline error --------------------------------------------------
-    baseline_error[[param_set]] <- list()
+    baseline_error <- list()
     for (n_reps in 1:replicates) {
       constant_1_event_times <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_num_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
       constant_2_event_times <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_2_num_spec <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5]
-      baseline_error[[param_set]][n_reps] <- nLTT::nltt_diff_exact_extinct(
+      baseline_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = constant_1_event_times,
         species_number = constant_1_num_spec,
         event_times2 = constant_2_event_times,
@@ -401,7 +436,7 @@ run_robustness <- function(param_space, param_set, rates) {
 
   # Calculate rates baseline error --------------------------------------------
   rates_baseline_error <- list()
-  for (i in seq_len(constant_ML_1)) {
+  for (i in 1:length(constant_ML_1)) {
     rates_error$clado_error <- constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c
     rates_error$ext_error <- constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu
     rates_error$K_error <- constant_ML_1[[i]]$K - constant_ML_2[[i]]$K
