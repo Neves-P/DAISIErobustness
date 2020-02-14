@@ -20,7 +20,7 @@ run_robustness <- function(param_space, param_set, rates) {
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
   file <- paste0(file_domain, param_space, ".txt")
   param_space <- readr::read_delim(
-    file = file, delim = "  "
+    file = file, delim = "\t"
   )
 
   set.seed(1)
