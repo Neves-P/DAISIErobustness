@@ -81,7 +81,8 @@ run_robustness <- function(param_space, param_set, rates) {
   simulation_pars$sea_level_amplitude <- param_space$sea_level_amplitude[param_set]
   simulation_pars$sea_level_frequency <- param_space$sea_level_frequency[param_set]
   simulation_pars$extcutoff <- param_space$extcutoff[param_set]
-  simulation_pars$nonoceanic_pars <- param_space$nonoceanic_pars[param_set]
+  simulation_pars$x_s <- param_space$x_s[param_set]
+  simulation_pars$x_nonend <- param_spec$x_nonend[param_set]
 
   replicates <- 2
 
@@ -126,7 +127,7 @@ run_robustness <- function(param_space, param_set, rates) {
       M = simulation_pars$M,
       pars = simulation_pars$pars,
       replicates = replicates,
-      nonoceanic_pars = simulation_pars$nonoceanic_pars,
+      nonoceanic_pars = c(simulation_pars$x_s, simulation_pars$x_nonend),
       shift_times = simulation_pars$shift_times,
       sample_freq  = Inf,
       plot_sims = FALSE,
