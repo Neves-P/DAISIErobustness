@@ -5,9 +5,13 @@
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
 #' \code{"nonoceanic_land_bridge"}
+#' @param rates A string with set of rates to be tested, can either be
+#' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
+#' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
+#' simulation.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space) {
+submit_robustness_cluster <- function(param_space, rates) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -26,7 +30,10 @@ submit_robustness_cluster <- function(param_space) {
       fun_arguments = paste0("param_space = ",
                              param_space,
                              ", param_set = ",
-                             param_set)
+                             param_set,
+                             ", rates = ",
+                             rates,
+                             )
     )
 
   }
