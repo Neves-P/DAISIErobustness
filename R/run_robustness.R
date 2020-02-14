@@ -81,7 +81,7 @@ run_robustness <- function(param_space, param_set, rates) {
   simulation_pars$sea_level_frequency <- param_space$sea_level_frequency[param_set]
   simulation_pars$extcutoff <- param_space$extcutoff[param_set]
   simulation_pars$x_s <- param_space$x_s[param_set]
-  simulation_pars$x_nonend <- param_spec$x_nonend[param_set]
+  simulation_pars$x_nonend <- param_space$x_nonend[param_set]
 
   replicates <- 2
 
@@ -309,7 +309,7 @@ run_robustness <- function(param_space, param_set, rates) {
 
 # Calculate rates error ---------------------------------------------------
     rates_error <- list()
-    for (i in seq_len(geodynamics_ML)) {
+    for (i in 1:length(geodynamics_ML)) {
       rates_error$clado_error <- geodynamics_ML[[i]]$lambda_c - constant_ML_1[[i]]$lambda_c
       rates_error$ext_error <- geodynamics_ML[[i]]$mu - constant_ML_1[[i]]$mu
       rates_error$K_error <- geodynamics_ML[[i]]$K - constant_ML_1[[i]]$K
