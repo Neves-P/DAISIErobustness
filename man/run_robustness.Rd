@@ -4,10 +4,17 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(parameter_space)
+run_robustness(param_space, param_set)
 }
 \arguments{
-\item{parameter_space}{A string with the parameter space to run.}
+\item{param_space}{A string with the parameter space to run. Can
+be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
+\code{"oceanic_ontogeny_sea_level"},
+\code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
+\code{"nonoceanic_land_bridge"}}
+
+\item{param_set}{A numeric with the line corresponding to parameter set to
+run, as found in the file named in \code{param_space}.}
 }
 \description{
 Run robustness analysis pipeline
