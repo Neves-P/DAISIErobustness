@@ -1,6 +1,6 @@
 #' Run robustness analysis pipeline
 #'
-#' @param param_space A string with the parameter space to run. Can
+#' @param param_space_name A string with the parameter space to run. Can
 #' be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
@@ -13,12 +13,12 @@
 #' simulation.
 #'
 #' @export
-run_robustness <- function(param_space, param_set, rates) {
+run_robustness <- function(param_space_name, param_set, rates) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
-  file <- paste0(file_domain, param_space, ".txt")
+  file <- paste0(file_domain, param_space_name, ".txt")
   param_space <- readr::read_delim(
     file = file, delim = "\t"
   )
@@ -41,6 +41,19 @@ run_robustness <- function(param_space, param_set, rates) {
               param_space$laa[param_set]
     )
   }
+  if (rates == "rate_shift") {
+    area_pars <- NULL
+    hyper_pars <- NULL
+    dist_pars <- NULL
+    ext_pars <- NULL
+    pars <- c(param_space$lac[param_set],
+              param_space$mu[param_set],
+              param_space$K[param_set],
+              param_space$gam[param_set],
+              param_space$laa[param_set]
+    )
+  }
+
   if (rates == "time_dep") {
   area_pars <- DAISIE::create_area_pars(
     max_area = param_space$max_area[param_set],
@@ -147,8 +160,8 @@ run_robustness <- function(param_space, param_set, rates) {
   prop_rep_over_5_cols <- length(which(n_colonists > 5))
   if ((prop_rep_over_20_spec / replicates) < 0.95 ||
       (prop_rep_over_5_cols / replicates) < 0.95) {
-    print("95% of replicates did not have 20 species or
-            did not have 5 colonisation to the present")
+    output_list <- "95% of replicates did not have 20 species or did not
+    have 5 colonisation to the present"
   } else {
 
     # Maximum likelihood estimation 1 DD --------------------------------------
@@ -259,7 +272,7 @@ run_robustness <- function(param_space, param_set, rates) {
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_num_spec <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
-      species_error$nltt[nreps] <- nLTT::nltt_diff_exact_extinct(
+      species_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_num_spec,
         event_times2 = constant_1_event_times,
@@ -276,13 +289,13 @@ run_robustness <- function(param_space, param_set, rates) {
         nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-      species_error$num_spec_error[nreps] <-
+      species_error$num_spec_error[n_reps] <-
         abs(num_spec_geodynamics - num_spec_constant_1)
       num_colonist_geodynamamics <-
         length(geodynamics_simulations[[n_reps]]) - 1
       num_colonist_constant_1 <-
         length(constant_simulations_1[[n_reps]]) - 1
-      species_error$num_colonist_error[nreps] <-
+      species_error$num_colonist_error[n_reps] <-
         abs(num_colonist_geodynamamics - num_colonist_constant_1)
     }
 
@@ -443,7 +456,6 @@ run_robustness <- function(param_space, param_set, rates) {
       speciesbaseline_error$num_colonist_error[n_reps] <-
         abs(num_colonist_constant_1 - num_colonist_constant_2)
     }
-  }
 
   # Calculate endemic baseline error -----------------------------------------------
   endemic_baseline_error <- list()
@@ -550,12 +562,13 @@ run_robustness <- function(param_space, param_set, rates) {
   }
 
   output_list <- list(
-    species_error,
-    endemic_error,
-    nonendemic_error,
-    rates_error,
-    baseline_error,
+    species_error = species_error,
+    endemic_error = endemic_error,
+    nonendemic_error = nonendemic_error,
     rates_error = rates_error,
+    species_baseline_error = species_baseline_error,
+    endemic_baseline_error = endemic_baseline_error,
+    nonendemic_baseline_error = nonendemic_baseline_error,
     rates_baseline_error = rates_baseline_error,
     geodynamics_simulations = geodynamics_simulations,
     geodynamics_ML = geodynamics_ML,
@@ -564,6 +577,9 @@ run_robustness <- function(param_space, param_set, rates) {
     constant_simulations_2 = constant_simulations_2,
     constant_ML_2 = constant_ML_2
   )
+  }
+
+  output_file <- paste0(param_space_name, "_param_set_", param_set, ".Rdata")
   save(output_list, file = "pipeline_result.RData")
   return(output_list)
 }
