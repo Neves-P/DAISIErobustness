@@ -442,11 +442,11 @@ run_robustness <- function(param_space_name, param_set, rates) {
       stt_last_row_constant_1 <-
         nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
-        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_geodynamics, 5]
-      stt_last_row_constant_1 <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
+      stt_last_row_constant_2 <-
         nrow(constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
-      num_spec_constant_1 <-
-        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
+      num_spec_constant_2 <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_2, 5]
       species_baseline_error$num_spec_error[n_reps] <-
         abs(num_spec_constant_1 - num_spec_constant_2)
       num_colonist_constant_1 <-
