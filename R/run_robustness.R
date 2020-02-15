@@ -330,7 +330,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_nonendemic_spec <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
-        constant_simulations_1[[n_reps]][[1]]$stt_all[, 4]
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
       nonendemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_nonendemic_spec,
@@ -453,17 +453,21 @@ run_robustness <- function(param_space_name, param_set, rates) {
         length(constant_simulations_1[[n_reps]]) - 1
       num_colonist_constant_2 <-
         length(constant_simulations_2[[n_reps]]) - 1
-      speciesbaseline_error$num_colonist_error[n_reps] <-
+      species_baseline_error$num_colonist_error[n_reps] <-
         abs(num_colonist_constant_1 - num_colonist_constant_2)
     }
 
   # Calculate endemic baseline error -----------------------------------------------
   endemic_baseline_error <- list()
   for (n_reps in 1:replicates) {
-    constant_1_event_times <- constant_simulations_1[[n_reps]][[1]]$stt_all[, 1]
-    constant_1_endemic_spec <- constant_simulations_1[[n_reps]][[1]]$stt_all[, 2] #check
-    constant_2_event_times <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
-    constant_2_endemic_spec <- constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 2] #check
+    constant_1_event_times <-
+      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+    constant_1_endemic_spec <-
+      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2]
+    constant_2_event_times <-
+      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+    constant_2_endemic_spec <-
+      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 2]
     endemic_baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
       event_times = constant_1_event_times,
       species_number = constant_1_event_times,
