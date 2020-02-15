@@ -259,7 +259,7 @@ run_robustness <- function(param_space, param_set, rates) {
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
       constant_1_num_spec <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
-      species_error$nltt[nreps] <- nLTT::nltt_diff_exact_extinct(
+      species_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_num_spec,
         event_times2 = constant_1_event_times,
@@ -276,13 +276,13 @@ run_robustness <- function(param_space, param_set, rates) {
         nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
-      species_error$num_spec_error[nreps] <-
+      species_error$num_spec_error[n_reps] <-
         abs(num_spec_geodynamics - num_spec_constant_1)
       num_colonist_geodynamamics <-
         length(geodynamics_simulations[[n_reps]]) - 1
       num_colonist_constant_1 <-
         length(constant_simulations_1[[n_reps]]) - 1
-      species_error$num_colonist_error[nreps] <-
+      species_error$num_colonist_error[n_reps] <-
         abs(num_colonist_geodynamamics - num_colonist_constant_1)
     }
 
