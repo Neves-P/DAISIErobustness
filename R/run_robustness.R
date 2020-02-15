@@ -308,9 +308,9 @@ run_robustness <- function(param_space_name, param_set, rates) {
       constant_1_endemic_spec <- constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2] #check
       endemic_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
-        species_number = geodynamics_num_spec,
+        species_number = geodynamics_endemic_spec,
         event_times2 = constant_1_event_times,
-        species_number2 = constant_1_num_spec,
+        species_number2 = constant_1_endemic_spec,
         distance_method = "abs",
         time_unit = "ago",
         normalize = FALSE
@@ -333,9 +333,9 @@ run_robustness <- function(param_space_name, param_set, rates) {
         constant_simulations_1[[n_reps]][[1]]$stt_all[, 4]
       nonendemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
-        species_number = geodynamics_num_spec,
+        species_number = geodynamics_nonendemic_spec,
         event_times2 = constant_1_event_times,
-        species_number2 = constant_1_num_spec,
+        species_number2 = constant_1_nonendemic_spec,
         distance_method = "abs",
         time_unit = "ago",
         normalize = FALSE
