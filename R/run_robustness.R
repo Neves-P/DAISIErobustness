@@ -242,6 +242,16 @@ run_robustness <- function(param_space_name, param_set, rates) {
       geodynamics_ML <- geodynamics_ML_DI
     }
 
+    # Calculate rates error ---------------------------------------------------
+    rates_error <- list()
+    for (i in 1:length(geodynamics_ML)) {
+      rates_error$clado_error[i] <- abs(simulation_pars$pars[1] - geodynamics_ML[[i]]$lambda_c)
+      rates_error$ext_error[i] <- abs(simulation_pars$pars[2] - geodynamics_ML[[i]]$mu)
+      rates_error$K_error[i] <- abs(simulation_pars$pars[3] - geodynamics_ML[[i]]$K)
+      rates_error$immig_error[i] <- abs(simulation_pars$pars[4] - geodynamics_ML[[i]]$gamma)
+      rates_error$ana_error[i] <- abs(simulation_pars$pars[5] - geodynamics_ML[[i]]$lambda_a)
+    }
+
     # First constant rate simulations -----------------------------------------
     constant_simulations_1 <- list()
     for (i in seq_along(geodynamics_ML)) {
@@ -331,7 +341,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
       constant_1_nonendemic_spec <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
-      nonendemic_error[n_reps] <- nLTT::nltt_diff_exact_extinct(
+      nonendemic_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = geodynamics_event_times,
         species_number = geodynamics_nonendemic_spec,
         event_times2 = constant_1_event_times,
@@ -393,14 +403,14 @@ run_robustness <- function(param_space_name, param_set, rates) {
       }
     }
 
-# Calculate rates error ---------------------------------------------------
-    rates_error <- list()
-    for (i in 1:length(geodynamics_ML)) {
-      rates_error$clado_error[i] <- abs(geodynamics_ML[[i]]$lambda_c - constant_ML_1[[i]]$lambda_c)
-      rates_error$ext_error[i] <- abs(geodynamics_ML[[i]]$mu - constant_ML_1[[i]]$mu)
-      rates_error$K_error[i] <- abs(geodynamics_ML[[i]]$K - constant_ML_1[[i]]$K)
-      rates_error$immig_error[i] <- abs(geodynamics_ML[[i]]$gamma - constant_ML_1[[i]]$gamma)
-      rates_error$ana_error[i] <- abs(geodynamics_ML[[i]]$lambda_a - constant_ML_1[[i]]$lambda_a)
+    # Calculate rates baseline error --------------------------------------------
+    rates_baseline_error <- list()
+    for (i in 1:length(constant_ML_1)) {
+      rates_baseline_error$clado_error[i] <- abs(as.numeric(geodynamics_ML[[i]][1]) - constant_ML_1[[i]]$lambda_c)
+      rates_baseline_error$ext_error[i] <- abs(as.numeric(geodynamics_ML[[i]][2]) - constant_ML_1[[i]]$mu)
+      rates_baseline_error$K_error[i] <- abs(as.numeric(geodynamics_ML[[i]][3]) - constant_ML_1[[i]]$K)
+      rates_baseline_error$immig_error[i] <- abs(as.numeric(geodynamics_ML[[i]][4]) - constant_ML_1[[i]]$gamma)
+      rates_baseline_error$ana_error[i] <- abs(as.numeric(geodynamics_ML[[i]][5]) - constant_ML_1[[i]]$lambda_a)
     }
 
     # Second constant rate simulations ----------------------------------------
@@ -489,7 +499,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
       constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
       constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
     constant_2_event_times <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
     constant_2_nonendemic_spec <-
       constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 3] +
       constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 4]
@@ -502,67 +512,6 @@ run_robustness <- function(param_space_name, param_set, rates) {
       time_unit = "ago",
       normalize = FALSE
     )
-  }
-
-# Maximum likelihood estimation 3 -------------------------------------------
-  constant_ML_2 <- list()
-  if (mean_DD_AICc_smaller) {
-  for (i in seq_along(constant_simulations_2)) {
-    for (j in seq_along(constant_simulations_2[[i]]))
-      try(
-        constant_ML_2[[i]] <- DAISIE::DAISIE_ML_CS(
-          datalist = constant_simulations_2[[i]][[j]],
-          datatype = "single",
-          initparsopt = c(
-            mean_medians$medians[1],
-            mean_medians$medians[2],
-            40,
-            mean_medians$medians[3],
-            1
-          ),
-          idparsopt = c(1:5),
-          parsfix = NULL,
-          idparsfix = NULL,
-          verbose = 1#0
-        )
-      )
-    if (class(constant_ML_2[[i]]) == "try-error") {
-      constant_ML_2[[i]] <- "No convergence"
-    }
-  }
-  } else {
-    for (i in seq_along(constant_simulations_2)) {
-      for (j in seq_along(constant_simulations_2[[i]]))
-        try(
-          constant_ML_2[[i]] <- DAISIE::DAISIE_ML_CS(
-            datalist = constant_simulations_2[[i]][[j]],
-            datatype = "single",
-            initparsopt = c(
-              mean_medians$medians[1],
-              mean_medians$medians[2],
-              mean_medians$medians[3],
-              1
-            ),
-            idparsopt = c(1, 2, 4, 5),
-            parsfix = Inf,
-            idparsfix = 3,
-            verbose = 1#0
-          )
-        )
-      if (class(constant_ML_2[[i]]) == "try-error") {
-        constant_ML_2[[i]] <- "No convergence"
-      }
-    }
-  }
-
-  # Calculate rates baseline error --------------------------------------------
-  rates_baseline_error <- list()
-  for (i in 1:length(constant_ML_1)) {
-    rates_baseline_error$clado_error[i] <- abs(constant_ML_1[[i]]$lambda_c - constant_ML_2[[i]]$lambda_c)
-    rates_baseline_error$ext_error[i] <- abs(constant_ML_1[[i]]$mu - constant_ML_2[[i]]$mu)
-    rates_baseline_error$K_error[i] <- abs(constant_ML_1[[i]]$K - constant_ML_2[[i]]$K)
-    rates_baseline_error$immig_error[i] <- abs(constant_ML_1[[i]]$gamma - constant_ML_2[[i]]$gamma)
-    rates_baseline_error$ana_error[i] <- abs(constant_ML_1[[i]]$lambda_a - constant_ML_2[[i]]$lambda_a)
   }
 
   output_list <- list(
@@ -578,8 +527,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
     geodynamics_ML = geodynamics_ML,
     constant_simulations_1 = constant_simulations_1,
     constant_ML_1 = constant_ML_1,
-    constant_simulations_2 = constant_simulations_2,
-    constant_ML_2 = constant_ML_2
+    constant_simulations_2 = constant_simulations_2
   )
   }
 
