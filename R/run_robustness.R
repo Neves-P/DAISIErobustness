@@ -97,7 +97,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
   simulation_pars$x_s <- param_space$x_s[param_set]
   simulation_pars$x_nonend <- param_space$x_nonend[param_set]
 
-  replicates <- 2
+  replicates <- 10
 
   # Geodynamics simulations -------------------------------------------------
   if (rates == "time_dep") {
