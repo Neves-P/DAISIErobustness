@@ -292,11 +292,11 @@ run_robustness <- function(param_space_name, param_set, rates) {
         normalize = FALSE
       )
       stt_last_row_geodynamics <-
-        nrow(geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5])
+        length(geodynamics_simulations[[n_reps]][[1]]$stt_all[, 5])
       num_spec_geodynamics <-
         geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_last_row_geodynamics, 5]
       stt_last_row_constant_1 <-
-        nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
+        length(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
       species_error$num_spec_error[n_reps] <-
@@ -450,11 +450,11 @@ run_robustness <- function(param_space_name, param_set, rates) {
         normalize = FALSE
       )
       stt_last_row_constant_1 <-
-        nrow(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
+        length(constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_1 <-
         constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_1, 5]
       stt_last_row_constant_2 <-
-        nrow(constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
+        length(constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
       num_spec_constant_2 <-
         constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_constant_2, 5]
       species_baseline_error$num_spec_error[n_reps] <-
