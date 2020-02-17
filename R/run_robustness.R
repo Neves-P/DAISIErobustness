@@ -11,9 +11,13 @@
 #' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
 #' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
 #' simulation.
+#' @param replicates number of replicates for the initial simulation
 #'
 #' @export
-run_robustness <- function(param_space_name, param_set, rates) {
+run_robustness <- function(param_space_name,
+                           param_set,
+                           rates,
+                           replicates) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -25,10 +29,38 @@ run_robustness <- function(param_space_name, param_set, rates) {
 
   set.seed(1)
 
-  # Initialising objects ----------------------------------------------------
-  error <- list()
-  baseline_error <- list()
 
+# Check input is correct --------------------------------------------------
+testit::assert(param_space_name == "oceanic_ontogeny" ||
+                param_space_name == "oceanic_sea_level" ||
+                param_space_name == "oceanic_ontogeny_sea_level" ||
+                param_space_name == "nonoceanic" ||
+                param_space_name == "nonoceanic_sea_level" ||
+                param_space_name == "nonoceanic_land_bridge")
+testit::assert(param_set >= 1)
+testit::assert(param_set <= nrow(param_space))
+testit::assert(rates == "const" ||
+                 rates == "time_dep" ||
+                 rates == "rate_shift")
+testit::assert(replicates > 1)
+if ((param_space_name == "oceanic_ontogeny" ||
+    param_space_name == "oceanic_sea_level" ||
+    param_space_name == "oceanic_ontogeny_sea_level" ||
+    param_space_name == "nonoceanic_sea_level") &&
+    rates != "time_dep") {
+  stop("This parameter set requires 'time_dep' rates")
+}
+if (param_space_name == "nonoceanic" &&
+    rates != "const") {
+  stop("This parameter set requires 'const' rates")
+}
+if (param_space_name == "nonoceanic_land_bridge" &&
+    rates != "rate_shift") {
+  stop("This parameter set requires 'rate_shift' rates")
+}
+
+
+  # Initialising objects ----------------------------------------------------
   if (rates == "const") {
     area_pars <- NULL
     hyper_pars <- NULL
@@ -96,8 +128,6 @@ run_robustness <- function(param_space_name, param_set, rates) {
   simulation_pars$extcutoff <- param_space$extcutoff[param_set]
   simulation_pars$x_s <- param_space$x_s[param_set]
   simulation_pars$x_nonend <- param_space$x_nonend[param_set]
-
-  replicates <- 2
 
   # Geodynamics simulations -------------------------------------------------
   if (rates == "time_dep") {
