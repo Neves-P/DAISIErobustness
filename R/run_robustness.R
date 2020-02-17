@@ -22,9 +22,9 @@ run_robustness <- function(param_space_name,
   # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
-  file <- paste0(file_domain, param_space_name, ".txt")
-  param_space <- readr::read_delim(
-    file = file, delim = "\t"
+  file <- paste0(file_domain, param_space_name, ".csv")
+  param_space <- readr::read_csv(
+    file = file
   )
 
   set.seed(1)
