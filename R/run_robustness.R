@@ -55,24 +55,24 @@ run_robustness <- function(param_space_name, param_set, rates) {
   }
 
   if (rates == "time_dep") {
-  area_pars <- DAISIE::create_area_pars(
-    max_area = param_space$max_area[param_set],
-    proportional_peak_t = param_space$peak_time[param_set],
-    peak_sharpness = param_space$sharpness[param_set],
-    total_island_age = param_space$total_island_age[param_set],
-    sea_level_amplitude = param_space$sea_level_amplitude[param_set],
-    sea_level_frequency = param_space$sea_level_frequency[param_set],
-    island_gradient_angle = param_space$island_gradient_angle[param_set]
-  )
-  hyper_pars <- NULL
-  dist_pars <- NULL
-  ext_pars <- c(param_space$mu_min[param_set], param_space$mu_p[param_set])
-  pars <- c(param_space$lac[param_set],
-            1,
-            param_space$K[param_set],
-            param_space$gam[param_set],
-            param_space$laa[param_set]
-  )
+    area_pars <- DAISIE::create_area_pars(
+      max_area = param_space$max_area[param_set],
+      proportional_peak_t = param_space$peak_time[param_set],
+      peak_sharpness = param_space$sharpness[param_set],
+      total_island_age = param_space$total_island_age[param_set],
+      sea_level_amplitude = param_space$sea_level_amplitude[param_set],
+      sea_level_frequency = param_space$sea_level_frequency[param_set],
+      island_gradient_angle = param_space$island_gradient_angle[param_set]
+    )
+    hyper_pars <- NULL
+    dist_pars <- NULL
+    ext_pars <- c(param_space$mu_min[param_set], param_space$mu_p[param_set])
+    pars <- c(param_space$lac[param_set],
+              1,
+              param_space$K[param_set],
+              param_space$gam[param_set],
+              param_space$laa[param_set]
+    )
   }
   simulation_pars <- DAISIE::create_default_pars(
     island_ontogeny = DAISIE::translate_island_ontogeny(
@@ -97,7 +97,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
   simulation_pars$x_s <- param_space$x_s[param_set]
   simulation_pars$x_nonend <- param_space$x_nonend[param_set]
 
-  replicates <- 10
+  replicates <- 2
 
   # Geodynamics simulations -------------------------------------------------
   if (rates == "time_dep") {
@@ -118,7 +118,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
     )
   }
 
-# Nonoceanic simulations --------------------------------------------------
+  # Nonoceanic simulations --------------------------------------------------
   if (rates == "const") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate(
       time = simulation_pars$time,
@@ -132,7 +132,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
     )
   }
 
-# Land-bridge simulation --------------------------------------------------
+  # Land-bridge simulation --------------------------------------------------
   if (rates == "rate_shift") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate_shift(
       time = simulation_pars$time,
@@ -160,7 +160,7 @@ run_robustness <- function(param_space_name, param_set, rates) {
   prop_rep_over_5_cols <- length(which(n_colonists > 5))
   if ((prop_rep_over_20_spec / replicates) < 0.95 ||
       (prop_rep_over_5_cols / replicates) < 0.95) {
-    output_list <- "95% of replicates did not have 20 species or did not
+    output_file <- "95% of replicates did not have 20 species or did not
     have 5 colonisation to the present"
   } else {
 
@@ -355,29 +355,29 @@ run_robustness <- function(param_space_name, param_set, rates) {
     # Maximum likelihood estimation 2 -----------------------------------------
     constant_ML_1 <- list()
     if (mean_DD_AICc_smaller) {
-    for (i in seq_along(constant_simulations_1)) {
-      for (j in seq_along(constant_simulations_1[[i]]))
-        try(
-          constant_ML_1[[i]] <- DAISIE::DAISIE_ML_CS(
-            datalist = constant_simulations_1[[i]][[j]],
-            datatype = "single",
-            initparsopt = c(
-              mean_medians$medians[1],
-              mean_medians$medians[2],
-              40,
-              mean_medians$medians[3],
-              1
-            ),
-            idparsopt = c(1:5),
-            parsfix = NULL,
-            idparsfix = NULL,
-            verbose = 1#0
+      for (i in seq_along(constant_simulations_1)) {
+        for (j in seq_along(constant_simulations_1[[i]]))
+          try(
+            constant_ML_1[[i]] <- DAISIE::DAISIE_ML_CS(
+              datalist = constant_simulations_1[[i]][[j]],
+              datatype = "single",
+              initparsopt = c(
+                mean_medians$medians[1],
+                mean_medians$medians[2],
+                40,
+                mean_medians$medians[3],
+                1
+              ),
+              idparsopt = c(1:5),
+              parsfix = NULL,
+              idparsfix = NULL,
+              verbose = 1#0
+            )
           )
-        )
-      if (class(constant_ML_1[[i]]) == "try-error") {
-        constant_ML_1[[i]] <- "No convergence"
+        if (class(constant_ML_1[[i]]) == "try-error") {
+          constant_ML_1[[i]] <- "No convergence"
+        }
       }
-    }
     } else {
       for (i in seq_along(constant_simulations_1)) {
         for (j in seq_along(constant_simulations_1[[i]]))
@@ -467,71 +467,71 @@ run_robustness <- function(param_space_name, param_set, rates) {
         abs(num_colonist_constant_1 - num_colonist_constant_2)
     }
 
-  # Calculate endemic baseline error -----------------------------------------------
-  endemic_baseline_error <- list()
-  for (n_reps in 1:replicates) {
-    constant_1_event_times <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
-    constant_1_endemic_spec <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2]
-    constant_2_event_times <-
-      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
-    constant_2_endemic_spec <-
-      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 2]
-    endemic_baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
-      event_times = constant_1_event_times,
-      species_number = constant_1_endemic_spec,
-      event_times2 = constant_2_event_times,
-      species_number2 = constant_2_endemic_spec,
-      distance_method = "abs",
-      time_unit = "ago",
-      normalize = FALSE
+    # Calculate endemic baseline error -----------------------------------------------
+    endemic_baseline_error <- list()
+    for (n_reps in 1:replicates) {
+      constant_1_event_times <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_endemic_spec <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2]
+      constant_2_event_times <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_2_endemic_spec <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 2]
+      endemic_baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
+        event_times = constant_1_event_times,
+        species_number = constant_1_endemic_spec,
+        event_times2 = constant_2_event_times,
+        species_number2 = constant_2_endemic_spec,
+        distance_method = "abs",
+        time_unit = "ago",
+        normalize = FALSE
+      )
+    }
+
+    # Calculate nonendemic baseline error ---------------------------------------------
+    nonendemic_baseline_error <- list()
+    n_colonists <- c()
+    for (n_reps in 1:replicates) {
+      constant_1_event_times <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_1_nonendemic_spec <-
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
+        constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
+      constant_2_event_times <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+      constant_2_nonendemic_spec <-
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 3] +
+        constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 4]
+      nonendemic_baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
+        event_times = constant_1_event_times,
+        species_number = constant_1_nonendemic_spec,
+        event_times2 = constant_2_event_times,
+        species_number2 = constant_2_nonendemic_spec,
+        distance_method = "abs",
+        time_unit = "ago",
+        normalize = FALSE
+      )
+    }
+
+    output_file <- list(
+      species_error = species_error,
+      endemic_error = endemic_error,
+      nonendemic_error = nonendemic_error,
+      rates_error = rates_error,
+      species_baseline_error = species_baseline_error,
+      endemic_baseline_error = endemic_baseline_error,
+      nonendemic_baseline_error = nonendemic_baseline_error,
+      rates_baseline_error = rates_baseline_error,
+      geodynamics_simulations = geodynamics_simulations,
+      geodynamics_ML = geodynamics_ML,
+      constant_simulations_1 = constant_simulations_1,
+      constant_ML_1 = constant_ML_1,
+      constant_simulations_2 = constant_simulations_2
     )
+  output_file_name <- paste0(param_space_name, "_param_set_", param_set, ".Rdata")
   }
 
-  # Calculate nonendemic baseline error ---------------------------------------------
-  nonendemic_baseline_error <- list()
-  n_colonists <- c()
-  for (n_reps in 1:replicates) {
-    constant_1_event_times <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
-    constant_1_nonendemic_spec <-
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
-      constant_simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
-    constant_2_event_times <-
-      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
-    constant_2_nonendemic_spec <-
-      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 3] +
-      constant_simulations_2[[n_reps]][[1]][[1]]$stt_all[, 4]
-    nonendemic_baseline_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
-      event_times = constant_1_event_times,
-      species_number = constant_1_nonendemic_spec,
-      event_times2 = constant_2_event_times,
-      species_number2 = constant_2_nonendemic_spec,
-      distance_method = "abs",
-      time_unit = "ago",
-      normalize = FALSE
-    )
-  }
-
-  output_list <- list(
-    species_error = species_error,
-    endemic_error = endemic_error,
-    nonendemic_error = nonendemic_error,
-    rates_error = rates_error,
-    species_baseline_error = species_baseline_error,
-    endemic_baseline_error = endemic_baseline_error,
-    nonendemic_baseline_error = nonendemic_baseline_error,
-    rates_baseline_error = rates_baseline_error,
-    geodynamics_simulations = geodynamics_simulations,
-    geodynamics_ML = geodynamics_ML,
-    constant_simulations_1 = constant_simulations_1,
-    constant_ML_1 = constant_ML_1,
-    constant_simulations_2 = constant_simulations_2
-  )
-  }
-
-  output_file <- paste0(param_space_name, "_param_set_", param_set, ".Rdata")
-  save(output_list, file = "pipeline_result.RData")
-  return(output_list)
+  save(output_file, file = output_file_name)
+  return(output_file)
 }
