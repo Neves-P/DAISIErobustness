@@ -24,21 +24,21 @@ island_gradient_angle <- 0
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
-# i <- 2
-# DAISIE::DAISIE_calc_sumstats_pcrates(
-#   pars = c(lac[i], 1, K[i], gam[i], 1),
-#   ext_pars = c(mu_min, mu_p[i]),
-#   totaltime = 2.55,
-#   area_pars = DAISIE::create_area_pars(
-#     max_area = 13500,
-#     proportional_peak_t = 0.53,
-#     peak_sharpness = 1,
-#     total_island_age = 2.864,
-#     sea_level_amplitude = 0,
-#     sea_level_frequency = 0,
-#     island_gradient_angle = 0
-#   )
-# )
+i <- 3
+DAISIE::DAISIE_calc_sumstats_pcrates(
+  pars = c(lac[i], 1, K[i], gam[i], 1),
+  ext_pars = c(mu_min, mu_p[i]),
+  totaltime = 2.55,
+  area_pars = DAISIE::create_area_pars(
+    max_area = 13500,
+    proportional_peak_t = 0.53,
+    peak_sharpness = 1,
+    total_island_age = 2.864,
+    sea_level_amplitude = 0,
+    sea_level_frequency = 0,
+    island_gradient_angle = 0
+  )
+)
 
 maui_parameter_set <- expand.grid(
   time = time,
@@ -145,7 +145,7 @@ extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
 
-oceanic_sea_level <- expand.grid(
+maui_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
@@ -171,7 +171,7 @@ oceanic_sea_level <- expand.grid(
 
 ## Kauai ------------------------------------------------------------------
 
-time <- 2.55
+time <- 6.15
 M <- 1000
 lac <- c(0.0005, 0.00075, 0.001)
 mu_min <- 1
@@ -181,18 +181,18 @@ gam <- c(0.00001, 0.00005, 0.0001)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
-max_area <- 13500
+max_area <- 3787
 peak_time <- 0
 sharpness <- 0
-total_island_age <- 2.55
+total_island_age <- 6.15
 sea_level_amplitude <- 60
-sea_level_frequency <- 2.55 * 10
+sea_level_frequency <- 6.15 * 10
 island_gradient_angle <- c(25, 50, 75)
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
 
-oceanic_sea_level <- expand.grid(
+kauai_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
@@ -216,6 +216,9 @@ oceanic_sea_level <- expand.grid(
   stringsAsFactors = FALSE
 )
 
+# Complete oceanic sea level paramter set ---------------------------------
+
+oceanic_sea_level <- rbind(maui_oceanic_sea_level, kauai_oceanic_sea_level)
 write.csv(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 

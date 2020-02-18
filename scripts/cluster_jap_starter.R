@@ -11,14 +11,14 @@
 #' simulation.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space, rates) {
+submit_robustness_cluster <- function(param_space_name, rates) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
-  file <- paste0(file_domain, param_space, ".txt")
-  param_space <- readr::read_delim(
-    file = file, delim = "  "
+  file <- paste0(file_domain, param_space_name, ".csv")
+  param_space <- readr::read_csv(
+    file = file
   )
 
   for (param_set in seq_len(nrow(param_space))) {
@@ -27,14 +27,14 @@ submit_robustness_cluster <- function(param_space, rates) {
       package_name = "DAISIErobustness",
       function_name = "run_robustness",
       account = "p282067",
-      fun_arguments = paste0("param_space = ",
-                             param_space,
-                             ", param_set = ",
-                             param_set,
-                             ", rates = ",
-                             rates,
-                             )
+      fun_arguments = paste0(
+        "param_space_name = ",
+        param_space_name,
+        ", param_set = ",
+        param_set,
+        ", rates = ",
+        rates
+      )
     )
-
   }
 }
