@@ -1,10 +1,11 @@
-context("run_robustness nonoceanic")
+context("run_robustness nonoceanic_sea_level")
 
-test_that("nonoceanic works across parameter sets", {
+test_that("nonoceanic_sea_level works across parameter sets", {
   if (1 == 2) {
-    expect_silent(error_1 <- run_robustness(param_space_name = "nonoceanic",
-                                            param_set = 1,
-                                            replicates = 2))
+    expect_silent(error_1 <- run_robustness(
+      param_space_name = "nonoceanic_sea_level",
+      param_set = 1,
+      replicates = 2))
     expect_length(error_1, 13)
     species_error <- list(nltt = c(171.0539, 173.4640),
                           num_spec_error = c(16, 9),
@@ -142,8 +143,8 @@ test_that("nonoceanic works across number of replicates", {
 
 test_that("Output is correct when conditioning not met", {
   if (1 == 2) {
-    error <- run_robustness(param_space_name = "nonoceanic",
-                            param_set = 7,
+    error <- run_robustness(param_space_name = "nonoceanic_sea_level",
+                            param_set = 1,
                             replicates = 2)
     expect_equal(error, "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
   }
