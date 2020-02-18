@@ -4,7 +4,7 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space_name, param_set, rates, replicates)
+run_robustness(param_space_name, param_set, rates, replicates = 1000)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
