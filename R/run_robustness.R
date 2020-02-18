@@ -17,7 +17,7 @@
 run_robustness <- function(param_space_name,
                            param_set,
                            rates,
-                           replicates) {
+                           replicates = 1000) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
