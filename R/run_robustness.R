@@ -7,17 +7,12 @@
 #' \code{"nonoceanic_land_bridge"}.
 #' @param param_set A numeric with the line corresponding to parameter set to
 #' run, as found in the file named in \code{param_space}.
-#' @param rates A string with set of rates to be tested, can either be
-#' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
-#' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
-#' simulation.
 #' @param replicates number of replicates for the initial simulation.
 #'
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
-                           rates,
-                           replicates) {
+                           replicates = 1000) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -39,29 +34,10 @@ run_robustness <- function(param_space_name,
                    param_space_name == "nonoceanic_land_bridge")
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
-  testit::assert(rates == "const" ||
-                   rates == "time_dep" ||
-                   rates == "rate_shift")
   testit::assert(replicates > 1)
-  if ((param_space_name == "oceanic_ontogeny" ||
-       param_space_name == "oceanic_sea_level" ||
-       param_space_name == "oceanic_ontogeny_sea_level" ||
-       param_space_name == "nonoceanic_sea_level") &&
-      rates != "time_dep") {
-    stop("This parameter set requires 'time_dep' rates")
-  }
-  if (param_space_name == "nonoceanic" &&
-      rates != "const") {
-    stop("This parameter set requires 'const' rates")
-  }
-  if (param_space_name == "nonoceanic_land_bridge" &&
-      rates != "rate_shift") {
-    stop("This parameter set requires 'rate_shift' rates")
-  }
-
 
   # Initialising objects ----------------------------------------------------
-  if (rates == "const") {
+  if (param_space_name == "nonoceanic") {
     area_pars <- NULL
     hyper_pars <- NULL
     dist_pars <- NULL
@@ -73,7 +49,7 @@ run_robustness <- function(param_space_name,
               param_space$laa[param_set]
     )
   }
-  if (rates == "rate_shift") {
+  if (param_space_name == "nonoceanic_land_bridge") {
     area_pars <- NULL
     hyper_pars <- NULL
     dist_pars <- NULL
@@ -86,7 +62,10 @@ run_robustness <- function(param_space_name,
     )
   }
 
-  if (rates == "time_dep") {
+  if (param_space_name == "oceanic_ontogeny" ||
+      param_space_name == "oceanic_sea_level" ||
+      param_space_name == "oceanic_ontogeny_sea_level" ||
+      param_space_name == "nonoceanic_sea_level") {
     area_pars <- DAISIE::create_area_pars(
       max_area = param_space$max_area[param_set],
       proportional_peak_t = param_space$peak_time[param_set],
@@ -105,19 +84,20 @@ run_robustness <- function(param_space_name,
               param_space$gam[param_set],
               param_space$laa[param_set]
     )
+    simulation_pars <- DAISIE::create_default_pars(
+      island_ontogeny = DAISIE::translate_island_ontogeny(
+        param_space$island_ontogeny[param_set]),
+      sea_level = DAISIE::translate_sea_level(
+        param_space$sea_level[param_set]),
+      area_pars = area_pars,
+      hyper_pars = hyper_pars,
+      dist_pars = dist_pars,
+      ext_pars = ext_pars,
+      totaltime = param_space$time,
+      pars = pars
+    )
   }
-  simulation_pars <- DAISIE::create_default_pars(
-    island_ontogeny = DAISIE::translate_island_ontogeny(
-      param_space$island_ontogeny[param_set]),
-    sea_level = DAISIE::translate_sea_level(
-      param_space$sea_level[param_set]),
-    area_pars = area_pars,
-    hyper_pars = hyper_pars,
-    dist_pars = dist_pars,
-    ext_pars = ext_pars,
-    totaltime = param_space$time,
-    pars = pars
-  )
+
   simulation_pars$pars <- pars
   simulation_pars$M <- param_space$M[param_set]
   simulation_pars$time <- param_space$time[param_set]
@@ -130,7 +110,10 @@ run_robustness <- function(param_space_name,
   simulation_pars$x_nonend <- param_space$x_nonend[param_set]
 
   # Geodynamics simulations -------------------------------------------------
-  if (rates == "time_dep") {
+  if (param_space_name == "oceanic_ontogeny" ||
+      param_space_name == "oceanic_sea_level" ||
+      param_space_name == "oceanic_ontogeny_sea_level" ||
+      param_space_name == "nonoceanic_sea_level") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_time_dependent(
       time = simulation_pars$time,
       M = simulation_pars$M,
@@ -149,7 +132,7 @@ run_robustness <- function(param_space_name,
   }
 
   # Nonoceanic simulations --------------------------------------------------
-  if (rates == "const") {
+  if (param_space_name == "nonoceanic") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate(
       time = simulation_pars$time,
       M = simulation_pars$M,
@@ -163,7 +146,7 @@ run_robustness <- function(param_space_name,
   }
 
   # Land-bridge simulation --------------------------------------------------
-  if (rates == "rate_shift") {
+  if (param_space_name == "nonoceanic_land_bridge") {
     geodynamics_simulations <- DAISIE::DAISIE_sim_constant_rate_shift(
       time = simulation_pars$time,
       M = simulation_pars$M,
