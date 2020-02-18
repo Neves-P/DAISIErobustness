@@ -14,7 +14,7 @@
 #'
 #' @export
 submit_robustness_cluster <- function(param_space_name, rates, account) {
-
+  remotes::install_github("Giappo/jap@pedro")
   # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
@@ -29,6 +29,7 @@ submit_robustness_cluster <- function(param_space_name, rates, account) {
       package_name = "DAISIErobustness",
       function_name = "run_robustness",
       account = account,
+      upload_scripts = FALSE
       fun_arguments = paste0(
         "param_space_name = ",
         param_space_name,
