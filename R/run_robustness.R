@@ -11,7 +11,7 @@
 #' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
 #' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
 #' simulation.
-#' @param replicates number of replicates for the initial simulation
+#' @param replicates number of replicates for the initial simulation.
 #'
 #' @export
 run_robustness <- function(param_space_name,
@@ -30,34 +30,34 @@ run_robustness <- function(param_space_name,
   set.seed(1)
 
 
-# Check input is correct --------------------------------------------------
-testit::assert(param_space_name == "oceanic_ontogeny" ||
-                param_space_name == "oceanic_sea_level" ||
-                param_space_name == "oceanic_ontogeny_sea_level" ||
-                param_space_name == "nonoceanic" ||
-                param_space_name == "nonoceanic_sea_level" ||
-                param_space_name == "nonoceanic_land_bridge")
-testit::assert(param_set >= 1)
-testit::assert(param_set <= nrow(param_space))
-testit::assert(rates == "const" ||
-                 rates == "time_dep" ||
-                 rates == "rate_shift")
-testit::assert(replicates > 1)
-if ((param_space_name == "oceanic_ontogeny" ||
-    param_space_name == "oceanic_sea_level" ||
-    param_space_name == "oceanic_ontogeny_sea_level" ||
-    param_space_name == "nonoceanic_sea_level") &&
-    rates != "time_dep") {
-  stop("This parameter set requires 'time_dep' rates")
-}
-if (param_space_name == "nonoceanic" &&
-    rates != "const") {
-  stop("This parameter set requires 'const' rates")
-}
-if (param_space_name == "nonoceanic_land_bridge" &&
-    rates != "rate_shift") {
-  stop("This parameter set requires 'rate_shift' rates")
-}
+  # Check input is correct --------------------------------------------------
+  testit::assert(param_space_name == "oceanic_ontogeny" ||
+                   param_space_name == "oceanic_sea_level" ||
+                   param_space_name == "oceanic_ontogeny_sea_level" ||
+                   param_space_name == "nonoceanic" ||
+                   param_space_name == "nonoceanic_sea_level" ||
+                   param_space_name == "nonoceanic_land_bridge")
+  testit::assert(param_set >= 1)
+  testit::assert(param_set <= nrow(param_space))
+  testit::assert(rates == "const" ||
+                   rates == "time_dep" ||
+                   rates == "rate_shift")
+  testit::assert(replicates > 1)
+  if ((param_space_name == "oceanic_ontogeny" ||
+       param_space_name == "oceanic_sea_level" ||
+       param_space_name == "oceanic_ontogeny_sea_level" ||
+       param_space_name == "nonoceanic_sea_level") &&
+      rates != "time_dep") {
+    stop("This parameter set requires 'time_dep' rates")
+  }
+  if (param_space_name == "nonoceanic" &&
+      rates != "const") {
+    stop("This parameter set requires 'const' rates")
+  }
+  if (param_space_name == "nonoceanic_land_bridge" &&
+      rates != "rate_shift") {
+    stop("This parameter set requires 'rate_shift' rates")
+  }
 
 
   # Initialising objects ----------------------------------------------------
@@ -192,6 +192,12 @@ if (param_space_name == "nonoceanic_land_bridge" &&
       (prop_rep_over_5_cols / replicates) < 0.95) {
     output_file <- "95% of replicates did not have 20 species or did not
     have 5 colonisation to the present"
+    output_file_name <- paste0(
+      "fail_cond",
+      param_space_name,
+      "_param_set_",
+      param_set,
+      ".Rdata")
   } else {
 
     # Maximum likelihood estimation 1 DD --------------------------------------
@@ -559,7 +565,12 @@ if (param_space_name == "nonoceanic_land_bridge" &&
       constant_ML_1 = constant_ML_1,
       constant_simulations_2 = constant_simulations_2
     )
-  output_file_name <- paste0(param_space_name, "_param_set_", param_set, ".Rdata")
+    output_file_name <- paste0(
+      "passed_cond",
+      param_space_name,
+      "_param_set_",
+      param_set,
+      ".Rdata")
   }
 
   save(output_file, file = output_file_name)

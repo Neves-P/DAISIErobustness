@@ -21,7 +21,7 @@ run, as found in the file named in \code{param_space}.}
 time-dependent simulation, or \code{"rate_shift"} for a rate-shift
 simulation.}
 
-\item{replicates}{number of replicates for the initial simulation}
+\item{replicates}{number of replicates for the initial simulation.}
 }
 \description{
 Run robustness analysis pipeline
