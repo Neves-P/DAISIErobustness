@@ -9,9 +9,11 @@
 #' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
 #' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
 #' simulation.
+#' @param account A string with the p-number of the user to submit the jobs.
+#'   Requires access to the Peregrine HPCC at the University of Groningen.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space_name, rates) {
+submit_robustness_cluster <- function(param_space_name, rates, account) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -26,7 +28,7 @@ submit_robustness_cluster <- function(param_space_name, rates) {
       github_name = "Neves-P",
       package_name = "DAISIErobustness",
       function_name = "run_robustness",
-      account = "p282067",
+      account = account,
       fun_arguments = paste0(
         "param_space_name = ",
         param_space_name,
