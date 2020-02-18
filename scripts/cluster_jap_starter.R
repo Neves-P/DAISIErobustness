@@ -5,15 +5,11 @@
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
 #' \code{"nonoceanic_land_bridge"}
-#' @param rates A string with set of rates to be tested, can either be
-#' \code{"const"} for a constant rate simulation, \code{"time_dep"} for a
-#' time-dependent simulation, or \code{"rate_shift"} for a rate-shift
-#' simulation.
 #' @param account A string with the p-number of the user to submit the jobs.
 #'   Requires access to the Peregrine HPCC at the University of Groningen.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space_name, rates, account) {
+submit_robustness_cluster <- function(param_space_name, account) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -33,9 +29,7 @@ submit_robustness_cluster <- function(param_space_name, rates, account) {
         "param_space_name = ",
         param_space_name,
         ", param_set = ",
-        param_set,
-        ", rates = ",
-        rates
+        param_set
       )
     )
   }

@@ -4,7 +4,6 @@ test_that("nonoceanic works across parameter sets", {
   if (1 == 2) {
     expect_silent(error_1 <- run_robustness(param_space_name = "nonoceanic",
                                             param_set = 1,
-                                            rates = "const",
                                             replicates = 2))
     expect_length(error, 13)
     species_error <- list(nltt = c(7.476325, 25.582615),
@@ -37,8 +36,7 @@ test_that("nonoceanic works across parameter sets", {
     expect_equal(error$rates_baseline_error, rates_baseline_error)
 
     expect_silent(error_2 <- run_robustness(param_space_name = "oceanic_ontogeny",
-                                            param_set = 2,
-                                            rates = "time_dep"))
+                                            param_set = 2))
     expect_length(error, 13)
     species_error <- list(nltt = c(7.476325, 25.582615),
                           num_spec_error = c(22, 28),
@@ -70,8 +68,7 @@ test_that("nonoceanic works across parameter sets", {
     expect_equal(error$rates_baseline_error, rates_baseline_error)
 
     expect_silent(error_3 <- run_robustness(param_space_name = "oceanic_ontogeny",
-                                            param_set = 3,
-                                            rates = "time_dep"))
+                                            param_set = 3))
     species_error <- list(nltt = c(7.476325, 25.582615),
                           num_spec_error = c(22, 28),
                           num_colonist_error = c(19, 17))
@@ -90,39 +87,27 @@ test_that("nonoceanic output is correct", {
 test_that("abuse param_space_name", {
   expect_error(run_robustness(param_space_name = "nonsense",
                               param_set = 1,
-                              rates = "const",
                               replicates = 2))
 })
 
 test_that("abuse param_set", {
   expect_error(run_robustness(param_space_name = "nonoceanic",
                               param_set = 0,
-                              rates = "const",
                               replicates = 2))
 
   expect_error(run_robustness(param_space_name = "nonoceanic",
                               param_set = 1000,
-                              rates = "const",
-                              replicates = 2))
-})
-
-test_that("abuse rates", {
-  expect_error(run_robustness(param_space_name = "nonoceanic",
-                              param_set = 1,
-                              rates = "nonsense",
                               replicates = 2))
 })
 
 test_that("abuse replicates", {
   expect_error(run_robustness(param_space_name = "nonoceanic",
                               param_set = 1,
-                              rates = "const",
                               replicates = 0))
 })
 
 test_that("abuse const rate", {
   expect_error(run_robustness(param_space_name = "nonoceanic",
                               param_set = 1,
-                              rates = "time_dep",
                               replicates = 0))
 })

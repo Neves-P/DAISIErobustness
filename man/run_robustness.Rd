@@ -4,7 +4,7 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space_name, param_set, rates, replicates = 1000)
+run_robustness(param_space_name, param_set, replicates = 1000)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -15,11 +15,6 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
-
-\item{rates}{A string with set of rates to be tested, can either be
-\code{"const"} for a constant rate simulation, \code{"time_dep"} for a
-time-dependent simulation, or \code{"rate_shift"} for a rate-shift
-simulation.}
 
 \item{replicates}{number of replicates for the initial simulation.}
 }
