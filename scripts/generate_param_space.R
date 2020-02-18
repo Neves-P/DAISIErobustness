@@ -500,52 +500,165 @@ write.csv(
   row.names = FALSE
 )
 
-# Nonoceanic land bridge --------------------------------------------------
+# Nonoceanic land bridge DI Maui Nui ------------------------------------------
 
+time <- 2.55
+M <- 1000
+lac_set_1 <- 1
+mu_set_1 <- 1
+K_set_1 <- Inf
+gam_set_1 <- 0.05
+laa_set_1 <- 1
+lac_set_2 <- 2
+mu_set_2 <- 0.5
+K_set_2 <- Inf
+gam_set_2 <- 1
+laa_set_2 <- 0
+x_s <- 0.3
+x_nonend <- 0.5
+shift_times <- c(1, 5, 10)
 
-# time <- 2.55
-# M <- 1000
-# lac <- c(0.0005, 0.00075, 0.001)
-# mu_min <- 1
-# mu_p <- c(25, 50, 75)
-# K <- c(0.001, 0.01, Inf)
-# gam <- c(0.00001, 0.00005, 0.0001)
-# laa <- c(1, 2)
-# island_ontogeny <- "const"
-# sea_level <- "sine"
-# max_area <- c(3787, 13500)
-# peak_time <- 0
-# sharpness <- 0
-# total_island_age <- 2.55
-# sea_level_amplitude <- 60
-# sea_level_frequency <- 2.55 * 10
-# island_gradient_angle <- c(25, 50, 75)
-# extcutoff <- 1000
-# x_s <- 0
-# x_nonend <- 0
-
-nonoceanic_land_bridge <- expand.grid(
+nonoceanic_land_bridge_DI_maui <- expand.grid(
   time = time,
   M = M,
-  lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
-  K = K,
-  gam = gam,
-  laa = laa,
-  island_ontogeny = island_ontogeny,
-  sea_level = sea_level,
-  max_area = max_area,
-  peak_time = peak_time,
-  sharpness = sharpness,
-  total_island_age = total_island_age,
-  sea_level_amplitude = sea_level_amplitude,
-  sea_level_frequency = sea_level_frequency,
-  island_gradient_angle = island_gradient_angle,
-  extcutoff = extcutoff,
+  lac_set_1 = lac_set_1,
+  mu_set_1 = mu_set_1,
+  K_set_1 = K_set_1,
+  gam_set_1 = gam_set_1,
+  laa_set_1 = laa_set_1,
+  lac_set_2 = lac_set_2,
+  mu_set_2 = mu_set_2,
+  K_set_2 = K_set_2,
+  gam_set_2 = gam_set_2,
+  laa_set_2 = laa_set_2,
   x_s = x_s,
   x_nonend = x_nonend,
+  shift_times = shift_times,
   stringsAsFactors = FALSE
 )
-write.csv(nonoceanic_land_bridge, "data/nonoceanic_land_bridge.csv", row.names = FALSE)
 
+# Nonoceanic land bridge DD Maui Nui ------------------------------------------
+
+time <- 2.55
+M <- 1000
+lac_set_1 <- 1
+mu_set_1 <- 1
+K_set_1 <- 10
+gam_set_1 <- 0.05
+laa_set_1 <- 1
+lac_set_2 <- 2
+mu_set_2 <- 0.5
+K_set_2 <- 50
+gam_set_2 <- 1
+laa_set_2 <- 0
+x_s <- 0.3
+x_nonend <- 0.5
+shift_times <- c(1, 5, 10)
+
+nonoceanic_land_bridge_DD_maui <- expand.grid(
+  time = time,
+  M = M,
+  lac_set_1 = lac_set_1,
+  mu_set_1 = mu_set_1,
+  K_set_1 = K_set_1,
+  gam_set_1 = gam_set_1,
+  laa_set_1 = laa_set_1,
+  lac_set_2 = lac_set_2,
+  mu_set_2 = mu_set_2,
+  K_set_2 = K_set_2,
+  gam_set_2 = gam_set_2,
+  laa_set_2 = laa_set_2,
+  x_s = x_s,
+  x_nonend = x_nonend,
+  shift_times = shift_times,
+  stringsAsFactors = FALSE
+)
+
+# Nonoceanic land bridge DI Kauai --------------------------------------------
+
+time <- 6.15
+M <- 1000
+lac_set_1 <- 1
+mu_set_1 <- 1
+K_set_1 <- Inf
+gam_set_1 <- 0.05
+laa_set_1 <- 1
+lac_set_2 <- 2
+mu_set_2 <- 0.5
+K_set_2 <- Inf
+gam_set_2 <- 1
+laa_set_2 <- 0
+x_s <- 0.3
+x_nonend <- 0.5
+shift_times <- c(1, 5, 10)
+
+nonoceanic_land_bridge_DI_kauai <- expand.grid(
+  time = time,
+  M = M,
+  lac_set_1 = lac_set_1,
+  mu_set_1 = mu_set_1,
+  K_set_1 = K_set_1,
+  gam_set_1 = gam_set_1,
+  laa_set_1 = laa_set_1,
+  lac_set_2 = lac_set_2,
+  mu_set_2 = mu_set_2,
+  K_set_2 = K_set_2,
+  gam_set_2 = gam_set_2,
+  laa_set_2 = laa_set_2,
+  x_s = x_s,
+  x_nonend = x_nonend,
+  shift_times = shift_times,
+  stringsAsFactors = FALSE
+)
+
+# Nonoceanic land bridge DD Kauai --------------------------------------------
+
+time <- 6.15
+M <- 1000
+lac_set_1 <- 1
+mu_set_1 <- 1
+K_set_1 <- 10
+gam_set_1 <- 0.05
+laa_set_1 <- 1
+lac_set_2 <- 2
+mu_set_2 <- 0.5
+K_set_2 <- 50
+gam_set_2 <- 1
+laa_set_2 <- 0
+x_s <- 0.3
+x_nonend <- 0.5
+shift_times <- c(1, 5, 10)
+
+nonoceanic_land_bridge_DD_kauai <- expand.grid(
+  time = time,
+  M = M,
+  lac_set_1 = lac_set_1,
+  mu_set_1 = mu_set_1,
+  K_set_1 = K_set_1,
+  gam_set_1 = gam_set_1,
+  laa_set_1 = laa_set_1,
+  lac_set_2 = lac_set_2,
+  mu_set_2 = mu_set_2,
+  K_set_2 = K_set_2,
+  gam_set_2 = gam_set_2,
+  laa_set_2 = laa_set_2,
+  x_s = x_s,
+  x_nonend = x_nonend,
+  shift_times = shift_times,
+  stringsAsFactors = FALSE
+)
+
+# Complete nonoceanic land bridge paramter set -------------------------------
+
+nonoceanic_land_bridge <- rbind(
+  nonoceanic_land_bridge_DI_maui,
+  nonoceanic_land_bridge_DD_maui,
+  nonoceanic_land_bridge_DI_kauai,
+  nonoceanic_land_bridge_DD_kauai
+)
+
+write.csv(
+  nonoceanic_land_bridge,
+  "data/nonoceanic_land_bridge.csv",
+  row.names = FALSE
+)
