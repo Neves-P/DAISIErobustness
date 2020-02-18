@@ -48,6 +48,15 @@ run_robustness <- function(param_space_name,
               param_space$gam[param_set],
               param_space$laa[param_set]
     )
+    simulation_pars <- DAISIE::create_default_pars(
+      totaltime = param_space$time,
+      pars = pars
+    )
+    simulation_pars$pars <- pars
+    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$time <- param_space$time[param_set]
+    simulation_pars$x_s <- param_space$x_s[param_set]
+    simulation_pars$x_nonend <- param_space$x_nonend[param_set]
   }
   if (param_space_name == "nonoceanic_land_bridge") {
     area_pars <- NULL
@@ -60,6 +69,15 @@ run_robustness <- function(param_space_name,
               param_space$gam[param_set],
               param_space$laa[param_set]
     )
+    simulation_pars <- DAISIE::create_default_pars(
+      totaltime = param_space$time,
+      pars = pars
+    )
+    simulation_pars$pars <- pars
+    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$time <- param_space$time[param_set]
+    simulation_pars$x_s <- param_space$x_s[param_set]
+    simulation_pars$x_nonend <- param_space$x_nonend[param_set]
   }
 
   if (param_space_name == "oceanic_ontogeny" ||
@@ -96,18 +114,19 @@ run_robustness <- function(param_space_name,
       totaltime = param_space$time,
       pars = pars
     )
-  }
+    simulation_pars$pars <- pars
+    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$time <- param_space$time[param_set]
+    simulation_pars$island_ontogeny <- param_space$island_ontogeny[param_set]
+    simulation_pars$sea_level <- param_space$sea_level[param_set]
+    simulation_pars$sea_level_amplitude <- param_space$sea_level_amplitude[param_set]
+    simulation_pars$sea_level_frequency <- param_space$sea_level_frequency[param_set]
+    simulation_pars$extcutoff <- param_space$extcutoff[param_set]
+    simulation_pars$x_s <- param_space$x_s[param_set]
+    simulation_pars$x_nonend <- param_space$x_nonend[param_set]
+    }
 
-  simulation_pars$pars <- pars
-  simulation_pars$M <- param_space$M[param_set]
-  simulation_pars$time <- param_space$time[param_set]
-  simulation_pars$island_ontogeny <- param_space$island_ontogeny[param_set]
-  simulation_pars$sea_level <- param_space$sea_level[param_set]
-  simulation_pars$sea_level_amplitude <- param_space$sea_level_amplitude[param_set]
-  simulation_pars$sea_level_frequency <- param_space$sea_level_frequency[param_set]
-  simulation_pars$extcutoff <- param_space$extcutoff[param_set]
-  simulation_pars$x_s <- param_space$x_s[param_set]
-  simulation_pars$x_nonend <- param_space$x_nonend[param_set]
+
 
   # Geodynamics simulations -------------------------------------------------
   if (param_space_name == "oceanic_ontogeny" ||
@@ -176,7 +195,7 @@ run_robustness <- function(param_space_name,
     output_file <- "95% of replicates did not have 20 species or did not
     have 5 colonisation to the present"
     output_file_name <- paste0(
-      "fail_cond",
+      "fail_cond_",
       param_space_name,
       "_param_set_",
       param_set,
@@ -185,22 +204,31 @@ run_robustness <- function(param_space_name,
 
     # Maximum likelihood estimation 1 DD --------------------------------------
     geodynamics_ML_DD <- list()
-    mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
-      pars = simulation_pars$pars,
-      area_pars = simulation_pars$area_pars,
-      ext_pars = simulation_pars$ext_pars,
-      totaltime = simulation_pars$time
-    )
+    if (param_space_name == "oceanic_ontogeny" ||
+        param_space_name == "oceanic_sea_level" ||
+        param_space_name == "oceanic_ontogeny_sea_level" ||
+        param_space_name == "nonoceanic_sea_level" ) {
+      median_rates <- DAISIE::DAISIE_calc_sumstats_pcrates(
+        pars = simulation_pars$pars,
+        area_pars = simulation_pars$area_pars,
+        ext_pars = simulation_pars$ext_pars,
+        totaltime = simulation_pars$time
+      )
+    } else {
+      median_rates <- list(medians = c(simulation_pars$pars[1],
+                                       simulation_pars$pars[2],
+                                       simulation_pars$pars[4]))
+    }
     for (i in seq_along(geodynamics_simulations)) {
       try(
         geodynamics_ML_DD[[i]] <- DAISIE::DAISIE_ML_CS(
           datalist = geodynamics_simulations[[i]],
           datatype = "single",
           initparsopt = c(
-            mean_medians$medians[1],
-            mean_medians$medians[2],
+            median_rates$medians[1],
+            median_rates$medians[2],
             40,
-            mean_medians$medians[3],
+            median_rates$medians[3],
             1
           ),
           idparsopt = c(1:5),
@@ -213,15 +241,23 @@ run_robustness <- function(param_space_name,
         geodynamics_ML_DD[[i]] <- "No convergence"
       }
     }
-
     # Maximum likelihood estimation 1 DI --------------------------------------
     geodynamics_ML_DI <- list()
-    mean_medians <- DAISIE::DAISIE_calc_sumstats_pcrates(
+    if (param_space_name == "oceanic_ontogeny" ||
+        param_space_name == "oceanic_sea_level" ||
+        param_space_name == "oceanic_ontogeny_sea_level" ||
+        param_space_name == "nonoceanic_sea_level" ) {
+    median_rates <- DAISIE::DAISIE_calc_sumstats_pcrates(
       pars = simulation_pars$pars,
       area_pars = simulation_pars$area_pars,
       ext_pars = simulation_pars$ext_pars,
       totaltime = simulation_pars$time
     )
+    } else {
+      median_rates <- list(medians = c(simulation_pars$pars[1],
+                                       simulation_pars$pars[2],
+                                       simulation_pars$pars[4]))
+    }
     DD_AICc <- c()
     DI_AICc <- c()
     n_spec <- c()
@@ -231,9 +267,9 @@ run_robustness <- function(param_space_name,
           datalist = geodynamics_simulations[[i]],
           datatype = "single",
           initparsopt = c(
-            mean_medians$medians[1],
-            mean_medians$medians[2],
-            mean_medians$medians[3],
+            median_rates$medians[1],
+            median_rates$medians[2],
+            median_rates$medians[3],
             1
           ),
           idparsopt = c(1, 2, 4, 5),
@@ -381,10 +417,10 @@ run_robustness <- function(param_space_name,
               datalist = constant_simulations_1[[i]][[j]],
               datatype = "single",
               initparsopt = c(
-                mean_medians$medians[1],
-                mean_medians$medians[2],
+                median_rates$medians[1],
+                median_rates$medians[2],
                 40,
-                mean_medians$medians[3],
+                median_rates$medians[3],
                 1
               ),
               idparsopt = c(1:5),
@@ -405,9 +441,9 @@ run_robustness <- function(param_space_name,
               datalist = constant_simulations_1[[i]][[j]],
               datatype = "single",
               initparsopt = c(
-                mean_medians$medians[1],
-                mean_medians$medians[2],
-                mean_medians$medians[3],
+                median_rates$medians[1],
+                median_rates$medians[2],
+                median_rates$medians[3],
                 1
               ),
               idparsopt = c(1, 2, 4, 5),
@@ -549,7 +585,7 @@ run_robustness <- function(param_space_name,
       constant_simulations_2 = constant_simulations_2
     )
     output_file_name <- paste0(
-      "passed_cond",
+      "passed_cond_",
       param_space_name,
       "_param_set_",
       param_set,
