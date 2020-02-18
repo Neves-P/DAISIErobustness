@@ -161,7 +161,7 @@ test_that("abuse param_set", {
                               replicates = 2))
 
   expect_error(run_robustness(param_space_name = "nonoceanic",
-                              param_set = 1000,
+                              param_set = 100000,
                               replicates = 2))
 })
 
