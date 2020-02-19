@@ -86,6 +86,7 @@ run_robustness <- function(param_space_name,
       shift_interval <- param_space$time[param_set] / param_space$shift_times[param_set]
       simulation_pars$shift_times[i] <- shift_interval * i
     }
+    simulation_pars$shift_times <- simulation_pars$shift_times[-length(simulation_pars$shift_times)]
   }
 print(simulation_pars$shift_times)
   if (param_space_name == "oceanic_ontogeny" ||

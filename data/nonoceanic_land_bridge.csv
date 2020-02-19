@@ -1,4 +1,4 @@
-"time","M","lac_set_1","mu_set_1","K_set_1","gam_set_1","laa_set_1","lac_set_2","mu_set_2","K_set_2","gam_set_2","laa_set_2","x_s","x_nonend","shift_times"
+"time","M","lac_1","mu_1","K_1","gam_1","laa_1","lac_2","mu_2","K_2","gam_2","laa_2","x_s","x_nonend","shift_times"
 2.55,1000,1,1,Inf,0.05,1,2,0.5,Inf,1,0,0.3,0.5,2
 2.55,1000,1,1,Inf,0.05,1,2,0.5,Inf,1,0,0.3,0.5,4
 2.55,1000,1,1,Inf,0.05,1,2,0.5,Inf,1,0,0.3,0.5,6

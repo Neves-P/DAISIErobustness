@@ -507,16 +507,16 @@ write.csv(
 
 time <- 2.55
 M <- 1000
-lac_set_1 <- 1
-mu_set_1 <- 1
-K_set_1 <- Inf
-gam_set_1 <- 0.05
-laa_set_1 <- 1
-lac_set_2 <- 2
-mu_set_2 <- 0.5
-K_set_2 <- Inf
-gam_set_2 <- 1
-laa_set_2 <- 0
+lac_1 <- 1
+mu_1 <- 1
+K_1 <- Inf
+gam_1 <- 0.05
+laa_1 <- 1
+lac_2 <- 2
+mu_2 <- 0.5
+K_2 <- Inf
+gam_2 <- 1
+laa_2 <- 0
 x_s <- 0.3
 x_nonend <- 0.5
 shift_times <- c(2, 4, 6)
@@ -524,16 +524,16 @@ shift_times <- c(2, 4, 6)
 nonoceanic_land_bridge_DI_maui <- expand.grid(
   time = time,
   M = M,
-  lac_set_1 = lac_set_1,
-  mu_set_1 = mu_set_1,
-  K_set_1 = K_set_1,
-  gam_set_1 = gam_set_1,
-  laa_set_1 = laa_set_1,
-  lac_set_2 = lac_set_2,
-  mu_set_2 = mu_set_2,
-  K_set_2 = K_set_2,
-  gam_set_2 = gam_set_2,
-  laa_set_2 = laa_set_2,
+  lac_1 = lac_1,
+  mu_1 = mu_1,
+  K_1 = K_1,
+  gam_1 = gam_1,
+  laa_1 = laa_1,
+  lac_2 = lac_2,
+  mu_2 = mu_2,
+  K_2 = K_2,
+  gam_2 = gam_2,
+  laa_2 = laa_2,
   x_s = x_s,
   x_nonend = x_nonend,
   shift_times = shift_times,
@@ -544,16 +544,16 @@ nonoceanic_land_bridge_DI_maui <- expand.grid(
 
 time <- 2.55
 M <- 1000
-lac_set_1 <- 1
-mu_set_1 <- 1
-K_set_1 <- 10
-gam_set_1 <- 0.05
-laa_set_1 <- 1
-lac_set_2 <- 2
-mu_set_2 <- 0.5
-K_set_2 <- 50
-gam_set_2 <- 1
-laa_set_2 <- 0
+lac_1 <- 1
+mu_1 <- 1
+K_1 <- 10
+gam_1 <- 0.05
+laa_1 <- 1
+lac_2 <- 2
+mu_2 <- 0.5
+K_2 <- 50
+gam_2 <- 1
+laa_2 <- 0
 x_s <- 0.3
 x_nonend <- 0.5
 shift_times <- c(2, 4, 6)
@@ -561,16 +561,16 @@ shift_times <- c(2, 4, 6)
 nonoceanic_land_bridge_DD_maui <- expand.grid(
   time = time,
   M = M,
-  lac_set_1 = lac_set_1,
-  mu_set_1 = mu_set_1,
-  K_set_1 = K_set_1,
-  gam_set_1 = gam_set_1,
-  laa_set_1 = laa_set_1,
-  lac_set_2 = lac_set_2,
-  mu_set_2 = mu_set_2,
-  K_set_2 = K_set_2,
-  gam_set_2 = gam_set_2,
-  laa_set_2 = laa_set_2,
+  lac_1 = lac_1,
+  mu_1 = mu_1,
+  K_1 = K_1,
+  gam_1 = gam_1,
+  laa_1 = laa_1,
+  lac_2 = lac_2,
+  mu_2 = mu_2,
+  K_2 = K_2,
+  gam_2 = gam_2,
+  laa_2 = laa_2,
   x_s = x_s,
   x_nonend = x_nonend,
   shift_times = shift_times,
@@ -581,16 +581,16 @@ nonoceanic_land_bridge_DD_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac_set_1 <- 1
-mu_set_1 <- 1
-K_set_1 <- Inf
-gam_set_1 <- 0.05
-laa_set_1 <- 1
-lac_set_2 <- 2
-mu_set_2 <- 0.5
-K_set_2 <- Inf
-gam_set_2 <- 1
-laa_set_2 <- 0
+lac_1 <- 1
+mu_1 <- 1
+K_1 <- Inf
+gam_1 <- 0.05
+laa_1 <- 1
+lac_2 <- 2
+mu_2 <- 0.5
+K_2 <- Inf
+gam_2 <- 1
+laa_2 <- 0
 x_s <- 0.3
 x_nonend <- 0.5
 shift_times <- c(2, 4, 6)
@@ -598,16 +598,16 @@ shift_times <- c(2, 4, 6)
 nonoceanic_land_bridge_DI_kauai <- expand.grid(
   time = time,
   M = M,
-  lac_set_1 = lac_set_1,
-  mu_set_1 = mu_set_1,
-  K_set_1 = K_set_1,
-  gam_set_1 = gam_set_1,
-  laa_set_1 = laa_set_1,
-  lac_set_2 = lac_set_2,
-  mu_set_2 = mu_set_2,
-  K_set_2 = K_set_2,
-  gam_set_2 = gam_set_2,
-  laa_set_2 = laa_set_2,
+  lac_1 = lac_1,
+  mu_1 = mu_1,
+  K_1 = K_1,
+  gam_1 = gam_1,
+  laa_1 = laa_1,
+  lac_2 = lac_2,
+  mu_2 = mu_2,
+  K_2 = K_2,
+  gam_2 = gam_2,
+  laa_2 = laa_2,
   x_s = x_s,
   x_nonend = x_nonend,
   shift_times = shift_times,
@@ -618,16 +618,16 @@ nonoceanic_land_bridge_DI_kauai <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac_set_1 <- 1
-mu_set_1 <- 1
-K_set_1 <- 10
-gam_set_1 <- 0.05
-laa_set_1 <- 1
-lac_set_2 <- 2
-mu_set_2 <- 0.5
-K_set_2 <- 50
-gam_set_2 <- 1
-laa_set_2 <- 0
+lac_1 <- 1
+mu_1 <- 1
+K_1 <- 10
+gam_1 <- 0.05
+laa_1 <- 1
+lac_2 <- 2
+mu_2 <- 0.5
+K_2 <- 50
+gam_2 <- 1
+laa_2 <- 0
 x_s <- 0.3
 x_nonend <- 0.5
 shift_times <- c(2, 4, 6)
@@ -635,16 +635,16 @@ shift_times <- c(2, 4, 6)
 nonoceanic_land_bridge_DD_kauai <- expand.grid(
   time = time,
   M = M,
-  lac_set_1 = lac_set_1,
-  mu_set_1 = mu_set_1,
-  K_set_1 = K_set_1,
-  gam_set_1 = gam_set_1,
-  laa_set_1 = laa_set_1,
-  lac_set_2 = lac_set_2,
-  mu_set_2 = mu_set_2,
-  K_set_2 = K_set_2,
-  gam_set_2 = gam_set_2,
-  laa_set_2 = laa_set_2,
+  lac_1 = lac_1,
+  mu_1 = mu_1,
+  K_1 = K_1,
+  gam_1 = gam_1,
+  laa_1 = laa_1,
+  lac_2 = lac_2,
+  mu_2 = mu_2,
+  K_2 = K_2,
+  gam_2 = gam_2,
+  laa_2 = laa_2,
   x_s = x_s,
   x_nonend = x_nonend,
   shift_times = shift_times,
