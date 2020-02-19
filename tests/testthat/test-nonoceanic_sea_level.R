@@ -1,10 +1,11 @@
-context("run_robustness nonoceanic")
+context("run_robustness nonoceanic_sea_level")
 
-test_that("nonoceanic works across parameter sets", {
+test_that("nonoceanic_sea_level works across parameter sets", {
   if (1 == 2) {
-    expect_silent(error_1 <- run_robustness(param_space_name = "nonoceanic",
-                                            param_set = 1,
-                                            replicates = 2))
+    expect_silent(error_1 <- run_robustness(
+      param_space_name = "nonoceanic_sea_level",
+      param_set = 1,
+      replicates = 2))
     expect_length(error_1, 13)
     species_error <- list(nltt = c(171.0539, 173.4640),
                           num_spec_error = c(16, 9),
@@ -35,9 +36,10 @@ test_that("nonoceanic works across parameter sets", {
                                  ana_error = c(0.2571729, 1.0289714))
     expect_equal(error_1$rates_baseline_error, rates_baseline_error)
 
-    expect_silent(error_2 <- run_robustness(param_space_name = "nonoceanic",
-                                            param_set = 2,
-                                            replicates = 2))
+    expect_silent(error_2 <- run_robustness(
+      param_space_name = "nonoceanic_sea_level",
+      param_set = 2,
+      replicates = 2))
     expect_length(error_2, 13)
     species_error <- list(nltt = c(290.8331, 225.2527),
                           num_spec_error = c(93, 19),
@@ -70,11 +72,12 @@ test_that("nonoceanic works across parameter sets", {
   }
 })
 
-test_that("nonoceanic works across number of replicates", {
+test_that("nonoceanic_sea_level works across number of replicates", {
   if (1 == 2) {
-    expect_silent(error_1 <- run_robustness(param_space_name = "nonoceanic",
-                                            param_set = 1,
-                                            replicates = 2))
+    expect_silent(error_1 <- run_robustness(
+      param_space_name = "nonoceanic_sea_level",
+      param_set = 1,
+      replicates = 2))
     expect_length(error_1, 13)
     species_error <- list(nltt = c(171.0539, 173.4640),
                           num_spec_error = c(16, 9),
@@ -105,9 +108,10 @@ test_that("nonoceanic works across number of replicates", {
                                  ana_error = c(0.2571729, 1.0289714))
     expect_equal(error_1$rates_baseline_error, rates_baseline_error)
 
-    expect_silent(error_2 <- run_robustness(param_space_name = "nonoceanic",
-                                            param_set = 1,
-                                            replicates = 3))
+    expect_silent(error_2 <- run_robustness(
+      param_space_name = "nonoceanic_sea_level",
+      param_set = 1,
+      replicates = 3))
     expect_length(error_2, 13)
     species_error <- list(nltt = c(172.7632, 173.3264, 185.4614),
                           num_spec_error = c(16, 3, 25),
@@ -142,8 +146,8 @@ test_that("nonoceanic works across number of replicates", {
 
 test_that("Output is correct when conditioning not met", {
   if (1 == 2) {
-    error <- run_robustness(param_space_name = "nonoceanic",
-                            param_set = 7,
+    error <- run_robustness(param_space_name = "nonoceanic_sea_level",
+                            param_set = 1,
                             replicates = 2)
     expect_equal(error, "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
   }
@@ -156,17 +160,17 @@ test_that("abuse param_space_name", {
 })
 
 test_that("abuse param_set", {
-  expect_error(run_robustness(param_space_name = "nonoceanic",
+  expect_error(run_robustness(param_space_name = "nonoceanic_sea_level",
                               param_set = 0,
                               replicates = 2))
 
-  expect_error(run_robustness(param_space_name = "nonoceanic",
+  expect_error(run_robustness(param_space_name = "nonoceanic_sea_level",
                               param_set = 100000,
                               replicates = 2))
 })
 
 test_that("abuse replicates", {
-  expect_error(run_robustness(param_space_name = "nonoceanic",
+  expect_error(run_robustness(param_space_name = "nonoceanic_sea_level",
                               param_set = 1,
                               replicates = 0))
 })
