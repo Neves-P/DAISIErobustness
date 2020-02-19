@@ -81,9 +81,13 @@ run_robustness <- function(param_space_name,
     simulation_pars$time <- param_space$time[param_set]
     simulation_pars$x_s <- param_space$x_s[param_set]
     simulation_pars$x_nonend <- param_space$x_nonend[param_set]
-    simulation_pars$shift_times <- param_space$shift_times[param_set]
+    simulation_pars$shift_times <- c()
+    for (i in 1:(param_space$shift_times[param_set])) {
+      shift_interval <- param_space$time[param_set] / param_space$shift_times[param_set]
+      simulation_pars$shift_times[i] <- shift_interval * i
+    }
   }
-
+print(simulation_pars$shift_times)
   if (param_space_name == "oceanic_ontogeny" ||
       param_space_name == "oceanic_sea_level" ||
       param_space_name == "oceanic_ontogeny_sea_level" ||
