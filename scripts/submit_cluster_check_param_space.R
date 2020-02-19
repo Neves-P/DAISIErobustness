@@ -1,17 +1,19 @@
-#' Submits robustness pipeline jobs to the Peregrine cluster
+#' Submits check_param_space jobs to the Peregrine cluster
 #'
-#' @param param_space A string with the parameter space to run. Can
-#' be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
+#' @param param_space_name A string with the parameter space to run.
+#' Can be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
 #' \code{"nonoceanic_land_bridge"}
 #' @param account A string with the p-number of the user to submit the jobs.
 #'   Requires access to the Peregrine HPCC at the University of Groningen.
+#' @param upload_scripts Boolean to determine whether scripts should be
+#' uploaded with every parameter space.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space_name,
-                                      account,
-                                      upload_scripts) {
+submit_cluster_check_param_space <- function(param_space_name,
+                                             account,
+                                             upload_scripts) {
   remotes::install_github("Giappo/jap@pedro", force = TRUE)
   jap::upload_jap_scripts(account = account, session = NA)
 
@@ -27,7 +29,7 @@ submit_robustness_cluster <- function(param_space_name,
     jap::run_on_cluster(
       github_name = "Neves-P",
       package_name = "DAISIErobustness",
-      function_name = "run_robustness",
+      function_name = "check_param_space",
       account = account,
       upload_scripts = FALSE,
       fun_arguments = paste0(
