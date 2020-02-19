@@ -9,8 +9,11 @@
 #'   Requires access to the Peregrine HPCC at the University of Groningen.
 #'
 #' @export
-submit_robustness_cluster <- function(param_space_name, account) {
-  remotes::install_github("Giappo/jap@pedro")
+submit_robustness_cluster <- function(param_space_name,
+                                      account,
+                                      upload_scripts) {
+  remotes::install_github("Giappo/jap@pedro", force = TRUE)
+  jap::upload_jap_scripts(account = account, session = NA)
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
