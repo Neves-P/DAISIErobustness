@@ -49,8 +49,7 @@ run_robustness <- function(param_space_name,
               param_space$laa[param_set]
     )
     simulation_pars <- DAISIE::create_default_pars(
-      totaltime = param_space$time,
-      pars = pars
+      totaltime = param_space$time
     )
     simulation_pars$pars <- pars
     simulation_pars$M <- param_space$M[param_set]
@@ -75,8 +74,7 @@ run_robustness <- function(param_space_name,
               param_space$laa_2[param_set]
     )
     simulation_pars <- DAISIE::create_default_pars(
-      totaltime = param_space$time,
-      pars = pars
+      totaltime = param_space$time
     )
     simulation_pars$pars <- pars
     simulation_pars$M <- param_space$M[param_set]
@@ -116,8 +114,7 @@ run_robustness <- function(param_space_name,
       hyper_pars = hyper_pars,
       dist_pars = dist_pars,
       ext_pars = ext_pars,
-      totaltime = param_space$time,
-      pars = pars
+      totaltime = param_space$time
     )
     simulation_pars$pars <- pars
     simulation_pars$M <- param_space$M[param_set]
