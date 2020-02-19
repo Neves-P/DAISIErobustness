@@ -31,9 +31,9 @@ submit_robustness_cluster <- function(param_space_name,
       account = account,
       upload_scripts = FALSE,
       fun_arguments = paste0(
-        "param_space_name = ",
+        "param_space_name = '",
         param_space_name,
-        ", param_set = ",
+        "', param_set = ",
         param_set
       )
     )
