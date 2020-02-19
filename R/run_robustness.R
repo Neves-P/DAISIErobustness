@@ -81,6 +81,7 @@ run_robustness <- function(param_space_name,
     simulation_pars$time <- param_space$time[param_set]
     simulation_pars$x_s <- param_space$x_s[param_set]
     simulation_pars$x_nonend <- param_space$x_nonend[param_set]
+    simulation_pars$shift_times <- param_space$shift_times[param_set]
   }
 
   if (param_space_name == "oceanic_ontogeny" ||
@@ -127,8 +128,6 @@ run_robustness <- function(param_space_name,
     simulation_pars$x_s <- param_space$x_s[param_set]
     simulation_pars$x_nonend <- param_space$x_nonend[param_set]
     }
-
-
 
   # Geodynamics simulations -------------------------------------------------
   if (param_space_name == "oceanic_ontogeny" ||
