@@ -88,7 +88,7 @@ run_robustness <- function(param_space_name,
     }
     simulation_pars$shift_times <- simulation_pars$shift_times[-length(simulation_pars$shift_times)]
   }
-print(simulation_pars$shift_times)
+
   if (param_space_name == "oceanic_ontogeny" ||
       param_space_name == "oceanic_sea_level" ||
       param_space_name == "oceanic_ontogeny_sea_level" ||
@@ -194,12 +194,14 @@ print(simulation_pars$shift_times)
     n_spec[n_reps] <- as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "present"])
     n_colonists[n_reps] <- length(geodynamics_simulations[[n_reps]])
   }
-  prop_rep_over_20_spec <- length(which(n_spec >= 20))
+  prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_colonists > 5))
-  if ((prop_rep_over_20_spec / replicates) < 0.95 ||
-      (prop_rep_over_5_cols / replicates) < 0.95) {
-    output_file <- "95% of replicates did not have 20 species or did not
-    have 5 colonisation to the present"
+  prop_rep_over_100_spec <- length(which(n_spec >= 100))
+  if ((prop_rep_over_15_spec / replicates) < 0.95 ||
+      (prop_rep_over_5_cols / replicates) < 0.95 ||
+      (prop_rep_over_100_spec / replicates) < 0.95) {
+    output_file <- "95% of replicates did not have more than 15 species,
+    or less than 100, or more 5 colonisation to the present"
     output_file_name <- paste0(
       "fail_cond_",
       param_space_name,
