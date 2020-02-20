@@ -1,4 +1,4 @@
-#' Checks diversity-dependent model
+#' Checks conditioning and diversity-dependent model
 #'
 #' @param param_space_name A string with the parameter space to run. Can
 #' be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
@@ -10,7 +10,7 @@
 #' @param replicates number of replicates for the initial simulation.
 #'
 #' @export
-check_diversity_dependence <- function(param_space_name,
+check_param_space <- function(param_space_name,
                                        param_set,
                                        replicates = 1000) {
 
