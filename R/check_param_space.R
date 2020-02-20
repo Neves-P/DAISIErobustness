@@ -216,6 +216,7 @@ check_param_space <- function(param_space_name,
       param_set,
       ".Rdata")
   }
-  save(output_file, file = output_file_name)
+  output_path <- file.path(param_space_name, output_file_name)
+  save(output_file, file = output_path)
   return(output_file)
 }
