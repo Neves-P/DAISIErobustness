@@ -315,7 +315,7 @@ check_param_space <- function(param_space_name,
         ".Rdata")
     }
   }
-  if (Sys.info()[4] == "peregrine.hpc.rug.nl") {
+  if (Sys.info()[1] == "Linux") {
     output_path <- file.path(param_space_name, output_file_name)
   } else {
     output_path <- file.path(output_file_name)
