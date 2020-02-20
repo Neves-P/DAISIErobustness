@@ -13,8 +13,8 @@
 #' @export
 submit_cluster_check_param_space <- function(param_space_name,
                                              account,
-                                             upload_scripts,
-                                             session = NA) {
+                                             session = NA,
+                                             replicates = 100) {
   remotes::install_github("Giappo/jap@pedro", force = TRUE)
   jap::upload_jap_scripts(account = account, session = NA)
 
@@ -41,7 +41,9 @@ submit_cluster_check_param_space <- function(param_space_name,
         "param_space_name = '",
         param_space_name,
         "', param_set = ",
-        param_set
+        param_set,
+        "replicates = ",
+        replicates
       )
     )
   }
