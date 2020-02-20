@@ -45,6 +45,7 @@ submit_cluster_check_param_space <- function(param_space_name,
         replicates
       )
     )
+    Sys.sleep(1)
   }
   jap::close_session(session = session)
 }
