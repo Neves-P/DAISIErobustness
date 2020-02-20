@@ -14,7 +14,8 @@
 submit_cluster_check_param_space <- function(param_space_name,
                                              account,
                                              session = NA,
-                                             replicates = 100) {
+                                             replicates = 100,
+                                             num_job = c(1, 100)) {
   remotes::install_github("Giappo/jap@pedro")
   jap::upload_jap_scripts(account = account, session = NA)
 
@@ -28,7 +29,7 @@ submit_cluster_check_param_space <- function(param_space_name,
   param_space <- readr::read_csv(
     file = file
   )
-  for (param_set in seq_len(nrow(param_space))) {
+  for (param_set in num_job[1]:num_job[2]) {
     jap::run_on_cluster_loopable(
       github_name = "Neves-P",
       package_name = "DAISIErobustness",
