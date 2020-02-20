@@ -13,9 +13,16 @@
 #' @export
 submit_cluster_check_param_space <- function(param_space_name,
                                              account,
-                                             upload_scripts) {
+                                             upload_scripts,
+                                             session = NA) {
   remotes::install_github("Giappo/jap@pedro", force = TRUE)
   jap::upload_jap_scripts(account = account, session = NA)
+
+  new_session <- FALSE
+  if (!jap::is_session_open(session = session)) {
+    new_session <- TRUE
+    session <- jap::open_session(account = account)
+  }
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -24,14 +31,12 @@ submit_cluster_check_param_space <- function(param_space_name,
   param_space <- readr::read_csv(
     file = file
   )
-
   for (param_set in seq_len(nrow(param_space))) {
-    jap::run_on_cluster(
+    jap::run_on_cluster_loopable(
       github_name = "Neves-P",
       package_name = "DAISIErobustness",
       function_name = "check_param_space",
       account = account,
-      upload_scripts = FALSE,
       fun_arguments = paste0(
         "param_space_name = '",
         param_space_name,
@@ -39,5 +44,8 @@ submit_cluster_check_param_space <- function(param_space_name,
         param_set
       )
     )
+  }
+  if (new_session == TRUE) {
+    jap::close_session(session = session)
   }
 }
