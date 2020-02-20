@@ -40,7 +40,7 @@ submit_cluster_check_param_space <- function(param_space_name,
         param_space_name,
         "', param_set = ",
         param_set,
-        "replicates = ",
+        ", replicates = ",
         replicates
       )
     )
