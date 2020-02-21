@@ -13,7 +13,7 @@
 check_param_space <- function(param_space_name,
                                        param_set,
                                        replicates = 1000) {
-
+  start_time <- Sys.time()
   # Selecting parameter space -----------------------------------------------
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
@@ -200,7 +200,11 @@ check_param_space <- function(param_space_name,
   if ((prop_rep_over_15_spec / replicates) < 0.95 ||
       (prop_rep_over_5_cols / replicates) < 0.95 ||
       (prop_rep_over_100_spec / replicates) < 0.95) {
-    output_file <- "95% of replicates did not meet contraints"
+    output_file <- list(
+      "95% of replicates did not meet contraints",
+      param_space_name = param_space_name,
+      param_set = param_set
+    )
     output_file_name <- paste0(
       "fail_cond_",
       param_space_name,
@@ -298,7 +302,10 @@ check_param_space <- function(param_space_name,
     mean_DD_AICc_smaller <- mean_DD_AICc < mean_DI_AICc
 
     if (mean_DD_AICc_smaller) {
-      output_file <- "95% of replicates met constraints with DD"
+      output_file <- list("95% of replicates met constraints with DD",
+      param_space_name = param_space_name,
+      param_set = param_set
+      )
       output_file_name <- paste0(
         "DD_passed_cond_",
         param_space_name,
@@ -306,7 +313,12 @@ check_param_space <- function(param_space_name,
         param_set,
         ".Rdata")
     } else {
-      output_file <- "95% of replicates met constraints with DI"
+      output_file <- list(
+        "95% of replicates met constraints with DI",
+        param_space_name = param_space_name,
+        param_set = param_set
+      )
+
       output_file_name <- paste0(
         "DI_passed_cond_",
         param_space_name,
@@ -320,6 +332,11 @@ check_param_space <- function(param_space_name,
   } else {
     output_path <- file.path(output_file_name)
   }
+  end_time <- Sys.time()
+  elapsed_time <- end_time - start_time
+  output_file$time <- data.frame(start_time = start_time,
+      end_time = end_time,
+      elapsed_time = elapsed_time)
   save(output_file, file = output_path)
   return(output_file)
 }
