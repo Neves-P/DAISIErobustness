@@ -11,7 +11,7 @@
 #' @export
 check_param_space_time_dependent <- function(param_space_name,
                                              param_set,
-                                             replicates = 1000) {
+                                             replicates = 100) {
 
   # Selecting parameter space -----------------------------------------------
   file_domain <-
@@ -64,6 +64,7 @@ check_param_space_time_dependent <- function(param_space_name,
     M = simulation_pars$M,
     pars = simulation_pars$pars,
     replicates = replicates,
+    nonoceanic_pars = simulation_pars$nonoceanic_pars,
     island_type = simulation_pars$island_type,
     island_ontogeny = simulation_pars$island_ontogeny,
     sea_level = simulation_pars$sea_level,
@@ -71,7 +72,7 @@ check_param_space_time_dependent <- function(param_space_name,
     ext_pars = simulation_pars$ext_pars,
     extcutoff = simulation_pars$extcutoff,
     plot_sims = FALSE,
-    verbose = TRUE,#FALSE,
+    verbose = FALSE,
     sample_freq = Inf
   )
 

@@ -5,11 +5,7 @@
 \title{Checks conditioning and diversity-dependent model for time-dependent
 simulations}
 \usage{
-check_param_space_time_dependent(
-  param_space_name,
-  param_set,
-  replicates = 1000
-)
+check_param_space_time_dependent(param_space_name, param_set, replicates = 100)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
