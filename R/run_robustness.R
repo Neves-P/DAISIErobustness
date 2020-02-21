@@ -191,8 +191,10 @@ run_robustness <- function(param_space_name,
   n_colonists <- c()
   for (n_reps in 1:length(geodynamics_simulations)) {
     stt_rows[n_reps] <- nrow(geodynamics_simulations[[n_reps]][[1]]$stt_all)
-    n_spec[n_reps] <- as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "present"])
-    n_colonists[n_reps] <- length(geodynamics_simulations[[n_reps]])
+    n_spec[n_reps] <- as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nI"])
+  + as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nA"])
+  + as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nC"])
+    n_colonists[n_reps] <- as.numeric(geodynamics_simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "present"])
   }
   prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_colonists > 5))
@@ -290,7 +292,10 @@ run_robustness <- function(param_space_name,
         geodynamics_ML_DI[[i]] <- "No convergence"
       }
       stt_rows[i] <- nrow(geodynamics_simulations[[i]][[1]]$stt_all)
-      n_spec[i] <- as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "present"])
+      n_spec[i] <-
+        as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "nI"])
+      + as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "nA"])
+      + as.numeric(geodynamics_simulations[[i]][[1]]$stt_all[stt_rows[i], "nC"])
       DD_AICc[i] <- (2 * 5) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 5^2) + 2 * 5) / n_spec[i] - 5 - 1
       DI_AICc[i] <- (2 * 4) - (2 * geodynamics_ML_DD[[i]]$loglik) + ((2 * 4^2) + 2 * 4) / n_spec[i] - 4 - 1
     }
