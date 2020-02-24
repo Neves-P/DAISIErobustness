@@ -6,11 +6,6 @@
 #' \code{\link{DAISIE_sim_time_dependent}}, or
 #' \code{\link{DAISIE_sim_constant_rate_shift}}
 #' @export
-#'
-#' @examples geodynamic_simulations <- geodynamic_simulations(
-#'              param_space_name = "oceanic_ontogeny",
-#'              simulation_pars = simulation_pars,
-#'              replicates = 1000)
 geodynamic_simulations <- function(param_space_name,
                                    simulation_pars,
                                    replicates) {

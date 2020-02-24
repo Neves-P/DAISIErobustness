@@ -5,11 +5,6 @@
 #'
 #' @return A list with four error metrics
 #' @export
-#'
-#' @examples error <- calc_error(simulation_pars = simulation_pars, ml = ml,
-#'                       simulations_1 = simulations_1,
-#'                       simulations_2 = simulations_2,
-#'                       replicates = replicates)
 calc_error <- function(
   simulation_pars,
   ml,
@@ -45,14 +40,14 @@ calc_error <- function(
       time_unit = "ago",
       normalize = FALSE
     )
-    stt_last_row_simulation_1 <-
+    stt_last_row_simulations_1 <-
       length(simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
     num_spec_simulations_1 <-
-      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulation_1, 5]
+      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 5]
     stt_last_row_simulations_2 <-
       length(simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
     num_spec_simulations_2 <-
-      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulation_2, 5]
+      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 5]
     species_error$num_spec_error[n_reps] <-
       abs(num_spec_simulations_1 - num_spec_simulations_2)
     num_colonist_simulations_1 <-
@@ -104,8 +99,8 @@ for (n_reps in 1:replicates) {
   )
 }
 return(
-  list(rates_error,
-       species_error,
-       endemic_error,
-       nonendemic_error))
+  list(rates_error = rates_error,
+       species_error = species_error,
+       endemic_error = endemic_error,
+       nonendemic_error = nonendemic_error))
 }

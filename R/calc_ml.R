@@ -4,10 +4,6 @@
 #'
 #' @return Output from \code{\link{DAISIE_ML_CS}}
 #' @export
-#'
-#' @examples ml <- calc_ml(param_space_name = "oceanic_ontogeny",
-#'                         simulation_pars = simulation_pars,
-#'                         simulations = simulations)
 calc_ml <- function(param_space_name,
                     simulation_pars,
                     simulations) {

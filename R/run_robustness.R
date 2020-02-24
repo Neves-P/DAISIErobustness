@@ -3,10 +3,6 @@
 #' @inheritParams default_params_doc
 #'
 #' @export
-#' @examples
-#' error <- run_robustness(param_space_name = "oceanic_ontogeny",
-#'                         param_set = 1,
-#'                         replicates = 2)
 run_robustness <- function(param_space_name,
                            param_set,
                            replicates = 1000) {
@@ -38,7 +34,8 @@ run_robustness <- function(param_space_name,
     replicates = replicates)
 
   simulation_constraints <- simulation_constraints(
-    simulations = simulations)
+    simulations = geodynamic_simulations,
+    replicates = replicates)
 
   if (simulation_constraints == TRUE) {
     geodynamic_ml <- calc_ml(
@@ -57,6 +54,11 @@ run_robustness <- function(param_space_name,
       simulations_2 = oceanic_simulations_1,
       replicates = replicates)
 
+    rates_error <- error$rates_error
+    species_error <- error$species_error
+    endemic_error <- error$endemic_error
+    nonendemic_error <- error$nonendemic_error
+
     oceanic_ml <- calc_ml(
       param_space_name = "oceanic",
       simulation_pars = simulation_pars,
@@ -73,6 +75,11 @@ run_robustness <- function(param_space_name,
       simulations_2 = oceanic_simulations_2,
       replicates = replicates)
 
+    rates_baseline_error <- baseline_error$rates_error
+    species_baseline_error <- baseline_error$species_error
+    endemic_baseline_error <- baseline_error$endemic_error
+    nonendemic_baseline_error <- baseline_error$nonendemic_error
+
     output_file <- list(
       species_error = species_error,
       endemic_error = endemic_error,
@@ -83,10 +90,10 @@ run_robustness <- function(param_space_name,
       nonendemic_baseline_error = nonendemic_baseline_error,
       rates_baseline_error = rates_baseline_error,
       geodynamic_simulations = geodynamic_simulations,
-      geodynamic_ML = geodynamic_ML,
-      constant_simulations_1 = constant_simulations_1,
-      constant_ML_1 = constant_ML_1,
-      constant_simulations_2 = constant_simulations_2)
+      geodynamic_ml = geodynamic_ml,
+      oceanic_simulations_1 = oceanic_simulations_1,
+      oceanic_ml = oceanic_ml,
+      oceanic_simulations_2 = oceanic_simulations_2)
 
     output_file_name <- paste0(
       "passed_cond_",

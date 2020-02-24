@@ -5,10 +5,6 @@
 #'
 #' @return a list of simulation parameters
 #' @export
-#'
-#' @examples simulation_pars <- extract_param_set(param_space_name,
-#'                                               param_space,
-#'                                               param_set)
 extract_param_set <- function(param_space_name,
                               param_space,
                               param_set) {

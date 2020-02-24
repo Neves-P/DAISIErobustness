@@ -4,9 +4,6 @@
 #'
 #' @return tibble parameter space
 #' @export
-#'
-#' @examples oceanic_ontogeny <- load_param_space(
-#'              param_space_name = "oceanic_ontogeny")
 load_param_space <- function(param_space_name) {
   file_domain <-
     "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"

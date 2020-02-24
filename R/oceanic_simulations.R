@@ -4,10 +4,6 @@
 #'
 #' @return Output from \code{\link{DAISIE_sim_constant_rate}}
 #' @export
-#'
-#' @examples oceanic_simulations <- oceanic_simulations(
-#'               ml = ml,
-#'               simulation_pars = simulation_pars)
 oceanic_simulations <- function(ml,
                                 simulation_pars) {
   oceanic_simulations <- list()

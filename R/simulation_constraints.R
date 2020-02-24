@@ -4,10 +4,8 @@
 #'
 #' @return Boolean
 #' @export
-#'
-#' @examples simulation_constraints <- simulation_constraints(
-#'              simulations = geodynamic_simulations)
-simulation_constraints <- function(simulations) {
+simulation_constraints <- function(simulations,
+                                   replicates) {
   stt_rows <- c()
   n_spec <- c()
   n_colonists <- c()
