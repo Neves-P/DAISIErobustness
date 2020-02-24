@@ -17,8 +17,3 @@ Output from \code{\link{DAISIE_sim_constant_rate}}
 \description{
 Runs original oceanic DAISIE simulation
 }
-\examples{
-oceanic_simulations <- oceanic_simulations(
-              ml = ml,
-              simulation_pars = simulation_pars)
-}

@@ -26,8 +26,3 @@ Output from \code{\link{DAISIE_ML_CS}}
 \description{
 Calculate maximum likelihood value for the rates
 }
-\examples{
-ml <- calc_ml(param_space_name = "oceanic_ontogeny",
-                        simulation_pars = simulation_pars,
-                        simulations = simulations)
-}

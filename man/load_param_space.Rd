@@ -19,7 +19,3 @@ tibble parameter space
 \description{
 Loads the parameter space into the environment for simulations
 }
-\examples{
-oceanic_ontogeny <- load_param_space(
-             param_space_name = "oceanic_ontogeny")
-}

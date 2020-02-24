@@ -22,8 +22,3 @@ simulations.}
 \description{
 Run robustness analysis pipeline
 }
-\examples{
-error <- run_robustness(param_space_name = "oceanic_ontogeny",
-                        param_set = 1,
-                        replicates = 2)
-}

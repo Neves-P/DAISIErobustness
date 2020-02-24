@@ -4,21 +4,20 @@
 \alias{simulation_constraints}
 \title{Checks if the simulations meet the criteria for data sample size}
 \usage{
-simulation_constraints(simulations)
+simulation_constraints(simulations, replicates)
 }
 \arguments{
 \item{simulations}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}},
 \code{\link{DAISIE_sim_time_dependent}} or
 \code{\link{DAISIE_sim_constant_rate_shift}}}
+
+\item{replicates}{A numeric for the number of replicates for the
+simulations.}
 }
 \value{
 Boolean
 }
 \description{
 Checks if the simulations meet the criteria for data sample size
-}
-\examples{
-simulation_constraints <- simulation_constraints(
-             simulations = geodynamic_simulations)
 }

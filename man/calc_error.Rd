@@ -32,9 +32,3 @@ A list with four error metrics
 Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time
 }
-\examples{
-error <- calc_error(simulation_pars = simulation_pars, ml = ml,
-                      simulations_1 = simulations_1,
-                      simulations_2 = simulations_2,
-                      replicates = replicates)
-}

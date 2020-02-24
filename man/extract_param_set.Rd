@@ -26,8 +26,3 @@ a list of simulation parameters
 Extracts a set of parameters from the parameter space for the
 simulation
 }
-\examples{
-simulation_pars <- extract_param_set(param_space_name,
-                                              param_space,
-                                              param_set)
-}

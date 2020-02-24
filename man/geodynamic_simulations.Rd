@@ -26,9 +26,3 @@ A list output from \code{\link{DAISIE_sim_constant_rate}},
 \description{
 Runs DAISIE simulation with geodynamics
 }
-\examples{
-geodynamic_simulations <- geodynamic_simulations(
-             param_space_name = "oceanic_ontogeny",
-             simulation_pars = simulation_pars,
-             replicates = 1000)
-}
