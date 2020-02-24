@@ -16,8 +16,14 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
 
-\item{replicates}{number of replicates for the initial simulation.}
+\item{replicates}{A numeric for the number of replicates for the
+simulations.}
 }
 \description{
 Run robustness analysis pipeline
+}
+\examples{
+error <- run_robustness(param_space_name = "oceanic_ontogeny",
+                        param_set = 1,
+                        replicates = 2)
 }
