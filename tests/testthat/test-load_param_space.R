@@ -36,12 +36,12 @@ test_that("test load_param_space loads oceanic_ontogeny
   expect_true(is.numeric(oceanic_ontogeny_param_space[[20]]))
 })
 
-test_that("test load_param_space loads oceanic_sea_level parameter space", {
-  skip("WIP")
+test_that("test load_param_space loads oceanic_sea_level
+          parameter space", {
   oceanic_sea_level_param_space <- load_param_space(
     param_space_name = "oceanic_sea_level"
   )
-  expect_equal(nrow(oceanic_sea_level_param_space), 3000)
+  expect_equal(nrow(oceanic_sea_level_param_space), 9000)
   expect_equal(ncol(oceanic_sea_level_param_space), 20)
   expect_equal(names(oceanic_sea_level_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -72,13 +72,12 @@ test_that("test load_param_space loads oceanic_sea_level parameter space", {
   expect_true(is.numeric(oceanic_sea_level_param_space[[20]]))
 })
 
-test_that("test load_param_space loads oceanic_ontogeny_sea_level parameter
-          space", {
-  skip("WIP")
+test_that("test load_param_space loads oceanic_ontogeny_sea_level
+          parameter space", {
   oceanic_ontogeny_sea_level_param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level"
   )
-  expect_equal(nrow(oceanic_ontogeny_sea_level_param_space), 3000)
+  expect_equal(nrow(oceanic_ontogeny_sea_level_param_space), 9000)
   expect_equal(ncol(oceanic_ontogeny_sea_level_param_space), 20)
   expect_equal(names(oceanic_ontogeny_sea_level_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -95,8 +94,8 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level parameter
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[6]]))
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[7]]))
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[8]]))
-  expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[9]]))
-  expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[10]]))
+  expect_true(is.character(oceanic_ontogeny_sea_level_param_space[[9]]))
+  expect_true(is.character(oceanic_ontogeny_sea_level_param_space[[10]]))
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[11]]))
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[12]]))
   expect_true(is.numeric(oceanic_ontogeny_sea_level_param_space[[13]]))
