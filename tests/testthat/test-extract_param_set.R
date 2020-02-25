@@ -12,8 +12,8 @@ test_that("test extract_param_set extracts correct param set from
 
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
   expect_equal(simulation_pars$island_ontogeny, "beta")
   expect_equal(simulation_pars$sea_level, "const")
   expect_equal(simulation_pars$area_pars, list(max_area = 13500,
@@ -40,8 +40,8 @@ test_that("test extract_param_set extracts correct param set from
 
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
   expect_equal(simulation_pars$island_ontogeny, "const")
   expect_equal(simulation_pars$sea_level, "sine")
   expect_equal(simulation_pars$area_pars, list(max_area = 13500,
@@ -67,8 +67,8 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
   expect_equal(simulation_pars$island_ontogeny, "beta")
   expect_equal(simulation_pars$sea_level, "sine")
   expect_equal(simulation_pars$area_pars, list(max_area = 13500,
@@ -95,8 +95,8 @@ test_that("test extract_param_set extracts correct param set from
 
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
 })
 
 
@@ -112,8 +112,8 @@ test_that("test extract_param_set extracts correct param set from
 
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
   expect_equal(simulation_pars$island_ontogeny, "const")
   expect_equal(simulation_pars$sea_level, "sine")
   expect_equal(simulation_pars$area_pars, list(max_area = 13500,
@@ -140,7 +140,7 @@ test_that("test extract_param_set extracts correct param set from
 
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
-  expect_equal(simulation_par$pars, c(1,1,1,1,1))
-  expect_equal(simulation_pars$nonoceanic_pars, c(1,1))
+  expect_equal(simulation_par$pars, c(1, 1, 1, 1, 1))
+  expect_equal(simulation_pars$nonoceanic_pars, c(1, 1))
   expect_equal(simulation_pars$shift_times, c(2.5, 2))
 })

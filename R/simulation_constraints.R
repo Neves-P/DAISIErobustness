@@ -9,12 +9,14 @@ simulation_constraints <- function(simulations,
   stt_rows <- c()
   n_spec <- c()
   n_colonists <- c()
-  for (n_reps in 1:length(simulations)) {
+  for (n_reps in seq_len(simulations)) {
     stt_rows[n_reps] <- nrow(simulations[[n_reps]][[1]]$stt_all)
-    n_spec[n_reps] <- as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nI"])
+    n_spec[n_reps] <-
+      as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nI"])
     + as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nA"])
     + as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "nC"])
-    n_colonists[n_reps] <- as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "present"])
+    n_colonists[n_reps] <-
+      as.numeric(simulations[[n_reps]][[1]]$stt_all[stt_rows[n_reps], "present"])
   }
   prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_colonists > 5))

@@ -212,7 +212,8 @@ test_that("test simulation_constraints returns FALSE when simulation
   expect_equal(simulation_constraints, FALSE)
 })
 
-test_that("test simulation_constraints returns TRUE when simulation meets contraints for oceanic_ontogeny", {
+test_that("test simulation_constraints returns TRUE when simulation meets
+          contraints for oceanic_ontogeny", {
   skip("WIP")
   param_space <- load_param_space(param_space_name = "oceanic_ontogeny")
   set.seed(1)

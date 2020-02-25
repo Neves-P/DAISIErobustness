@@ -13,15 +13,18 @@ calc_error <- function(
   replicates) {
 
   rates_error <- list()
-  for (i in 1:length(ml)) {
-    rates_error$clado_error[i] <- abs(simulation_pars$pars[1] - ml[[i]]$lambda_c)
+  for (i in seq_len(ml)) {
+    rates_error$clado_error[i] <-
+      abs(simulation_pars$pars[1] - ml[[i]]$lambda_c)
     rates_error$ext_error[i] <- abs(simulation_pars$pars[2] - ml[[i]]$mu)
-    rates_error$K_error[i] <- abs(simulation_pars$pars[3] - ml[[i]]$K)
-    rates_error$immig_error[i] <- abs(simulation_pars$pars[4] - ml[[i]]$gamma)
-    rates_error$ana_error[i] <- abs(simulation_pars$pars[5] - ml[[i]]$lambda_a)
+    rates_error$K_error[i] <-
+      abs(simulation_pars$pars[3] - ml[[i]]$K)
+    rates_error$immig_error[i] <-
+      abs(simulation_pars$pars[4] - ml[[i]]$gamma)
+    rates_error$ana_error[i] <-
+      abs(simulation_pars$pars[5] - ml[[i]]$lambda_a)
   }
   species_error <- list()
-  n_colonists <- c()
   for (n_reps in 1:replicates) {
     simulations_1_event_times <-
       simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
@@ -50,12 +53,12 @@ calc_error <- function(
       simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 5]
     species_error$num_spec_error[n_reps] <-
       abs(num_spec_simulations_1 - num_spec_simulations_2)
-    num_colonist_simulations_1 <-
+    num_colonists_simulations_1 <-
       length(simulations_1[[n_reps]]) - 1
-    num_colonist_simulations_2 <-
+    num_colonists_simulations_2 <-
       length(simulations_2[[n_reps]]) - 1
-    species_error$num_colonist_error[n_reps] <-
-      abs(num_colonist_simulations_1 - num_colonist_simulations_2)
+    species_error$num_colonists_error[n_reps] <-
+      abs(num_colonists_simulations_1 - num_colonists_simulations_2)
   }
 
 endemic_error <- list()
@@ -76,7 +79,6 @@ for (n_reps in 1:replicates) {
 }
 
 nonendemic_error <- list()
-n_colonists <- c()
 for (n_reps in 1:replicates) {
   simulations_1_event_times <-
     simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]

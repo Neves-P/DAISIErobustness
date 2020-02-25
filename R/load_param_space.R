@@ -13,5 +13,3 @@ load_param_space <- function(param_space_name) {
   )
   return(param_space)
 }
-
-

@@ -1,7 +1,7 @@
 context("oceanic_simulations")
 
 test_that("test oceanic simulation output is correct for
-          oceanic_ontogeny" , {
+          oceanic_ontogeny", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
@@ -39,7 +39,7 @@ test_that("test oceanic simulation output is correct for
 })
 
 test_that("test oceanic simulation output is correct for
-          oceanic_sea_level" , {
+          oceanic_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_sea_level")
@@ -77,7 +77,7 @@ test_that("test oceanic simulation output is correct for
 })
 
 test_that("test oceanic simulation output is correct for
-          oceanic_ontogeny_sea_level" , {
+          oceanic_ontogeny_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level")
@@ -115,7 +115,7 @@ test_that("test oceanic simulation output is correct for
 })
 
 test_that("test oceanic simulation output is correct for
-          nonoceanic" , {
+          nonoceanic", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic")
@@ -153,7 +153,7 @@ test_that("test oceanic simulation output is correct for
 })
 
 test_that("test oceanic simulation output is correct for
-          nonoceanic_sea_level" , {
+          nonoceanic_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic_sea_level")
