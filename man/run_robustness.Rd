@@ -22,3 +22,6 @@ simulations.}
 \description{
 Run robustness analysis pipeline
 }
+\author{
+Joshua Lambert, Pedro Neves
+}

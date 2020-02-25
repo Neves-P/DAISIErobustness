@@ -21,3 +21,6 @@ Boolean
 \description{
 Checks if the simulations meet the criteria for data sample size
 }
+\author{
+Joshua Lambert
+}

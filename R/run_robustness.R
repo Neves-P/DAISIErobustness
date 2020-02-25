@@ -1,7 +1,7 @@
 #' Run robustness analysis pipeline
 #'
 #' @inheritParams default_params_doc
-#'
+#' @author Joshua Lambert, Pedro Neves
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,

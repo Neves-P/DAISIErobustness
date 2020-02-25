@@ -1,7 +1,7 @@
 #' Checks if the simulations meet the criteria for data sample size
 #'
 #' @inheritParams default_params_doc
-#'
+#' @author Joshua Lambert
 #' @return Boolean
 #' @export
 simulation_constraints <- function(simulations,

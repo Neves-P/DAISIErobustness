@@ -7,3 +7,4 @@
 ^data$
 ^scripts$
 ^doc$
+^appveyor\.yml$
