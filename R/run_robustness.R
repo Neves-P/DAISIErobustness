@@ -113,9 +113,20 @@ run_robustness <- function(param_space_name,
       param_set,
       ".Rdata")
   }
-  save(output_file, file = file.path(param_space_name, output_file_name))
+  output_path <- file.path("results", param_space_name, output_file_name)
   cat(
-    "Saved",
+    "\n Trying to save",
+    output_file_name,
+    "to",
+    output_path,
+    "... \n"
+  )
+  save(
+    output_file,
+    file = output_path
+  )
+  cat(
+    "\n Saved",
     output_file_name,
     "to",
     file.path(param_space_name, output_file_name),

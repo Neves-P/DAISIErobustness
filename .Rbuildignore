@@ -8,3 +8,4 @@
 ^scripts$
 ^doc$
 ^appveyor\.yml$
+^results/\$
