@@ -10,37 +10,26 @@
 #' uploaded with every parameter space.
 #'
 #' @export
-submit_cluster_check_param_space_time_dependent <- function(param_space_name,
-                                                            account,
-                                                            session = NA,
-                                                            replicates = 100,
-                                                            num_job = c(1, 100)) {
-
-  testit::assert(param_space_name == "oceanic_ontogeny" ||
-                   param_space_name == "oceanic_sea_level" ||
-                   param_space_name == "oceanic_ontogeny_sea_level" ||
-                   param_space_name == "nonoceanic_sea_level")
+submit_robustness <- function(param_space_name,
+                              account,
+                              session = NA,
+                              replicates = 100,
+                              num_job = c(1, 100),
+                              partition = "gelifes") {
 
   remotes::install_github("Giappo/jap@pedro")
   jap::upload_jap_scripts(account = account, session = NA)
 
-  new_session <- TRUE
   session <- jap::open_session(account = account)
 
-  # Selecting parameter space -----------------------------------------------
-  file_domain <-
-    "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
-  file <- paste0(file_domain, param_space_name, ".csv")
-  param_space <- readr::read_csv(
-    file = file
-  )
   for (param_set in num_job[1]:num_job[2]) {
     jap::run_on_cluster_loopable(
       github_name = "Neves-P",
       package_name = "DAISIErobustness",
-      function_name = "check_param_space_time_dependent",
+      function_name = "run_robustness",
       account = account,
       session = session,
+      partition = partition,
       fun_arguments = paste0(
         "param_space_name = '",
         param_space_name,
