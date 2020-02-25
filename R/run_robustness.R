@@ -12,11 +12,11 @@ run_robustness <- function(param_space_name,
 
   testit::assert(
     param_space_name == "oceanic_ontogeny" ||
-    param_space_name == "oceanic_sea_level" ||
-    param_space_name == "oceanic_ontogeny_sea_level" ||
-    param_space_name == "nonoceanic" ||
-    param_space_name == "nonoceanic_sea_level" ||
-    param_space_name == "nonoceanic_land_bridge")
+      param_space_name == "oceanic_sea_level" ||
+      param_space_name == "oceanic_ontogeny_sea_level" ||
+      param_space_name == "nonoceanic" ||
+      param_space_name == "nonoceanic_sea_level" ||
+      param_space_name == "nonoceanic_land_bridge")
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
@@ -112,6 +112,13 @@ run_robustness <- function(param_space_name,
       "_param_set_",
       param_set,
       ".Rdata")
-    }
+  }
   save(output_file, file = file.path(param_space_name, output_file_name))
+  cat(
+    "Saved",
+    output_file_name,
+    "to",
+    file.path(param_space_name, output_file_name),
+    "... \n"
+  )
 }
