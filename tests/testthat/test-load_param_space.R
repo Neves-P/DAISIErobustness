@@ -5,7 +5,7 @@ test_that("test load_param_space loads oceanic_ontogeny
   oceanic_ontogeny_param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny"
     )
-  expect_equal(nrow(oceanic_ontogeny_param_space), 3000)
+  expect_equal(nrow(oceanic_ontogeny_param_space), 1152)
   expect_equal(ncol(oceanic_ontogeny_param_space), 20)
   expect_equal(names(oceanic_ontogeny_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -41,7 +41,7 @@ test_that("test load_param_space loads oceanic_sea_level
   oceanic_sea_level_param_space <- load_param_space(
     param_space_name = "oceanic_sea_level"
   )
-  expect_equal(nrow(oceanic_sea_level_param_space), 9000)
+  expect_equal(nrow(oceanic_sea_level_param_space), 3456)
   expect_equal(ncol(oceanic_sea_level_param_space), 20)
   expect_equal(names(oceanic_sea_level_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -77,7 +77,7 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
   oceanic_ontogeny_sea_level_param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level"
   )
-  expect_equal(nrow(oceanic_ontogeny_sea_level_param_space), 9000)
+  expect_equal(nrow(oceanic_ontogeny_sea_level_param_space), 3456)
   expect_equal(ncol(oceanic_ontogeny_sea_level_param_space), 20)
   expect_equal(names(oceanic_ontogeny_sea_level_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -109,12 +109,11 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
 })
 
 test_that("test load_param_space loads nonoceanic parameter space", {
-  skip("WIP")
   nonoceanic_param_space <- load_param_space(
     param_space_name = "nonoceanic"
   )
-  expect_equal(nrow(nonoceanic_param_space), 3000)
-  expect_equal(ncol(nonoceanic_param_space), 20)
+  expect_equal(nrow(nonoceanic_param_space), 2916)
+  expect_equal(ncol(nonoceanic_param_space), 9)
   expect_equal(names(nonoceanic_param_space),
                c("time", "M", "lac", "mu", "K", "gam", "laa", "x_s",
                  "x_nonend"))
@@ -130,11 +129,10 @@ test_that("test load_param_space loads nonoceanic parameter space", {
 })
 
 test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
-  skip("WIP")
   nonoceanic_sea_level_param_space <- load_param_space(
     param_space_name = "nonoceanic_sea_level"
   )
-  expect_equal(nrow(nonoceanic_sea_level_param_space), 3000)
+  expect_equal(nrow(nonoceanic_sea_level_param_space), 31104)
   expect_equal(ncol(nonoceanic_sea_level_param_space), 20)
   expect_equal(names(nonoceanic_sea_level_param_space),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
