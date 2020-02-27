@@ -2,7 +2,6 @@ context("simulation_contraints")
 
 test_that("test simulation_constraints returns TRUE when simulation
           meets contraints for oceanic_ontogeny", {
-  skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
   set.seed(1)
@@ -13,10 +12,12 @@ test_that("test simulation_constraints returns TRUE when simulation
   geodynamic_simulations <- geodynamic_simulations(
     param_space_name = "oceanic_ontogeny",
     simulation_pars = simulation_pars,
-    replicates = 2)
+    replicates = 2,
+    verbose = FALSE)
 
   simulation_constraints <- simulation_constraints(
-    geodynamic_simulations)
+    geodynamic_simulations,
+    replicates = 2)
 
   expect_true(simulation_constraints)
   expect_equal(simulation_constraints, TRUE)
