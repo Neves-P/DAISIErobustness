@@ -165,7 +165,7 @@ test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
 
 test_that("test load_param_space loads nonoceanic_land_bridge parameter
           space", {
-  skip("WIP")
+  skip("nonoceanic_land_bridge parameter space not finished")
   nonoceanic_land_bridge_param_space <- load_param_space(
     param_space_name = "nonoceanic_land_bridge"
   )

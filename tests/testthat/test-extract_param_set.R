@@ -117,6 +117,7 @@ test_that("test extract_param_set extracts correct param set from
 
 test_that("test extract_param_set extracts correct param set from
           nonoceanic_land_bridge", {
+  skip("nonoceanic_land_bridge parameter space not finished")
   param_space <- load_param_space("nonoceanic_land_bridge")
   simulation_pars <- extract_param_set(
     param_space_name = "nonoceanic_land_bridge",
