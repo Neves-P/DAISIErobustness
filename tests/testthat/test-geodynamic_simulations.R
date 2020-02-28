@@ -177,7 +177,6 @@ test_that("test geodynamic_simulation output is correct for
 
 test_that("test geodynamic_simulation output is correct for
           nonoceanic_land_bridge", {
-  skip("nonoceanic_land_bridge parameter space not finished")
   param_space <- load_param_space(
     param_space_name = "nonoceanic_land_bridge")
   set.seed(1)
@@ -193,22 +192,22 @@ test_that("test geodynamic_simulation output is correct for
     verbose = FALSE)
 
   expect_length(geodynamic_simulations, 2)
-  expect_length(geodynamic_simulations[[1]], 100)
-  expect_equal(geodynamic_simulations[[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_simulations[[1]][[1]]$not_present, 900)
-  expect_equal(nrow(geodynamic_simulations[[1]][[1]]$stt_all), 600)
-  expect_equal(ncol(geodynamic_simulations[[1]][[1]]$stt_all), 5)
-  expect_equal(geodynamic_simulations[[1]][[2]]$branching_times,
-               c(2.55, 0.5))
-  expect_equal(geodynamic_simulations[[1]][[2]]$stac, 2)
-  expect_equal(geodynamic_simulations[[1]][[2]]$missing_species, 0)
-  expect_length(geodynamic_simulations[[2]], 100)
-  expect_equal(geodynamic_simulations[[2]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_simulations[[2]][[1]]$not_present, 900)
-  expect_equal(nrow(geodynamic_simulations[[2]][[1]]$stt_all), 600)
-  expect_equal(ncol(geodynamic_simulations[[2]][[1]]$stt_all), 5)
-  expect_equal(geodynamic_simulations[[2]][[2]]$branching_times,
-               c(2.55, 0.5))
-  expect_equal(geodynamic_simulations[[2]][[2]]$stac, 2)
-  expect_equal(geodynamic_simulations[[2]][[2]]$missing_species, 0)
+  expect_length(geodynamic_simulations[[1]][[1]], 48)
+  expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(geodynamic_simulations[[1]][[1]][[1]]$not_present, 953)
+  expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 222)
+  expect_equal(ncol(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(geodynamic_simulations[[1]][[1]][[2]]$branching_times,
+               c(2.55, 2.46180547513068))
+  expect_equal(geodynamic_simulations[[1]][[1]][[2]]$stac, 2)
+  expect_equal(geodynamic_simulations[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(geodynamic_simulations[[2]][[1]], 55)
+  expect_equal(geodynamic_simulations[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(geodynamic_simulations[[2]][[1]][[1]]$not_present, 946)
+  expect_equal(nrow(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 245)
+  expect_equal(ncol(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(geodynamic_simulations[[2]][[1]][[2]]$branching_times,
+               c(2.55, 1.72434686891246, 1.34727356898184, 0.03352916965332))
+  expect_equal(geodynamic_simulations[[2]][[1]][[2]]$stac, 2)
+  expect_equal(geodynamic_simulations[[2]][[1]][[2]]$missing_species, 0)
 })
