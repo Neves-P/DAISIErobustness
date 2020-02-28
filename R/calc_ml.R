@@ -30,14 +30,14 @@ calc_ml <- function(param_space_name,
         datalist = simulations[[i]][[1]],
         datatype = "single",
         initparsopt = c(median_rates$medians[1],
-                        median_rates$median[2],
+                        median_rates$medians[2],
                         40,
                         median_rates$medians[3],
                         1),
         idparsopt = c(1:5),
         parsfix = NULL,
         idparsfix = NULL,
-        verbose = 1
+        verbose = 0
       )
     )
     if (class(ml[[i]]) == "try-error") {
