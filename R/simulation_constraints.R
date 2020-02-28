@@ -21,8 +21,8 @@ simulation_constraints <- function(simulations,
   prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_colonists >= 5))
   prop_rep_less_100_spec <- length(which(n_spec <= 100))
-  if ((prop_rep_over_15_spec / replicates) >= 0.95 &
-      (prop_rep_over_5_cols / replicates) >= 0.95 &
+  if ((prop_rep_over_15_spec / replicates) >= 0.95 &&
+      (prop_rep_over_5_cols / replicates) >= 0.95 &&
       (prop_rep_less_100_spec / replicates) >= 0.95) {
     return(TRUE)
   } else {
