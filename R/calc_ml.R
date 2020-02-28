@@ -3,6 +3,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return Output from \code{\link{DAISIE_ML_CS}}
+#' @author Joshua Lambert
 #' @export
 calc_ml <- function(param_space_name,
                     simulation_pars,
