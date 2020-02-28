@@ -19,7 +19,6 @@ test_that("test simulation_constraints returns TRUE when simulation
     geodynamic_simulations,
     replicates = 2)
 
-  expect_true(simulation_constraints)
   expect_equal(simulation_constraints, TRUE)
 })
 
