@@ -26,3 +26,6 @@ Output from \code{\link{DAISIE_ML_CS}}
 \description{
 Calculate maximum likelihood value for the rates
 }
+\author{
+Joshua Lambert
+}
