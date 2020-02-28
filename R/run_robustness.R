@@ -69,7 +69,8 @@ run_robustness <- function(param_space_name,
 
     oceanic_simulations_2 <- oceanic_simulations(
       ml = oceanic_ml,
-      simulation_pars = simulation_pars)
+      simulation_pars = simulation_pars,
+      verbose = verbose)
 
     baseline_error <- calc_error(
       simulation_pars = simulation_pars,
