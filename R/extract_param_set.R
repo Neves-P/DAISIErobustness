@@ -37,7 +37,8 @@ extract_param_set <- function(param_space_name,
     simulation_pars$nonoceanic_pars <- c(param_space$x_s[param_set],
                                          param_space$x_nonend[param_set])
 
-    simulation_pars$shift_times <- param_space$shift_times[param_set]
+    simulation_pars$shift_times <-
+      eval(str2expression(param_space$shift_times[param_set]))
   }
   if (param_space_name == "oceanic_ontogeny" ||
       param_space_name == "oceanic_sea_level" ||
