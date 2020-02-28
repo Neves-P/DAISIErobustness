@@ -1,7 +1,7 @@
-context("simulation_contraints")
+context("simulation_constraints")
 
 test_that("test simulation_constraints returns TRUE when simulation
-          meets contraints for oceanic_ontogeny", {
+          meets constraints for oceanic_ontogeny", {
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
   set.seed(1)
@@ -23,7 +23,7 @@ test_that("test simulation_constraints returns TRUE when simulation
 })
 
 test_that("test simulation_constraints returns FALSE when simulation
-          does not meet contraints for oceanic_ontogeny", {
+          does not meet constraints for oceanic_ontogeny", {
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
   set.seed(1)
@@ -45,7 +45,7 @@ test_that("test simulation_constraints returns FALSE when simulation
 })
 
 test_that("test simulation_constraints returns TRUE when simulation
-          meets contraints for oceanic_sea_level", {
+          meets constraints for oceanic_sea_level", {
   skip("cannot find param_set that passes conditioning")
   param_space <- load_param_space(
     param_space_name = "oceanic_sea_level")
@@ -68,7 +68,7 @@ test_that("test simulation_constraints returns TRUE when simulation
 })
 
 test_that("test simulation_constraints returns FALSE when simulation
-          does not meet contraints for oceanic_sea_level", {
+          does not meet constraints for oceanic_sea_level", {
   param_space <- load_param_space(
     param_space_name = "oceanic_sea_level")
   set.seed(1)
@@ -90,7 +90,7 @@ test_that("test simulation_constraints returns FALSE when simulation
 })
 
 test_that("test simulation_constraints returns TRUE when simulation
-          meets contraints for oceanic_ontogeny_sea_level", {
+          meets constraints for oceanic_ontogeny_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level")
@@ -111,7 +111,7 @@ test_that("test simulation_constraints returns TRUE when simulation
 })
 
 test_that("test simulation_constraints returns FALSE when simulation
-          does not meet contraints for oceanic_ontogeny_sea_level", {
+          does not meet constraints for oceanic_ontogeny_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level")
@@ -132,7 +132,7 @@ test_that("test simulation_constraints returns FALSE when simulation
 })
 
 test_that("test simulation_constraints returns TRUE when simulation
-          meets contraints for nonoceanic", {
+          meets constraints for nonoceanic", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic")
@@ -154,7 +154,7 @@ test_that("test simulation_constraints returns TRUE when simulation
 
 
 test_that("test simulation_constraints returns FALSE when simulation
-          does not meet contraints for nonoceanic", {
+          does not meet constraints for nonoceanic", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic")
@@ -175,7 +175,7 @@ test_that("test simulation_constraints returns FALSE when simulation
 })
 
 test_that("test simulation_constraints returns TRUE when simulation
-          meets contraints for nonoceanic_sea_level", {
+          meets constraints for nonoceanic_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic_sea_level")
@@ -196,7 +196,7 @@ test_that("test simulation_constraints returns TRUE when simulation
 })
 
 test_that("test simulation_constraints returns FALSE when simulation
-          does not meet contraints for nonoceanic_sea_level", {
+          does not meet constraints for nonoceanic_sea_level", {
   skip("WIP")
   param_space <- load_param_space(
     param_space_name = "nonoceanic_sea_level")
@@ -217,7 +217,7 @@ test_that("test simulation_constraints returns FALSE when simulation
 })
 
 test_that("test simulation_constraints returns TRUE when simulation meets
-          contraints for oceanic_ontogeny", {
+          constraints for oceanic_ontogeny", {
   skip("WIP")
   param_space <- load_param_space(param_space_name = "oceanic_ontogeny")
   set.seed(1)
@@ -233,7 +233,7 @@ test_that("test simulation_constraints returns TRUE when simulation meets
   expect_equal(simulation_constraints, TRUE)
 })
 
-test_that("test simulation_constraints returns TRUE when simulation meets contraints for oceanic_ontogeny", {
+test_that("test simulation_constraints returns TRUE when simulation meets constraints for oceanic_ontogeny", {
   skip("WIP")
   param_space <- load_param_space(param_space_name = "oceanic_ontogeny")
   set.seed(1)
