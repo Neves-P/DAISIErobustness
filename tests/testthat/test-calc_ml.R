@@ -1,7 +1,7 @@
 context("calc_ml")
 
 test_that("test calc_ml output is correct for oceanic_ontogeny", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
   set.seed(1)
@@ -130,7 +130,7 @@ test_that("test calc_ml output is correct for oceanic_ontogeny_sea_level", {
 })
 
 test_that("test calc_ml output is correct for nonoceanic", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "nonoceanic")
   set.seed(1)
