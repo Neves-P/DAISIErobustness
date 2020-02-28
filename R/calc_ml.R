@@ -27,7 +27,7 @@ calc_ml <- function(param_space_name,
   for (i in seq_along(simulations)) {
     try(
       ml[[i]] <- DAISIE::DAISIE_ML_CS(
-        datalist = simulations[[i]],
+        datalist = simulations[[i]][[1]],
         datatype = "single",
         initparsopt = c(median_rates$medians[1],
                         median_rates$median[2],
