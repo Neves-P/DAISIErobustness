@@ -99,7 +99,7 @@ kauai_parameter_set <- expand.grid(
 # Complete ontogeny paramter set ------------------------------------------
 
 oceanic_ontogeny <- rbind(maui_parameter_set, kauai_parameter_set)
-write.csv(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
+write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 
 # Sea level ---------------------------------------------------------------
 ## Maui Nui ---------------------------------------------------------------
@@ -198,7 +198,7 @@ kauai_oceanic_sea_level <- expand.grid(
 # Complete oceanic sea level paramter set ---------------------------------
 
 oceanic_sea_level <- rbind(maui_oceanic_sea_level, kauai_oceanic_sea_level)
-write.csv(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
+write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 
 # Oceanic ontogeny sea level ----------------------------------------------
@@ -304,7 +304,7 @@ oceanic_ontogeny_sea_level <- rbind(
   oceanic_ontogeny_sea_level_kauai
 )
 
-write.csv(
+write.csv2(
   oceanic_ontogeny_sea_level,
   "data/oceanic_ontogeny_sea_level.csv",
   row.names = FALSE
@@ -367,7 +367,7 @@ nonoceanic <- rbind(
   nonoceanic_kauai
 )
 
-write.csv(
+write.csv2(
   nonoceanic,
   "data/nonoceanic.csv",
   row.names = FALSE
@@ -476,7 +476,7 @@ nonoceanic_sea_level <- rbind(
   nonoceanic_sea_level_kauai
 )
 
-write.csv(
+write.csv2(
   nonoceanic_sea_level,
   "data/nonoceanic_sea_level.csv",
   row.names = FALSE
@@ -1001,7 +1001,7 @@ nonoceanic_land_bridge <- rbind(
   kauai_3_long_lb_dd
 )
 
-write.csv(
+write.csv2(
   nonoceanic_land_bridge,
   "data/nonoceanic_land_bridge.csv",
   row.names = FALSE
