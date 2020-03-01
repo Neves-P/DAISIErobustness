@@ -99,7 +99,7 @@ kauai_parameter_set <- expand.grid(
 # Complete ontogeny paramter set ------------------------------------------
 
 oceanic_ontogeny <- rbind(maui_parameter_set, kauai_parameter_set)
-write.csv(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
+write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 
 # Sea level ---------------------------------------------------------------
 ## Maui Nui ---------------------------------------------------------------
@@ -198,7 +198,7 @@ kauai_oceanic_sea_level <- expand.grid(
 # Complete oceanic sea level paramter set ---------------------------------
 
 oceanic_sea_level <- rbind(maui_oceanic_sea_level, kauai_oceanic_sea_level)
-write.csv(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
+write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 
 # Oceanic ontogeny sea level ----------------------------------------------
@@ -304,7 +304,7 @@ oceanic_ontogeny_sea_level <- rbind(
   oceanic_ontogeny_sea_level_kauai
 )
 
-write.csv(
+write.csv2(
   oceanic_ontogeny_sea_level,
   "data/oceanic_ontogeny_sea_level.csv",
   row.names = FALSE
@@ -367,7 +367,7 @@ nonoceanic <- rbind(
   nonoceanic_kauai
 )
 
-write.csv(
+write.csv2(
   nonoceanic,
   "data/nonoceanic.csv",
   row.names = FALSE
@@ -476,170 +476,532 @@ nonoceanic_sea_level <- rbind(
   nonoceanic_sea_level_kauai
 )
 
-write.csv(
+write.csv2(
   nonoceanic_sea_level,
   "data/nonoceanic_sea_level.csv",
   row.names = FALSE
 )
 
-# Nonoceanic land bridge DI Maui Nui
+# Nonoceanic 1 short land bridge DI Maui Nui
 
 time <- 2.55
 M <- 1000
-lac_1 <- 1
-mu_1 <- 1
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
-gam_1 <- 0.05
+gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-lac_2 <- 2
-mu_2 <- 0.5
-K_2 <- Inf
-gam_2 <- 1
-laa_2 <- 0
-x_s <- 0.3
-x_nonend <- 0.5
-shift_times <- c(2, 4, 6)
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.225, 1.325)))
 
-nonoceanic_land_bridge_DI_maui <- expand.grid(
-  time = time,
-  M = M,
-  lac_1 = lac_1,
-  mu_1 = mu_1,
-  K_1 = K_1,
-  gam_1 = gam_1,
-  laa_1 = laa_1,
-  lac_2 = lac_2,
-  mu_2 = mu_2,
-  K_2 = K_2,
-  gam_2 = gam_2,
-  laa_2 = laa_2,
-  x_s = x_s,
-  x_nonend = x_nonend,
-  shift_times = shift_times,
-  stringsAsFactors = FALSE
-)
+maui_nui_1_short_lb_di <- expand.grid(time = time,
+                                      M = M,
+                                      lac_1 = lac_1,
+                                      mu_1 = mu_1,
+                                      K_1 = K_1,
+                                      gam_1 = gam_1,
+                                      laa_1 = laa_1,
+                                      x_s = x_s,
+                                      x_nonend = x_nonend,
+                                      shift_times = shift_times)
 
-# Nonoceanic land bridge DD Maui Nui ---------------------------------
+maui_nui_1_short_lb_di <- cbind(maui_nui_1_short_lb_di,
+                                lac_2 = maui_nui_1_short_lb_di[, 3] / 2,
+                                mu_2 = maui_nui_1_short_lb_di[, 4] / 2,
+                                K_2 = K_1,
+                                gam_2 = maui_nui_1_short_lb_di[, 6] * 2,
+                                laa_2 = 0)
+
+# Nonoceanic 1 long land bridge DI Maui Nui
 
 time <- 2.55
 M <- 1000
-lac_1 <- 1
-mu_1 <- 1
-K_1 <- 10
-gam_1 <- 0.05
-laa_1 <- 1
-lac_2 <- 2
-mu_2 <- 0.5
-K_2 <- 50
-gam_2 <- 1
-laa_2 <- 0
-x_s <- 0.3
-x_nonend <- 0.5
-shift_times <- c(2, 4, 6)
-
-nonoceanic_land_bridge_DD_maui <- expand.grid(
-  time = time,
-  M = M,
-  lac_1 = lac_1,
-  mu_1 = mu_1,
-  K_1 = K_1,
-  gam_1 = gam_1,
-  laa_1 = laa_1,
-  lac_2 = lac_2,
-  mu_2 = mu_2,
-  K_2 = K_2,
-  gam_2 = gam_2,
-  laa_2 = laa_2,
-  x_s = x_s,
-  x_nonend = x_nonend,
-  shift_times = shift_times,
-  stringsAsFactors = FALSE
-)
-
-# Nonoceanic land bridge DI Kauai --------------------------------------------
-
-time <- 6.15
-M <- 1000
-lac_1 <- 1
-mu_1 <- 1
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
-gam_1 <- 0.05
+gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-lac_2 <- 2
-mu_2 <- 0.5
-K_2 <- Inf
-gam_2 <- 1
-laa_2 <- 0
-x_s <- 0.3
-x_nonend <- 0.5
-shift_times <- c(2, 4, 6)
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.175, 1.375)))
 
-nonoceanic_land_bridge_DI_kauai <- expand.grid(
-  time = time,
-  M = M,
-  lac_1 = lac_1,
-  mu_1 = mu_1,
-  K_1 = K_1,
-  gam_1 = gam_1,
-  laa_1 = laa_1,
-  lac_2 = lac_2,
-  mu_2 = mu_2,
-  K_2 = K_2,
-  gam_2 = gam_2,
-  laa_2 = laa_2,
-  x_s = x_s,
-  x_nonend = x_nonend,
-  shift_times = shift_times,
-  stringsAsFactors = FALSE
-)
+maui_nui_1_long_lb_di <- expand.grid(time = time,
+                                     M = M,
+                                     lac_1 = lac_1,
+                                     mu_1 = mu_1,
+                                     K_1 = K_1,
+                                     gam_1 = gam_1,
+                                     laa_1 = laa_1,
+                                     x_s = x_s,
+                                     x_nonend = x_nonend,
+                                     shift_times = shift_times)
 
-# Nonoceanic land bridge DD Kauai --------------------------------------------
+maui_nui_1_long_lb_di <- cbind(maui_nui_1_long_lb_di,
+                               lac_2 = maui_nui_1_long_lb_di[, 3] / 2,
+                               mu_2 = maui_nui_1_long_lb_di[, 4] / 2,
+                               K_2 = K_1,
+                               gam_2 = maui_nui_1_long_lb_di[, 6] * 2,
+                               laa_2 = 0)
+
+# Nonoceanic 3 short land bridge DI Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
+
+maui_nui_3_short_lb_di <- expand.grid(time = time,
+                                      M = M,
+                                      lac_1 = lac_1,
+                                      mu_1 = mu_1,
+                                      K_1 = K_1,
+                                      gam_1 = gam_1,
+                                      laa_1 = laa_1,
+                                      x_s = x_s,
+                                      x_nonend = x_nonend,
+                                      shift_times = shift_times)
+
+maui_nui_3_short_lb_di <- cbind(maui_nui_3_short_lb_di,
+                                lac_2 = maui_nui_3_short_lb_di[, 3] / 2,
+                                mu_2 = maui_nui_3_short_lb_di[, 4] / 2,
+                                K_2 = K_1,
+                                gam_2 = maui_nui_3_short_lb_di[, 6] * 2,
+                                laa_2 = 0)
+
+# Nonoceanic 3 long land bridge DI Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
+
+maui_nui_3_long_lb_di <- expand.grid(time = time,
+                                     M = M,
+                                     lac_1 = lac_1,
+                                     mu_1 = mu_1,
+                                     K_1 = K_1,
+                                     gam_1 = gam_1,
+                                     laa_1 = laa_1,
+                                     x_s = x_s,
+                                     x_nonend = x_nonend,
+                                     shift_times = shift_times)
+
+maui_nui_3_long_lb_di <- cbind(maui_nui_3_long_lb_di,
+                               lac_2 = maui_nui_3_long_lb_di[, 3] / 2,
+                               mu_2 = maui_nui_3_long_lb_di[, 4] / 2,
+                               K_2 = K_1,
+                               gam_2 = maui_nui_3_long_lb_di[, 6] * 2,
+                               laa_2 = 0)
+
+# Nonoceanic 1 short land bridge DD Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.225, 1.325)))
+
+maui_nui_1_short_lb_dd <- expand.grid(time = time,
+                                      M = M,
+                                      lac_1 = lac_1,
+                                      mu_1 = mu_1,
+                                      K_1 = K_1,
+                                      gam_1 = gam_1,
+                                      laa_1 = laa_1,
+                                      x_s = x_s,
+                                      x_nonend = x_nonend,
+                                      shift_times = shift_times)
+
+maui_nui_1_short_lb_dd <- cbind(maui_nui_1_short_lb_dd,
+                                lac_2 = maui_nui_1_short_lb_dd[, 3] / 2,
+                                mu_2 = maui_nui_1_short_lb_dd[, 4] / 2,
+                                K_2 = K_1,
+                                gam_2 = maui_nui_1_short_lb_dd[, 6] * 2,
+                                laa_2 = 0)
+
+
+# Nonoceanic 1 long land bridge DD Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.175, 1.375)))
+
+maui_nui_1_long_lb_dd <- expand.grid(time = time,
+                                     M = M,
+                                     lac_1 = lac_1,
+                                     mu_1 = mu_1,
+                                     K_1 = K_1,
+                                     gam_1 = gam_1,
+                                     laa_1 = laa_1,
+                                     x_s = x_s,
+                                     x_nonend = x_nonend,
+                                     shift_times = shift_times)
+
+maui_nui_1_long_lb_dd <- cbind(maui_nui_1_long_lb_dd,
+                               lac_2 = maui_nui_1_long_lb_dd[, 3] / 2,
+                               mu_2 = maui_nui_1_long_lb_dd[, 4] / 2,
+                               K_2 = K_1,
+                               gam_2 = maui_nui_1_long_lb_dd[, 6] * 2,
+                               laa_2 = 0)
+
+# Nonoceanic 3 short land bridge DD Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
+
+maui_nui_3_short_lb_dd <- expand.grid(time = time,
+                                      M = M,
+                                      lac_1 = lac_1,
+                                      mu_1 = mu_1,
+                                      K_1 = K_1,
+                                      gam_1 = gam_1,
+                                      laa_1 = laa_1,
+                                      x_s = x_s,
+                                      x_nonend = x_nonend,
+                                      shift_times = shift_times)
+
+maui_nui_3_short_lb_dd <- cbind(maui_nui_3_short_lb_dd,
+                                lac_2 = maui_nui_3_short_lb_dd[, 3] / 2,
+                                mu_2 = maui_nui_3_short_lb_dd[, 4] / 2,
+                                K_2 = K_1,
+                                gam_2 = maui_nui_3_short_lb_dd[, 6] * 2,
+                                laa_2 = 0)
+
+# Nonoceanic 3 long land bridge DD Maui Nui
+
+time <- 2.55
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
+
+maui_nui_3_long_lb_dd <- expand.grid(time = time,
+                                     M = M,
+                                     lac_1 = lac_1,
+                                     mu_1 = mu_1,
+                                     K_1 = K_1,
+                                     gam_1 = gam_1,
+                                     laa_1 = laa_1,
+                                     x_s = x_s,
+                                     x_nonend = x_nonend,
+                                     shift_times = shift_times)
+
+maui_nui_3_long_lb_dd <- cbind(maui_nui_3_long_lb_dd,
+                               lac_2 = maui_nui_3_long_lb_dd[, 3] / 2,
+                               mu_2 = maui_nui_3_long_lb_dd[, 4] / 2,
+                               K_2 = K_1,
+                               gam_2 = maui_nui_3_long_lb_dd[, 6] * 2,
+                               laa_2 = 0)
+
+# Nonoceanic 1 short land bridge DI Kauai
 
 time <- 6.15
 M <- 1000
-lac_1 <- 1
-mu_1 <- 1
-K_1 <- 10
-gam_1 <- 0.05
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-lac_2 <- 2
-mu_2 <- 0.5
-K_2 <- 50
-gam_2 <- 1
-laa_2 <- 0
-x_s <- 0.3
-x_nonend <- 0.5
-shift_times <- c(2, 4, 6)
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(3.025, 3.125)))
 
-nonoceanic_land_bridge_DD_kauai <- expand.grid(
-  time = time,
-  M = M,
-  lac_1 = lac_1,
-  mu_1 = mu_1,
-  K_1 = K_1,
-  gam_1 = gam_1,
-  laa_1 = laa_1,
-  lac_2 = lac_2,
-  mu_2 = mu_2,
-  K_2 = K_2,
-  gam_2 = gam_2,
-  laa_2 = laa_2,
-  x_s = x_s,
-  x_nonend = x_nonend,
-  shift_times = shift_times,
-  stringsAsFactors = FALSE
-)
+kauai_1_short_lb_di <- expand.grid(time = time,
+                                   M = M,
+                                   lac_1 = lac_1,
+                                   mu_1 = mu_1,
+                                   K_1 = K_1,
+                                   gam_1 = gam_1,
+                                   laa_1 = laa_1,
+                                   x_s = x_s,
+                                   x_nonend = x_nonend,
+                                   shift_times = shift_times)
+
+kauai_1_short_lb_di <- cbind(kauai_1_short_lb_di,
+                             lac_2 = kauai_1_short_lb_di[, 3] / 2,
+                             mu_2 = kauai_1_short_lb_di[, 4] / 2,
+                             K_2 = K_1,
+                             gam_2 = kauai_1_short_lb_di[, 6] * 2,
+                             laa_2 = 0)
+
+# Nonoceanic 1 long land bridge DI Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(2.975, 3.175)))
+
+kauai_1_long_lb_di <- expand.grid(time = time,
+                                  M = M,
+                                  lac_1 = lac_1,
+                                  mu_1 = mu_1,
+                                  K_1 = K_1,
+                                  gam_1 = gam_1,
+                                  laa_1 = laa_1,
+                                  x_s = x_s,
+                                  x_nonend = x_nonend,
+                                  shift_times = shift_times)
+
+kauai_1_long_lb_di <- cbind(kauai_1_long_lb_di,
+                            lac_2 = kauai_1_long_lb_di[, 3] / 2,
+                            mu_2 = kauai_1_long_lb_di[, 4] / 2,
+                            K_2 = K_1,
+                            gam_2 = kauai_1_long_lb_di[, 6] * 2,
+                            laa_2 = 0)
+
+# Nonoceanic 3 short land bridge DI Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
+
+kauai_3_short_lb_di <- expand.grid(time = time,
+                                   M = M,
+                                   lac_1 = lac_1,
+                                   mu_1 = mu_1,
+                                   K_1 = K_1,
+                                   gam_1 = gam_1,
+                                   laa_1 = laa_1,
+                                   x_s = x_s,
+                                   x_nonend = x_nonend,
+                                   shift_times = shift_times)
+
+kauai_3_short_lb_di <- cbind(kauai_3_short_lb_di,
+                             lac_2 = kauai_3_short_lb_di[, 3] / 2,
+                             mu_2 = kauai_3_short_lb_di[, 4] / 2,
+                             K_2 = K_1,
+                             gam_2 = kauai_3_short_lb_di[, 6] * 2,
+                             laa_2 = 0)
+
+# Nonoceanic 3 long land bridge DI Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- Inf
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
+
+kauai_3_long_lb_di <- expand.grid(time = time,
+                                  M = M,
+                                  lac_1 = lac_1,
+                                  mu_1 = mu_1,
+                                  K_1 = K_1,
+                                  gam_1 = gam_1,
+                                  laa_1 = laa_1,
+                                  x_s = x_s,
+                                  x_nonend = x_nonend,
+                                  shift_times = shift_times)
+
+kauai_3_long_lb_di <- cbind(kauai_3_long_lb_di,
+                            lac_2 = kauai_3_long_lb_di[, 3] / 2,
+                            mu_2 = kauai_3_long_lb_di[, 4] / 2,
+                            K_2 = K_1,
+                            gam_2 = kauai_3_long_lb_di[, 6] * 2,
+                            laa_2 = 0)
+
+# Nonoceanic 1 short land bridge DD Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(3.025, 3.125)))
+
+kauai_1_short_lb_dd <- expand.grid(time = time,
+                                   M = M,
+                                   lac_1 = lac_1,
+                                   mu_1 = mu_1,
+                                   K_1 = K_1,
+                                   gam_1 = gam_1,
+                                   laa_1 = laa_1,
+                                   x_s = x_s,
+                                   x_nonend = x_nonend,
+                                   shift_times = shift_times)
+
+kauai_1_short_lb_dd <- cbind(kauai_1_short_lb_dd,
+                             lac_2 = kauai_1_short_lb_dd[, 3] / 2,
+                             mu_2 = kauai_1_short_lb_dd[, 4] / 2,
+                             K_2 = K_1,
+                             gam_2 = kauai_1_short_lb_dd[, 6] * 2,
+                             laa_2 = 0)
+
+# Nonoceanic 1 long land bridge DD Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(2.975, 3.175)))
+
+kauai_1_long_lb_dd <- expand.grid(time = time,
+                                  M = M,
+                                  lac_1 = lac_1,
+                                  mu_1 = mu_1,
+                                  K_1 = K_1,
+                                  gam_1 = gam_1,
+                                  laa_1 = laa_1,
+                                  x_s = x_s,
+                                  x_nonend = x_nonend,
+                                  shift_times = shift_times)
+
+kauai_1_long_lb_dd <- cbind(kauai_1_long_lb_dd,
+                            lac_2 = kauai_1_long_lb_dd[, 3] / 2,
+                            mu_2 = kauai_1_long_lb_dd[, 4] / 2,
+                            K_2 = K_1,
+                            gam_2 = kauai_1_long_lb_dd[, 6] * 2,
+                            laa_2 = 0)
+
+
+# Nonoceanic 3 short land bridge DD Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
+
+kauai_3_short_lb_dd <- expand.grid(time = time,
+                                   M = M,
+                                   lac_1 = lac_1,
+                                   mu_1 = mu_1,
+                                   K_1 = K_1,
+                                   gam_1 = gam_1,
+                                   laa_1 = laa_1,
+                                   x_s = x_s,
+                                   x_nonend = x_nonend,
+                                   shift_times = shift_times)
+
+kauai_3_short_lb_dd <- cbind(kauai_3_short_lb_dd,
+                             lac_2 = kauai_3_short_lb_dd[, 3] / 2,
+                             mu_2 = kauai_3_short_lb_dd[, 4] / 2,
+                             K_2 = K_1,
+                             gam_2 = kauai_3_short_lb_dd[, 6] * 2,
+                             laa_2 = 0)
+
+# Nonoceanic 3 long land bridge DD Kauai
+
+time <- 6.15
+M <- 1000
+lac_1 <- c(0.5, 1, 2)
+mu_1 <- c(0.5, 1, 2)
+K_1 <- 10
+gam_1 <- c(0.01, 0.05, 0.1)
+laa_1 <- 1
+x_s <- c(0.05, 0.1, 0.2)
+x_nonend <- c(0.1, 0.5, 0.9)
+shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
+
+kauai_3_long_lb_dd <- expand.grid(time = time,
+                                  M = M,
+                                  lac_1 = lac_1,
+                                  mu_1 = mu_1,
+                                  K_1 = K_1,
+                                  gam_1 = gam_1,
+                                  laa_1 = laa_1,
+                                  x_s = x_s,
+                                  x_nonend = x_nonend,
+                                  shift_times = shift_times)
+
+kauai_3_long_lb_dd <- cbind(kauai_3_long_lb_dd,
+                            lac_2 = kauai_3_long_lb_dd[, 3] / 2,
+                            mu_2 = kauai_3_long_lb_dd[, 4] / 2,
+                            K_2 = K_1,
+                            gam_2 = kauai_3_long_lb_dd[, 6] * 2,
+                            laa_2 = 0)
 
 # Complete nonoceanic land bridge paramter set -------------------------------
 
 nonoceanic_land_bridge <- rbind(
-  nonoceanic_land_bridge_DI_maui,
-  nonoceanic_land_bridge_DD_maui,
-  nonoceanic_land_bridge_DI_kauai,
-  nonoceanic_land_bridge_DD_kauai
+  maui_nui_1_short_lb_di,
+  maui_nui_1_long_lb_di,
+  maui_nui_3_short_lb_di,
+  maui_nui_3_long_lb_di,
+  maui_nui_1_short_lb_dd,
+  maui_nui_1_long_lb_dd,
+  maui_nui_3_short_lb_dd,
+  maui_nui_3_long_lb_dd,
+  kauai_1_short_lb_di,
+  kauai_1_long_lb_di,
+  kauai_3_short_lb_di,
+  kauai_3_long_lb_di,
+  kauai_1_short_lb_dd,
+  kauai_1_long_lb_dd,
+  kauai_3_short_lb_dd,
+  kauai_3_long_lb_dd
 )
 
-write.csv(
+write.csv2(
   nonoceanic_land_bridge,
   "data/nonoceanic_land_bridge.csv",
   row.names = FALSE

@@ -5,7 +5,8 @@
 #' @return Output from \code{\link{DAISIE_sim_constant_rate}}
 #' @export
 oceanic_simulations <- function(ml,
-                                simulation_pars) {
+                                simulation_pars,
+                                verbose) {
   oceanic_simulations <- list()
   for (i in seq_along(ml)) {
     oceanic_simulations[[i]] <- DAISIE::DAISIE_sim_constant_rate(
@@ -14,7 +15,7 @@ oceanic_simulations <- function(ml,
       pars = as.numeric(ml[[i]][1:5]),
       replicates = 1,
       plot_sims = FALSE,
-      verbose = TRUE,
+      verbose = verbose,
       sample_freq = Inf
     )
   }

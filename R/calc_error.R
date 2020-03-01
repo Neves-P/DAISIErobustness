@@ -13,7 +13,7 @@ calc_error <- function(
   replicates) {
 
   rates_error <- list()
-  for (i in seq_len(ml)) {
+  for (i in seq_along(ml)) {
     rates_error$clado_error[i] <-
       abs(simulation_pars$pars[1] - ml[[i]]$lambda_c)
     rates_error$ext_error[i] <- abs(simulation_pars$pars[2] - ml[[i]]$mu)

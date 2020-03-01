@@ -1,19 +1,45 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+os: linux
+dist: bionic
+language: r
+jobs:
+  include:
+  - r: release
+    os: linux
+  - r: devel
+    os: linux
+  - r: release
+    os: osx
+    osx_image: xcode9.2
 cache: packages
+
+r_packages:
+  - doMC
 
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
 
 before_install:
-  - sudo apt-get update
-  - sudo add-apt-repository -y ppa:opencpu/imagemagick
-  - sudo apt-get update
-  - sudo apt-get install -y libmagick++-dev
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:opencpu/imagemagick; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr update --self; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
+
+script:
+  - travis_wait 30 R CMD build .
+  - travis_wait 40 R CMD check *tar.gz
 
 after_success:
   - travis_wait 20 Rscript -e "lintr::lint_package()"
-  - travis_wait 20 Rscript -e 'covr::codecov()'
-  
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out
+  - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout
+  - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/testthat.Rout
+
+after_failure:
+  - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out
+  - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout.fail

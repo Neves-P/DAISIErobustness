@@ -5,7 +5,8 @@
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
-                           replicates = 1000) {
+                           replicates = 1000,
+                           verbose = TRUE) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -31,7 +32,8 @@ run_robustness <- function(param_space_name,
   geodynamic_simulations <- geodynamic_simulations(
     param_space_name = param_space_name,
     simulation_pars = simulation_pars,
-    replicates = replicates)
+    replicates = replicates,
+    verbose = verbose)
 
   simulation_constraints <- simulation_constraints(
     simulations = geodynamic_simulations,
@@ -45,7 +47,8 @@ run_robustness <- function(param_space_name,
 
     oceanic_simulations_1 <- oceanic_simulations(
       ml = geodynamic_ml,
-      simulation_pars = simulation_pars)
+      simulation_pars = simulation_pars,
+      verbose = verbose)
 
     error <- calc_error(
       simulation_pars = simulation_pars,
@@ -66,7 +69,8 @@ run_robustness <- function(param_space_name,
 
     oceanic_simulations_2 <- oceanic_simulations(
       ml = oceanic_ml,
-      simulation_pars = simulation_pars)
+      simulation_pars = simulation_pars,
+      verbose = verbose)
 
     baseline_error <- calc_error(
       simulation_pars = simulation_pars,

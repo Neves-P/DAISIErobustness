@@ -165,16 +165,15 @@ test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
 
 test_that("test load_param_space loads nonoceanic_land_bridge parameter
           space", {
-  skip("WIP")
   nonoceanic_land_bridge_param_space <- load_param_space(
     param_space_name = "nonoceanic_land_bridge"
   )
-  expect_equal(nrow(nonoceanic_land_bridge_param_space), 3000)
-  expect_equal(ncol(nonoceanic_land_bridge_param_space), 20)
+  expect_equal(nrow(nonoceanic_land_bridge_param_space), 3888)
+  expect_equal(ncol(nonoceanic_land_bridge_param_space), 15)
   expect_equal(names(nonoceanic_land_bridge_param_space),
                c("time", "M", "lac_1", "mu_1", "K_1", "gam_1",
-                 "laa_1", "lac_2", "mu_2", "K_2", "gam_2", "laa_2",
-                 "x_s", "x_nonend", "shift_times"))
+                 "laa_1", "x_s", "x_nonend", "shift_times",
+                 "lac_2", "mu_2", "K_2", "gam_2", "laa_2"))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[1]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[2]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[3]]))
@@ -184,7 +183,7 @@ test_that("test load_param_space loads nonoceanic_land_bridge parameter
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[7]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[8]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[9]]))
-  expect_true(is.numeric(nonoceanic_land_bridge_param_space[[10]]))
+  expect_true(is.character(nonoceanic_land_bridge_param_space[[10]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[11]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[12]]))
   expect_true(is.numeric(nonoceanic_land_bridge_param_space[[13]]))

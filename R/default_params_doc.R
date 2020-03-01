@@ -24,6 +24,8 @@
 #' \code{\link{DAISIE_sim_constant_rate}},
 #' \code{\link{DAISIE_sim_time_dependent}} or
 #' \code{\link{DAISIE_sim_constant_rate_shift}}
+#' @param verbose logical determining whether to print
+#' simulation statements to the console.
 #'
 #' @return Nothing
 #'
@@ -36,7 +38,8 @@ default_params_doc <- function(
   simulations,
   ml,
   simulations_1,
-  simulations_2
+  simulations_2,
+  verbose
 ) {
   # Nothing
 }

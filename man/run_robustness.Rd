@@ -4,7 +4,7 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space_name, param_set, replicates = 1000)
+run_robustness(param_space_name, param_set, replicates = 1000, verbose = TRUE)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -18,6 +18,9 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations.}
+
+\item{verbose}{logical determining whether to print
+simulation statements to the console.}
 }
 \description{
 Run robustness analysis pipeline

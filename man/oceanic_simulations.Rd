@@ -4,12 +4,15 @@
 \alias{oceanic_simulations}
 \title{Runs original oceanic DAISIE simulation}
 \usage{
-oceanic_simulations(ml, simulation_pars)
+oceanic_simulations(ml, simulation_pars, verbose)
 }
 \arguments{
 \item{ml}{Output from \code{\link{DAISIE_ML_CS}}}
 
 \item{simulation_pars}{A list of simulation parameters.}
+
+\item{verbose}{logical determining whether to print
+simulation statements to the console.}
 }
 \value{
 Output from \code{\link{DAISIE_sim_constant_rate}}
