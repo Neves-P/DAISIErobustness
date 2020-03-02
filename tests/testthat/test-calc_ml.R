@@ -41,7 +41,7 @@ test_that("test calc_ml output is correct for oceanic_ontogeny", {
   expect_equal(geodynamic_ml[[2]]$df, 5)
   expect_equal(geodynamic_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS or AppVeyor")
   }
 })
 
@@ -256,4 +256,17 @@ test_that("test calc_ml output is correct for nonoceanic_land_bridge", {
   expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
   expect_equal(geodynamic_ml[[2]]$df, 5)
   expect_equal(geodynamic_ml[[2]]$conv, 0)
+})
+
+test_that("test calc_ml output is correct for failed convergence", {
+  skip("Need to fail convergence")
+  simulation_pars <- "stub"
+  geodynamic_simulations <- "stub"
+  geodynamic_ml <- calc_ml(
+      param_space_name = "nonoceanic_land_bridge",
+      simulation_pars = simulation_pars,
+      simulations = geodynamic_simulations)
+  expect_length(geodynamic_ml, 2)
+  expect_equal(geodynamic_ml[[1]], "No convergence")
+  expect_equal(geodynamic_ml[[2]], "No convergence")
 })
