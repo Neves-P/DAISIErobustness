@@ -26,5 +26,7 @@ Imports:
     nLTT,
     readr,
     testit
-Remotes: rsetienne/DAISIE@geodynamics
+Remotes:
+    rsetienne/DAISIE@geodynamics,
+    thijsjanzen/nltt
 RoxygenNote: 7.0.2
