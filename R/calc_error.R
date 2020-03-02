@@ -46,17 +46,21 @@ calc_error <- function(
     stt_last_row_simulations_1 <-
       length(simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
     num_spec_simulations_1 <-
-      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 5]
+      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 2] +
+      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 3] +
+      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 4]
     stt_last_row_simulations_2 <-
       length(simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
     num_spec_simulations_2 <-
-      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 5]
+      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 2] +
+      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 3] +
+      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 4]
     species_error$num_spec_error[n_reps] <-
       abs(num_spec_simulations_1 - num_spec_simulations_2)
     num_colonists_simulations_1 <-
-      length(simulations_1[[n_reps]]) - 1
+      simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 5]
     num_colonists_simulations_2 <-
-      length(simulations_2[[n_reps]]) - 1
+      simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 5]
     species_error$num_colonists_error[n_reps] <-
       abs(num_colonists_simulations_1 - num_colonists_simulations_2)
   }
