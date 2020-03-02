@@ -43,8 +43,8 @@ test_that("test calc_error outout is correct for oceanic_ontogeny", {
                                                      0.29976770185686852)))
   expect_equal(error$species_error, list(nltt = c(9.6201978076527048,
                                                   11.8681059537795903),
-                                         num_spec_error = c(0, 3),
-                                         num_colonists_error = c(0, 0)))
+                                         num_spec_error = c(6, 11),
+                                         num_colonists_error = c(0, 3)))
   expect_equal(error$endemic_error, list(nltt = c(6.0288861180180069,
                                                   7.4256923326169852)))
   expect_equal(error$nonendemic_error, list(nltt = c(15.893208306508456,
@@ -85,16 +85,24 @@ test_that("test calc_error outout is correct for oceanic_sea_level", {
       replicates = 2)
 
     expect_length(error, 4)
-    expect_equal(error$rates_error, list(clado_error = c(0.4269513, 0.7115563),
-                                         ext_error = c(0.8071893, 0.1539146),
-                                         K_error = c(1.008118, 1.569145),
-                                         immig_error = c(0.005318807, 0.006423533),
-                                         ana_error = c(1.2609112, 0.2997677)))
-    expect_equal(error$species_error, list(nltt = c(9.620198, 11.868106),
-                                           num_spec_error = c(0, 3),
+    expect_equal(error$rates_error, list(clado_error = c(9.8620267746950765e-05,
+                                                         9.8620267746950765e-05),
+                                         ext_error = c(14097737014.174385,
+                                                       14097737014.174385),
+                                         K_error = c(3.3045397228414193,
+                                                     3.3045397228414193),
+                                         immig_error = c(0.0099995233687987205,
+                                                         0.0099995233687987205),
+                                         ana_error = c(0.92893720125400536,
+                                                       0.92893720125400536)))
+    expect_equal(error$species_error, list(nltt = c(0.66820829967438833,
+                                                    1.04532662549206901),
+                                           num_spec_error = c(0, 0),
                                            num_colonists_error = c(0, 0)))
-    expect_equal(error$endemic_error, list(nltt = c(6.028886, 7.425692)))
-    expect_equal(error$nonendemic_error, list(c(15.89321, 16.96369)))
+    expect_equal(error$endemic_error, list(nltt = c(0.60478827751811282,
+                                                    0.91848277342026852)))
+    expect_equal(error$nonendemic_error, list(nltt = c(0.14184836435592674,
+                                                       0.21611312090687318)))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
