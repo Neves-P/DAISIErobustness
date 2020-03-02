@@ -1,12 +1,13 @@
 context("run_robustness")
 
-test_that("test_run_robustness output is correct for
-          oceanic_ontogeny", {
-  skip("WIP")
+test_that("test_run_robustness output is correct when
+          oceanic_ontogeny passes", {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
   error <- run_robustness(
     param_space_name = "oceanic_ontogeny",
     param_set = 1,
-    replicates = 2)
+    replicates = 2,
+    verbose = FALSE)
 
   expect_length(error, 13)
   species_error <- list(nltt = c(7.476325, 25.582615),
@@ -70,6 +71,10 @@ test_that("test_run_robustness output is correct for
                                immig_error = c(0.002368688, 0.012751820),
                                ana_error = c(1.11244790, 0.07893092))
   expect_equal(error$rates_baseline_error, rates_baseline_error)
+  } else {
+    skip("Run only on TRAVIS and AppVeyor")
+  }
+
 })
 
 test_that("test_run_robustness output is correct for
