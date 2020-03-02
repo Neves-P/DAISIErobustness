@@ -31,16 +31,24 @@ test_that("test calc_error outout is correct for oceanic_ontogeny", {
     replicates = 2)
 
   expect_length(error, 4)
-  expect_equal(error$rates_error, list(clado_error = c(0.4269513, 0.7115563),
-                                       ext_error = c(0.8071893, 0.1539146),
-                                       K_error = c(1.008118, 1.569145),
-                                       immig_error = c(0.005318807, 0.006423533),
-                                       ana_error = c(1.2609112, 0.2997677)))
-  expect_equal(error$species_error, list(nltt = c(9.620198, 11.868106),
+  expect_equal(error$rates_error, list(clado_error = c(0.42695126480048223,
+                                                       0.71155633922014661),
+                                       ext_error = c(0.80718932746993488,
+                                                     0.15391455889058459),
+                                       K_error = c(1.0081177166597759,
+                                                   1.5691451957460951),
+                                       immig_error = c(0.0053188069824343168,
+                                                       0.0064235325387552566),
+                                       ana_error = c(1.26091118283063786,
+                                                     0.29976770185686852)))
+  expect_equal(error$species_error, list(nltt = c(9.6201978076527048,
+                                                  11.8681059537795903),
                                          num_spec_error = c(0, 3),
                                          num_colonists_error = c(0, 0)))
-  expect_equal(error$endemic_error, list(nltt = c(6.028886, 7.425692)))
-  expect_equal(error$nonendemic_error, list(c(15.89321, 16.96369)))
+  expect_equal(error$endemic_error, list(nltt = c(6.0288861180180069,
+                                                  7.4256923326169852)))
+  expect_equal(error$nonendemic_error, list(nltt = c(15.893208306508456,
+                                                     16.963690931252941)))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
