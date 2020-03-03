@@ -1,6 +1,6 @@
 context("calc_error")
 
-test_that("test calc_error outout is correct for oceanic_ontogeny", {
+test_that("test calc_error output is correct for oceanic_ontogeny", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
@@ -59,7 +59,7 @@ test_that("test calc_error outout is correct for oceanic_ontogeny", {
       simulation_pars = simulation_pars,
       ml = geodynamic_ml,
       simulations_1 = geodynamic_simulations,
-      simulations_2 = oceanic_simulations_1,
+      simulations_2 = oceanic_simulations,
       replicates = 2)
 
   expect_length(error, 4)
@@ -86,7 +86,7 @@ test_that("test calc_error outout is correct for oceanic_ontogeny", {
   }
 })
 
-test_that("test calc_error outout is correct for oceanic_sea_level", {
+test_that("test calc_error output is correct for oceanic_sea_level", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
