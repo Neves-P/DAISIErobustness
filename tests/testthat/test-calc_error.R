@@ -2,33 +2,65 @@ context("calc_error")
 
 test_that("test calc_error outout is correct for oceanic_ontogeny", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-  param_space <- load_param_space(
-    param_space_name = "oceanic_ontogeny")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "oceanic_ontogeny",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  geodynamic_ml <- calc_ml(
-    param_space_name = "oceanic_ontogeny",
-    simulation_pars = simulation_pars,
-    simulations = geodynamic_simulations)
-  oceanic_simulations_1 <- oceanic_simulations(
-    ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    param_space <- load_param_space(
+      param_space_name = "oceanic_ontogeny")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "oceanic_ontogeny",
+      param_space = param_space,
+      param_set = 1)
+    geodynamic_simulations <- geodynamic_simulations(
+      param_space_name = "oceanic_ontogeny",
+      simulation_pars = simulation_pars,
+      replicates = 2,
+      verbose = FALSE)
+    #ML output from oceanic_ontogeny param_set 1
+    geodynamic_ml <- list()
+    geodynamic_ml[[1]] <- c(0.4270512648004822,
+                            0.1928106725300651,
+                            1.009117716659776,
+                            0.004681193017565683,
+                            2.260911182830638,
+                            -78.50919503883652,
+                            5,
+                            0)
+    names(geodynamic_ml[[1]]) <- c("lambda_c",
+                                   "mu",
+                                   "K",
+                                   "gamma",
+                                   "lambda_a",
+                                   "loglik",
+                                   "df",
+                                   "conv")
+    geodynamic_ml[[2]] <- c(0.7116563392201466,
+                            1.153914558890585,
+                            1.570145195746095,
+                            0.01642353253875526,
+                            1.2997677018568698,
+                            -119.270335187471,
+                            5,
+                            0)
+    names(geodynamic_ml[[2]]) <- c("lambda_c",
+                                   "mu",
+                                   "K",
+                                   "gamma",
+                                   "lambda_a",
+                                   "loglik",
+                                   "df",
+                                   "conv")
+    simulation_pars <- list(time = 2.55,
+                            M = 1000)
+    oceanic_simulations <- oceanic_simulations(
+      ml = geodynamic_ml,
+      simulation_pars = simulation_pars,
+      verbose = FALSE)
 
-  error <- calc_error(
-    simulation_pars = simulation_pars,
-    ml = geodynamic_ml,
-    simulations_1 = geodynamic_simulations,
-    simulations_2 = oceanic_simulations_1,
-    replicates = 2)
+    error <- calc_error(
+      simulation_pars = simulation_pars,
+      ml = geodynamic_ml,
+      simulations_1 = geodynamic_simulations,
+      simulations_2 = oceanic_simulations_1,
+      replicates = 2)
 
   expect_length(error, 4)
   expect_equal(error$rates_error, list(clado_error = c(0.42695126480048223,

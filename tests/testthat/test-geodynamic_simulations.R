@@ -23,7 +23,7 @@ test_that("test geodynamic_simulation output is correct for
   expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 107)
   expect_equal(ncol(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$branching_times,
-               c(2.55, 0.1658384))
+               c(2.55, 0.16583840374981))
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$stac, 4)
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$missing_species, 0)
   expect_length(geodynamic_simulations[[2]][[1]], 18)
