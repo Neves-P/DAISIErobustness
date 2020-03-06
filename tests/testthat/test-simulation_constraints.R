@@ -4,7 +4,7 @@ test_that("test simulation_constraints returns TRUE when simulation
           meets constraints for oceanic_ontogeny", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     #geodynamic simulation output from oceanic_ontogeny param_set 1
-    stt_all_rep_1 <- matrix(nrow = 112, ncol = 5)
+    stt_all_rep_1 <- matrix(nrow = 107, ncol = 5)
     colnames(stt_all_rep_1) <- c("Time", "nI", "nA", "nC", "present")
     stt_all_rep_1[1, ] <- c(2.54999999999999982, 0, 0, 0, 0)
     stt_all_rep_1[2, ] <- c(2.53852689750492555, 1, 0, 0, 1)
@@ -146,7 +146,7 @@ test_that("test simulation_constraints returns TRUE when simulation
                                                           0.34139873571694002),
                                       stac = 2,
                                       missing_species = 0)
-    fake_geodynamic_simulations <- list(list(replicate_1_island_info,
+    fake_geodynamic_simulations <- list(list(list(replicate_1_island_info,
                                              replicate_1_taxon_list_1,
                                              replicate_1_taxon_list_2,
                                              replicate_1_taxon_list_3,
@@ -156,8 +156,8 @@ test_that("test simulation_constraints returns TRUE when simulation
                                              replicate_1_taxon_list_7,
                                              replicate_1_taxon_list_8,
                                              replicate_1_taxon_list_9,
-                                             replicate_1_taxon_list_10),
-                                        list(
+                                             replicate_1_taxon_list_10)),
+                                        list(list(
                                           replicate_2_island_info,
                                           replicate_2_taxon_list_1,
                                           replicate_2_taxon_list_2,
@@ -175,11 +175,11 @@ test_that("test simulation_constraints returns TRUE when simulation
                                           replicate_2_taxon_list_14,
                                           replicate_2_taxon_list_15,
                                           replicate_2_taxon_list_16,
-                                          replicate_2_taxon_list_17))
+                                          replicate_2_taxon_list_17)))
 
 
   simulation_constraints <- simulation_constraints(
-    geodynamic_simulations,
+    fake_geodynamic_simulations,
     replicates = 2)
 
   expect_equal(simulation_constraints, TRUE)
