@@ -11,19 +11,6 @@ calc_error <- function(
   simulations_1,
   simulations_2,
   replicates) {
-
-  rates_error <- list()
-  for (i in seq_along(ml)) {
-    rates_error$clado_error[i] <-
-      abs(simulation_pars$pars[1] - ml[[i]]$lambda_c)
-    rates_error$ext_error[i] <- abs(simulation_pars$pars[2] - ml[[i]]$mu)
-    rates_error$K_error[i] <-
-      abs(simulation_pars$pars[3] - ml[[i]]$K)
-    rates_error$immig_error[i] <-
-      abs(simulation_pars$pars[4] - ml[[i]]$gamma)
-    rates_error$ana_error[i] <-
-      abs(simulation_pars$pars[5] - ml[[i]]$lambda_a)
-  }
   species_error <- list()
   for (n_reps in 1:replicates) {
     simulations_1_event_times <-
