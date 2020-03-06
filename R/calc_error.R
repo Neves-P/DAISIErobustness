@@ -92,8 +92,7 @@ for (n_reps in 1:replicates) {
   )
 }
 return(
-  list(rates_error = rates_error,
-       species_error = species_error,
+  list(species_error = species_error,
        endemic_error = endemic_error,
        nonendemic_error = nonendemic_error))
 }
