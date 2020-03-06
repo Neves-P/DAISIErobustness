@@ -19,12 +19,6 @@ test_that("test_run_robustness output is correct when
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -52,12 +46,6 @@ test_that("test_run_robustness output is correct when
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -95,12 +83,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -129,12 +111,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -168,12 +144,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -202,12 +172,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -241,12 +205,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -275,12 +233,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -314,12 +266,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -348,12 +294,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -387,12 +327,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))
@@ -421,12 +355,6 @@ test_that("test_run_robustness output is correct for
   expect_equal(error$endemic_error, endemic_error)
   nonendemic_error <- list(nltt = c(5.608418, 26.075752))
   expect_equal(error$nonendemic_error, nonendemic_error)
-  rates_error <- list(clado_error = c(0.9740681, 1.1962083),
-                      ext_error = c(0.9999944, 0.4407934),
-                      K_error = c(Inf, Inf),
-                      immig_error = c(0.0009473277, 0.0010732816),
-                      ana_error = c(1.911651, 0.188361))
-  expect_equal(error$rates_error, rates_error)
   species_baseline_error <- list(nltt = c(8.642979, 11.659693),
                                  num_spec_error = c(8, 14),
                                  num_colonist_error = c(0, 0))

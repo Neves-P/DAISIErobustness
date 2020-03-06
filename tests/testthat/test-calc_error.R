@@ -45,16 +45,6 @@ test_that("test calc_error output is correct for oceanic_ontogeny", {
       replicates = 2)
 
     expect_length(error, 4)
-    expect_equal(error$rates_error, list(clado_error = c(0.42695126480048223,
-                                                         0.71155633922014661),
-                                         ext_error = c(0.80718932746993488,
-                                                       0.15391455889058459),
-                                         K_error = c(1.0081177166597759,
-                                                     1.5691451957460951),
-                                         immig_error = c(0.0053188069824343168,
-                                                         0.0064235325387552566),
-                                         ana_error = c(1.26091118283063786,
-                                                       0.29976770185686852)))
     expect_equal(error$species_error, list(nltt = c(9.6201978076527048,
                                                     11.8681059537795903),
                                            num_spec_error = c(6, 11),
@@ -116,16 +106,6 @@ test_that("test calc_error output is correct for oceanic_sea_level", {
       replicates = 2)
 
     expect_length(error, 4)
-    expect_equal(error$rates_error, list(clado_error = c(1.5453114896095883,
-                                                         1.6819726921196350),
-                                         ext_error = c(0.63170678107005007,
-                                                       0.46033280489700612),
-                                         K_error = c(0.23684861859530709,
-                                                     2.56371828597775275),
-                                         immig_error = c(0.00079798105089391724,
-                                                         0.00408774900678333594),
-                                         ana_error = c(3.47769129128742627,
-                                                       0.90572632734440783)))
     expect_equal(error$species_error, list(nltt = c(6.5465252463180175,
                                                     10.9115923333007103),
                                            num_spec_error = c(12, 29),
