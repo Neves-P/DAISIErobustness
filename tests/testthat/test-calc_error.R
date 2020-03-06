@@ -44,7 +44,7 @@ test_that("test calc_error output is correct for oceanic_ontogeny", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
 
-    expect_length(error, 4)
+    expect_length(error, 3)
     expect_equal(error$species_error, list(nltt = c(9.6201978076527048,
                                                     11.8681059537795903),
                                            num_spec_error = c(6, 11),
@@ -105,7 +105,7 @@ test_that("test calc_error output is correct for oceanic_sea_level", {
       simulations_2 = oceanic_simulations_1,
       replicates = 2)
 
-    expect_length(error, 4)
+    expect_length(error, 3)
     expect_equal(error$species_error, list(nltt = c(6.5465252463180175,
                                                     10.9115923333007103),
                                            num_spec_error = c(12, 29),
