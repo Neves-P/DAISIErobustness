@@ -57,7 +57,6 @@ run_robustness <- function(param_space_name,
       simulations_2 = oceanic_simulations_1,
       replicates = replicates)
 
-    rates_error <- error$rates_error
     species_error <- error$species_error
     endemic_error <- error$endemic_error
     nonendemic_error <- error$nonendemic_error
@@ -79,7 +78,6 @@ run_robustness <- function(param_space_name,
       simulations_2 = oceanic_simulations_2,
       replicates = replicates)
 
-    rates_baseline_error <- baseline_error$rates_error
     species_baseline_error <- baseline_error$species_error
     endemic_baseline_error <- baseline_error$endemic_error
     nonendemic_baseline_error <- baseline_error$nonendemic_error
@@ -88,11 +86,9 @@ run_robustness <- function(param_space_name,
       species_error = species_error,
       endemic_error = endemic_error,
       nonendemic_error = nonendemic_error,
-      rates_error = rates_error,
       species_baseline_error = species_baseline_error,
       endemic_baseline_error = endemic_baseline_error,
       nonendemic_baseline_error = nonendemic_baseline_error,
-      rates_baseline_error = rates_baseline_error,
       geodynamic_simulations = geodynamic_simulations,
       geodynamic_ml = geodynamic_ml,
       oceanic_simulations_1 = oceanic_simulations_1,
