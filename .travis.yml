@@ -34,7 +34,7 @@ script:
 
 after_success:
   - travis_wait 20 Rscript -e "lintr::lint_package()"
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 Rscript -e 'covr::codecov()'; fi
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/testthat.Rout
@@ -44,4 +44,4 @@ after_failure:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout.fail; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cat /Users/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cat /Users/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout.fail; fi
-  
+
