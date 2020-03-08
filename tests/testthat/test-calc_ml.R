@@ -29,7 +29,7 @@ test_that("test calc_ml output is correct for oceanic_ontogeny", {
   expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651,
                tolerance = 3e-04)
   expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776,
-               tolerancec = 4e-02)
+               tolerance = 3e-02)
   expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683,
                tolerance = 1e-06)
   expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638,
