@@ -24,11 +24,16 @@ test_that("test calc_ml output is correct for oceanic_ontogeny", {
       simulations = geodynamic_simulations)
   }
   expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
+  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822,
+               tolerance = 5e-05)
+  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651,
+               tolerance = 3e-04)
+  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776,
+               tolerancec = 3e-02)
+  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683,
+               tolerance = 1e-06)
+  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638,
+               tolerance = 1e-03)
   expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
   expect_equal(geodynamic_ml[[1]]$df, 5)
   expect_equal(geodynamic_ml[[1]]$conv, 0)
