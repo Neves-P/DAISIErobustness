@@ -26,6 +26,7 @@
 #' \code{\link{DAISIE_sim_constant_rate_shift}}
 #' @param verbose logical determining whether to print
 #' simulation statements to the console.
+#' @param path String with path where log files are located.
 #'
 #' @return Nothing
 #'
@@ -39,7 +40,8 @@ default_params_doc <- function(
   ml,
   simulations_1,
   simulations_2,
-  verbose
+  verbose,
+  path
 ) {
   # Nothing
 }
