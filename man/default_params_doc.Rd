@@ -14,7 +14,8 @@ default_params_doc(
   ml,
   simulations_1,
   simulations_2,
-  verbose
+  verbose,
+  path
 )
 }
 \arguments{
@@ -53,6 +54,8 @@ simulations.}
 
 \item{verbose}{logical determining whether to print
 simulation statements to the console.}
+
+\item{path}{String with path where log files are located.}
 }
 \value{
 Nothing

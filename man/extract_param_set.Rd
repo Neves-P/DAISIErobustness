@@ -26,3 +26,6 @@ a list of simulation parameters
 Extracts a set of parameters from the parameter space for the
 simulation
 }
+\author{
+Joshua Lambert, Pedro Neves
+}

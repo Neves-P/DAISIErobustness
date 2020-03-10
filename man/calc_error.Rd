@@ -32,3 +32,6 @@ A list with four error metrics
 Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time
 }
+\author{
+Joshua Lambert, Pedro Neves
+}

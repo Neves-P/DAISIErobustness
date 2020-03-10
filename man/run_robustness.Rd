@@ -22,6 +22,11 @@ simulations.}
 \item{verbose}{logical determining whether to print
 simulation statements to the console.}
 }
+\value{
+A list of errors and simulation and MLE output if
+\code{\link{simulation_constraints}} returned TRUE or simulation
+output if \code{\link{simulation_constraints}} returned FALSE.
+}
 \description{
 Run robustness analysis pipeline
 }
