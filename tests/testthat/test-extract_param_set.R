@@ -20,7 +20,7 @@ test_that("test extract_param_set extracts correct param set from
                                                sea_level_amplitude = 0,
                                                sea_level_frequency = 0,
                                                island_gradient_angle = 0))
-  expect_equal(simulation_pars$ext_pars, c(1, 25))
+  expect_equal(simulation_pars$ext_pars, c(1, 50))
   expect_equal(simulation_pars$extcutoff, 1000)
   })
 
