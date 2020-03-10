@@ -7,7 +7,6 @@ test_that("test extract_param_set extracts correct param set from
     param_space_name = "oceanic_ontogeny",
     param_space = param_space,
     param_set = 1)
-
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
   expect_equal(simulation_pars$pars, c(0.0001, 1, 0.001, 0.01, 1))
@@ -32,7 +31,6 @@ test_that("test extract_param_set extracts correct param set from
     param_space_name = "oceanic_sea_level",
     param_space = param_space,
     param_set = 1)
-
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
   expect_equal(simulation_pars$pars, c(0.0001, 1, 0.001, 0.01, 1))
@@ -81,13 +79,11 @@ test_that("test extract_param_set extracts correct param set from
     param_space_name = "nonoceanic",
     param_space = param_space,
     param_set = 1)
-
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
   expect_equal(simulation_pars$pars, c(0.5, 0.5, 10, 0.01, 1))
   expect_equal(simulation_pars$nonoceanic_pars, c(0.05, 0.1))
 })
-
 
 test_that("test extract_param_set extracts correct param set from
           nonoceanic_sea_level", {
@@ -114,7 +110,6 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(simulation_pars$extcutoff, 1000)
 })
 
-
 test_that("test extract_param_set extracts correct param set from
           nonoceanic_land_bridge", {
   param_space <- load_param_space("nonoceanic_land_bridge")
@@ -122,7 +117,6 @@ test_that("test extract_param_set extracts correct param set from
     param_space_name = "nonoceanic_land_bridge",
     param_space = param_space,
     param_set = 1)
-
   expect_equal(simulation_pars$time, 2.55)
   expect_equal(simulation_pars$M, 1000)
   expect_equal(simulation_pars$pars, c(0.5, 0.5, Inf, 0.01, 1, 0.25,
