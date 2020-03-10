@@ -1,15 +1,14 @@
-
 # Generate preliminary paramter space for anaysis #
 # Oceanic ontogeny --------------------------------------------------------
 ## Maui Nui ---------------------------------------------------------------
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
@@ -53,11 +52,11 @@ maui_parameter_set <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
