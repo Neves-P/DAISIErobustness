@@ -1,7 +1,7 @@
 #' Checks if the simulations meet the criteria for data sample size
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves
 #' @return Boolean
 #' @export
 simulation_constraints <- function(simulations,
@@ -9,14 +9,14 @@ simulation_constraints <- function(simulations,
   stt_rows <- c()
   n_spec <- c()
   n_colonists <- c()
-  for (n_reps in seq_len(replicates)) {
-    stt_rows[n_reps] <- nrow(simulations[[n_reps]][[1]][[1]]$stt_all)
-    n_spec[n_reps] <-
-      as.numeric(simulations[[n_reps]][[1]][[1]]$stt_all[stt_rows[n_reps], "nI"]) +
-      as.numeric(simulations[[n_reps]][[1]][[1]]$stt_all[stt_rows[n_reps], "nA"]) +
-      as.numeric(simulations[[n_reps]][[1]][[1]]$stt_all[stt_rows[n_reps], "nC"])
-    n_colonists[n_reps] <-
-      as.numeric(simulations[[n_reps]][[1]][[1]]$stt_all[stt_rows[n_reps], "present"])
+  for (i in seq_len(replicates)) {
+    stt_rows[i] <- nrow(simulations[[i]][[1]][[1]]$stt_all)
+    n_spec[i] <-
+      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nI"]) +
+      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nA"]) +
+      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nC"])
+    n_colonists[i] <-
+      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "present"])
   }
   prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_colonists >= 5))
