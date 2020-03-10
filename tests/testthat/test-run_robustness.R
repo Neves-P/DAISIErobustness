@@ -2,16 +2,14 @@ context("run_robustness")
 
 test_that("test_run_robustness output is correct when
           oceanic_ontogeny passes", {
-            skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-  error <- run_robustness(
-    param_space_name = "oceanic_ontogeny",
-    param_set = 1,
-    replicates = 2,
-    verbose = FALSE)
-
-  expect_length(error, 13)
-  species_error <- list(nltt = c(7.476325, 25.582615),
+    error <- run_robustness(
+      param_space_name = "oceanic_ontogeny",
+      param_set = 1,
+      replicates = 2,
+      verbose = FALSE)
+    expect_length(error, 11)
+    species_error <- list(nltt = c(7.476325, 25.582615),
                         num_spec_error = c(22, 28),
                         num_colonist_error = c(19, 17))
   expect_equal(error$species_error, species_error)
@@ -378,8 +376,10 @@ test_that("Output is correct when conditioning not met for
       param_space_name = "oceanic_ontogeny",
       param_set = 1,
       replicates = 2)
-  expect_equal(error,
-                 "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("Output is correct when conditioning not met for
@@ -389,8 +389,10 @@ test_that("Output is correct when conditioning not met for
     param_space_name = "oceanic_sea_level",
     param_set = 1,
     replicates = 2)
-  expect_equal(error,
-               "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("Output is correct when conditioning not met for
@@ -400,8 +402,10 @@ test_that("Output is correct when conditioning not met for
     param_space_name = "oceanic_ontogeny_sea_level",
     param_set = 1,
     replicates = 2)
-  expect_equal(error,
-               "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("Output is correct when conditioning not met for
@@ -411,8 +415,10 @@ test_that("Output is correct when conditioning not met for
     param_space_name = "nonoceanic",
     param_set = 1,
     replicates = 2)
-  expect_equal(error,
-               "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("Output is correct when conditioning not met for
@@ -422,8 +428,10 @@ test_that("Output is correct when conditioning not met for
     param_space_name = "nonoceanic_sea_level",
     param_set = 1,
     replicates = 2)
-  expect_equal(error,
-               "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("Output is correct when conditioning not met for
@@ -433,8 +441,10 @@ test_that("Output is correct when conditioning not met for
     param_space_name = "nonoceanic_land_bridge",
     param_set = 1,
     replicates = 2)
-  expect_equal(error,
-               "95% of replicates did not have 20 species or did not\n    have 5 colonisation to the present")
+  expect_equal(
+    error,
+    "95% of replicates did not have 20 species or did not\n
+    have 5 colonisation to the present")
 })
 
 test_that("abuse param_space_name", {
