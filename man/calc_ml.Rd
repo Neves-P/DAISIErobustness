@@ -24,7 +24,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 simulation statements to the console.}
 }
 \value{
-Output from \code{\link{DAISIE::DAISIE_ML_CS}}
+Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
 }
 \description{
 Calculate maximum likelihood value for the rates

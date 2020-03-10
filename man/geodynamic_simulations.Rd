@@ -22,9 +22,9 @@ simulations.}
 simulation statements to the console.}
 }
 \value{
-A list output from \code{\link{DAISIE::DAISIE_sim_constant_rate}},
-\code{\link{DAISIE::DAISIE_sim_time_dependent}}, or
-\code{\link{DAISIE::DAISIE_sim_constant_rate_shift}}
+A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}}, or
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
 }
 \description{
 Runs DAISIE simulation with geodynamics

@@ -15,7 +15,7 @@ oceanic_simulations(ml, simulation_pars, verbose)
 simulation statements to the console.}
 }
 \value{
-Output from \code{\link{DAISIE::DAISIE_sim_constant_rate}}
+Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 }
 \description{
 Runs original oceanic DAISIE simulation
