@@ -2,7 +2,7 @@
 #' of endemics-through-time and non-endemics-through-time
 #'
 #' @inheritParams default_params_doc
-#'
+#' @author Joshua Lambert, Pedro Neves
 #' @return A list with four error metrics
 #' @export
 calc_error <- function(
