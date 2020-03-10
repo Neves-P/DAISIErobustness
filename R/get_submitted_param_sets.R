@@ -1,8 +1,8 @@
 #' Get param_space number from log file
 #'
-#' @param path String with path where log files are located.
-#'
-#' @return Numeric vector with param_space of jobs in the log files
+#' @inheritParams default_params_doc
+#' @author Joshua Lambert, Pedro Neves
+#' @return Numeric vector with param_space of jobs in the log files.
 #' @export
 get_submitted_param_sets <- function(path) {
 
