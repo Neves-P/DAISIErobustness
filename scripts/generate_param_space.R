@@ -490,8 +490,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.225, 1.325)))
 
 maui_nui_1_short_lb_di <- expand.grid(time = time,
@@ -521,8 +521,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.175, 1.375)))
 
 maui_nui_1_long_lb_di <- expand.grid(time = time,
@@ -552,8 +552,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
 
 maui_nui_3_short_lb_di <- expand.grid(time = time,
@@ -583,8 +583,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
 
 maui_nui_3_long_lb_di <- expand.grid(time = time,
@@ -614,8 +614,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.225, 1.325)))
 
 maui_nui_1_short_lb_dd <- expand.grid(time = time,
@@ -646,8 +646,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.175, 1.375)))
 
 maui_nui_1_long_lb_dd <- expand.grid(time = time,
@@ -677,8 +677,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
 
 maui_nui_3_short_lb_dd <- expand.grid(time = time,
@@ -708,8 +708,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
 
 maui_nui_3_long_lb_dd <- expand.grid(time = time,
@@ -739,8 +739,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(3.025, 3.125)))
 
 kauai_1_short_lb_di <- expand.grid(time = time,
@@ -770,8 +770,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(2.975, 3.175)))
 
 kauai_1_long_lb_di <- expand.grid(time = time,
@@ -801,8 +801,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
 
 kauai_3_short_lb_di <- expand.grid(time = time,
@@ -832,8 +832,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
 
 kauai_3_long_lb_di <- expand.grid(time = time,
@@ -863,8 +863,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(3.025, 3.125)))
 
 kauai_1_short_lb_dd <- expand.grid(time = time,
@@ -894,8 +894,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(2.975, 3.175)))
 
 kauai_1_long_lb_dd <- expand.grid(time = time,
@@ -926,8 +926,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
 
 kauai_3_short_lb_dd <- expand.grid(time = time,
@@ -957,8 +957,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
 
 kauai_3_long_lb_dd <- expand.grid(time = time,
@@ -1005,3 +1005,4 @@ write.csv2(
   "data/nonoceanic_land_bridge.csv",
   row.names = FALSE
 )
+
