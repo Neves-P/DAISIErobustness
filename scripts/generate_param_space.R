@@ -318,8 +318,8 @@ mu <- c(0.5, 1, 2)
 K <- c(10, 40, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- c(1, 2)
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_maui <- expand.grid(
   time = time,
@@ -343,8 +343,8 @@ mu <- c(0.5, 1, 2)
 K <- c(10, 40, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- c(1, 2)
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_kauai <- expand.grid(
   time = time,
