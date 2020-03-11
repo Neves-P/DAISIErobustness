@@ -15,15 +15,15 @@
 #' \code{\link{DAISIE_sim_constant_rate}},
 #' \code{\link{DAISIE_sim_time_dependent}} or
 #' \code{\link{DAISIE_sim_constant_rate_shift}}
-#' @param ml Output from \code{\link{DAISIE_ML_CS}}
+#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML}}
 #' @param simulations_1 A list of simulation output from
-#' \code{\link{DAISIE_sim_constant_rate}},
-#' \code{\link{DAISIE_sim_time_dependent}} or
-#' \code{\link{DAISIE_sim_constant_rate_shift}}
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
 #' @param simulations_2 A list of simulation output from
-#' \code{\link{DAISIE_sim_constant_rate}},
-#' \code{\link{DAISIE_sim_time_dependent}} or
-#' \code{\link{DAISIE_sim_constant_rate_shift}}
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
 #' @param totaltime_1 Numeric with time for which island 1 would be simulated.
 #'   Usually this will correspond to a time that's smaller than the total
 #'   island age.
