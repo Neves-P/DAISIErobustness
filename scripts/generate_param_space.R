@@ -1,15 +1,14 @@
-
 # Generate preliminary paramter space for anaysis #
 # Oceanic ontogeny --------------------------------------------------------
 ## Maui Nui ---------------------------------------------------------------
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
@@ -53,11 +52,11 @@ maui_parameter_set <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
@@ -105,11 +104,11 @@ write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 ## Maui Nui ---------------------------------------------------------------
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -119,7 +118,7 @@ sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
@@ -152,11 +151,11 @@ maui_oceanic_sea_level <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -166,7 +165,7 @@ sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
@@ -206,11 +205,11 @@ write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
@@ -220,7 +219,7 @@ sharpness <- 1
 total_island_age <- 2.864
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
@@ -254,11 +253,11 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
@@ -268,7 +267,7 @@ sharpness <- 1
 total_island_age <- 8.473
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
 x_s <- 0
 x_nonend <- 0
@@ -319,8 +318,8 @@ mu <- c(0.5, 1, 2)
 K <- c(10, 40, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- c(1, 2)
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_maui <- expand.grid(
   time = time,
@@ -344,8 +343,8 @@ mu <- c(0.5, 1, 2)
 K <- c(10, 40, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- c(1, 2)
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_kauai <- expand.grid(
   time = time,
@@ -379,11 +378,11 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -393,10 +392,10 @@ sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_sea_level_maui <- expand.grid(
   time = time,
@@ -426,11 +425,11 @@ nonoceanic_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003, 0.0004)
+lac <- c(0.0001, 0.0002, 0.0003)
 mu_min <- c(1, 2)
-mu_p <- c(25, 50, 75)
+mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03, 0.04)
+gam <- c(0.01, 0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -440,10 +439,10 @@ sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
-island_gradient_angle <- c(25, 50, 75)
+island_gradient_angle <- c(75, 85)
 extcutoff <- 1000
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 
 nonoceanic_sea_level_kauai <- expand.grid(
   time = time,
@@ -491,8 +490,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.225, 1.325)))
 
 maui_nui_1_short_lb_di <- expand.grid(time = time,
@@ -522,8 +521,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.175, 1.375)))
 
 maui_nui_1_long_lb_di <- expand.grid(time = time,
@@ -553,8 +552,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
 
 maui_nui_3_short_lb_di <- expand.grid(time = time,
@@ -584,8 +583,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
 
 maui_nui_3_long_lb_di <- expand.grid(time = time,
@@ -615,8 +614,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.225, 1.325)))
 
 maui_nui_1_short_lb_dd <- expand.grid(time = time,
@@ -647,8 +646,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.175, 1.375)))
 
 maui_nui_1_long_lb_dd <- expand.grid(time = time,
@@ -678,8 +677,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5875, 0.6875, 1.225, 1.325, 1.8625, 1.9625)))
 
 maui_nui_3_short_lb_dd <- expand.grid(time = time,
@@ -709,8 +708,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(0.5375, 0.7375, 1.175, 1.375, 1.8125, 2.0125)))
 
 maui_nui_3_long_lb_dd <- expand.grid(time = time,
@@ -740,8 +739,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(3.025, 3.125)))
 
 kauai_1_short_lb_di <- expand.grid(time = time,
@@ -771,8 +770,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(2.975, 3.175)))
 
 kauai_1_long_lb_di <- expand.grid(time = time,
@@ -802,8 +801,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
 
 kauai_3_short_lb_di <- expand.grid(time = time,
@@ -833,8 +832,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- Inf
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
 
 kauai_3_long_lb_di <- expand.grid(time = time,
@@ -864,8 +863,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(3.025, 3.125)))
 
 kauai_1_short_lb_dd <- expand.grid(time = time,
@@ -895,8 +894,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(2.975, 3.175)))
 
 kauai_1_long_lb_dd <- expand.grid(time = time,
@@ -927,8 +926,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4875, 1.5875, 3.025, 3.125, 4.5625, 4.6625)))
 
 kauai_3_short_lb_dd <- expand.grid(time = time,
@@ -958,8 +957,8 @@ mu_1 <- c(0.5, 1, 2)
 K_1 <- 10
 gam_1 <- c(0.01, 0.05, 0.1)
 laa_1 <- 1
-x_s <- c(0.05, 0.1, 0.2)
-x_nonend <- c(0.1, 0.5, 0.9)
+x_s <- c(0.05, 0.1)
+x_nonend <- c(0.1, 0.9)
 shift_times <- I(list(c(1.4375, 1.6375, 2.975, 3.175, 4.5125, 4.7125)))
 
 kauai_3_long_lb_dd <- expand.grid(time = time,
@@ -1006,3 +1005,4 @@ write.csv2(
   "data/nonoceanic_land_bridge.csv",
   row.names = FALSE
 )
+

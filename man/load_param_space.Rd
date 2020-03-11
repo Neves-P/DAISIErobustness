@@ -14,8 +14,11 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"nonoceanic_land_bridge"}.}
 }
 \value{
-tibble parameter space
+tibble parameter space.
 }
 \description{
 Loads the parameter space into the environment for simulations
+}
+\author{
+Joshua Lambert, Pedro Neves
 }

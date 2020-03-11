@@ -58,7 +58,7 @@
 #'   should be overlaid on top of corresponding ontogeny curves.
 #' @param verbose logical determining whether to print
 #'   simulation statements to the console.
-#'
+#' @param path String with path where log files are located.
 #'
 #' @return Nothing
 #'
@@ -82,7 +82,7 @@ default_params_doc <- function(
   sea_level_2,
   resolution,
   overlay_sea_level,
-  verbose
+  path
 ) {
   # Nothing
 }

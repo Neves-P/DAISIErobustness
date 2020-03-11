@@ -7,7 +7,7 @@
 #' @return a plot with the area size through time
 #' @author Pedro Neves, Joshua Lambert
 #' @export
-plot_areas <- function(totaltime_1,
+DAISIE_plot_areas <- function(totaltime_1,
                               totaltime_2 = NULL,
                               area_pars_1,
                               area_pars_2 = NULL,

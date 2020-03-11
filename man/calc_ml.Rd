@@ -4,7 +4,7 @@
 \alias{calc_ml}
 \title{Calculate maximum likelihood value for the rates}
 \usage{
-calc_ml(param_space_name, simulation_pars, simulations)
+calc_ml(param_space_name, simulation_pars, simulations, verbose)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -19,13 +19,16 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{\link{DAISIE_sim_constant_rate}},
 \code{\link{DAISIE_sim_time_dependent}} or
 \code{\link{DAISIE_sim_constant_rate_shift}}}
+
+\item{verbose}{logical determining whether to print
+simulation statements to the console.}
 }
 \value{
-Output from \code{\link{DAISIE_ML_CS}}
+Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
 }
 \description{
 Calculate maximum likelihood value for the rates
 }
 \author{
-Joshua Lambert
+Joshua Lambert, Pedro Neves
 }

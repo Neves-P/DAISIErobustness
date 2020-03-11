@@ -1,48 +1,45 @@
 context("calc_ml")
 
-test_that("test calc_ml output is correct for oceanic_ontogeny", {
+test_that("test calc_ml output is correct for oceanic_ontogeny that
+          meet constraints", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-  param_space <- load_param_space(
-    param_space_name = "oceanic_ontogeny")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "oceanic_ontogeny",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
+    param_space <- load_param_space(
+      param_space_name = "oceanic_ontogeny")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "oceanic_ontogeny",
+      param_space = param_space,
+      param_set = 1)
+    geodynamic_simulations <- geodynamic_simulations(
+      param_space_name = "oceanic_ontogeny",
+      simulation_pars = simulation_pars,
+      replicates = 2,
+      verbose = FALSE)
     geodynamic_ml <- calc_ml(
       param_space_name = "oceanic_ontogeny",
       simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
-  }
+      simulations = geodynamic_simulations,
+      verbose = FALSE)
   expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822,
+  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.373695489096441,
                tolerance = 5e-05)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651,
+  expect_equal(geodynamic_ml[[1]]$mu, 0.4260955684133167,
                tolerance = 3e-04)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776,
-               tolerancec = 4e-02)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683,
+  expect_equal(geodynamic_ml[[1]]$K, 2.836254050422078,
+               tolerance = 3e-02)
+  expect_equal(geodynamic_ml[[1]]$gamma, 0.005861011987652782,
                tolerance = 1e-06)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638,
+  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.042562501115214,
                tolerance = 1e-03)
-  expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
+  expect_equal(geodynamic_ml[[1]]$loglik, -75.6625003799759)
   expect_equal(geodynamic_ml[[1]]$df, 5)
   expect_equal(geodynamic_ml[[1]]$conv, 0)
-  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
-  expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
-  expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
-  expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
-  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
-  expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
+  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7680300317526428)
+  expect_equal(geodynamic_ml[[2]]$mu, 1.133132789655293)
+  expect_equal(geodynamic_ml[[2]]$K, 2.891481179363073)
+  expect_equal(geodynamic_ml[[2]]$gamma, 0.01681721361408262)
+  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.278917921283525)
+  expect_equal(geodynamic_ml[[2]]$loglik, -126.8518729223961)
   expect_equal(geodynamic_ml[[2]]$df, 5)
   expect_equal(geodynamic_ml[[2]]$conv, 0)
   } else {
@@ -50,113 +47,34 @@ test_that("test calc_ml output is correct for oceanic_ontogeny", {
   }
 })
 
-test_that("test calc_ml output is correct for oceanic_sea_level", {
-  skip("WIP")
-  param_space <- load_param_space(
-    param_space_name = "oceanic_ontogeny")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "oceanic_ontogeny",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
-    geodynamic_ml <- calc_ml(
-      param_space_name = "oceanic_ontogeny",
-      simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
-  }
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
-  expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
-  expect_equal(geodynamic_ml[[1]]$df, 5)
-  expect_equal(geodynamic_ml[[1]]$conv, 0)
-  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
-  expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
-  expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
-  expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
-  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
-  expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
-  expect_equal(geodynamic_ml[[2]]$df, 5)
-  expect_equal(geodynamic_ml[[2]]$conv, 0)
+test_that("test calc_ml output is correct for oceanic_sea_level that
+          meet constraints", {
+  skip("cannot find param_set that passes conditioning")
 })
 
 test_that("test calc_ml output is correct for oceanic_ontogeny_sea_level", {
-  skip("WIP")
-  param_space <- load_param_space(
-    param_space_name = "oceanic_ontogeny")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "oceanic_ontogeny",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
-    geodynamic_ml <- calc_ml(
-      param_space_name = "oceanic_ontogeny",
-      simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
-  }
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
-  expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
-  expect_equal(geodynamic_ml[[1]]$df, 5)
-  expect_equal(geodynamic_ml[[1]]$conv, 0)
-  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
-  expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
-  expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
-  expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
-  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
-  expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
-  expect_equal(geodynamic_ml[[2]]$df, 5)
-  expect_equal(geodynamic_ml[[2]]$conv, 0)
+  skip("cannot find param_set that passes conditioning")
 })
 
 test_that("test calc_ml output is correct for nonoceanic", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-  param_space <- load_param_space(
-    param_space_name = "nonoceanic")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "nonoceanic",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "nonoceanic",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
+    param_space <- load_param_space(
+      param_space_name = "nonoceanic")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "nonoceanic",
+      param_space = param_space,
+      param_set = 1)
+    geodynamic_simulations <- geodynamic_simulations(
+      param_space_name = "nonoceanic",
+      simulation_pars = simulation_pars,
+      replicates = 2,
+      verbose = FALSE)
     geodynamic_ml <- calc_ml(
       param_space_name = "nonoceanic",
       simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
-  }
+      simulations = geodynamic_simulations,
+      verbose = verbose)
   expect_length(geodynamic_ml, 2)
   expect_equal(geodynamic_ml[[1]]$lambda_c, 0.3030426715001062)
   expect_equal(geodynamic_ml[[1]]$mu, 3.167720708419692e-06)
@@ -180,87 +98,54 @@ test_that("test calc_ml output is correct for nonoceanic", {
 })
 
 test_that("test calc_ml output is correct for nonoceanic_sea_level", {
-  skip("WIP")
-  param_space <- load_param_space(
-    param_space_name = "nonoceanic_sea_level")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "nonoceanic_sea_level",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "nonoceanic_sea_level",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
-    geodynamic_ml <- calc_ml(
-      param_space_name = "nonoceanic_sea_level",
-      simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
-  }
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
-  expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
-  expect_equal(geodynamic_ml[[1]]$df, 5)
-  expect_equal(geodynamic_ml[[1]]$conv, 0)
-  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
-  expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
-  expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
-  expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
-  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
-  expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
-  expect_equal(geodynamic_ml[[2]]$df, 5)
-  expect_equal(geodynamic_ml[[2]]$conv, 0)
+  skip("cannot find param_set that passes conditioning")
 })
 
 test_that("test calc_ml output is correct for nonoceanic_land_bridge", {
-  skip("WIP")
-  param_space <- load_param_space(
-    param_space_name = "nonoceanic_land_bridge")
-  set.seed(1)
-  simulation_pars <- extract_param_set(
-    param_space_name = "nonoceanic_land_bridge",
-    param_space = param_space,
-    param_set = 1)
-  geodynamic_simulations <- geodynamic_simulations(
-    param_space_name = "nonoceanic_land_bridge",
-    simulation_pars = simulation_pars,
-    replicates = 2,
-    verbose = FALSE)
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
-    replicates = 2)
-  if (simulation_constraints == TRUE) {
-    geodynamic_ml <- calc_ml(
+  skip("test needs fixing")
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+    param_space <- load_param_space(
+      param_space_name = "nonoceanic_land_bridge")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "nonoceanic_land_bridge",
+      param_space = param_space,
+      param_set = 4)
+    geodynamic_simulations <- geodynamic_simulations(
       param_space_name = "nonoceanic_land_bridge",
       simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
+      replicates = 2,
+      verbose = FALSE)
+    simulation_constraints <- simulation_constraints(
+      simulations = geodynamic_simulations,
+      replicates = 2)
+    if (simulation_constraints == TRUE) {
+      geodynamic_ml <- calc_ml(
+        param_space_name = "nonoceanic_land_bridge",
+        simulation_pars = simulation_pars,
+        simulations = geodynamic_simulations,
+        verbose = FALSE)
+    }
+    expect_length(geodynamic_ml, 2)
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
+    expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
+    expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
+    expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
+    expect_equal(geodynamic_ml[[1]]$df, 5)
+    expect_equal(geodynamic_ml[[1]]$conv, 0)
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
+    expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
+    expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
+    expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
+    expect_equal(geodynamic_ml[[2]]$df, 5)
+    expect_equal(geodynamic_ml[[2]]$conv, 0)
+  } else {
+    skip("Run only on TRAVIS")
   }
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4270512648004822)
-  expect_equal(geodynamic_ml[[1]]$mu, 0.1928106725300651)
-  expect_equal(geodynamic_ml[[1]]$K, 1.009117716659776)
-  expect_equal(geodynamic_ml[[1]]$gamma, 0.004681193017565683)
-  expect_equal(geodynamic_ml[[1]]$lambda_a, 2.260911182830638)
-  expect_equal(geodynamic_ml[[1]]$loglik, -78.50919503883652)
-  expect_equal(geodynamic_ml[[1]]$df, 5)
-  expect_equal(geodynamic_ml[[1]]$conv, 0)
-  expect_equal(geodynamic_ml[[2]]$lambda_c, 0.7116563392201466)
-  expect_equal(geodynamic_ml[[2]]$mu, 1.153914558890585)
-  expect_equal(geodynamic_ml[[2]]$K, 1.570145195746095)
-  expect_equal(geodynamic_ml[[2]]$gamma, 0.01642353253875526)
-  expect_equal(geodynamic_ml[[2]]$lambda_a, 1.299767701856869)
-  expect_equal(geodynamic_ml[[2]]$loglik, -119.270335187471)
-  expect_equal(geodynamic_ml[[2]]$df, 5)
-  expect_equal(geodynamic_ml[[2]]$conv, 0)
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
@@ -270,7 +155,8 @@ test_that("test calc_ml output is correct for failed convergence", {
   geodynamic_ml <- calc_ml(
       param_space_name = "nonoceanic_land_bridge",
       simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
+      simulations = geodynamic_simulations,
+      verbose = verbose)
   expect_length(geodynamic_ml, 2)
   expect_equal(geodynamic_ml[[1]], "No convergence")
   expect_equal(geodynamic_ml[[2]], "No convergence")

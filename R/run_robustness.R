@@ -2,6 +2,9 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
+#' @return A list of errors and simulation and MLE output if
+#' \code{\link{simulation_constraints}} returned TRUE or simulation
+#' output if \code{\link{simulation_constraints}} returned FALSE.
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
@@ -43,7 +46,8 @@ run_robustness <- function(param_space_name,
     geodynamic_ml <- calc_ml(
       param_space_name = param_space_name,
       simulation_pars = simulation_pars,
-      simulations = geodynamic_simulations)
+      simulations = geodynamic_simulations,
+      verbose = verbose)
 
     oceanic_simulations_1 <- oceanic_simulations(
       ml = geodynamic_ml,
@@ -64,7 +68,8 @@ run_robustness <- function(param_space_name,
     oceanic_ml <- calc_ml(
       param_space_name = "oceanic",
       simulation_pars = simulation_pars,
-      simulations = oceanic_simulations_1)
+      simulations = oceanic_simulations_1,
+      verbose = verbose)
 
     oceanic_simulations_2 <- oceanic_simulations(
       ml = oceanic_ml,

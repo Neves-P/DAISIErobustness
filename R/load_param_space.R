@@ -1,8 +1,8 @@
 #' Loads the parameter space into the environment for simulations
 #'
 #' @inheritParams default_params_doc
-#'
-#' @return tibble parameter space
+#' @author Joshua Lambert, Pedro Neves
+#' @return tibble parameter space.
 #' @export
 load_param_space <- function(param_space_name) {
   file_domain <-

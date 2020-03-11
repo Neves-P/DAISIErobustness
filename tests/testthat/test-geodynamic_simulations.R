@@ -15,7 +15,6 @@ test_that("test geodynamic_simulation output is correct for
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 11)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -55,7 +54,6 @@ test_that("test geodynamic_simulation output is correct for
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 2)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -93,7 +91,6 @@ test_that("test geodynamic_simulation output is correct for
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 2)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -131,7 +128,6 @@ test_that("test geodynamic_simulation output is correct for
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 33)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -166,13 +162,11 @@ test_that("test geodynamic_simulation output is correct for
     param_space_name = "nonoceanic_sea_level",
     param_space = param_space,
     param_set = 1)
-
   geodynamic_simulations <- geodynamic_simulations(
     param_space_name = "nonoceanic_sea_level",
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 2)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -205,13 +199,11 @@ test_that("test geodynamic_simulation output is correct for
     param_space_name = "nonoceanic_land_bridge",
     param_space = param_space,
     param_set = 1)
-
   geodynamic_simulations <- geodynamic_simulations(
     param_space_name = "nonoceanic_land_bridge",
     simulation_pars = simulation_pars,
     replicates = 2,
     verbose = FALSE)
-
   expect_length(geodynamic_simulations, 2)
   expect_length(geodynamic_simulations[[1]][[1]], 48)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
