@@ -44,8 +44,6 @@ run_robustness <- function(param_space_name,
 
   if (simulation_constraints == TRUE) {
     geodynamic_ml <- calc_ml(
-      param_space_name = param_space_name,
-      simulation_pars = simulation_pars,
       simulations = geodynamic_simulations,
       verbose = verbose)
 
@@ -56,7 +54,6 @@ run_robustness <- function(param_space_name,
 
     error <- calc_error(
       simulation_pars = simulation_pars,
-      ml = geodynamic_ml,
       simulations_1 = geodynamic_simulations,
       simulations_2 = oceanic_simulations_1,
       replicates = replicates)
@@ -66,8 +63,6 @@ run_robustness <- function(param_space_name,
     nonendemic_error <- error$nonendemic_error
 
     oceanic_ml <- calc_ml(
-      param_space_name = "oceanic",
-      simulation_pars = simulation_pars,
       simulations = oceanic_simulations_1,
       verbose = verbose)
 
@@ -78,7 +73,6 @@ run_robustness <- function(param_space_name,
 
     baseline_error <- calc_error(
       simulation_pars = simulation_pars,
-      ml = oceanic_ml,
       simulations_1 = oceanic_simulations_1,
       simulations_2 = oceanic_simulations_2,
       replicates = replicates)
