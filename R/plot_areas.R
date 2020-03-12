@@ -1,28 +1,3 @@
-#' Get param_space number from log file
-#'
-#' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
-#' @return Numeric vector with param_space of jobs in the log files.
-#' @export
-get_submitted_param_sets <- function(path) {
-
-  all_files <- list.files(path)
-
-  submitted_param_sets <- c()
-  for (file in seq_along(all_files)) {
-
-    function_call_line <- readLines(file.path(path, all_files[file]), n = 5)[5]
-    pattern <- "param_set=(.*?),"
-    param_set <-
-      as.numeric(regmatches(
-        function_call_line,
-        regexec(pattern, function_call_line))[[1]][2]
-      )
-    submitted_param_sets <- c(submitted_param_sets, param_set)
-  }
-  return(submitted_param_sets)
-}
-
 #' Plots island area function(s) through time
 #'
 #' Plots area functions through time. If only one set of area and/or sea-level
@@ -32,7 +7,7 @@ get_submitted_param_sets <- function(path) {
 #' @return a plot with the area size through time
 #' @author Pedro Neves, Joshua Lambert
 #' @export
-DAISIE_plot_areas <- function(totaltime_1,
+plot_areas <- function(totaltime_1,
                               totaltime_2 = NULL,
                               area_pars_1,
                               area_pars_2 = NULL,

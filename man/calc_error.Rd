@@ -11,14 +11,14 @@ calc_error(simulation_pars, simulations_1, simulations_2, replicates)
 \item{simulation_pars}{A list of simulation parameters.}
 
 \item{simulations_1}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}},
-\code{\link{DAISIE_sim_time_dependent}} or
-\code{\link{DAISIE_sim_constant_rate_shift}}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}}
 
 \item{simulations_2}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}},
-\code{\link{DAISIE_sim_time_dependent}} or
-\code{\link{DAISIE_sim_constant_rate_shift}}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations.}

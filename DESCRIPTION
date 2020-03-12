@@ -25,7 +25,8 @@ Imports:
     DAISIE,
     nLTT,
     readr,
-    testit
+    testit,
+    ggplot2
 Remotes:
     rsetienne/DAISIE@geodynamics,
     thijsjanzen/nltt

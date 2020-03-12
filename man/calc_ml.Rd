@@ -16,7 +16,7 @@ calc_ml(simulations, verbose)
 simulation statements to the console.}
 }
 \value{
-Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+Output from \code{\link[DAISIE]{DAISIE_ML}}
 }
 \description{
 Calculate maximum likelihood value for the rates

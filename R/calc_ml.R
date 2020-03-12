@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+#' @return Output from \code{\link[DAISIE]{DAISIE_ML}}
 #' @export
 calc_ml <- function(simulations,
                     verbose) {
