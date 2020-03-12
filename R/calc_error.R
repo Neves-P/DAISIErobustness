@@ -7,7 +7,6 @@
 #' @export
 calc_error <- function(
   simulation_pars,
-  ml,
   simulations_1,
   simulations_2,
   replicates) {

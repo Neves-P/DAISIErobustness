@@ -4,17 +4,9 @@
 \alias{calc_ml}
 \title{Calculate maximum likelihood value for the rates}
 \usage{
-calc_ml(param_space_name, simulation_pars, simulations, verbose)
+calc_ml(simulations, verbose)
 }
 \arguments{
-\item{param_space_name}{A string with the parameter space to run. Can
-be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-\code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
-
-\item{simulation_pars}{A list of simulation parameters.}
-
 \item{simulations}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}},
 \code{\link{DAISIE_sim_time_dependent}} or
