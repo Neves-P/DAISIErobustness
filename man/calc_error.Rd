@@ -5,12 +5,10 @@
 \title{Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time}
 \usage{
-calc_error(simulation_pars, ml, simulations_1, simulations_2, replicates)
+calc_error(simulation_pars, simulations_1, simulations_2, replicates)
 }
 \arguments{
 \item{simulation_pars}{A list of simulation parameters.}
-
-\item{ml}{Output from \code{\link{DAISIE_ML_CS}}}
 
 \item{simulations_1}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}},

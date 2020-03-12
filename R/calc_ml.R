@@ -4,9 +4,7 @@
 #' @author Joshua Lambert, Pedro Neves
 #' @return Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
 #' @export
-calc_ml <- function(param_space_name,
-                    simulation_pars,
-                    simulations,
+calc_ml <- function(simulations,
                     verbose) {
   ml <- list()
   if (verbose == TRUE) {
