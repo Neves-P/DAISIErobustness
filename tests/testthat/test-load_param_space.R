@@ -41,7 +41,7 @@ test_that("test load_param_space loads oceanic_sea_level
   oceanic_sea_level <- load_param_space(
     param_space_name = "oceanic_sea_level"
   )
-  expect_equal(nrow(oceanic_sea_level), 3456)
+  expect_equal(nrow(oceanic_sea_level), 864)
   expect_equal(ncol(oceanic_sea_level), 20)
   expect_equal(names(oceanic_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -77,7 +77,7 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
   oceanic_ontogeny_sea_level <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level"
   )
-  expect_equal(nrow(oceanic_ontogeny_sea_level), 3456)
+  expect_equal(nrow(oceanic_ontogeny_sea_level), 864)
   expect_equal(ncol(oceanic_ontogeny_sea_level), 20)
   expect_equal(names(oceanic_ontogeny_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -112,7 +112,7 @@ test_that("test load_param_space loads nonoceanic parameter space", {
   nonoceanic <- load_param_space(
     param_space_name = "nonoceanic"
   )
-  expect_equal(nrow(nonoceanic), 2916)
+  expect_equal(nrow(nonoceanic), 1296)
   expect_equal(ncol(nonoceanic), 9)
   expect_equal(names(nonoceanic),
                c("time", "M", "lac", "mu", "K", "gam", "laa", "x_s",
@@ -132,7 +132,7 @@ test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
   nonoceanic_sea_level <- load_param_space(
     param_space_name = "nonoceanic_sea_level"
   )
-  expect_equal(nrow(nonoceanic_sea_level), 31104)
+  expect_equal(nrow(nonoceanic_sea_level), 3456)
   expect_equal(ncol(nonoceanic_sea_level), 20)
   expect_equal(names(nonoceanic_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -168,7 +168,7 @@ test_that("test load_param_space loads nonoceanic_land_bridge parameter
   nonoceanic_land_bridge <- load_param_space(
     param_space_name = "nonoceanic_land_bridge"
   )
-  expect_equal(nrow(nonoceanic_land_bridge), 3888)
+  expect_equal(nrow(nonoceanic_land_bridge), 1728)
   expect_equal(ncol(nonoceanic_land_bridge), 15)
   expect_equal(names(nonoceanic_land_bridge),
                c("time", "M", "lac_1", "mu_1", "K_1", "gam_1",

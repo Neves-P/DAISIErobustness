@@ -43,8 +43,8 @@ test_that("test extract_param_set extracts correct param set from
                                                total_island_age = 2.55,
                                                sea_level_amplitude = 60,
                                                sea_level_frequency = 25.5,
-                                               island_gradient_angle = 25))
-  expect_equal(simulation_pars$ext_pars, c(1, 25))
+                                               island_gradient_angle = 75))
+  expect_equal(simulation_pars$ext_pars, c(1, 50))
   expect_equal(simulation_pars$extcutoff, 1000)
 })
 
@@ -67,8 +67,8 @@ test_that("test extract_param_set extracts correct param set from
                                                total_island_age = 2.864,
                                                sea_level_amplitude = 60,
                                                sea_level_frequency = 25.5,
-                                               island_gradient_angle = 25))
-  expect_equal(simulation_pars$ext_pars, c(1, 25))
+                                               island_gradient_angle = 75))
+  expect_equal(simulation_pars$ext_pars, c(1, 50))
   expect_equal(simulation_pars$extcutoff, 1000)
 })
 
@@ -105,8 +105,8 @@ test_that("test extract_param_set extracts correct param set from
                                                total_island_age = 2.55,
                                                sea_level_amplitude = 60,
                                                sea_level_frequency = 25.5,
-                                               island_gradient_angle = 25))
-  expect_equal(simulation_pars$ext_pars, c(1, 25))
+                                               island_gradient_angle = 75))
+  expect_equal(simulation_pars$ext_pars, c(1, 50))
   expect_equal(simulation_pars$extcutoff, 1000)
 })
 
