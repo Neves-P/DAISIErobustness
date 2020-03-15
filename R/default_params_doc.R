@@ -15,7 +15,7 @@
 #' \code{\link{DAISIE_sim_constant_rate}},
 #' \code{\link{DAISIE_sim_time_dependent}} or
 #' \code{\link{DAISIE_sim_constant_rate_shift}}
-#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML}}
+#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
 #' @param simulations_1 A list of simulation output from
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
