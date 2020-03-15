@@ -30,11 +30,11 @@ before_install:
 
 script:
   - travis_wait 30 R CMD build .
-  - travis_wait 40 R CMD check *tar.gz
+  - travis_wait 60 R CMD check *tar.gz
 
 after_success:
   - travis_wait 20 Rscript -e "lintr::lint_package()"
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 40 Rscript -e 'covr::codecov()'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 60 Rscript -e 'covr::codecov()'; fi
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/tests/testthat.Rout
   - cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/testthat.Rout
