@@ -73,13 +73,6 @@ test_that("test_run_robustness output is silent when
   }
 })
 
-test_that("abuse param_space_name", {
-  expect_error(run_robustness(
-    param_space_name = "nonsense",
-    param_set = 1,
-    replicates = 2))
-})
-
 test_that("abuse param_set", {
   expect_error(run_robustness(
     param_space_name = "oceanic_ontogeny",
