@@ -49,8 +49,8 @@ test_that("test_run_robustness is silent when nonoceanic
   }
 })
 
-test_that("test_run_robustness output is correct for
-          nonoceanic_sea_level", {
+test_that("test_run_robustness output is silent when
+          nonoceanic_sea_level passes as function does not return output", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     expect_silent(run_robustness(
       param_space_name = "nonoceanic_sea_level",
@@ -61,8 +61,8 @@ test_that("test_run_robustness output is correct for
   }
 })
 
-test_that("test_run_robustness output is correct for
-          nonoceanic_land_bridge", {
+test_that("test_run_robustness output is silent when
+          nonoceanic_land_bridge passes as function does not return output", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     expect_silent(run_robustness(
       param_space_name = "nonoceanic_land_bridge",
@@ -78,16 +78,6 @@ test_that("abuse param_space_name", {
     param_space_name = "nonsense",
     param_set = 1,
     replicates = 2))
-
-  expect_error(run_robustness(
-    param_space_name = "nonsense",
-    param_set = 2,
-    replicates = 2))
-
-  expect_error(run_robustness(
-    param_space_name = "nonsense",
-    param_set = 1,
-    replicates = 3))
 })
 
 test_that("abuse param_set", {
