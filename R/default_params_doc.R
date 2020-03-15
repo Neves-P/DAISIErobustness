@@ -82,6 +82,7 @@ default_params_doc <- function(
   sea_level_2,
   resolution,
   overlay_sea_level,
+  verbose,
   path
 ) {
   # Nothing
