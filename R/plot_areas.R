@@ -139,8 +139,6 @@ plot_areas <- function(totaltime_1,
                          size = 1.2,
                          alpha = 0.5)
   }
-
-
   return(area_plot)
 }
 
