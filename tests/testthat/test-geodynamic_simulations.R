@@ -31,10 +31,7 @@ test_that("test geodynamic_simulation output is correct for
   expect_equal(nrow(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 132)
   expect_equal(ncol(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$branching_times,
-               c(2.55,
-                 0.85594841486772,
-                 0.80903212943811,
-                 0.31633454531757))
+               c(2.55, 1.29032111838460, 0.80903212943811, 0.31633454531757))
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$missing_species, 0)
   } else {
@@ -102,7 +99,7 @@ test_that("test geodynamic_simulation output is correct for
   expect_length(geodynamic_simulations[[1]][[1]], 4)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$not_present, 997)
-  expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 73)
+  expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 71)
   expect_equal(ncol(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$branching_times,
                c(2.55, 0.35243774875998))
@@ -231,7 +228,7 @@ test_that("test geodynamic_simulation output is correct for
   expect_equal(nrow(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 245)
   expect_equal(ncol(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$branching_times,
-               c(2.55, 1.72434686891246, 1.34727356898184, 0.03352916965332))
+               c(2.55, 2.55000000000000, 1.34727356898184, 0.03352916965332))
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$missing_species, 0)
   } else {

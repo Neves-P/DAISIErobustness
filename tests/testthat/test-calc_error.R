@@ -16,20 +16,20 @@ test_that("test calc_error output is correct for oceanic_ontogeny", {
       verbose = FALSE)
     #ML output from oceanic_ontogeny param_set 2 with seed 1
     geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.7408068959667875,
-                                     "mu" = 8.065703243093204e-06,
-                                     "K" = 3.921506604000109,
-                                     "gamma" = 0.00431446351327052,
-                                     "lambda_a" = 2.09840132716742,
-                                     "loglik" = -95.185418771964,
+    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.9516893216529831,
+                                     "mu" = 0.4371724756929532,
+                                     "K" = 26.45933105611771,
+                                     "gamma" = 0.005832693735317008,
+                                     "lambda_a" = 1.91311658602524,
+                                     "loglik" = -93.6464134227662,
                                      "df" = 5,
                                      "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 1.06329380388064,
-                                     "mu" = 0.7931747920331884,
-                                     "K" = 2.952451938556902,
-                                     "gamma" = 0.0113674045407624,
-                                     "lambda_a" = 1.054600748059755,
-                                     "loglik" = -134.5787898739167,
+    geodynamic_ml[[2]] <- data.frame("lambda_c" = 1.17346081209476,
+                                     "mu" = 0.9780652536369839,
+                                     "K" = 1.798109468901113,
+                                     "gamma" = 0.01258190594811776,
+                                     "lambda_a" = 0.8917175650839453,
+                                     "loglik" = -133.3346436904723,
                                      "df" = 5,
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
@@ -42,14 +42,14 @@ test_that("test calc_error output is correct for oceanic_ontogeny", {
         simulations_2 = oceanic_simulations,
         replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(3.141494866515948,
-                                                    14.694628666366153),
-                                           num_spec_error = c(8, 8),
-                                           num_colonists_error = c(3, 5)))
-    expect_equal(error$endemic_error, list(nltt = c(3.726658796032580,
-                                                    7.487621911387501)))
-    expect_equal(error$nonendemic_error, list(nltt = c(17.23732010178108,
-                                                       14.28972737422861)))
+    expect_equal(error$species_error, list(nltt = c(3.466459645659721,
+                                                    16.779762104341131),
+                                           num_spec_error = c(6, 18),
+                                           num_colonists_error = c(1, 2)))
+    expect_equal(error$endemic_error, list(nltt = c(4.105857769709307,
+                                                    9.843170592071166)))
+    expect_equal(error$nonendemic_error, list(nltt = c(12.19399299074907,
+                                                       20.13397293941591)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
@@ -79,12 +79,12 @@ test_that("test calc_error output is correct for oceanic_sea_level", {
                                      "loglik" = -47.69166930027427,
                                      "df" = 5,
                                      "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 2.836741297420238,
-                                     "mu" = 2.770627161721033,
-                                     "K" = 30.88669608579816,
-                                     "gamma" = 0.01429103672065733,
-                                     "lambda_a" = 7.11012890239877,
-                                     "loglik" = -86.0987646284259,
+    geodynamic_ml[[2]] <- data.frame("lambda_c" = 3.056890321142856,
+                                     "mu" = 3.041705911125052,
+                                     "K" = 6.44774902382832,
+                                     "gamma" = 0.01534606797314414,
+                                     "lambda_a" = 6.88566769598733,
+                                     "loglik" = -84.99771234359366,
                                      "df" = 5,
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
@@ -98,13 +98,13 @@ test_that("test calc_error output is correct for oceanic_sea_level", {
       replicates = 2)
     expect_length(error, 3)
     expect_equal(error$species_error, list(nltt = c(12.51245689554037,
-                                                    13.29494266017906),
-                                           num_spec_error = c(0, 4),
-                                           num_colonists_error = c(2, 5)))
+                                                    5.248395705769793),
+                                           num_spec_error = c(0, 27),
+                                           num_colonists_error = c(2, 3)))
     expect_equal(error$endemic_error, list(nltt = c(6.251267253365500,
-                                                    3.222937345190041)))
+                                                    2.302925917732638)))
     expect_equal(error$nonendemic_error, list(nltt = c(12.69555403808047,
-                                                       16.56665519081412)))
+                                                       21.94389485833001)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
@@ -126,20 +126,20 @@ test_that("test calc_error output is correct for oceanic_ontogeny_sea_level", {
       verbose = FALSE)
     #ML output from oceanic_ontogeny_sea_level param_set 27 with seed 1
     geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 2.198941712892927,
-                                     "mu" = 1.712274429316733,
-                                     "K" = 5.751168968796951,
-                                     "gamma" = 0.007058001353378364,
-                                     "lambda_a" = 0.05526635050605113,
-                                     "loglik" = -66.50132153428572,
+    geodynamic_ml[[1]] <- data.frame("lambda_c" = 1.966041408219724,
+                                     "mu" = 1.477271249292301,
+                                     "K" = 11.52960672065235,
+                                     "gamma" = 0.006571062319056279,
+                                     "lambda_a" = 0.3773529354438802,
+                                     "loglik" = -69.36231376286956,
                                      "df" = 5,
                                      "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 2.381815467187852,
-                                     "mu" = 1.046013027125299,
-                                     "K" = 2.834566690606739,
-                                     "gamma" = 0.004800398484349702,
-                                     "lambda_a" = 2.407565440033816,
-                                     "loglik" = -75.74986294679776,
+    geodynamic_ml[[2]] <- data.frame("lambda_c" = 2.14918107310318,
+                                     "mu" = 1.03741820400687,
+                                     "K" = 3.130324308163246,
+                                     "gamma" = 0.004961625821861754,
+                                     "lambda_a" = 2.479993996397024,
+                                     "loglik" = -83.89207336884942,
                                      "df" = 5,
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
@@ -152,14 +152,14 @@ test_that("test calc_error output is correct for oceanic_ontogeny_sea_level", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(8.016755630413288,
-                                                    3.826442146267494),
-                                           num_spec_error = c(16, 56),
+    expect_equal(error$species_error, list(nltt = c(10.388902607880278,
+                                                    4.371228574431327),
+                                           num_spec_error = c(14, 56),
                                            num_colonists_error = c(0, 2)))
-    expect_equal(error$endemic_error, list(nltt = c(4.823369621440063,
-                                                    2.616596340881805)))
-    expect_equal(error$nonendemic_error, list(nltt = c(29.88960922645806,
-                                                       95.68731873541401)))
+    expect_equal(error$endemic_error, list(nltt = c(4.540215746684407,
+                                                    2.927160988924299)))
+    expect_equal(error$nonendemic_error, list(nltt = c(30.66732210323404,
+                                                       94.52056249083593)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
@@ -181,20 +181,20 @@ test_that("test calc_error output is correct for nonoceanic", {
       verbose = FALSE)
     #ML output from nonoceanic param_set 1 with seed 1
     geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.30300300291092,
-                                     "mu" = 4.964867330468602e-08,
-                                     "K" = 1.625692371550108,
-                                     "gamma" = 0.01254922020468433,
-                                     "lambda_a" = 1.173556546810398,
-                                     "loglik" = -229.8375999917219,
+    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.3046796298398503,
+                                     "mu" = 2.478742324453904e-07,
+                                     "K" = 6.208633062634737,
+                                     "gamma" = 0.01254772160543027,
+                                     "lambda_a" = 1.173611857782068,
+                                     "loglik" = -229.7054580820761,
                                      "df" = 5,
                                      "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 0.2989753342789382,
-                                     "mu" = 1.724254516799549e-09,
-                                     "K" = 3.569023895535222,
-                                     "gamma" = 0.01411821591582622,
-                                     "lambda_a" = 1.238056586235929,
-                                     "loglik" = -260.4378133143198,
+    geodynamic_ml[[2]] <- data.frame("lambda_c" = 0.3021716755500783,
+                                     "mu" = 1.204652295451645e-13,
+                                     "K" = 11.43734759081412,
+                                     "gamma" = 0.01411701470946118,
+                                     "lambda_a" = 1.237721898963076,
+                                     "loglik" = -260.140463184815,
                                      "df" = 5,
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
@@ -207,14 +207,14 @@ test_that("test calc_error output is correct for nonoceanic", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(49.80634192731014,
-                                                    62.55704626591506),
-                                           num_spec_error = c(7, 22),
-                                           num_colonists_error = c(11, 2)))
-    expect_equal(error$endemic_error, list(nltt = c(13.38309566798700,
-                                                    14.46004128715671)))
-    expect_equal(error$nonendemic_error, list(nltt = c(88.67239914131849,
-                                                       117.62432704194313)))
+    expect_equal(error$species_error, list(nltt = c(49.27599612261292,
+                                                    62.57651115290483),
+                                           num_spec_error = c(0, 14),
+                                           num_colonists_error = c(12, 2)))
+    expect_equal(error$endemic_error, list(nltt = c(13.10567859898315,
+                                                    13.43629271817640)))
+    expect_equal(error$nonendemic_error, list(nltt = c(79.74617727328071,
+                                                       109.64757319439911)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
@@ -236,20 +236,20 @@ test_that("test calc_error output is correct for nonoceanic_sea_level", {
       verbose = FALSE)
     #ML output from nonoceanic_sea_level param_set 2 with seed 1
     geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 1.732894138690761,
-                                     "mu" = 1.519851052914035,
-                                     "K" = 3.830052882150426,
-                                     "gamma" = 0.01620148380267938,
-                                     "lambda_a" = 5.525981166292832e-07,
-                                     "loglik" = -139.2516694128911,
+    geodynamic_ml[[1]] <- data.frame("lambda_c" = 1.704278341160928,
+                                     "mu" = 1.514106760135826,
+                                     "K" = 10.85585442336849,
+                                     "gamma" = 0.01627502023082438,
+                                     "lambda_a" = 7.340837158630392e-07,
+                                     "loglik" = -141.4874129044304,
                                      "df" = 5,
                                      "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 0.786858491805923,
-                                     "mu" = 0.8038946792807485,
-                                     "K" = 3.094000903328777,
-                                     "gamma" = 0.007245363385792234,
-                                     "lambda_a" = 0.6667461733647201,
-                                     "loglik" = -80.13404339756168,
+    geodynamic_ml[[2]] <- data.frame("lambda_c" = 0.7102512814667641,
+                                     "mu" = 0.6716103545981235,
+                                     "K" = 4.261832482683926,
+                                     "gamma" = 0.006664007547460572,
+                                     "lambda_a" = 0.7575016621005239,
+                                     "loglik" = -80.91808017248952,
                                      "df" = 5,
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
@@ -262,20 +262,21 @@ test_that("test calc_error output is correct for nonoceanic_sea_level", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(40.07439269576058,
-                                                    28.78168434200272),
-                                           num_spec_error = c(43, 2),
-                                           num_colonists_error = c(8, 3)))
-    expect_equal(error$endemic_error, list(nltt = c(5.455512759786554,
-                                                    5.625527894404391)))
-    expect_equal(error$nonendemic_error, list(nltt = c(109.37123084523417,
-                                                       84.21460775077388)))
+    expect_equal(error$species_error, list(nltt = c(38.44269264489838,
+                                                    29.07846559300534),
+                                           num_spec_error = c(39, 3),
+                                           num_colonists_error = c(10, 2)))
+    expect_equal(error$endemic_error, list(nltt = c(6.015747501169292,
+                                                    4.591280363703355)))
+    expect_equal(error$nonendemic_error, list(nltt = c(99.45795613927066,
+                                                       80.11462151304394)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
 })
 
 test_that("test calc_error output is correct for nonoceanic_land_bridge", {
+  skip("code is currently undergoing repairs")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "nonoceanic_land_bridge")
@@ -291,12 +292,12 @@ test_that("test calc_error output is correct for nonoceanic_land_bridge", {
       verbose = FALSE)
     #ML output from nonoceanic_land_bridge param_set 4 with seed 1
     geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.1709980563594327,
-                                     "mu" = 3.136383012029339e-10,
-                                     "K" = 1.35227706430929,
-                                     "gamma" = 0.01375097503741722,
-                                     "lambda_a" = 1.91763605170363,
-                                     "loglik" = -227.2531910113857,
+    geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.1694990702779443,
+                                     "mu" = 1.106177901845797e-09,
+                                     "K" = 3.063611421428375,
+                                     "gamma" = 0.013722867822101,
+                                     "lambda_a" = 1.917378209393626,
+                                     "loglik" = -227.3587089151978,
                                      "df" = 5,
                                      "conv" = 0)
     geodynamic_ml[[2]] <- data.frame("lambda_c" = 0.1255778271583814,
