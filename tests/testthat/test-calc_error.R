@@ -42,10 +42,10 @@ test_that("test calc_error output is correct for oceanic_ontogeny", {
         simulations_2 = oceanic_simulations,
         replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(3.466459645659721,
-                                                    16.779762104341131),
-                                           num_spec_error = c(6, 18),
-                                           num_colonists_error = c(1, 2)))
+    expect_equal(error$spec_error, list(nltt = c(3.466459645659721,
+                                                 16.779762104341131),
+                                        num_spec_error = c(6, 18),
+                                        num_col_error = c(1, 2)))
     expect_equal(error$endemic_error, list(nltt = c(4.105857769709307,
                                                     9.843170592071166)))
     expect_equal(error$nonendemic_error, list(nltt = c(12.19399299074907,
@@ -97,10 +97,10 @@ test_that("test calc_error output is correct for oceanic_sea_level", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(12.51245689554037,
-                                                    5.248395705769793),
-                                           num_spec_error = c(0, 27),
-                                           num_colonists_error = c(2, 3)))
+    expect_equal(error$spec_error, list(nltt = c(12.51245689554037,
+                                                 5.248395705769793),
+                                        num_spec_error = c(0, 27),
+                                        num_col_error = c(2, 3)))
     expect_equal(error$endemic_error, list(nltt = c(6.251267253365500,
                                                     2.302925917732638)))
     expect_equal(error$nonendemic_error, list(nltt = c(12.69555403808047,
@@ -152,10 +152,10 @@ test_that("test calc_error output is correct for oceanic_ontogeny_sea_level", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(10.388902607880278,
-                                                    4.371228574431327),
-                                           num_spec_error = c(14, 56),
-                                           num_colonists_error = c(0, 2)))
+    expect_equal(error$spec_error, list(nltt = c(10.388902607880278,
+                                                 4.371228574431327),
+                                        num_spec_error = c(14, 56),
+                                        num_col_error = c(0, 2)))
     expect_equal(error$endemic_error, list(nltt = c(4.540215746684407,
                                                     2.927160988924299)))
     expect_equal(error$nonendemic_error, list(nltt = c(30.66732210323404,
@@ -207,10 +207,10 @@ test_that("test calc_error output is correct for nonoceanic", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(49.27599612261292,
-                                                    62.57651115290483),
-                                           num_spec_error = c(0, 14),
-                                           num_colonists_error = c(12, 2)))
+    expect_equal(error$spec_error, list(nltt = c(49.27599612261292,
+                                                 62.57651115290483),
+                                        num_spec_error = c(0, 14),
+                                        num_col_error = c(12, 2)))
     expect_equal(error$endemic_error, list(nltt = c(13.10567859898315,
                                                     13.43629271817640)))
     expect_equal(error$nonendemic_error, list(nltt = c(79.74617727328071,
@@ -262,10 +262,10 @@ test_that("test calc_error output is correct for nonoceanic_sea_level", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(38.44269264489838,
-                                                    29.07846559300534),
-                                           num_spec_error = c(39, 3),
-                                           num_colonists_error = c(10, 2)))
+    expect_equal(error$spec_error, list(nltt = c(38.44269264489838,
+                                                 29.07846559300534),
+                                        num_spec_error = c(39, 3),
+                                        num_col_error = c(10, 2)))
     expect_equal(error$endemic_error, list(nltt = c(6.015747501169292,
                                                     4.591280363703355)))
     expect_equal(error$nonendemic_error, list(nltt = c(99.45795613927066,
@@ -318,10 +318,10 @@ test_that("test calc_error output is correct for nonoceanic_land_bridge", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$species_error, list(nltt = c(0,
-                                                    0),
-                                           num_spec_error = c(0, 0),
-                                           num_colonists_error = c(0, 0)))
+    expect_equal(error$spec_error, list(nltt = c(0,
+                                                 0),
+                                        num_spec_error = c(0, 0),
+                                        num_col_error = c(0, 0)))
     expect_equal(error$endemic_error, list(nltt = c(0,
                                                     0)))
     expect_equal(error$nonendemic_error, list(nltt = c(0,

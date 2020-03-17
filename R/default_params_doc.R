@@ -59,6 +59,19 @@
 #' @param verbose logical determining whether to print
 #'   simulation statements to the console.
 #' @param path String with path where log files are located.
+#' @param spec_error A list with three elements each with a numeric
+#' vector.
+#' @param endemic_error A list with one element with a numeric vector.
+#' @param nonendemic_error A list with one element with a numeric vector.
+#' @param spec_baseline_error A list with three elements each with
+#' a numeric vector.
+#' @param endemic_baseline_error A list with one element with a numeric
+#' vector.
+#' @param nonendemic_baseline_error A list with one element with a numeric
+#' vector.
+#' @param p Numeric vector to calculate divergence metric.
+#' @param q Numeric vector to calculate divergence metric.
+#'
 #'
 #' @return Nothing
 #'
@@ -83,7 +96,15 @@ default_params_doc <- function(
   resolution,
   overlay_sea_level,
   verbose,
-  path
+  path,
+  spec_error,
+  endemic_error,
+  nonendemic_error,
+  spec_baseline_error,
+  endemic_baseline_error,
+  nonendemic_baseline_error,
+  p,
+  q
 ) {
   # Nothing
 }

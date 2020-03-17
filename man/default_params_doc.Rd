@@ -25,7 +25,15 @@ default_params_doc(
   resolution,
   overlay_sea_level,
   verbose,
-  path
+  path,
+  spec_error,
+  endemic_error,
+  nonendemic_error,
+  spec_baseline_error,
+  endemic_baseline_error,
+  nonendemic_baseline_error,
+  p,
+  q
 )
 }
 \arguments{
@@ -108,6 +116,26 @@ should be overlaid on top of corresponding ontogeny curves.}
 simulation statements to the console.}
 
 \item{path}{String with path where log files are located.}
+
+\item{spec_error}{A list with three elements each with a numeric
+vector.}
+
+\item{endemic_error}{A list with one element with a numeric vector.}
+
+\item{nonendemic_error}{A list with one element with a numeric vector.}
+
+\item{spec_baseline_error}{A list with three elements each with
+a numeric vector.}
+
+\item{endemic_baseline_error}{A list with one element with a numeric
+vector.}
+
+\item{nonendemic_baseline_error}{A list with one element with a numeric
+vector.}
+
+\item{p}{Numeric vector to calculate divergence metric.}
+
+\item{q}{Numeric vector to calculate divergence metric.}
 }
 \value{
 Nothing
