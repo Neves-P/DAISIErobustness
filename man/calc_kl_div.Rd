@@ -17,6 +17,10 @@ numeric
 \description{
 Calculates Kullback-Leibler divergence between two vectors
 }
+\references{
+Kullback, Solomon, and Richard A. Leibler. "On information and
+  sufficiency." The annals of mathematical statistics 22.1 (1951): 79-86.
+}
 \author{
 Pedro Neves, Joshua Lambert
 }

@@ -12,18 +12,18 @@
 #' @param param_space tibble of the parameter space.
 #' @param simulation_pars A list of simulation parameters.
 #' @param simulations A list of simulation output from
-#' \code{\link{DAISIE_sim_constant_rate}},
-#' \code{\link{DAISIE_sim_time_dependent}} or
-#' \code{\link{DAISIE_sim_constant_rate_shift}}
-#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+#' \code{\link{DAISIE_sim_constant_rate}()},
+#' \code{\link{DAISIE_sim_time_dependent}()} or
+#' \code{\link{DAISIE_sim_constant_rate_shift}()}
+#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}
 #' @param simulations_1 A list of simulation output from
-#' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
-#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
-#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
 #' @param simulations_2 A list of simulation output from
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
-#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}} or
-#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
 #' @param totaltime_1 Numeric with time for which island 1 would be simulated.
 #'   Usually this will correspond to a time that's smaller than the total
 #'   island age.
@@ -31,10 +31,10 @@
 #'   will correspond to a time that's smaller than the total island age.
 #'   Defaults to \code{NULL}, in which case this island is not plotted.
 #' @param area_pars_1 List of area and sea-level parameters for island 1 as
-#'   created by \code{\link[DAISIE]{create_area_pars}}.
+#'   created by \code{\link[DAISIE]{create_area_pars}()}.
 #' @param area_pars_2 List of area and sea-level parameters for island 1 as
-#'   created by \code{\link[DAISIE]{create_area_pars}}. Defaults to \code{NULL},
-#'   in which case the second area is not plotted.
+#'   created by \code{\link[DAISIE]{create_area_pars}()}. Defaults to
+#'   \code{NULL}, in which case the second area is not plotted.
 #' @param island_ontogeny_1 A string describing the type of
 #'   island ontogeny of island 1.
 #'   Can be \code{"const"}, \code{"beta"} for a beta function describing area

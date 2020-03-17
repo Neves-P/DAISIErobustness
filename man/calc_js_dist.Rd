@@ -36,6 +36,18 @@ a list of numerics
 \description{
 Calculates Jensen-Shannon distance between two distributions
 }
+\references{
+Lamberti, P. W., et al. "Metric character of the quantum
+  Jensen-Shannon divergence." Physical Review A 77.5 (2008): 052311.
+}
+\seealso{
+* [calc_js_div()] calculates Jensen-Shannon divergence.
+* [calc_kl_div()] calculates Kullback-Leibler divergence.
+
+Other error calculations: 
+\code{\link{calc_error}()}
+}
 \author{
 Pedro Neves, Joshua Lambert
 }
+\concept{error calculations}

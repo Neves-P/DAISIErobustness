@@ -4,6 +4,7 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return A list with four error metrics
+#' @family error calculations
 #' @export
 calc_error <- function(
   simulation_pars,

@@ -7,9 +7,6 @@
 #' @references Lamberti, P. W., et al. "Metric character of the quantum
 #'   Jensen-Shannon divergence." Physical Review A 77.5 (2008): 052311.
 #' @family error calculations
-#' @seealso
-#'   * [calc_js_div()] calculates Jensen-Shannon divergence.
-#'   * [calc_kl_div()] calculates Kullback-Leibler divergence.
 #' @export
 calc_js_dist <- function(spec_error,
                          endemic_error,
