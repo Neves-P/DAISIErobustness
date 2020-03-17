@@ -4,6 +4,12 @@
 #'
 #' @return a list of numerics
 #' @author Pedro Neves, Joshua Lambert
+#' @references Lamberti, P. W., et al. "Metric character of the quantum
+#'   Jensen-Shannon divergence." Physical Review A 77.5 (2008): 052311.
+#' @family error calculations
+#' @seealso
+#'   * [calc_js_div()] calculates Jensen-Shannon divergence.
+#'   * [calc_kl_div()] calculates Kullback-Leibler divergence.
 #' @export
 calc_js_dist <- function(spec_error,
                          endemic_error,
@@ -68,6 +74,8 @@ calc_js_div <- function(p, q) {
 #' @inheritParams default_params_doc
 #'
 #' @return numeric
+#' @references Kullback, Solomon, and Richard A. Leibler. "On information and
+#'   sufficiency." The annals of mathematical statistics 22.1 (1951): 79-86.
 #' @author Pedro Neves, Joshua Lambert
 calc_kl_div <- function(p, q) {
   kl_div <- sum(p * log2(p / q))
