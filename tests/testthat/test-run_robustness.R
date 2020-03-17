@@ -1,15 +1,26 @@
 context("run_robustness")
 
-test_that("test_run_robustness is silent when oceanic_ontogeny
-          passes as function does not return output", {
+test_that("test_run_robustness gives error when run locally as it
+          only runs on the peregrine cluster", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    expect_silent(run_robustness(
+    expect_error(run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 2,
       replicates = 2,
       verbose = FALSE))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
+  }
+})
+
+test_that("test_run_robustness is silent when oceanic_ontogeny
+          passes as function does not return output (when required)", {
+  if (1 == 2) {
+    expect_silent(run_robustness(
+      param_space_name = "oceanic_ontogeny",
+      param_set = 2,
+      replicates = 2,
+      verbose = FALSE))
   }
 })
 
