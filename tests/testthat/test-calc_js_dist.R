@@ -24,16 +24,50 @@ test_that("test calc_js_dist output is correct for oceanic_ontogeny", {
                                js_dist_nonendemic_nltt = 0))
 })
 
-test_that("test calc_js_dist output is ", {
-  p <- c(1, 1, 1, 1, 1)
-  q <- c(1, 1, 1, 1, 1)
-  js_dist <- calc_js_dist(p = p, q = q)
-  expect_equal(js_dist, 0)
+test_that("test calc_js_dist output is correct", {
+  spec_error <- list(num_spec_error = c(1, 1, 1, 1, 1),
+                     num_col_error = c(1, 1, 1, 1, 1),
+                     nltt = c(1, 1, 1, 1, 1))
+  endemic_error <- list(nltt = c(1, 1, 1, 1, 1))
+  nonendemic_error <- list(nltt = c(1, 1, 1, 1, 1))
+  spec_baseline_error <- list(num_spec_error = c(1, 1, 1, 1, 1),
+                              num_col_error = c(1, 1, 1, 1, 1),
+                              nltt = c(1, 1, 1, 1, 1))
+  endemic_baseline_error <- list(nltt = c(1, 1, 1, 1, 1))
+  nonendemic_baseline_error <- list(nltt = c(1, 1, 1, 1, 1))
+  js_dist <- calc_js_dist(spec_error = spec_error,
+                          endemic_error = endemic_error,
+                          nonendemic_error = nonendemic_error,
+                          spec_baseline_error = spec_baseline_error,
+                          endemic_baseline_error = endemic_baseline_error,
+                          nonendemic_baseline_error = nonendemic_baseline_error)
+  expect_equal(js_dist$js_dist_num_spec, 0)
+  expect_equal(js_dist$js_dist_num_col, 0)
+  expect_equal(js_dist$js_dist_spec_nltt, 0)
+  expect_equal(js_dist$js_dist_endemic_nltt, 0)
+  expect_equal(js_dist$js_dist_nonendemic_nltt, 0)
 
-  p <- c(2, 2, 2, 2, 2)
-  q <- c(1, 1, 1, 1, 1)
-  js_dist <- calc_js_dist(p = p, q = q)
-  expect_true(js_dist != 0)
+  spec_error <- list(num_spec_error = c(2, 2, 2, 2, 2),
+                     num_col_error = c(2, 2, 2, 2, 2),
+                     nltt = c(2, 2, 2, 2, 2))
+  endemic_error <- list(nltt = c(2, 2, 2, 2, 2))
+  nonendemic_error <- list(nltt = c(2, 2, 2, 2, 2))
+  spec_baseline_error <- list(num_spec_error = c(1, 1, 1, 1, 1),
+                              num_col_error = c(1, 1, 1, 1, 1),
+                              nltt = c(1, 1, 1, 1, 1))
+  endemic_baseline_error <- list(nltt = c(1, 1, 1, 1, 1))
+  nonendemic_baseline_error <- list(nltt = c(1, 1, 1, 1, 1))
+  js_dist <- calc_js_dist(spec_error = spec_error,
+                          endemic_error = endemic_error,
+                          nonendemic_error = nonendemic_error,
+                          spec_baseline_error = spec_baseline_error,
+                          endemic_baseline_error = endemic_baseline_error,
+                          nonendemic_baseline_error = nonendemic_baseline_error)
+  expect_true(js_dist$js_dist_num_spec != 0)
+  expect_true(js_dist$js_dist_num_col != 0)
+  expect_true(js_dist$js_dist_spec_nltt != 0)
+  expect_true(js_dist$js_dist_endemic_nltt != 0)
+  expect_true(js_dist$js_dist_nonendemic_nltt != 0)
 })
 
 test_that("test calc_kl_div output is correct", {
