@@ -7,7 +7,7 @@
 oceanic_simulations(ml, simulation_pars, verbose)
 }
 \arguments{
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
 
 \item{simulation_pars}{A list of simulation parameters.}
 

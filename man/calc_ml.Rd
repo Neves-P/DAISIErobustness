@@ -8,9 +8,9 @@ calc_ml(simulations, verbose)
 }
 \arguments{
 \item{simulations}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}},
-\code{\link{DAISIE_sim_time_dependent}} or
-\code{\link{DAISIE_sim_constant_rate_shift}}}
+\code{\link{DAISIE_sim_constant_rate}()},
+\code{\link{DAISIE_sim_time_dependent}()} or
+\code{\link{DAISIE_sim_constant_rate_shift}()}}
 
 \item{verbose}{logical determining whether to print
 simulation statements to the console.}
