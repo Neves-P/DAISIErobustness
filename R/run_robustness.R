@@ -53,7 +53,6 @@ run_robustness <- function(param_space_name,
       verbose = verbose)
 
     error <- calc_error(
-      simulation_pars = simulation_pars,
       simulations_1 = geodynamic_simulations,
       simulations_2 = oceanic_simulations_1,
       replicates = replicates)
@@ -72,7 +71,6 @@ run_robustness <- function(param_space_name,
       verbose = verbose)
 
     baseline_error <- calc_error(
-      simulation_pars = simulation_pars,
       simulations_1 = oceanic_simulations_1,
       simulations_2 = oceanic_simulations_2,
       replicates = replicates)
