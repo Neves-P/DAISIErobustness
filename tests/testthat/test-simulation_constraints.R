@@ -70,4 +70,3 @@ test_that("test simulation_constraints returns FALSE when number
     replicates = 2)
   expect_equal(simulation_constraints, FALSE)
 })
-
