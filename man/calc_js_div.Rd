@@ -17,6 +17,10 @@ numeric
 \description{
 Calculates the Jensen-Shannon divergence between two vectors
 }
+\references{
+Lamberti, P. W., et al. "Metric character of the quantum
+  Jensen-Shannon divergence." Physical Review A 77.5 (2008): 052311.
+}
 \author{
 Pedro Neves, Joshua Lambert
 }
