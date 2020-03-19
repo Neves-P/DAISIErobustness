@@ -46,6 +46,8 @@ calc_js_dist <- function(spec_error,
 #' @inheritParams default_params_doc
 #'
 #' @return numeric
+#' @references Lamberti, P. W., et al. "Metric character of the quantum
+#'   Jensen-Shannon divergence." Physical Review A 77.5 (2008): 052311.
 #' @author Pedro Neves, Joshua Lambert
 calc_js_div <- function(p, q) {
   js_div <- 0.5 * calc_kl_div(p, (p + q) * 0.5) +
