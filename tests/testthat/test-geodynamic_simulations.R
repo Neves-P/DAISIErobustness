@@ -213,22 +213,25 @@ test_that("test geodynamic_simulation output is correct for
     replicates = 2,
     verbose = FALSE)
   expect_length(geodynamic_simulations, 2)
-  expect_length(geodynamic_simulations[[1]][[1]], 48)
+  expect_length(geodynamic_simulations[[1]][[1]], 52)
   expect_equal(geodynamic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_simulations[[1]][[1]][[1]]$not_present, 953)
-  expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 222)
+  expect_equal(geodynamic_simulations[[1]][[1]][[1]]$not_present, 949)
+  expect_equal(nrow(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 217)
   expect_equal(ncol(geodynamic_simulations[[1]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$branching_times,
-               c(2.55, 2.46180547513068))
+               c(2.55, 1.23995127324015))
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(geodynamic_simulations[[2]][[1]], 55)
+  expect_length(geodynamic_simulations[[2]][[1]], 42)
   expect_equal(geodynamic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_simulations[[2]][[1]][[1]]$not_present, 946)
-  expect_equal(nrow(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 245)
+  expect_equal(geodynamic_simulations[[2]][[1]][[1]]$not_present, 959)
+  expect_equal(nrow(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 211)
   expect_equal(ncol(geodynamic_simulations[[2]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$branching_times,
-               c(2.55, 2.55000000000000, 1.34727356898184, 0.03352916965332))
+               c(2.55, 2.55, 1.87402017166709, 1.16075873682785,
+                 1.07049906606893, 0.99999511323588, 0.75816229384226,
+                 0.70258413745740, 0.67650683563606, 0.37848436451160,
+                 0.32033159209147, 0.10696364569155))
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_simulations[[2]][[1]][[2]]$missing_species, 0)
   } else {
