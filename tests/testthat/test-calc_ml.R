@@ -35,7 +35,7 @@ test_that("test calc_ml output is correct with geodynamic simulations", {
     expect_equal(geodynamic_ml[[2]]$mu, 0.9780652536369839,
                  tolerance = 0.01)
     expect_equal(geodynamic_ml[[2]]$K, 1.798109468901113,
-                 tolerance = 0.01)
+                 tolerance = 0.05)
     expect_equal(geodynamic_ml[[2]]$gamma, 0.01258190594811776,
                  tolerance = 0.01)
     expect_equal(geodynamic_ml[[2]]$lambda_a, 0.8917175650839453,
