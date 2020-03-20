@@ -13,7 +13,7 @@ calc_ml <- function(simulations,
     for (i in seq_along(simulations)) {
       message(paste0("Running ML ", i, " of ", length(simulations)))
       try(
-        invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
+        ml[[i]] <- DAISIE::DAISIE_ML_CS(
           datalist = simulations[[i]][[1]],
           datatype = "single",
           initparsopt = c(1, 1, 40, 0.01, 1),
@@ -21,7 +21,7 @@ calc_ml <- function(simulations,
           parsfix = NULL,
           idparsfix = NULL,
           verbose = 0
-        )))
+        )
       )
       if (class(ml[[i]]) == "try-error") {
         ml[[i]] <- "No convergence"
@@ -32,7 +32,7 @@ calc_ml <- function(simulations,
   for (i in seq_along(simulations)) {
     message(paste0("Running ML ", i, " of ", length(simulations)))
     try(
-      invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
+      suppressMessages(invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
         datalist = simulations[[i]][[1]],
         datatype = "single",
         initparsopt = c(1, 1, 40, 0.01, 1),
@@ -40,7 +40,7 @@ calc_ml <- function(simulations,
         parsfix = NULL,
         idparsfix = NULL,
         verbose = 0
-      )))
+      ))))
     )
     if (class(ml[[i]]) == "try-error") {
       ml[[i]] <- "No convergence"
