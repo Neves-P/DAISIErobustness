@@ -16,21 +16,32 @@ test_that("test calc_ml output is correct with geodynamic simulations", {
     geodynamic_ml <- calc_ml(
       simulations = geodynamic_simulations)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9516893216529831)
-    expect_equal(geodynamic_ml[[1]]$mu, 0.4371724756929532)
-    expect_equal(geodynamic_ml[[1]]$K, 26.45933105611771)
-    expect_equal(geodynamic_ml[[1]]$gamma, 0.005832693735317008)
-    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.91311658602524)
-    expect_equal(geodynamic_ml[[1]]$loglik, -93.6464134227662)
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9516893216529831,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[1]]$mu, 0.4371724756929532,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[1]]$K, 26.45933105611771,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.005832693735317008,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.91311658602524,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[1]]$loglik, -93.6464134227662,
+                 tolerance = 0.001)
     expect_equal(geodynamic_ml[[1]]$df, 5)
     expect_equal(geodynamic_ml[[1]]$conv, 0)
-    expect_equal(geodynamic_ml[[2]]$lambda_c, 1.17346081209476)
-    expect_equal(geodynamic_ml[[2]]$mu, 0.9780652536369839)
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 1.17346081209476,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[2]]$mu, 0.9780652536369839,
+                 tolerance = 0.001)
     expect_equal(geodynamic_ml[[2]]$K, 1.798109468901113,
                  tolerance = 0.05)
-    expect_equal(geodynamic_ml[[2]]$gamma, 0.01258190594811776)
-    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.8917175650839453)
-    expect_equal(geodynamic_ml[[2]]$loglik, -133.3346436904723)
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.01258190594811776,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.8917175650839453,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[2]]$loglik, -133.3346436904723,
+                 tolerance = 0.001)
     expect_equal(geodynamic_ml[[2]]$df, 5)
     expect_equal(geodynamic_ml[[2]]$conv, 0)
   } else {
