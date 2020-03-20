@@ -24,8 +24,7 @@ test_that("test oceanic simulation output is correct for oceanic_ontogeny", {
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 13)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -71,8 +70,7 @@ test_that("test oceanic simulation output is correct for oceanic_sea_level", {
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 8)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -120,8 +118,7 @@ test_that("test oceanic simulation output is correct for
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 5)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -167,8 +164,7 @@ test_that("test oceanic simulation output is correct for nonoceanic", {
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 32)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -215,8 +211,7 @@ test_that("test oceanic simulation output is correct for
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 15)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
@@ -263,8 +258,7 @@ test_that("test oceanic simulation output is correct for
   set.seed(1)
   oceanic_simulations <- oceanic_simulations(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars,
-    verbose = FALSE)
+    simulation_pars = simulation_pars)
   expect_length(oceanic_simulations, 2)
   expect_length(oceanic_simulations[[1]][[1]], 33)
   expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)

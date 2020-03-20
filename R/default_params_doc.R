@@ -56,8 +56,6 @@
 #'   bound at \code{0.00001} to prevent unwieldy slowdowns.
 #' @param overlay_sea_level Logical, controling if sea level curves
 #'   should be overlaid on top of corresponding ontogeny curves.
-#' @param verbose logical determining whether to print
-#'   simulation statements to the console.
 #' @param path String with path where log files are located.
 #' @param spec_error A list with three elements each with a numeric
 #' vector.
@@ -95,7 +93,6 @@ default_params_doc <- function(
   sea_level_2,
   resolution,
   overlay_sea_level,
-  verbose,
   path,
   spec_error,
   endemic_error,

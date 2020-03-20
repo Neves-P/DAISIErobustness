@@ -4,7 +4,7 @@
 \alias{geodynamic_simulations}
 \title{Runs DAISIE simulation with geodynamics}
 \usage{
-geodynamic_simulations(param_space_name, simulation_pars, replicates, verbose)
+geodynamic_simulations(param_space_name, simulation_pars, replicates)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -17,9 +17,6 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations.}
-
-\item{verbose}{logical determining whether to print
-simulation statements to the console.}
 }
 \value{
 A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},

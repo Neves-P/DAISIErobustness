@@ -6,8 +6,7 @@ test_that("test_run_robustness gives error when run locally as it
     expect_error(run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 2,
-      replicates = 2,
-      verbose = FALSE))
+      replicates = 2))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
@@ -19,8 +18,7 @@ test_that("test_run_robustness is silent when oceanic_ontogeny
     expect_silent(run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 2,
-      replicates = 2,
-      verbose = FALSE))
+      replicates = 2))
   }
 })
 

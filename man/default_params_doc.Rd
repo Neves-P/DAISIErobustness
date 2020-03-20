@@ -24,7 +24,6 @@ default_params_doc(
   sea_level_2,
   resolution,
   overlay_sea_level,
-  verbose,
   path,
   spec_error,
   endemic_error,
@@ -111,9 +110,6 @@ bound at \code{0.00001} to prevent unwieldy slowdowns.}
 
 \item{overlay_sea_level}{Logical, controling if sea level curves
 should be overlaid on top of corresponding ontogeny curves.}
-
-\item{verbose}{logical determining whether to print
-simulation statements to the console.}
 
 \item{path}{String with path where log files are located.}
 

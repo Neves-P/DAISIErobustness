@@ -12,8 +12,7 @@ test_that("test calc_error output is correct", {
     geodynamic_simulations <- geodynamic_simulations(
       param_space_name = "oceanic_ontogeny",
       simulation_pars = simulation_pars,
-      replicates = 2,
-      verbose = FALSE)
+      replicates = 2)
     #ML output from oceanic_ontogeny param_set 2 with seed 1
     geodynamic_ml <- list()
     geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.9516893216529831,
@@ -34,8 +33,7 @@ test_that("test calc_error output is correct", {
                                      "conv" = 0)
     oceanic_simulations <- oceanic_simulations(
       ml = geodynamic_ml,
-      simulation_pars = simulation_pars,
-      verbose = FALSE)
+      simulation_pars = simulation_pars)
     error <- calc_error(
       simulations_1 = geodynamic_simulations,
       simulations_2 = oceanic_simulations,

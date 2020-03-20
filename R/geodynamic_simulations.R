@@ -8,8 +8,7 @@
 #' @export
 geodynamic_simulations <- function(param_space_name,
                                    simulation_pars,
-                                   replicates,
-                                   verbose) {
+                                   replicates) {
   geodynamic_simulations <- list()
   if (param_space_name == "nonoceanic") {
     for (i in seq_len(replicates)) {
@@ -21,7 +20,7 @@ geodynamic_simulations <- function(param_space_name,
         nonoceanic_pars = simulation_pars$nonoceanic_pars,
         sample_freq  = Inf,
         plot_sims = FALSE,
-        verbose = verbose
+        verbose = FALSE
       )
     }
   }
@@ -36,7 +35,7 @@ geodynamic_simulations <- function(param_space_name,
         shift_times = simulation_pars$shift_times,
         sample_freq  = Inf,
         plot_sims = FALSE,
-        verbose = verbose
+        verbose = FALSE
       )
       }
     }
@@ -58,7 +57,7 @@ geodynamic_simulations <- function(param_space_name,
         extcutoff = simulation_pars$extcutoff,
         sample_freq = Inf,
         plot_sims = FALSE,
-        verbose = verbose
+        verbose = FALSE
       )
       }
     }
