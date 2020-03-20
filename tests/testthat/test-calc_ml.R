@@ -50,7 +50,7 @@ test_that("test calc_ml output is correct with geodynamic simulations", {
 })
 
 
-test_that("test calc_ml output is correct with oceanic", {
+test_that("test calc_ml output is correct with oceanic simulations", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
