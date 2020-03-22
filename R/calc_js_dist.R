@@ -16,17 +16,23 @@ calc_js_dist <- function(spec_error,
                          nonendemic_baseline_error) {
 
   spec_nltt <- spec_error$nltt
+  testit::assert(all(spec_nltt > 0))
   spec_baseline_nltt <- spec_baseline_error$nltt
+  testit::assert(all(spec_baseline_nltt > 0))
   js_dist_spec_nltt <- sqrt(calc_js_div(spec_nltt, spec_baseline_nltt))
   testit::assert(js_dist_spec_nltt >= 0)
 
   endemic_nltt <- endemic_error$nltt
+  testit::assert(all(endemic_nltt > 0))
   endemic_baseline_nltt <- endemic_baseline_error$nltt
+  testit::assert(all(endemic_baseline_nltt > 0))
   js_dist_endemic_nltt <- sqrt(calc_js_div(endemic_nltt, endemic_baseline_nltt))
   testit::assert(js_dist_endemic_nltt >= 0)
 
   nonendemic_nltt <- nonendemic_error$nltt
+  testit::assert(all(nonendemic_nltt > 0))
   nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
+  testit::assert(all(nonendemic_baseline_nltt > 0))
   js_dist_nonendemic_nltt <- sqrt(calc_js_div(nonendemic_nltt,
                                          nonendemic_baseline_nltt))
   testit::assert(js_dist_nonendemic_nltt >= 0)
