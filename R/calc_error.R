@@ -16,13 +16,17 @@ calc_error <- function(simulations_1,
       spec_error[[n_reps]] <- skip_failed_convergence()
     } else {
       simulations_1_event_times <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       simulations_1_num_spec <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nI"] +
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nA"] +
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nC"]
       simulations_2_event_times <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       simulations_2_num_spec <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nI"] +
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nA"] +
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nC"]
       spec_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = simulations_1_event_times,
         species_number = simulations_1_num_spec,
@@ -33,23 +37,23 @@ calc_error <- function(simulations_1,
         normalize = FALSE
       )
       stt_last_row_simulations_1 <-
-        length(simulations_1[[n_reps]][[1]][[1]]$stt_all[, 5])
+        length(simulations_1[[n_reps]][[1]][[1]]$stt_all[, "present"])
       num_spec_simulations_1 <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 2] +
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 3] +
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 4]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, "nI"] +
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, "nA"] +
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, "nC"]
       stt_last_row_simulations_2 <-
-        length(simulations_2[[n_reps]][[1]][[1]]$stt_all[, 5])
+        length(simulations_2[[n_reps]][[1]][[1]]$stt_all[, "present"])
       num_spec_simulations_2 <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 2] +
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 3] +
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 4]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, "nI"] +
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, "nA"] +
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, "nC"]
       spec_error$num_spec_error[n_reps] <-
         abs(num_spec_simulations_1 - num_spec_simulations_2)
       num_col_simulations_1 <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, 5]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_1, "present"]
       num_col_simulations_2 <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, 5]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_simulations_2, "present"]
       spec_error$num_col_error[n_reps] <-
         abs(num_col_simulations_1 - num_col_simulations_2)
     }
@@ -60,10 +64,16 @@ calc_error <- function(simulations_1,
         is.character(simulations_2[[n_reps]])) {
       endemic_error[[n_reps]] <- skip_failed_convergence()
     } else {
-      simulations_1_event_times <- simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
-      simulations_1_endemic_spec <- simulations_1[[n_reps]][[1]][[1]]$stt_all[, 2]
-      simulations_2_event_times <- simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
-      simulations_2_endemic_spec <- simulations_2[[n_reps]][[1]][[1]]$stt_all[, 2]
+      simulations_1_event_times <-
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
+      simulations_1_endemic_spec <-
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nA"] +
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nC"]
+      simulations_2_event_times <-
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "Time"]
+      simulations_2_endemic_spec <-
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nA"] +
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nC"]
       endemic_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = simulations_1_event_times,
         species_number = simulations_1_endemic_spec,
@@ -82,15 +92,13 @@ calc_error <- function(simulations_1,
       nonendemic_error[[n_reps]] <- skip_failed_convergence()
     } else {
       simulations_1_event_times <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[, 1]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       simulations_1_nonendemic_spec <-
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[, 3] +
-        simulations_1[[n_reps]][[1]][[1]]$stt_all[, 4]
+        simulations_1[[n_reps]][[1]][[1]]$stt_all[, "nI"]
       simulations_2_event_times <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[, 1]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       simulations_2_nonendemic_spec <-
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[, 3] +
-        simulations_2[[n_reps]][[1]][[1]]$stt_all[, 4]
+        simulations_2[[n_reps]][[1]][[1]]$stt_all[, "nI"]
       nonendemic_error$nltt[n_reps] <- nLTT::nltt_diff_exact_extinct(
         event_times = simulations_1_event_times,
         species_number = simulations_1_nonendemic_spec,
