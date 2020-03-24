@@ -72,7 +72,7 @@ run_robustness <- function(param_space_name,
     endemic_baseline_error <- baseline_error$endemic_error
     nonendemic_baseline_error <- baseline_error$nonendemic_error
 
-    js_dist <- calc_js_dist(
+    error_metrics <- calc_error_metrics(
       spec_error = spec_error,
       endemic_error = endemic_error,
       nonendemic_error = nonendemic_error,
@@ -87,7 +87,7 @@ run_robustness <- function(param_space_name,
       spec_baseline_error = spec_baseline_error,
       endemic_baseline_error = endemic_baseline_error,
       nonendemic_baseline_error = nonendemic_baseline_error,
-      js_dist = js_dist,
+      error_metrics = error_metrics,
       geodynamic_simulations = geodynamic_simulations,
       geodynamic_ml = geodynamic_ml,
       oceanic_simulations_1 = oceanic_simulations_1,

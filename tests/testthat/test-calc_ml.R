@@ -116,12 +116,26 @@ test_that("test calc_ml output is correct with oceanic simulations", {
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
-  skip("Need to fail convergence")
-  simulation_pars <- "stub"
-  geodynamic_simulations <- "stub"
-  geodynamic_ml <- calc_ml(
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+    param_space <- load_param_space(
+      param_space_name = "oceanic_sea_level")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "oceanic_sea_level",
+      param_space = param_space,
+      param_set = 233)
+    geodynamic_simulations <- geodynamic_simulations(
+      param_space_name = "oceanic_sea_level",
+      simulation_pars = simulation_pars,
+      replicates = 2)
+    simulation_constraints <- simulation_constraints(
+      simulations = geodynamic_simulations,
+      replicates = 2)
+    geodynamic_ml <- calc_ml(
       simulations = geodynamic_simulations)
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]], "No convergence")
-  expect_equal(geodynamic_ml[[2]], "No convergence")
+    expect_length(geodynamic_ml, 2)
+    expect_equal(geodynamic_ml[[1]], "No convergence")
+  } else {
+    skip("Run only on TRAVIS or AppVeyor")
+  }
 })
