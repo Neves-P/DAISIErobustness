@@ -24,7 +24,7 @@ calc_error_metrics <- function(spec_error,
   if (!ml_constraints(spec_baseline_error)) {
     error_metrics <- "Data sample size creteria not met"
   } else {
-    for (n_reps in seq_along(spec_baseline_error)){
+    for (n_reps in seq_along(spec_baseline_error)) {
       if (is.character(spec_baseline_error[[n_reps]])) {
         spec_error$num_spec_error[[n_reps]] <- NA
         spec_error$num_col_error[[n_reps]] <- NA
