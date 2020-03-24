@@ -6,6 +6,7 @@
 #' @author Pedro Neves, Joshua Lambert
 #' @references Kolmogorov, A. (1933) Sulla determinazione empirica di una
 #' legge di distribuzionc, 1st. Ital. Attuari. G.. 4, 1–11.
+#'
 #' Razali and Wah (2011) "Power comparisons of shapiro-wilk,
 #' kolmogorov-smirnov, lilliefors and anderson-darling tests"
 #' Journal of Statistical Modeling and Analytics 2, 21-33.
@@ -18,55 +19,36 @@ calc_error_metrics <- function(spec_error,
                                spec_baseline_error,
                                endemic_baseline_error,
                                nonendemic_baseline_error) {
-  if (any(
-    is.character(spec_error),
-    is.character(endemic_error),
-    is.character(spec_baseline_error),
-    is.character(endemic_baseline_error),
-    is.character(nonendemic_baseline_error))) {
-      num_spec_mean_dif  <- skip_failed_convergence()
-      num_spec_sd_dif  <- skip_failed_convergence()
-      num_col_mean_diff <- skip_failed_convergence()
-      num_col_sd_diff <- skip_failed_convergence()
-      spec_nltt_mean_diff <- skip_failed_convergence()
-      endemic_nltt_mean_dif  <- skip_failed_convergence()
-      nonendemic_nltt_mean_diff <- skip_failed_convergence()
-      spec_nltt_sd_diff <- skip_failed_convergence()
-      endemic_nltt_sd_dif  <- skip_failed_convergence()
-      nonendemic_nltt_sd_diff <- skip_failed_convergence()
-      spec_nltt_ks_dist <- skip_failed_convergence()
-      endemic_nltt_ks_dis  <- skip_failed_convergence()
-      nonendemic_nltt_ks_dist <- skip_failed_convergence()
-      print("skipped")
-  } else{
-    print("didn't skip")
+
+
     num_spec <- spec_error$num_spec_error
-    testit::assert(all(num_spec >= 0))
     spec_baseline_num <- spec_baseline_error$num_spec_error
-    testit::assert(all(spec_baseline_num >= 0))
-    num_col <- spec_error$num_col_error
-    testit::assert(all(num_col >= 0))
     num_baseline_col <- spec_baseline_error$num_col_error
-    testit::assert(all(num_baseline_col >= 0))
+    num_col <- spec_error$num_col_error
+
+
+    spec_nltt <- spec_error$nltt
+    spec_baseline_nltt <- spec_baseline_error$nltt
+    endemic_nltt <- endemic_error$nltt
+    endemic_baseline_nltt <- endemic_baseline_error$nltt
+    nonendemic_nltt <- nonendemic_error$nltt
+    nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
+
+
+    check_calc_error_metrics_input(
+      spec_error = spec_error,
+      endemic_error = endemic_error,
+      nonendemic_error = nonendemic_error,
+      spec_baseline_error = spec_baseline_error,
+      endemic_baseline_error = endemic_baseline_error,
+      nonendemic_baseline_error = nonendemic_baseline_error
+    )
 
     num_spec_mean_diff <- abs(mean(num_spec) - mean(spec_baseline_num))
     num_spec_sd_diff <- abs(sd(num_spec) - sd(spec_baseline_num))
 
     num_col_mean_diff <- abs(mean(num_col) - mean(num_baseline_col))
     num_col_sd_diff <- abs(sd(num_col) - sd(num_baseline_col))
-
-    spec_nltt <- spec_error$nltt
-    testit::assert(all(spec_nltt >= 0))
-    spec_baseline_nltt <- spec_baseline_error$nltt
-    testit::assert(all(spec_baseline_nltt >= 0))
-    endemic_nltt <- endemic_error$nltt
-    testit::assert(all(endemic_nltt >= 0))
-    endemic_baseline_nltt <- endemic_baseline_error$nltt
-    testit::assert(all(endemic_baseline_nltt >= 0))
-    nonendemic_nltt <- nonendemic_error$nltt
-    testit::assert(all(nonendemic_nltt >= 0))
-    nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
-    testit::assert(all(nonendemic_baseline_nltt >= 0))
 
     spec_nltt_mean_diff <- abs(mean(spec_nltt) - mean(spec_baseline_nltt))
     endemic_nltt_mean_diff <- abs(mean(endemic_nltt) - mean(endemic_baseline_nltt))
@@ -99,7 +81,7 @@ calc_error_metrics <- function(spec_error,
     nonendemic_diff <- abs(cumul_nonendemic_nltt - cumul_nonendemic_baseline_nltt)
     nonendemic_nltt_ks_dist <- max(nonendemic_diff)
     testit::assert(nonendemic_nltt_ks_dist >= 0)
-  }
+
   error_metrics <- list(
     num_spec_mean_diff = num_spec_mean_diff,
     num_spec_sd_diff = num_spec_sd_diff,
@@ -116,4 +98,40 @@ calc_error_metrics <- function(spec_error,
     nonendemic_nltt_ks_dist = nonendemic_nltt_ks_dist)
 
   return(error_metrics)
+}
+
+#' Checks calc_error_metrics_input is correct
+#'
+#' @inheritParams default_params_doc
+#'
+#' @return Nothing. Throws error if input is not correct
+#' @author Joshua Lambert, Pedro Neves
+#' @seealso \code{\link{calc_error_metrics}()}
+check_calc_error_metrics_input <- function(spec_error,
+                                           endemic_error,
+                                           nonendemic_error,
+                                           spec_baseline_error,
+                                           endemic_baseline_error,
+                                           nonendemic_baseline_error) {
+  num_spec <- spec_error$num_spec_error
+  testit::assert(all(num_spec >= 0))
+  spec_baseline_num <- spec_baseline_error$num_spec_error
+  testit::assert(all(spec_baseline_num >= 0))
+  num_baseline_col <- spec_baseline_error$num_col_error
+  testit::assert(all(num_baseline_col >= 0))
+  num_col <- spec_error$num_col_error
+  testit::assert(all(num_col >= 0))
+  spec_nltt <- spec_error$nltt
+  testit::assert(all(spec_nltt >= 0))
+
+  spec_baseline_nltt <- spec_baseline_error$nltt
+  testit::assert(all(spec_baseline_nltt >= 0))
+  endemic_nltt <- endemic_error$nltt
+  testit::assert(all(endemic_nltt >= 0))
+  endemic_baseline_nltt <- endemic_baseline_error$nltt
+  testit::assert(all(endemic_baseline_nltt >= 0))
+  nonendemic_nltt <- nonendemic_error$nltt
+  testit::assert(all(nonendemic_nltt >= 0))
+  nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
+  testit::assert(all(nonendemic_baseline_nltt >= 0))
 }

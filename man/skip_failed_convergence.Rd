@@ -13,7 +13,9 @@ A string, with name of failed step due to failed MLE.
 Create string stating skipped step
 }
 \examples{
-out_string <- skip_failed_convergence
+out_string <- testit::assert(
+  is.character(skip_failed_convergence()
+)
 }
 \author{
 Pedro Neves, Joshua Lambert
