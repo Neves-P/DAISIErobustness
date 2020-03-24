@@ -134,7 +134,7 @@ test_that("test calc_ml output is correct for failed convergence", {
     geodynamic_ml <- calc_ml(
       simulations = geodynamic_simulations)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]], "No convergence")
+    expect_equal(geodynamic_ml[[1]], "ML didn't converge")
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
