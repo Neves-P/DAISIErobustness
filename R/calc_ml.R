@@ -9,18 +9,22 @@ calc_ml <- function(simulations) {
   ml <- list()
   for (i in seq_along(simulations)) {
     message(paste0("Running ML ", i, " of ", length(simulations)))
-    try(
-      suppressMessages(invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
-        datalist = simulations[[i]][[1]],
-        datatype = "single",
-        initparsopt = c(1, 1, 40, 0.01, 1),
-        idparsopt = c(1:5),
-        parsfix = NULL,
-        idparsfix = NULL
-      ))))
-    )
-    if (class(ml[[i]]) == "try-error") {
-      ml[[i]] <- "No convergence"
+    if (is.character(simulations[[i]])) {
+      ml[[i]] <- skip_failed_convergence()
+    } else {
+      try(
+        suppressMessages(invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
+          datalist = simulations[[i]][[1]],
+          datatype = "single",
+          initparsopt = c(1, 1, 40, 0.01, 1),
+          idparsopt = c(1:5),
+          parsfix = NULL,
+          idparsfix = NULL
+        ))))
+      )
+      if (ml[[i]]$conv != 0) {
+        ml[[i]] <- "ML didn't converge"
+      }
     }
   }
   return(ml)
