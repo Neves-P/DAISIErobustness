@@ -21,6 +21,23 @@ calc_error_metrics <- function(spec_error,
                                nonendemic_baseline_error) {
 
 
+  if (!ml_constraints(spec_baseline_error)) {
+    error_metrics <- "Data sample size creteria not met"
+  } else {
+    for (n_reps in seq_along(spec_baseline_error)){
+      if (is.character(spec_baseline_error[[n_reps]])) {
+        spec_error$num_spec_error[[n_reps]] <- NA
+        spec_error$num_col_error[[n_reps]] <- NA
+        spec_baseline_error$num_spec_error[[n_reps]] <- NA
+        spec_baseline_error$num_col_error[[n_reps]] <- NA
+        spec_error$nltt[[n_reps]] <- NA
+        spec_baseline_error$nltt[[n_reps]] <- NA
+        endemic_error$nltt[[n_reps]] <- NA
+        endemic_baseline_error$nltt[[n_reps]] <- NA
+        nonendemic_error$nltt[[n_reps]] <- NA
+        nonendemic_baseline_error$nltt[[n_reps]] <- NA
+      }
+    }
     num_spec <- spec_error$num_spec_error
     spec_baseline_num <- spec_baseline_error$num_spec_error
     num_baseline_col <- spec_baseline_error$num_col_error
@@ -35,6 +52,7 @@ calc_error_metrics <- function(spec_error,
     nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
 
 
+
     check_calc_error_metrics_input(
       spec_error = spec_error,
       endemic_error = endemic_error,
@@ -44,20 +62,22 @@ calc_error_metrics <- function(spec_error,
       nonendemic_baseline_error = nonendemic_baseline_error
     )
 
-    num_spec_mean_diff <- abs(mean(num_spec) - mean(spec_baseline_num))
-    num_spec_sd_diff <- abs(sd(num_spec) - sd(spec_baseline_num))
+    num_spec_mean_diff <- abs(mean(num_spec, na.rm = TRUE) - mean(spec_baseline_num, na.rm = TRUE))
+    num_spec_sd_diff <- abs(sd(num_spec, na.rm = TRUE) - sd(spec_baseline_num, na.rm = TRUE))
 
-    num_col_mean_diff <- abs(mean(num_col) - mean(num_baseline_col))
-    num_col_sd_diff <- abs(sd(num_col) - sd(num_baseline_col))
+    num_col_mean_diff <- abs(mean(num_col, na.rm = TRUE) - mean(num_baseline_col, na.rm = TRUE))
+    num_col_sd_diff <- abs(sd(num_col, na.rm = TRUE) - sd(num_baseline_col, na.rm = TRUE))
 
-    spec_nltt_mean_diff <- abs(mean(spec_nltt) - mean(spec_baseline_nltt))
-    endemic_nltt_mean_diff <- abs(mean(endemic_nltt) - mean(endemic_baseline_nltt))
-    nonendemic_nltt_mean_diff <- abs(mean(nonendemic_nltt) - mean(nonendemic_baseline_nltt))
+    spec_nltt_mean_diff <- abs(mean(spec_nltt, na.rm = TRUE) - mean(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_mean_diff <- abs(mean(endemic_nltt, na.rm = TRUE) - mean(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_mean_diff <- abs(mean(nonendemic_nltt, na.rm = TRUE) - mean(nonendemic_baseline_nltt, na.rm = TRUE))
 
-    spec_nltt_sd_diff <- abs(sd(spec_nltt) - sd(spec_baseline_nltt))
-    endemic_nltt_sd_diff <- abs(sd(endemic_nltt) - sd(endemic_baseline_nltt))
-    nonendemic_nltt_sd_diff <- abs(sd(nonendemic_nltt) - sd(nonendemic_baseline_nltt))
+    spec_nltt_sd_diff <- abs(sd(spec_nltt, na.rm = TRUE) - sd(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_sd_diff <- abs(sd(endemic_nltt, na.rm = TRUE) - sd(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_sd_diff <- abs(sd(nonendemic_nltt, na.rm = TRUE) - sd(nonendemic_baseline_nltt, na.rm = TRUE))
 
+    spec_nltt <- spec_nltt[!is.na(spec_nltt)]
+    spec_baseline_nltt <- spec_baseline_nltt[!is.na(spec_baseline_nltt)]
     spec_nltt <- spec_nltt / sum(spec_nltt)
     spec_baseline_nltt <- spec_baseline_nltt / sum(spec_baseline_nltt)
     cumul_spec_nltt <- cumsum(spec_nltt)
@@ -66,6 +86,8 @@ calc_error_metrics <- function(spec_error,
     spec_nltt_ks_dist <- max(spec_diff)
     testit::assert(spec_nltt_ks_dist >= 0)
 
+    endemic_nltt <- endemic_nltt[!is.na(endemic_nltt)]
+    endemic_baseline_nltt <- endemic_baseline_nltt[!is.na(endemic_baseline_nltt)]
     norm_endemic_nltt <- endemic_nltt / sum(endemic_nltt)
     norm_endemic_baseline_nltt <- endemic_baseline_nltt / sum(endemic_baseline_nltt)
     cumul_endemic_nltt <- cumsum(norm_endemic_nltt)
@@ -74,6 +96,8 @@ calc_error_metrics <- function(spec_error,
     endemic_nltt_ks_dist <- max(endemic_diff)
     testit::assert(endemic_nltt_ks_dist >= 0)
 
+    nonendemic_nltt <- nonendemic_nltt[!is.na(nonendemic_nltt)]
+    nonendemic_baseline_nltt <- nonendemic_baseline_nltt[!is.na(nonendemic_baseline_nltt)]
     norm_nonendemic_nltt <- nonendemic_nltt / sum(nonendemic_nltt)
     norm_nonendemic_baseline_nltt <- nonendemic_baseline_nltt / sum(nonendemic_baseline_nltt)
     cumul_nonendemic_nltt <- cumsum(norm_nonendemic_nltt)
@@ -82,21 +106,21 @@ calc_error_metrics <- function(spec_error,
     nonendemic_nltt_ks_dist <- max(nonendemic_diff)
     testit::assert(nonendemic_nltt_ks_dist >= 0)
 
-  error_metrics <- list(
-    num_spec_mean_diff = num_spec_mean_diff,
-    num_spec_sd_diff = num_spec_sd_diff,
-    num_col_mean_diff = num_col_mean_diff,
-    num_col_sd_diff = num_col_sd_diff,
-    spec_nltt_mean_diff = spec_nltt_mean_diff,
-    endemic_nltt_mean_diff = endemic_nltt_mean_diff,
-    nonendemic_nltt_mean_diff = nonendemic_nltt_mean_diff,
-    spec_nltt_sd_diff = spec_nltt_sd_diff,
-    endemic_nltt_sd_diff = endemic_nltt_sd_diff,
-    nonendemic_nltt_sd_diff = nonendemic_nltt_sd_diff,
-    spec_nltt_ks_dist = spec_nltt_ks_dist,
-    endemic_nltt_ks_dist = endemic_nltt_ks_dist,
-    nonendemic_nltt_ks_dist = nonendemic_nltt_ks_dist)
-
+    error_metrics <- list(
+      num_spec_mean_diff = num_spec_mean_diff,
+      num_spec_sd_diff = num_spec_sd_diff,
+      num_col_mean_diff = num_col_mean_diff,
+      num_col_sd_diff = num_col_sd_diff,
+      spec_nltt_mean_diff = spec_nltt_mean_diff,
+      endemic_nltt_mean_diff = endemic_nltt_mean_diff,
+      nonendemic_nltt_mean_diff = nonendemic_nltt_mean_diff,
+      spec_nltt_sd_diff = spec_nltt_sd_diff,
+      endemic_nltt_sd_diff = endemic_nltt_sd_diff,
+      nonendemic_nltt_sd_diff = nonendemic_nltt_sd_diff,
+      spec_nltt_ks_dist = spec_nltt_ks_dist,
+      endemic_nltt_ks_dist = endemic_nltt_ks_dist,
+      nonendemic_nltt_ks_dist = nonendemic_nltt_ks_dist)
+  }
   return(error_metrics)
 }
 

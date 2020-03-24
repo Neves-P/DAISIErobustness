@@ -21,6 +21,11 @@ Boolean
 \description{
 Checks if the simulations meet the criteria for data sample size
 }
+\seealso{
+Other sample size constraints: 
+\code{\link{ml_constraints}()}
+}
 \author{
 Joshua Lambert, Pedro Neves
 }
+\concept{sample size constraints}

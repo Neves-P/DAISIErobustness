@@ -5,7 +5,7 @@
 #'
 #' @examples
 #' out_string <- testit::assert(
-#'   is.character(skip_failed_convergence()
+#'   is.character(DAISIErobustness:::skip_failed_convergence())
 #' )
 skip_failed_convergence <- function() {
   ignored_step_name <- deparse(sys.calls()[[sys.nframe()-1]])

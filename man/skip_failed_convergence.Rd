@@ -14,7 +14,7 @@ Create string stating skipped step
 }
 \examples{
 out_string <- testit::assert(
-  is.character(skip_failed_convergence()
+  is.character(DAISIErobustness:::skip_failed_convergence())
 )
 }
 \author{

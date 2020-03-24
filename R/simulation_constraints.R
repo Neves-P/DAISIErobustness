@@ -3,6 +3,7 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return Boolean
+#' @family sample size constraints
 #' @export
 simulation_constraints <- function(simulations,
                                    replicates) {
