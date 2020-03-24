@@ -26,6 +26,11 @@ a list of simulation parameters
 Extracts a set of parameters from the parameter space for the
 simulation
 }
+\seealso{
+Other parameter set handling functions: 
+\code{\link{load_param_space}()}
+}
 \author{
 Joshua Lambert, Pedro Neves
 }
+\concept{parameter set handling functions}

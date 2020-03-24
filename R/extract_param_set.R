@@ -4,6 +4,7 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return a list of simulation parameters
+#' @family parameter set handling functions
 #' @export
 extract_param_set <- function(param_space_name,
                               param_space,
