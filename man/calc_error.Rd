@@ -30,7 +30,7 @@ of endemics-through-time and non-endemics-through-time
 }
 \seealso{
 Other error calculations: 
-\code{\link{calc_js_dist}()}
+\code{\link{calc_error_metrics}()}
 }
 \author{
 Joshua Lambert, Pedro Neves
