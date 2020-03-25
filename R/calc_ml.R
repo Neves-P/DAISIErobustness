@@ -24,7 +24,7 @@ calc_ml <- function(sim) {
         )
       )
       )))
-      if (!exists("ml[[i]]")) {
+      if (!exists(paste0("ml[[", i, "]]"))) {
         ml[[i]] <- "MLE crashed"
       } else if (ml[[i]]$conv != 0) {
         ml[[i]] <- "ML didn't converge"
