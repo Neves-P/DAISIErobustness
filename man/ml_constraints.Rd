@@ -17,11 +17,6 @@ Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 \description{
 Checks if number of valid errors meet the criteria for data sample size
 }
-\seealso{
-Other sample size constraints: 
-\code{\link{sim_constraints}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{sample size constraints}

@@ -17,11 +17,6 @@ Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 \description{
 Runs original oceanic DAISIE simulation
 }
-\seealso{
-Other simulation functions: 
-\code{\link{geodynamic_sim}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{simulation functions}

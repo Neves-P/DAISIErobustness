@@ -19,11 +19,6 @@ tibble parameter space.
 \description{
 Loads the parameter space into the environment for simulations
 }
-\seealso{
-Other parameter set handling functions: 
-\code{\link{extract_param_set}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{parameter set handling functions}

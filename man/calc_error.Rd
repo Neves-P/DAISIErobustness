@@ -28,11 +28,6 @@ A list with three error metrics
 Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time
 }
-\seealso{
-Other error calculations: 
-\code{\link{calc_error_metrics}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{error calculations}

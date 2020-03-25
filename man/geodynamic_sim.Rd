@@ -26,11 +26,6 @@ A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 \description{
 Runs DAISIE simulation with geodynamics
 }
-\seealso{
-Other simulation functions: 
-\code{\link{oceanic_sim}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{simulation functions}
