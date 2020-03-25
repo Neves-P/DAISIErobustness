@@ -1,6 +1,8 @@
 context("run_robustness_local")
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny passes constraints", {
+test_that("run_robustness_local output is correct when oceanic_ontogeny passes
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness_local(
       param_space_name = "oceanic_ontogeny",
@@ -81,7 +83,9 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny passes c
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny fails constraints", {
+test_that("run_robustness_local output is correct when oceanic_ontogeny fails
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness_local(
       param_space_name = "oceanic_ontogeny",
@@ -99,7 +103,9 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny fails co
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_sea_level passes constraints", {
+test_that("run_robustness_local output is correct when oceanic_sea_level passes
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "oceanic_sea_level",
@@ -111,7 +117,9 @@ test_that("run_robustness_local output is correct when oceanic_sea_level passes 
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_sea_level fails constraints", {
+test_that("run_robustness_local output is correct when oceanic_sea_level fails
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "oceanic_sea_level",
@@ -123,7 +131,9 @@ test_that("run_robustness_local output is correct when oceanic_sea_level fails c
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny_sea_level passes constraints", {
+test_that("run_robustness_local output is correct when
+          oceanic_ontogeny_sea_level passes constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "oceanic_ontogeny_sea_level",
@@ -135,7 +145,9 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny_sea_leve
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny_sea_level fails constraints", {
+test_that("run_robustness_local output is correct when
+          oceanic_ontogeny_sea_level fails constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "oceanic_ontogeny_sea_level",
@@ -147,7 +159,9 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny_sea_leve
   }
 })
 
-test_that("run_robustness_local is correct when nonoceanic passes constraints", {
+test_that("run_robustness_local is correct when nonoceanic passes
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic",
@@ -158,7 +172,9 @@ test_that("run_robustness_local is correct when nonoceanic passes constraints", 
   }
 })
 
-test_that("run_robustness_local ouput is correct when nonoceanic fails constraints", {
+test_that("run_robustness_local ouput is correct when nonoceanic fails
+          constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic",
@@ -169,7 +185,9 @@ test_that("run_robustness_local ouput is correct when nonoceanic fails constrain
   }
 })
 
-test_that("run_robustness_local output is correct when nonoceanic_sea_level passes constraints", {
+test_that("run_robustness_local output is correct when nonoceanic_sea_level
+          passes constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic_sea_level",
@@ -180,7 +198,9 @@ test_that("run_robustness_local output is correct when nonoceanic_sea_level pass
   }
 })
 
-test_that("run_robustness_local output is correct when nonoceanic_sea_level fails constraints", {
+test_that("run_robustness_local output is correct when nonoceanic_sea_level
+          fails constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic_sea_level",
@@ -191,7 +211,9 @@ test_that("run_robustness_local output is correct when nonoceanic_sea_level fail
   }
 })
 
-test_that("run_robustness_local output is correct when nonoceanic_land_bridge passes constraints", {
+test_that("run_robustness_local output is correct when nonoceanic_land_bridge
+          passes constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic_land_bridge",
@@ -202,7 +224,9 @@ test_that("run_robustness_local output is correct when nonoceanic_land_bridge pa
   }
 })
 
-test_that("run_robustness_local output is correct when nonoceanic_land_bridge fails constraints", {
+test_that("run_robustness_local output is correct when nonoceanic_land_bridge
+          fails constraints", {
+  skip("WIP")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "nonoceanic_land_bridge",
