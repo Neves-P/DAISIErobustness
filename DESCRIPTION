@@ -1,5 +1,5 @@
 Package: DAISIErobustness
-Title: Test the robustness of DAISIE to geodynamics
+Title: Test the Robustness of DAISIE to Geodynamics
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Joshua",
@@ -9,7 +9,11 @@ Authors@R: c(
     person(given = "Pedro",
            family = "Neves",
            role = c("aut"),
-           email = "p.m.santos.neves@rug.nl"))
+           email = "p.m.santos.neves@rug.nl"),
+    person(given = "Shu",
+           family = "Xie",
+           role = c("aut"),
+           email = "s.xie@rug.nl"))
 Description: Conducts a robustness test of the island biogeography DAISIE model
     to the effects of geodynamics, such as island ontogeny, sea-level changes
     and land-bridge dynamics. Contains accessory code to run at the Peregrine 
