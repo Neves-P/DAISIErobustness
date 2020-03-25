@@ -5,15 +5,15 @@
 \title{Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time}
 \usage{
-calc_error(simulations_1, simulations_2, replicates)
+calc_error(sim_1, sim_2, replicates)
 }
 \arguments{
-\item{simulations_1}{A list of simulation output from
+\item{sim_1}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
 
-\item{simulations_2}{A list of simulation output from
+\item{sim_2}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}

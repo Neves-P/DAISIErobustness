@@ -1,20 +1,20 @@
 context("calc_ml")
 
-test_that("test calc_ml output is correct with geodynamic simulations", {
+test_that("test calc_ml output is correct with geodynamic sim", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     set.seed(1)
-    simulation_pars <- extract_param_set(
+    sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
       param_set = 2)
-    geodynamic_simulations <- geodynamic_simulations(
+    geodynamic_sim <- geodynamic_sim(
       param_space_name = "oceanic_ontogeny",
-      simulation_pars = simulation_pars,
+      sim_pars = sim_pars,
       replicates = 2)
     geodynamic_ml <- calc_ml(
-      simulations = geodynamic_simulations)
+      sim = geodynamic_sim)
     expect_length(geodynamic_ml, 2)
     expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9516893216529831,
                  tolerance = 0.001)
@@ -50,7 +50,7 @@ test_that("test calc_ml output is correct with geodynamic simulations", {
 })
 
 
-test_that("test calc_ml output is correct with oceanic simulations", {
+test_that("test calc_ml output is correct with oceanic sim", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
@@ -71,16 +71,16 @@ test_that("test calc_ml output is correct with oceanic simulations", {
                                      "loglik" = -90,
                                      "df" = 5,
                                      "conv" = 0)
-    simulation_pars <- extract_param_set(
+    sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
       param_set = 1)
     set.seed(1)
-    oceanic_simulations_1 <- oceanic_simulations(
+    oceanic_sim_1 <- oceanic_sim(
       ml = geodynamic_ml,
-      simulation_pars = simulation_pars)
+      sim_pars = sim_pars)
     oceanic_ml <- calc_ml(
-      simulations = oceanic_simulations_1)
+      sim = oceanic_sim_1)
     expect_length(oceanic_ml, 2)
     expect_equal(oceanic_ml[[1]]$lambda_c, 0.4703865020955945,
                  tolerance = 0.001)
@@ -120,19 +120,19 @@ test_that("test calc_ml output is correct for failed convergence", {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
     set.seed(1)
-    simulation_pars <- extract_param_set(
+    sim_pars <- extract_param_set(
       param_space_name = "oceanic_sea_level",
       param_space = param_space,
       param_set = 233)
-    geodynamic_simulations <- geodynamic_simulations(
+    geodynamic_sim <- geodynamic_sim(
       param_space_name = "oceanic_sea_level",
-      simulation_pars = simulation_pars,
+      sim_pars = sim_pars,
       replicates = 2)
-    simulation_constraints <- simulation_constraints(
-      simulations = geodynamic_simulations,
+    sim_constraints <- sim_constraints(
+      sim = geodynamic_sim,
       replicates = 2)
     geodynamic_ml <- calc_ml(
-      simulations = geodynamic_simulations)
+      sim = geodynamic_sim)
     expect_length(geodynamic_ml, 2)
     expect_equal(geodynamic_ml[[1]], "ML didn't converge")
   } else {

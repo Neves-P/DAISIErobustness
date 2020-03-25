@@ -5,16 +5,16 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 #' @family simulation functions
 #' @export
-oceanic_simulations <- function(ml,
-                                simulation_pars) {
-  oceanic_simulations <- list()
+oceanic_sim <- function(ml,
+                                sim_pars) {
+  oceanic_sim <- list()
   for (i in seq_along(ml)) {
     if (is.character(ml[[i]])) {
-      oceanic_simulations[[i]] <- "ML didn't converge"
+      oceanic_sim[[i]] <- "ML didn't converge"
     } else {
-      oceanic_simulations[[i]] <- DAISIE::DAISIE_sim_constant_rate(
-        time = simulation_pars$time,
-        M = simulation_pars$M,
+      oceanic_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
+        time = sim_pars$time,
+        M = sim_pars$M,
         pars = as.numeric(ml[[i]][1:5]),
         replicates = 1,
         plot_sims = FALSE,
@@ -23,5 +23,5 @@ oceanic_simulations <- function(ml,
       )
     }
   }
-  return(oceanic_simulations)
+  return(oceanic_sim)
 }

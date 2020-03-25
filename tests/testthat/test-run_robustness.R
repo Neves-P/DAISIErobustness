@@ -1,73 +1,12 @@
 context("run_robustness")
 
 test_that("test_run_robustness gives error when run locally as it
-          only runs on the peregrine cluster", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    expect_error(run_robustness(
-      param_space_name = "oceanic_ontogeny",
-      param_set = 2,
-      replicates = 2))
-  } else {
-    skip("Run only on TRAVIS and AppVeyor")
-  }
-})
-
-test_that("test_run_robustness is silent when oceanic_ontogeny
-          passes as function does not return output (when required)", {
+          only runs when folder structure is in place, an therefore
+          test not run unless required", {
   if (1 == 2) {
     expect_silent(run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 2,
-      replicates = 2))
-  }
-})
-
-test_that("test_run_robustness is silent when oceanic_sea_level
-          passes as function does not return output (when required)", {
-  if (1 == 2) {
-    expect_silent(run_robustness(
-      param_space_name = "oceanic_sea_level",
-      param_set = 3,
-      replicates = 2))
-  }
-})
-
-test_that("test_run_robustness is silent when oceanic_ontogeny_sea_level
-          passes as function does not return output (when required)", {
-  if (1 == 2) {
-    expect_silent(run_robustness(
-      param_space_name = "oceanic_ontogeny_sea_level",
-      param_set = 27,
-      replicates = 2))
-  }
-})
-
-test_that("test_run_robustness is silent when nonoceanic
-          passes as function does not return output (When required)", {
-  if (1 == 2) {
-    expect_silent(run_robustness(
-      param_space_name = "nonoceanic",
-      param_set = 1,
-      replicates = 2))
-  }
-})
-
-test_that("test_run_robustness output is silent when nonoceanic_sea_level
-          passes as function does not return output (when required)", {
-  if (1 == 2) {
-    expect_silent(run_robustness(
-      param_space_name = "nonoceanic_sea_level",
-      param_set = 2,
-      replicates = 2))
-  }
-})
-
-test_that("test_run_robustness output is silent when nonoceanic_land_bridge
-          passes as function does not return output (when required)", {
-  if (1 == 2) {
-    expect_silent(run_robustness(
-      param_space_name = "nonoceanic_land_bridge",
-      param_set = 4,
       replicates = 2))
   }
 })

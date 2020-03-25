@@ -1,4 +1,4 @@
-#' Run robustness analysis pipeline
+#' Run robustness analysis pipeline locally without saving output
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
@@ -6,9 +6,9 @@
 #' \code{\link{sim_constraints}} returned TRUE or simulation
 #' output if \code{\link{sim_constraints}} returned FALSE.
 #' @export
-run_robustness <- function(param_space_name,
-                           param_set,
-                           replicates = 1000) {
+run_robustness_local <- function(param_space_name,
+                                 param_set,
+                                 replicates = 1000) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -95,42 +95,9 @@ run_robustness <- function(param_space_name,
       oceanic_ml = oceanic_ml,
       oceanic_sim_2 = oceanic_sim_2)
 
-    output_file_name <- paste0(
-      "passed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata")
-
   } else {
-
     output_file <- list(
       geodynamic_sim = geodynamic_sim)
-
-    output_file_name <- paste0(
-      "failed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata")
   }
-  output_path <- file.path("results", param_space_name, output_file_name)
-  cat(
-    "\n Trying to save",
-    output_file_name,
-    "to",
-    output_path,
-    "... \n"
-  )
-  save(
-    output_file,
-    file = output_path
-  )
-  cat(
-    "\n Saved",
-    output_file_name,
-    "to",
-    file.path(param_space_name, output_file_name),
-    "... \n"
-  )
+  return(output_file)
 }

@@ -62,15 +62,22 @@ calc_error_metrics <- function(spec_error,
       nonendemic_baseline_error = nonendemic_baseline_error
     )
 
-    num_spec_mean_diff <- abs(mean(num_spec, na.rm = TRUE) - mean(spec_baseline_num, na.rm = TRUE))
-    num_spec_sd_diff <- abs(sd(num_spec, na.rm = TRUE) - sd(spec_baseline_num, na.rm = TRUE))
+    num_spec_mean_diff <-
+      abs(mean(num_spec, na.rm = TRUE) - mean(spec_baseline_num, na.rm = TRUE))
+    num_spec_sd_diff <-
+      abs(sd(num_spec, na.rm = TRUE) - sd(spec_baseline_num, na.rm = TRUE))
 
-    num_col_mean_diff <- abs(mean(num_col, na.rm = TRUE) - mean(num_baseline_col, na.rm = TRUE))
-    num_col_sd_diff <- abs(sd(num_col, na.rm = TRUE) - sd(num_baseline_col, na.rm = TRUE))
+    num_col_mean_diff <-
+      abs(mean(num_col, na.rm = TRUE) - mean(num_baseline_col, na.rm = TRUE))
+    num_col_sd_diff <-
+      abs(sd(num_col, na.rm = TRUE) - sd(num_baseline_col, na.rm = TRUE))
 
-    spec_nltt_mean_diff <- abs(mean(spec_nltt, na.rm = TRUE) - mean(spec_baseline_nltt, na.rm = TRUE))
-    endemic_nltt_mean_diff <- abs(mean(endemic_nltt, na.rm = TRUE) - mean(endemic_baseline_nltt, na.rm = TRUE))
-    nonendemic_nltt_mean_diff <- abs(mean(nonendemic_nltt, na.rm = TRUE) - mean(nonendemic_baseline_nltt, na.rm = TRUE))
+    spec_nltt_mean_diff <-
+      abs(mean(spec_nltt, na.rm = TRUE) - mean(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_mean_diff <-
+      abs(mean(endemic_nltt, na.rm = TRUE) - mean(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_mean_diff <-
+      abs(mean(nonendemic_nltt, na.rm = TRUE) - mean(nonendemic_baseline_nltt, na.rm = TRUE))
 
     spec_nltt_sd_diff <- abs(sd(spec_nltt, na.rm = TRUE) - sd(spec_baseline_nltt, na.rm = TRUE))
     endemic_nltt_sd_diff <- abs(sd(endemic_nltt, na.rm = TRUE) - sd(endemic_baseline_nltt, na.rm = TRUE))
