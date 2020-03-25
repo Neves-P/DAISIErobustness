@@ -22,6 +22,7 @@ default_params_doc(
   island_ontogeny_2,
   sea_level_1,
   sea_level_2,
+  oceanic_ml,
   resolution,
   overlay_sea_level,
   path,
@@ -104,6 +105,10 @@ Can be \code{"const"} or \code{"sine"} for a sine function describing area
 through time. Defaults to \code{NULL}, in which case the second island is
 not plotted.}
 
+\item{oceanic_ml}{A list of data frames with the output of DAISIE ML ran on
+oceanic simulations. Elements can also be strings if the ML failed on run
+or upstream.}
+
 \item{resolution}{A float between 0 and 1 which controls the resolution of
 the island area calculated for plotting. Defaults to \code{0.001} and is
 bound at \code{0.00001} to prevent unwieldy slowdowns.}
@@ -132,10 +137,6 @@ vector.}
 \item{p}{Numeric vector to calculate divergence metric.}
 
 \item{q}{Numeric vector to calculate divergence metric.}
-
-\item{oceanic_ml}{A list of data frames with the output of DAISIE ML ran on
-oceanic simulations. Elements can also be strings if the ML failed on run
-or upstream.}
 }
 \value{
 Nothing
