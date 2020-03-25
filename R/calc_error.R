@@ -13,7 +13,7 @@ calc_error <- function(simulations_1,
   for (n_reps in 1:replicates) {
     if (is.character(simulations_1[[n_reps]]) ||
         is.character(simulations_2[[n_reps]])) {
-      spec_error[[n_reps]] <- skip_failed_convergence()
+      spec_error[[n_reps]] <- "ML didn't converge"
     } else {
       simulations_1_event_times <-
         simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
@@ -62,7 +62,7 @@ calc_error <- function(simulations_1,
   for (n_reps in 1:replicates) {
     if (is.character(simulations_1[[n_reps]]) ||
         is.character(simulations_2[[n_reps]])) {
-      endemic_error[[n_reps]] <- skip_failed_convergence()
+      endemic_error[[n_reps]] <- "ML didn't converge"
     } else {
       simulations_1_event_times <-
         simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
@@ -89,7 +89,7 @@ calc_error <- function(simulations_1,
   for (n_reps in 1:replicates) {
     if (is.character(simulations_1[[n_reps]]) ||
         is.character(simulations_2[[n_reps]])) {
-      nonendemic_error[[n_reps]] <- skip_failed_convergence()
+      nonendemic_error[[n_reps]] <- "ML didn't converge"
     } else {
       simulations_1_event_times <-
         simulations_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]

@@ -10,7 +10,7 @@ oceanic_simulations <- function(ml,
   oceanic_simulations <- list()
   for (i in seq_along(ml)) {
     if (is.character(ml[[i]])) {
-      oceanic_simulations[[i]] <- skip_failed_convergence()
+      oceanic_simulations[[i]] <- "ML didn't converge"
     } else {
       oceanic_simulations[[i]] <- DAISIE::DAISIE_sim_constant_rate(
         time = simulation_pars$time,
