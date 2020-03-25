@@ -6,12 +6,7 @@
 #' @family sample size constraints
 ml_constraints <- function(spec_baseline_error) {
   testit::assert(is.list(spec_baseline_error))
-  count_strings <- 0
-  for (n_reps in seq_along(spec_baseline_error)) {
-    if (is.character(spec_baseline_error[[n_reps]])) {
-      count_strings <- count_strings + 1
-    }
-  }
+  count_string <- length(which(is.character(spec_baseline_error)))
   prop_strings <- count_strings / length(spec_baseline_error)
   testit::assert(is.numeric(prop_strings))
   testit::assert(prop_strings <= 1 && prop_strings >= 0)
