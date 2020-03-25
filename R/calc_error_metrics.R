@@ -78,9 +78,12 @@ calc_error_metrics <- function(spec_error,
     nonendemic_nltt_mean_diff <-
       abs(mean(nonendemic_nltt, na.rm = TRUE) - mean(nonendemic_baseline_nltt, na.rm = TRUE))
 
-    spec_nltt_sd_diff <- abs(sd(spec_nltt, na.rm = TRUE) - sd(spec_baseline_nltt, na.rm = TRUE))
-    endemic_nltt_sd_diff <- abs(sd(endemic_nltt, na.rm = TRUE) - sd(endemic_baseline_nltt, na.rm = TRUE))
-    nonendemic_nltt_sd_diff <- abs(sd(nonendemic_nltt, na.rm = TRUE) - sd(nonendemic_baseline_nltt, na.rm = TRUE))
+    spec_nltt_sd_diff <-
+      abs(sd(spec_nltt, na.rm = TRUE) - sd(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_sd_diff <-
+      abs(sd(endemic_nltt, na.rm = TRUE) - sd(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_sd_diff <-
+      abs(sd(nonendemic_nltt, na.rm = TRUE) - sd(nonendemic_baseline_nltt, na.rm = TRUE))
 
     spec_nltt <- spec_nltt[!is.na(spec_nltt)]
     spec_baseline_nltt <- spec_baseline_nltt[!is.na(spec_baseline_nltt)]
