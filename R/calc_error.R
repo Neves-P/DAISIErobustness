@@ -3,18 +3,22 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return A list with four error metrics
+#' @return A list with three error metrics
 #' @family error calculations
 #' @export
 calc_error <- function(sim_1,
                        sim_2,
                        replicates) {
   spec_error <- list()
+  endemic_error <- list()
+  nonendemic_error <- list()
   for (n_reps in 1:replicates) {
-    if (is.character(sim_1[[n_reps]]) ||
-        is.character(sim_2[[n_reps]])) {
+    if (is.character(sim_2[[n_reps]])) {
       spec_error[[n_reps]] <- "ML didn't converge"
+      endemic_error[[n_reps]] <- "ML didn't converge"
+      nonendemic_error[[n_reps]] <- "ML didn't converge"
     } else {
+      # Spec error
       sim_1_event_times <-
         sim_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       sim_1_num_spec <-
@@ -56,14 +60,8 @@ calc_error <- function(sim_1,
         sim_2[[n_reps]][[1]][[1]]$stt_all[stt_last_row_sim_2, "present"]
       spec_error$num_col_error[n_reps] <-
         abs(num_col_sim_1 - num_col_sim_2)
-    }
-  }
-  endemic_error <- list()
-  for (n_reps in 1:replicates) {
-    if (is.character(sim_1[[n_reps]]) ||
-        is.character(sim_2[[n_reps]])) {
-      endemic_error[[n_reps]] <- "ML didn't converge"
-    } else {
+
+      # Endemic error
       sim_1_event_times <-
         sim_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       sim_1_endemic_spec <-
@@ -83,14 +81,8 @@ calc_error <- function(sim_1,
         time_unit = "ago",
         normalize = FALSE
       )
-    }
-  }
-  nonendemic_error <- list()
-  for (n_reps in 1:replicates) {
-    if (is.character(sim_1[[n_reps]]) ||
-        is.character(sim_2[[n_reps]])) {
-      nonendemic_error[[n_reps]] <- "ML didn't converge"
-    } else {
+
+      # Nonendemic error
       sim_1_event_times <-
         sim_1[[n_reps]][[1]][[1]]$stt_all[, "Time"]
       sim_1_nonendemic_spec <-
