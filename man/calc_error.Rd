@@ -22,7 +22,7 @@ calc_error(sim_1, sim_2, replicates)
 simulations.}
 }
 \value{
-A list with four error metrics
+A list with three error metrics
 }
 \description{
 Calcualtes error in rates, number of species-through-time, number

@@ -14,16 +14,17 @@ calc_ml <- function(sim) {
       ml[[i]] <- "ML didn't converge"
     } else {
       try(
-        suppressMessages(invisible(capture.output(ml[[i]] <- DAISIE::DAISIE_ML_CS(
-          datalist = sim[[i]][[1]],
-          datatype = "single",
-          initparsopt = c(1, 1, 40, 0.01, 1),
-          idparsopt = c(1:5),
-          parsfix = NULL,
-          idparsfix = NULL
+        suppressMessages(invisible(capture.output(
+          ml[[i]] <- DAISIE::DAISIE_ML_CS(
+            datalist = sim[[i]][[1]],
+            datatype = "single",
+            initparsopt = c(1, 1, 40, 0.01, 1),
+            idparsopt = c(1:5),
+            parsfix = NULL,
+            idparsfix = NULL
+          )
         )
-      )
-      )))
+        )))
       if (!exists(paste0("ml[[", i, "]]"))) {
         ml[[i]] <- "MLE crashed"
       } else if (ml[[i]]$conv != 0) {

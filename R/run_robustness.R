@@ -4,7 +4,7 @@
 #' @author Joshua Lambert, Pedro Neves
 #' @return A list of errors and simulation and MLE output if
 #' \code{\link{sim_constraints}} returned TRUE or simulation
-#' output if \code{\link{sim_constraints}} returned FALSE.
+#' output if \code{\link{sim_constraints}()} returned FALSE.
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
@@ -60,48 +60,51 @@ run_robustness <- function(param_space_name,
     oceanic_ml <- calc_ml(
       sim = oceanic_sim_1)
 
-    oceanic_sim_2 <- oceanic_sim(
-      ml = oceanic_ml,
-      sim_pars = sim_pars)
+    ml_constraints <- ml_constraints(oceanic_ml)
 
-    baseline_error <- calc_error(
-      sim_1 = oceanic_sim_1,
-      sim_2 = oceanic_sim_2,
-      replicates = replicates)
+    if (ml_constraints == TRUE) {
+      oceanic_sim_2 <- oceanic_sim(
+        ml = oceanic_ml,
+        sim_pars = sim_pars)
 
-    spec_baseline_error <- baseline_error$spec_error
-    endemic_baseline_error <- baseline_error$endemic_error
-    nonendemic_baseline_error <- baseline_error$nonendemic_error
+      baseline_error <- calc_error(
+        sim_1 = oceanic_sim_1,
+        sim_2 = oceanic_sim_2,
+        replicates = replicates)
 
-    error_metrics <- calc_error_metrics(
-      spec_error = spec_error,
-      endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error,
-      spec_baseline_error = spec_baseline_error,
-      endemic_baseline_error = endemic_baseline_error,
-      nonendemic_baseline_error = nonendemic_baseline_error)
+      spec_baseline_error <- baseline_error$spec_error
+      endemic_baseline_error <- baseline_error$endemic_error
+      nonendemic_baseline_error <- baseline_error$nonendemic_error
 
-    output_file <- list(
-      spec_error = spec_error,
-      endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error,
-      spec_baseline_error = spec_baseline_error,
-      endemic_baseline_error = endemic_baseline_error,
-      nonendemic_baseline_error = nonendemic_baseline_error,
-      error_metrics = error_metrics,
-      geodynamic_sim = geodynamic_sim,
-      geodynamic_ml = geodynamic_ml,
-      oceanic_sim_1 = oceanic_sim_1,
-      oceanic_ml = oceanic_ml,
-      oceanic_sim_2 = oceanic_sim_2)
+      error_metrics <- calc_error_metrics(
+        spec_error = spec_error,
+        endemic_error = endemic_error,
+        nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error)
 
-    output_file_name <- paste0(
-      "passed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata")
+      output_file <- list(
+        spec_error = spec_error,
+        endemic_error = endemic_error,
+        nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error,
+        error_metrics = error_metrics,
+        geodynamic_sim = geodynamic_sim,
+        geodynamic_ml = geodynamic_ml,
+        oceanic_sim_1 = oceanic_sim_1,
+        oceanic_ml = oceanic_ml,
+        oceanic_sim_2 = oceanic_sim_2)
 
+      output_file_name <- paste0(
+        "passed_cond_",
+        param_space_name,
+        "_param_set_",
+        param_set,
+        ".Rdata")
+    }
   } else {
 
     output_file <- list(
