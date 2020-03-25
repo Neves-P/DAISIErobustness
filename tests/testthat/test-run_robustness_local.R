@@ -37,11 +37,28 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny passes c
                                            endemic_nltt_ks_dist = 0.226619434409659,
                                            nonendemic_nltt_ks_dist = 0.0889512124304479))
     expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 11)
-    expect_equal(names(errors$geodynamic_sim[[1]][[1]][[1]]),
-                 c("island_age", "not_present", "stt_all"))
-    expect_equal(names(errors$geodynamic_sim[[1]][[1]][[2]]),
-                 c("branching_times", "stac", "missing_species"))
+    expect_length(errors$geodynamic_sim[[1]][[1]], 12)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 989)
+    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 92)
+    expect_equal(ncol(geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
+    expect_equal(geodynamic_sim[[1]][[1]][[2]]$branching_times,
+                 c(2.55, 0.16583840374981))
+    expect_equal(geodynamic_sim[[1]][[1]][[2]]$stac, 4)
+    expect_equal(geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
+    expect_length(geodynamic_sim[[2]][[1]], 19)
+    expect_equal(geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
+    expect_equal(geodynamic_sim[[2]][[1]][[1]]$not_present, 982)
+    expect_equal(nrow(geodynamic_sim[[2]][[1]][[1]]$stt_all), 132)
+    expect_equal(ncol(geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
+    expect_equal(geodynamic_sim[[2]][[1]][[2]]$branching_times,
+                 c(2.55, 1.29032111838460, 0.80903212943811, 0.31633454531757))
+    expect_equal(geodynamic_sim[[2]][[1]][[2]]$stac, 2)
+    expect_equal(geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
+
+
+
+
     expect_equal(error$geodynamic_ml,
                  list(data.frame("lambda_c" = 0.9516893216529831,
                                  "mu" = 0.4371724756929532,
