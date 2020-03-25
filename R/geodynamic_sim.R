@@ -5,7 +5,6 @@
 #' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}}, or
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
-#' @family simulation functions
 #' @export
 geodynamic_sim <- function(param_space_name,
                                    sim_pars,

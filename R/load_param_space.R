@@ -3,7 +3,6 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return tibble parameter space.
-#' @family parameter set handling functions
 #' @export
 load_param_space <- function(param_space_name) {
   file_domain <-

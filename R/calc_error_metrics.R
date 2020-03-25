@@ -11,7 +11,6 @@
 #' kolmogorov-smirnov, lilliefors and anderson-darling tests"
 #' Journal of Statistical Modeling and Analytics 2, 21-33.
 #' @importFrom stats sd
-#' @family error calculations
 #' @export
 calc_error_metrics <- function(spec_error,
                                endemic_error,

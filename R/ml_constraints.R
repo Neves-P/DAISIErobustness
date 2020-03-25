@@ -3,7 +3,6 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
-#' @family sample size constraints
 ml_constraints <- function(oceanic_ml) {
   testit::assert(is.list(oceanic_ml))
   failed_mls <- sapply(oceanic_ml, FUN = is.character)
