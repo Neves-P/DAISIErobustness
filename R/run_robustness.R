@@ -84,6 +84,9 @@ run_robustness <- function(param_space_name,
         endemic_baseline_error = endemic_baseline_error,
         nonendemic_baseline_error = nonendemic_baseline_error)
 
+
+      # Saving if passed
+
       output_file <- list(
         spec_error = spec_error,
         endemic_error = endemic_error,
@@ -105,10 +108,12 @@ run_robustness <- function(param_space_name,
         param_set,
         ".Rdata")
     }
-  } else {
-
+  }
+  # Saving if failed sim constraints
+  if (sim_constraints == FALSE) {
     output_file <- list(
-      geodynamic_sim = geodynamic_sim)
+      geodynamic_sim = geodynamic_sim
+    )
 
     output_file_name <- paste0(
       "failed_cond_",
@@ -116,24 +121,39 @@ run_robustness <- function(param_space_name,
       "_param_set_",
       param_set,
       ".Rdata")
+
+  }
+  # Saving if failed ml constraints
+  if (ml_constraints == FALSE) {
+    output_file <- list(
+      geodynamic_sim = geodynamic_sim,
+      oceanic_sim_1 = oceanic_sim_1,
+      oceanic_ml = oceanic_ml,
+      spec_error = spec_error,
+      endemic_error = endemic_error,
+      nonendemic_error = nonendemic_error
+    )
+
+    output_file_name <- paste0(
+      "failed_cond_",
+      param_space_name,
+      "_param_set_",
+      param_set,
+      ".Rdata")
+
   }
   output_path <- file.path("results", param_space_name, output_file_name)
-  cat(
-    "\n Trying to save",
-    output_file_name,
-    "to",
-    output_path,
-    "... \n"
-  )
-  save(
-    output_file,
-    file = output_path
-  )
-  cat(
-    "\n Saved",
-    output_file_name,
-    "to",
-    file.path(param_space_name, output_file_name),
-    "... \n"
+
+  message(paste0("Trying to save ", output_file_name, " to ", output_path))
+
+  save(output_file, file = output_path)
+
+  message(
+    paste0(
+      "Saved ",
+      output_file_name,
+      " to ",
+      file.path(param_space_name, output_file_name)
+    )
   )
 }

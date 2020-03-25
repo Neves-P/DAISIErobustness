@@ -51,6 +51,9 @@
 #'   Can be \code{"const"} or \code{"sine"} for a sine function describing area
 #'   through time. Defaults to \code{NULL}, in which case the second island is
 #'   not plotted.
+#' @param oceanic_ml A list of data frames with the output of DAISIE ML ran on
+#'   oceanic simulations. Elements can also be strings if the ML failed on run
+#'   or upstream.
 #' @param resolution A float between 0 and 1 which controls the resolution of
 #'   the island area calculated for plotting. Defaults to \code{0.001} and is
 #'   bound at \code{0.00001} to prevent unwieldy slowdowns.

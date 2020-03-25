@@ -132,6 +132,10 @@ vector.}
 \item{p}{Numeric vector to calculate divergence metric.}
 
 \item{q}{Numeric vector to calculate divergence metric.}
+
+\item{oceanic_ml}{A list of data frames with the output of DAISIE ML ran on
+oceanic simulations. Elements can also be strings if the ML failed on run
+or upstream.}
 }
 \value{
 Nothing
