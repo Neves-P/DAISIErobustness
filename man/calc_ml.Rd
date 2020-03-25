@@ -4,10 +4,10 @@
 \alias{calc_ml}
 \title{Calculate maximum likelihood value for the rates}
 \usage{
-calc_ml(simulations)
+calc_ml(sim)
 }
 \arguments{
-\item{simulations}{A list of simulation output from
+\item{sim}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}()},
 \code{\link{DAISIE_sim_time_dependent}()} or
 \code{\link{DAISIE_sim_constant_rate_shift}()}}

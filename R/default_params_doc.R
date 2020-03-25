@@ -10,17 +10,17 @@
 #' @param replicates A numeric for the number of replicates for the
 #' simulations.
 #' @param param_space tibble of the parameter space.
-#' @param simulation_pars A list of simulation parameters.
-#' @param simulations A list of simulation output from
+#' @param sim_pars A list of simulation parameters.
+#' @param sim A list of simulation output from
 #' \code{\link{DAISIE_sim_constant_rate}()},
 #' \code{\link{DAISIE_sim_time_dependent}()} or
 #' \code{\link{DAISIE_sim_constant_rate_shift}()}
 #' @param ml Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}
-#' @param simulations_1 A list of simulation output from
+#' @param sim_1 A list of simulation output from
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
-#' @param simulations_2 A list of simulation output from
+#' @param sim_2 A list of simulation output from
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
@@ -78,11 +78,11 @@ default_params_doc <- function(
   param_set,
   replicates,
   param_space,
-  simulation_pars,
-  simulations,
+  sim_pars,
+  sim,
   ml,
-  simulations_1,
-  simulations_2,
+  sim_1,
+  sim_2,
   totaltime_1,
   totaltime_2,
   area_pars_1,

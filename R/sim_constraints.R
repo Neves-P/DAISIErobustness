@@ -5,19 +5,19 @@
 #' @return Boolean
 #' @family sample size constraints
 #' @export
-simulation_constraints <- function(simulations,
-                                   replicates) {
+sim_constraints <- function(sim,
+                            replicates) {
   stt_rows <- c()
   n_spec <- c()
   n_col <- c()
   for (i in seq_len(replicates)) {
-    stt_rows[i] <- nrow(simulations[[i]][[1]][[1]]$stt_all)
+    stt_rows[i] <- nrow(sim[[i]][[1]][[1]]$stt_all)
     n_spec[i] <-
-      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nI"]) +
-      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nA"]) +
-      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "nC"])
+      as.numeric(sim[[i]][[1]][[1]]$stt_all[stt_rows[i], "nI"]) +
+      as.numeric(sim[[i]][[1]][[1]]$stt_all[stt_rows[i], "nA"]) +
+      as.numeric(sim[[i]][[1]][[1]]$stt_all[stt_rows[i], "nC"])
     n_col[i] <-
-      as.numeric(simulations[[i]][[1]][[1]]$stt_all[stt_rows[i], "present"])
+      as.numeric(sim[[i]][[1]][[1]]$stt_all[stt_rows[i], "present"])
   }
   prop_rep_over_15_spec <- length(which(n_spec >= 15))
   prop_rep_over_5_cols <- length(which(n_col >= 5))

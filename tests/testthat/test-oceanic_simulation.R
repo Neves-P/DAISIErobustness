@@ -1,6 +1,6 @@
-context("oceanic_simulations")
+context("oceanic_sim")
 
-test_that("test oceanic simulation output is correct for oceanic_ontogeny", {
+test_that("test oceanic sim output is correct for oceanic_ontogeny", {
   #ML output from oceanic_ontogeny param_set 2 with seed 1
   geodynamic_ml <- list()
   geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.7408068959667875,
@@ -19,34 +19,34 @@ test_that("test oceanic simulation output is correct for oceanic_ontogeny", {
                                    "loglik" = -134.5787898739167,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 13)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 988)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 35)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 13)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 988)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 35)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 2.15575062694003, 1.54615286277701))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 21)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 980)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 84)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 21)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 980)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 84)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 0.0134786754538898))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 4)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 4)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })
 
-test_that("test oceanic simulation output is correct for oceanic_sea_level", {
+test_that("test oceanic sim output is correct for oceanic_sea_level", {
   #ML output from oceanic_sea_level param_set 3 with seed 1
   geodynamic_ml <- list()
   geodynamic_ml[[1]] <- data.frame("lambda_c" = 2.972072521259935,
@@ -65,35 +65,35 @@ test_that("test oceanic simulation output is correct for oceanic_sea_level", {
                                    "loglik" = -86.0987646284259,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 8)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 993)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 189)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 8)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 993)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 189)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 0.40181269865572))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 15)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 986)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 280)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 15)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 986)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 280)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 0.78744390949049, 0.44024694308660,
                  0.17569647081206, 0.17229469215485))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })
 
-test_that("test oceanic simulation output is correct for
+test_that("test oceanic sim output is correct for
           oceanic_ontogeny_sea_level", {
   #ML output from oceanic_ontogeny_sea_level param_set 27 with seed 1
   geodynamic_ml <- list()
@@ -113,34 +113,34 @@ test_that("test oceanic simulation output is correct for
                                    "loglik" = -75.74986294679776,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 996)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 64)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 5)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 996)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 64)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 0.89428368320125))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 4)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 996)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 29)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 4)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 5)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 996)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 29)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 0.26306143521565, 0.10074372151992))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })
 
-test_that("test oceanic simulation output is correct for nonoceanic", {
+test_that("test oceanic sim output is correct for nonoceanic", {
   #ML output from nonoceanic param_set 1 with seed 1
   geodynamic_ml <- list()
   geodynamic_ml[[1]] <- data.frame("lambda_c" = 0.30300300291092,
@@ -159,34 +159,34 @@ test_that("test oceanic simulation output is correct for nonoceanic", {
                                    "loglik" = -260.4378133143198,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 32)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 969)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 57)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 32)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 969)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 57)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 0.93632100075768))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 35)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 966)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 62)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 35)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 966)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 62)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 1.93372265621858, 1.45725182831822))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })
 
-test_that("test oceanic simulation output is correct for
+test_that("test oceanic sim output is correct for
           nonoceanic_sea_level", {
   #ML output from nonoceanic_sea_level param_set 2 with seed 1
   geodynamic_ml <- list()
@@ -206,34 +206,34 @@ test_that("test oceanic simulation output is correct for
                                    "loglik" = -80.13404339756168,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 15)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 986)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 106)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 15)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 986)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 106)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 0.25685972779409000, 0.00133040719212962))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 9)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 992)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 52)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 9)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 992)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 52)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 1.58885068212059, 0.14672784782254))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })
 
-test_that("test oceanic simulation output is correct for
+test_that("test oceanic sim output is correct for
           nonoceanic_land_bridge", {
   #ML output from nonoceanic_land_bridge param_set 4 with seed 1
   geodynamic_ml <- list()
@@ -253,29 +253,29 @@ test_that("test oceanic simulation output is correct for
                                    "loglik" = -170.8308435743587,
                                    "df" = 5,
                                    "conv" = 0)
-  simulation_pars <- list(time = 2.55,
+  sim_pars <- list(time = 2.55,
                           M = 1000)
   set.seed(1)
-  oceanic_simulations <- oceanic_simulations(
+  oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    simulation_pars = simulation_pars)
-  expect_length(oceanic_simulations, 2)
-  expect_length(oceanic_simulations[[1]][[1]], 33)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[1]][[1]][[1]]$not_present, 968)
-  expect_equal(nrow(oceanic_simulations[[1]][[1]][[1]]$stt_all), 63)
-  expect_equal(ncol(oceanic_simulations[[1]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$branching_times,
+    sim_pars = sim_pars)
+  expect_length(oceanic_sim, 2)
+  expect_length(oceanic_sim[[1]][[1]], 33)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[1]][[1]][[1]]$not_present, 968)
+  expect_equal(nrow(oceanic_sim[[1]][[1]][[1]]$stt_all), 63)
+  expect_equal(ncol(oceanic_sim[[1]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$branching_times,
                c(2.55, 1.0773471120365))
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(oceanic_simulations[[2]][[1]], 26)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(oceanic_simulations[[2]][[1]][[1]]$not_present, 975)
-  expect_equal(nrow(oceanic_simulations[[2]][[1]][[1]]$stt_all), 43)
-  expect_equal(ncol(oceanic_simulations[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$branching_times,
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[1]][[1]][[2]]$missing_species, 0)
+  expect_length(oceanic_sim[[2]][[1]], 26)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$island_age, 2.55)
+  expect_equal(oceanic_sim[[2]][[1]][[1]]$not_present, 975)
+  expect_equal(nrow(oceanic_sim[[2]][[1]][[1]]$stt_all), 43)
+  expect_equal(ncol(oceanic_sim[[2]][[1]][[1]]$stt_all), 5)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$branching_times,
                c(2.55, 1.62570327330753, 1.13630767529890))
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$stac, 2)
-  expect_equal(oceanic_simulations[[2]][[1]][[2]]$missing_species, 0)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$stac, 2)
+  expect_equal(oceanic_sim[[2]][[1]][[2]]$missing_species, 0)
 })

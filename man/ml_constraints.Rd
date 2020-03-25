@@ -18,7 +18,7 @@ Checks if number of valid errors meet the criteria for data sample size
 }
 \seealso{
 Other sample size constraints: 
-\code{\link{simulation_constraints}()}
+\code{\link{sim_constraints}()}
 }
 \author{
 Joshua Lambert, Pedro Neves

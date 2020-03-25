@@ -3,8 +3,8 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return A list of errors and simulation and MLE output if
-#' \code{\link{simulation_constraints}} returned TRUE or simulation
-#' output if \code{\link{simulation_constraints}} returned FALSE.
+#' \code{\link{sim_constraints}} returned TRUE or simulation
+#' output if \code{\link{sim_constraints}} returned FALSE.
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
@@ -26,31 +26,31 @@ run_robustness <- function(param_space_name,
 
   set.seed(1)
 
-  simulation_pars <- extract_param_set(
+  sim_pars <- extract_param_set(
     param_space_name = param_space_name,
     param_space = param_space,
     param_set = param_set)
 
-  geodynamic_simulations <- geodynamic_simulations(
+  geodynamic_sim <- geodynamic_sim(
     param_space_name = param_space_name,
-    simulation_pars = simulation_pars,
+    sim_pars = sim_pars,
     replicates = replicates)
 
-  simulation_constraints <- simulation_constraints(
-    simulations = geodynamic_simulations,
+  sim_constraints <- sim_constraints(
+    sim = geodynamic_sim,
     replicates = replicates)
 
-  if (simulation_constraints == TRUE) {
+  if (sim_constraints == TRUE) {
     geodynamic_ml <- calc_ml(
-      simulations = geodynamic_simulations)
+      sim = geodynamic_sim)
 
-    oceanic_simulations_1 <- oceanic_simulations(
+    oceanic_sim_1 <- oceanic_sim(
       ml = geodynamic_ml,
-      simulation_pars = simulation_pars)
+      sim_pars = sim_pars)
 
     error <- calc_error(
-      simulations_1 = geodynamic_simulations,
-      simulations_2 = oceanic_simulations_1,
+      sim_1 = geodynamic_sim,
+      sim_2 = oceanic_sim_1,
       replicates = replicates)
 
     spec_error <- error$spec_error
@@ -58,15 +58,15 @@ run_robustness <- function(param_space_name,
     nonendemic_error <- error$nonendemic_error
 
     oceanic_ml <- calc_ml(
-      simulations = oceanic_simulations_1)
+      sim = oceanic_sim_1)
 
-    oceanic_simulations_2 <- oceanic_simulations(
+    oceanic_sim_2 <- oceanic_sim(
       ml = oceanic_ml,
-      simulation_pars = simulation_pars)
+      sim_pars = sim_pars)
 
     baseline_error <- calc_error(
-      simulations_1 = oceanic_simulations_1,
-      simulations_2 = oceanic_simulations_2,
+      sim_1 = oceanic_sim_1,
+      sim_2 = oceanic_sim_2,
       replicates = replicates)
 
     spec_baseline_error <- baseline_error$spec_error
@@ -89,11 +89,11 @@ run_robustness <- function(param_space_name,
       endemic_baseline_error = endemic_baseline_error,
       nonendemic_baseline_error = nonendemic_baseline_error,
       error_metrics = error_metrics,
-      geodynamic_simulations = geodynamic_simulations,
+      geodynamic_sim = geodynamic_sim,
       geodynamic_ml = geodynamic_ml,
-      oceanic_simulations_1 = oceanic_simulations_1,
+      oceanic_sim_1 = oceanic_sim_1,
       oceanic_ml = oceanic_ml,
-      oceanic_simulations_2 = oceanic_simulations_2)
+      oceanic_sim_2 = oceanic_sim_2)
 
     output_file_name <- paste0(
       "passed_cond_",
@@ -105,7 +105,7 @@ run_robustness <- function(param_space_name,
   } else {
 
     output_file <- list(
-      geodynamic_simulations = geodynamic_simulations)
+      geodynamic_sim = geodynamic_sim)
 
     output_file_name <- paste0(
       "failed_cond_",

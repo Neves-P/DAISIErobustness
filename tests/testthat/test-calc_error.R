@@ -5,13 +5,13 @@ test_that("test calc_error output is correct", {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     set.seed(1)
-    simulation_pars <- extract_param_set(
+    sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
       param_set = 2)
-    geodynamic_simulations <- geodynamic_simulations(
+    geodynamic_sim <- geodynamic_sim(
       param_space_name = "oceanic_ontogeny",
-      simulation_pars = simulation_pars,
+      sim_pars = sim_pars,
       replicates = 2)
     #ML output from oceanic_ontogeny param_set 2 with seed 1
     geodynamic_ml <- list()
@@ -31,12 +31,12 @@ test_that("test calc_error output is correct", {
                                      "loglik" = -133.3346436904723,
                                      "df" = 5,
                                      "conv" = 0)
-    oceanic_simulations <- oceanic_simulations(
+    oceanic_sim <- oceanic_sim(
       ml = geodynamic_ml,
-      simulation_pars = simulation_pars)
+      sim_pars = sim_pars)
     error <- calc_error(
-      simulations_1 = geodynamic_simulations,
-      simulations_2 = oceanic_simulations,
+      sim_1 = geodynamic_sim,
+      sim_2 = oceanic_sim,
       replicates = 2)
     expect_length(error, 3)
     expect_equal(error$spec_error, list(nltt = c(14.60200218911491,
