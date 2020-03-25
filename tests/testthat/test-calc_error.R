@@ -39,14 +39,14 @@ test_that("test calc_error output is correct", {
       simulations_2 = oceanic_simulations,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$spec_error, list(nltt = c(3.466459645659721,
-                                                 16.779762104341131),
+    expect_equal(error$spec_error, list(nltt = c(14.60200218911491,
+                                                 21.13234531729715),
                                         num_spec_error = c(6, 18),
                                         num_col_error = c(1, 2)))
-    expect_equal(error$endemic_error, list(nltt = c(4.105857769709307,
-                                                    9.843170592071166)))
-    expect_equal(error$nonendemic_error, list(nltt = c(12.19399299074907,
-                                                       20.13397293941591)))
+    expect_equal(error$endemic_error, list(nltt = c(12.19399299074907,
+                                                    20.13397293941591)))
+    expect_equal(error$nonendemic_error, list(nltt = c(4.105857769709307,
+                                                       9.843170592071166)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
