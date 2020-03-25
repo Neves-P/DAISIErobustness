@@ -61,6 +61,20 @@ geodynamic_simulations <- function(param_space_name,
         verbose = FALSE
       )
       }
+  }
+  if (param_space_name == "trait") {
+    for (i in seq_len(replicates)) {
+      geodynamic_simulations[[i]] <- DAISIE::DAISIE_sim_trait_dependent(
+        time = simulation_pars$time,
+        M = simulation_pars$M,
+        pars = simulation_pars$pars,
+        replicates = 1,
+        sample_freq  = Inf,
+        plot_sims = FALSE,
+        verbose = FALSE,
+        trait_pars = simulation_pars$trait_pars
+      )
     }
+  }
   return(geodynamic_simulations)
 }
