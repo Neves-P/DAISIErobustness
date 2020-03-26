@@ -122,9 +122,8 @@ run_robustness <- function(param_space_name,
       param_set,
       ".Rdata")
 
-  }
+  } else if (ml_constraints == FALSE) {
   # Saving if failed ml constraints
-  if (ml_constraints == FALSE) {
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
       oceanic_sim_1 = oceanic_sim_1,
