@@ -20,7 +20,7 @@ calc_error_metrics <- function(spec_error,
                                nonendemic_baseline_error) {
 
 
-  if (!ml_constraints(spec_baseline_error)) {
+  if (ml_constraints(spec_baseline_error) == FALSE) {
     error_metrics <- "Data sample size creteria not met"
   } else {
     for (n_reps in seq_along(spec_baseline_error)) {
@@ -71,19 +71,19 @@ calc_error_metrics <- function(spec_error,
     num_col_sd_diff <-
       abs(sd(num_col, na.rm = TRUE) - sd(num_baseline_col, na.rm = TRUE))
 
-    spec_nltt_mean_diff <-
-      abs(mean(spec_nltt, na.rm = TRUE) - mean(spec_baseline_nltt, na.rm = TRUE))
-    endemic_nltt_mean_diff <-
-      abs(mean(endemic_nltt, na.rm = TRUE) - mean(endemic_baseline_nltt, na.rm = TRUE))
-    nonendemic_nltt_mean_diff <-
-      abs(mean(nonendemic_nltt, na.rm = TRUE) - mean(nonendemic_baseline_nltt, na.rm = TRUE))
+    spec_nltt_mean_diff <- abs(mean(spec_nltt, na.rm = TRUE) -
+                                 mean(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_mean_diff <- abs(mean(endemic_nltt, na.rm = TRUE) -
+                                    mean(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_mean_diff <- abs(mean(nonendemic_nltt, na.rm = TRUE) -
+                                  mean(nonendemic_baseline_nltt, na.rm = TRUE))
 
-    spec_nltt_sd_diff <-
-      abs(sd(spec_nltt, na.rm = TRUE) - sd(spec_baseline_nltt, na.rm = TRUE))
-    endemic_nltt_sd_diff <-
-      abs(sd(endemic_nltt, na.rm = TRUE) - sd(endemic_baseline_nltt, na.rm = TRUE))
-    nonendemic_nltt_sd_diff <-
-      abs(sd(nonendemic_nltt, na.rm = TRUE) - sd(nonendemic_baseline_nltt, na.rm = TRUE))
+    spec_nltt_sd_diff <- abs(sd(spec_nltt, na.rm = TRUE) -
+                               sd(spec_baseline_nltt, na.rm = TRUE))
+    endemic_nltt_sd_diff <- abs(sd(endemic_nltt, na.rm = TRUE) -
+                                  sd(endemic_baseline_nltt, na.rm = TRUE))
+    nonendemic_nltt_sd_diff <- abs(sd(nonendemic_nltt, na.rm = TRUE) -
+                                     sd(nonendemic_baseline_nltt, na.rm = TRUE))
 
     spec_nltt <- spec_nltt[!is.na(spec_nltt)]
     spec_baseline_nltt <- spec_baseline_nltt[!is.na(spec_baseline_nltt)]
@@ -146,25 +146,25 @@ check_calc_error_metrics_input <- function(spec_error,
                                            spec_baseline_error,
                                            endemic_baseline_error,
                                            nonendemic_baseline_error) {
-  num_spec <- spec_error$num_spec_error
+  num_spec <- na.omit(spec_error$num_spec_error)
   testit::assert(all(num_spec >= 0))
-  spec_baseline_num <- spec_baseline_error$num_spec_error
+  spec_baseline_num <- na.omit(spec_baseline_error$num_spec_error)
   testit::assert(all(spec_baseline_num >= 0))
-  num_baseline_col <- spec_baseline_error$num_col_error
+  num_baseline_col <- na.omit(spec_baseline_error$num_col_error)
   testit::assert(all(num_baseline_col >= 0))
-  num_col <- spec_error$num_col_error
+  num_col <- na.omit(spec_error$num_col_error)
   testit::assert(all(num_col >= 0))
-  spec_nltt <- spec_error$nltt
+  spec_nltt <- na.omit(spec_error$nltt)
   testit::assert(all(spec_nltt >= 0))
 
-  spec_baseline_nltt <- spec_baseline_error$nltt
+  spec_baseline_nltt <- na.omit(spec_baseline_error$nltt)
   testit::assert(all(spec_baseline_nltt >= 0))
-  endemic_nltt <- endemic_error$nltt
+  endemic_nltt <- na.omit(endemic_error$nltt)
   testit::assert(all(endemic_nltt >= 0))
-  endemic_baseline_nltt <- endemic_baseline_error$nltt
+  endemic_baseline_nltt <- na.omit(endemic_baseline_error$nltt)
   testit::assert(all(endemic_baseline_nltt >= 0))
-  nonendemic_nltt <- nonendemic_error$nltt
+  nonendemic_nltt <- na.omit(nonendemic_error$nltt)
   testit::assert(all(nonendemic_nltt >= 0))
-  nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
+  nonendemic_baseline_nltt <- na.omit(nonendemic_baseline_error$nltt)
   testit::assert(all(nonendemic_baseline_nltt >= 0))
 }
