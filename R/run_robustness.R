@@ -122,6 +122,7 @@ run_robustness <- function(param_space_name,
   } else if (ml_constraints == FALSE) {
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
+      geodynamic_ml = geodynamic_ml,
       oceanic_sim_1 = oceanic_sim_1,
       oceanic_ml = oceanic_ml)
 
