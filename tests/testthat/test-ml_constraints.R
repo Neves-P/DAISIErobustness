@@ -21,3 +21,13 @@ test_that("test ml_constraints works", {
   expect_false(failed_constraint)
   expect_true(passed_constraint)
 })
+
+test_that("test ml_constraints works with long list", {
+
+a_list <- list("1", "2")
+for (i in 3:100) {
+  a_list[[i]] <- c(1, 2, 3)
+}
+DAISIErobustness:::ml_constraints(a_list)
+
+})
