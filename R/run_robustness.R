@@ -123,10 +123,7 @@ run_robustness <- function(param_space_name,
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
       oceanic_sim_1 = oceanic_sim_1,
-      oceanic_ml = oceanic_ml,
-      spec_error = spec_error,
-      endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error)
+      oceanic_ml = oceanic_ml)
 
     output_file_name <- paste0(
       "failed_cond_",
