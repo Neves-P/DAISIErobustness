@@ -8,7 +8,7 @@
 #' @export
 run_robustness_local <- function(param_space_name,
                                  param_set,
-                                 replicates = 1000) {
+                                 replicates) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -60,44 +60,58 @@ run_robustness_local <- function(param_space_name,
     oceanic_ml <- calc_ml(
       sim = oceanic_sim_1)
 
-    oceanic_sim_2 <- oceanic_sim(
-      ml = oceanic_ml,
-      sim_pars = sim_pars)
+    ml_constraints <- ml_constraints(
+      oceanic_ml = oceanic_ml)
 
-    baseline_error <- calc_error(
-      sim_1 = oceanic_sim_1,
-      sim_2 = oceanic_sim_2,
-      replicates = replicates)
+    if (ml_constraints == TRUE) {
+      oceanic_sim_2 <- oceanic_sim(
+        ml = oceanic_ml,
+        sim_pars = sim_pars)
 
-    spec_baseline_error <- baseline_error$spec_error
-    endemic_baseline_error <- baseline_error$endemic_error
-    nonendemic_baseline_error <- baseline_error$nonendemic_error
+      baseline_error <- calc_error(
+        sim_1 = oceanic_sim_1,
+        sim_2 = oceanic_sim_2,
+        replicates = replicates)
 
-    error_metrics <- calc_error_metrics(
-      spec_error = spec_error,
-      endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error,
-      spec_baseline_error = spec_baseline_error,
-      endemic_baseline_error = endemic_baseline_error,
-      nonendemic_baseline_error = nonendemic_baseline_error)
+      spec_baseline_error <- baseline_error$spec_error
+      endemic_baseline_error <- baseline_error$endemic_error
+      nonendemic_baseline_error <- baseline_error$nonendemic_error
 
-    output_file <- list(
-      spec_error = spec_error,
-      endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error,
-      spec_baseline_error = spec_baseline_error,
-      endemic_baseline_error = endemic_baseline_error,
-      nonendemic_baseline_error = nonendemic_baseline_error,
-      error_metrics = error_metrics,
-      geodynamic_sim = geodynamic_sim,
-      geodynamic_ml = geodynamic_ml,
-      oceanic_sim_1 = oceanic_sim_1,
-      oceanic_ml = oceanic_ml,
-      oceanic_sim_2 = oceanic_sim_2)
+      error_metrics <- calc_error_metrics(
+        spec_error = spec_error,
+        endemic_error = endemic_error,
+        nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error)
 
-  } else {
+      output_file <- list(
+        spec_error = spec_error,
+        endemic_error = endemic_error,
+        nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error,
+        error_metrics = error_metrics,
+        geodynamic_sim = geodynamic_sim,
+        geodynamic_ml = geodynamic_ml,
+        oceanic_sim_1 = oceanic_sim_1,
+        oceanic_ml = oceanic_ml,
+        oceanic_sim_2 = oceanic_sim_2)
+    }
+  }
+
+  if (sim_constraints == FALSE) {
     output_file <- list(
       geodynamic_sim = geodynamic_sim)
+    } else if (ml_constraints == FALSE) {
+    output_file <- list(
+      geodynamic_sim = geodynamic_sim,
+      oceanic_sim_1 = oceanic_sim_1,
+      oceanic_ml = oceanic_ml,
+      spec_error = spec_error,
+      endemic_error = endemic_error,
+      nonendemic_error = nonendemic_error)
   }
   return(output_file)
 }

@@ -8,7 +8,7 @@
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
-                           replicates = 1000) {
+                           replicates) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -60,7 +60,8 @@ run_robustness <- function(param_space_name,
     oceanic_ml <- calc_ml(
       sim = oceanic_sim_1)
 
-    ml_constraints <- ml_constraints(oceanic_ml)
+    ml_constraints <- ml_constraints(
+      oceanic_ml = oceanic_ml)
 
     if (ml_constraints == TRUE) {
       oceanic_sim_2 <- oceanic_sim(
@@ -84,9 +85,6 @@ run_robustness <- function(param_space_name,
         endemic_baseline_error = endemic_baseline_error,
         nonendemic_baseline_error = nonendemic_baseline_error)
 
-
-      # Saving if passed
-
       output_file <- list(
         spec_error = spec_error,
         endemic_error = endemic_error,
@@ -109,11 +107,10 @@ run_robustness <- function(param_space_name,
         ".Rdata")
     }
   }
-  # Saving if failed sim constraints
+
   if (sim_constraints == FALSE) {
     output_file <- list(
-      geodynamic_sim = geodynamic_sim
-    )
+      geodynamic_sim = geodynamic_sim)
 
     output_file_name <- paste0(
       "failed_cond_",
@@ -123,15 +120,13 @@ run_robustness <- function(param_space_name,
       ".Rdata")
 
   } else if (ml_constraints == FALSE) {
-  # Saving if failed ml constraints
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
       oceanic_sim_1 = oceanic_sim_1,
       oceanic_ml = oceanic_ml,
       spec_error = spec_error,
       endemic_error = endemic_error,
-      nonendemic_error = nonendemic_error
-    )
+      nonendemic_error = nonendemic_error)
 
     output_file_name <- paste0(
       "failed_cond_",
