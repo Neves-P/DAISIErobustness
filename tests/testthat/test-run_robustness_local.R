@@ -1,8 +1,7 @@
 context("run_robustness_local")
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny passes
-          constraints", {
-  skip("WIP")
+test_that("run_robustness_local output is correct when it passes
+          sim_constraints", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness_local(
       param_space_name = "oceanic_ontogeny",
@@ -21,23 +20,26 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny passes
                                                           20.12382130303635),
                                                  num_spec_error = c(2, 6),
                                                  num_col_error = c(8, 3)))
-    expect_equal(error$endemic_baseline_error, list(nltt = c(2.479620682470331,
-                                                             13.987840695971366)))
-    expect_equal(error$nonendemic_baseline_error, list(nltt = c(5.065599417345626,
-                                                                8.150210879922227)))
-    expect_equal(error$error_metrics, list(num_spec_mean_diff = 8,
-                                           num_spec_sd_diff = 5.65685424949238,
-                                           num_col_mean_diff = 4,
-                                           num_col_sd_diff = 2.82842712474619,
-                                           spec_nltt_mean_diff = 5.120370895578827,
-                                           endemic_nltt_mean_diff = 7.930252275861640,
-                                           nonendemic_nltt_mean_diff = 0.3666090322563083,
-                                           spec_nltt_sd_diff = 5.81502962596146,
-                                           endemic_nltt_sd_diff = 2.523126746745787,
-                                           nonendemic_nltt_sd_diff = 1.875743119966929,
-                                           spec_nltt_ks_dist = 0.1979939251300001,
-                                           endemic_nltt_ks_dist = 0.226619434409659,
-                                           nonendemic_nltt_ks_dist = 0.0889512124304479))
+    expect_equal(error$endemic_baseline_error,
+                 list(nltt = c(2.479620682470331,
+                               13.987840695971366)))
+    expect_equal(error$nonendemic_baseline_error,
+                 list(nltt = c(5.065599417345626,
+                               8.150210879922227)))
+    expect_equal(error$error_metrics,
+                 list(num_spec_mean_diff = 8,
+                      num_spec_sd_diff = 5.65685424949238,
+                      num_col_mean_diff = 4,
+                      num_col_sd_diff = 2.82842712474619,
+                      spec_nltt_mean_diff = 5.120370895578827,
+                      endemic_nltt_mean_diff = 7.930252275861640,
+                      nonendemic_nltt_mean_diff = 0.3666090322563083,
+                      spec_nltt_sd_diff = 5.81502962596146,
+                      endemic_nltt_sd_diff = 2.523126746745787,
+                      nonendemic_nltt_sd_diff = 1.875743119966929,
+                      spec_nltt_ks_dist = 0.1979939251300001,
+                      endemic_nltt_ks_dist = 0.226619434409659,
+                      nonendemic_nltt_ks_dist = 0.0889512124304479))
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 12)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -83,9 +85,8 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny passes
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_ontogeny fails
-          constraints", {
-  skip("WIP")
+test_that("run_robustness_local output is correct when it fails
+          sim_constraints", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness_local(
       param_space_name = "oceanic_ontogeny",
@@ -103,135 +104,14 @@ test_that("run_robustness_local output is correct when oceanic_ontogeny fails
   }
 })
 
-test_that("run_robustness_local output is correct when oceanic_sea_level passes
-          constraints", {
-  skip("WIP")
+test_that("run_robustness_local output is correct when it fails
+          ml_constraints", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     error <- run_robustness_local(
       param_space_name = "oceanic_sea_level",
       param_set = 3,
       replicates = 2)
     expect_equal()
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when oceanic_sea_level fails
-          constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "oceanic_sea_level",
-      param_set = 1,
-      replicates = 2)
-    expect_equal()
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when
-          oceanic_ontogeny_sea_level passes constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "oceanic_ontogeny_sea_level",
-      param_set = 27,
-      replicates = 2)
-    expect_equal()
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when
-          oceanic_ontogeny_sea_level fails constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "oceanic_ontogeny_sea_level",
-      param_set = 1,
-      replicates = 2)
-    expect_equal()
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local is correct when nonoceanic passes
-          constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic",
-      param_set = 1,
-      replicates = 2)
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local ouput is correct when nonoceanic fails
-          constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic",
-      param_set = 1,
-      replicates = 2)
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when nonoceanic_sea_level
-          passes constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic_sea_level",
-      param_set = 2,
-      replicates = 2)
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when nonoceanic_sea_level
-          fails constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic_sea_level",
-      param_set = 2,
-      replicates = 2)
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when nonoceanic_land_bridge
-          passes constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic_land_bridge",
-      param_set = 4,
-      replicates = 2)
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
-})
-
-test_that("run_robustness_local output is correct when nonoceanic_land_bridge
-          fails constraints", {
-  skip("WIP")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness_local(
-      param_space_name = "nonoceanic_land_bridge",
-      param_set = 4,
-      replicates = 2)
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }

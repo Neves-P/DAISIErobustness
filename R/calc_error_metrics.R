@@ -96,9 +96,11 @@ calc_error_metrics <- function(spec_error,
     testit::assert(spec_nltt_ks_dist >= 0)
 
     endemic_nltt <- endemic_nltt[!is.na(endemic_nltt)]
-    endemic_baseline_nltt <- endemic_baseline_nltt[!is.na(endemic_baseline_nltt)]
+    endemic_baseline_nltt <-
+      endemic_baseline_nltt[!is.na(endemic_baseline_nltt)]
     norm_endemic_nltt <- endemic_nltt / sum(endemic_nltt)
-    norm_endemic_baseline_nltt <- endemic_baseline_nltt / sum(endemic_baseline_nltt)
+    norm_endemic_baseline_nltt <-
+      endemic_baseline_nltt / sum(endemic_baseline_nltt)
     cumul_endemic_nltt <- cumsum(norm_endemic_nltt)
     cumul_endemic_baseline_nltt <- cumsum(norm_endemic_baseline_nltt)
     endemic_diff <- abs(cumul_endemic_nltt - cumul_endemic_baseline_nltt)
@@ -106,12 +108,15 @@ calc_error_metrics <- function(spec_error,
     testit::assert(endemic_nltt_ks_dist >= 0)
 
     nonendemic_nltt <- nonendemic_nltt[!is.na(nonendemic_nltt)]
-    nonendemic_baseline_nltt <- nonendemic_baseline_nltt[!is.na(nonendemic_baseline_nltt)]
+    nonendemic_baseline_nltt <-
+      nonendemic_baseline_nltt[!is.na(nonendemic_baseline_nltt)]
     norm_nonendemic_nltt <- nonendemic_nltt / sum(nonendemic_nltt)
-    norm_nonendemic_baseline_nltt <- nonendemic_baseline_nltt / sum(nonendemic_baseline_nltt)
+    norm_nonendemic_baseline_nltt <-
+      nonendemic_baseline_nltt / sum(nonendemic_baseline_nltt)
     cumul_nonendemic_nltt <- cumsum(norm_nonendemic_nltt)
     cumul_nonendemic_baseline_nltt <- cumsum(norm_nonendemic_baseline_nltt)
-    nonendemic_diff <- abs(cumul_nonendemic_nltt - cumul_nonendemic_baseline_nltt)
+    nonendemic_diff <-
+      abs(cumul_nonendemic_nltt - cumul_nonendemic_baseline_nltt)
     nonendemic_nltt_ks_dist <- max(nonendemic_diff)
     testit::assert(nonendemic_nltt_ks_dist >= 0)
 
