@@ -13,7 +13,7 @@ sim_constraints(sim, replicates)
 \code{\link{DAISIE_sim_constant_rate_shift}()}}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
 }
 \value{
 Boolean

@@ -16,7 +16,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \item{sim_pars}{A list of simulation parameters.}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
 }
 \value{
 A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},

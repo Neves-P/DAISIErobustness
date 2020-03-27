@@ -19,7 +19,7 @@ calc_error(sim_1, sim_2, replicates)
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
 }
 \value{
 A list with three error metrics
