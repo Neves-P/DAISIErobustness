@@ -19,10 +19,6 @@ calc_error_metrics <- function(spec_error,
                                endemic_baseline_error,
                                nonendemic_baseline_error) {
 
-
-  if (ml_constraints(spec_baseline_error) == FALSE) {
-    error_metrics <- "Data sample size creteria not met"
-  } else {
     for (n_reps in seq_along(spec_baseline_error)) {
       if (is.character(spec_baseline_error[[n_reps]])) {
         spec_error$num_spec_error[[n_reps]] <- NA
@@ -37,11 +33,11 @@ calc_error_metrics <- function(spec_error,
         nonendemic_baseline_error$nltt[[n_reps]] <- NA
       }
     }
+
     num_spec <- spec_error$num_spec_error
     spec_baseline_num <- spec_baseline_error$num_spec_error
     num_baseline_col <- spec_baseline_error$num_col_error
     num_col <- spec_error$num_col_error
-
 
     spec_nltt <- spec_error$nltt
     spec_baseline_nltt <- spec_baseline_error$nltt
@@ -49,8 +45,6 @@ calc_error_metrics <- function(spec_error,
     endemic_baseline_nltt <- endemic_baseline_error$nltt
     nonendemic_nltt <- nonendemic_error$nltt
     nonendemic_baseline_nltt <- nonendemic_baseline_error$nltt
-
-
 
     check_calc_error_metrics_input(
       spec_error = spec_error,
@@ -134,7 +128,7 @@ calc_error_metrics <- function(spec_error,
       spec_nltt_ks_dist = spec_nltt_ks_dist,
       endemic_nltt_ks_dist = endemic_nltt_ks_dist,
       nonendemic_nltt_ks_dist = nonendemic_nltt_ks_dist)
-  }
+
   return(error_metrics)
 }
 
