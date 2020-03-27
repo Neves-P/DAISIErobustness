@@ -23,8 +23,7 @@ test_that("ml_constraints returns TRUE", {
   expect_equal(ml_constraints, TRUE)
 })
 
-test_that("test ml_constraints returns FALSE when proportion of failed
-          MLs exceeds 1%", {
+test_that("test ml_constraints returns FALSE when an ML fails", {
 
   oceanic_ml <- list(data.frame("lambda_c" = 0.4703865020955945,
                                 "mu" = 0.3024123467825012,

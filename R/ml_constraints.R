@@ -6,11 +6,7 @@
 ml_constraints <- function(ml) {
   testit::assert(is.list(ml))
   failed_mls <- sapply(ml, FUN = is.character)
-  count_fails <- sum(as.numeric(failed_mls))
-  prop_fails <- count_fails / length(ml)
-  testit::assert(is.numeric(prop_fails))
-  testit::assert(prop_fails <= 1 && prop_fails >= 0)
-  if (prop_fails > 0.01) {
+  if (any(failed_mls) == TRUE) {
     return(FALSE)
   } else {
     return(TRUE)
