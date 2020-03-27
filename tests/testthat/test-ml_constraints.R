@@ -1,33 +1,43 @@
 context("ml_constraints")
 
-test_that("test ml_constraints works", {
+test_that("ml_constraints returns TRUE", {
+  oceanic_ml <- list(data.frame("lambda_c" = 0.4703865020955945,
+                                   "mu" = 0.3024123467825012,
+                                   "K" = 0.9604172665676682,
+                                   "gamma" = 0.005654402886347983,
+                                   "lambda_a" = 1.256814199481393,
+                                   "loglik" = -86.44387709521121,
+                                   "df" = 5,
+                                   "conv" = 0),
+                        data.frame("lambda_c" = 1.266996227093286,
+                                   "mu" = 1.360311534579718,
+                                   "K" = 4.29713623613709,
+                                   "gamma" = 0.01871138624408656,
+                                   "lambda_a" = 7.741644634429056e-08,
+                                   "loglik" = -139.8897801706968,
+                                   "df" = 5,
+                                   "conv" = 0))
 
-  passed_constraints_list <- list(
-    data.frame(1, 2, 3, 4, 5, 6),
-    data.frame(1, 2, 3, 4, 5, 6)
-  )
-  failed_constraints_list <- list(
-    "A string",
-    data.frame(1, 2, 3, 4, 5, 6)
-  )
-
-  passed_constraint <- DAISIErobustness:::ml_constraints(
-    passed_constraints_list
-  )
-  failed_constraint <- DAISIErobustness:::ml_constraints(
-    failed_constraints_list
-  )
-
-  expect_false(failed_constraint)
-  expect_true(passed_constraint)
+  ml_constraints <- ml_constraints(
+    ml = oceanic_ml)
+  expect_equal(ml_constraints, TRUE)
 })
 
-test_that("test ml_constraints works with long list", {
+test_that("test ml_constraints returns FALSE when proportion of failed
+          MLs exceeds 1%", {
 
-a_list <- list("1", "2")
-for (i in 3:100) {
-  a_list[[i]] <- c(1, 2, 3)
-}
-DAISIErobustness:::ml_constraints(a_list)
+  oceanic_ml <- list(data.frame("lambda_c" = 0.4703865020955945,
+                                "mu" = 0.3024123467825012,
+                                "K" = 0.9604172665676682,
+                                "gamma" = 0.005654402886347983,
+                                "lambda_a" = 1.256814199481393,
+                                "loglik" = -86.44387709521121,
+                                "df" = 5,
+                                "conv" = 0),
+                     "ML didn't converge")
+
+  ml_constraints <- ml_constraints(
+    ml = oceanic_ml)
+  expect_equal(ml_constraints, FALSE)
 
 })

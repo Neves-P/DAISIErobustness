@@ -4,12 +4,10 @@
 \alias{ml_constraints}
 \title{Checks if number of valid errors meet the criteria for data sample size}
 \usage{
-ml_constraints(oceanic_ml)
+ml_constraints(ml)
 }
 \arguments{
-\item{oceanic_ml}{A list of data frames with the output of DAISIE ML ran on
-oceanic simulations. Elements can also be strings if the ML failed on run
-or upstream.}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
 }
 \value{
 Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
