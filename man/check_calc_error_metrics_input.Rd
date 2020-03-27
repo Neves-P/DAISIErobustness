@@ -36,9 +36,6 @@ Nothing. Throws error if input is not correct
 \description{
 Checks calc_error_metrics_input is correct
 }
-\seealso{
-\code{\link{calc_error_metrics}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }

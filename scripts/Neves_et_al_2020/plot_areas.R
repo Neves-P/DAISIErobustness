@@ -147,7 +147,6 @@ plot_areas <- function(totaltime_1,
 #' a helpful error message is returned.
 #' @inheritParams default_params_doc
 #'
-#' @seealso DAISIE_plot_areas
 #' @author Pedro Neves, Joshua Lambert
 #' @return Nothing, breaks with helpful error message if input is wrong.
 check_area_plot_input <- function(totaltime_1,

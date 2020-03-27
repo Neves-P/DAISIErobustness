@@ -138,7 +138,7 @@ calc_error_metrics <- function(spec_error,
 #'
 #' @return Nothing. Throws error if input is not correct
 #' @author Joshua Lambert, Pedro Neves
-#' @seealso \code{\link{calc_error_metrics}()}
+#' @importFrom stats na.omit
 check_calc_error_metrics_input <- function(spec_error,
                                            endemic_error,
                                            nonendemic_error,
