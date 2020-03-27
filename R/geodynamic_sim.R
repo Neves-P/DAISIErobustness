@@ -7,8 +7,8 @@
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
 #' @export
 geodynamic_sim <- function(param_space_name,
-                                   sim_pars,
-                                   replicates) {
+                           sim_pars,
+                           replicates) {
   geodynamic_sim <- list()
   if (param_space_name == "nonoceanic") {
     for (i in seq_len(replicates)) {

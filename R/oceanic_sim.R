@@ -5,7 +5,7 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 #' @export
 oceanic_sim <- function(ml,
-                                sim_pars) {
+                        sim_pars) {
   oceanic_sim <- list()
   for (i in seq_along(ml)) {
     if (is.character(ml[[i]])) {
