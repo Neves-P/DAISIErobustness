@@ -4,7 +4,7 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space_name, param_set, replicates = 1000)
+run_robustness(param_space_name, param_set, replicates, save_output = TRUE)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -17,7 +17,9 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
+
+\item{save_output}{A boolean to determine whether to save or return output.}
 }
 \value{
 A list of errors and simulation and MLE output if

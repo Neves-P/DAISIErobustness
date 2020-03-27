@@ -8,7 +8,8 @@
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
-                           replicates) {
+                           replicates,
+                           save_output = TRUE) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -61,7 +62,7 @@ run_robustness <- function(param_space_name,
       sim = oceanic_sim_1)
 
     ml_constraints <- ml_constraints(
-      oceanic_ml = oceanic_ml)
+      ml = oceanic_ml)
 
     if (ml_constraints == TRUE) {
       oceanic_sim_2 <- oceanic_sim(
@@ -134,18 +135,23 @@ run_robustness <- function(param_space_name,
       ".Rdata")
 
   }
-  output_path <- file.path("results", param_space_name, output_file_name)
 
-  message(paste0("Trying to save ", output_file_name, " to ", output_path))
+  if (save_output == TRUE) {
+    output_path <- file.path("results", param_space_name, output_file_name)
 
-  save(output_file, file = output_path)
+    message(paste0("Trying to save ", output_file_name, " to ", output_path))
 
-  message(
-    paste0(
-      "Saved ",
-      output_file_name,
-      " to ",
-      file.path(param_space_name, output_file_name)
+    save(output_file, file = output_path)
+
+    message(
+      paste0(
+        "Saved ",
+        output_file_name,
+        " to ",
+        file.path(param_space_name, output_file_name)
+      )
     )
-  )
+  } else {
+    return(output_file)
+  }
 }
