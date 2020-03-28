@@ -36,7 +36,7 @@ after_success:
   # Codecov
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'covr::codecov()'; fi
   # Lint
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; travis_wait 20 Rscript -e "lintr::lint_package()"; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'lintr::lint_package()'; fi
 
 after_failure:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cat /home/travis/build/Neves-P/DAISIErobustness/DAISIErobustness.Rcheck/00install.out; fi
