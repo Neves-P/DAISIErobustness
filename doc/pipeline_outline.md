@@ -22,7 +22,7 @@ DAISIErobustness consists of a pipeline designed to measure the error one create
 Note that one can select from a number of implemented geodynamics simulations. See Appendices for more information.
 2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE, please see **here CHANGE**.
 3. The DAISIE likelihood inference routine is applied in the previously generated or supplied data (Fig 1.2). This results in a set of likelihood estimated parameters and log-ikelihood for each of the replicates generated in steps 1-2. Note that this estimation procedure is entirely blind to whichever new processes were introduced to generate the initial data.
-4. A new set of simulations is ran. The generating parameters of these simulations are the estimates obtained in step 4, and one replicate is simulated per set of generating parameters. These simulations **do not** include any of the realist features that characterize the simulations in step 1, but instead are a set standard oceanic DAISIE and follow the same model as the inference proceadure. At this stage, the error, _E_ (dashed line in Fig. 1), introduced by using an estimation model (step 4) that does not match the generating model (step 1) can be computed. This error is obtained by comparing the generating data (Fig 1.1) with the data obained in step 4. See Appendices for description of error metrics computed.
+4. A new set of simulations is ran. The generating parameters of these simulations are the estimates obtained in step 4, and one replicate is simulated per set of generating parameters. These simulations **do not** include any of the realist features that characterize the simulations in step 1, but instead are a set standard oceanic DAISIE and follow the same model as the inference procedure. At this stage, the error, _E_ (dashed line in Fig. 1), introduced by using an estimation model (step 4) that does not match the generating model (step 1) can be computed. This error is obtained by comparing the generating data (Fig 1.1) with the data obained in step 4. See Appendices for description of error metrics computed.
 5. As in step 3, each resulting simulation is taken only as a reconstructed phylogeny (more precisely, as branching times and endemic status through time).
 6. Similarly to step 3, likelihood estimation is performed in each simulation resulting from step 5.
 7. As in step 4, each obtained set of parameter estimates is used to simulate a standard, oceanic DAISIE data set. The pairwise baseline error, _E<sub>B</sub>_, (dashed line in Figure 1) is computed between the simulations obtained in steps 4 and 7. The baseline error corresponds to the error inherent in the parameter estimation procedure, and the stochasticity of the simulations. The same metrics as in step 4 are obtained, see Appendices for more information.
@@ -42,6 +42,8 @@ The parameter currently implemented can be found [here](https://github.com/Neves
 
 ## References
 <sup>1</sup>DAISIE Galápagos paper
+
 <sup>2</sup>Ecography paper
+
 <sup>2</sup>GDM paper
 
