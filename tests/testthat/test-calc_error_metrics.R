@@ -106,5 +106,3 @@ test_that("test calc_error_metrics output is correct when error vectors
   expect_true(error_metrics$endemic_nltt_ks_dist != 0)
   expect_true(error_metrics$nonendemic_nltt_ks_dist != 0)
 })
-
-

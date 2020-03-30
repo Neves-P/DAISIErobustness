@@ -5,7 +5,7 @@ test_that("test load_param_space loads oceanic_ontogeny
   oceanic_ontogeny <- load_param_space(
     param_space_name = "oceanic_ontogeny"
     )
-  expect_equal(nrow(oceanic_ontogeny), 432)
+  expect_equal(nrow(oceanic_ontogeny), 192)
   expect_equal(ncol(oceanic_ontogeny), 20)
   expect_equal(names(oceanic_ontogeny),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
@@ -41,7 +41,7 @@ test_that("test load_param_space loads oceanic_sea_level
   oceanic_sea_level <- load_param_space(
     param_space_name = "oceanic_sea_level"
   )
-  expect_equal(nrow(oceanic_sea_level), 864)
+  expect_equal(nrow(oceanic_sea_level), 384)
   expect_equal(ncol(oceanic_sea_level), 20)
   expect_equal(names(oceanic_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
