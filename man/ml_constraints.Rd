@@ -4,11 +4,10 @@
 \alias{ml_constraints}
 \title{Checks if number of valid errors meet the criteria for data sample size}
 \usage{
-ml_constraints(spec_baseline_error)
+ml_constraints(ml)
 }
 \arguments{
-\item{spec_baseline_error}{A list with three elements each with
-a numeric vector.}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
 }
 \value{
 Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
@@ -16,11 +15,6 @@ Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 \description{
 Checks if number of valid errors meet the criteria for data sample size
 }
-\seealso{
-Other sample size constraints: 
-\code{\link{simulation_constraints}()}
-}
 \author{
 Joshua Lambert, Pedro Neves
 }
-\concept{sample size constraints}

@@ -44,11 +44,6 @@ Razali and Wah (2011) "Power comparisons of shapiro-wilk,
 kolmogorov-smirnov, lilliefors and anderson-darling tests"
 Journal of Statistical Modeling and Analytics 2, 21-33.
 }
-\seealso{
-Other error calculations: 
-\code{\link{calc_error}()}
-}
 \author{
 Pedro Neves, Joshua Lambert
 }
-\concept{error calculations}

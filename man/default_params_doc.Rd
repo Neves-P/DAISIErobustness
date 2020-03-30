@@ -8,31 +8,19 @@ default_params_doc(
   param_space_name,
   param_set,
   replicates,
+  save_output,
   param_space,
-  simulation_pars,
-  simulations,
+  sim_pars,
+  sim,
   ml,
-  simulations_1,
-  simulations_2,
-  totaltime_1,
-  totaltime_2,
-  area_pars_1,
-  area_pars_2,
-  island_ontogeny_1,
-  island_ontogeny_2,
-  sea_level_1,
-  sea_level_2,
-  resolution,
-  overlay_sea_level,
-  path,
+  sim_1,
+  sim_2,
   spec_error,
   endemic_error,
   nonendemic_error,
   spec_baseline_error,
   endemic_baseline_error,
-  nonendemic_baseline_error,
-  p,
-  q
+  nonendemic_baseline_error
 )
 }
 \arguments{
@@ -46,72 +34,30 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
+
+\item{save_output}{A boolean to determine whether to save or return output.}
 
 \item{param_space}{tibble of the parameter space.}
 
-\item{simulation_pars}{A list of simulation parameters.}
+\item{sim_pars}{A list of simulation parameters.}
 
-\item{simulations}{A list of simulation output from
+\item{sim}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}()},
 \code{\link{DAISIE_sim_time_dependent}()} or
 \code{\link{DAISIE_sim_constant_rate_shift}()}}
 
 \item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
 
-\item{simulations_1}{A list of simulation output from
+\item{sim_1}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
 
-\item{simulations_2}{A list of simulation output from
+\item{sim_2}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
-
-\item{totaltime_1}{Numeric with time for which island 1 would be simulated.
-Usually this will correspond to a time that's smaller than the total
-island age.}
-
-\item{totaltime_2}{Time for which island 2 would be simulated. Usually this
-will correspond to a time that's smaller than the total island age.
-Defaults to \code{NULL}, in which case this island is not plotted.}
-
-\item{area_pars_1}{List of area and sea-level parameters for island 1 as
-created by \code{\link[DAISIE]{create_area_pars}()}.}
-
-\item{area_pars_2}{List of area and sea-level parameters for island 1 as
-created by \code{\link[DAISIE]{create_area_pars}()}. Defaults to
-\code{NULL}, in which case the second area is not plotted.}
-
-\item{island_ontogeny_1}{A string describing the type of
-island ontogeny of island 1.
-Can be \code{"const"}, \code{"beta"} for a beta function describing area
-through time.}
-
-\item{island_ontogeny_2}{A string describing the type of
-island ontogeny of island 2.
-Can be \code{"const"}, \code{"beta"} for a beta function describing area
-through time. Defaults to \code{NULL}, in which case the second island is
-not plotted.}
-
-\item{sea_level_1}{A string describing the type of sea level for island 1.
-Can be \code{"const"} or \code{"sine"} for a sine function describing area
-through time.}
-
-\item{sea_level_2}{A string describing the type of sea level for island 2.
-Can be \code{"const"} or \code{"sine"} for a sine function describing area
-through time. Defaults to \code{NULL}, in which case the second island is
-not plotted.}
-
-\item{resolution}{A float between 0 and 1 which controls the resolution of
-the island area calculated for plotting. Defaults to \code{0.001} and is
-bound at \code{0.00001} to prevent unwieldy slowdowns.}
-
-\item{overlay_sea_level}{Logical, controling if sea level curves
-should be overlaid on top of corresponding ontogeny curves.}
-
-\item{path}{String with path where log files are located.}
 
 \item{spec_error}{A list with three elements each with a numeric
 vector.}
@@ -128,10 +74,6 @@ vector.}
 
 \item{nonendemic_baseline_error}{A list with one element with a numeric
 vector.}
-
-\item{p}{Numeric vector to calculate divergence metric.}
-
-\item{q}{Numeric vector to calculate divergence metric.}
 }
 \value{
 Nothing
