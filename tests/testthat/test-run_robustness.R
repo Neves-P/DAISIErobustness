@@ -59,7 +59,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                       spec_nltt_ks_dist = 0.1979939251300001,
                       endemic_nltt_ks_dist = 0.226619434409659,
                       nonendemic_nltt_ks_dist = 0.0889512124304479),
-                 tolerance = 0.5)
+                 tolerance = 1)
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 12)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
