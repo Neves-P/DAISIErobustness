@@ -116,6 +116,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
+  skip("Optimize test")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
