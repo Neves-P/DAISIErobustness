@@ -25,26 +25,26 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                                   21.13234531729715),
                                          num_spec_error = c(6, 18),
                                          num_col_error = c(1, 2)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$endemic_error, list(nltt = c(12.19399299074907,
                                                      20.13397293941591)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$nonendemic_error, list(nltt = c(4.105857769709307,
                                                         9.843170592071163)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$spec_baseline_error, list(nltt = c(5.36978441221806,
                                                            20.12382130303635),
                                                   num_spec_error = c(2, 6),
                                                   num_col_error = c(8, 3)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$endemic_baseline_error,
                  list(nltt = c(2.479620682470331,
                                13.987840695971366)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$nonendemic_baseline_error,
                  list(nltt = c(5.065599417345626,
                                8.150210879922227)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_equal(errors$error_metrics,
                  list(num_spec_mean_diff = 8,
                       num_spec_sd_diff = 5.65685424949238,
@@ -59,7 +59,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                       spec_nltt_ks_dist = 0.1979939251300001,
                       endemic_nltt_ks_dist = 0.226619434409659,
                       nonendemic_nltt_ks_dist = 0.0889512124304479),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 12)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -98,7 +98,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                  "loglik" = -133.3346436904723,
                                  "df" = 5,
                                  "conv" = 0)),
-                 tolerance = 0.1)
+                 tolerance = 0.5)
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
