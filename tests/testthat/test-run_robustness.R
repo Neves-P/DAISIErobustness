@@ -25,7 +25,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                                   21.13234531729715),
                                          num_spec_error = c(6, 18),
                                          num_col_error = c(1, 2)),
-                 tolerance = 0.5)
+                 tolerance = 1)
     expect_equal(errors$endemic_error, list(nltt = c(12.19399299074907,
                                                      20.13397293941591)),
                  tolerance = 0.5)
