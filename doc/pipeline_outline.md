@@ -38,6 +38,26 @@ The already available models can easily be run by calling the main function `run
 * Oceanic sea-leve changes: `oceanic_sea_level`
 
 The codes in monospaced font serve as arguments for the `run_robustness()` function. Then, the corresponding csv parameter space is read from the GitHub repository to the function scope, so that the pipeline can begin.
+
+### Loading a new parameter set onto DAISIE
+
+The currently implemented DAISIE parameter sets are stored in the folder mentioned in the previous section. the easiest way to run additional parameter sets using the current geodynamics simulations is to fork this repository and change or upload new files to the `/data` folder. Do note that if this is done, the `load_param_space()` function should be changed so that the domain URL reflects the user's fork.
+
+An example of an edited `load_param_space()` function to run of a fork owned by joshwlambert:
+
+```r
+load_param_space <- function(param_space_name) {
+  file_domain <-
+    "https://raw.githubusercontent.com/joshwlambert/DAISIErobustness/master/data/"
+  file <- paste0(file_domain, param_space_name, ".csv")
+  param_space <- readr::read_csv2(
+    file = file
+  )
+  return(param_space)
+}
+```
+`load_param_space()` should now read the correct files from the folder in the fork at the joshwlambert account.
+
 ### Example pipeline for oceanic ontogeny 
 ````r
 run_robustness(
@@ -66,7 +86,7 @@ The following results are used to determine the error between models
 
 These metrics are then aggregated between all replicates of a given parameter space in the following way:
 * The Kolmogorov-Smirnov distance between all nLTTs
-* Mean and standard deviation in the difference of all nlTTs
+* Mean and standard deviation in the difference of all nLTTs
 * Mean and standard deviation of number of species, endemics and nonendemics
 
 ### Simulation and likelihood constraints
