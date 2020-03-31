@@ -94,31 +94,30 @@ test_that("run_robustness output is correct when save_output = FALSE and
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails sim_constraints", {
-  skip("skip to pass build")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
-      param_set = 3,
+      param_set = 10,
       replicates = 2,
       save_output = FALSE)
     expect_length(errors, 1)
     expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 13)
+    expect_length(errors$geodynamic_sim[[1]][[1]], 40)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 988)
-    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 173)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 961)
+    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 578)
     expect_equal(ncol(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.43264215458184))
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 2)
+                 c(2.55, 0.17243358418345))
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 4)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(errors$geodynamic_sim[[2]][[1]], 8)
+    expect_length(errors$geodynamic_sim[[2]][[1]], 28)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 993)
-    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 125)
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 973)
+    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 1076)
     expect_equal(ncol(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$branching_times,
-                 c(2.55, 0.53663901165128))
+                 c(2.55, 0.34433272778988, 0.28538859055081, 0.01907433159466))
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 2)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
