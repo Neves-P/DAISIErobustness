@@ -8,7 +8,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
-      param_set = 2)
+      param_set = 1)
     geodynamic_sim <- geodynamic_sim(
       param_space_name = "oceanic_ontogeny",
       sim_pars = sim_pars,
@@ -16,31 +16,31 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     geodynamic_ml <- calc_ml(
       sim = geodynamic_sim)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]]$lambda_c, 1.002901410395386,
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.4754120842702097,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$mu, 0.6141191057611497,
+    expect_equal(geodynamic_ml[[1]]$mu, 0.76749608831824,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$K, 2.677993525617728,
+    expect_equal(geodynamic_ml[[1]]$K, 1.298834687112594,
                  tolerance = 0.5)
-    expect_equal(geodynamic_ml[[1]]$gamma, 0.01908706130698555,
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.02230623257987434,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.83029499587174,
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 2.063223214695227,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$loglik, -235.1816289885302,
+    expect_equal(geodynamic_ml[[1]]$loglik, -186.3109555871224,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[1]]$df, 5)
     expect_equal(geodynamic_ml[[1]]$conv, 0)
-    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.6118571989402257,
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.6157465349398199,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$mu, 2.069817756105241e-05,
+    expect_equal(geodynamic_ml[[2]]$mu, 0.2567943041812767,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$K, 3.438551554262593,
+    expect_equal(geodynamic_ml[[2]]$K, 2.45525335464161,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$gamma, 0.007845643135577876,
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.01113093869588465,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$lambda_a, 6.718781126617625,
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 2.491005394592663,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$loglik, -168.4552871508966,
+    expect_equal(geodynamic_ml[[2]]$loglik, -169.9210307807769,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[2]]$df, 5)
     expect_equal(geodynamic_ml[[2]]$conv, 0)
@@ -54,23 +54,22 @@ test_that("test calc_ml output is correct with oceanic sim", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
-    geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 1,
+    geodynamic_ml <- list(data.frame("lambda_c" = 1,
                                      "mu" = 1,
                                      "K" = 25,
                                      "gamma" = 0.01,
                                      "lambda_a" = 1,
                                      "loglik" = -90,
                                      "df" = 5,
-                                     "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 1,
+                                     "conv" = 0),
+                          data.frame("lambda_c" = 1,
                                      "mu" = 1,
                                      "K" = 25,
                                      "gamma" = 0.01,
                                      "lambda_a" = 1,
                                      "loglik" = -90,
                                      "df" = 5,
-                                     "conv" = 0)
+                                     "conv" = 0))
     sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
