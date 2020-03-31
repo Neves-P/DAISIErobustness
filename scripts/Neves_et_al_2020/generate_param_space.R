@@ -205,11 +205,11 @@ write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003)
+lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03)
+gam <- c(0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
@@ -253,11 +253,11 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003)
+lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03)
+gam <- c(0.02, 0.03)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
