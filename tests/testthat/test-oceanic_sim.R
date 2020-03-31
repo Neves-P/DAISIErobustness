@@ -1,23 +1,22 @@
 context("oceanic_sim")
 
 test_that("test oceanic sim output is correct", {
-  geodynamic_ml <- list()
-  geodynamic_ml[[1]] <- data.frame("lambda_c" = 1,
+  geodynamic_ml <- list(data.frame("lambda_c" = 1,
                                    "mu" = 1,
                                    "K" = 25,
                                    "gamma" = 0.01,
                                    "lambda_a" = 1,
                                    "loglik" = -90,
                                    "df" = 5,
-                                   "conv" = 0)
-  geodynamic_ml[[2]] <- data.frame("lambda_c" = 1,
+                                   "conv" = 0),
+                        data.frame("lambda_c" = 1,
                                    "mu" = 1,
                                    "K" = 25,
                                    "gamma" = 0.01,
                                    "lambda_a" = 1.,
                                    "loglik" = -90,
                                    "df" = 5,
-                                   "conv" = 0)
+                                   "conv" = 0))
   sim_pars <- list(time = 2.55,
                    M = 1000)
   set.seed(1)

@@ -14,20 +14,20 @@ test_that("test calc_error output is correct", {
       sim_pars = sim_pars,
       replicates = 2)
     #ML output from oceanic_ontogeny param_set 1 with seed 1
-    geodynamic_ml <- list(data.frame("lambda_c" = 0.8103552574735821,
-                                     "mu" = 1.179019557448184,
-                                     "K" = 4.559325213387417,
-                                     "gamma" = 0.02097601972567751,
-                                     "lambda_a" = 3.99800806541315,
-                                     "loglik" = -146.3844020863663,
+    geodynamic_ml <- list(data.frame("lambda_c" = 0.4754120842702097,
+                                     "mu" = 0.76749608831824,
+                                     "K" = 1.298834687112594,
+                                     "gamma" = 0.02230623257987434,
+                                     "lambda_a" = 2.063223214695227,
+                                     "loglik" = -186.3109555871224,
                                      "df" = 5,
                                      "conv" = 0),
-                          data.frame("lambda_c" = 0.4399176911095075,
-                                     "mu" = 0.4712997803199506,
-                                     "K" = 1.97450466718444,
-                                     "gamma" = 0.01142852060684342,
-                                     "lambda_a" = 1.431368454641673,
-                                     "loglik" = -136.1543920281646,
+                          data.frame("lambda_c" = 0.6157465349398199,
+                                     "mu" = 0.2567943041812767,
+                                     "K" = 2.45525335464161,
+                                     "gamma" = 0.01113093869588465,
+                                     "lambda_a" = 2.491005394592663,
+                                     "loglik" = -169.9210307807769,
                                      "df" = 5,
                                      "conv" = 0))
     oceanic_sim <- oceanic_sim(
@@ -38,14 +38,14 @@ test_that("test calc_error output is correct", {
       sim_2 = oceanic_sim,
       replicates = 2)
     expect_length(error, 3)
-    expect_equal(error$spec_error, list(nltt = c(20.64989423908643,
-                                                 33.61461217135396),
-                                        num_spec_error = c(10, 8),
-                                        num_col_error = c(4, 2)))
-    expect_equal(error$endemic_error, list(nltt = c(17.80586673487224,
-                                                    29.83439114305704)))
-    expect_equal(error$nonendemic_error, list(nltt = c(4.899971759043112,
-                                                       5.003022756232539)))
+    expect_equal(error$spec_error, list(nltt = c(49.36892632017155,
+                                                 43.61883001698205),
+                                        num_spec_error = c(16, 21),
+                                        num_col_error = c(5, 6)))
+    expect_equal(error$endemic_error, list(nltt = c(39.85151281102291,
+                                                    34.58375482442248)))
+    expect_equal(error$nonendemic_error, list(nltt = c(11.39455312282962,
+                                                       10.29907794886148)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
