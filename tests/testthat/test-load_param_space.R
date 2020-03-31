@@ -77,7 +77,7 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
   oceanic_ontogeny_sea_level <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level"
   )
-  expect_equal(nrow(oceanic_ontogeny_sea_level), 864)
+  expect_equal(nrow(oceanic_ontogeny_sea_level), 384)
   expect_equal(ncol(oceanic_ontogeny_sea_level), 20)
   expect_equal(names(oceanic_ontogeny_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",
