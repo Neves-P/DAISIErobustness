@@ -19,7 +19,7 @@ DAISIErobustness consists of a pipeline designed to measure the error one create
 
 ![Figure 1 - The DAISIErobustness pipeline](https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/scripts/Neves_et_al_2020/figure_1.png) 
 ### Pipeline steps
-1. In it's current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this featrure. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but 1000 is recommended.
+1. In its current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this featrure. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but 1000 is recommended.
 Note that one can select from a number of implemented geodynamics simulations. See Appendices for more information.
 2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE output, please see the output of the function `calc_geodynamics()`.
 3. The DAISIE likelihood inference routine is applied in the previously generated or supplied data (Fig 1.2). This results in a set of likelihood estimated parameters and log-ikelihood for each of the replicates generated in steps 1-2. Note that this estimation procedure is entirely blind to whichever new processes were introduced to generate the initial data.
@@ -87,7 +87,9 @@ The currently implemented constraints for the simulations are:
 As occasionally the MLE routine may crash or not converge, we also restrict the the pipeline on the number of successful parameter estimations. These constraints are checked by `ml_constraints()`. A parameter set will be skipped if more than 1% of the MLE runs crashed or failed to converge. **development note: for setup purposes, at the moment the pipeline will as soon as one MLE fails**
 
 ### University of Groningen Peregrine HPCC integration
-Work in progress
+
+This package contains code that interfaces directly with the [Peregrine HPCC](https://wiki.hpc.rug.nl/peregrine/start) available for use by researchers and students at the University of Groningen. To make use of such functionality, it is required to have a University of Groningen account, with access to Peregrine. The interface was developed and implemented by using Giovanni Laudanno's ([@Giappo](https://github.com/Giappo/)) [jap package](https://github.com/Giappo/jap). As such, this package is required for using this functionality. Please refer to the package's homepage for more documentation, and contact any of DAISIErobustness' authors for help setting this up on your end, assuming you have Peregrine access.
+
 ## References
 <sup>1</sup>Valente, Luis M., Albert B. Phillimore, and Rampal S. Etienne. "Equilibrium and non‐equilibrium dynamics simultaneously operate in the Galápagos islands." _Ecology letters_ 18.8 (2015): 844-852.
 
