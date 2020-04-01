@@ -32,11 +32,14 @@ test_that("run_robustness output is correct when save_output = FALSE and
     expect_equal(errors$spec_baseline_error, list(nltt = c(16.00228999740731,
                                                            10.37757903626365),
                                                   num_spec_error = c(1, 4),
-                                                  num_col_error = c(1, 2)))
+                                                  num_col_error = c(1, 2)),
+                 tolerance = 0.1)
     expect_equal(errors$endemic_baseline_error,
-                 list(nltt = c(8.569252727498716, 12.705949358413807)))
+                 list(nltt = c(8.569252727498716, 12.705949358413807)),
+                 tolerance = 0.1)
     expect_equal(errors$nonendemic_baseline_error,
-                 list(nltt = c(8.847407001600457, 3.920160821615652)))
+                 list(nltt = c(8.847407001600457, 3.920160821615652)),
+                 tolerance = 0.1)
     expect_equal(errors$error_metrics,
                  list(num_spec_mean_diff = 16,
                       num_spec_sd_diff = 1.414213562373095,
@@ -50,7 +53,8 @@ test_that("run_robustness output is correct when save_output = FALSE and
                       nonendemic_nltt_sd_diff = 2.709471262308392,
                       spec_nltt_ks_dist = 0.07569134389369536,
                       endemic_nltt_ks_dist = 0.1326035648413824,
-                      nonendemic_nltt_ks_dist = 0.1677106936763515))
+                      nonendemic_nltt_ks_dist = 0.1677106936763515),
+                 tolerance = 0.1)
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 30)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
