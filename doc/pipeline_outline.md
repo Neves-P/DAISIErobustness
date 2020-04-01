@@ -1,28 +1,30 @@
 
 # DAISIErobustness
 
-DAISIErobustness is an R package allowing the testing the robustness of the island biogeography model "[DAISIE](https://github.com/rsetienne/DAISIE)" (_Dynamical Assembly of Islands by Speciation, Immigration and Extinction_)  to more complex and potentially more realistic evolutionary models. Different measures of error of   number of species, endemics, non-endemics and evolutionary trajectories are used to determine whether the alternative models can influence the inference capabilities of the current DAISIE model.
+DAISIErobustness is an R package for testing of the robustness of the island biogeography model "[DAISIE](https://github.com/rsetienne/DAISIE)" (_Dynamical Assembly of Islands by Speciation, Immigration and Extinction_)  to more complex and potentially more realistic evolutionary models. Different measures of error of number of species, endemics, non-endemics and evolutionary trajectories are used to determine whether the alternative models can influence the inference capabilities of the current DAISIE model.
 
 ## What is DAISIE?
-DAISIE allows for the estimation of diversification rates and other relevant diversification parameters on islands. These are:
+DAISIE is an evolutionary island biogeography model that allows for the estimation of diversification rates and other relevant diversification parameters on islands using phylogenetic data. These are:
 * Cladogenesis rate
 * Anagenesis rate
 * (Clade-specific or island-wide) carrying capacity 
 * Migration rate
-* Extinction
+* Extinction rate
 
 The estimation of such parameters is achieved using Maximum-Likelihood optimization, following the DAISIE likelihood functions described in published literature<sup>1</sup>.
 The performance of DAISIE inference given the amount and quality of data has been studied as well. It was shown to perform well, particularly when phylogenetic data is available<sup>2</sup>.
 
+Furthermore, DAISIE includes simulation code allowing for the simulation of data following the above mentioned parameters.
+
 ## DAISIErobustness pipeline
-DAISIErobustness consists of a pipeline designed to measure the error one creates when extending the standard DAISIE model with new features. Examples of such new additions include the modelling of island ontogeny, as per the General Dynamic Model<sup>3</sup>, sea level changes<sup>4</sup>, and non-oceanic scenarios.
+DAISIErobustness consists of a pipeline designed to measure the error one creates when extending the standard DAISIE model with new features. Examples of such new additions include the modelling of island ontogeny, as per the General Dynamic Model<sup>3</sup>, sea level changes<sup>4</sup>, and non-oceanic scenarios. The error measure is obtained by simulating and comparing DAISIE data using simulation code that builds upon the existing DAISIE simulations by including geodynamic processes.
 
 ![Figure 1 - The DAISIErobustness pipeline](https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/scripts/Neves_et_al_2020/figure_1.png) 
 ### Pipeline steps
-1. In its current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this featrure. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but 1000 is recommended.
+1. In its current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this feature. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but simulating 1000 replicates is recommended.
 Note that one can select from a number of implemented geodynamics simulations. See Appendices for more information.
-2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE output, please see the output of the function `calc_geodynamics()`.
-3. The DAISIE likelihood inference routine is applied in the previously generated or supplied data (Fig 1.2). This results in a set of likelihood estimated parameters and log-ikelihood for each of the replicates generated in steps 1-2. Note that this estimation procedure is entirely blind to whichever new processes were introduced to generate the initial data.
+2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE output, please see the output of the function `calc_geodynamics()` in DAISIErobustness or `DAISIE_sim()` in the DAISIE package.
+3. The DAISIE likelihood inference routine is applied to the previously generated or supplied data (Fig 1.2). This results in a set of likelihood estimated parameters and log-ikelihood for each of the replicates generated in steps 1-2. Note that this estimation procedure is entirely blind to whichever new processes were introduced to generate the initial data.
 4. A new set of simulations is ran. The generating parameters of these simulations are the estimates obtained in step 4, and one replicate is simulated per set of generating parameters. These simulations **do not** include any of the realistic features that characterize the simulations in step 1, but instead are a set standard oceanic DAISIE simulations and follow the same model as the inference procedure. At this stage, the error, _E_ (dashed line in Fig. 1), introduced by using an estimation model (step 4) that does not match the generating model (step 1) can be computed. This error is obtained by comparing the generating data (Fig 1.1) with the data obained in step 4. See Appendices for description of error metrics computed.
 5. As in step 3, each resulting simulation is taken only as a reconstructed phylogeny (more precisely, as branching times and endemic status through time).
 6. Similarly to step 3, likelihood estimation is performed in each simulation resulting from step 5.
@@ -35,7 +37,7 @@ The already available models can easily be run by calling the main function `run
 * Nonoceanic with sea-level changes: `nonoceanic_sea_level`
 * Oceanic ontogeny: `oceanic_ontogeny`
 * Oceanic ontogeny with sea-level changes: `oceanic_ontogeny_sea_level`
-* Oceanic sea-leve changes: `oceanic_sea_level`
+* Oceanic with sea-leve changes: `oceanic_sea_level`
 
 The codes in monospaced font serve as arguments for the `run_robustness()` function. Then, the corresponding csv parameter space is read from the GitHub repository to the function scope, so that the pipeline can begin.
 
@@ -70,8 +72,8 @@ run_robustness(
 
 This code will start the pipeline for the first parameter set in the oceanic ontogeny parameter space. The first parameter set corresponds to the first line in the matching csv file. 10 oceanic ontogeny repicates will run.
 
-When `save_output == TRUE`, all the objects generated by the pipeline will be stored in the package's root folder, into `/results/param_space_name`, `param_space_name` corresponding to parameter spaced given when the function is called. **At the moment, if saving is desired, these folders must be present in the system beforehand!**
-If `save_output == FALSE`, then the objects will be returned by the function, allowing them to be saved to an R object and handled in an interactive session.
+When `save_output = TRUE`, all the objects generated by the pipeline will be stored in the package's root folder, into `/results/param_space_name`, `param_space_name` corresponding to parameter spaced given when the function is called. **At the moment, if saving is desired, these folders must be present in the system beforehand!**
+If `save_output = FALSE`, then the objects will be returned by the function, allowing them to be saved to an R object and handled in an interactive session.
 
 ## Appendices
 
@@ -80,7 +82,7 @@ The parameter currently implemented can be found [here](https://github.com/Neves
 
 ### Error metrics
 
-The following results are used to determine the error between models
+The following results are used to determine the error between models:
 * The nLTT<sup>5</sup> statistic for endemic species, non-endemic species and all species.
 * The difference at the end of the simulation of the number of species, endemic and nonendemic species.
 
