@@ -13,8 +13,9 @@ test_that("run_robustness gives error when save_output = TRUE as it
 })
 
 test_that("run_robustness output is correct when save_output = FALSE and
-          it passes sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+          it passes sim_constraints (does not run on APPVEYOR due to
+          time limit)", {
+  if (Sys.getenv("TRAVIS") != "") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 1,
@@ -92,7 +93,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                  "df" = 5,
                                  "conv" = 0)))
   } else {
-    skip("Run only on TRAVIS or AppVeyor")
+    skip("Run only on TRAVIS")
   }
 })
 
