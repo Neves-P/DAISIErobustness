@@ -12,15 +12,15 @@ load_results <- function(param_space_name) {
     length_output_file <- length(output_file)
     if (length_output_file == 1) { # failed sim_constraints
       str_output_file[[i]] <- "failed_sim_constraints"
-      for (j in seq_along(output_file$geodynamic_sim)) {
-        num_spec_file[j] <- unname(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 2] +
-                                     output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 3] +
-                                     output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 4])
-        num_col_file[j] <- unname(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 5])
-      }
-      num_spec[[i]] <- num_spec_file
-      num_col[[i]] <- num_col_file
     }
+    for (j in seq_along(output_file$geodynamic_sim)) {
+      num_spec_file[j] <- unname(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 2] +
+                                   output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 3] +
+                                   output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 4])
+      num_col_file[j] <- unname(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all[nrow(output_file$geodynamic_sim[[j]][[1]][[1]]$stt_all), 5])
+    }
+    num_spec[[i]] <- num_spec_file
+    num_col[[i]] <- num_col_file
     if (length_output_file == 4) { #failed ml_constraints
       str_output_file[[i]] <- "failed_ml_constraints"
     }
@@ -35,3 +35,17 @@ load_results <- function(param_space_name) {
     num_col = num_col
   ))
 }
+
+
+count_less_15 <- function(metadata) {
+  sum(as.numeric(metadata < 15)) / length(metadata)
+}
+
+ratios_less_15 <- lapply(out$num_spec, count_less_15) # Ratio
+
+count_over_100 <- function(metadata) {
+  sum(as.numeric(metadata > 100)) / length(metadata)
+}
+# Ratio of over 100 species, per param set
+lapply(out$num_spec, count_over_100)
+
