@@ -19,7 +19,6 @@ test_that("test calc_error_metrics output is correct when all error
     spec_baseline_error = spec_baseline_error,
     endemic_baseline_error = endemic_baseline_error,
     nonendemic_baseline_error = nonendemic_baseline_error)
-
   expect_equal(error_metrics$num_spec_mean_diff, 0)
   expect_equal(error_metrics$num_spec_sd_diff, 0)
   expect_equal(error_metrics$num_col_mean_diff, 0)
@@ -54,8 +53,6 @@ test_that("test calc_error_metrics output is correct when all error
     spec_baseline_error = spec_baseline_error,
     endemic_baseline_error = endemic_baseline_error,
     nonendemic_baseline_error = nonendemic_baseline_error)
-
-
   expect_true(error_metrics$num_spec_mean_diff != 0)
   expect_true(error_metrics$num_spec_sd_diff != 0)
   expect_true(error_metrics$num_col_mean_diff != 0)
@@ -90,8 +87,6 @@ test_that("test calc_error_metrics output is correct when error vectors
     spec_baseline_error = spec_baseline_error,
     endemic_baseline_error = endemic_baseline_error,
     nonendemic_baseline_error = nonendemic_baseline_error)
-
-
   expect_true(error_metrics$num_spec_mean_diff != 0)
   expect_true(error_metrics$num_spec_sd_diff != 0)
   expect_true(error_metrics$num_col_mean_diff != 0)
