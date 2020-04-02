@@ -4,8 +4,8 @@
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
@@ -52,8 +52,8 @@ maui_parameter_set <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
@@ -104,8 +104,8 @@ write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 ## Maui Nui ---------------------------------------------------------------
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
@@ -151,8 +151,8 @@ maui_oceanic_sea_level <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
@@ -205,8 +205,8 @@ write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
@@ -253,8 +253,8 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(1, 2)
+lac <- c(0.0002, 0.0004)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
