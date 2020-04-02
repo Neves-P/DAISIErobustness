@@ -8,7 +8,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
@@ -56,7 +56,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "const"
@@ -108,7 +108,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -155,7 +155,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -209,7 +209,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
@@ -257,7 +257,7 @@ lac <- c(0.0001, 0.0002)
 mu_min <- c(1, 2)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.025, 0.05)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
