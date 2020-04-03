@@ -112,7 +112,7 @@ test_that("test load_param_space loads nonoceanic parameter space", {
   nonoceanic <- load_param_space(
     param_space_name = "nonoceanic"
   )
-  expect_equal(nrow(nonoceanic), 1296)
+  expect_equal(nrow(nonoceanic), 384)
   expect_equal(ncol(nonoceanic), 9)
   expect_equal(names(nonoceanic),
                c("time", "M", "lac", "mu", "K", "gam", "laa", "x_s",
@@ -132,7 +132,7 @@ test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
   nonoceanic_sea_level <- load_param_space(
     param_space_name = "nonoceanic_sea_level"
   )
-  expect_equal(nrow(nonoceanic_sea_level), 3456)
+  expect_equal(nrow(nonoceanic_sea_level), 1536)
   expect_equal(ncol(nonoceanic_sea_level), 20)
   expect_equal(names(nonoceanic_sea_level),
                c("time", "M", "lac", "mu_min", "mu_p", "K",

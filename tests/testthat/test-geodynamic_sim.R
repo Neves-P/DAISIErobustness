@@ -168,23 +168,24 @@ test_that("test geodynamic_sim output is correct for
     sim_pars = sim_pars,
     replicates = 2)
   expect_length(geodynamic_sim, 2)
-  expect_length(geodynamic_sim[[1]][[1]], 8)
+  expect_length(geodynamic_sim[[1]][[1]], 29)
   expect_equal(geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_sim[[1]][[1]][[1]]$not_present, 993)
-  expect_equal(nrow(geodynamic_sim[[1]][[1]][[1]]$stt_all), 277)
+  expect_equal(geodynamic_sim[[1]][[1]][[1]]$not_present, 972)
+  expect_equal(nrow(geodynamic_sim[[1]][[1]][[1]]$stt_all), 495)
   expect_equal(ncol(geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_sim[[1]][[1]][[2]]$branching_times,
-               c(2.55, 2.55))
+               c(2.55, 1.5149232942611))
   expect_equal(geodynamic_sim[[1]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(geodynamic_sim[[2]][[1]], 10)
+  expect_length(geodynamic_sim[[2]][[1]], 27)
   expect_equal(geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_sim[[2]][[1]][[1]]$not_present, 991)
-  expect_equal(nrow(geodynamic_sim[[2]][[1]][[1]]$stt_all), 268)
+  expect_equal(geodynamic_sim[[2]][[1]][[1]]$not_present, 974)
+  expect_equal(nrow(geodynamic_sim[[2]][[1]][[1]]$stt_all), 450)
   expect_equal(ncol(geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_sim[[2]][[1]][[2]]$branching_times,
-               c(2.55, 0.34621111229062))
-  expect_equal(geodynamic_sim[[2]][[1]][[2]]$stac, 4)
+               c(2.55, 1.83360103167725, 0.98115911044840,
+                 0.84599632041825, 0.26933431399392))
+  expect_equal(geodynamic_sim[[2]][[1]][[2]]$stac, 2)
   expect_equal(geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
     skip("Run only on TRAVIS and AppVeyor")
