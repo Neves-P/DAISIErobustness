@@ -378,11 +378,11 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003)
-mu_min <- c(1, 2)
+lac <- c(0.0001, 0.0002)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -425,11 +425,11 @@ nonoceanic_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002, 0.0003)
-mu_min <- c(1, 2)
+lac <- c(0.0001, 0.0002)
+mu_min <- c(0.5, 1)
 mu_p <- c(50, 100)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.01, 0.02, 0.03)
+gam <- c(0.03, 0.06)
 laa <- c(1, 2)
 island_ontogeny <- "const"
 sea_level <- "sine"
