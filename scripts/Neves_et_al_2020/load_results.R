@@ -42,6 +42,12 @@ count_less_15 <- function(metadata) {
 }
 
 ratios_less_15 <- lapply(out$num_spec, count_less_15) # Ratio
+mean_num_spec <- lapply(out$num_spec, mean) # Ratio
+sd_num_spec <- lapply(out$num_spec, sd) # Ratio
+hist(unlist(ratios_less_15))
+hist(unlist(out$num_spec))
+hist(unlist(mean_num_spec), xlim = c(0, 150), breaks = 100)
+hist(unlist(sd_num_spec))
 
 count_over_100 <- function(metadata) {
   sum(as.numeric(metadata > 100)) / length(metadata)
