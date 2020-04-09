@@ -1012,12 +1012,11 @@ write.csv2(
 time <- 2.55
 Mtotal <- 1000
 M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
-lac <- c(0.5, 2)
-mu <- c(0.5, 1)
+lac <- c(0.5, 1, 2)
+mu <- c(0.5, 1, 2)
 K <- c(10, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- 1
-M2 <- Mtotal - M
 trans <- c(0, 0.5)
 trans2 <- c(0, 0.1, 0.5)
 trait_maui_nui <- expand.grid(time = time,
@@ -1027,11 +1026,11 @@ trait_maui_nui <- expand.grid(time = time,
                               K = K,
                               gam = gam,
                               laa = laa,
-                              M2 = M2,
                               trans = trans,
                               trans2 = trans2)
 
 trait_maui_nui <- cbind(trait_maui_nui,
+                        M2 = Mtotal - trait_maui_nui[, 2],
                         lac2 = trait_maui_nui[, 3] / 2,
                         mu2 = trait_maui_nui[, 4] / 2,
                         gam2 = trait_maui_nui[, 6] * 2,
@@ -1042,12 +1041,11 @@ trait_maui_nui <- cbind(trait_maui_nui,
 time <- 6.15
 Mtotal <- 1000
 M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
-lac <- c(0.5, 2)
-mu <- c(0.5, 1)
+lac <- c(0.5, 1, 2)
+mu <- c(0.5, 1, 2)
 K <- c(10, Inf)
 gam <- c(0.01, 0.05, 0.1)
 laa <- 1
-M2 <- Mtotal - M
 trans <- c(0, 0.5)
 trans2 <- c(0, 0.1, 0.5)
 trait_kauai <- expand.grid(time = time,
@@ -1057,11 +1055,11 @@ trait_kauai <- expand.grid(time = time,
                            K = K,
                            gam = gam,
                            laa = laa,
-                           M2 = M2,
                            trans = trans,
                            trans2 = trans2)
 
 trait_kauai <- cbind(trait_kauai,
+                     M2 = Mtotal - trait_kauai[, 2],
                      lac2 = trait_kauai[, 3] / 2,
                      mu2 = trait_kauai[, 4] / 2,
                      gam2 = trait_kauai[, 6] * 2,
