@@ -46,6 +46,9 @@ run_robustness <- function(param_space_name,
     geodynamic_ml <- calc_ml(
       sim = geodynamic_sim)
 
+    if(param_space_name == "trait"){
+      sim_pars$M = sim_pars$M + sim_pars$trait_pars$M2
+    }
     oceanic_sim_1 <- oceanic_sim(
       ml = geodynamic_ml,
       sim_pars = sim_pars)
