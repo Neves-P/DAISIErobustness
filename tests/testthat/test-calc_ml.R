@@ -1,14 +1,14 @@
 context("calc_ml")
 
 test_that("test calc_ml output is correct with geodynamic sim", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     set.seed(1)
     sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
-      param_set = 2)
+      param_set = 3)
     geodynamic_sim <- geodynamic_sim(
       param_space_name = "oceanic_ontogeny",
       sim_pars = sim_pars,
@@ -16,61 +16,59 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     geodynamic_ml <- calc_ml(
       sim = geodynamic_sim)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9516893216529831,
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9965513396220788,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$mu, 0.4371724756929532,
+    expect_equal(geodynamic_ml[[1]]$mu, 1.421971833699215,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$K, 26.45933105611771,
+    expect_equal(geodynamic_ml[[1]]$K, 1.718033933878904,
+                 tolerance = 0.5)
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.03297340595202831,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$gamma, 0.005832693735317008,
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 0.9244608637322876,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.91311658602524,
-                 tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$loglik, -93.6464134227662,
+    expect_equal(geodynamic_ml[[1]]$loglik, -197.9613141825565,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[1]]$df, 5)
     expect_equal(geodynamic_ml[[1]]$conv, 0)
-    expect_equal(geodynamic_ml[[2]]$lambda_c, 1.17346081209476,
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.92703368284067,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$mu, 0.9780652536369839,
+    expect_equal(geodynamic_ml[[2]]$mu, 1.338416534733336,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$K, 1.798109468901113,
-                 tolerance = 0.05)
-    expect_equal(geodynamic_ml[[2]]$gamma, 0.01258190594811776,
+    expect_equal(geodynamic_ml[[2]]$K, 1.962886606832068,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.8917175650839453,
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.02981301608003862,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$loglik, -133.3346436904723,
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.9685350438621138,
+                 tolerance = 0.001)
+    expect_equal(geodynamic_ml[[2]]$loglik, -189.5739114064297,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[2]]$df, 5)
     expect_equal(geodynamic_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS or AppVeyor")
+    skip("Run only on TRAVIS")
   }
 })
 
-
 test_that("test calc_ml output is correct with oceanic sim", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
-    geodynamic_ml <- list()
-    geodynamic_ml[[1]] <- data.frame("lambda_c" = 1,
+    geodynamic_ml <- list(data.frame("lambda_c" = 1,
                                      "mu" = 1,
                                      "K" = 25,
                                      "gamma" = 0.01,
                                      "lambda_a" = 1,
                                      "loglik" = -90,
                                      "df" = 5,
-                                     "conv" = 0)
-    geodynamic_ml[[2]] <- data.frame("lambda_c" = 1,
+                                     "conv" = 0),
+                          data.frame("lambda_c" = 1,
                                      "mu" = 1,
                                      "K" = 25,
                                      "gamma" = 0.01,
                                      "lambda_a" = 1,
                                      "loglik" = -90,
                                      "df" = 5,
-                                     "conv" = 0)
+                                     "conv" = 0))
     sim_pars <- extract_param_set(
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
@@ -111,12 +109,13 @@ test_that("test calc_ml output is correct with oceanic sim", {
     expect_equal(oceanic_ml[[2]]$df, 5)
     expect_equal(oceanic_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS or AppVeyor")
+    skip("Run only on TRAVIS")
   }
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  skip("Optimize test")
+  if (Sys.getenv("TRAVIS") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
     set.seed(1)
@@ -136,6 +135,6 @@ test_that("test calc_ml output is correct for failed convergence", {
     expect_length(geodynamic_ml, 2)
     expect_equal(geodynamic_ml[[1]], "ML didn't converge")
   } else {
-    skip("Run only on TRAVIS or AppVeyor")
+    skip("Run only on TRAVIS")
   }
 })
