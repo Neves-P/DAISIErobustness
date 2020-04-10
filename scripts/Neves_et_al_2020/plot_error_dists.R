@@ -31,7 +31,7 @@ plot_error_dists <- function(output_file,
     colnames(data) <- c("Geodynamic error", "Oceanic error")
     data <- tidyr::gather(data) #change gather to pivot_longer
     ggplot2::ggplot(data = data, ggplot2::aes(x = value, fill = key)) +
-      ggplot2::geom_histogram(binwidth = 0.5,
+      ggplot2::geom_histogram(binwidth = 1,
                               alpha = 0.5,
                               position = "identity",
                               color="black") +
