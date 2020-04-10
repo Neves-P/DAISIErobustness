@@ -485,10 +485,10 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -516,10 +516,10 @@ maui_nui_1_short_lb_di <- cbind(maui_nui_1_short_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -547,10 +547,10 @@ maui_nui_1_long_lb_di <- cbind(maui_nui_1_long_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -578,10 +578,10 @@ maui_nui_3_short_lb_di <- cbind(maui_nui_3_short_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -609,10 +609,10 @@ maui_nui_3_long_lb_di <- cbind(maui_nui_3_long_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -641,10 +641,10 @@ maui_nui_1_short_lb_dd <- cbind(maui_nui_1_short_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -672,10 +672,10 @@ maui_nui_1_long_lb_dd <- cbind(maui_nui_1_long_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -703,10 +703,10 @@ maui_nui_3_short_lb_dd <- cbind(maui_nui_3_short_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -734,10 +734,10 @@ maui_nui_3_long_lb_dd <- cbind(maui_nui_3_long_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -765,10 +765,10 @@ kauai_1_short_lb_di <- cbind(kauai_1_short_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -796,10 +796,10 @@ kauai_1_long_lb_di <- cbind(kauai_1_long_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -827,10 +827,10 @@ kauai_3_short_lb_di <- cbind(kauai_3_short_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -858,10 +858,10 @@ kauai_3_long_lb_di <- cbind(kauai_3_long_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -889,10 +889,10 @@ kauai_1_short_lb_dd <- cbind(kauai_1_short_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -921,10 +921,10 @@ kauai_1_long_lb_dd <- cbind(kauai_1_long_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -952,10 +952,10 @@ kauai_3_short_lb_dd <- cbind(kauai_3_short_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
