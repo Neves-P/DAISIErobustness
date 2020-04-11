@@ -168,7 +168,7 @@ test_that("test load_param_space loads nonoceanic_land_bridge parameter
   nonoceanic_land_bridge <- load_param_space(
     param_space_name = "nonoceanic_land_bridge"
   )
-  expect_equal(nrow(nonoceanic_land_bridge), 1728)
+  expect_equal(nrow(nonoceanic_land_bridge), 512)
   expect_equal(ncol(nonoceanic_land_bridge), 15)
   expect_equal(names(nonoceanic_land_bridge),
                c("time", "M", "lac_1", "mu_1", "K_1", "gam_1",
