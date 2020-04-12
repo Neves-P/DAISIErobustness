@@ -2,7 +2,8 @@ context("geodynamic_sim")
 
 test_that("test geodynamic_sim output is correct for
           oceanic_ontogeny", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny")
   set.seed(1)
