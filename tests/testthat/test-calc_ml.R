@@ -1,7 +1,7 @@
 context("calc_ml")
 
 test_that("test calc_ml output is correct with geodynamic sim", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     set.seed(1)
@@ -50,7 +50,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
 })
 
 test_that("test calc_ml output is correct with oceanic sim", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     geodynamic_ml <- list(data.frame("lambda_c" = 1,
@@ -115,7 +115,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
 
 test_that("test calc_ml output is correct for failed convergence", {
   skip("Optimize test")
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
     set.seed(1)
