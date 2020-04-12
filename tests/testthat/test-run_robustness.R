@@ -15,7 +15,7 @@ test_that("run_robustness gives error when save_output = TRUE as it
 test_that("run_robustness output is correct when save_output = FALSE and
           it passes sim_constraints (does not run on APPVEYOR due to
           time limit)", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 3,
@@ -102,7 +102,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 1,
@@ -137,7 +137,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
   skip("skip to pass build")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     error <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 10,
