@@ -1,7 +1,8 @@
 context("calc_error")
 
 test_that("test calc_error output is correct", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     set.seed(1)
