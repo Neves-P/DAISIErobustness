@@ -42,7 +42,8 @@ test_that("test geodynamic_sim output is correct for
 
 test_that("test geodynamic_sim output is correct for
           oceanic_sea_level", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "oceanic_sea_level")
   set.seed(1)
@@ -80,7 +81,8 @@ test_that("test geodynamic_sim output is correct for
 
 test_that("test geodynamic_sim output is correct for
           oceanic_ontogeny_sea_level", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "oceanic_ontogeny_sea_level")
   set.seed(1)
@@ -118,7 +120,8 @@ test_that("test geodynamic_sim output is correct for
 
 test_that("test geodynamic_sim output is correct for
           nonoceanic", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
+      || Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "nonoceanic")
   set.seed(1)
@@ -156,7 +159,8 @@ test_that("test geodynamic_sim output is correct for
 
 test_that("test geodynamic_sim output is correct for
           nonoceanic_sea_level", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "nonoceanic_sea_level")
   set.seed(1)
@@ -195,7 +199,8 @@ test_that("test geodynamic_sim output is correct for
 
 test_that("test geodynamic_sim output is correct for
           nonoceanic_land_bridge", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
   param_space <- load_param_space(
     param_space_name = "nonoceanic_land_bridge")
   set.seed(1)
