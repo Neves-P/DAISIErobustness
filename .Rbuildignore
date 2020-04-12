@@ -9,4 +9,3 @@
 ^doc$
 ^appveyor\.yml$
 ^results/\$
-.lintr
