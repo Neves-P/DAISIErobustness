@@ -46,25 +46,25 @@ extract_param_set <- function(param_space_name,
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac[param_set],
-                              1,
-                              param_space$K[param_set],
-                              param_space$gam[param_set],
-                              param_space$laa[param_set])
+                       param_space$mu[param_set],
+                       param_space$K[param_set],
+                       param_space$gam[param_set],
+                       param_space$laa[param_set])
     sim_pars$nonoceanic_pars <- c(param_space$x_s[param_set],
-                                         param_space$x_nonend[param_set])
+                                  param_space$x_nonend[param_set])
     sim_pars$island_ontogeny <- param_space$island_ontogeny[param_set]
     sim_pars$sea_level <- param_space$sea_level[param_set]
     sim_pars$area_pars <- DAISIE::create_area_pars(
-        max_area = param_space$max_area[param_set],
-        proportional_peak_t = param_space$peak_time[param_set],
-        peak_sharpness = param_space$sharpness[param_set],
-        total_island_age = param_space$total_island_age[param_set],
-        sea_level_amplitude = param_space$sea_level_amplitude[param_set],
-        sea_level_frequency = param_space$sea_level_frequency[param_set],
-        island_gradient_angle = param_space$island_gradient_angle[param_set]
-      )
-    sim_pars$ext_pars <- c(param_space$mu_min[param_set],
-                                  param_space$mu_p[param_set])
+      max_area = param_space$max_area[param_set],
+      proportional_peak_t = param_space$peak_time[param_set],
+      peak_sharpness = param_space$sharpness[param_set],
+      total_island_age = param_space$total_island_age[param_set],
+      sea_level_amplitude = param_space$sea_level_amplitude[param_set],
+      sea_level_frequency = param_space$sea_level_frequency[param_set],
+      island_gradient_angle = param_space$island_gradient_angle[param_set])
+    sim_pars$hyper_pars <- DAISIE::create_hyper_pars(
+      d = 0.2,
+      x = param_space$x[param_set])
     sim_pars$extcutoff <- param_space$extcutoff[param_set]
   }
   return(sim_pars)
