@@ -5,11 +5,11 @@
 time <- 2.55
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 13500
@@ -27,11 +27,11 @@ maui_parameter_set <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -53,11 +53,11 @@ maui_parameter_set <- expand.grid(
 time <- 6.15
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 3787
@@ -75,11 +75,11 @@ kauai_parameter_set <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -105,11 +105,11 @@ write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 time <- 2.55
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
@@ -127,11 +127,11 @@ maui_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -152,11 +152,11 @@ maui_oceanic_sea_level <- expand.grid(
 time <- 6.15
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
@@ -174,11 +174,11 @@ kauai_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -206,11 +206,11 @@ write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 time <- 2.55
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 13500
@@ -228,11 +228,11 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -254,11 +254,11 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
 time <- 6.15
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 3787
@@ -276,11 +276,11 @@ oceanic_ontogeny_sea_level_kauai <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -379,11 +379,11 @@ write.csv2(
 time <- 2.55
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
@@ -401,11 +401,11 @@ nonoceanic_sea_level_maui <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -426,11 +426,11 @@ nonoceanic_sea_level_maui <- expand.grid(
 time <- 6.15
 M <- 1000
 lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+mu <- c(0.5, 1)
 K <- c(0.001, 0.01, Inf)
 gam <- c(0.03, 0.06)
 laa <- c(1, 2)
+x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
@@ -448,11 +448,11 @@ nonoceanic_sea_level_kauai <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
