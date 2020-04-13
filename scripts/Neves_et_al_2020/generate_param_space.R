@@ -1011,11 +1011,11 @@ write.csv2(
 
 time <- 2.55
 Mtotal <- 1000
-M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
-lac <- c(0.5, 1, 2)
-mu <- c(0.5, 1, 2)
+M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal * 0.8)
+lac <- c(0.5, 1)
+mu <- c(0.5, 1)
 K <- c(10, Inf)
-gam <- c(0.01, 0.05, 0.1)
+gam <- c(0.01, 0.02)
 laa <- 1
 trans <- c(0, 0.5)
 trans2 <- c(0, 0.1, 0.5)
@@ -1040,11 +1040,11 @@ trait_maui_nui <- cbind(trait_maui_nui,
 
 time <- 6.15
 Mtotal <- 1000
-M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
-lac <- c(0.5, 1, 2)
-mu <- c(0.5, 1, 2)
+M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal * 0.8)
+lac <- c(0.5, 1)
+mu <- c(0.5, 1)
 K <- c(10, Inf)
-gam <- c(0.01, 0.05, 0.1)
+gam <- c(0.01, 0.02)
 laa <- 1
 trans <- c(0, 0.5)
 trans2 <- c(0, 0.1, 0.5)
