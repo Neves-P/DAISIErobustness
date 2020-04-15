@@ -16,31 +16,31 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     geodynamic_ml <- calc_ml(
       sim = geodynamic_sim)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.9965513396220788,
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 3.4219518194255522e-08,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$mu, 1.421971833699215,
+    expect_equal(geodynamic_ml[[1]]$mu, 0.41174619646485294,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$K, 1.718033933878904,
+    expect_equal(geodynamic_ml[[1]]$K, 2.0433005164217035,
                  tolerance = 0.5)
-    expect_equal(geodynamic_ml[[1]]$gamma, 0.03297340595202831,
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.029142960216055905,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$lambda_a, 0.9244608637322876,
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.339982351717566,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[1]]$loglik, -197.9613141825565,
+    expect_equal(geodynamic_ml[[1]]$loglik, -249.53023401957046,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[1]]$df, 5)
     expect_equal(geodynamic_ml[[1]]$conv, 0)
-    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.92703368284067,
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 2.474842185700226e-09,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$mu, 1.338416534733336,
+    expect_equal(geodynamic_ml[[2]]$mu, 0.50966502672623082,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$K, 1.962886606832068,
+    expect_equal(geodynamic_ml[[2]]$K, 0.59915195278159772,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$gamma, 0.02981301608003862,
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.041335113620582127,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.9685350438621138,
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 1.0498594957692096,
                  tolerance = 0.001)
-    expect_equal(geodynamic_ml[[2]]$loglik, -189.5739114064297,
+    expect_equal(geodynamic_ml[[2]]$loglik, -316.08747874022492,
                  tolerance = 0.001)
     expect_equal(geodynamic_ml[[2]]$df, 5)
     expect_equal(geodynamic_ml[[2]]$conv, 0)
@@ -84,7 +84,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.001)
     expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
                  tolerance = 0.001)
-    expect_equal(oceanic_ml[[1]]$K, 0.9604172665676682,
+    expect_equal(oceanic_ml[[1]]$K, 1.4865288098676843,
                  tolerance = 0.001)
     expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
                  tolerance = 0.001)
@@ -98,7 +98,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.001)
     expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
                  tolerance = 0.001)
-    expect_equal(oceanic_ml[[2]]$K, 4.29713623613709,
+    expect_equal(oceanic_ml[[2]]$K, 4.3913081864849595,
                  tolerance = 0.001)
     expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
                  tolerance = 0.001)
@@ -114,7 +114,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
-  skip("Optimize test")
+  skip("Optimize test - find non converging model")
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
