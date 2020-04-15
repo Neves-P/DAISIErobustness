@@ -31,7 +31,8 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                                      19.864022089537372)),
                  tolerance = 0.2)
     expect_equal(errors$nonendemic_error, list(nltt = c(13.41481594816277,
-                                                        12.82164223774583)))
+                                                        12.82164223774583)),
+                 tolerance = 0.2)
     expect_equal(errors$spec_baseline_error, list(nltt = c(11.85825831248170,
                                                            17.50605593765896),
                                                   num_spec_error = c(1, 6),
