@@ -105,7 +105,7 @@ test_that("test geodynamic_sim output is correct for
   expect_equal(geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
   expect_length(geodynamic_sim[[2]][[1]], 61)
   expect_equal(geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-  expect_equal(geodynamic_sim[[2]][[1]][[1]]$not_present, 942)
+  expect_equal(geodynamic_sim[[2]][[1]][[1]]$not_present, 940)
   expect_equal(nrow(geodynamic_sim[[2]][[1]][[1]]$stt_all), 152)
   expect_equal(ncol(geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
   expect_equal(geodynamic_sim[[2]][[1]][[2]]$branching_times,
