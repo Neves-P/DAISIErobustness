@@ -13,8 +13,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0.53
-sharpness <- 1
 total_island_age <- 2.864
 sea_level_amplitude <- 0
 sea_level_frequency <- 0
@@ -35,8 +35,8 @@ maui_parameter_set <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -61,8 +61,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0.27
-sharpness <- 1
 total_island_age <- 8.473
 sea_level_amplitude <- 0
 sea_level_frequency <- 0
@@ -83,8 +83,8 @@ kauai_parameter_set <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -113,8 +113,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -135,8 +135,8 @@ maui_oceanic_sea_level <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -160,8 +160,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -182,8 +182,8 @@ kauai_oceanic_sea_level <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -214,8 +214,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0.53
-sharpness <- 1
 total_island_age <- 2.864
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -236,8 +236,8 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -262,8 +262,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0.27
-sharpness <- 1
 total_island_age <- 8.473
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -284,8 +284,8 @@ oceanic_ontogeny_sea_level_kauai <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -387,8 +387,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -409,8 +409,8 @@ nonoceanic_sea_level_maui <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -434,8 +434,8 @@ x <- c(0.1, 0.2)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -456,8 +456,8 @@ nonoceanic_sea_level_kauai <- expand.grid(
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
