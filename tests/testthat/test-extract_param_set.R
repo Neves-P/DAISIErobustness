@@ -14,12 +14,12 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$island_ontogeny, "beta")
   expect_equal(sim_pars$sea_level, "const")
   expect_equal(sim_pars$area_pars, list(max_area = 13500,
-                                               proportional_peak_t = 0.53,
-                                               peak_sharpness = 1,
-                                               total_island_age = 2.864,
-                                               sea_level_amplitude = 0,
-                                               sea_level_frequency = 0,
-                                               island_gradient_angle = 0))
+                                        current_area = 3155,
+                                        proportional_peak_t = 0.53,
+                                        total_island_age = 2.864,
+                                        sea_level_amplitude = 0,
+                                        sea_level_frequency = 0,
+                                        island_gradient_angle = 0))
   expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.1))
   expect_equal(sim_pars$extcutoff, 1000)
   })
@@ -38,12 +38,12 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$island_ontogeny, "const")
   expect_equal(sim_pars$sea_level, "sine")
   expect_equal(sim_pars$area_pars, list(max_area = 13500,
-                                               proportional_peak_t = 0,
-                                               peak_sharpness = 0,
-                                               total_island_age = 2.55,
-                                               sea_level_amplitude = 60,
-                                               sea_level_frequency = 25.5,
-                                               island_gradient_angle = 75))
+                                        current_area = 3155,
+                                        proportional_peak_t = 0,
+                                        total_island_age = 2.55,
+                                        sea_level_amplitude = 60,
+                                        sea_level_frequency = 25.5,
+                                        island_gradient_angle = 75))
   expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.1))
   expect_equal(sim_pars$extcutoff, 1000)
 })
@@ -62,12 +62,12 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$island_ontogeny, "beta")
   expect_equal(sim_pars$sea_level, "sine")
   expect_equal(sim_pars$area_pars, list(max_area = 13500,
-                                               proportional_peak_t = 0.53,
-                                               peak_sharpness = 1,
-                                               total_island_age = 2.864,
-                                               sea_level_amplitude = 60,
-                                               sea_level_frequency = 25.5,
-                                               island_gradient_angle = 75))
+                                        current_area = 3155,
+                                        proportional_peak_t = 0.53,
+                                        total_island_age = 2.864,
+                                        sea_level_amplitude = 60,
+                                        sea_level_frequency = 25.5,
+                                        island_gradient_angle = 75))
   expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.1))
   expect_equal(sim_pars$extcutoff, 1000)
 })
@@ -100,12 +100,12 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$island_ontogeny, "const")
   expect_equal(sim_pars$sea_level, "sine")
   expect_equal(sim_pars$area_pars, list(max_area = 13500,
-                                               proportional_peak_t = 0,
-                                               peak_sharpness = 0,
-                                               total_island_age = 2.55,
-                                               sea_level_amplitude = 60,
-                                               sea_level_frequency = 25.5,
-                                               island_gradient_angle = 75))
+                                        current_area = 3155,
+                                        proportional_peak_t = 0,
+                                        total_island_age = 2.55,
+                                        sea_level_amplitude = 60,
+                                        sea_level_frequency = 25.5,
+                                        island_gradient_angle = 75))
   expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.1))
   expect_equal(sim_pars$extcutoff, 1000)
 })
