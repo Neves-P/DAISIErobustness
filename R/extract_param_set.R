@@ -56,8 +56,8 @@ extract_param_set <- function(param_space_name,
     sim_pars$sea_level <- param_space$sea_level[param_set]
     sim_pars$area_pars <- DAISIE::create_area_pars(
       max_area = param_space$max_area[param_set],
+      current_area = param_space$current_area[param_set],
       proportional_peak_t = param_space$peak_time[param_set],
-      peak_sharpness = param_space$sharpness[param_set],
       total_island_age = param_space$total_island_age[param_set],
       sea_level_amplitude = param_space$sea_level_amplitude[param_set],
       sea_level_frequency = param_space$sea_level_frequency[param_set],
