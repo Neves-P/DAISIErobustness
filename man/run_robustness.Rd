@@ -23,7 +23,7 @@ simulations}
 }
 \value{
 A list of errors and simulation and MLE output if
-\code{\link{sim_constraints}} returned TRUE or simulation
+\code{\link{sim_constraints}()} returned TRUE or simulation
 output if \code{\link{sim_constraints}()} returned FALSE.
 }
 \description{

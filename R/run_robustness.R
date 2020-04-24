@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return A list of errors and simulation and MLE output if
-#' \code{\link{sim_constraints}} returned TRUE or simulation
+#' \code{\link{sim_constraints}()} returned TRUE or simulation
 #' output if \code{\link{sim_constraints}()} returned FALSE.
 #' @export
 run_robustness <- function(param_space_name,
@@ -24,6 +24,11 @@ run_robustness <- function(param_space_name,
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
+
+  check_create_results_folder(
+    param_space_name = param_space_name,
+    save_output = save_output
+  )
 
   set.seed(1)
 
@@ -100,12 +105,12 @@ run_robustness <- function(param_space_name,
         oceanic_ml = oceanic_ml,
         oceanic_sim_2 = oceanic_sim_2)
 
-      output_file_name <- paste0(
-        "passed_cond_",
-        param_space_name,
-        "_param_set_",
-        param_set,
-        ".Rdata")
+      # output_file_name <- paste0(
+      #   "passed_cond_",
+      #   param_space_name,
+      #   "_param_set_",
+      #   param_set,
+      #   ".Rdata")
     }
   }
 
@@ -113,12 +118,12 @@ run_robustness <- function(param_space_name,
     output_file <- list(
       geodynamic_sim = geodynamic_sim)
 
-    output_file_name <- paste0(
-      "failed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata")
+    save_output(
+      output_file = output_file,
+      param_space_name = param_space_name,
+      param_set = param_set,
+      constraints = sim_constraints
+    )
 
   } else if (ml_constraints == FALSE) {
     output_file <- list(
@@ -127,16 +132,23 @@ run_robustness <- function(param_space_name,
       oceanic_sim_1 = oceanic_sim_1,
       oceanic_ml = oceanic_ml)
 
-    output_file_name <- paste0(
-      "failed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata")
+    save_output(
+      output_file = output_file,
+      param_space_name = param_space_name,
+      param_set = param_set,
+      constraints = ml_constraints
+    )
 
   }
 
   if (save_output == TRUE) {
+    save_output(
+      output_file = output_file,
+      param_space_name = param_space_name,
+      param_set = param_set,
+      constraints =
+    )
+
     output_path <- file.path("results", param_space_name, output_file_name)
 
     message(paste0("Trying to save ", output_file_name, " to ", output_path))
