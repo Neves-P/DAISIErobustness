@@ -5,7 +5,7 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
 #' @importFrom utils capture.output
 #' @export
-calc_ml <- function(sim) {
+calc_ml <- function(sim, initial_parameters) {
   ml <- list()
 
   for (i in seq_along(sim)) {
@@ -18,7 +18,7 @@ calc_ml <- function(sim) {
           ml[[i]] <- DAISIE::DAISIE_ML_CS(
             datalist = sim[[i]][[1]],
             datatype = "single",
-            initparsopt = c(1, 1, 40, 0.01, 1),
+            initparsopt = initial_parameters,
             idparsopt = c(1:5),
             parsfix = NULL,
             idparsfix = NULL
@@ -31,4 +31,22 @@ calc_ml <- function(sim) {
     }
   }
   return(ml)
+}
+
+#' Calculate mean of ML estimates
+#'
+#' @inheritParams default_params_doc
+#'
+#' @return Numeric list with elementwise means of ML runs with different initial
+#'   parameters.
+mean_geodynamic_ml <- function(ml_res_initpars_1,
+                               ml_res_initpars_2) {
+  out <- list()
+  for (i in seq_along(ml_res_initpars_1)) {
+    out[[i]] <- colMeans(rbind(
+      ml_res_initpars_1[[i]],
+      ml_res_initpars_2[[i]]
+    ), na.rm = TRUE)
+  }
+  return(out)
 }
