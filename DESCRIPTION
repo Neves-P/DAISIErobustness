@@ -33,5 +33,6 @@ Imports:
     testit
 Remotes:
     rsetienne/DAISIE@geodynamics,
-    thijsjanzen/nltt
+    thijsjanzen/nltt,
+    Giappo/jap
 RoxygenNote: 7.1.0
