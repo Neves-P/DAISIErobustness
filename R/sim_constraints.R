@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return Boolean
+#' @return Logical TRUE if criteria are met, FALSE if not.
 #' @export
 sim_constraints <- function(sim,
                             replicates) {
