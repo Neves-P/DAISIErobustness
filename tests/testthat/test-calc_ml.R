@@ -13,34 +13,40 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       param_space_name = "oceanic_ontogeny",
       sim_pars = sim_pars,
       replicates = 2)
+    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
+    initial_parameters_1_list <- vector("list", length = 2)
+    for (i in 1:2) {
+      initial_parameters_1_list[[i]] <- initial_parameters_1
+    }
     geodynamic_ml <- calc_ml(
-      sim = geodynamic_sim)
+      sim = geodynamic_sim,
+      initial_parameters = initial_parameters_1_list)
     expect_length(geodynamic_ml, 2)
-    expect_equal(geodynamic_ml[[1]]$lambda_c, 3.4219518194255522e-08,
+    expect_equal(geodynamic_ml[[1]]$lambda_c, 0.15617938338045662,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[1]]$mu, 0.41174619646485294,
+    expect_equal(geodynamic_ml[[1]]$mu, 0.74404112367454578,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[1]]$K, 2.0433005164217035,
+    expect_equal(geodynamic_ml[[1]]$K, 9.8143181851419907,
                  tolerance = 0.5)
-    expect_equal(geodynamic_ml[[1]]$gamma, 0.029142960216055905,
+    expect_equal(geodynamic_ml[[1]]$gamma, 0.051651900322485587,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[1]]$lambda_a, 1.339982351717566,
+    expect_equal(geodynamic_ml[[1]]$lambda_a, 0.18099910111217393,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[1]]$loglik, -249.53023401957046,
+    expect_equal(geodynamic_ml[[1]]$loglik, -326.73555677408183,
                  tolerance = 0.01)
     expect_equal(geodynamic_ml[[1]]$df, 5)
     expect_equal(geodynamic_ml[[1]]$conv, 0)
-    expect_equal(geodynamic_ml[[2]]$lambda_c, 2.474842185700226e-09,
+    expect_equal(geodynamic_ml[[2]]$lambda_c, 0.15581587817814918,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[2]]$mu, 0.50966502672623082,
+    expect_equal(geodynamic_ml[[2]]$mu, 0.78654811845669692,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[2]]$K, 0.59915195278159772,
+    expect_equal(geodynamic_ml[[2]]$K, 2.2027964986867694,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[2]]$gamma, 0.041335113620582127,
+    expect_equal(geodynamic_ml[[2]]$gamma, 0.05619676141895931,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[2]]$lambda_a, 1.0498594957692096,
+    expect_equal(geodynamic_ml[[2]]$lambda_a, 0.21865987074175947,
                  tolerance = 0.01)
-    expect_equal(geodynamic_ml[[2]]$loglik, -316.08747874022492,
+    expect_equal(geodynamic_ml[[2]]$loglik, -339.21381463295194,
                  tolerance = 0.01)
     expect_equal(geodynamic_ml[[2]]$df, 5)
     expect_equal(geodynamic_ml[[2]]$conv, 0)
@@ -78,13 +84,14 @@ test_that("test calc_ml output is correct with oceanic sim", {
       ml = geodynamic_ml,
       sim_pars = sim_pars)
     oceanic_ml <- calc_ml(
-      sim = oceanic_sim_1)
+      sim = oceanic_sim_1,
+      initial_parameters = geodynamic_ml)
     expect_length(oceanic_ml, 2)
     expect_equal(oceanic_ml[[1]]$lambda_c, 0.4703865020955945,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$K, 1.4865288098676843,
+    expect_equal(oceanic_ml[[1]]$K, 1.4024695724376173,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
                  tolerance = 0.01)
@@ -98,7 +105,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$K, 4.3913081864849595,
+    expect_equal(oceanic_ml[[2]]$K, 5.4264948374512745,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
                  tolerance = 0.01)
@@ -130,8 +137,15 @@ test_that("test calc_ml output is correct for failed convergence", {
     sim_constraints <- sim_constraints(
       sim = geodynamic_sim,
       replicates = 2)
+    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
+    initial_parameters_1_list <- vector("list", length = 2)
+    for (i in 1:2) {
+      initial_parameters_1_list[[i]] <- initial_parameters_1
+    }
     geodynamic_ml <- calc_ml(
-      sim = geodynamic_sim)
+      sim = geodynamic_sim,
+      initial_parameters = initial_parameters_1_list
+      )
     expect_length(geodynamic_ml, 2)
     expect_equal(geodynamic_ml[[1]], "ML didn't converge")
   } else {
