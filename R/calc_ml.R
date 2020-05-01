@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+#' @return Output from \code{\link[DAISIE]{DAISIE_ML}}
 #' @importFrom utils capture.output
 #' @export
 calc_ml <- function(sim, initial_parameters) {
@@ -47,6 +47,8 @@ mean_geodynamic_ml <- function(ml_res_initpars_1,
       ml_res_initpars_1[[i]],
       ml_res_initpars_2[[i]]
     ), na.rm = TRUE)
+  testit::assert(is.numeric(out[[i]]) && all(is.finite(out[[i]])))
   }
+  testit::assert(is.list(out))
   return(out)
 }

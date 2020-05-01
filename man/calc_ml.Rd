@@ -17,7 +17,7 @@ parameters for the MLE routine. The same as \code{initparsopt}
 from \code{\link[DAISIE]{DAISIE_ML}()}.}
 }
 \value{
-Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+Output from \code{\link[DAISIE]{DAISIE_ML}}
 }
 \description{
 Calculate maximum likelihood value for the rates
