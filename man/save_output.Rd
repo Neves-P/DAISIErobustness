@@ -23,7 +23,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 run, as found in the file named in \code{param_space}.}
 }
 \value{
-.RData file named by \code{\link{create_output_filename}()} in
+.RData file named by \code{\link{create_output_file_name}()} in
 default location. See details for more information on filesystem. This
 }
 \description{

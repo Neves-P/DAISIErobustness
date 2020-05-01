@@ -4,7 +4,7 @@
 #'
 #' @details Files are saved following the standardized file structure of the
 #' TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
-#' @return .RData file named by \code{\link{create_output_filename}()} in
+#' @return .RData file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
 #' @author Pedro Neves, Joshua Lambert
@@ -50,7 +50,7 @@ save_output <- function(output_file,
 #' @family I/O
 #' @examples
 #' testit::assert(
-#'   DAISIErobustness:::create_output_filename(
+#'   DAISIErobustness:::create_output_file_name(
 #'     param_space_name = "oceanic_ontogeny",
 #'     param_set = 1,
 #'     sim_constraints = FALSE,

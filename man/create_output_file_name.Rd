@@ -30,7 +30,7 @@ Generated name for saving output of \code{run_robustness()}
 }
 \examples{
 testit::assert(
-  DAISIErobustness:::create_output_filename(
+  DAISIErobustness:::create_output_file_name(
     param_space_name = "oceanic_ontogeny",
     param_set = 1,
     sim_constraints = FALSE,
