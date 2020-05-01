@@ -24,7 +24,7 @@ save_output <- function(output_file,
   output_file_path <- file.path(results_folder, output_file_name)
 
   message(
-    paste0("Trying to save ", output_file_name, " to ", output_path, "\n")
+    paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
   save(output_file, file = output_file_path)
 
