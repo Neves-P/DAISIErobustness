@@ -18,7 +18,7 @@ calc_ml <- function(sim, initial_parameters) {
           ml[[i]] <- DAISIE::DAISIE_ML_CS(
             datalist = sim[[i]][[1]],
             datatype = "single",
-            initparsopt = initial_parameters[[i]][1:5],
+            initparsopt = as.numeric(initial_parameters[[i]][1:5]),
             idparsopt = c(1:5),
             parsfix = NULL,
             idparsfix = NULL
