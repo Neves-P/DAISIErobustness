@@ -13,6 +13,11 @@ save_output(
 )
 }
 \arguments{
+\item{output_file}{List. Contains all the pipeline output that was able to
+run up to a given point. Will be saved into .RData file by
+\code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
+\code{save_output} is \code{TRUE}.}
+
 \item{param_space_name}{A string with the parameter space to run. Can
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
@@ -21,6 +26,12 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
+
+\item{sim_constraints}{Boolean. \code{TRUE} if simulation constraints pass,
+\code{FALSE} otherwise.}
+
+\item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
+\code{FALSE} otherwise.}
 }
 \value{
 .RData file named by \code{\link{create_output_file_name}()} in

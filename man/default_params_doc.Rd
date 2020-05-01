@@ -9,12 +9,15 @@ default_params_doc(
   param_set,
   replicates,
   save_output,
+  output_file,
   param_space,
   sim_pars,
   sim,
   ml,
   ml_res_initpars_1,
   ml_res_initpars_2,
+  sim_constraints,
+  ml_constraints,
   initial_parameters,
   sim_1,
   sim_2,
@@ -41,6 +44,11 @@ simulations}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 
+\item{output_file}{List. Contains all the pipeline output that was able to
+run up to a given point. Will be saved into .RData file by
+\code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
+\code{save_output} is \code{TRUE}.}
+
 \item{param_space}{tibble of the parameter space.}
 
 \item{sim_pars}{A list of simulation parameters.}
@@ -59,6 +67,12 @@ parameters.}
 \item{ml_res_initpars_2}{Numeric data frame.
 Results from MLE run of geodynamics with the second set of initial
 parameters.}
+
+\item{sim_constraints}{Boolean. \code{TRUE} if simulation constraints pass,
+\code{FALSE} otherwise.}
+
+\item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
+\code{FALSE} otherwise.}
 
 \item{initial_parameters}{A numeric vector of length 5 with the initial
 parameters for the MLE routine. The same as \code{initparsopt}
