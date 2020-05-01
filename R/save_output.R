@@ -104,7 +104,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
   if (!dir.exists(results_folder)) {
     message(paste0(
       results_folder,
-      " folder not found, attempting to create it.")
+      " folder not found, attempting to create it.\n")
     )
     dir.create(results_folder, recursive = TRUE)
     message("\nCreated folder successfully.")
@@ -118,5 +118,3 @@ check_create_results_folder <- function(param_space_name, save_output) {
     message(results_folder, " folder found. No creation needed.\n")
   }
 }
-
-create_output_file
