@@ -48,86 +48,102 @@ run_robustness <- function(param_space_name,
     replicates = replicates)
 
   if (sim_constraints == TRUE) {
-    initial_parameters <- list(
-      c(0.05, 0.05, 20, 0.0001, 0.05),
-      c(0.9, 1.5, 40, 0.01, 2)
-    )
+    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
+    initial_parameters_2 <- c(0.9, 1.5, 40, 0.01, 2)
+
+    initial_parameters_1_list <- vector("list", length = replicates)
+    initial_parameters_2_list <- vector("list", length = replicates)
+    for (i in seq_len(replicates)) {
+      initial_parameters_1_list[[i]] <- initial_parameters_1
+      initial_parameters_2_list[[i]] <- initial_parameters_2
+    }
+
     geodynamic_ml_1 <- calc_ml(
       sim = geodynamic_sim,
-      initial_parameters = initial_parameters[[1]]
+      initial_parameters = initial_parameters_1_list
     )
 
     geodynamic_ml_2 <- calc_ml(
       sim = geodynamic_sim,
-      initial_parameters = initial_parameters[[2]]
+      initial_parameters = initial_parameters_2_list
     )
 
-    ml_tolerance <- check_ml_tolerance(
-      ml_res_initpars_1 = geodynamic_ml_1,
-      ml_res_initpars_2 = geodynamic_ml_2
-    )
-    if (ml_tolerance == TRUE) {
-      geodynamic_ml <- mean_geodynamic_ml(
+    geodynamic_ml_constraints_1 <- ml_constraints(
+      ml = geodynamic_ml_1)
+
+    geodynamic_ml_constraints_2 <- ml_constraints(
+      ml = geodynamic_ml_2)
+
+    if (geodynamic_ml_constraints_1 == TRUE &&
+        geodynamic_ml_constraints_2 == TRUE) {
+      ml_tolerance <- check_ml_tolerance(
         ml_res_initpars_1 = geodynamic_ml_1,
         ml_res_initpars_2 = geodynamic_ml_2
       )
 
-      oceanic_sim_1 <- oceanic_sim(
-        ml = geodynamic_ml,
-        sim_pars = sim_pars)
+      if (ml_tolerance == TRUE) {
+        geodynamic_ml <- mean_geodynamic_ml(
+          ml_res_initpars_1 = geodynamic_ml_1,
+          ml_res_initpars_2 = geodynamic_ml_2
+        )
 
-      error <- calc_error(
-        sim_1 = geodynamic_sim,
-        sim_2 = oceanic_sim_1,
-        replicates = replicates)
-
-      spec_error <- error$spec_error
-      endemic_error <- error$endemic_error
-      nonendemic_error <- error$nonendemic_error
-
-      oceanic_ml <- calc_ml(
-        sim = oceanic_sim_1,
-        initial_parameters = geodynamic_ml)
-
-      ml_constraints <- ml_constraints(
-        ml = oceanic_ml)
-
-      if (ml_constraints == TRUE) {
-        oceanic_sim_2 <- oceanic_sim(
-          ml = oceanic_ml,
+        oceanic_sim_1 <- oceanic_sim(
+          ml = geodynamic_ml,
           sim_pars = sim_pars)
 
-        baseline_error <- calc_error(
-          sim_1 = oceanic_sim_1,
-          sim_2 = oceanic_sim_2,
+        error <- calc_error(
+          sim_1 = geodynamic_sim,
+          sim_2 = oceanic_sim_1,
           replicates = replicates)
 
-        spec_baseline_error <- baseline_error$spec_error
-        endemic_baseline_error <- baseline_error$endemic_error
-        nonendemic_baseline_error <- baseline_error$nonendemic_error
+        spec_error <- error$spec_error
+        endemic_error <- error$endemic_error
+        nonendemic_error <- error$nonendemic_error
 
-        error_metrics <- calc_error_metrics(
-          spec_error = spec_error,
-          endemic_error = endemic_error,
-          nonendemic_error = nonendemic_error,
-          spec_baseline_error = spec_baseline_error,
-          endemic_baseline_error = endemic_baseline_error,
-          nonendemic_baseline_error = nonendemic_baseline_error)
+        oceanic_ml <- calc_ml(
+          sim = oceanic_sim_1,
+          initial_parameters = geodynamic_ml)
 
-        output_file <- list(
-          spec_error = spec_error,
-          endemic_error = endemic_error,
-          nonendemic_error = nonendemic_error,
-          spec_baseline_error = spec_baseline_error,
-          endemic_baseline_error = endemic_baseline_error,
-          nonendemic_baseline_error = nonendemic_baseline_error,
-          error_metrics = error_metrics,
-          geodynamic_sim = geodynamic_sim,
-          geodynamic_ml = geodynamic_ml,
-          oceanic_sim_1 = oceanic_sim_1,
-          oceanic_ml = oceanic_ml,
-          oceanic_sim_2 = oceanic_sim_2)
+        ml_constraints <- ml_constraints(
+          ml = oceanic_ml)
 
+        if (ml_constraints == TRUE) {
+          oceanic_sim_2 <- oceanic_sim(
+            ml = oceanic_ml,
+            sim_pars = sim_pars)
+
+          baseline_error <- calc_error(
+            sim_1 = oceanic_sim_1,
+            sim_2 = oceanic_sim_2,
+            replicates = replicates)
+
+          spec_baseline_error <- baseline_error$spec_error
+          endemic_baseline_error <- baseline_error$endemic_error
+          nonendemic_baseline_error <- baseline_error$nonendemic_error
+
+          error_metrics <- calc_error_metrics(
+            spec_error = spec_error,
+            endemic_error = endemic_error,
+            nonendemic_error = nonendemic_error,
+            spec_baseline_error = spec_baseline_error,
+            endemic_baseline_error = endemic_baseline_error,
+            nonendemic_baseline_error = nonendemic_baseline_error)
+
+          output_file <- list(
+            spec_error = spec_error,
+            endemic_error = endemic_error,
+            nonendemic_error = nonendemic_error,
+            spec_baseline_error = spec_baseline_error,
+            endemic_baseline_error = endemic_baseline_error,
+            nonendemic_baseline_error = nonendemic_baseline_error,
+            error_metrics = error_metrics,
+            geodynamic_sim = geodynamic_sim,
+            geodynamic_ml = geodynamic_ml,
+            oceanic_sim_1 = oceanic_sim_1,
+            oceanic_ml = oceanic_ml,
+            oceanic_sim_2 = oceanic_sim_2)
+
+        }
       }
     }
   }
@@ -135,13 +151,12 @@ run_robustness <- function(param_space_name,
     output_file <- list(
       geodynamic_sim = geodynamic_sim)
 
-    save_output(
-      output_file = output_file,
-      param_space_name = param_space_name,
-      param_set = param_set,
-      sim_constraints = sim_constraints,
-      ml_constraints = ml_constraints
-    )
+  } else if (geodynamic_ml_constraints_1 == FALSE ||
+             geodynamic_ml_constraints_2 == FALSE) {
+    output_file <- list(
+      geodynamic_sim = geodynamic_sim,
+      geodynamic_ml_1 = geodynamic_ml_1,
+      geodynamic_ml_2 = geodynamic_ml_2)
 
   } else if (ml_constraints == FALSE) {
     output_file <- list(
@@ -149,15 +164,6 @@ run_robustness <- function(param_space_name,
       geodynamic_ml = geodynamic_ml,
       oceanic_sim_1 = oceanic_sim_1,
       oceanic_ml = oceanic_ml)
-
-    save_output(
-      output_file = output_file,
-      param_space_name = param_space_name,
-      param_set = param_set,
-      sim_constraints = sim_constraints,
-      ml_constraints = ml_constraints
-    )
-
   }
 
   if (save_output == TRUE) {
@@ -168,7 +174,6 @@ run_robustness <- function(param_space_name,
       sim_constraints = sim_constraints,
       ml_constraints = ml_constraints
     )
-
 
   } else {
     return(output_file)
