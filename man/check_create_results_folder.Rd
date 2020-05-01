@@ -24,7 +24,7 @@ Checks and create results folder for output
 }
 \seealso{
 Other I/O: 
-\code{\link{create_output_filename}()},
+\code{\link{create_output_file_name}()},
 \code{\link{save_output}()}
 }
 \author{

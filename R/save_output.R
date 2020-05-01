@@ -57,7 +57,7 @@ save_output <- function(output_file,
 #'     ml_constraints = FALSE
 #'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 #' )
-create_output_filename <- function(param_space_name,
+create_output_file_name <- function(param_space_name,
                                    param_set,
                                    sim_constraints,
                                    ml_constraints) {

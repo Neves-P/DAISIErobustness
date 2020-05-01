@@ -36,7 +36,7 @@ TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
 \seealso{
 Other I/O: 
 \code{\link{check_create_results_folder}()},
-\code{\link{create_output_filename}()}
+\code{\link{create_output_file_name}()}
 }
 \author{
 Pedro Neves, Joshua Lambert
