@@ -22,12 +22,12 @@ check_ml_tolerance <- function(ml_res_initpars_1,
                                ml_res_initpars_2) {
   tolerance_check <- c()
   n_replicates <- length(ml_res_initpars_1)
-  for (i in seq_along(ml_res_initpars_2)) {
+  for (i in seq_len(n_replicates)) {
 
     ml_1 <- ml_res_initpars_1[[i]][1:5]
     ml_2 <- ml_res_initpars_2[[i]][1:5]
 
-    upper_bound <- 1000
+    upper_bound <- 500
     if (any(ml_1 >= upper_bound)) {
       ml_1[which(ml_1 >= upper_bound)] <- upper_bound
     }
@@ -35,14 +35,16 @@ check_ml_tolerance <- function(ml_res_initpars_1,
       ml_2[which(ml_2 >= upper_bound)] <- upper_bound
     }
 
-
     absolute_difference <- abs(ml_1 - ml_2)
-    if (any(absolute_difference > 3)) {
+    if (absolute_difference[3] > 5 &&
+        any(absolute_difference[1:2] > 1e-3) &&
+        any(absolute_difference[4:5] > 1e-3)) {
       tolerance_check[i] <- "fail"
     } else {
       tolerance_check[i] <- "pass"
     }
   }
+
   if ((sum(tolerance_check == "pass") / n_replicates) < 0.95) {
     return(FALSE)
   } else {
