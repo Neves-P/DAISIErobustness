@@ -21,8 +21,12 @@ save_output <- function(output_file,
     ml_constraints = ml_constraints
   )
 
-  results_folder <- file.path("results", param_space_name)
-  output_file_path <- file.path(results_folder, output_file_name)
+  if (Sys.getenv("HOSTNAME") != "peregrine.hpc.rug.nl") {
+    results_folder <- file.path("results", param_space_name)
+    output_file_path <- file.path(results_folder, output_file_name)
+  } else {
+    output_file_path <- getwd()
+  }
 
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
