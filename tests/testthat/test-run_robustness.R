@@ -1,16 +1,5 @@
 context("run_robustness")
 
-test_that("run_robustness gives error when save_output = TRUE as it
-          only runs when folder structure is in place, an therefore
-          test not run unless required", {
-  if (1 == 2) {
-    expect_error(run_robustness(
-      param_space_name = "oceanic_ontogeny",
-      param_set = 2,
-      replicates = 2,
-      save_output = TRUE))
-  }
-})
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it passes sim_constraints (does not run on APPVEYOR due to

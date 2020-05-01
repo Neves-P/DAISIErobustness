@@ -4,16 +4,20 @@
 \alias{calc_ml}
 \title{Calculate maximum likelihood value for the rates}
 \usage{
-calc_ml(sim)
+calc_ml(sim, initial_parameters)
 }
 \arguments{
 \item{sim}{A list of simulation output from
 \code{\link{DAISIE_sim_constant_rate}()},
 \code{\link{DAISIE_sim_time_dependent}()} or
 \code{\link{DAISIE_sim_constant_rate_shift}()}}
+
+\item{initial_parameters}{A numeric vector of length 5 with the initial
+parameters for the MLE routine. The same as \code{initparsopt}
+from \code{\link[DAISIE]{DAISIE_ML}()}.}
 }
 \value{
-Output from \code{\link[DAISIE]{DAISIE_ML_CS}}
+Output from \code{\link[DAISIE]{DAISIE_ML}}
 }
 \description{
 Calculate maximum likelihood value for the rates

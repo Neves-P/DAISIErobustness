@@ -13,6 +13,9 @@ default_params_doc(
   sim_pars,
   sim,
   ml,
+  ml_res_initpars_1,
+  ml_res_initpars_2,
+  initial_parameters,
   sim_1,
   sim_2,
   spec_error,
@@ -47,7 +50,19 @@ simulations}
 \code{\link{DAISIE_sim_time_dependent}()} or
 \code{\link{DAISIE_sim_constant_rate_shift}()}}
 
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}}
+
+\item{ml_res_initpars_1}{Numeric data frame.
+Results from MLE run of geodynamics with the first set of initial
+parameters.}
+
+\item{ml_res_initpars_2}{Numeric data frame.
+Results from MLE run of geodynamics with the second set of initial
+parameters.}
+
+\item{initial_parameters}{A numeric vector of length 5 with the initial
+parameters for the MLE routine. The same as \code{initparsopt}
+from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_1}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
