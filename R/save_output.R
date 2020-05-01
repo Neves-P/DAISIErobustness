@@ -16,6 +16,7 @@ save_output <- function(output_file,
                         ml_constraints) {
   output_file_name <- create_output_file_name(
     param_space_name = param_space_name,
+    param_set = param_set,
     sim_constraints = sim_constraints,
     ml_constraints = ml_constraints
   )
@@ -53,15 +54,15 @@ save_output <- function(output_file,
 #'   DAISIErobustness:::create_output_file_name(
 #'     param_space_name = "oceanic_ontogeny",
 #'     param_set = 1,
-#'     sim_constraints = FALSE,
-#'     ml_constraints = FALSE
+#'     sim_constraints = TRUE,
+#'     ml_constraints = TRUE
 #'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 #' )
 create_output_file_name <- function(param_space_name,
                                    param_set,
                                    sim_constraints,
                                    ml_constraints) {
-  if ((sim_constraints || ml_constraints) == TRUE) {
+  if ((sim_constraints || ml_constraints) == FALSE) {
 
     output_file_name <- paste0(
       "failed_cond_",
@@ -71,7 +72,7 @@ create_output_file_name <- function(param_space_name,
       ".Rdata"
     )
 
-  } else if (sim_constraints == FALSE && sim_constraints == FALSE) {
+  } else if (sim_constraints == TRUE && sim_constraints == TRUE) {
 
     output_file_name <- paste0(
       "passed_cond_",

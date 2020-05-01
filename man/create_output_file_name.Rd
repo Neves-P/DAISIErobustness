@@ -39,8 +39,8 @@ testit::assert(
   DAISIErobustness:::create_output_file_name(
     param_space_name = "oceanic_ontogeny",
     param_set = 1,
-    sim_constraints = FALSE,
-    ml_constraints = FALSE
+    sim_constraints = TRUE,
+    ml_constraints = TRUE
   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 )
 }
