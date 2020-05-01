@@ -14,7 +14,7 @@ save_output <- function(output_file,
                         param_set,
                         sim_constraints,
                         ml_constraints) {
-  output_file_name <- DAISIEroubustness:::create_output_file_name(
+  output_file_name <- create_output_file_name(
     param_space_name = param_space_name,
     sim_constraints = sim_constraints,
     ml_constraints = ml_constraints
@@ -53,7 +53,8 @@ save_output <- function(output_file,
 #'   DAISIErobustness:::create_output_filename(
 #'     param_space_name = "oceanic_ontogeny",
 #'     param_set = 1,
-#'     constraints = FALSE
+#'     sim_constraints = FALSE,
+#'     ml_constraints = FALSE
 #'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 #' )
 create_output_filename <- function(param_space_name,
@@ -70,7 +71,7 @@ create_output_filename <- function(param_space_name,
       ".Rdata"
     )
 
-  } else if (constraints == FALSE) {
+  } else if (sim_constraints == FALSE && sim_constraints == FALSE) {
 
     output_file_name <- paste0(
       "passed_cond_",
@@ -117,3 +118,5 @@ check_create_results_folder <- function(param_space_name, save_output) {
     message(results_folder, " folder found. No creation needed.\n")
   }
 }
+
+create_output_file
