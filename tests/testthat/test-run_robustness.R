@@ -92,7 +92,6 @@ test_that("run_robustness output is correct when save_output = FALSE and
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails sim_constraints", {
-  skip("skip to pass build")
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
@@ -101,24 +100,23 @@ test_that("run_robustness output is correct when save_output = FALSE and
       save_output = FALSE)
     expect_length(errors, 1)
     expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 48)
+    expect_length(errors$geodynamic_sim[[1]][[1]], 105)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 953)
-    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 265)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 896)
+    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 315)
     expect_equal(ncol(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.70582294637958, 0.13492745976706))
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 2)
+                 c(2.55, 0.38367935319962998))
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 4)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(errors$geodynamic_sim[[2]][[1]], 47)
+    expect_length(errors$geodynamic_sim[[2]][[1]], 96)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 954)
-    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 304)
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 905)
+    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 290)
     expect_equal(ncol(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$branching_times,
-                 c(2.55,2.46421432544788, 2.19479358839356,
-                   0.39036330262399, 0.14421164062499))
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 2)
+                 c(2.55, 0.13779792541013999))
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 4)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
     skip("Run only on TRAVIS or AppVeyor")
@@ -129,10 +127,11 @@ test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
   skip("skip to pass build")
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
-    error <- run_robustness(
+    errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 10,
-      replicates = 2)
+      replicates = 2,
+      save_output = FALSE)
     expect_length(errors, 4)
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 12)
