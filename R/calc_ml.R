@@ -33,22 +33,3 @@ calc_ml <- function(sim, initial_parameters) {
   return(ml)
 }
 
-#' Calculate mean of ML estimates
-#'
-#' @inheritParams default_params_doc
-#'
-#' @return Numeric list with elementwise means of ML runs with different initial
-#'   parameters.
-mean_geodynamic_ml <- function(ml_res_initpars_1,
-                               ml_res_initpars_2) {
-  out <- list()
-  for (i in seq_along(ml_res_initpars_1)) {
-    out[[i]] <- colMeans(rbind(
-      ml_res_initpars_1[[i]],
-      ml_res_initpars_2[[i]]
-    ), na.rm = TRUE)
-  testit::assert(is.numeric(out[[i]]) && all(is.finite(out[[i]])))
-  }
-  testit::assert(is.list(out))
-  return(out)
-}
