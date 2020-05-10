@@ -63,6 +63,7 @@ save_output <- function(output_file,
 #'
 #' @author Pedro Neves, Joshua Lambert
 #' @family I/O
+#' @keywords Internal
 #' @examples
 #' testit::assert(
 #'   DAISIErobustness:::create_output_file_name(
@@ -102,7 +103,7 @@ create_output_file_name <- function(param_space_name,
 }
 
 
-#' Generated name for saving output of \code{run_robustness()}
+#' Generated name for saving output of \code{run_geodynamic_section()}
 #'
 #' @inheritParams default_params_doc
 #'
@@ -111,14 +112,14 @@ create_output_file_name <- function(param_space_name,
 #'
 #' @author Pedro Neves, Joshua Lambert
 #' @family I/O
+#' @keywords Internal
 #' @examples
 #' testit::assert(
-#'   DAISIErobustness:::create_output_file_name(
+#'   DAISIErobustness:::create_output_file_name_geodynamic_section(
 #'     param_space_name = "oceanic_ontogeny",
 #'     param_set = 1,
-#'     sim_constraints = TRUE,
-#'     ml_constraints = TRUE
-#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+#'     sim_constraints = TRUE
+#'   ) == "geosym_passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 #' )
 create_output_file_name_geodynamic_section <- function(param_space_name,
                                                        param_set,
@@ -155,6 +156,7 @@ create_output_file_name_geodynamic_section <- function(param_space_name,
 #' @author Pedro Neves, Joshua Lambert
 #' @return Helpful messages with info on folder status. Tries to create
 #'   folder if needed.
+#' @keywords Internal
 #' @family I/O
 check_create_results_folder <- function(param_space_name, save_output) {
 
@@ -187,6 +189,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
 #'
 #' @return List with output from \code{\link{geodynamic_sim}()} and
 #'  \code{\link{sim_constraints}()}.
+#' @author Pedro Neves, Joshua Lambert
 #' @export
 load_geodynamic_section <- function(param_space_name,
                                     param_set) {
@@ -210,6 +213,7 @@ load_geodynamic_section <- function(param_space_name,
   if (!file.exists(file.path(results_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
+  output_file <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
   out <- list(
     geodynamic_sim = output_file$geodynamic_sim,

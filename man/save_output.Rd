@@ -33,6 +33,11 @@ run, as found in the file named in \code{param_space}.}
 
 \item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
 \code{FALSE} otherwise.}
+
+\item{full_pipeline}{A logical stating for the purposes of saving, if a full
+pipeline is being run, from \code{\link{run_robustness}()}, or if it is
+being ran in parts, from \code{\link{run_geodynamic_section}()} and
+\code{\link{run_oceanic_section}()}}
 }
 \value{
 .RData file named by \code{\link{create_output_file_name}()} in

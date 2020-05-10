@@ -5,7 +5,7 @@ test_that("use", {
   ml_res_initpars_1 <- list(data.frame(1, 2, 3, 4, 5, 6))
   ml_res_initpars_2 <- list(data.frame(1, 2, 3, 4, 5, 6))
 
-  obtained <- DAISIErobustness:::decide_best_pars(
+  obtained <- decide_best_pars(
     ml_res_initpars_1 = ml_res_initpars_1,
     ml_res_initpars_2 = ml_res_initpars_2
   )
@@ -31,7 +31,7 @@ test_that("use", {
   ml_res_initpars_1 <- list(data.frame(1, 2, 3, 4, 5, 6))
   ml_res_initpars_2 <- list(data.frame(10, 20, 30, 40, 50, 60))
 
-  obtained <- DAISIErobustness:::decide_best_pars(
+  obtained <- decide_best_pars(
     ml_res_initpars_1 = ml_res_initpars_1,
     ml_res_initpars_2 = ml_res_initpars_2
   )

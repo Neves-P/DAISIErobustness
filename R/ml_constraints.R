@@ -2,6 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
+#' @keywords Internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 ml_constraints <- function(ml) {
   testit::assert(is.list(ml))

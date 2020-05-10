@@ -18,3 +18,4 @@ Checks if number of valid errors meet the criteria for data sample size
 \author{
 Joshua Lambert, Pedro Neves
 }
+\keyword{Internal}

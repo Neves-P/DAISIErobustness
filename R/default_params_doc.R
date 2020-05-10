@@ -52,6 +52,10 @@
 #' @param initial_parameters A numeric vector of length 5 with the initial
 #'  parameters for the MLE routine. The same as \code{initparsopt}
 #'  from \code{\link[DAISIE]{DAISIE_ML}()}.
+#' @param full_pipeline A logical stating for the purposes of saving, if a full
+#'  pipeline is being run, from \code{\link{run_robustness}()}, or if it is
+#'  being ran in parts, from \code{\link{run_geodynamic_section}()} and
+#'  \code{\link{run_oceanic_section}()}
 #'
 #' @return Nothing
 #'
@@ -77,7 +81,8 @@ default_params_doc <- function(
   nonendemic_error,
   spec_baseline_error,
   endemic_baseline_error,
-  nonendemic_baseline_error
+  nonendemic_baseline_error,
+  full_pipeline
 ) {
   # Nothing
 }

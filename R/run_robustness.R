@@ -26,7 +26,7 @@ run_robustness <- function(param_space_name,
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
 
-  DAISIErobustness:::check_create_results_folder(
+  check_create_results_folder(
     param_space_name = param_space_name,
     save_output = save_output
   )
@@ -69,15 +69,15 @@ run_robustness <- function(param_space_name,
       initial_parameters = initial_parameters_2_list
     )
 
-    geodynamic_ml_constraints_1 <- DAISIErobustness:::ml_constraints(
+    geodynamic_ml_constraints_1 <- ml_constraints(
       ml = geodynamic_ml_1)
 
-    geodynamic_ml_constraints_2 <- DAISIErobustness:::ml_constraints(
+    geodynamic_ml_constraints_2 <- ml_constraints(
       ml = geodynamic_ml_2)
 
     if (geodynamic_ml_constraints_1 == TRUE &&
         geodynamic_ml_constraints_2 == TRUE) {
-      best_pars_tolerance <- DAISIErobustness:::decide_best_pars(
+      best_pars_tolerance <- decide_best_pars(
         ml_res_initpars_1 = geodynamic_ml_1,
         ml_res_initpars_2 = geodynamic_ml_2
       )

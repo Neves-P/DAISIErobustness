@@ -2,7 +2,7 @@
 % Please edit documentation in R/input-output.R
 \name{create_output_file_name_geodynamic_section}
 \alias{create_output_file_name_geodynamic_section}
-\title{Generated name for saving output of \code{run_robustness()}}
+\title{Generated name for saving output of \code{run_geodynamic_section()}}
 \usage{
 create_output_file_name_geodynamic_section(
   param_space_name,
@@ -28,16 +28,15 @@ Character with name indicating the name of the parameter space,
   the numeric id of the param_set and whether the run passed constraints.
 }
 \description{
-Generated name for saving output of \code{run_robustness()}
+Generated name for saving output of \code{run_geodynamic_section()}
 }
 \examples{
 testit::assert(
-  DAISIErobustness:::create_output_file_name(
+  DAISIErobustness:::create_output_file_name_geodynamic_section(
     param_space_name = "oceanic_ontogeny",
     param_set = 1,
-    sim_constraints = TRUE,
-    ml_constraints = TRUE
-  ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+    sim_constraints = TRUE
+  ) == "geosym_passed_cond_oceanic_ontogeny_param_set_1.Rdata"
 )
 }
 \seealso{
@@ -50,3 +49,4 @@ Other I/O:
 Pedro Neves, Joshua Lambert
 }
 \concept{I/O}
+\keyword{Internal}

@@ -26,7 +26,8 @@ default_params_doc(
   nonendemic_error,
   spec_baseline_error,
   endemic_baseline_error,
-  nonendemic_baseline_error
+  nonendemic_baseline_error,
+  full_pipeline
 )
 }
 \arguments{
@@ -103,6 +104,11 @@ vector.}
 
 \item{nonendemic_baseline_error}{A list with one element with a numeric
 vector.}
+
+\item{full_pipeline}{A logical stating for the purposes of saving, if a full
+pipeline is being run, from \code{\link{run_robustness}()}, or if it is
+being ran in parts, from \code{\link{run_geodynamic_section}()} and
+\code{\link{run_oceanic_section}()}}
 }
 \value{
 Nothing

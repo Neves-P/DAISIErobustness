@@ -23,3 +23,6 @@ List with output from \code{\link{geodynamic_sim}()} and
 \description{
 Load intermedia geodynamic sim results to continue pipeline
 }
+\author{
+Pedro Neves, Joshua Lambert
+}
