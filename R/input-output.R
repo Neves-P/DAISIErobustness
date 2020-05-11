@@ -77,7 +77,7 @@ create_output_file_name <- function(param_space_name,
                                     param_set,
                                     sim_constraints,
                                     ml_constraints) {
-  if ((sim_constraints || ml_constraints) == FALSE) {
+  if (all(sim_constraints, ml_constraints) == FALSE) {
 
     output_file_name <- paste0(
       "failed_cond_",
@@ -87,7 +87,7 @@ create_output_file_name <- function(param_space_name,
       ".Rdata"
     )
 
-  } else if (sim_constraints == TRUE && sim_constraints == TRUE) {
+  } else if (sim_constraints == TRUE && ml_constraints == TRUE) {
 
     output_file_name <- paste0(
       "passed_cond_",
