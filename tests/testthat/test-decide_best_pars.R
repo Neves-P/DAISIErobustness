@@ -19,9 +19,7 @@ test_that("use", {
       "X5" = 5,
       "X6" = 6
     ),
-    loglik_tolerance_check = "pass loglik difference",
     absolute_loglik_difference = 0,
-    pars_tolerance_check = "pass pars difference",
     absolute_pars_difference = c(0, 0, 0, 0, 0)
   ))
   expect_equal(object = obtained, expected = expected)
@@ -46,9 +44,7 @@ test_that("use", {
         "X50" = 50,
         "X60" = 60
       ),
-      loglik_tolerance_check = "fail loglik difference",
       absolute_loglik_difference = 54,
-      pars_tolerance_check = "fail pars difference",
       absolute_pars_difference = c(
         0.40909090909090906,
         0.28571428571428570,

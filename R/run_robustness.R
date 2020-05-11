@@ -84,13 +84,10 @@ run_robustness <- function(param_space_name,
 
       geodynamic_ml <- lapply(best_pars_tolerance, `[[`, 1) # rearrange
       geodynamic_ml_qc <- list(
-        loglik_tolerance_check = best_pars_tolerance$loglik_tolerance_check,
         absolute_loglik_difference =
           best_pars_tolerance$absolute_loglik_difference,
-        pars_tolerance_check = best_pars_tolerance$pars_tolerance_check,
         absolute_pars_difference = best_pars_tolerance$absolute_pars_difference
         )
-
 
       oceanic_sim_1 <- oceanic_sim(
         ml = geodynamic_ml,

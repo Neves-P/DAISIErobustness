@@ -58,12 +58,9 @@ decide_best_pars <- function(ml_res_initpars_1,
                              ml_res_initpars_2) {
   # Initialize variables and set tolerance
   out <- list()
-  loglik_tolerance_check <- c()
-  pars_tolerance_check <- c()
   absolute_loglik_difference <- c()
   absolute_pars_difference <- list()
   n_replicates <- length(ml_res_initpars_1)
-  tolerance <- 1e-6
 
   for (i in seq_len(n_replicates)) {
     ml_1_trsf_pars <- as.numeric(ml_res_initpars_1[[i]][1:5] /
@@ -84,22 +81,9 @@ decide_best_pars <- function(ml_res_initpars_1,
     pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
     pars_to_use <- pars_list[[set_with_highest_loglik]]
 
-    if (absolute_loglik_difference[i] > tolerance) {
-      loglik_tolerance_check[i] <- "fail loglik difference"
-    } else {
-      loglik_tolerance_check[i] <- "pass loglik difference"
-    }
-    if (any(absolute_pars_difference[[i]] > tolerance)) {
-      pars_tolerance_check[i] <- "fail pars difference"
-    } else {
-      pars_tolerance_check[i] <- "pass pars difference"
-    }
-
     out[[i]] <- list(
       pars_to_use = pars_to_use,
-      loglik_tolerance_check = loglik_tolerance_check[i],
       absolute_loglik_difference = absolute_loglik_difference[i],
-      pars_tolerance_check = pars_tolerance_check[i],
       absolute_pars_difference = absolute_pars_difference[[i]]
     )
   }
