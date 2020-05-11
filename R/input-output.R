@@ -201,20 +201,26 @@ load_geodynamic_section <- function(param_space_name,
     )
   }
   found_files <- list.files(path = results_folder)
-  message(paste0("Found ", length(found_files), " files\n"))
+  message(paste0("Found ", length(found_files), " files.\n"))
   file_code_to_load <- paste(
     param_space_name,
     "param_set",
     param_set,
     sep = "_"
   )
-  name_file_to_load <- found_files[grepl(pattern = file_code_to_load, x = found_files)]
+  name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
+                                         x = found_files)]
   message(paste0("Trying to load ", name_file_to_load, ".\n"))
   if (!file.exists(file.path(results_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
   output_file <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
+  if (exists(x = "geodynamic_section_output")) {
+    testit::assert(c("geodynamic_sim", "sim_constraints") %in%
+                     names(geodynamic_section_output))
+    message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
+  }
   out <- list(
     geodynamic_sim = output_file$geodynamic_sim,
     sim_constraints = output_file$sim_constraints)
