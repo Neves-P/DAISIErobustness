@@ -32,6 +32,7 @@ run_robustness <- function(param_space_name,
     param_space_name = param_space_name,
     param_space = param_space,
     param_set = param_set)
+  sim_pars_init <- sim_pars
 
   geodynamic_sim <- geodynamic_sim(
     param_space_name = param_space_name,
@@ -102,7 +103,8 @@ run_robustness <- function(param_space_name,
         geodynamic_ml = geodynamic_ml,
         oceanic_sim_1 = oceanic_sim_1,
         oceanic_ml = oceanic_ml,
-        oceanic_sim_2 = oceanic_sim_2)
+        oceanic_sim_2 = oceanic_sim_2,
+        sim_pars_init = sim_pars_init)
 
       output_file_name <- paste0(
         "passed_cond_",

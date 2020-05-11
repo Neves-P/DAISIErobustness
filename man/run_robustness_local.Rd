@@ -17,7 +17,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
-simulations.}
+simulations}
 }
 \value{
 A list of errors and simulation and MLE output if
