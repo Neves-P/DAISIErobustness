@@ -215,6 +215,7 @@ load_geodynamic_section <- function(param_space_name,
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
   output_file <- NULL # Suppress global variable note
+  geodynamic_section_output <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
   if (exists(x = "geodynamic_section_output")) {
     testit::assert(c("geodynamic_sim", "sim_constraints") %in%
