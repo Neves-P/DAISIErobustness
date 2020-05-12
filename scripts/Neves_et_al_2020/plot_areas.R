@@ -6,6 +6,49 @@
 #'
 #' @return a plot with the area size through time
 #' @author Pedro Neves, Joshua Lambert
+#' @examples
+#'
+#' totaltime_2 <- 2.55
+#' totaltime_1 <- 6.15
+#' area_pars_2 <- DAISIE::create_area_pars(
+#'   max_area = 13500,
+#'   proportional_peak_t = 0.53,
+#'   peak_sharpness = 1,
+#'   total_island_age = 2.864,
+#'   sea_level_amplitude = 60,
+#'   sea_level_frequency = 25.5,
+#'   island_gradient_angle = 85
+#' )
+#' area_pars_1 <- DAISIE::create_area_pars(
+#'   max_area = 3787,
+#'   proportional_peak_t = 0.27,
+#'   peak_sharpness = 1,
+#'   total_island_age = 8.473,
+#'   sea_level_amplitude = 60,
+#'   sea_level_frequency = 61.5,
+#'   island_gradient_angle = 85
+#' )
+#' island_ontogeny_1 <- "beta"
+#' island_ontogeny_2 <- "beta"
+#' sea_level_1 <- "sine"
+#' sea_level_2 <- "sine"
+#' resolution <- 0.001
+#' overlay_sea_level_ontogeny <- TRUE
+#' overlay_sea_level = TRUE
+#'
+#' plot_areas(
+#'   totaltime_1 = totaltime_1,
+#'   totaltime_2 = totaltime_2,
+#'   area_pars_1 = area_pars_1,
+#'   area_pars_2 = area_pars_2,
+#'   island_ontogeny_1 = island_ontogeny_1,
+#'   island_ontogeny_2 = island_ontogeny_2,
+#'   sea_level_1 = sea_level_1,
+#'   sea_level_2 = sea_level_2,
+#'   resolution = resolution,
+#'   overlay_sea_level_ontogeny = overlay_sea_level_ontogeny,
+#'   overlay_sea_level = overlay_sea_level
+#' )
 plot_areas <- function(totaltime_1,
                        totaltime_2 = NULL,
                        area_pars_1,
@@ -15,6 +58,7 @@ plot_areas <- function(totaltime_1,
                        sea_level_1 = "const",
                        sea_level_2 = NULL,
                        resolution = 0.001,
+                       overlay_sea_level_ontogeny = FALSE,
                        overlay_sea_level = FALSE) {
 
   resolution <- max(0.00001, resolution)
@@ -28,7 +72,7 @@ plot_areas <- function(totaltime_1,
     sea_level_1 = sea_level_1,
     sea_level_2 = sea_level_2,
     resolution = resolution,
-    overlay_sea_level = overlay_sea_level
+    overlay_sea_level_ontogeny = overlay_sea_level_ontogeny
   )
   island_ontogeny_1 <- DAISIE::translate_island_ontogeny(island_ontogeny_1)
   island_ontogeny_2 <- DAISIE::translate_island_ontogeny(island_ontogeny_2)
@@ -36,7 +80,7 @@ plot_areas <- function(totaltime_1,
   sea_level_2 <- DAISIE::translate_sea_level(sea_level_2)
 
 
-  if (overlay_sea_level) {
+  if (overlay_sea_level_ontogeny || overlay_sea_level) {
 
     area_pars_1_sea_level <- area_pars_1
     area_pars_2_sea_level <- area_pars_2
@@ -96,22 +140,22 @@ plot_areas <- function(totaltime_1,
     ggplot2::aes(x = Time, y = Area)) +
     ggplot2::ggtitle("Variation of island area during simulation")  +
     ggplot2::theme_classic() +
-    ggplot2::geom_line(size = 1.5, color = "black") +
-    ggplot2::geom_line(data = island_area_time_2, size = 1.5, color = "black")
+    ggplot2::geom_line(size = 1.2, color = "black") +
+    ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black")
 
-  if (overlay_sea_level) {
-    area_1_sea_level <- c()
-    area_2_sea_level <- c()
+  if (overlay_sea_level_ontogeny) {
+    area_1_sea_level_ontogeny <- c()
+    area_2_sea_level_ontogeny <- c()
     sea_level_1 <- 1
     sea_level_2 <- 1
 
-    area_1_sea_level <- sapply(
+    area_1_sea_level_ontogeny <- sapply(
       x_axis,
       FUN = DAISIE::island_area,
       area_pars_1_sea_level,
       island_ontogeny_1,
       sea_level_1)
-    area_2_sea_level <- sapply(
+    area_2_sea_level_ontogeny <- sapply(
       second_island_timepoints_rel_time,
       FUN = DAISIE::island_area,
       area_pars_2_sea_level,
@@ -119,24 +163,68 @@ plot_areas <- function(totaltime_1,
       sea_level_2
     )
 
-    island_area_time_sea_level_1 <- data.frame(
-      Area = area_1_sea_level,
+    island_area_time_sea_level_ontogeny_1 <- data.frame(
+      Area = area_1_sea_level_ontogeny,
       Time = x_axis
     )
-    island_area_time_sea_level_2 <- data.frame(
-      Area = area_2_sea_level,
+    island_area_time_sea_level_ontogeny_2 <- data.frame(
+      Area = area_2_sea_level_ontogeny,
       Time = second_island_timepoints_abs_time
     )
 
     area_plot <- area_plot +
-      ggplot2::geom_line(data = island_area_time_sea_level_1,
-                         color = "skyblue2",
-                         size = 1.2,
+      ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_1,
+                         color = "skyblue3",
+                         size = 1,
                          alpha = 0.4) +
-      ggplot2::geom_line(data = island_area_time_sea_level_2,
-                         color = "coral",
-                         size = 1.2,
+      ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
+                         color = "coral1",
+                         size = 1,
                          alpha = 0.5)
+
+    if (overlay_sea_level) {
+      area_1_sea_level <- c()
+      area_2_sea_level <- c()
+      sea_level_1 <- 1
+      sea_level_2 <- 1
+      island_ontogeny_1 <- 0
+      island_ontogeny_2 <- 0
+
+      area_1_sea_level <- sapply(
+        x_axis,
+        FUN = DAISIE::island_area,
+        area_pars_1_sea_level,
+        island_ontogeny_1,
+        sea_level_1)
+      area_2_sea_level <- sapply(
+        second_island_timepoints_rel_time,
+        FUN = DAISIE::island_area,
+        area_pars_2_sea_level,
+        island_ontogeny_2,
+        sea_level_2
+      )
+
+      island_area_time_sea_level_1 <- data.frame(
+        Area = area_1_sea_level,
+        Time = x_axis
+      )
+      island_area_time_sea_level_2 <- data.frame(
+        Area = area_2_sea_level,
+        Time = second_island_timepoints_abs_time
+      )
+
+      area_plot <- area_plot +
+        ggplot2::geom_line(data = island_area_time_sea_level_1,
+                           color = "skyblue4",
+                           size = 1,
+                           alpha = 0.4) +
+        ggplot2::geom_line(data = island_area_time_sea_level_2,
+                           color = "coral4",
+                           size = 1,
+                           alpha = 0.5)
+    }
+
+
   }
   return(area_plot)
 }
@@ -158,7 +246,7 @@ check_area_plot_input <- function(totaltime_1,
                                   sea_level_1,
                                   sea_level_2,
                                   resolution,
-                                  overlay_sea_level) {
+                                  overlay_sea_level_ontogeny) {
   testit::assert(is.numeric(totaltime_1))
   testit::assert(resolution > 0 && resolution < 1)
   testit::assert(DAISIE::is_island_ontogeny_input(island_ontogeny_1))
@@ -173,7 +261,7 @@ check_area_plot_input <- function(totaltime_1,
 
   testit::assert(resolution > 0 && resolution < 1,
                  fact = "Value of the resolution should be between 0 and 1.")
-  testit::assert(overlay_sea_level &&
+  testit::assert(overlay_sea_level_ontogeny &&
                    sea_level_1 != "const" &&
                    sea_level_2 != "const" &&
                    area_pars_1$sea_level_amplitude != 0 &&

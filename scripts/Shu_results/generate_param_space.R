@@ -4,17 +4,17 @@
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0.53
-sharpness <- 1
 total_island_age <- 2.864
 sea_level_amplitude <- 0
 sea_level_frequency <- 0
@@ -27,16 +27,16 @@ maui_parameter_set <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -52,17 +52,17 @@ maui_parameter_set <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0.27
-sharpness <- 1
 total_island_age <- 8.473
 sea_level_amplitude <- 0
 sea_level_frequency <- 0
@@ -75,16 +75,16 @@ kauai_parameter_set <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -104,17 +104,17 @@ write.csv2(oceanic_ontogeny, "data/oceanic_ontogeny.csv", row.names = FALSE)
 ## Maui Nui ---------------------------------------------------------------
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -127,16 +127,16 @@ maui_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -151,17 +151,17 @@ maui_oceanic_sea_level <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -174,16 +174,16 @@ kauai_oceanic_sea_level <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -205,17 +205,17 @@ write.csv2(oceanic_sea_level, "data/oceanic_sea_level.csv", row.names = FALSE)
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0.53
-sharpness <- 1
 total_island_age <- 2.864
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -228,16 +228,16 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -253,17 +253,17 @@ oceanic_ontogeny_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0.27
-sharpness <- 1
 total_island_age <- 8.473
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -276,16 +276,16 @@ oceanic_ontogeny_sea_level_kauai <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -378,17 +378,17 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
+current_area <- 3155
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
@@ -401,16 +401,16 @@ nonoceanic_sea_level_maui <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -425,17 +425,17 @@ nonoceanic_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.0001, 0.0002)
-mu_min <- c(0.5, 1)
-mu_p <- c(50, 100)
+lac <- c(0.04, 0.08)
+mu <- c(1.95, 3.9)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.03, 0.06)
-laa <- c(1, 2)
+gam <- c(0.06726, 0.13452)
+laa <- c(0.059, 0.118)
+x <- c(0.15, 0.3)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
+current_area <- 1431
 peak_time <- 0
-sharpness <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
@@ -448,16 +448,16 @@ nonoceanic_sea_level_kauai <- expand.grid(
   time = time,
   M = M,
   lac = lac,
-  mu_min = mu_min,
-  mu_p = mu_p,
+  mu = mu,
   K = K,
   gam = gam,
   laa = laa,
+  x = x,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
+  current_area = current_area,
   peak_time = peak_time,
-  sharpness = sharpness,
   total_island_age = total_island_age,
   sea_level_amplitude = sea_level_amplitude,
   sea_level_frequency = sea_level_frequency,
@@ -485,10 +485,10 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -516,10 +516,10 @@ maui_nui_1_short_lb_di <- cbind(maui_nui_1_short_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -547,10 +547,10 @@ maui_nui_1_long_lb_di <- cbind(maui_nui_1_long_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -578,10 +578,10 @@ maui_nui_3_short_lb_di <- cbind(maui_nui_3_short_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -609,10 +609,10 @@ maui_nui_3_long_lb_di <- cbind(maui_nui_3_long_lb_di,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -641,10 +641,10 @@ maui_nui_1_short_lb_dd <- cbind(maui_nui_1_short_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -672,10 +672,10 @@ maui_nui_1_long_lb_dd <- cbind(maui_nui_1_long_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -703,10 +703,10 @@ maui_nui_3_short_lb_dd <- cbind(maui_nui_3_short_lb_dd,
 
 time <- 2.55
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -734,10 +734,10 @@ maui_nui_3_long_lb_dd <- cbind(maui_nui_3_long_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -765,10 +765,10 @@ kauai_1_short_lb_di <- cbind(kauai_1_short_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -796,10 +796,10 @@ kauai_1_long_lb_di <- cbind(kauai_1_long_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -827,10 +827,10 @@ kauai_3_short_lb_di <- cbind(kauai_3_short_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- Inf
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -858,10 +858,10 @@ kauai_3_long_lb_di <- cbind(kauai_3_long_lb_di,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -889,10 +889,10 @@ kauai_1_short_lb_dd <- cbind(kauai_1_short_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -921,10 +921,10 @@ kauai_1_long_lb_dd <- cbind(kauai_1_long_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)
@@ -952,10 +952,10 @@ kauai_3_short_lb_dd <- cbind(kauai_3_short_lb_dd,
 
 time <- 6.15
 M <- 1000
-lac_1 <- c(0.5, 1, 2)
-mu_1 <- c(0.5, 1, 2)
+lac_1 <- c(0.5, 1)
+mu_1 <- c(0.5, 1)
 K_1 <- 10
-gam_1 <- c(0.01, 0.05, 0.1)
+gam_1 <- c(0.01, 0.05)
 laa_1 <- 1
 x_s <- c(0.05, 0.1)
 x_nonend <- c(0.1, 0.9)

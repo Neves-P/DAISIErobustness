@@ -2,9 +2,9 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
-#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}}, or
-#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
+#' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()}, or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
 #' @export
 geodynamic_sim <- function(param_space_name,
                            sim_pars,
@@ -53,7 +53,7 @@ geodynamic_sim <- function(param_space_name,
         island_ontogeny = sim_pars$island_ontogeny,
         sea_level = sim_pars$sea_level,
         area_pars = sim_pars$area_pars,
-        ext_pars = sim_pars$ext_pars,
+        hyper_pars = sim_pars$hyper_pars,
         extcutoff = sim_pars$extcutoff,
         sample_freq = Inf,
         plot_sims = FALSE,

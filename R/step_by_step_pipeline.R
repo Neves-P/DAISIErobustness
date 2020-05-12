@@ -1,15 +1,16 @@
-#' Run robustness analysis pipeline
+#' Run geodynamics portion of the analysis pipeline
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
-#' @return A list of errors and simulation and MLE output if
-#' \code{\link{sim_constraints}()} and \code{\link{ml_constraints}()} returned
-#' TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
+#' @return A list with \code{\link{geodynamic_sim}()} and
+#'  \code{\link{sim_constraints}()} output.
+#' @seealso \code{\link{run_robustness}()}
+#' @author Joshua Lambert, Pedro Neves
 #' @export
-run_robustness <- function(param_space_name,
-                           param_set,
-                           replicates,
-                           save_output = TRUE) {
+run_geodynamic_section <- function(param_space_name,
+                                   param_set,
+                                   replicates,
+                                   save_output = TRUE) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -20,8 +21,8 @@ run_robustness <- function(param_space_name,
       param_space_name == "oceanic_ontogeny_sea_level" ||
       param_space_name == "nonoceanic" ||
       param_space_name == "nonoceanic_sea_level" ||
-      param_space_name == "nonoceanic_land_bridge" ||
-      param_space_name == "trait")
+      param_space_name == "nonoceanic_land_bridge"
+  )
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
@@ -37,7 +38,6 @@ run_robustness <- function(param_space_name,
     param_space_name = param_space_name,
     param_space = param_space,
     param_set = param_set)
-  sim_pars_init <- sim_pars
 
   geodynamic_sim <- geodynamic_sim(
     param_space_name = param_space_name,
@@ -47,6 +47,56 @@ run_robustness <- function(param_space_name,
   sim_constraints <- sim_constraints(
     sim = geodynamic_sim,
     replicates = replicates)
+  output_file <- list(
+    geodynamic_sim = geodynamic_sim,
+    sim_constraints = sim_constraints
+  )
+
+  if (save_output) {
+    save_output(output_file = output_file,
+                param_space_name = param_space_name,
+                param_set = param_set,
+                sim_constraints = sim_constraints,
+                ml_constraints = NA,
+                full_pipeline = FALSE)
+  } else {
+    return(output_file)
+  }
+}
+
+#' Run oceanic portion of the analysis pipeline
+#'
+#' @inheritParams default_params_doc
+#' @author Joshua Lambert, Pedro Neves
+#' @return A list with \code{\link{geodynamic_sim}()} and
+#'  \code{\link{sim_constraints}()} output.
+#' @seealso \code{\link{run_robustness}()}
+#' @author Joshua Lambert, Pedro Neves
+#' @export
+run_oceanic_section <- function(param_space_name,
+                                param_set,
+                                replicates,
+                                save_output = TRUE) {
+  param_space <- load_param_space(
+    param_space_name = param_space_name)
+
+  sim_pars <- extract_param_set(
+    param_space_name = param_space_name,
+    param_space = param_space,
+    param_set = param_set)
+
+  check_create_results_folder(
+    param_space_name = param_space_name,
+    save_output = save_output
+  )
+
+  geodynamic_section_output <- load_geodynamic_section(
+    param_space_name = param_space_name,
+    param_set = param_set
+  )
+
+  sim_constraints <- geodynamic_section_output$sim_constraints
+  geodynamic_sim <- geodynamic_section_output$geodynamic_sim
 
   if (sim_constraints == TRUE) {
     initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
@@ -90,11 +140,8 @@ run_robustness <- function(param_space_name,
           best_pars_tolerance$absolute_loglik_difference,
         pars_tolerance_check = best_pars_tolerance$pars_tolerance_check,
         absolute_pars_difference = best_pars_tolerance$absolute_pars_difference
-        )
+      )
 
-    if(param_space_name == "trait"){
-      sim_pars$M = sim_pars$M + sim_pars$trait_pars$M2
-    }
 
       oceanic_sim_1 <- oceanic_sim(
         ml = geodynamic_ml,

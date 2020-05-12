@@ -9,8 +9,8 @@ remotes::install_github("rsetienne/DAISIE@shu_traits")
 submit_robustness(
   param_space_name = "trait",
   account = "p286026",
-  replicates = 100,
-  num_job = c(201, 570),
+  replicates = 10,
+  num_job = c(1, 10),
   partition = "gelifes",
   folder = "/data"
 )

@@ -2,6 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
+#' @keywords Internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 ml_constraints <- function(ml) {
   testit::assert(is.list(ml))
@@ -11,4 +12,96 @@ ml_constraints <- function(ml) {
   } else {
     return(TRUE)
   }
+}
+
+#' Check if MLE results converge and chooses best MLE output
+#'
+#' @description
+#' Since two MLE runs with different initial optimizer parameters
+#' are done, the best parameter set between the two must be decided. This is
+#' done by choosing the set for which the highest loglikelihood value was
+#' obtained.
+#'
+#' @inheritParams  default_params_doc
+#'
+#' @details
+#' To keep track of the differences between the two estimated sets,
+#' it is also determined if the estimated parameters differ by a value greater
+#' than the normally used tolerance value for the ML optimization (1e-6). The
+#' same is also done regarding the absolute differences in loglikelihoods.
+#' The flow of \code{\link{run_robustness}()} is not affected by the
+#' comparisons with a tolerance, rather these values are kept for downstream
+#' QC of results.
+#' @return
+#' List with item per replicate containing:
+#'   \itemize{
+#'     \item{\code{pars_to_use}: Single row data frame with the parameter
+#'     set from the MLE with the highest obtained loglik value.}
+#'     \item{\code{loglik_tolerance_check}: Character
+#'     \code{"fail loglik difference"} which indicates that the absolute
+#'     difference between the two compared logliks is greater than the tolerance
+#'     value (1e-6) or \code{"pass loglik difference"} when the absolute
+#'     difference is smaller than the tolerance.}
+#'     \item{\code{absolute_loglik_difference}: Numeric with the absolute
+#'     difference between the two logliks.}
+#'     \item{\code{pars_tolerance_check}: Character
+#'     \code{"fail pars difference"} if the absolute difference between any of the the
+#'      two compared estimated parameter sets is greater than the tolerance
+#'     value (1e-6) or \code{"pass pars difference"} when the absolute
+#'     difference is smaller than the tolerance.}
+#'     \item{\code{absolute_pars_difference}: List of numeric vectors with the
+#'     absolute difference calculated between the two parameter sets.}
+#'   }
+#' @seealso \code{\link[DAISIE]{DAISIE_ML}()}, \code{\link{calc_ml}()}
+#' @author Joshua Lambert, Pedro Neves
+decide_best_pars <- function(ml_res_initpars_1,
+                             ml_res_initpars_2) {
+  # Initialize variables and set tolerance
+  out <- list()
+  loglik_tolerance_check <- c()
+  pars_tolerance_check <- c()
+  absolute_loglik_difference <- c()
+  absolute_pars_difference <- list()
+  n_replicates <- length(ml_res_initpars_1)
+  tolerance <- 1e-6
+
+  for (i in seq_len(n_replicates)) {
+    ml_1_trsf_pars <- as.numeric(ml_res_initpars_1[[i]][1:5] /
+                                   (1 + ml_res_initpars_1[[i]][1:5]))
+    ml_1_trsf_pars[which(ml_res_initpars_1[[i]][1:5] == Inf)] <- 1
+
+    ml_2_trsf_pars <- as.numeric(ml_res_initpars_2[[i]][1:5] /
+                                   (1 + ml_res_initpars_2[[i]][1:5]))
+    ml_2_trsf_pars[which(ml_2_trsf_pars[[i]][1:5] == Inf)] <- 1
+    absolute_pars_difference[[i]] <- abs(ml_1_trsf_pars - ml_2_trsf_pars)
+
+    ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
+    ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
+    absolute_loglik_difference[i] <- abs(ml_1_loglik - ml_2_loglik)
+    logliks <- c(ml_1_loglik, ml_2_loglik)
+    set_with_highest_loglik <- which(max(logliks) == logliks)[1]
+    testit::assert(length(set_with_highest_loglik) == 1)
+    pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
+    pars_to_use <- pars_list[[set_with_highest_loglik]]
+
+    if (absolute_loglik_difference[i] > tolerance) {
+      loglik_tolerance_check[i] <- "fail loglik difference"
+    } else {
+      loglik_tolerance_check[i] <- "pass loglik difference"
+    }
+    if (any(absolute_pars_difference[[i]] > tolerance)) {
+      pars_tolerance_check[i] <- "fail pars difference"
+    } else {
+      pars_tolerance_check[i] <- "pass pars difference"
+    }
+
+    out[[i]] <- list(
+      pars_to_use = pars_to_use,
+      loglik_tolerance_check = loglik_tolerance_check[i],
+      absolute_loglik_difference = absolute_loglik_difference[i],
+      pars_tolerance_check = pars_tolerance_check[i],
+      absolute_pars_difference = absolute_pars_difference[[i]]
+    )
+  }
+  return(out)
 }

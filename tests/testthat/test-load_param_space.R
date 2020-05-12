@@ -8,10 +8,9 @@ test_that("test load_param_space loads oceanic_ontogeny
   expect_equal(nrow(oceanic_ontogeny), 192)
   expect_equal(ncol(oceanic_ontogeny), 20)
   expect_equal(names(oceanic_ontogeny),
-               c("time", "M", "lac", "mu_min", "mu_p", "K",
-                 "gam", "laa", "island_ontogeny", "sea_level",
-                 "max_area", "peak_time", "sharpness",
-                 "total_island_age", "sea_level_amplitude",
+               c("time", "M", "lac", "mu", "K", "gam", "laa", "x",
+                 "island_ontogeny", "sea_level", "max_area", "current_area",
+                 "peak_time", "total_island_age", "sea_level_amplitude",
                  "sea_level_frequency", "island_gradient_angle",
                  "extcutoff", "x_s", "x_nonend"))
   expect_true(is.numeric(oceanic_ontogeny[[1]]))
@@ -44,10 +43,9 @@ test_that("test load_param_space loads oceanic_sea_level
   expect_equal(nrow(oceanic_sea_level), 384)
   expect_equal(ncol(oceanic_sea_level), 20)
   expect_equal(names(oceanic_sea_level),
-               c("time", "M", "lac", "mu_min", "mu_p", "K",
-                 "gam", "laa", "island_ontogeny", "sea_level",
-                 "max_area", "peak_time", "sharpness",
-                 "total_island_age", "sea_level_amplitude",
+               c("time", "M", "lac", "mu", "K", "gam", "laa", "x",
+                 "island_ontogeny", "sea_level", "max_area", "current_area",
+                 "peak_time", "total_island_age", "sea_level_amplitude",
                  "sea_level_frequency", "island_gradient_angle",
                  "extcutoff", "x_s", "x_nonend"))
   expect_true(is.numeric(oceanic_sea_level[[1]]))
@@ -80,10 +78,9 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
   expect_equal(nrow(oceanic_ontogeny_sea_level), 384)
   expect_equal(ncol(oceanic_ontogeny_sea_level), 20)
   expect_equal(names(oceanic_ontogeny_sea_level),
-               c("time", "M", "lac", "mu_min", "mu_p", "K",
-                 "gam", "laa", "island_ontogeny", "sea_level",
-                 "max_area", "peak_time", "sharpness",
-                 "total_island_age", "sea_level_amplitude",
+               c("time", "M", "lac", "mu", "K", "gam", "laa", "x",
+                 "island_ontogeny", "sea_level", "max_area", "current_area",
+                 "peak_time", "total_island_age", "sea_level_amplitude",
                  "sea_level_frequency", "island_gradient_angle",
                  "extcutoff", "x_s", "x_nonend"))
   expect_true(is.numeric(oceanic_ontogeny_sea_level[[1]]))
@@ -135,10 +132,9 @@ test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
   expect_equal(nrow(nonoceanic_sea_level), 1536)
   expect_equal(ncol(nonoceanic_sea_level), 20)
   expect_equal(names(nonoceanic_sea_level),
-               c("time", "M", "lac", "mu_min", "mu_p", "K",
-                 "gam", "laa", "island_ontogeny", "sea_level",
-                 "max_area", "peak_time", "sharpness",
-                 "total_island_age", "sea_level_amplitude",
+               c("time", "M", "lac", "mu", "K", "gam", "laa", "x",
+                 "island_ontogeny", "sea_level", "max_area", "current_area",
+                 "peak_time", "total_island_age", "sea_level_amplitude",
                  "sea_level_frequency", "island_gradient_angle",
                  "extcutoff", "x_s", "x_nonend"))
   expect_true(is.numeric(nonoceanic_sea_level[[1]]))

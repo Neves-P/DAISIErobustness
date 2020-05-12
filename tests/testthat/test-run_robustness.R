@@ -1,99 +1,89 @@
 context("run_robustness")
 
-test_that("run_robustness gives error when save_output = TRUE as it
-          only runs when folder structure is in place, an therefore
-          test not run unless required", {
-  if (1 == 2) {
-    expect_error(run_robustness(
-      param_space_name = "oceanic_ontogeny",
-      param_set = 2,
-      replicates = 2,
-      save_output = TRUE))
-  }
-})
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it passes sim_constraints (does not run on APPVEYOR due to
           time limit)", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     errors <- run_robustness(
-      param_space_name = "oceanic_ontogeny",
-      param_set = 3,
+      param_space_name = "nonoceanic",
+      param_set = 1,
       replicates = 2,
       save_output = FALSE)
-    expect_length(errors, 12)
-    expect_equal(errors$spec_error, list(nltt = c(20.010779966924382,
-                                                  9.851962524250929),
-                                         num_spec_error = c(24, 10),
-                                         num_col_error = c(8, 3)),
+    expect_length(errors, 13)
+    expect_equal(errors$spec_error, list(nltt = c(71.910805073082173,
+                                                  100.708372820776702),
+                                         num_spec_error = c(4, 17),
+                                         num_col_error = c(11, 1)),
                  tolerance = 0.2)
-    expect_equal(errors$endemic_error, list(nltt = c(16.47521332476096,
-                                                     13.96234899101978)),
+    expect_equal(errors$endemic_error, list(nltt = c(82.303410951901256,
+                                                     112.880392818994778)),
                  tolerance = 0.2)
-    expect_equal(errors$nonendemic_error, list(nltt = c(13.41481594816277,
-                                                        12.82164223774583)))
-    expect_equal(errors$spec_baseline_error, list(nltt = c(18.259355936349856,
-                                                           8.140424723683491),
-                                                  num_spec_error = c(11, 11),
-                                                  num_col_error = c(7, 9)),
+    expect_equal(errors$nonendemic_error, list(nltt = c(12.380230664767586,
+                                                        14.774476655652149)),
+                 tolerance = 0.5)
+    expect_equal(errors$spec_baseline_error, list(nltt = c(5.3710716544601240,
+                                                           6.9716217422051763),
+                                                  num_spec_error = c(4, 5),
+                                                  num_col_error = c(1, 11)),
                  tolerance = 0.2)
     expect_equal(errors$endemic_baseline_error,
-                 list(nltt = c(19.683550924792641, 5.618219595711591)),
+                 list(nltt = c(6.8004093247947388, 4.0432906251505649)),
                  tolerance = 0.2)
     expect_equal(errors$nonendemic_baseline_error,
-                 list(nltt = c(8.672963707544831, 8.653487718728964)),
+                 list(nltt = c(8.2947807823431976, 7.9569630701904321)),
                  tolerance = 0.2)
     expect_equal(errors$error_metrics,
-                 list(num_spec_mean_diff = 6,
-                      num_spec_sd_diff = 9.899494936611665,
-                      num_col_mean_diff = 2.5,
-                      num_col_sd_diff = 2.121320343559643,
-                      spec_nltt_mean_diff = 1.731480915570982,
-                      endemic_nltt_mean_diff = 2.567895897638259,
-                      nonendemic_nltt_mean_diff = 4.4550033798174,
-                      spec_nltt_sd_diff = 0.02820382371397834,
-                      endemic_nltt_sd_diff = 8.168827751838602,
-                      nonendemic_nltt_sd_diff = 0.4056655492953884,
-                      spec_nltt_ks_dist = 0.02155617998690462,
-                      endemic_nltt_ks_dist = 0.2366725224916618,
-                      nonendemic_nltt_ks_dist = 0.01074234803802276),
+                 list(num_spec_mean_diff = 7,
+                      num_spec_sd_diff = 8.4852813742385695,
+                      num_col_mean_diff = 0,
+                      num_col_sd_diff = 0,
+                      spec_nltt_mean_diff = 79.490322257608938,
+                      endemic_nltt_mean_diff = 92.170051910475365,
+                      nonendemic_nltt_mean_diff = 5.4514817339430532,
+                      spec_nltt_sd_diff = 20.336870624054512,
+                      endemic_nltt_sd_diff = 19.671613897385299,
+                      nonendemic_nltt_sd_diff = 0.70548324858401434,
+                      spec_nltt_ks_dist = 0.025228299186023484,
+                      endemic_nltt_ks_dist = 0.20545866555305919,
+                      nonendemic_nltt_ks_dist = 0.054478560214712035),
                  tolerance = 0.2)
     expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 32)
+    expect_length(errors$geodynamic_sim[[1]][[1]], 33)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 969)
-    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 220)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 968)
+    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 161)
     expect_equal(ncol(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.0304813292373698))
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 4)
+                 c(2.55, 2.55))
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 2)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(errors$geodynamic_sim[[2]][[1]], 30)
+    expect_length(errors$geodynamic_sim[[2]][[1]], 37)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 971)
-    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 251)
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 964)
+    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 190)
     expect_equal(ncol(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$branching_times,
-                 c(2.55, 1.48532612671455))
+                 c(2.55, 2.55))
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 2)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
     expect_equal(errors$geodynamic_ml,
-                 list(data.frame("lambda_c" = 0.9965513396220788,
-                                 "mu" = 1.421971833699215,
-                                 "K" = 1.718033933878904,
-                                 "gamma" = 0.03297340595202831,
-                                 "lambda_a" = 0.9244608637322876,
-                                 "loglik" = -197.9613141825565,
-                                 "df" = 5,
-                                 "conv" = 0),
-                      data.frame("lambda_c" = 0.92703368284067,
-                                 "mu" = 1.338416534733336,
-                                 "K" = 1.962886606832068,
-                                 "gamma" = 0.02981301608003862,
-                                 "lambda_a" = 0.9685350438621138,
-                                 "loglik" = -189.5739114064297,
-                                 "df" = 5,
-                                 "conv" = 0)),
+                 list(data.frame("lambda_c" = 0.30467936074202134,
+                        "mu" = 2.4981565432527827e-08,
+                        "K" = 3.2274103544130068,
+                        "gamma" = 0.012548744402927305,
+                        "lambda_a" = 1.1734744959585373,
+                        "loglik" = -229.70545640640151,
+                        "df" = 5,
+                        "conv" = 0),
+                      data.frame("lambda_c" = 0.30211546717296933,
+                        "mu" = 1.5251216253265062e-13,
+                        "K" = 6.5496585833354759,
+                        "gamma" = 0.014117647886421657,
+                        "lambda_a" = 1.237666715904699,
+                        "loglik" = -260.14046356512824,
+                        "df" = 5,
+                        "conv" = 0)),
                  tolerance = 0.2)
   } else {
     skip("Run only on TRAVIS")
@@ -102,7 +92,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 1,
@@ -110,24 +100,23 @@ test_that("run_robustness output is correct when save_output = FALSE and
       save_output = FALSE)
     expect_length(errors, 1)
     expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 48)
+    expect_length(errors$geodynamic_sim[[1]][[1]], 105)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 953)
-    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 265)
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 896)
+    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 315)
     expect_equal(ncol(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.70582294637958, 0.13492745976706))
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 2)
+                 c(2.55, 0.38367935319962998))
+    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 4)
     expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(errors$geodynamic_sim[[2]][[1]], 47)
+    expect_length(errors$geodynamic_sim[[2]][[1]], 96)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 954)
-    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 304)
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 905)
+    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 290)
     expect_equal(ncol(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$branching_times,
-                 c(2.55,2.46421432544788, 2.19479358839356,
-                   0.39036330262399, 0.14421164062499))
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 2)
+                 c(2.55, 0.13779792541013999))
+    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 4)
     expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
     skip("Run only on TRAVIS or AppVeyor")
@@ -137,11 +126,12 @@ test_that("run_robustness output is correct when save_output = FALSE and
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
   skip("skip to pass build")
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
-    error <- run_robustness(
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+    errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 10,
-      replicates = 2)
+      replicates = 2,
+      save_output = FALSE)
     expect_length(errors, 4)
     expect_length(errors$geodynamic_sim, 2)
     expect_length(errors$geodynamic_sim[[1]][[1]], 12)
