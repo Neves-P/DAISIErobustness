@@ -22,7 +22,8 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    jap
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 Imports: 
@@ -32,5 +33,6 @@ Imports:
     testit
 Remotes:
     rsetienne/DAISIE@geodynamics,
-    thijsjanzen/nltt
+    thijsjanzen/nltt,
+    Giappo/jap
 RoxygenNote: 7.1.0
