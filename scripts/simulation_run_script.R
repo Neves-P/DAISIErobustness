@@ -37,8 +37,7 @@ param_space_nonoceanic_land_bridge <- DAISIErobustness::load_param_space(
 )
 
 total_runs <- nrow(param_space_oceanic_ontogeny) + nrow(param_space_oceanic_ontogeny_sea_level)+
-  nrow(param_space_oceanic_sea_level) + nrow(param_space_nonoceanic_land_bridge) +
-  nrow(param_space_nonoceanic_sea_level)
+  nrow(param_space_oceanic_sea_level)
 
 
 params <- vector("list", total_runs)
@@ -46,17 +45,13 @@ params <- vector("list", total_runs)
 indices <- c(
   seq(nrow(param_space_oceanic_ontogeny)),
   seq(nrow(param_space_oceanic_ontogeny_sea_level)),
-  seq(nrow(param_space_oceanic_sea_level)),
-  seq(nrow(param_space_nonoceanic_land_bridge)),
-  seq(nrow(param_space_nonoceanic_sea_level))
+  seq(nrow(param_space_oceanic_sea_level))
 )
 
 param_space_names <- c(
   rep("oceanic_ontogeny", nrow(param_space_oceanic_ontogeny)),
   rep("oceanic_ontogeny_sea_level", nrow(param_space_oceanic_ontogeny_sea_level)),
-  rep("oceanic_sea_level", nrow(param_space_oceanic_sea_level)),
-  rep("nonoceanic_land_bridge", nrow(param_space_nonoceanic_land_bridge)),
-  rep("nonoceanic_sea_level", nrow(param_space_nonoceanic_sea_level))
+  rep("oceanic_sea_level", nrow(param_space_oceanic_sea_level))
 )
 
 
