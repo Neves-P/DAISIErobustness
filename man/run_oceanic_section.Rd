@@ -8,6 +8,7 @@ run_oceanic_section(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output = TRUE
 )
 }

@@ -76,6 +76,7 @@ run_geodynamic_section <- function(param_space_name,
 run_oceanic_section <- function(param_space_name,
                                 param_set,
                                 replicates,
+                                replicate_range,
                                 save_output = TRUE) {
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -105,7 +106,7 @@ run_oceanic_section <- function(param_space_name,
     initial_parameters_1_list <- vector("list", length = replicates)
     initial_parameters_2_list <- vector("list", length = replicates)
 
-    for (i in seq_len(replicates)) {
+    for (i in replicate_range[1]:replicate_range[2]) {
       initial_parameters_1_list[[i]] <- initial_parameters_1
       initial_parameters_2_list[[i]] <- initial_parameters_2
     }
@@ -198,7 +199,9 @@ run_oceanic_section <- function(param_space_name,
           oceanic_sim_1 = oceanic_sim_1,
           oceanic_ml = oceanic_ml,
           oceanic_sim_2 = oceanic_sim_2,
-          geodynamic_ml_qc = geodynamic_ml_qc)
+          geodynamic_ml_qc = geodynamic_ml_qc,
+          replicate_range = replicate_range
+        )
 
       }
 
@@ -214,14 +217,17 @@ run_oceanic_section <- function(param_space_name,
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
       geodynamic_ml_1 = geodynamic_ml_1,
-      geodynamic_ml_2 = geodynamic_ml_2)
+      geodynamic_ml_2 = geodynamic_ml_2,
+      replicate_range = replicate_range
+    )
 
   } else if (ml_constraints == FALSE) {
     output_file <- list(
       geodynamic_sim = geodynamic_sim,
       geodynamic_ml = geodynamic_ml,
       oceanic_sim_1 = oceanic_sim_1,
-      oceanic_ml = oceanic_ml)
+      oceanic_ml = oceanic_ml,
+      replicate_range = replicate_range)
   }
 
   if (save_output == TRUE) {
@@ -230,7 +236,8 @@ run_oceanic_section <- function(param_space_name,
       param_space_name = param_space_name,
       param_set = param_set,
       sim_constraints = sim_constraints,
-      ml_constraints = ml_constraints
+      ml_constraints = ml_constraints,
+      replicate_range = replicate_range
     )
 
   } else {
