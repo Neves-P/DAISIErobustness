@@ -12,7 +12,7 @@ extract_param_set(param_space_name, param_space, param_set)
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 
 \item{param_space}{tibble of the parameter space.}
 

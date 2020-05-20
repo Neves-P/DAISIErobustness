@@ -11,7 +11,7 @@ load_param_space(param_space_name)
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 }
 \value{
 tibble parameter space.

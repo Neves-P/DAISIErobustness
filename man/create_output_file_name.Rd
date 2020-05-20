@@ -16,7 +16,7 @@ create_output_file_name(
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
@@ -47,7 +47,6 @@ testit::assert(
 \seealso{
 Other I/O: 
 \code{\link{check_create_results_folder}()},
-\code{\link{create_output_file_name_geodynamic_section}()},
 \code{\link{save_output}()}
 }
 \author{

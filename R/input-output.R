@@ -9,26 +9,28 @@
 #'
 #' @author Pedro Neves, Joshua Lambert
 #' @family I/O
-save_output <- function(output_file,
+save_output <- function(output,
                         param_space_name,
                         param_set,
-                        sim_constraints,
-                        ml_constraints,
-                        full_pipeline = TRUE) {
+                        pipeline) {
 
-  if (full_pipeline) {
+  if (pipeline == "full" || pipeline == "analysis") {
+
     output_file_name <- create_output_file_name(
       param_space_name = param_space_name,
       param_set = param_set,
-      sim_constraints = sim_constraints,
-      ml_constraints = ml_constraints
+      sim_constraints = output$sim_constraints,
+      ml_constraints = output$ml_constraints
     )
-  } else if (!full_pipeline) {
-    output_file_name <- create_output_file_name_geodynamic_section(
-      param_space_name = param_space_name,
-      param_set = param_set,
-      sim_constraints = sim_constraints
+  } else if (pipeline == "novel_sim") {
+    output_file_name <- paste0(
+      "novel_",
+      param_space_name,
+      "_param_set_",
+      param_set,
+      ".Rdata"
     )
+    testit::assert(is.character(output_file_name))
   }
 
   if (Sys.getenv("HOSTNAME") != "peregrine.hpc.rug.nl") {
@@ -41,7 +43,7 @@ save_output <- function(output_file,
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
-  save(output_file, file = output_file_path)
+  save(output, file = output_file_path)
 
   if (file.exists(output_file_path)) {
     message(paste0("Saved ", output_file_name, " to ", output_file_path, "\n"))
@@ -102,53 +104,6 @@ create_output_file_name <- function(param_space_name,
   return(output_file_name)
 }
 
-
-#' Generated name for saving output of \code{run_geodynamic_section()}
-#'
-#' @inheritParams default_params_doc
-#'
-#' @return Character with name indicating the name of the parameter space,
-#'   the numeric id of the param_set and whether the run passed constraints.
-#'
-#' @author Pedro Neves, Joshua Lambert
-#' @family I/O
-#' @keywords Internal
-#' @examples
-#' testit::assert(
-#'   DAISIErobustness:::create_output_file_name_geodynamic_section(
-#'     param_space_name = "oceanic_ontogeny",
-#'     param_set = 1,
-#'     sim_constraints = TRUE
-#'   ) == "geosym_passed_cond_oceanic_ontogeny_param_set_1.Rdata"
-#' )
-create_output_file_name_geodynamic_section <- function(param_space_name,
-                                                       param_set,
-                                                       sim_constraints) {
-  if (sim_constraints == FALSE) {
-
-    output_file_name <- paste0(
-      "geosym_failed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata"
-    )
-
-  } else if (sim_constraints == TRUE) {
-
-    output_file_name <- paste0(
-      "geosym_passed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".Rdata"
-    )
-
-  }
-  testit::assert(is.character(output_file_name))
-  return(output_file_name)
-}
-
 #' Checks and create results folder for output
 #'
 #' @inheritParams default_params_doc
@@ -183,16 +138,16 @@ check_create_results_folder <- function(param_space_name, save_output) {
   }
 }
 
-#' Load intermedia geodynamic sim results to continue pipeline
+#' Load intermedia novel sim results to continue pipeline
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return List with output from \code{\link{geodynamic_sim}()} and
+#' @return List with output from \code{\link{novel_sim}()} and
 #'  \code{\link{sim_constraints}()}.
 #' @author Pedro Neves, Joshua Lambert
 #' @export
-load_geodynamic_section <- function(param_space_name,
-                                    param_set) {
+load_novel_section <- function(param_space_name,
+                               param_set) {
   results_folder <- file.path("results", param_space_name)
   if (!dir.exists(results_folder)) {
     stop(paste0(
@@ -210,19 +165,21 @@ load_geodynamic_section <- function(param_space_name,
   )
   name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
                                          x = found_files, fixed = TRUE)]
+
   message(paste0("Trying to load ", name_file_to_load, ".\n"))
   if (!file.exists(file.path(results_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
   output_file <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
+
   if (exists(x = "output_file")) {
-    testit::assert(c("geodynamic_sim", "sim_constraints") %in%
+    testit::assert(c("novel_sim", "sim_constraints") %in%
                      names(output_file))
     message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
   }
   out <- list(
-    geodynamic_sim = output_file$geodynamic_sim,
+    novel_sim = output_file$novel_sim,
     sim_constraints = output_file$sim_constraints)
   return(out)
 }

@@ -4,16 +4,13 @@
 #'  be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 #'  \code{"oceanic_ontogeny_sea_level"},
 #'  \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-#'  \code{"nonoceanic_land_bridge"}.
+#'  \code{"nonoceanic_land_bridge"}, \code{"trait"}.
 #' @param param_set A numeric with the line corresponding to parameter set to
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
-#' @param replicate_range Numeric vector of two elements specifying the starting
-#'  and ending repicate for which the \code{\link{run_oceanic_section}()}
-#'  should be applied.
 #' @param save_output A boolean to determine whether to save or return output.
-#' @param output_file List. Contains all the pipeline output that was able to
+#' @param output List. Contains all the pipeline output that was able to
 #'  run up to a given point. Will be saved into .RData file by
 #'  \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 #'  \code{save_output} is \code{TRUE}.
@@ -36,12 +33,14 @@
 #'  \code{FALSE} otherwise.
 #' @param sim_1 A list of simulation output from
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-#'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
-#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
+#'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
+#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
 #' @param sim_2 A list of simulation output from
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
-#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
+#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
 #' @param spec_error A list with three elements each with a numeric
 #'  vector.
 #' @param endemic_error A list with one element with a numeric vector.
@@ -55,10 +54,12 @@
 #' @param initial_parameters A numeric vector of length 5 with the initial
 #'  parameters for the MLE routine. The same as \code{initparsopt}
 #'  from \code{\link[DAISIE]{DAISIE_ML}()}.
-#' @param full_pipeline A logical stating for the purposes of saving, if a full
-#'  pipeline is being run, from \code{\link{run_robustness}()}, or if it is
-#'  being ran in parts, from \code{\link{run_geodynamic_section}()} and
-#'  \code{\link{run_oceanic_section}()}
+#' @param pipeline A string stating what sections of the pipeline should
+#'  run. Default is \code{"full"}, meaning the entire pipeline, including the
+#'  novel model and analysis will run. \code{"novel_sim"} Indicates only the
+#'  novel simulation section should run, calling \code{\link{run_novel_sim}()}.
+#'  \code{"analysis"} runs just the estimation, oceanic simulations and error
+#'  calculation sections of the pipeline calling \code{\link{run_analysis}()}.
 #'
 #' @return Nothing
 #'
@@ -66,7 +67,6 @@ default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
-  replicate_range,
   save_output,
   output_file,
   param_space,
@@ -86,7 +86,7 @@ default_params_doc <- function(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  full_pipeline
+  pipeline
 ) {
   # Nothing
 }

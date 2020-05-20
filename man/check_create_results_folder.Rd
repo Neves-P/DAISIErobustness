@@ -11,7 +11,7 @@ check_create_results_folder(param_space_name, save_output)
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 }
@@ -24,7 +24,6 @@ Checks and create results folder for output
 }
 \seealso{
 Other I/O: 
-\code{\link{create_output_file_name_geodynamic_section}()},
 \code{\link{create_output_file_name}()},
 \code{\link{save_output}()}
 }

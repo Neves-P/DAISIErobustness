@@ -4,17 +4,10 @@
 \alias{save_output}
 \title{Save \code{run_robustness()} output}
 \usage{
-save_output(
-  output_file,
-  param_space_name,
-  param_set,
-  sim_constraints,
-  ml_constraints,
-  full_pipeline = TRUE
-)
+save_output(output, param_space_name, param_set, pipeline)
 }
 \arguments{
-\item{output_file}{List. Contains all the pipeline output that was able to
+\item{output}{List. Contains all the pipeline output that was able to
 run up to a given point. Will be saved into .RData file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
@@ -23,21 +16,17 @@ run up to a given point. Will be saved into .RData file by
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
 
-\item{sim_constraints}{Boolean. \code{TRUE} if simulation constraints pass,
-\code{FALSE} otherwise.}
-
-\item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
-\code{FALSE} otherwise.}
-
-\item{full_pipeline}{A logical stating for the purposes of saving, if a full
-pipeline is being run, from \code{\link{run_robustness}()}, or if it is
-being ran in parts, from \code{\link{run_geodynamic_section}()} and
-\code{\link{run_oceanic_section}()}}
+\item{pipeline}{A string stating what sections of the pipeline should
+run. Default is \code{"full"}, meaning the entire pipeline, including the
+novel model and analysis will run. \code{"novel_sim"} Indicates only the
+novel simulation section should run, calling \code{\link{run_novel_sim}()}.
+\code{"analysis"} runs just the estimation, oceanic simulations and error
+calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 }
 \value{
 .RData file named by \code{\link{create_output_file_name}()} in
@@ -53,7 +42,6 @@ TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
 \seealso{
 Other I/O: 
 \code{\link{check_create_results_folder}()},
-\code{\link{create_output_file_name_geodynamic_section}()},
 \code{\link{create_output_file_name}()}
 }
 \author{

@@ -4,20 +4,34 @@
 \alias{run_robustness}
 \title{Run robustness analysis pipeline}
 \usage{
-run_robustness(param_space_name, param_set, replicates, save_output = TRUE)
+run_robustness(
+  param_space_name,
+  param_set,
+  replicates,
+  pipeline = "full",
+  novel_sim = NULL,
+  save_output = TRUE
+)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
+
+\item{pipeline}{A string stating what sections of the pipeline should
+run. Default is \code{"full"}, meaning the entire pipeline, including the
+novel model and analysis will run. \code{"novel_sim"} Indicates only the
+novel simulation section should run, calling \code{\link{run_novel_sim}()}.
+\code{"analysis"} runs just the estimation, oceanic simulations and error
+calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 }
@@ -30,5 +44,5 @@ TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
 Run robustness analysis pipeline
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }
