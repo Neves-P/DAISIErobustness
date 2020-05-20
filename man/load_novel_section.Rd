@@ -17,8 +17,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 run, as found in the file named in \code{param_space}.}
 }
 \value{
-List with output from \code{\link{novel_sim}()} and
- \code{\link{sim_constraints}()}.
+List with output from \code{\link{run_novel_sim}()}.
 }
 \description{
 Load intermedia novel sim results to continue pipeline

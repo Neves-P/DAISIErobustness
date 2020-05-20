@@ -142,10 +142,8 @@ check_create_results_folder <- function(param_space_name, save_output) {
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return List with output from \code{\link{novel_sim}()} and
-#'  \code{\link{sim_constraints}()}.
+#' @return List with output from \code{\link{run_novel_sim}()}.
 #' @author Pedro Neves, Joshua Lambert
-#' @export
 load_novel_section <- function(param_space_name,
                                param_set) {
   results_folder <- file.path("results", param_space_name)
@@ -179,7 +177,7 @@ load_novel_section <- function(param_space_name,
     message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
   }
   out <- list(
-    novel_sim = output_file$novel_sim,
-    sim_constraints = output_file$sim_constraints)
+    novel_sim = output_file$novel_sim
+  )
   return(out)
 }
