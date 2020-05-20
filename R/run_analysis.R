@@ -5,6 +5,7 @@
 #' @author Shu Xie, Joshua Lambert, Pedro Neves
 #' @seealso \code{\link{run_novel_sim}()}
 run_analysis <- function(novel_sim,
+                         param_space_name,
                          replicates,
                          sim_pars) {
 
@@ -61,7 +62,7 @@ run_analysis <- function(novel_sim,
         absolute_pars_difference = best_pars$absolute_pars_difference
       )
 
-      if(param_space_name == "trait"){
+      if (param_space_name == "trait") {
         sim_pars$M = sim_pars$M + sim_pars$trait_pars$M2
       }
 

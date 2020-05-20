@@ -51,6 +51,7 @@ run_robustness <- function(param_space_name,
                    novel_sim must be supplied.", exists("novel_sim"))
     output <- run_analysis(
       novel_sim = novel_sim,
+      param_space_name = param_space_name,
       replicates = replicates,
       sim_pars = sim_pars
     )
@@ -62,6 +63,7 @@ run_robustness <- function(param_space_name,
     )
     output <- run_analysis(
       novel_sim = novel_sim,
+      param_space_name = param_space_name,
       replicates = replicates,
       sim_pars = sim_pars
     )
