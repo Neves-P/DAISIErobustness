@@ -4,9 +4,22 @@
 \alias{run_analysis}
 \title{Run the analysis with ocenanic sims and MLs}
 \usage{
-run_analysis(novel_sim, replicates, sim_pars)
+run_analysis(novel_sim, param_space_name, replicates, sim_pars)
 }
 \arguments{
+\item{novel_sim}{A list of simulation output in the DAISIE simulation format
+for which the robustness against standard oceanic DAISIE is to be
+determined.
+Can be generated from a preset of models available in
+\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
+format.}
+
+\item{param_space_name}{A string with the parameter space to run. Can
+be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
+\code{"oceanic_ontogeny_sea_level"},
+\code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
+\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
+
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
 

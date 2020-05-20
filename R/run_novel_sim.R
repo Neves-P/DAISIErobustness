@@ -5,7 +5,7 @@
 #' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#' \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+#' \code{DAISIE_sim_trait_dependent()}.
 #' @seealso \code{\link{run_analysis}()}.
 run_novel_sim <- function(param_space_name,
                                 sim_pars,

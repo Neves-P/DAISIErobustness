@@ -17,10 +17,18 @@
 #' @param param_space tibble of the parameter space.
 #' @param sim_pars A list of simulation parameters.
 #' @param sim A list of simulation output from
-#'  \code{\link{DAISIE_sim_constant_rate}()},
-#'  \code{\link{DAISIE_sim_time_dependent}()} or
-#'  \code{\link{DAISIE_sim_constant_rate_shift}()}
-#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML}()}
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+#'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
+#'  \code{DAISIE_sim_trait_dependent()} or other input simulation
+#'  in the DAISIE sim format.
+#' @param novel_sim A list of simulation output in the DAISIE simulation format
+#'  for which the robustness against standard oceanic DAISIE is to be
+#'  determined.
+#'  Can be generated from a preset of models available in
+#'  \code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
+#'  format.
+#' @param ml Output from \code{\link[DAISIE]{DAISIE_ML}()}.
 #' @param ml_res_initpars_1 Numeric data frame.
 #'  Results from MLE run of geodynamics with the first set of initial
 #'  parameters.
@@ -35,12 +43,12 @@
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+#'  \code{DAISIE_sim_trait_dependent()}.
 #' @param sim_2 A list of simulation output from
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+#'  \code{DAISIE_sim_trait_dependent()}.
 #' @param spec_error A list with three elements each with a numeric
 #'  vector.
 #' @param endemic_error A list with one element with a numeric vector.
@@ -68,10 +76,11 @@ default_params_doc <- function(
   param_set,
   replicates,
   save_output,
-  output_file,
+  output,
   param_space,
   sim_pars,
   sim,
+  novel_sim,
   ml,
   ml_res_initpars_1,
   ml_res_initpars_2,

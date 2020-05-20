@@ -33,6 +33,13 @@ novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 \code{"analysis"} runs just the estimation, oceanic simulations and error
 calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 
+\item{novel_sim}{A list of simulation output in the DAISIE simulation format
+for which the robustness against standard oceanic DAISIE is to be
+determined.
+Can be generated from a preset of models available in
+\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
+format.}
+
 \item{save_output}{A boolean to determine whether to save or return output.}
 }
 \value{

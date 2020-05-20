@@ -8,9 +8,11 @@ sim_constraints(sim, replicates)
 }
 \arguments{
 \item{sim}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}()},
-\code{\link{DAISIE_sim_time_dependent}()} or
-\code{\link{DAISIE_sim_constant_rate_shift}()}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
+\code{DAISIE_sim_trait_dependent()} or other input simulation
+in the DAISIE sim format.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}

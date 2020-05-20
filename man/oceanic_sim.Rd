@@ -7,7 +7,7 @@
 oceanic_sim(ml, sim_pars)
 }
 \arguments{
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_pars}{A list of simulation parameters.}
 }

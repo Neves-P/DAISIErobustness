@@ -9,10 +9,11 @@ default_params_doc(
   param_set,
   replicates,
   save_output,
-  output_file,
+  output,
   param_space,
   sim_pars,
   sim,
+  novel_sim,
   ml,
   ml_res_initpars_1,
   ml_res_initpars_2,
@@ -45,16 +46,30 @@ simulations}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 
+\item{output}{List. Contains all the pipeline output that was able to
+run up to a given point. Will be saved into .RData file by
+\code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
+\code{save_output} is \code{TRUE}.}
+
 \item{param_space}{tibble of the parameter space.}
 
 \item{sim_pars}{A list of simulation parameters.}
 
 \item{sim}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}()},
-\code{\link{DAISIE_sim_time_dependent}()} or
-\code{\link{DAISIE_sim_constant_rate_shift}()}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
+\code{DAISIE_sim_trait_dependent()} or other input simulation
+in the DAISIE sim format.}
 
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}}
+\item{novel_sim}{A list of simulation output in the DAISIE simulation format
+for which the robustness against standard oceanic DAISIE is to be
+determined.
+Can be generated from a preset of models available in
+\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
+format.}
+
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{ml_res_initpars_1}{Numeric data frame.
 Results from MLE run of geodynamics with the first set of initial
@@ -78,13 +93,13 @@ from \code{\link[DAISIE]{DAISIE_ML}()}.}
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{DAISIE_sim_trait_dependent()}.}
 
 \item{sim_2}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{DAISIE_sim_trait_dependent()}.}
 
 \item{spec_error}{A list with three elements each with a numeric
 vector.}
@@ -108,11 +123,6 @@ novel model and analysis will run. \code{"novel_sim"} Indicates only the
 novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 \code{"analysis"} runs just the estimation, oceanic simulations and error
 calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
-
-\item{output}{List. Contains all the pipeline output that was able to
-run up to a given point. Will be saved into .RData file by
-\code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
-\code{save_output} is \code{TRUE}.}
 }
 \value{
 Nothing
