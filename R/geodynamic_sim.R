@@ -37,8 +37,8 @@ geodynamic_sim <- function(param_space_name,
         plot_sims = FALSE,
         verbose = FALSE
       )
-      }
     }
+  }
   if (param_space_name == "oceanic_ontogeny" ||
       param_space_name == "oceanic_sea_level" ||
       param_space_name == "oceanic_ontogeny_sea_level" ||
@@ -59,7 +59,7 @@ geodynamic_sim <- function(param_space_name,
         plot_sims = FALSE,
         verbose = FALSE
       )
-      }
     }
+  }
   return(geodynamic_sim)
 }
