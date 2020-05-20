@@ -16,7 +16,7 @@ sim_constraints(sim, replicates)
 simulations}
 }
 \value{
-Boolean
+Logical TRUE if criteria are met, FALSE if not.
 }
 \description{
 Checks if the simulations meet the criteria for data sample size

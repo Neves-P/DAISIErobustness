@@ -37,7 +37,6 @@ run_robustness <- function(param_space_name,
     param_space_name = param_space_name,
     param_space = param_space,
     param_set = param_set)
-  sim_pars_init <- sim_pars
 
   geodynamic_sim <- geodynamic_sim(
     param_space_name = param_space_name,

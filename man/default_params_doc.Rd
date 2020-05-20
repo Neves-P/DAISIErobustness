@@ -9,10 +9,16 @@ default_params_doc(
   param_set,
   replicates,
   save_output,
+  output_file,
   param_space,
   sim_pars,
   sim,
   ml,
+  ml_res_initpars_1,
+  ml_res_initpars_2,
+  sim_constraints,
+  ml_constraints,
+  initial_parameters,
   sim_1,
   sim_2,
   spec_error,
@@ -20,7 +26,8 @@ default_params_doc(
   nonendemic_error,
   spec_baseline_error,
   endemic_baseline_error,
-  nonendemic_baseline_error
+  nonendemic_baseline_error,
+  full_pipeline
 )
 }
 \arguments{
@@ -38,6 +45,11 @@ simulations}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 
+\item{output_file}{List. Contains all the pipeline output that was able to
+run up to a given point. Will be saved into .RData file by
+\code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
+\code{save_output} is \code{TRUE}.}
+
 \item{param_space}{tibble of the parameter space.}
 
 \item{sim_pars}{A list of simulation parameters.}
@@ -47,7 +59,25 @@ simulations}
 \code{\link{DAISIE_sim_time_dependent}()} or
 \code{\link{DAISIE_sim_constant_rate_shift}()}}
 
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}}
+
+\item{ml_res_initpars_1}{Numeric data frame.
+Results from MLE run of geodynamics with the first set of initial
+parameters.}
+
+\item{ml_res_initpars_2}{Numeric data frame.
+Results from MLE run of geodynamics with the second set of initial
+parameters.}
+
+\item{sim_constraints}{Boolean. \code{TRUE} if simulation constraints pass,
+\code{FALSE} otherwise.}
+
+\item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
+\code{FALSE} otherwise.}
+
+\item{initial_parameters}{A numeric vector of length 5 with the initial
+parameters for the MLE routine. The same as \code{initparsopt}
+from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_1}{A list of simulation output from
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
@@ -74,6 +104,11 @@ vector.}
 
 \item{nonendemic_baseline_error}{A list with one element with a numeric
 vector.}
+
+\item{full_pipeline}{A logical stating for the purposes of saving, if a full
+pipeline is being run, from \code{\link{run_robustness}()}, or if it is
+being ran in parts, from \code{\link{run_geodynamic_section}()} and
+\code{\link{run_oceanic_section}()}}
 }
 \value{
 Nothing

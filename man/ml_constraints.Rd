@@ -7,7 +7,7 @@
 ml_constraints(ml)
 }
 \arguments{
-\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}}
 }
 \value{
 Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
@@ -18,3 +18,4 @@ Checks if number of valid errors meet the criteria for data sample size
 \author{
 Joshua Lambert, Pedro Neves
 }
+\keyword{Internal}

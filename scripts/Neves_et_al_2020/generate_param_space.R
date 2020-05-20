@@ -1029,12 +1029,19 @@ trait_maui_nui <- expand.grid(time = time,
                               trans = trans,
                               trans2 = trans2)
 
-trait_maui_nui <- cbind(trait_maui_nui,
+trait_maui_nui_1 <- cbind(trait_maui_nui,
                         M2 = Mtotal - trait_maui_nui[, 2],
                         lac2 = trait_maui_nui[, 3] / 2,
                         mu2 = trait_maui_nui[, 4] / 2,
                         gam2 = trait_maui_nui[, 6] * 2,
                         laa2 = trait_maui_nui[, 7] * 2)
+
+trait_maui_nui_2 <- cbind(trait_maui_nui,
+                          M2 = Mtotal - trait_maui_nui[, 2],
+                          lac2 = trait_maui_nui[, 3] * 2,
+                          mu2 = trait_maui_nui[, 4] * 2,
+                          gam2 = trait_maui_nui[, 6] * 2,
+                          laa2 = trait_maui_nui[, 7])
 
 # Trait dependent rates kauai
 
@@ -1058,18 +1065,27 @@ trait_kauai <- expand.grid(time = time,
                            trans = trans,
                            trans2 = trans2)
 
-trait_kauai <- cbind(trait_kauai,
+trait_kauai_1 <- cbind(trait_kauai,
                      M2 = Mtotal - trait_kauai[, 2],
                      lac2 = trait_kauai[, 3] / 2,
                      mu2 = trait_kauai[, 4] / 2,
                      gam2 = trait_kauai[, 6] * 2,
                      laa2 = trait_kauai[, 7] * 2)
 
+trait_kauai_2 <- cbind(trait_kauai,
+                       M2 = Mtotal - trait_kauai[, 2],
+                       lac2 = trait_kauai[, 3] * 2,
+                       mu2 = trait_kauai[, 4] * 2,
+                       gam2 = trait_kauai[, 6] * 2,
+                       laa2 = trait_kauai[, 7])
+
 # Complete trait dependent paramter set -----------------------------------
 
 trait <- rbind(
-  trait_maui_nui,
-  trait_kauai
+  trait_maui_nui_1,
+  trait_maui_nui_2,
+  trait_kauai_1,
+  trait_kauai_2
 )
 
 write.csv2(
