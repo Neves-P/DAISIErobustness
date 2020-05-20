@@ -78,6 +78,7 @@ run_oceanic_section <- function(param_space_name,
                                 replicates,
                                 replicate_range,
                                 save_output = TRUE) {
+  n_replicates_to_run <- replicate_range[2] - replicate_range[1]
   param_space <- load_param_space(
     param_space_name = param_space_name)
 
@@ -98,13 +99,16 @@ run_oceanic_section <- function(param_space_name,
 
   sim_constraints <- geodynamic_section_output$sim_constraints
   geodynamic_sim <- geodynamic_section_output$geodynamic_sim
+  # Subset replicates
+  geodynamic_sim <- geodynamic_sim[replicate_range[1]:replicate_range[2]]
+
 
   if (sim_constraints == TRUE) {
     initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
     initial_parameters_2 <- c(0.9, 1.5, 40, 0.01, 2)
 
-    initial_parameters_1_list <- vector("list", length = replicates)
-    initial_parameters_2_list <- vector("list", length = replicates)
+    initial_parameters_1_list <- vector("list", length = n_replicates_to_run)
+    initial_parameters_2_list <- vector("list", length = n_replicates_to_run)
 
     for (i in replicate_range[1]:replicate_range[2]) {
       initial_parameters_1_list[[i]] <- initial_parameters_1

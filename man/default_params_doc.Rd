@@ -8,6 +8,7 @@ default_params_doc(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output_file,
   param_space,
@@ -42,6 +43,10 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
+
+\item{replicate_range}{Numeric vector of two elements specifying the starting
+and ending repicate for which the \code{\link{run_oceanic_section}()}
+should be applied.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 

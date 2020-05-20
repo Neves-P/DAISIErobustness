@@ -9,6 +9,9 @@
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
+#' @param replicate_range Numeric vector of two elements specifying the starting
+#'  and ending repicate for which the \code{\link{run_oceanic_section}()}
+#'  should be applied.
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output_file List. Contains all the pipeline output that was able to
 #'  run up to a given point. Will be saved into .RData file by
@@ -63,6 +66,7 @@ default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output_file,
   param_space,
