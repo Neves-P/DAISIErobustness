@@ -16,14 +16,13 @@ run_robustness <- function(param_space_name,
   param_space <- load_param_space(
     param_space_name = param_space_name)
 
-  testit::assert(
-    param_space_name == "oceanic_ontogeny" ||
-      param_space_name == "oceanic_sea_level" ||
-      param_space_name == "oceanic_ontogeny_sea_level" ||
-      param_space_name == "nonoceanic" ||
-      param_space_name == "nonoceanic_sea_level" ||
-      param_space_name == "nonoceanic_land_bridge" ||
-      param_space_name == "trait")
+  testit::assert(param_space_name %in% c("oceanic_ontogeny",
+                                         "oceanic_sea_level",
+                                         "oceanic_ontogeny_sea_level",
+                                         "nonoceanic",
+                                         "nonoceanic_sea_level",
+                                         "nonoceanic_land_bridge",
+                                         "trait"))
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)

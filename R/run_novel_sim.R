@@ -8,8 +8,8 @@
 #' \code{DAISIE_sim_trait_dependent()}.
 #' @seealso \code{\link{run_analysis}()}.
 run_novel_sim <- function(param_space_name,
-                                sim_pars,
-                                replicates) {
+                          sim_pars,
+                          replicates) {
   novel_sim <- list()
   if (param_space_name == "nonoceanic") {
     for (i in seq_len(replicates)) {
@@ -40,10 +40,10 @@ run_novel_sim <- function(param_space_name,
       )
     }
   }
-  if (param_space_name == "oceanic_ontogeny" ||
-      param_space_name == "oceanic_sea_level" ||
-      param_space_name == "oceanic_ontogeny_sea_level" ||
-      param_space_name == "nonoceanic_sea_level") {
+  if (param_space_name %in% c("oceanic_ontogeny",
+                              "oceanic_sea_level",
+                              "oceanic_ontogeny_sea_level",
+                              "nonoceanic_sea_level")) {
     for (i in seq_len(replicates)) {
       novel_sim[[i]] <- DAISIE::DAISIE_sim_time_dependent(
         time = sim_pars$time,
