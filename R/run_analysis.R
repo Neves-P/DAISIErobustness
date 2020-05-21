@@ -69,7 +69,7 @@ run_analysis <- function(novel_sim,
       )
 
       if (param_space_name == "trait") {
-        sim_pars$M = sim_pars$M + sim_pars$trait_pars$M2
+        sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
       }
 
       oceanic_sim_1 <- oceanic_sim(
@@ -169,9 +169,9 @@ is_novel_sim_outputs <- function(novel_sim) {
     if (!"stt_all" %in% names(novel_sim[[n_replicate]][[1]][[1]]))
       return(FALSE)
     # TODO: Figure out how to test this?
-    # if (!"branching_times" %in% names(simulation_outputs)) return(FALSE)
-    # if (!"stac" %in% names(simulation_outputs)) return(FALSE)
-    # if (!"missing_species" %in% names(simulation_outputs)) return(FALSE)
+    # if (!"branching_times" %in% names(simulation_outputs)) return(FALSE) # nolint
+    # if (!"stac" %in% names(simulation_outputs)) return(FALSE) # nolint
+    # if (!"missing_species" %in% names(simulation_outputs)) return(FALSE) # nolint
   }
   if (is.list(novel_sim) && length(novel_sim) >= 1) {
     return(TRUE)

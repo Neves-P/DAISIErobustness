@@ -28,9 +28,9 @@ List with item per replicate containing:
     \item{\code{absolute_loglik_difference}: Numeric with the absolute
     difference between the two logliks.}
     \item{\code{pars_tolerance_check}: Character
-    \code{"fail pars difference"} if the absolute difference between any of the the
-     two compared estimated parameter sets is greater than the tolerance
-    value (1e-6) or \code{"pass pars difference"} when the absolute
+    \code{"fail pars difference"} if the absolute difference between any of
+    the the two compared estimated parameter sets is greater than the
+    tolerance value (1e-6) or \code{"pass pars difference"} when the absolute
     difference is smaller than the tolerance.}
     \item{\code{absolute_pars_difference}: List of numeric vectors with the
     absolute difference calculated between the two parameter sets.}

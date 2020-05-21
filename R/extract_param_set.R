@@ -75,13 +75,15 @@ extract_param_set <- function(param_space_name,
                               param_space$K[param_set],
                               param_space$gam[param_set],
                               param_space$laa[param_set])
-    sim_pars$trait_pars <- list(trans_rate = param_space$trans[param_set],
-                                       immig_rate2 = param_space$gam2[param_set],
-                                       ext_rate2 = param_space$mu2[param_set],
-                                       ana_rate2 = param_space$laa2[param_set],
-                                       clado_rate2 = param_space$lac2[param_set],
-                                       trans_rate2 = param_space$trans2[param_set],
-                                       M2 = param_space$M2[param_set])
+    sim_pars$trait_pars <- list(
+      trans_rate = param_space$trans[param_set],
+      immig_rate2 = param_space$gam2[param_set],
+      ext_rate2 = param_space$mu2[param_set],
+      ana_rate2 = param_space$laa2[param_set],
+      clado_rate2 = param_space$lac2[param_set],
+      trans_rate2 = param_space$trans2[param_set],
+      M2 = param_space$M2[param_set]
+    )
   }
   return(sim_pars)
 }

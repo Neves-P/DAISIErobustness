@@ -32,4 +32,3 @@ calc_ml <- function(sim, initial_parameters) {
   }
   return(ml)
 }
-
