@@ -61,10 +61,11 @@ run_analysis <- function(novel_sim,
       )
 
       novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
+      absolute_loglik_difference <- lapply(best_pars, `[[`, 2) # rearrange
+      absolute_pars_difference <- lapply(best_pars, `[[`, 3) # rearrange
       novel_ml_qc <- list(
-        absolute_loglik_difference =
-          best_pars$absolute_loglik_difference,
-        absolute_pars_difference = best_pars$absolute_pars_difference
+        absolute_loglik_difference = absolute_loglik_difference,
+        absolute_pars_difference = absolute_pars_difference
       )
 
       if (param_space_name == "trait") {
