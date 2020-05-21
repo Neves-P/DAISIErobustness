@@ -13,18 +13,18 @@ test_that("run_robustness output is correct when save_output = FALSE and
 
     expect_length(errors, 15)
     expect_equal(errors$spec_error, list(nltt = c(71.910805073082173,
-                                                    100.708372820776702),
+                                                  100.708372820776702),
                                            num_spec_error = c(4, 17),
                                            num_col_error = c(11, 1)),
                  tolerance = 0.2)
     expect_equal(errors$endemic_error, list(nltt = c(82.303410951901256,
-                                                       112.880392818994778)),
+                                                     112.880392818994778)),
                  tolerance = 0.2)
     expect_equal(errors$nonendemic_error, list(nltt = c(12.380230664767586,
-                                                          14.774476655652149)),
+                                                        14.774476655652149)),
                  tolerance = 0.5)
     expect_equal(errors$spec_baseline_error, list(nltt = c(5.3710716544601240,
-                                                             6.9716217422051763),
+                                                           6.9716217422051763),
                                                     num_spec_error = c(4, 5),
                                                     num_col_error = c(1, 11)),
                  tolerance = 0.2)
