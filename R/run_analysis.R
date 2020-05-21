@@ -9,6 +9,11 @@ run_analysis <- function(novel_sim,
                          replicates,
                          sim_pars) {
 
+  testit::assert(
+    "novel_sim must be in the DAISIE simulation output format",
+    DAISIE::is_simulation_outputs(novel_sim)
+  )
+
   sim_constraints <- sim_constraints(
     sim = novel_sim,
     replicates = replicates
