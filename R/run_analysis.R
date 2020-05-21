@@ -11,7 +11,7 @@ run_analysis <- function(novel_sim,
 
   testit::assert(
     "novel_sim must be in the DAISIE simulation output format",
-    DAISIE::is_simulation_outputs(novel_sim)
+    is_novel_sim_outputs(novel_sim)
   )
 
   sim_constraints <- sim_constraints(
@@ -144,4 +144,35 @@ run_analysis <- function(novel_sim,
     }
   }
   return(output)
+}
+
+
+#' Measures if the input is a valid collection of simulation
+#' outputs.
+#'
+#' @details Adapted from \code{\link[DAISIE]{is_simulation_outputs}()}
+#' @inheritParams default_params_doc
+#'
+#' @return TRUE if the input is a valid collection of simulation
+#' outputs.
+#' @author Richel J.C Bilderbeek, Pedro Neves
+is_novel_sim_outputs <- function(novel_sim) {
+  for (n_replicate in seq_along(novel_sim)) {
+    if (!"island_age" %in% names(novel_sim[[n_replicate]][[1]][[1]]))
+      return(FALSE)
+    if (!(!"not_present" %in% names(novel_sim[[n_replicate]][[1]][[1]]) ||
+          !"not_present_type1" %in%
+          names(novel_sim[[n_replicate]][[1]][[1]]))) {
+      return(FALSE)
+    }
+    if (!"stt_all" %in% names(novel_sim[[n_replicate]][[1]][[1]]))
+      return(FALSE)
+    # TODO: Figure out how to test this?
+    # if (!"branching_times" %in% names(simulation_outputs)) return(FALSE)
+    # if (!"stac" %in% names(simulation_outputs)) return(FALSE)
+    # if (!"missing_species" %in% names(simulation_outputs)) return(FALSE)
+  }
+  if (is.list(novel_sim) && length(novel_sim) >= 1) {
+    return(TRUE)
+  }
 }
