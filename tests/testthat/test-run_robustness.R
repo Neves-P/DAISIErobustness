@@ -143,26 +143,27 @@ test_that("run_robustness output is correct when save_output = FALSE and
       param_set = 1,
       replicates = 2,
       save_output = FALSE)
-    expect_length(errors, 1)
-    expect_length(errors$geodynamic_sim, 2)
-    expect_length(errors$geodynamic_sim[[1]][[1]], 105)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[1]]$not_present, 896)
-    expect_equal(nrow(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 315)
-    expect_equal(ncol(errors$geodynamic_sim[[1]][[1]][[1]]$stt_all), 5)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$branching_times,
+    expect_length(errors, 2)
+    expect_false(errors$sim_constraints)
+    expect_length(errors$novel_sim, 2)
+    expect_length(errors$novel_sim[[1]][[1]], 105)
+    expect_equal(errors$novel_sim[[1]][[1]][[1]]$island_age, 2.55)
+    expect_equal(errors$novel_sim[[1]][[1]][[1]]$not_present, 896)
+    expect_equal(nrow(errors$novel_sim[[1]][[1]][[1]]$stt_all), 315)
+    expect_equal(ncol(errors$novel_sim[[1]][[1]][[1]]$stt_all), 5)
+    expect_equal(errors$novel_sim[[1]][[1]][[2]]$branching_times,
                  c(2.55, 0.38367935319962998))
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$stac, 4)
-    expect_equal(errors$geodynamic_sim[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(errors$geodynamic_sim[[2]][[1]], 96)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[1]]$not_present, 905)
-    expect_equal(nrow(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 290)
-    expect_equal(ncol(errors$geodynamic_sim[[2]][[1]][[1]]$stt_all), 5)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$branching_times,
+    expect_equal(errors$novel_sim[[1]][[1]][[2]]$stac, 4)
+    expect_equal(errors$novel_sim[[1]][[1]][[2]]$missing_species, 0)
+    expect_length(errors$novel_sim[[2]][[1]], 96)
+    expect_equal(errors$novel_sim[[2]][[1]][[1]]$island_age, 2.55)
+    expect_equal(errors$novel_sim[[2]][[1]][[1]]$not_present, 905)
+    expect_equal(nrow(errors$novel_sim[[2]][[1]][[1]]$stt_all), 290)
+    expect_equal(ncol(errors$novel_sim[[2]][[1]][[1]]$stt_all), 5)
+    expect_equal(errors$novel_sim[[2]][[1]][[2]]$branching_times,
                  c(2.55, 0.13779792541013999))
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$stac, 4)
-    expect_equal(errors$geodynamic_sim[[2]][[1]][[2]]$missing_species, 0)
+    expect_equal(errors$novel_sim[[2]][[1]][[2]]$stac, 4)
+    expect_equal(errors$novel_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
