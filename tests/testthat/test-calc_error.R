@@ -10,12 +10,12 @@ test_that("test calc_error output is correct", {
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
       param_set = 1)
-    geodynamic_sim <- geodynamic_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "oceanic_ontogeny",
       sim_pars = sim_pars,
       replicates = 2)
     #ML output from oceanic_ontogeny param_set 1 with seed 1
-    geodynamic_ml <- list(data.frame("lambda_c" = 4.93245551463291e-08,
+    novel_ml <- list(data.frame("lambda_c" = 4.93245551463291e-08,
                                      "mu" = 0.2079398955033904,
                                      "K" = 1.096019787831134,
                                      "gamma" = 0.03235948962897911,
@@ -32,10 +32,10 @@ test_that("test calc_error output is correct", {
                                      "df" = 5,
                                      "conv" = 0))
     oceanic_sim <- oceanic_sim(
-      ml = geodynamic_ml,
+      ml = novel_ml,
       sim_pars = sim_pars)
     error <- calc_error(
-      sim_1 = geodynamic_sim,
+      sim_1 = novel_sim,
       sim_2 = oceanic_sim,
       replicates = 2)
     expect_length(error, 3)
