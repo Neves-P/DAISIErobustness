@@ -8,7 +8,7 @@ run_analysis <- function(novel_sim,
                          param_space_name,
                          replicates,
                          sim_pars) {
-
+  testit::assert(is.character(param_space_name))
   testit::assert(
     "novel_sim must be in the DAISIE simulation output format",
     is_novel_sim_outputs(novel_sim)
