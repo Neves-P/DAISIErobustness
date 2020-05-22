@@ -55,7 +55,12 @@ param_space_names <- c(
 )
 
 
-for (i in seq_len(total_runs)) {
+# 20-5-20 now just doing oceanic_ontogeny_sea_level because github failed on oceanic_ontogeny_sea_level param set 290
+param_space_names <- c(
+  rep("oceanic_ontogeny_sea_level", 95)
+)
+290:384
+for (i in 290:384) {
   params[[i]] <- list(
     param_space_name = param_space_names[i],
     param_set = i,
@@ -63,6 +68,7 @@ for (i in seq_len(total_runs)) {
     save_output = TRUE
   )
 }
+
 
 jap::pocket_experiment(
   github_name = "Neves-P",
@@ -72,3 +78,5 @@ jap::pocket_experiment(
   cluster_folder = "data",
   cluster_partition = "gelifes"
 )
+
+
