@@ -41,7 +41,7 @@ test_that("run full function", {
                                                           3.3945808663611126)),
                  tolerance = 0.5)
     expect_equal(novel_ml$spec_baseline_error, list(nltt = c(4.981983364697995,
-                                                             12.374282921452831),
+                                                            12.374282921452831),
                                                   num_spec_error = c(2, 9),
                                                   num_col_error = c(0, 9)),
                  tolerance = 0.2)
