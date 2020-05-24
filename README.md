@@ -25,6 +25,6 @@ remotes::install_github("Neves-P/DAISIErobustness")
 DAISIErobustness consists of a pipeline that relies on DAISIE simulations and inference code. For an extended description of the pipeline and its usage, see [here](https://github.com/Neves-P/DAISIErobustness/blob/master/doc/pipeline_outline.md).
 
 # Support/Questions
-For feature requests or bug-reports, please submit and [issue](https://github.com/Neves-P/DAISIErobustness/issues/new).
+For feature requests or bug-reports, please submit an [issue](https://github.com/Neves-P/DAISIErobustness/issues/new).
 
 For other matters, contact the authors: [@Neves-P](https://github.com/Neves-P), [@joshwlambert](https://github.com/joshwlambert) or [@xieshu95](https://github.com/xieshu95).
