@@ -69,7 +69,7 @@ decide_best_pars <- function(ml_res_initpars_1,
 
     ml_2_trsf_pars <- as.numeric(ml_res_initpars_2[[i]][1:5] /
                                    (1 + ml_res_initpars_2[[i]][1:5]))
-    ml_2_trsf_pars[which(ml_2_trsf_pars[[i]][1:5] == Inf)] <- 1
+    ml_2_trsf_pars[which(ml_res_initpars_2[[i]][1:5] == Inf)] <- 1
     absolute_pars_difference[[i]] <- abs(ml_1_trsf_pars - ml_2_trsf_pars)
 
     ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
