@@ -186,28 +186,3 @@ test_that("test load_param_space loads nonoceanic_land_bridge parameter
   expect_true(is.numeric(nonoceanic_land_bridge[[14]]))
   expect_true(is.numeric(nonoceanic_land_bridge[[15]]))
 })
-
-test_that("test load_param_space loads trait parameter space", {
-  trait <- load_param_space(
-    param_space_name = "trait"
-  )
-  expect_equal(nrow(trait), 1152)
-  expect_equal(ncol(trait), 14)
-  expect_equal(names(trait),
-               c("time", "M", "lac", "mu", "K", "gam", "laa", "trans",
-                 "trans2", "M2",  "lac2", "mu2", "gam2", "laa2"))
-  expect_true(is.numeric(trait[[1]]))
-  expect_true(is.numeric(trait[[2]]))
-  expect_true(is.numeric(trait[[3]]))
-  expect_true(is.numeric(trait[[4]]))
-  expect_true(is.numeric(trait[[5]]))
-  expect_true(is.numeric(trait[[6]]))
-  expect_true(is.numeric(trait[[7]]))
-  expect_true(is.numeric(trait[[8]]))
-  expect_true(is.numeric(trait[[9]]))
-  expect_true(is.numeric(trait[[10]]))
-  expect_true(is.numeric(trait[[11]]))
-  expect_true(is.numeric(trait[[12]]))
-  expect_true(is.numeric(trait[[13]]))
-  expect_true(is.numeric(trait[[14]]))
-})
