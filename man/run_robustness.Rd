@@ -51,7 +51,7 @@ TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
 Run robustness analysis pipeline
 }
 \examples{
-\donttest{
+\dontrun{
 nonoceanic_short_run <- run_robustness(
   param_space_name = "nonoceanic",
   param_set = 1,

@@ -6,7 +6,7 @@
 #' \code{\link{sim_constraints}()} and \code{\link{ml_constraints}()} returned
 #' TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' nonoceanic_short_run <- run_robustness(
 #'   param_space_name = "nonoceanic",
 #'   param_set = 1,
