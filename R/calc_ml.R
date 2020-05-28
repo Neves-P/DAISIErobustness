@@ -21,7 +21,8 @@ calc_ml <- function(sim, initial_parameters) {
             initparsopt = as.numeric(initial_parameters[[i]][1:5]),
             idparsopt = c(1:5),
             parsfix = NULL,
-            idparsfix = NULL
+            idparsfix = NULL,
+            jitter = 0
           )
         )
         )))
