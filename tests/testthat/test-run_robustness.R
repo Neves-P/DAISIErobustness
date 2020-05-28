@@ -3,7 +3,7 @@ context("run_robustness")
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it passes sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"||
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
       Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness(
       param_space_name = "nonoceanic",
