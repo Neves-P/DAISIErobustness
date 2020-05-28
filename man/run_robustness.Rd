@@ -50,6 +50,18 @@ TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
 \description{
 Run robustness analysis pipeline
 }
+\examples{
+\donttest{
+nonoceanic_short_run <- run_robustness(
+  param_space_name = "nonoceanic",
+  param_set = 1,
+  replicates = 2,
+  pipeline = "full",
+  novel_sim = NULL,
+  save_output = FALSE
+)
+}
+}
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }

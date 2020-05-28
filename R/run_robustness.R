@@ -5,6 +5,17 @@
 #' @return A list of errors and simulation and MLE output if
 #' \code{\link{sim_constraints}()} and \code{\link{ml_constraints}()} returned
 #' TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
+#' @examples
+#' \donttest{
+#' nonoceanic_short_run <- run_robustness(
+#'   param_space_name = "nonoceanic",
+#'   param_set = 1,
+#'   replicates = 2,
+#'   pipeline = "full",
+#'   novel_sim = NULL,
+#'   save_output = FALSE
+#' )
+#' }
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
