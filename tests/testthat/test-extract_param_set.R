@@ -124,3 +124,22 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$nonoceanic_pars, c(0.05, 0.1))
   expect_equal(sim_pars$shift_times, c(1.225, 1.325))
 })
+
+test_that("test extract_param_set extracts correct param set from
+          trait", {
+  param_space <- load_param_space("trait")
+  sim_pars <- extract_param_set(
+    param_space_name = "trait",
+    param_space = param_space,
+    param_set = 1)
+  expect_equal(sim_pars$time, 2.55)
+  expect_equal(sim_pars$M, 100)
+  expect_equal(sim_pars$pars, c(0.5, 0.5, 10, 0.01, 1))
+  expect_equal(sim_pars$trait_pars, list(trans_rate = 0,
+                                         immig_rate2 = 0.02,
+                                         ext_rate2 = 0.25,
+                                         ana_rate2 = 2,
+                                         clado_rate2 = 0.25,
+                                         trans_rate2 = 0,
+                                         M2 = 900))
+})
