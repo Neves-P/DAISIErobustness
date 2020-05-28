@@ -32,7 +32,12 @@ run_robustness <- function(param_space_name,
     save_output = save_output
   )
 
-  set.seed(1)
+  set.seed(
+    1,
+    kind = "Mersenne-Twister",
+    normal.kind = "Inversion",
+    sample.kind = "Rejection"
+  )
 
   sim_pars <- extract_param_set(
     param_space_name = param_space_name,

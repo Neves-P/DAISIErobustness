@@ -5,7 +5,12 @@ test_that("run full function", {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 27
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -134,7 +139,12 @@ test_that("run failed sim_constraints", {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 195
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -168,7 +178,12 @@ test_that("abuse", {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 1
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
