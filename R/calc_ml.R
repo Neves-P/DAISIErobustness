@@ -22,7 +22,7 @@ calc_ml <- function(sim, initial_parameters) {
             idparsopt = c(1:5),
             parsfix = NULL,
             idparsfix = NULL,
-            jitter = 0
+            jitter = -1e-5
           )
         )
         )))
