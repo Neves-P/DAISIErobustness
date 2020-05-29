@@ -28,5 +28,10 @@ Authors:
   \item Shu Xie \email{s.xie@rug.nl}
 }
 
+Other contributors:
+\itemize{
+  \item Richèl J.C. Bilderbeek \email{richel@richelbilderbeek.nl} (\href{https://orcid.org/0000-0003-1107-7049}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

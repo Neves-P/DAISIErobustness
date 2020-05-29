@@ -13,7 +13,12 @@ Authors@R: c(
     person(given = "Shu",
            family = "Xie",
            role = c("aut"),
-           email = "s.xie@rug.nl"))
+           email = "s.xie@rug.nl"),
+    person(given = "Richèl J.C.",
+           family = "Bilderbeek",
+           email = "richel@richelbilderbeek.nl", 
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0003-1107-7049")))
 Description: Conducts a robustness test of the island biogeography DAISIE model
     to the effects of geodynamics, such as island ontogeny, sea-level changes
     and land-bridge dynamics. Contains accessory code to run at the Peregrine 
