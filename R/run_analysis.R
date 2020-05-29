@@ -3,15 +3,21 @@
 #' @inheritParams default_params_doc
 #'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @seealso \code{\link{run_novel_sim}()}
+#' @seealso \code{\link{run_novel_sim}()}, \code{\link{run_robustness}()}.
 run_analysis <- function(novel_sim,
                          param_space_name,
                          replicates,
-                         sim_pars) {
+                         sim_pars,
+                         replicate_range = NULL) {
   testit::assert(is.character(param_space_name))
   testit::assert(
     "novel_sim must be in the DAISIE simulation output format",
     is_novel_sim_outputs(novel_sim)
+  )
+  testit::assert(
+    "replicate_range must be a numeric with 2 sorted elements or NULL",
+    is.null(replicate_range) ||
+      is.numeric(replicate_range) && (replicate_range[1] < replicate_range[2])
   )
 
   sim_constraints <- sim_constraints(
@@ -21,13 +27,18 @@ run_analysis <- function(novel_sim,
   output <- list(sim_constraints = sim_constraints)
 
   if (sim_constraints == TRUE) {
+
+    if (!is.null(replicate_range)) {
+      novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
+    }
+
     initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
     initial_parameters_2 <- c(0.9, 1.5, 40, 0.01, 2)
 
-    initial_parameters_1_list <- vector("list", length = replicates)
-    initial_parameters_2_list <- vector("list", length = replicates)
+    initial_parameters_1_list <- vector("list", length = length(novel_sim))
+    initial_parameters_2_list <- vector("list", length = length(novel_sim))
 
-    for (i in seq_len(replicates)) {
+    for (i in seq_along(novel_sim)) {
       initial_parameters_1_list[[i]] <- initial_parameters_1
       initial_parameters_2_list[[i]] <- initial_parameters_2
     }

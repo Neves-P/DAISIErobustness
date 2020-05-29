@@ -8,6 +8,7 @@ default_params_doc(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output,
   param_space,
@@ -43,6 +44,11 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
+
+\item{replicate_range}{A numeric vector of length 2 or, by default,
+\code{NULL} if the entire range should be used. Specificies the range of
+previously saved replicates from \code{\link{run_novel_sim}()} that should
+be analysed by \code{\link{run_analysis}()}.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 

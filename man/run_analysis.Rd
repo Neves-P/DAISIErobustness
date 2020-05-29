@@ -4,7 +4,13 @@
 \alias{run_analysis}
 \title{Run the analysis with ocenanic sims and MLs}
 \usage{
-run_analysis(novel_sim, param_space_name, replicates, sim_pars)
+run_analysis(
+  novel_sim,
+  param_space_name,
+  replicates,
+  sim_pars,
+  replicate_range = NULL
+)
 }
 \arguments{
 \item{novel_sim}{A list of simulation output in the DAISIE simulation format
@@ -24,12 +30,17 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 simulations}
 
 \item{sim_pars}{A list of simulation parameters.}
+
+\item{replicate_range}{A numeric vector of length 2 or, by default,
+\code{NULL} if the entire range should be used. Specificies the range of
+previously saved replicates from \code{\link{run_novel_sim}()} that should
+be analysed by \code{\link{run_analysis}()}.}
 }
 \description{
 Run the analysis with ocenanic sims and MLs
 }
 \seealso{
-\code{\link{run_novel_sim}()}
+\code{\link{run_novel_sim}()}, \code{\link{run_robustness}()}.
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie

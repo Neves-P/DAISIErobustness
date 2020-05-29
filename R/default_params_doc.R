@@ -9,6 +9,10 @@
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
+#' @param replicate_range A numeric vector of length 2 or, by default,
+#'  \code{NULL} if the entire range should be used. Specificies the range of
+#'  previously saved replicates from \code{\link{run_novel_sim}()} that should
+#'  be analysed by \code{\link{run_analysis}()}.
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output List. Contains all the pipeline output that was able to
 #'  run up to a given point. Will be saved into .RData file by
@@ -75,6 +79,7 @@ default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output,
   param_space,
