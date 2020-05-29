@@ -161,8 +161,8 @@ is_novel_sim_outputs <- function(novel_sim) {
   for (n_replicate in seq_along(novel_sim)) {
     if (!"island_age" %in% names(novel_sim[[n_replicate]][[1]][[1]]))
       return(FALSE)
-    if (!(!"not_present" %in% names(novel_sim[[n_replicate]][[1]][[1]]) ||
-          !"not_present_type1" %in%
+    if (!("not_present" %in% names(novel_sim[[n_replicate]][[1]][[1]]) ||
+          "not_present_type1" %in%
           names(novel_sim[[n_replicate]][[1]][[1]]))) {
       return(FALSE)
     }
