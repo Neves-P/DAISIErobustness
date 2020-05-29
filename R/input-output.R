@@ -28,7 +28,7 @@ save_output <- function(output,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
     testit::assert(is.character(output_file_name))
   }
@@ -73,7 +73,7 @@ save_output <- function(output,
 #'     param_set = 1,
 #'     sim_constraints = TRUE,
 #'     ml_constraints = TRUE
-#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.RData"
 #' )
 create_output_file_name <- function(param_space_name,
                                     param_set,
@@ -86,7 +86,7 @@ create_output_file_name <- function(param_space_name,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
 
   } else if (sim_constraints == TRUE && ml_constraints == TRUE) {
@@ -96,7 +96,7 @@ create_output_file_name <- function(param_space_name,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
 
   }
@@ -160,7 +160,7 @@ load_novel_section <- function(param_space_name,
     param_space_name,
     "_param_set_",
     param_set,
-    ".Rdata"
+    ".RData"
   )
   name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
                                          x = found_files, fixed = TRUE)]

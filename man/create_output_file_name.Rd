@@ -41,7 +41,7 @@ testit::assert(
     param_set = 1,
     sim_constraints = TRUE,
     ml_constraints = TRUE
-  ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+  ) == "passed_cond_oceanic_ontogeny_param_set_1.RData"
 )
 }
 \seealso{
