@@ -138,7 +138,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
   }
 }
 
-#' Load intermedia novel sim results to continue pipeline
+#' Load intermediate novel sim results to continue pipeline
 #'
 #' @inheritParams default_params_doc
 #'
@@ -157,10 +157,11 @@ load_novel_section <- function(param_space_name,
   found_files <- list.files(path = results_folder)
   message(paste0("Found ", length(found_files), " files.\n"))
   file_code_to_load <- paste0(
+    "novel_",
     param_space_name,
     "_param_set_",
     param_set,
-    ".RData"
+    ".Rdata"
   )
   name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
                                          x = found_files, fixed = TRUE)]
@@ -169,16 +170,13 @@ load_novel_section <- function(param_space_name,
   if (!file.exists(file.path(results_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
-  output_file <- NULL # Suppress global variable note
+  output <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
 
-  if (exists(x = "output_file")) {
-    testit::assert(c("novel_sim", "sim_constraints") %in%
-                     names(output_file))
+  if (exists(x = "output")) {
+    testit::assert(all(c("island_age", "not_present", "stt_all") %in%
+                     names(output[[1]][[1]][[1]])))
     message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
   }
-  out <- list(
-    novel_sim = output_file$novel_sim
-  )
-  return(out)
+  return(output)
 }

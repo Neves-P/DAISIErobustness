@@ -2,7 +2,7 @@
 % Please edit documentation in R/input-output.R
 \name{load_novel_section}
 \alias{load_novel_section}
-\title{Load intermedia novel sim results to continue pipeline}
+\title{Load intermediate novel sim results to continue pipeline}
 \usage{
 load_novel_section(param_space_name, param_set)
 }
@@ -20,7 +20,7 @@ run, as found in the file named in \code{param_space}.}
 List with output from \code{\link{run_novel_sim}()}.
 }
 \description{
-Load intermedia novel sim results to continue pipeline
+Load intermediate novel sim results to continue pipeline
 }
 \seealso{
 Other I/O: 
