@@ -56,7 +56,8 @@ test_that("test calc_ml output is correct with geodynamic sim", {
 })
 
 test_that("test calc_ml output is correct with oceanic sim", {
-  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     novel_ml <- list(data.frame("lambda_c" = 1,
