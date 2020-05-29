@@ -49,7 +49,7 @@
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 #'  \code{DAISIE_sim_trait_dependent()}.
 #' @param sim_2 A list of simulation output from
-#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 #'  \code{DAISIE_sim_trait_dependent()}.

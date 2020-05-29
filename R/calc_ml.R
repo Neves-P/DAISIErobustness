@@ -1,7 +1,7 @@
 #' Calculate maximum likelihood value for the rates
 #'
 #' @inheritParams default_params_doc
-#' @return Output from \code{\link[DAISIE]{DAISIE_ML}}
+#' @return Output from \code{\link[DAISIE]{DAISIE_ML}()}
 #' @importFrom utils capture.output
 #'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie

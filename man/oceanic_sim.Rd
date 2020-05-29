@@ -12,7 +12,7 @@ oceanic_sim(ml, sim_pars)
 \item{sim_pars}{A list of simulation parameters.}
 }
 \value{
-Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
+Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
 }
 \description{
 Runs original oceanic DAISIE simulation
