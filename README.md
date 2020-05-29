@@ -14,7 +14,7 @@ The goal of DAISIErobustness is to run robustness studies using the island bioge
 
 # Installation
 
-DAISIErobustness can easily be install from GitHub by running the following code:
+DAISIErobustness can easily be installed from GitHub by running the following code:
 ``` r
 install.packages("remotes")
 remotes::install_github("Neves-P/DAISIErobustness")
