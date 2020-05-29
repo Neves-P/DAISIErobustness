@@ -91,7 +91,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$K, 1.4024695724376173,
+    expect_equal(oceanic_ml[[1]]$K, 3.8693619159931183,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
                  tolerance = 0.01)
@@ -105,7 +105,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$K, 5.4264948374512745,
+    expect_equal(oceanic_ml[[2]]$K, 4.8545565619356195,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
                  tolerance = 0.01)
