@@ -24,12 +24,4 @@ The first element always corresponds to the island age.
 3) `missing_species` - The number of species that were not sampled for a particular clade (only applicable for endemic clades) (numeric scalar).
 
 The final output of a pipeline run should be a list.  
-Each top level of this list should refer to one geodynamic replicate and contain the following:
-
-1) Simulate with Geodynamics (1000x replicates)
-2) Maximum likelihood estimates obtained replicate (1000 ML estimates)
-3) Simulate without geodynamics obtained using ML values from step 2 as generating parameters (1 replicate per ML, thus 1000 total replicates)
-4) MLEs from simulations from step 3 (1000 ML estimates)
-5) Simulate without geodynamics using ML values from step 4 as generating parameters (1 replicate per ML, thus 1000 total replicates)
-6) Calculate delta nLTT of paired simulations from step 1 and step 3.
-7) Calculate delta nLTT of paired simulations from step 3 and step 5.
+Each top level of this list should refer to one `novel_sim` replicate.
