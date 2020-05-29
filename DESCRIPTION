@@ -24,7 +24,9 @@ LazyData: true
 Suggests: 
     testthat (>= 2.1.0),
     jap,
-    lintr
+    lintr,
+    knitr,
+    rmarkdown
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 Imports: 
@@ -37,3 +39,4 @@ Remotes:
     thijsjanzen/nltt,
     Giappo/jap
 RoxygenNote: 7.1.0
+VignetteBuilder: knitr
