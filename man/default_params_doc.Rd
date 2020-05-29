@@ -8,6 +8,7 @@ default_params_doc(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output,
   param_space,
@@ -28,7 +29,8 @@ default_params_doc(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  pipeline
+  pipeline,
+  load_from_file
 )
 }
 \arguments{
@@ -43,6 +45,11 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
+
+\item{replicate_range}{A numeric vector of length 2 or, by default,
+\code{NULL} if the entire range should be used. Specificies the range of
+previously saved replicates from \code{\link{run_novel_sim}()} that should
+be analysed by \code{\link{run_analysis}()}.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 
@@ -96,7 +103,7 @@ from \code{\link[DAISIE]{DAISIE_ML}()}.}
 \code{DAISIE_sim_trait_dependent()}.}
 
 \item{sim_2}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 \code{DAISIE_sim_trait_dependent()}.}
@@ -123,10 +130,17 @@ novel model and analysis will run. \code{"novel_sim"} Indicates only the
 novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 \code{"analysis"} runs just the estimation, oceanic simulations and error
 calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
+
+\item{load_from_file}{A boolean for the \code{\link{run_analysis}()} part of
+the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
+loaded from a file, otherwise, the object is retrieved from scope.}
 }
 \value{
 Nothing
 }
 \description{
 Default parameter documentation
+}
+\author{
+Joshua Lambert, Pedro Neves, Shu Xie
 }

@@ -1,5 +1,5 @@
 Package: DAISIErobustness
-Title: Test the Robustness of DAISIE to Geodynamics
+Title: Test the Robustness of DAISIE to Geodynamics and Traits
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Joshua",
@@ -9,22 +9,31 @@ Authors@R: c(
     person(given = "Pedro",
            family = "Neves",
            role = c("aut"),
-           email = "p.m.santos.neves@rug.nl"),
+           email = "p.m.santos.neves@rug.nl",
+           comment = c(ORCID = "0000-0003-2561-4677")),
     person(given = "Shu",
            family = "Xie",
            role = c("aut"),
-           email = "s.xie@rug.nl"))
+           email = "s.xie@rug.nl"),
+    person(given = "Richèl J.C.",
+           family = "Bilderbeek",
+           email = "richel@richelbilderbeek.nl",
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0003-1107-7049")))
 Description: Conducts a robustness test of the island biogeography DAISIE model
-    to the effects of geodynamics, such as island ontogeny, sea-level changes
-    and land-bridge dynamics. Contains accessory code to run at the Peregrine 
-    HPCC at the University of Groningen.
+    to the effects of geodynamics or trait dependency. Tests processes such as 
+    island ontogeny, sea-level change and land-bridge dynamics. 
+    Contains acessory code for easy use with the University of Groningen 
+    Peregrine HPCC.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat (>= 2.1.0),
     jap,
-    lintr
+    lintr,
+    knitr,
+    rmarkdown
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 Imports: 
@@ -37,3 +46,4 @@ Remotes:
     thijsjanzen/nltt,
     Giappo/jap
 RoxygenNote: 7.1.0
+VignetteBuilder: knitr

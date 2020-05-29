@@ -7,7 +7,7 @@
 #' @return .RData file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
-#' @author Pedro Neves, Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @family I/O
 save_output <- function(output,
                         param_space_name,
@@ -28,7 +28,7 @@ save_output <- function(output,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
     testit::assert(is.character(output_file_name))
   }
@@ -63,7 +63,7 @@ save_output <- function(output,
 #' @return Character with name indicating the name of the parameter space,
 #'   the numeric id of the param_set and whether the run passed constraints.
 #'
-#' @author Pedro Neves, Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @family I/O
 #' @keywords Internal
 #' @examples
@@ -73,7 +73,7 @@ save_output <- function(output,
 #'     param_set = 1,
 #'     sim_constraints = TRUE,
 #'     ml_constraints = TRUE
-#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.RData"
 #' )
 create_output_file_name <- function(param_space_name,
                                     param_set,
@@ -86,7 +86,7 @@ create_output_file_name <- function(param_space_name,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
 
   } else if (sim_constraints == TRUE && ml_constraints == TRUE) {
@@ -96,7 +96,7 @@ create_output_file_name <- function(param_space_name,
       param_space_name,
       "_param_set_",
       param_set,
-      ".Rdata"
+      ".RData"
     )
 
   }
@@ -108,7 +108,7 @@ create_output_file_name <- function(param_space_name,
 #'
 #' @inheritParams default_params_doc
 #'
-#' @author Pedro Neves, Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return Helpful messages with info on folder status. Tries to create
 #'   folder if needed.
 #' @keywords Internal
@@ -138,12 +138,13 @@ check_create_results_folder <- function(param_space_name, save_output) {
   }
 }
 
-#' Load intermedia novel sim results to continue pipeline
+#' Load intermediate novel sim results to continue pipeline
 #'
 #' @inheritParams default_params_doc
 #'
 #' @return List with output from \code{\link{run_novel_sim}()}.
-#' @author Pedro Neves, Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @family I/O
 load_novel_section <- function(param_space_name,
                                param_set) {
   results_folder <- file.path("results", param_space_name)
@@ -156,6 +157,7 @@ load_novel_section <- function(param_space_name,
   found_files <- list.files(path = results_folder)
   message(paste0("Found ", length(found_files), " files.\n"))
   file_code_to_load <- paste0(
+    "novel_",
     param_space_name,
     "_param_set_",
     param_set,
@@ -168,16 +170,13 @@ load_novel_section <- function(param_space_name,
   if (!file.exists(file.path(results_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
-  output_file <- NULL # Suppress global variable note
+  output <- NULL # Suppress global variable note
   load(file.path(results_folder, name_file_to_load))
 
-  if (exists(x = "output_file")) {
-    testit::assert(c("novel_sim", "sim_constraints") %in%
-                     names(output_file))
+  if (exists(x = "output")) {
+    testit::assert(all(c("island_age", "not_present", "stt_all") %in%
+                     names(output[[1]][[1]][[1]])))
     message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
   }
-  out <- list(
-    novel_sim = output_file$novel_sim
-  )
-  return(out)
+  return(output)
 }

@@ -9,6 +9,10 @@
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
+#' @param replicate_range A numeric vector of length 2 or, by default,
+#'  \code{NULL} if the entire range should be used. Specificies the range of
+#'  previously saved replicates from \code{\link{run_novel_sim}()} that should
+#'  be analysed by \code{\link{run_analysis}()}.
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output List. Contains all the pipeline output that was able to
 #'  run up to a given point. Will be saved into .RData file by
@@ -45,7 +49,7 @@
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 #'  \code{DAISIE_sim_trait_dependent()}.
 #' @param sim_2 A list of simulation output from
-#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+#'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 #'  \code{DAISIE_sim_trait_dependent()}.
@@ -68,13 +72,17 @@
 #'  novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 #'  \code{"analysis"} runs just the estimation, oceanic simulations and error
 #'  calculation sections of the pipeline calling \code{\link{run_analysis}()}.
+#' @param load_from_file A boolean for the \code{\link{run_analysis}()} part of
+#'  the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
+#'  loaded from a file, otherwise, the object is retrieved from scope.
 #'
 #' @return Nothing
-#'
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
+  replicate_range,
   save_output,
   output,
   param_space,
@@ -95,7 +103,8 @@ default_params_doc <- function(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  pipeline
+  pipeline,
+  load_from_file
 ) {
   # Nothing
 }

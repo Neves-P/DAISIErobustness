@@ -1,7 +1,7 @@
 context("calc_ml")
 
 test_that("test calc_ml output is correct with geodynamic sim", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "nonoceanic")
     set.seed(1)
@@ -51,12 +51,13 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct with oceanic sim", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     novel_ml <- list(data.frame("lambda_c" = 1,
@@ -91,7 +92,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$K, 1.4024695724376173,
+    expect_equal(oceanic_ml[[1]]$K, 3.8693619159931183,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
                  tolerance = 0.01)
@@ -105,7 +106,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$K, 5.4264948374512745,
+    expect_equal(oceanic_ml[[2]]$K, 4.8545565619356195,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
                  tolerance = 0.01)
@@ -116,13 +117,14 @@ test_that("test calc_ml output is correct with oceanic sim", {
     expect_equal(oceanic_ml[[2]]$df, 5)
     expect_equal(oceanic_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
   skip("Optimize test - find non converging model")
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
     set.seed(1)
@@ -149,13 +151,14 @@ test_that("test calc_ml output is correct for failed convergence", {
     expect_length(novel_ml, 2)
     expect_equal(novel_ml[[1]], "ML didn't converge")
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct with geodynamic sim", {
   skip("skip to pass check")
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
+      || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "trait")
     set.seed(1)
@@ -205,6 +208,6 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })

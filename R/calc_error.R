@@ -2,16 +2,15 @@
 #' of endemics-through-time and non-endemics-through-time
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
 #' @return A list with three error metrics
-#' @export
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_error <- function(sim_1,
                        sim_2,
                        replicates) {
   spec_error <- list()
   endemic_error <- list()
   nonendemic_error <- list()
-  for (n_reps in 1:replicates) {
+  for (n_reps in seq_along(sim_1)) {
     if (is.character(sim_2[[n_reps]])) {
       spec_error[[n_reps]] <- "ML didn't converge"
       endemic_error[[n_reps]] <- "ML didn't converge"

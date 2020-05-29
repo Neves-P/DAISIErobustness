@@ -12,7 +12,7 @@ test_that("use", {
       param_set = param_set,
       sim_constraints = sim_constraints,
       ml_constraints = ml_constraints
-    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.Rdata"
+    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.RData"
   )
 
   sim_constraints <- FALSE
@@ -23,7 +23,7 @@ test_that("use", {
       param_set = param_set,
       sim_constraints = sim_constraints,
       ml_constraints = ml_constraints
-    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.Rdata"
+    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.RData"
   )
 
   sim_constraints <- TRUE
@@ -34,7 +34,7 @@ test_that("use", {
       param_set = param_set,
       sim_constraints = sim_constraints,
       ml_constraints = ml_constraints
-    ), expected = "passed_cond_oceanic_ontogeny_param_set_1.Rdata"
+    ), expected = "passed_cond_oceanic_ontogeny_param_set_1.RData"
   )
 
   sim_constraints <- FALSE
@@ -45,7 +45,7 @@ test_that("use", {
       param_set = param_set,
       sim_constraints = sim_constraints,
       ml_constraints = ml_constraints
-    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.Rdata"
+    ), expected = "failed_cond_oceanic_ontogeny_param_set_1.RData"
   )
 })
 

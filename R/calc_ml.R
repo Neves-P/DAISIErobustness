@@ -1,10 +1,10 @@
 #' Calculate maximum likelihood value for the rates
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
-#' @return Output from \code{\link[DAISIE]{DAISIE_ML}}
+#' @return Output from \code{\link[DAISIE]{DAISIE_ML}()}
 #' @importFrom utils capture.output
-#' @export
+#'
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim, initial_parameters) {
   ml <- list()
 
@@ -21,7 +21,8 @@ calc_ml <- function(sim, initial_parameters) {
             initparsopt = as.numeric(initial_parameters[[i]][1:5]),
             idparsopt = c(1:5),
             parsfix = NULL,
-            idparsfix = NULL
+            idparsfix = NULL,
+            jitter = -1e-5
           )
         )
         )))

@@ -15,7 +15,7 @@ calc_error(sim_1, sim_2, replicates)
 \code{DAISIE_sim_trait_dependent()}.}
 
 \item{sim_2}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 \code{DAISIE_sim_trait_dependent()}.}
@@ -31,5 +31,5 @@ Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

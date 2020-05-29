@@ -55,5 +55,5 @@ QC of results.
 \code{\link[DAISIE]{DAISIE_ML}()}, \code{\link{calc_ml}()}
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

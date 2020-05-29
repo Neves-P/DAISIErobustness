@@ -2,9 +2,9 @@ context("run_robustness")
 
 
 test_that("run_robustness output is correct when save_output = FALSE and
-          it passes sim_constraints (does not run on APPVEYOR due to
-          time limit)", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+          it passes sim_constraints", {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness(
       param_space_name = "nonoceanic",
       param_set = 27,
@@ -131,13 +131,14 @@ test_that("run_robustness output is correct when save_output = FALSE and
     expect_equal(errors$ml_constraints, TRUE)
 
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness(
       param_space_name = "nonoceanic",
       param_set = 195,
@@ -172,7 +173,8 @@ test_that("run_robustness output is correct when save_output = FALSE and
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
   skip("skip to pass build")
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     errors <- run_robustness(
       param_space_name = "oceanic_ontogeny",
       param_set = 10,

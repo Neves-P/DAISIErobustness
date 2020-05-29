@@ -1,8 +1,8 @@
 #' Runs original oceanic DAISIE simulation
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
-#' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
 #' @export
 oceanic_sim <- function(ml,
                         sim_pars) {

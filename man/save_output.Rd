@@ -42,9 +42,10 @@ TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
 \seealso{
 Other I/O: 
 \code{\link{check_create_results_folder}()},
-\code{\link{create_output_file_name}()}
+\code{\link{create_output_file_name}()},
+\code{\link{load_novel_section}()}
 }
 \author{
-Pedro Neves, Joshua Lambert
+Joshua Lambert, Pedro Neves, Shu Xie
 }
 \concept{I/O}

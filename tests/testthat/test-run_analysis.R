@@ -1,11 +1,17 @@
 context("run_analysis")
 
 test_that("run full function", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 27
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -125,16 +131,22 @@ test_that("run full function", {
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
   } else{
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("run failed sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
+      || Sys.getenv("APPVEYOR") != "") {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 195
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -159,7 +171,7 @@ test_that("run failed sim_constraints", {
 
     expect_false(novel_ml$sim_constraints)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
@@ -168,7 +180,12 @@ test_that("abuse", {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 1
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -217,6 +234,6 @@ test_that("abuse", {
       )
     )
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })

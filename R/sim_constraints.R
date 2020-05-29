@@ -1,7 +1,7 @@
 #' Checks if the simulations meet the criteria for data sample size
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return Logical TRUE if criteria are met, FALSE if not.
 #' @export
 sim_constraints <- function(sim,
