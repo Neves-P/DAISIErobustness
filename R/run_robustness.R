@@ -12,7 +12,8 @@ run_robustness <- function(param_space_name,
                            pipeline = "full",
                            novel_sim = NULL,
                            save_output = TRUE,
-                           replicate_range = NULL) {
+                           replicate_range = NULL,
+                           load_from_file = FALSE) {
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -52,6 +53,13 @@ run_robustness <- function(param_space_name,
       replicates = replicates
     )
   } else if (pipeline == "analysis") {
+
+    if (load_from_file) {
+      novel_sim <- load_novel_section(
+        param_space_name = param_space_name,
+        param_set = param_set
+      )
+    }
     testit::assert("For runnning just the analysis
                    novel_sim must be supplied.", exists("novel_sim"))
     output <- run_analysis(

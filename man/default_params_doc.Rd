@@ -29,7 +29,8 @@ default_params_doc(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  pipeline
+  pipeline,
+  load_from_file
 )
 }
 \arguments{
@@ -129,6 +130,10 @@ novel model and analysis will run. \code{"novel_sim"} Indicates only the
 novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 \code{"analysis"} runs just the estimation, oceanic simulations and error
 calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
+
+\item{load_from_file}{A boolean for the \code{\link{run_analysis}()} part of
+the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
+loaded from a file, otherwise, the object is retrieved from scope.}
 }
 \value{
 Nothing

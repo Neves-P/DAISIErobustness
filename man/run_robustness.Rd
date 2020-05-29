@@ -11,7 +11,8 @@ run_robustness(
   pipeline = "full",
   novel_sim = NULL,
   save_output = TRUE,
-  replicate_range = NULL
+  replicate_range = NULL,
+  load_from_file = FALSE
 )
 }
 \arguments{
@@ -47,6 +48,10 @@ format.}
 \code{NULL} if the entire range should be used. Specificies the range of
 previously saved replicates from \code{\link{run_novel_sim}()} that should
 be analysed by \code{\link{run_analysis}()}.}
+
+\item{load_from_file}{A boolean for the \code{\link{run_analysis}()} part of
+the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
+loaded from a file, otherwise, the object is retrieved from scope.}
 }
 \value{
 A list of errors and simulation and MLE output if
