@@ -1,7 +1,7 @@
 context("run_analysis")
 
 test_that("run full function", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ) {
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 27
