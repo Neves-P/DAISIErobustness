@@ -70,7 +70,7 @@
 #'  calculation sections of the pipeline calling \code{\link{run_analysis}()}.
 #'
 #' @return Nothing
-#'
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 default_params_doc <- function(
   param_space_name,
   param_set,

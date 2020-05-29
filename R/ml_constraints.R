@@ -1,7 +1,7 @@
 #' Checks if number of valid errors meet the criteria for data sample size
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @keywords Internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 ml_constraints <- function(ml) {
@@ -53,7 +53,7 @@ ml_constraints <- function(ml) {
 #'     absolute difference calculated between the two parameter sets.}
 #'   }
 #' @seealso \code{\link[DAISIE]{DAISIE_ML}()}, \code{\link{calc_ml}()}
-#' @author Joshua Lambert, Pedro Neves
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 decide_best_pars <- function(ml_res_initpars_1,
                              ml_res_initpars_2) {
   # Initialize variables and set tolerance

@@ -16,6 +16,6 @@ Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 Checks if number of valid errors meet the criteria for data sample size
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }
 \keyword{Internal}

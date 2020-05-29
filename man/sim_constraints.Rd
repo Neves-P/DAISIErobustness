@@ -24,5 +24,5 @@ Logical TRUE if criteria are met, FALSE if not.
 Checks if the simulations meet the criteria for data sample size
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

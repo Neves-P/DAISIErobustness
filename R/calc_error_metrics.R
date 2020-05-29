@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return a list of numerics
-#' @author Pedro Neves, Joshua Lambert
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @references Kolmogorov, A. (1933) Sulla determinazione empirica di una
 #' legge di distribuzionc, 1st. Ital. Attuari. G.. 4, 1–11.
 #'
@@ -11,7 +11,6 @@
 #' kolmogorov-smirnov, lilliefors and anderson-darling tests"
 #' Journal of Statistical Modeling and Analytics 2, 21-33.
 #' @importFrom stats sd
-#' @export
 calc_error_metrics <- function(spec_error,
                                endemic_error,
                                nonendemic_error,
@@ -137,7 +136,7 @@ calc_error_metrics <- function(spec_error,
 #' @inheritParams default_params_doc
 #'
 #' @return Nothing. Throws error if input is not correct
-#' @author Joshua Lambert, Pedro Neves
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @importFrom stats na.omit
 check_calc_error_metrics_input <- function(spec_error,
                                            endemic_error,

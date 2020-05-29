@@ -45,5 +45,5 @@ kolmogorov-smirnov, lilliefors and anderson-darling tests"
 Journal of Statistical Modeling and Analytics 2, 21-33.
 }
 \author{
-Pedro Neves, Joshua Lambert
+Joshua Lambert, Pedro Neves, Shu Xie
 }

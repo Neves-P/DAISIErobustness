@@ -32,5 +32,5 @@ Run the analysis with ocenanic sims and MLs
 \code{\link{run_novel_sim}()}
 }
 \author{
-Shu Xie, Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

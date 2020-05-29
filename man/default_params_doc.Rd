@@ -130,3 +130,6 @@ Nothing
 \description{
 Default parameter documentation
 }
+\author{
+Joshua Lambert, Pedro Neves, Shu Xie
+}

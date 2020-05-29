@@ -22,6 +22,13 @@ List with output from \code{\link{run_novel_sim}()}.
 \description{
 Load intermedia novel sim results to continue pipeline
 }
-\author{
-Pedro Neves, Joshua Lambert
+\seealso{
+Other I/O: 
+\code{\link{check_create_results_folder}()},
+\code{\link{create_output_file_name}()},
+\code{\link{save_output}()}
 }
+\author{
+Joshua Lambert, Pedro Neves, Shu Xie
+}
+\concept{I/O}

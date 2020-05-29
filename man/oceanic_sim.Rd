@@ -18,5 +18,5 @@ Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 Runs original oceanic DAISIE simulation
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

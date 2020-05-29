@@ -25,10 +25,11 @@ Checks and create results folder for output
 \seealso{
 Other I/O: 
 \code{\link{create_output_file_name}()},
+\code{\link{load_novel_section}()},
 \code{\link{save_output}()}
 }
 \author{
-Pedro Neves, Joshua Lambert
+Joshua Lambert, Pedro Neves, Shu Xie
 }
 \concept{I/O}
 \keyword{Internal}

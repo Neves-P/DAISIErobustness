@@ -47,10 +47,11 @@ testit::assert(
 \seealso{
 Other I/O: 
 \code{\link{check_create_results_folder}()},
+\code{\link{load_novel_section}()},
 \code{\link{save_output}()}
 }
 \author{
-Pedro Neves, Joshua Lambert
+Joshua Lambert, Pedro Neves, Shu Xie
 }
 \concept{I/O}
 \keyword{Internal}

@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #'
-#' @author Shu Xie, Joshua Lambert, Pedro Neves
+#' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @seealso \code{\link{run_novel_sim}()}
 run_analysis <- function(novel_sim,
                          param_space_name,

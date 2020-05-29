@@ -37,5 +37,5 @@ Nothing. Throws error if input is not correct
 Checks calc_error_metrics_input is correct
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

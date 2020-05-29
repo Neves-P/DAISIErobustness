@@ -20,5 +20,5 @@ tibble parameter space.
 Loads the parameter space into the environment for simulations
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }

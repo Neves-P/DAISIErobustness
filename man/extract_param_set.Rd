@@ -27,5 +27,5 @@ Extracts a set of parameters from the parameter space for the
 simulation
 }
 \author{
-Joshua Lambert, Pedro Neves
+Joshua Lambert, Pedro Neves, Shu Xie
 }
