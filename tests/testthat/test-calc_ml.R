@@ -1,7 +1,7 @@
 context("calc_ml")
 
 test_that("test calc_ml output is correct with geodynamic sim", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "nonoceanic")
     set.seed(1)
@@ -51,12 +51,12 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct with oceanic sim", {
-  if (Sys.getenv("TRAVIS") != "") {
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_ontogeny")
     novel_ml <- list(data.frame("lambda_c" = 1,
@@ -116,13 +116,14 @@ test_that("test calc_ml output is correct with oceanic sim", {
     expect_equal(oceanic_ml[[2]]$df, 5)
     expect_equal(oceanic_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
   skip("Optimize test - find non converging model")
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
+      Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
     set.seed(1)
@@ -149,13 +150,14 @@ test_that("test calc_ml output is correct for failed convergence", {
     expect_length(novel_ml, 2)
     expect_equal(novel_ml[[1]], "ML didn't converge")
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
 
 test_that("test calc_ml output is correct with geodynamic sim", {
   skip("skip to pass check")
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
+      || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "trait")
     set.seed(1)
@@ -205,6 +207,6 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
   } else {
-    skip("Run only on TRAVIS")
+    skip("Run only on TRAVIS and AppVeyor")
   }
 })
