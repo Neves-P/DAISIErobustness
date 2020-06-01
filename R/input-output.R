@@ -126,6 +126,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
     return()
   }
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+    setwd("..")
     results_folder <- file.path(
       getwd(),
       "Projets",
@@ -133,7 +134,6 @@ check_create_results_folder <- function(param_space_name, save_output) {
       "results",
       param_space_name
     )
-    getwd()
   } else {
     results_folder <- file.path(getwd(), "results")
   }
