@@ -171,6 +171,8 @@ load_novel_section <- function(param_space_name,
       "results",
       param_space_name
     )
+    print("hostname worked")
+    getwd()
   } else {
     results_folder <- file.path(getwd(), "results")
   }
@@ -180,7 +182,7 @@ load_novel_section <- function(param_space_name,
       " folder not found.\n")
     )
   } else {
-    message(paste0("Found ", results_folder, "folder."))
+    message(paste0("Found ", results_folder, " folder."))
   }
   found_files <- list.files(path = results_folder)
   message(paste0("Found ", length(found_files), " files.\n"))
