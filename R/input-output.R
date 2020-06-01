@@ -33,7 +33,7 @@ save_output <- function(output,
     testit::assert(is.character(output_file_name))
   }
 
-  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
     results_folder <- file.path(
       "./../..",
       "Projets",
@@ -125,7 +125,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
     message("Returning results to object, no I/O used.\n")
     return()
   }
-  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
     setwd("./../..")
     results_folder <- file.path(
       "./../..",
@@ -165,7 +165,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
 #' @family I/O
 load_novel_section <- function(param_space_name,
                                param_set) {
-  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
     results_folder <- file.path(
       "./../..",
       "Projets",
