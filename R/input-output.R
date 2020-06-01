@@ -22,6 +22,18 @@ save_output <- function(output,
       sim_constraints = output$sim_constraints,
       ml_constraints = output$ml_constraints
     )
+    if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+      results_folder <- file.path(
+        getwd(),
+        "Projects",
+        "DAISIErobustness",
+        "results",
+        param_space_name
+      )
+      output_file_path <- file.path(results_folder, output_file_name)
+    } else {
+      output_file_path <- file.path(getwd(), "results")
+    }
   } else if (pipeline == "novel_sim") {
     output_file_name <- paste0(
       "novel_",
@@ -31,21 +43,19 @@ save_output <- function(output,
       ".RData"
     )
     testit::assert(is.character(output_file_name))
-  }
-
-  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    results_folder <- file.path(
-      getwd(),
-      "Projects",
-      "DAISIErobustness",
-      "results",
-      param_space_name
+    if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+      data_folder <- file.path(
+        getwd(),
+        "Projects",
+        "DAISIErobustness",
+        "results",
+        param_space_name
       )
-    output_file_path <- file.path(results_folder, output_file_name)
-  } else {
-    output_file_path <- file.path(getwd(), "results")
+      output_file_path <- file.path(data_folder, output_file_name)
+    } else {
+      output_file_path <- file.path(getwd(), "data")
+    }
   }
-
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
