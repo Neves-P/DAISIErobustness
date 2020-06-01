@@ -93,6 +93,7 @@ jap::pocket_experiment(
   function_name = "run_robustness",
   params = params,
   cluster_folder = "data",
-  cluster_partition = "gelifes"
+  cluster_partition = "gelifes",
+  delete_on_cluster = FALSE
 )
 

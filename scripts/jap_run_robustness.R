@@ -100,3 +100,14 @@ for (i in seq_len(total_runs)) {
     replicate_range = replicate_range_list[[i]]
   )
 }
+
+# Start RStudio job that submits cluster jobs
+jap::pocket_experiment(
+  github_name = "Neves-P",
+  project_name = "DAISIErobustness",
+  function_name = "run_robustness",
+  params = params,
+  cluster_folder = "data",
+  cluster_partition = "regular",
+  delete_on_cluster = FALSE
+)
