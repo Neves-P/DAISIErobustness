@@ -34,8 +34,8 @@ save_output <- function(output,
   }
 
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+    setwd("./../..")
     results_folder <- file.path(
-      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
@@ -128,7 +128,6 @@ check_create_results_folder <- function(param_space_name, save_output) {
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
     setwd("./../..")
     results_folder <- file.path(
-      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
@@ -166,15 +165,15 @@ check_create_results_folder <- function(param_space_name, save_output) {
 load_novel_section <- function(param_space_name,
                                param_set) {
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+    setwd("./../..")
     results_folder <- file.path(
-      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
       param_space_name
     )
-    print("hostname worked")
-    getwd()
+    message("hostname worked")
+    message(paste0("wd is: ", getwd()))
   } else {
     results_folder <- file.path(getwd(), "results")
   }
