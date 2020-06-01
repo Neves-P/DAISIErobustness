@@ -34,9 +34,8 @@ save_output <- function(output,
   }
 
   if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
-    setwd("..")
-    setwd("..")
     results_folder <- file.path(
+      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
@@ -127,9 +126,8 @@ check_create_results_folder <- function(param_space_name, save_output) {
     return()
   }
   if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
-    setwd("..")
-    setwd("..")
     results_folder <- file.path(
+      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
@@ -166,9 +164,8 @@ check_create_results_folder <- function(param_space_name, save_output) {
 load_novel_section <- function(param_space_name,
                                param_set) {
   if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
-    setwd("..")
-    setwd("..")
     results_folder <- file.path(
+      "./../..",
       "Projets",
       "DAISIErobustness",
       "results",
@@ -182,6 +179,8 @@ load_novel_section <- function(param_space_name,
       results_folder,
       " folder not found.\n")
     )
+  } else {
+    message(paste0("Found ", results_folder, "folder."))
   }
   found_files <- list.files(path = results_folder)
   message(paste0("Found ", length(found_files), " files.\n"))
