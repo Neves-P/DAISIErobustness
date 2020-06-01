@@ -33,11 +33,18 @@ save_output <- function(output,
     testit::assert(is.character(output_file_name))
   }
 
-  if (Sys.getenv("HOSTNAME") != "peregrine.hpc.rug.nl") {
-    results_folder <- file.path("results", param_space_name)
+  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+    setwd("..")
+    setwd("..")
+    results_folder <- file.path(
+      "Projets",
+      "DAISIErobustness",
+      "results",
+      param_space_name
+      )
     output_file_path <- file.path(results_folder, output_file_name)
   } else {
-    output_file_path <- getwd()
+    output_file_path <- file.path(getwd(), "results")
   }
 
   message(
@@ -119,7 +126,18 @@ check_create_results_folder <- function(param_space_name, save_output) {
     message("Returning results to object, no I/O used.\n")
     return()
   }
-  results_folder <- file.path("results", param_space_name)
+  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+    setwd("..")
+    setwd("..")
+    results_folder <- file.path(
+      "Projets",
+      "DAISIErobustness",
+      "results",
+      param_space_name
+    )
+  } else {
+    results_folder <- file.path(getwd(), "results")
+  }
   if (!dir.exists(results_folder)) {
     message(paste0(
       results_folder,
@@ -147,7 +165,18 @@ check_create_results_folder <- function(param_space_name, save_output) {
 #' @family I/O
 load_novel_section <- function(param_space_name,
                                param_set) {
-  results_folder <- file.path("results", param_space_name)
+  if (Sys.getenv("HOSTNAME") == "peregrine.hpc.rug.nl") {
+    setwd("..")
+    setwd("..")
+    results_folder <- file.path(
+      "Projets",
+      "DAISIErobustness",
+      "results",
+      param_space_name
+    )
+  } else {
+    results_folder <- file.path(getwd(), "results")
+  }
   if (!dir.exists(results_folder)) {
     stop(paste0(
       results_folder,
