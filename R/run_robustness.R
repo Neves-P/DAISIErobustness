@@ -30,7 +30,7 @@ run_robustness <- function(param_space_name,
   testit::assert(replicates > 1)
 
   message(paste0("The current working directory is ", getwd(), "."))
-
+  message(paste0("hostname: ", Sys.getenv("HOSTNAME")))
   check_create_results_folder(
     param_space_name = param_space_name,
     save_output = save_output
