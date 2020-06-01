@@ -34,7 +34,6 @@ save_output <- function(output,
   }
 
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    setwd("./../..")
     results_folder <- file.path(
       "Projets",
       "DAISIErobustness",
@@ -126,7 +125,6 @@ check_create_results_folder <- function(param_space_name, save_output) {
     return()
   }
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    setwd("./../..")
     results_folder <- file.path(
       "Projets",
       "DAISIErobustness",
@@ -165,7 +163,6 @@ check_create_results_folder <- function(param_space_name, save_output) {
 load_novel_section <- function(param_space_name,
                                param_set) {
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    setwd("./../..")
     results_folder <- file.path(
       "Projets",
       "DAISIErobustness",
