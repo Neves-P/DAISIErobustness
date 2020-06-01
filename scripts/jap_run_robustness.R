@@ -97,7 +97,8 @@ for (i in seq_len(total_runs)) {
     replicates = 1000,
     pipeline = "analysis",
     save_output = TRUE,
-    replicate_range = replicate_range_list[[i]]
+    replicate_range = replicate_range_list[[i]],
+    load_from_file = TRUE
   )
 }
 
