@@ -164,27 +164,27 @@ check_create_results_folder <- function(param_space_name, save_output) {
 load_novel_section <- function(param_space_name,
                                param_set) {
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    results_folder <- file.path(
+    data_folder <- file.path(
       getwd(),
       "Projects",
       "DAISIErobustness",
-      "results",
+      "data",
       param_space_name
     )
     message("hostname worked")
     message(paste0("wd is: ", getwd()))
   } else {
-    results_folder <- file.path(getwd(), "results")
+    data_folder <- file.path(getwd(), "data")
   }
-  if (!dir.exists(results_folder)) {
+  if (!dir.exists(data_folder)) {
     stop(paste0(
-      results_folder,
+      data_folder,
       " folder not found.\n")
     )
   } else {
-    message(paste0("Found ", results_folder, " folder."))
+    message(paste0("Found ", data_folder, " folder."))
   }
-  found_files <- list.files(path = results_folder)
+  found_files <- list.files(path = data_folder)
   message(paste0("Found ", length(found_files), " files.\n"))
   file_code_to_load <- paste0(
     "novel_",
@@ -197,11 +197,11 @@ load_novel_section <- function(param_space_name,
                                          x = found_files, fixed = TRUE)]
 
   message(paste0("Trying to load ", name_file_to_load, ".\n"))
-  if (!file.exists(file.path(results_folder, name_file_to_load))) {
+  if (!file.exists(file.path(data_folder, name_file_to_load))) {
     stop(paste0("File ", name_file_to_load,  " not found.\n"))
   }
   output <- NULL # Suppress global variable note
-  load(file.path(results_folder, name_file_to_load))
+  load(file.path(data_folder, name_file_to_load))
 
   if (exists(x = "output")) {
     testit::assert(all(c("island_age", "not_present", "stt_all") %in%
