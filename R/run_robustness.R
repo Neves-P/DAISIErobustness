@@ -10,6 +10,7 @@ run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
                            pipeline = "full",
+                           distance_method = "abs",
                            novel_sim = NULL,
                            save_output = TRUE,
                            replicate_range = NULL,
@@ -70,8 +71,9 @@ run_robustness <- function(param_space_name,
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
+      replicate_range = replicate_range,
       sim_pars = sim_pars,
-      replicate_range
+      distance_method = distance_method
     )
   } else if (pipeline == "full") {
     novel_sim <- run_novel_sim(
@@ -83,8 +85,9 @@ run_robustness <- function(param_space_name,
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
+      replicate_range = NULL,
       sim_pars = sim_pars,
-      replicate_range = NULL
+      distance_method = distance_method
     )
     output$novel_sim <- novel_sim
   }

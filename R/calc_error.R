@@ -6,7 +6,8 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_error <- function(sim_1,
                        sim_2,
-                       replicates) {
+                       replicates,
+                       distance_method) {
   spec_error <- list()
   endemic_error <- list()
   nonendemic_error <- list()
@@ -34,7 +35,7 @@ calc_error <- function(sim_1,
         species_number = sim_1_num_spec,
         event_times2 = sim_2_event_times,
         species_number2 = sim_2_num_spec,
-        distance_method = "abs",
+        distance_method = distance_method,
         time_unit = "ago",
         normalize = FALSE
       )
@@ -75,7 +76,7 @@ calc_error <- function(sim_1,
         species_number = sim_1_endemic_spec,
         event_times2 = sim_2_event_times,
         species_number2 = sim_2_endemic_spec,
-        distance_method = "abs",
+        distance_method = distance_method,
         time_unit = "ago",
         normalize = FALSE
       )
@@ -94,7 +95,7 @@ calc_error <- function(sim_1,
         species_number = sim_1_nonendemic_spec,
         event_times2 = sim_2_event_times,
         species_number2 = sim_2_nonendemic_spec,
-        distance_method = "abs",
+        distance_method = distance_method,
         time_unit = "ago",
         normalize = FALSE
       )

@@ -75,6 +75,12 @@
 #' @param load_from_file A boolean for the \code{\link{run_analysis}()} part of
 #'  the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
 #'  loaded from a file, otherwise, the object is retrieved from scope.
+#' @param distance_method From the nLTT package.
+#'  How the difference between the two nLTTs is summed:
+#'  \itemize{
+#'   \item{"abs: "}{the absolute distance between the two nLTTs is summed}
+#'   \item{"squ: "}{the squared distance between the two nLTTs is summed}
+#'  }
 #'
 #' @return Nothing
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
@@ -104,7 +110,8 @@ default_params_doc <- function(
   endemic_baseline_error,
   nonendemic_baseline_error,
   pipeline,
-  load_from_file
+  load_from_file,
+  distance_method
 ) {
   # Nothing
 }

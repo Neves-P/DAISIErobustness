@@ -5,7 +5,7 @@
 \title{Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time}
 \usage{
-calc_error(sim_1, sim_2, replicates)
+calc_error(sim_1, sim_2, replicates, distance_method)
 }
 \arguments{
 \item{sim_1}{A list of simulation output from
@@ -22,6 +22,13 @@ calc_error(sim_1, sim_2, replicates)
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
+
+\item{distance_method}{From the nLTT package.
+How the difference between the two nLTTs is summed:
+\itemize{
+ \item{"abs: "}{the absolute distance between the two nLTTs is summed}
+ \item{"squ: "}{the squared distance between the two nLTTs is summed}
+}}
 }
 \value{
 A list with three error metrics

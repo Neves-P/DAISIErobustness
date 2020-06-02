@@ -7,8 +7,9 @@
 run_analysis <- function(novel_sim,
                          param_space_name,
                          replicates,
+                         replicate_range = NULL,
                          sim_pars,
-                         replicate_range = NULL) {
+                         distance_method) {
   testit::assert(is.character(param_space_name))
   testit::assert(
     "novel_sim must be in the DAISIE simulation output format",
@@ -31,7 +32,7 @@ run_analysis <- function(novel_sim,
     if (!is.null(replicate_range)) {
       novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
     }
-
+    # TODO K -> max(data + 1, 20)
     initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
     initial_parameters_2 <- c(0.9, 1.5, 40, 0.01, 2)
 
@@ -66,6 +67,7 @@ run_analysis <- function(novel_sim,
     )
     if (novel_ml_constraints_1 == TRUE &&
         novel_ml_constraints_2 == TRUE) {
+      # TODO: save also ml_pars onto output
       best_pars <- decide_best_pars(
         ml_res_initpars_1 = novel_ml_1,
         ml_res_initpars_2 = novel_ml_2
@@ -90,7 +92,8 @@ run_analysis <- function(novel_sim,
       error <- calc_error(
         sim_1 = novel_sim,
         sim_2 = oceanic_sim_1,
-        replicates = replicates)
+        replicates = replicates,
+        distance_method = distance_method)
 
       spec_error <- error$spec_error
       endemic_error <- error$endemic_error
@@ -122,7 +125,8 @@ run_analysis <- function(novel_sim,
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
           sim_2 = oceanic_sim_2,
-          replicates = replicates)
+          replicates = replicates,
+          distance_method = distance_method)
 
         spec_baseline_error <- baseline_error$spec_error
         endemic_baseline_error <- baseline_error$endemic_error

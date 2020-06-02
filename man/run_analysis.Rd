@@ -8,8 +8,9 @@ run_analysis(
   novel_sim,
   param_space_name,
   replicates,
+  replicate_range = NULL,
   sim_pars,
-  replicate_range = NULL
+  distance_method
 )
 }
 \arguments{
@@ -29,12 +30,19 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
 
-\item{sim_pars}{A list of simulation parameters.}
-
 \item{replicate_range}{A numeric vector of length 2 or, by default,
 \code{NULL} if the entire range should be used. Specificies the range of
 previously saved replicates from \code{\link{run_novel_sim}()} that should
 be analysed by \code{\link{run_analysis}()}.}
+
+\item{sim_pars}{A list of simulation parameters.}
+
+\item{distance_method}{From the nLTT package.
+How the difference between the two nLTTs is summed:
+\itemize{
+ \item{"abs: "}{the absolute distance between the two nLTTs is summed}
+ \item{"squ: "}{the squared distance between the two nLTTs is summed}
+}}
 }
 \description{
 Run the analysis with ocenanic sims and MLs
