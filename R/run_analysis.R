@@ -32,16 +32,16 @@ run_analysis <- function(novel_sim,
     if (!is.null(replicate_range)) {
       novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
     }
-    # TODO K -> max(data + 1, 20)
-    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
-    initial_parameters_2 <- c(0.9, 1.5, 40, 0.01, 2)
+
+    max_spec_number <- calc_max_spec(novel_sim)
+    k_vector <- max_spec_number + 1
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))
     initial_parameters_2_list <- vector("list", length = length(novel_sim))
 
     for (i in seq_along(novel_sim)) {
-      initial_parameters_1_list[[i]] <- initial_parameters_1
-      initial_parameters_2_list[[i]] <- initial_parameters_2
+      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
+      initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector[i] + 20, 0.01, 2)
     }
 
     novel_ml_1 <- calc_ml(
