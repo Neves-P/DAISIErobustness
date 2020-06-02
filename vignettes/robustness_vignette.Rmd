@@ -52,7 +52,7 @@ run_robustness(
   param_space_name = "nonoceanic",
   param_set = 1,
   replicates = 2,
-  pipeline = "run_analysis",
+  pipeline = "analysis",
   novel_sim = "novel_sim_output/nonoceanic_1.RData",
   save_output = FALSE
 )
