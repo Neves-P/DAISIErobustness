@@ -21,17 +21,18 @@ test_that("run full function", {
       param_space = param_space,
       param_set = param_set)
 
-    novel_sim <- DAISIErobustness:::run_novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates
     )
 
-    novel_ml <- DAISIErobustness:::run_analysis(
+    novel_ml <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      sim_pars = sim_pars
+      sim_pars = sim_pars,
+      distance_method = "abs"
     )
 
     expect_length(novel_ml, 14)
@@ -156,17 +157,18 @@ test_that("run failed sim_constraints", {
       param_space = param_space,
       param_set = param_set)
 
-    novel_sim <- DAISIErobustness:::run_novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates
     )
 
-    novel_ml <- DAISIErobustness:::run_analysis(
+    novel_ml <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      sim_pars = sim_pars
+      sim_pars = sim_pars,
+      distance_method = "abs"
     )
 
     expect_false(novel_ml$sim_constraints)
@@ -195,42 +197,46 @@ test_that("abuse", {
       param_space = param_space,
       param_set = param_set)
 
-    novel_sim <- DAISIErobustness:::run_novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates
     )
 
     expect_error(
-      novel_ml <- DAISIErobustness:::run_analysis(
+      novel_ml <- run_analysis(
         novel_sim = "nonsense",
         param_space_name = param_space_name,
         replicates = replicates,
-        sim_pars = sim_pars
+        sim_pars = sim_pars,
+        distance_method = "abs"
       )
     )
     expect_error(
-      novel_ml <- DAISIErobustness:::run_analysis(
+      novel_ml <- run_analysis(
         novel_sim = novel_sim,
         param_space_name = 123,
         replicates = replicates,
-        sim_pars = sim_pars
+        sim_pars = sim_pars,
+        distance_method = "abs"
       )
     )
     expect_error(
-      novel_ml <- DAISIErobustness:::run_analysis(
+      novel_ml <- run_analysis(
         novel_sim = novel_sim,
         param_space_name = param_space_name,
         replicates = "nonsense",
-        sim_pars = sim_pars
+        sim_pars = sim_pars,
+        distance_method = "abs"
       )
     )
     expect_error(
-      novel_ml <- DAISIErobustness:::run_analysis(
+      novel_ml <- run_analysis(
         novel_sim = novel_sim,
         param_space_name = param_space_name,
         replicates = replicates,
-        sim_pars = "nonsense"
+        sim_pars = "nonsense",
+        distance_method = "abs"
       )
     )
   } else {
