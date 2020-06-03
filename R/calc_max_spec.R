@@ -19,7 +19,7 @@ calc_max_spec <- function(novel_sim) {
     max_spec_clade[n_replicate] <- max(n_spec_clade)
   }
   testit::assert(
-    is.numeric(max_spec_clade) && is.finite(max_spec_clade)
+    is.numeric(max_spec_clade) && all(is.finite(max_spec_clade))
   )
   testit::assert(
     length(max_spec_clade) == length(novel_sim)

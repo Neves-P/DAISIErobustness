@@ -165,7 +165,6 @@ check_calc_error_metrics_input <- function(spec_error,
 calc_ks_distance <- function(vec_1, vec_2) {
   testit::assert(length(vec_1) == length(vec_2))
   testit::assert(is.numeric(vec_1) && is.numeric(vec_2))
-  testit::assert(is.finite(vec_1) && is.finite(vec_2))
 
   vec_1 <- vec_1[!is.na(vec_1)]
   vec_2 <- vec_2[!is.na(vec_2)]
