@@ -19,12 +19,12 @@ Authors@R: c(
            family = "Bilderbeek",
            email = "richel@richelbilderbeek.nl",
            role = c("ctb"),
-           comment = c(ORCID = "0000-0003-1107-7049")))
+           comment = c(ORCID = "0000-0003-1107-7049")),
     person(given = "Rampal S.",
            family = "Etienne",
            email = "r.s.etienne@rug.nl",
            role = c("ctb"),
-           comment = c(ORCID = "0000-0003-2142-7612")))
+           comment = c(ORCID = "0000-0003-2142-7612")),
     person(given = "Luis",
            family = "Valente",
            email = "luis.valente@naturalis.nl",

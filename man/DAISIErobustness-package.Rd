@@ -32,6 +32,8 @@ Authors:
 Other contributors:
 \itemize{
   \item Richèl J.C. Bilderbeek \email{richel@richelbilderbeek.nl} (\href{https://orcid.org/0000-0003-1107-7049}{ORCID}) [contributor]
+  \item Rampal S. Etienne \email{r.s.etienne@rug.nl} (\href{https://orcid.org/0000-0003-2142-7612}{ORCID}) [contributor]
+  \item Luis Valente \email{luis.valente@naturalis.nl} (\href{https://orcid.org/0000-0003-4247-8785}{ORCID}) [contributor]
 }
 
 }
