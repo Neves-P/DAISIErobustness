@@ -18,10 +18,7 @@ test_that("use", {
       "X4" = 4,
       "X5" = 5,
       "X6" = 6
-    ),
-    absolute_loglik_difference = 0,
-    absolute_pars_difference = c(0, 0, 0, 0, 0)
-  ))
+    )))
   expect_equal(object = obtained, expected = expected)
 
   # Fail difference
@@ -43,14 +40,6 @@ test_that("use", {
         "X40" = 40,
         "X50" = 50,
         "X60" = 60
-      ),
-      absolute_loglik_difference = 54,
-      absolute_pars_difference = c(
-        0.40909090909090906,
-        0.28571428571428570,
-        0.21774193548387100,
-        0.17560975609756091,
-        0.14705882352941169
       )
     )
   )
