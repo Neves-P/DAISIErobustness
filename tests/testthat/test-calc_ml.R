@@ -9,17 +9,22 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       param_space_name = "nonoceanic",
       param_space = param_space,
       param_set = 3)
-    model_sim <- run_novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "nonoceanic",
       sim_pars = sim_pars,
       replicates = 2)
-    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
-    initial_parameters_1_list <- vector("list", length = 2)
-    for (i in 1:2) {
-      initial_parameters_1_list[[i]] <- initial_parameters_1
+
+    max_spec_number <- calc_max_spec(novel_sim)
+    k_vector <- max_spec_number + 1
+
+    initial_parameters_1_list <- vector("list", length = length(novel_sim))
+
+    for (i in seq_along(novel_sim)) {
+      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
     }
+
     novel_ml <- calc_ml(
-      sim = model_sim,
+      sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
     expect_equal(novel_ml[[1]]$lambda_c, 0.43133218622172592,
@@ -40,7 +45,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$mu, 5.276461019508552e-14,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 9.1696183189451013,
+    expect_equal(novel_ml[[2]]$K, 18.328842689639863,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$gamma, 0.0070554413141178758,
                  tolerance = 0.01)
@@ -132,20 +137,23 @@ test_that("test calc_ml output is correct for failed convergence", {
       param_space_name = "oceanic_sea_level",
       param_space = param_space,
       param_set = 233)
-    model_sim <- model_sim(
+    novel_sim <- novel_sim(
       param_space_name = "oceanic_sea_level",
       sim_pars = sim_pars,
       replicates = 2)
     sim_constraints <- sim_constraints(
-      sim = model_sim,
+      sim = novel_sim,
       replicates = 2)
-    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
-    initial_parameters_1_list <- vector("list", length = 2)
-    for (i in 1:2) {
-      initial_parameters_1_list[[i]] <- initial_parameters_1
+    max_spec_number <- calc_max_spec(novel_sim)
+    k_vector <- max_spec_number + 1
+
+    initial_parameters_1_list <- vector("list", length = length(novel_sim))
+
+    for (i in seq_along(novel_sim)) {
+      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
     }
     novel_ml <- calc_ml(
-      sim = model_sim,
+      sim = novel_sim,
       initial_parameters = initial_parameters_1_list
     )
     expect_length(novel_ml, 2)
@@ -166,17 +174,20 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       param_space_name = "trait",
       param_space = param_space,
       param_set = 3)
-    model_sim <- run_novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "trait",
       sim_pars = sim_pars,
       replicates = 2)
-    initial_parameters_1 <- c(0.05, 0.05, 20, 0.0001, 0.05)
-    initial_parameters_1_list <- vector("list", length = 2)
-    for (i in 1:2) {
-      initial_parameters_1_list[[i]] <- initial_parameters_1
+    max_spec_number <- calc_max_spec(novel_sim)
+    k_vector <- max_spec_number + 1
+
+    initial_parameters_1_list <- vector("list", length = length(novel_sim))
+
+    for (i in seq_along(novel_sim)) {
+      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
     }
     novel_ml <- calc_ml(
-      sim = model_sim,
+      sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
     expect_equal(novel_ml[[1]]$lambda_c, 0.22621182776277754,
