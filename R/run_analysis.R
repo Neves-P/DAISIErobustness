@@ -41,7 +41,13 @@ run_analysis <- function(novel_sim,
     initial_parameters_2_list <- vector("list", length = length(novel_sim))
 
     for (i in seq_along(novel_sim)) {
-      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector_1[i], 0.0001, 0.05)
+      initial_parameters_1_list[[i]] <- c(
+        0.05,
+        0.05,
+        k_vector_1[i],
+        0.0001,
+        0.05
+      )
       initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector_2[i] + 20, 0.01, 2)
     }
 
