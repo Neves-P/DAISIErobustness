@@ -233,7 +233,6 @@ test_that("test run_novel_sim output is correct for
 
 test_that("test run_novel_sim output is correct for
           trait", {
-  skip("skip to pass check")
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "trait")
