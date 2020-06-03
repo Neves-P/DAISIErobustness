@@ -37,7 +37,9 @@ test_that("test calc_error output is correct", {
     error <- calc_error(
       sim_1 = novel_sim,
       sim_2 = oceanic_sim,
-      replicates = 2)
+      replicates = 2,
+      distance_method = "abs"
+    )
     expect_length(error, 3)
     expect_equal(error$spec_error, list(nltt = c(97.050172082773386,
                                                  90.753117966276150),
