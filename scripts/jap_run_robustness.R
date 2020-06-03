@@ -63,9 +63,6 @@ for (i in seq_len(total_runs)) {
   replicate_range_list[[i]] <- c(1, 200)
 }
 
-# Make params list
-params <- vector("list", total_runs)
-
 # Make indices of each job
 indices <- c(
   seq(nrow(param_space_oceanic_ontogeny)),
@@ -88,6 +85,10 @@ param_space_names <- c(
   rep("nonoceanic_sea_level", nrow(param_space_nonoceanic_sea_level)),
   rep("nonoceanic_land_bridge", nrow(param_space_nonoceanic_land_bridge))
 )
+
+
+# Make params list
+params <- vector("list", total_runs)
 
 # Populate params list with necessary arguments
 for (i in seq_len(total_runs)) {
