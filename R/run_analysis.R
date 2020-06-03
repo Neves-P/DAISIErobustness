@@ -34,7 +34,7 @@ run_analysis <- function(novel_sim,
     }
 
     k_approx <- calc_max_spec(novel_sim)
-    k_vector_1 <- k_approx$max_spec_number + 1
+    k_vector_1 <- k_approx$max_spec_clade + 1
     k_vector_2 <- k_approx$num_island_spec
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))

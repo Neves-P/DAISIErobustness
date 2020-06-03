@@ -15,7 +15,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       replicates = 2)
 
     max_spec_number <- calc_max_spec(novel_sim)
-    k_vector <- max_spec_number + 1
+    k_vector <- max_spec_number$max_spec_clade + 1
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))
 
@@ -145,7 +145,7 @@ test_that("test calc_ml output is correct for failed convergence", {
       sim = novel_sim,
       replicates = 2)
     max_spec_number <- calc_max_spec(novel_sim)
-    k_vector <- max_spec_number + 1
+    k_vector <- max_spec_number$max_spec_clade + 1
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))
 
@@ -179,7 +179,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       sim_pars = sim_pars,
       replicates = 2)
     max_spec_number <- calc_max_spec(novel_sim)
-    k_vector <- max_spec_number + 1
+    k_vector <- max_spec_number$max_spec_clade + 1
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))
 
