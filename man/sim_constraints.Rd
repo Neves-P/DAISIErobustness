@@ -11,7 +11,7 @@ sim_constraints(sim, replicates)
 \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
-\code{DAISIE_sim_trait_dependent()} or other input simulation
+\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()} or other input simulation
 in the DAISIE sim format.}
 
 \item{replicates}{A numeric for the number of replicates for the

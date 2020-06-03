@@ -24,7 +24,7 @@
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
-#'  \code{DAISIE_sim_trait_dependent()} or other input simulation
+#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()} or other input simulation
 #'  in the DAISIE sim format.
 #' @param novel_sim A list of simulation output in the DAISIE simulation format
 #'  for which the robustness against standard oceanic DAISIE is to be
@@ -47,12 +47,12 @@
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#'  \code{DAISIE_sim_trait_dependent()}.
+#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
 #' @param sim_2 A list of simulation output from
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #'  \code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#'  \code{DAISIE_sim_trait_dependent()}.
+#'  \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
 #' @param spec_error A list with three elements each with a numeric
 #'  vector.
 #' @param endemic_error A list with one element with a numeric vector.
