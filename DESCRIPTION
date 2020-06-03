@@ -20,6 +20,16 @@ Authors@R: c(
            email = "richel@richelbilderbeek.nl",
            role = c("ctb"),
            comment = c(ORCID = "0000-0003-1107-7049")))
+    person(given = "Rampal S.",
+           family = "Etienne",
+           email = "r.s.etienne@rug.nl",
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0003-2142-7612")))
+    person(given = "Luis",
+           family = "Valente",
+           email = "luis.valente@naturalis.nl",
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0003-4247-8785")))
 Description: Conducts a robustness test of the island biogeography DAISIE model
     to the effects of geodynamics or trait dependency. Tests processes such as 
     island ontogeny, sea-level change and land-bridge dynamics. 
