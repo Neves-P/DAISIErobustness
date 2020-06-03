@@ -31,7 +31,9 @@ default_params_doc(
   nonendemic_baseline_error,
   pipeline,
   load_from_file,
-  distance_method
+  distance_method,
+  vec_1,
+  vec_2
 )
 }
 \arguments{
@@ -142,6 +144,16 @@ How the difference between the two nLTTs is summed:
  \item{"abs: "}{the absolute distance between the two nLTTs is summed}
  \item{"squ: "}{the squared distance between the two nLTTs is summed}
 }}
+
+\item{vec_1}{A numeric vector. Usually a distribution of nLTT statistics
+or similar vectors as obtained within
+\code{\link{calc_error_metrics}()}. Distance is calculated with
+\code{vec_2}.}
+
+\item{vec_2}{A numeric vector. Usually a distribution of nLTT statistics
+or similar vectors as obtained within
+\code{\link{calc_error_metrics}()}. Distance is calculated with
+\code{vec_1}.}
 }
 \value{
 Nothing
