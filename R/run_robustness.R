@@ -30,9 +30,6 @@ run_robustness <- function(param_space_name,
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
 
-  message(paste0("The current working directory is ", getwd(), "."))
-  setwd("..")
-  message(paste0("The current working directory is ", getwd(), "."))
 
   check_create_results_folder(
     param_space_name = param_space_name,
