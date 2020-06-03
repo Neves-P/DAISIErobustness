@@ -58,23 +58,11 @@ decide_best_pars <- function(ml_res_initpars_1,
                              ml_res_initpars_2) {
   # Initialize variables and set tolerance
   out <- list()
-  absolute_loglik_difference <- c()
-  absolute_pars_difference <- list()
   n_replicates <- length(ml_res_initpars_1)
 
   for (i in seq_len(n_replicates)) {
-    ml_1_trsf_pars <- as.numeric(ml_res_initpars_1[[i]][1:5] /
-                                   (1 + ml_res_initpars_1[[i]][1:5]))
-    ml_1_trsf_pars[which(ml_res_initpars_1[[i]][1:5] == Inf)] <- 1
-
-    ml_2_trsf_pars <- as.numeric(ml_res_initpars_2[[i]][1:5] /
-                                   (1 + ml_res_initpars_2[[i]][1:5]))
-    ml_2_trsf_pars[which(ml_res_initpars_2[[i]][1:5] == Inf)] <- 1
-    absolute_pars_difference[[i]] <- abs(ml_1_trsf_pars - ml_2_trsf_pars)
-
     ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
     ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
-    absolute_loglik_difference[i] <- abs(ml_1_loglik - ml_2_loglik)
     logliks <- c(ml_1_loglik, ml_2_loglik)
     set_with_highest_loglik <- which(max(logliks) == logliks)[1]
     testit::assert(length(set_with_highest_loglik) == 1)
@@ -82,9 +70,7 @@ decide_best_pars <- function(ml_res_initpars_1,
     pars_to_use <- pars_list[[set_with_highest_loglik]]
 
     out[[i]] <- list(
-      pars_to_use = pars_to_use,
-      absolute_loglik_difference = absolute_loglik_difference[i],
-      absolute_pars_difference = absolute_pars_difference[[i]]
+      pars_to_use = pars_to_use
     )
   }
   return(out)

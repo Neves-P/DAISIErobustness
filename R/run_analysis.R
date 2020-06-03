@@ -74,12 +74,6 @@ run_analysis <- function(novel_sim,
       )
 
       novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
-      absolute_loglik_difference <- lapply(best_pars, `[[`, 2) # rearrange
-      absolute_pars_difference <- lapply(best_pars, `[[`, 3) # rearrange
-      novel_ml_qc <- list(
-        absolute_loglik_difference = absolute_loglik_difference,
-        absolute_pars_difference = absolute_pars_difference
-      )
 
       if (param_space_name == "trait") {
         sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
@@ -115,7 +109,6 @@ run_analysis <- function(novel_sim,
         novel_ml = novel_ml,
         oceanic_sim_1 = oceanic_sim_1,
         oceanic_ml = oceanic_ml,
-        novel_ml_qc = novel_ml_qc,
         ml_constraints = ml_constraints,
         sim_constraints = sim_constraints
       )
@@ -156,7 +149,6 @@ run_analysis <- function(novel_sim,
           oceanic_sim_1 = oceanic_sim_1,
           oceanic_ml = oceanic_ml,
           oceanic_sim_2 = oceanic_sim_2,
-          novel_ml_qc = novel_ml_qc,
           ml_constraints = ml_constraints,
           sim_constraints = sim_constraints
         )
