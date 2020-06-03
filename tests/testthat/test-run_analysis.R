@@ -35,7 +35,7 @@ test_that("run full function", {
       distance_method = "abs"
     )
 
-    expect_length(novel_ml, 14)
+    expect_length(novel_ml, 16)
     expect_equal(novel_ml$spec_error, list(nltt = c(52.866483034693012,
                                                     69.540606539802951),
                                          num_spec_error = c(3, 1),
