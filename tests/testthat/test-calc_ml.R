@@ -137,7 +137,7 @@ test_that("test calc_ml output is correct for failed convergence", {
       param_space_name = "oceanic_sea_level",
       param_space = param_space,
       param_set = 233)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "oceanic_sea_level",
       sim_pars = sim_pars,
       replicates = 2)
