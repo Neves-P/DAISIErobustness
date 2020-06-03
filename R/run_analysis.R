@@ -33,15 +33,16 @@ run_analysis <- function(novel_sim,
       novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
     }
 
-    max_spec_number <- calc_max_spec(novel_sim)
-    k_vector <- max_spec_number + 1
+    k_approx <- calc_max_spec(novel_sim)
+    k_vector_1 <- k_approx$max_spec_number + 1
+    k_vector_2 <- k_approx$num_island_spec
 
     initial_parameters_1_list <- vector("list", length = length(novel_sim))
     initial_parameters_2_list <- vector("list", length = length(novel_sim))
 
     for (i in seq_along(novel_sim)) {
-      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
-      initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector[i] + 20, 0.01, 2)
+      initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector_1[i], 0.0001, 0.05)
+      initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector_2[i] + 20, 0.01, 2)
     }
 
     novel_ml_1 <- calc_ml(

@@ -24,8 +24,10 @@ test_that("use", {
   )
 
   expect_silent(calc_max_spec(novel_sim))
-  expect_true(length(calc_max_spec(novel_sim)) == length(novel_sim))
-  expect_equal(calc_max_spec(novel_sim), c(3, 3))
+  expect_true(length(calc_max_spec(novel_sim)[[1]]) == length(novel_sim))
+  expect_true(length(calc_max_spec(novel_sim)[[2]]) == length(novel_sim))
+  expect_equal(calc_max_spec(novel_sim), list(max_spec_clade = c(3, 3),
+                                              num_island_spec = c(23, 24)))
 })
 
 test_that("abuse", {
