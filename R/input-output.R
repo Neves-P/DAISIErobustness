@@ -23,6 +23,7 @@ save_output <- function(output,
       ml_constraints = output$ml_constraints
     )
     if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+
       results_folder <- file.path(
         getwd(),
         "Projects",
@@ -44,6 +45,7 @@ save_output <- function(output,
     )
     testit::assert(is.character(output_file_name))
     if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+
       data_folder <- file.path(
         getwd(),
         "Projects",
@@ -136,6 +138,8 @@ check_create_results_folder <- function(param_space_name, save_output) {
     return()
   }
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+    setwd("..")
+    message(paste0("The current working directory is ", getwd(), "."))
     results_folder <- file.path(
       getwd(),
       "Projects",
@@ -174,6 +178,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
 load_novel_section <- function(param_space_name,
                                param_set) {
   if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+
     data_folder <- file.path(
       getwd(),
       "Projects",
@@ -181,8 +186,6 @@ load_novel_section <- function(param_space_name,
       "data",
       param_space_name
     )
-    message("hostname worked")
-    message(paste0("wd is: ", getwd()))
   } else {
     data_folder <- file.path(getwd(), "data")
   }
