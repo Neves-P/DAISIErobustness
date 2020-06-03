@@ -148,7 +148,7 @@ check_create_results_folder <- function(param_space_name, save_output) {
       param_space_name
     )
   } else {
-    results_folder <- file.path(getwd(), "results")
+    results_folder <- file.path(getwd(), "results", param_space_name)
   }
   if (!dir.exists(results_folder)) {
     message(paste0(
