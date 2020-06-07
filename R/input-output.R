@@ -33,7 +33,7 @@ save_output <- function(output,
       )
       output_file_path <- file.path(results_folder, output_file_name)
     } else {
-      output_file_path <- file.path(getwd(), "results")
+      output_file_path <- file.path(getwd(), "results", output_file_name)
     }
   } else if (pipeline == "novel_sim") {
     output_file_name <- paste0(
@@ -55,7 +55,7 @@ save_output <- function(output,
       )
       output_file_path <- file.path(data_folder, output_file_name)
     } else {
-      output_file_path <- file.path(getwd(), "data")
+      output_file_path <- file.path(getwd(), "data", output_file_name)
     }
   }
   message(
