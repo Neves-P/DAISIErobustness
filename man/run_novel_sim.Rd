@@ -22,14 +22,15 @@ simulations}
 A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{DAISIE_sim_trait_dependent()}.
+\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
 }
 \description{
 Runs DAISIE simulation with a novel model
 }
 \seealso{
-\code{\link{run_analysis}()}.
+\code{\link{run_robustness}()}, \code{\link{run_analysis}()}.
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
+\keyword{Internal}

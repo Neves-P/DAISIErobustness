@@ -27,3 +27,4 @@ Calculate maximum likelihood value for the rates
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
+\keyword{Internal}
