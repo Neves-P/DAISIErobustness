@@ -164,7 +164,6 @@ test_that("test calc_ml output is correct for failed convergence", {
 })
 
 test_that("test calc_ml output is correct with geodynamic sim", {
-  skip("skip to pass check")
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
       || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
@@ -190,31 +189,31 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 0.22621182776277754,
+    expect_equal(novel_ml[[1]]$lambda_c, 0.226250786648358,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$mu, 0.058464519326998241,
+    expect_equal(novel_ml[[1]]$mu, 0.058709082356954,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$K, 0.91965505481096832,
+    expect_equal(novel_ml[[1]]$K, 4.78803754952229,
                  tolerance = 0.5)
-    expect_equal(novel_ml[[1]]$gamma, 0.010012920711030491,
+    expect_equal(novel_ml[[1]]$gamma, 0.0100148510973837,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$lambda_a, 1.9475713116757916,
+    expect_equal(novel_ml[[1]]$lambda_a, 1.94726412724714,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$loglik, -160.47163766316476,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 0.33148549119222032,
+    expect_equal(novel_ml[[2]]$lambda_c, 0.33166353970785,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$mu, 0.50048523283307256,
+    expect_equal(novel_ml[[2]]$mu, 0.501133057620236,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 3.1185396647475461,
+    expect_equal(novel_ml[[2]]$K, 1.70795944253087,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$gamma, 0.016485574458648698,
+    expect_equal(novel_ml[[2]]$gamma, 0.0164947916716611,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.8913559787355273,
+    expect_equal(novel_ml[[2]]$lambda_a, 0.891163442089483,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$loglik, -171.39651156456483,
+    expect_equal(novel_ml[[2]]$loglik, -171.396512836204,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
