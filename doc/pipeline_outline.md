@@ -1,6 +1,4 @@
-
 # DAISIErobustness
-
 DAISIErobustness is an R package for testing of the robustness of the island biogeography model "[DAISIE](https://github.com/rsetienne/DAISIE)" (_Dynamical Assembly of Islands by Speciation, Immigration and Extinction_)  to more complex and potentially more realistic evolutionary models. Different measures of error of number of species, endemics, non-endemics and evolutionary trajectories are used to determine whether the alternative models can influence the inference capabilities of the current DAISIE model.
 
 ## What is DAISIE?
@@ -21,11 +19,11 @@ DAISIErobustness consists of a pipeline designed to measure the error one create
 
 ![Figure 1 - The DAISIErobustness pipeline](https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/scripts/Neves_et_al_2020/figure_1.png) 
 ### Pipeline steps
-1. In its current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this feature. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but simulating 1000 replicates is recommended.
+1. In its current implementation, DAISIErobustness begins by simulating data using a new model (in this case, a geodyanamical or trait dependent model) (Fig. 1.1). Alternatively, the pipeline could run with a set of previously generated data, yet some minor coding adaptations are required on the current version to enable this feature. This would allow the focal model and data to be generated externally, even outside of an R environment. Ideally, one would generate many replicates per set of generating parameters. This pipeline supports a **minimum** of 2 replicates per generating parameter set, but simulating 1000 replicates is recommended.
 Note that one can select from a number of implemented geodynamics simulations. See Appendices for more information.
-2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE output, please see the output of the function `calc_geodynamics()` in DAISIErobustness or `DAISIE_sim()` in the DAISIE package.
+2. Data is formatted to the DAISIE format, which requires reconstructed phylogenetic information (_sensu_ Nee et al. 1994), under the form of branching times. For an example of acceptable DAISIE output, please see the output of the function `run_robustness()` with the argument `pipeline = novel_sim` in DAISIErobustness or `DAISIE_sim()` in the DAISIE package.
 3. The DAISIE likelihood inference routine is applied to the previously generated or supplied data (Fig 1.2). This results in a set of likelihood estimated parameters and log-ikelihood for each of the replicates generated in steps 1-2. Note that this estimation procedure is entirely blind to whichever new processes were introduced to generate the initial data.
-4. A new set of simulations is ran. The generating parameters of these simulations are the estimates obtained in step 4, and one replicate is simulated per set of generating parameters. These simulations **do not** include any of the realistic features that characterize the simulations in step 1, but instead are a set standard oceanic DAISIE simulations and follow the same model as the inference procedure. At this stage, the error, _E_ (dashed line in Fig. 1), introduced by using an estimation model (step 4) that does not match the generating model (step 1) can be computed. This error is obtained by comparing the generating data (Fig 1.1) with the data obained in step 4. See Appendices for description of error metrics computed.
+4. A new set of simulations is ran. The generating parameters of these simulations are the estimates obtained in step 4, and one replicate is simulated per set of generating parameters. These simulations **do not** include any of the realistic features that characterize the simulations in step 1, but instead are a set standard oceanic DAISIE simulations and follow the same model as the inference procedure. At this stage, the error, _E_ (dashed line in Fig. 1), introduced by using an estimation model (step 4) that does not match the generating model (step 1) can be computed. This error is obtained by comparing the generating data (Fig 1.1) with the data obtained in step 4. See Appendices for description of error metrics computed.
 5. As in step 3, each resulting simulation is taken only as a reconstructed phylogeny (more precisely, as branching times and endemic status through time).
 6. Similarly to step 3, likelihood estimation is performed in each simulation resulting from step 5.
 7. As in step 4, each obtained set of parameter estimates is used to simulate a standard, oceanic DAISIE data set. The pairwise baseline error, _E<sub>B</sub>_, (dashed line in Figure 1) is computed between the simulations obtained in steps 4 and 7. The baseline error corresponds to the error inherent in the parameter estimation procedure, and the stochasticity of the simulations. The same metrics as in step 4 are obtained, see Appendices for more information.
@@ -38,12 +36,13 @@ The already available models can easily be run by calling the main function `run
 * Oceanic ontogeny: `oceanic_ontogeny`
 * Oceanic ontogeny with sea-level changes: `oceanic_ontogeny_sea_level`
 * Oceanic with sea-leve changes: `oceanic_sea_level`
+* Trait dependcy:  `trait`
 
-The codes in monospaced font serve as arguments for the `run_robustness()` function. Then, the corresponding csv parameter space is read from the GitHub repository to the function scope, so that the pipeline can begin.
+The codes in mono-spaced font serve as arguments for the `run_robustness()` function. Then, the corresponding csv parameter space is read from the GitHub repository to the function scope, so that the pipeline can begin.
 
-### Loading a new parameter set onto DAISIE
+### Loading a new parameter set onto DAISIErobustness
 
-The currently implemented DAISIE parameter sets are stored in the folder mentioned in the previous section. the easiest way to run additional parameter sets using the current geodynamics simulations is to fork this repository and change or upload new files to the `/data` folder. Do note that if this is done, the `load_param_space()` function should be changed so that the domain URL reflects the user's fork.
+The currently implemented DAISIE parameter sets are stored in the folder mentioned in the previous section. The easiest way to run additional parameter sets using the current geodynamics simulations is to fork this repository and change or upload new files to the `/data` folder. Do note that if this is done, the `load_param_space()` function should be changed so that the domain URL reflects the user's fork.
 
 An example of an edited `load_param_space()` function to run of a fork owned by joshwlambert:
 
@@ -59,6 +58,9 @@ load_param_space <- function(param_space_name) {
 }
 ```
 `load_param_space()` should now read the correct files from the folder in the fork at the joshwlambert account.
+
+### Using a different generating model
+TBC, maybe break into another page
 
 ### Example pipeline for oceanic ontogeny 
 ````r
@@ -87,7 +89,6 @@ The following results are used to determine the error between models:
 * The difference at the end of the simulation of the number of species, endemic and nonendemic species.
 
 These metrics are then aggregated between all replicates of a given parameter space in the following way:
-* The Kolmogorov-Smirnov distance between all nLTTs
 * Mean and standard deviation in the difference of all nLTTs
 * Mean and standard deviation of number of species, endemics and nonendemics
 
@@ -97,16 +98,16 @@ Given the stochastic nature of the simulation models, and that given the very na
 
 #### Simulation constraints
 
-To ensure that appropriate data is simulated by the model in study, i.e. the data has enough phylogenetic information but is not so large as to become unwieldy and unrealistic simulations are constrainted in total number of species and total number of colonising lineages. These constraints are computed by `sim_constraints()`.
+To ensure that appropriate data is simulated by the model in study, i.e. the data has enough phylogenetic information but is not so large as to become unwieldy and unrealistic simulations are constrained in total number of species and total number of colonising lineages. These constraints are computed by `sim_constraints()`.
 
 The currently implemented constraints for the simulations are:
 * Proportion of replicates with 15 or more species must be > 95%
-* Proportion of replciates with 5 or more colonizations (independent lineages) must be > 95%
+* Proportion of replicates with 5 or more colonizations (independent lineages) must be > 95%
 * Proportion of replicates with 100 or less species must be < 95%
 
 #### ML constraints
 
-As occasionally the MLE routine may crash or not converge, we also restrict the the pipeline on the number of successful parameter estimations. These constraints are checked by `ml_constraints()`. A parameter set will be skipped if more than 1% of the MLE runs crashed or failed to converge. **development note: for setup purposes, at the moment the pipeline will as soon as one MLE fails**
+As occasionally the MLE routine may crash or not converge, we also restrict the the pipeline on the number of successful parameter estimations. These constraints are checked by `ml_constraints()`. A parameter set will be skipped if any of the MLE runs crashed or failed to converge.
 
 ### University of Groningen Peregrine HPCC integration
 
