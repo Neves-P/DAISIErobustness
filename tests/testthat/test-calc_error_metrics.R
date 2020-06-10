@@ -29,9 +29,6 @@ test_that("test calc_error_metrics output is correct when all error
   expect_equal(error_metrics$spec_nltt_sd_diff, 0)
   expect_equal(error_metrics$endemic_nltt_sd_diff, 0)
   expect_equal(error_metrics$nonendemic_nltt_sd_diff, 0)
-  expect_equal(error_metrics$spec_nltt_ks_dist, 0)
-  expect_equal(error_metrics$endemic_nltt_ks_dist, 0)
-  expect_equal(error_metrics$nonendemic_nltt_ks_dist, 0)
 })
 
 test_that("test calc_error_metrics output is correct when all error
@@ -63,9 +60,6 @@ test_that("test calc_error_metrics output is correct when all error
   expect_true(error_metrics$spec_nltt_sd_diff != 0)
   expect_true(error_metrics$endemic_nltt_sd_diff != 0)
   expect_true(error_metrics$nonendemic_nltt_sd_diff != 0)
-  expect_true(error_metrics$spec_nltt_ks_dist != 0)
-  expect_true(error_metrics$endemic_nltt_ks_dist != 0)
-  expect_true(error_metrics$nonendemic_nltt_ks_dist != 0)
 })
 
 test_that("test calc_error_metrics output is correct when error vectors
@@ -97,7 +91,4 @@ test_that("test calc_error_metrics output is correct when error vectors
   expect_true(error_metrics$spec_nltt_sd_diff != 0)
   expect_true(error_metrics$endemic_nltt_sd_diff != 0)
   expect_true(error_metrics$nonendemic_nltt_sd_diff != 0)
-  expect_true(error_metrics$spec_nltt_ks_dist != 0)
-  expect_true(error_metrics$endemic_nltt_ks_dist != 0)
-  expect_true(error_metrics$nonendemic_nltt_ks_dist != 0)
 })

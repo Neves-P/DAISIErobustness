@@ -75,7 +75,7 @@ run_analysis <- function(novel_sim,
     )
     if (novel_ml_constraints_1 == TRUE &&
         novel_ml_constraints_2 == TRUE) {
-      # TODO: save also ml_pars onto output
+
       best_pars <- decide_best_pars(
         ml_res_initpars_1 = novel_ml_1,
         ml_res_initpars_2 = novel_ml_2

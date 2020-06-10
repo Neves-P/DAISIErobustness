@@ -36,14 +36,6 @@ a list of numerics
 \description{
 Calculates metrics between error and baseline error distributions
 }
-\references{
-Kolmogorov, A. (1933) Sulla determinazione empirica di una
-legge di distribuzionc, 1st. Ital. Attuari. G.. 4, 1–11.
-
-Razali and Wah (2011) "Power comparisons of shapiro-wilk,
-kolmogorov-smirnov, lilliefors and anderson-darling tests"
-Journal of Statistical Modeling and Analytics 2, 21-33.
-}
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
