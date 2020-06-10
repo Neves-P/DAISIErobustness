@@ -68,10 +68,7 @@ test_that("run full function", {
                       nonendemic_nltt_mean_diff = 3.53815708730025,
                       spec_nltt_sd_diff = 9.65517603435626,
                       endemic_nltt_sd_diff = 0.0523348020541872,
-                      nonendemic_nltt_sd_diff = 3.68284485227723,
-                      spec_nltt_ks_dist = 0.0134823709734259,
-                      endemic_nltt_ks_dist = 0.0947823929485676,
-                      nonendemic_nltt_ks_dist = 0.0709766025852058),
+                      nonendemic_nltt_sd_diff = 3.68284485227723),
                  tolerance = 0.2)
     expect_equal(novel_ml$novel_ml,
                  list(data.frame("lambda_c" = 0.404207964874951,

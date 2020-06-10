@@ -44,10 +44,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                         nonendemic_nltt_mean_diff = 3.53815708730025,
                         spec_nltt_sd_diff = 9.65517603435626,
                         endemic_nltt_sd_diff = 0.0523348020541872,
-                        nonendemic_nltt_sd_diff = 3.68284485227723,
-                        spec_nltt_ks_dist = 0.0134823709734259,
-                        endemic_nltt_ks_dist = 0.0947823929485676,
-                        nonendemic_nltt_ks_dist = 0.0709766025852058),
+                        nonendemic_nltt_sd_diff = 3.68284485227723),
                    tolerance = 0.2)
       expect_length(errors$novel_sim, 2)
       expect_length(errors$novel_sim[[1]][[1]], 17)
