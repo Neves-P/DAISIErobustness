@@ -30,7 +30,7 @@ plot_error_dists <- function(output_file,
       ggplot2::geom_histogram(binwidth = 1,
                               alpha = 0.5,
                               position = "identity",
-                              color="black") +
+                              color = "black") +
       ggplot2::theme_bw() +
       ggplot2::ylab("count") +
       ggplot2::xlab("Error")
