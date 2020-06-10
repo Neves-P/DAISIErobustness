@@ -2,7 +2,6 @@
 
 export(extract_param_set)
 export(load_param_space)
-export(oceanic_sim)
 export(run_robustness)
 importFrom(stats,na.omit)
 importFrom(stats,sd)
