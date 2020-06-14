@@ -62,15 +62,11 @@ test_that("test run_novel_sim output is correct for
                c(2.55, 0.0056398026406196998))
   expect_equal(novel_sim[[1]][[1]][[2]]$stac, 4)
   expect_equal(novel_sim[[1]][[1]][[2]]$missing_species, 0)
-  expect_length(novel_sim[[2]][[1]], 2)
+  expect_length(novel_sim[[2]][[1]], 1)
   expect_equal(novel_sim[[2]][[1]][[1]]$island_age, 2.55)
   expect_equal(novel_sim[[2]][[1]][[1]]$not_present, 1000)
   expect_equal(nrow(novel_sim[[2]][[1]][[1]]$stt_all), 299)
   expect_equal(ncol(novel_sim[[2]][[1]][[1]]$stt_all), 5)
-  expect_equal(novel_sim[[2]][[1]][[2]]$branching_times,
-               c(2.55))
-  expect_equal(novel_sim[[2]][[1]][[2]]$stac, 0)
-  expect_equal(novel_sim[[2]][[1]][[2]]$missing_species, 0)
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
