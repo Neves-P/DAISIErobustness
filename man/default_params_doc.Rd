@@ -153,7 +153,8 @@ or similar vectors as obtained within
 \item{vec_2}{A numeric vector. Usually a distribution of nLTT statistics
 or similar vectors as obtained within
 \code{\link{calc_error_metrics}()}. Distance is calculated with
-\code{vec_1}.}
+\code{vec_1}.
+@noRd}
 }
 \value{
 Nothing

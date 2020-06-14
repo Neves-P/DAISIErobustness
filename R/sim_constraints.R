@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @keywords Internal
+#' @keywords internal
 #' @return Logical TRUE if criteria are met, FALSE if not.
 sim_constraints <- function(sim,
                             replicates) {

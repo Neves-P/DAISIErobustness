@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @keywords Internal
+#' @keywords internal
 #' @seealso \code{\link{run_novel_sim}()}, \code{\link{run_robustness}()}.
 run_analysis <- function(novel_sim,
                          param_space_name,

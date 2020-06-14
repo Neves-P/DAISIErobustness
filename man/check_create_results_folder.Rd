@@ -32,4 +32,4 @@ Other I/O:
 Joshua Lambert, Pedro Neves, Shu Xie
 }
 \concept{I/O}
-\keyword{Internal}
+\keyword{internal}

@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #' @return Output from \code{\link[DAISIE]{DAISIE_ML}()}
 #' @importFrom utils capture.output
-#' @keywords Internal
+#' @keywords internal
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim, initial_parameters) {
   ml <- list()

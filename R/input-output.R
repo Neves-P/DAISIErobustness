@@ -83,7 +83,7 @@ save_output <- function(output,
 #'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @family I/O
-#' @keywords Internal
+#' @keywords internal
 #' @examples
 #' testit::assert(
 #'   DAISIErobustness:::create_output_file_name(
@@ -129,7 +129,7 @@ create_output_file_name <- function(param_space_name,
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return Helpful messages with info on folder status. Tries to create
 #'   folder if needed.
-#' @keywords Internal
+#' @keywords internal
 #' @family I/O
 check_create_results_folder <- function(param_space_name, save_output) {
 

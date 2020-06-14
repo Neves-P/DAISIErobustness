@@ -53,4 +53,4 @@ Run the analysis with ocenanic sims and MLs
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
-\keyword{Internal}
+\keyword{internal}

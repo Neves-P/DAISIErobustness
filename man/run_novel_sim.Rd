@@ -33,4 +33,4 @@ Runs DAISIE simulation with a novel model
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
-\keyword{Internal}
+\keyword{internal}

@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @keywords Internal
+#' @keywords internal
 #' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or

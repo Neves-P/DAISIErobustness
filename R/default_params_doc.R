@@ -89,6 +89,7 @@
 #'  or similar vectors as obtained within
 #'  \code{\link{calc_error_metrics}()}. Distance is calculated with
 #'  \code{vec_1}.
+#'  @noRd
 #'
 #' @return Nothing
 #' @author Joshua Lambert, Pedro Neves, Shu Xie

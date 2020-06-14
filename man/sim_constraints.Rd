@@ -26,4 +26,4 @@ Checks if the simulations meet the criteria for data sample size
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
 }
-\keyword{Internal}
+\keyword{internal}
