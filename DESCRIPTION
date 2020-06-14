@@ -44,16 +44,16 @@ Suggests:
     lintr,
     knitr,
     rmarkdown
-URL: https://github.com/Neves-P/DAISIErobustness
-BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 Imports: 
-    DAISIE,
+    DAISIE (>= 3.0.0),
     nLTT,
     readr,
     testit
 Remotes:
-    rsetienne/DAISIE@geodynamics-traits,
+    rsetienne/DAISIE@develop,
     thijsjanzen/nltt,
     Giappo/jap
+URL: https://github.com/Neves-P/DAISIErobustness
+BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
