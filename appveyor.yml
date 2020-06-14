@@ -21,7 +21,7 @@ environment:
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh install_github rsetienne/DAISIE@geodynamics-traits
+  - travis-tool.sh install_github rsetienne/DAISIE@develop
 
 # Adapt as necessary starting from here
 
