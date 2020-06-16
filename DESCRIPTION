@@ -50,7 +50,7 @@ Imports:
     readr,
     testit
 Remotes:
-    rsetienne/DAISIE@develop,
+    rsetienne/DAISIE@66746c7,
     thijsjanzen/nltt,
     Giappo/jap@stable-robustness
 URL: https://github.com/Neves-P/DAISIErobustness
