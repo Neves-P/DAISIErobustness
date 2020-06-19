@@ -204,7 +204,7 @@ load_novel_section <- function(param_space_name,
     param_space_name,
     "_param_set_",
     param_set,
-    ".Rdata"
+    ".RData"
   )
   name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
                                          x = found_files, fixed = TRUE)]
