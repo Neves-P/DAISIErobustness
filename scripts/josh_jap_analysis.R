@@ -1,14 +1,6 @@
 # Template for the geodynamics study nonoceanic has already ran
 ## First load up all the parameter spaces in the study
 
-
-#### nonoceanic
-param_space_name_nonoceanic <- "nonoceanic"
-# Create params for the experiment
-param_space_nonoceanic <- DAISIErobustness::load_param_space(
-  param_space_name = param_space_name_nonoceanic
-)
-
 #### nonoceanic_sea_level
 param_space_name_nonoceanic_sea_level <- "nonoceanic_sea_level"
 # Create params for the experiment
@@ -16,18 +8,8 @@ param_space_nonoceanic_sea_level <- DAISIErobustness::load_param_space(
   param_space_name = param_space_name_nonoceanic_sea_level
 )
 
-#### oceanic_sea_level
-param_space_name_nonoceanic_land_bridge <- "nonoceanic_land_bridge"
-# Create params for the experiment
-param_space_nonoceanic_land_bridge <- DAISIErobustness::load_param_space(
-  param_space_name = param_space_name_nonoceanic_land_bridge
-)
-
 ## Calculate number of jobs to run
-total_runs <- nrow(param_space_nonoceanic) +
-  nrow(param_space_nonoceanic_sea_level) +
-  nrow(param_space_nonoceanic_land_bridge)
-
+total_runs <- nrow(param_space_nonoceanic_sea_level)
 
 # Make replicate_range vectors
 ## Run 1:200 batch
@@ -39,16 +21,12 @@ for (i in seq_len(total_runs)) {
 
 # Make indices of each job
 indices <- c(
-  seq(nrow(param_space_nonoceanic)),
-  seq(nrow(param_space_nonoceanic_sea_level)),
-  seq(nrow(param_space_nonoceanic_land_bridge))
+  seq(nrow(param_space_nonoceanic_sea_level))
 )
 
 # Assign a param_space_name to each job
 param_space_names <- c(
-  rep("nonoceanic", nrow(param_space_nonoceanic)),
-  rep("nonoceanic_sea_level", nrow(param_space_nonoceanic_sea_level)),
-  rep("nonoceanic_land_bridge", nrow(param_space_nonoceanic_land_bridge))
+  rep("nonoceanic_sea_level", nrow(param_space_nonoceanic_sea_level))
 )
 
 
