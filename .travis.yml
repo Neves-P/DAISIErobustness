@@ -28,6 +28,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr update --self; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install imagemagick; fi
 
 script:
   - travis_wait 30 R CMD build .
