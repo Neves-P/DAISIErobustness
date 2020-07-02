@@ -107,7 +107,7 @@ create_output_file_name <- function(param_space_name,
       ".RData"
     )
 
-  } else if (sim_constraints == TRUE && ml_constraints == TRUE) {
+  } else {
 
     output_file_name <- paste0(
       "passed_cond_",
