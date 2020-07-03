@@ -34,7 +34,7 @@ run_analysis <- function(novel_sim,
       novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
     }
 
-    k_approx <- calc_max_spec(novel_sim)
+    k_approx <- calc_max_spec(novel_sim) # nolint
     k_vector_1 <- k_approx$max_spec_clade + 1
     k_vector_2 <- k_approx$num_island_spec
 
