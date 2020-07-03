@@ -50,8 +50,10 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("Temporary skip")
   param_space_name <- "oceanic_ontogeny"
+  param_set <- 1
+  sim_constraints <- NULL
+  ml_constraints <- NULL
 
   expect_error(
     create_output_file_name(
