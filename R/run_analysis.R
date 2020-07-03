@@ -66,12 +66,16 @@ run_analysis <- function(novel_sim,
       ml = novel_ml_1)
 
     novel_ml_constraints_2 <- ml_constraints(
-      ml = novel_ml_2)
+      ml = novel_ml_2
+    )
 
+    # ml_constraints defaults to FALSE and is replaced later if either
+    # ml_constraints_1 and ml_constraints_2 is FALSE
     output <- list(
       novel_ml_1 = novel_ml_1,
       novel_ml_2 = novel_ml_2,
-      sim_constraints = sim_constraints
+      sim_constraints = sim_constraints,
+      ml_constraints = FALSE
     )
     if (novel_ml_constraints_1 == TRUE &&
         novel_ml_constraints_2 == TRUE) {
