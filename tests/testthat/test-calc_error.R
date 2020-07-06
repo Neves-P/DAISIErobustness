@@ -83,4 +83,3 @@ test_that("test calc_error output is correct when failed convergence", {
     expect_equal(error$endemic_error, list("ML didn't converge"))
     expect_equal(error$nonendemic_error, list("ML didn't converge"))
 })
-
