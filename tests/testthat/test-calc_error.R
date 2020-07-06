@@ -53,3 +53,34 @@ test_that("test calc_error output is correct", {
     skip("Run only on TRAVIS or AppVeyor")
   }
 })
+
+test_that("test calc_error output is correct when failed convergence", {
+    param_space <- load_param_space(
+      param_space_name = "nonoceanic")
+    set.seed(1)
+    sim_pars <- extract_param_set(
+      param_space_name = "nonoceanic",
+      param_space = param_space,
+      param_set = 244)
+    novel_sim <- run_novel_sim(
+      param_space_name = "nonoceanic",
+      sim_pars = sim_pars,
+      replicates = 1)
+    # Mimic a failed ML run
+    novel_ml <- list("ML didn't converge")
+    novel_ml <- list(novel_ml)
+    oceanic_sim <- oceanic_sim(
+      ml = novel_ml[[1]],
+      sim_pars = sim_pars)
+    error <- calc_error(
+      sim_1 = novel_sim,
+      sim_2 = oceanic_sim,
+      replicates = 2,
+      distance_method = "abs"
+    )
+    expect_length(error, 3)
+    expect_equal(error$spec_error, list("ML didn't converge"))
+    expect_equal(error$endemic_error, list("ML didn't converge"))
+    expect_equal(error$nonendemic_error, list("ML didn't converge"))
+})
+
