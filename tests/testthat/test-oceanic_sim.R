@@ -46,7 +46,11 @@ test_that("test oceanic sim output is correct", {
 
 
 test_that("test oceanic sim returns string in failed ML", {
-  load("inst/extdata/passed_cond_nonoceanic_param_set_244.RData")
+  load(system.file(
+    "extdata",
+    "passed_cond_nonoceanic_param_set_244.RData",
+    package = "DAISIErobustness"
+  ))
   param_space <- load_param_space(param_space_name = "nonoceanic")
   sim_pars <- extract_param_set(
     param_space_name = "nonceanic",
