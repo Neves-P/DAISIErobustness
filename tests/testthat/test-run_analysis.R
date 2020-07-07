@@ -44,8 +44,8 @@ test_that("run full function", {
     expect_equal(novel_ml$endemic_error, list(nltt = c(27.781149320114856,
                                                        10.441288792652346)),
                  tolerance = 0.2)
-    expect_equal(novel_ml$nonendemic_error, list(nltt = c(12.22276273470610,
-                                                          3.40199020751629)),
+    expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.4741610710417001,
+                                                          14.1591733521834033)),
                  tolerance = 0.5)
     expect_equal(novel_ml$spec_baseline_error, list(nltt = c(6.2306180560764322,
                                                              12.0647872734570285),
