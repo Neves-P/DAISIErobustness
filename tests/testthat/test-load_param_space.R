@@ -214,4 +214,3 @@ test_that("test load_param_space loads trait parameter space", {
   expect_true(is.numeric(trait[[13]]))
   expect_true(is.numeric(trait[[14]]))
 })
-
