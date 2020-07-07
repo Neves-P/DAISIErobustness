@@ -20,8 +20,8 @@ test_that("run_robustness output is correct when save_output = FALSE and
       expect_equal(errors$endemic_error, list(nltt = c(27.781149320114856,
                                                        10.441288792652346)),
                    tolerance = 0.2)
-      expect_equal(errors$nonendemic_error, list(nltt = c(12.22276273470610,
-                                                          3.40199020751629)),
+      expect_equal(errors$nonendemic_error, list(nltt = c(5.474161,
+                                                          14.159173)),
                    tolerance = 0.2)
       expect_equal(errors$spec_baseline_error, list(nltt = c(6.2306180560764322,
                                                              12.0647872734570285),
@@ -85,42 +85,42 @@ test_that("run_robustness output is correct when save_output = FALSE and
                    tolerance = 0.2)
       # oceanic_sim_1 reference
       expect_length(errors$oceanic_sim_1, 2)
-      expect_length(errors$oceanic_sim_1[[1]][[1]], 19)
+      expect_length(errors$oceanic_sim_1[[1]][[1]], 16)
       expect_equal(errors$oceanic_sim_1[[1]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$oceanic_sim_1[[1]][[1]][[1]]$not_present, 982)
-      expect_equal(nrow(errors$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 57)
+      expect_equal(errors$oceanic_sim_1[[1]][[1]][[1]]$not_present, 985)
+      expect_equal(nrow(errors$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 35)
       expect_equal(ncol(errors$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$oceanic_sim_1[[1]][[1]][[2]]$branching_times,
-                   c(2.55, 1.7544713646484400))
+                   c(2.55, 1.1353805850668000))
       expect_equal(errors$oceanic_sim_1[[1]][[1]][[2]]$stac, 4)
       expect_equal(errors$oceanic_sim_1[[1]][[1]][[2]]$missing_species, 0)
-      expect_length(errors$oceanic_sim_1[[2]][[1]], 25)
+      expect_length(errors$oceanic_sim_1[[2]][[1]], 32)
       expect_equal(errors$oceanic_sim_1[[2]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$oceanic_sim_1[[2]][[1]][[1]]$not_present, 976)
-      expect_equal(nrow(errors$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 50)
+      expect_equal(errors$oceanic_sim_1[[2]][[1]][[1]]$not_present, 969)
+      expect_equal(nrow(errors$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 89)
       expect_equal(ncol(errors$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$oceanic_sim_1[[2]][[1]][[2]]$branching_times,
-                   c(2.55, 1.81414019300293, 0.76025389622326))
+                   c(2.55, 1.8697158939590199))
       expect_equal(errors$oceanic_sim_1[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$oceanic_sim_1[[2]][[1]][[2]]$missing_species, 0)
       # oceanic_sim_2 reference
       expect_length(errors$oceanic_sim_2, 2)
-      expect_length(errors$oceanic_sim_2[[1]][[1]], 23)
+      expect_length(errors$oceanic_sim_2[[1]][[1]], 20)
       expect_equal(errors$oceanic_sim_2[[1]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$oceanic_sim_2[[1]][[1]][[1]]$not_present, 978)
-      expect_equal(nrow(errors$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 71)
+      expect_equal(errors$oceanic_sim_2[[1]][[1]][[1]]$not_present, 981)
+      expect_equal(nrow(errors$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 50)
       expect_equal(ncol(errors$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$oceanic_sim_2[[1]][[1]][[2]]$branching_times,
-                   c(2.55, 0.0384183984947399))
+                   c(2.55, 0.44591226744999002))
       expect_equal(errors$oceanic_sim_2[[1]][[1]][[2]]$stac, 4)
       expect_equal(errors$oceanic_sim_2[[1]][[1]][[2]]$missing_species, 0)
-      expect_length(errors$oceanic_sim_2[[2]][[1]], 33)
+      expect_length(errors$oceanic_sim_2[[2]][[1]], 39)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$oceanic_sim_2[[2]][[1]][[1]]$not_present, 968)
-      expect_equal(nrow(errors$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 75)
+      expect_equal(errors$oceanic_sim_2[[2]][[1]][[1]]$not_present, 962)
+      expect_equal(nrow(errors$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 106)
       expect_equal(ncol(errors$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$branching_times,
-                   c(2.55, 0.41121831296916))
+                   c(2.55, 0.80577967734552003))
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
