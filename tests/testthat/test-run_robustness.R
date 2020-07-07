@@ -69,7 +69,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
       expect_equal(errors$novel_sim[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$novel_ml,
                    list(data.frame("lambda_c" = 0.23912273801051481,
-                                   "mu" = 0.24385478076483247 ,
+                                   "mu" = 0.24385478076483247,
                                    "K" = 2.7934254388614228,
                                    "gamma" = 0.0090869116405250423,
                                    "lambda_a" = 0.73853172597597438,
@@ -78,7 +78,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                    "conv" = 0),
                         data.frame("lambda_c" = 0.24420632616026083,
                                    "mu" = 0.42524208522712609,
-                                   "K" = 1.2231040909412574 ,
+                                   "K" = 1.2231040909412574,
                                    "gamma" = 0.012675787360822477,
                                    "lambda_a" = 0.8599879726471561,
                                    "loglik" = -147.52903816158667,

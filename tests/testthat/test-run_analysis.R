@@ -47,11 +47,12 @@ test_that("run full function", {
     expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.4741610710417001,
                                                           14.1591733521834033)),
                  tolerance = 0.5)
-    expect_equal(novel_ml$spec_baseline_error, list(nltt = c(6.2306180560764322,
-                                                             12.0647872734570285),
-                                                  num_spec_error = c(0, 6),
-                                                  num_col_error = c(4, 7)),
-                 tolerance = 0.2)
+    expect_equal(novel_ml$spec_baseline_error, list(
+      nltt = c(6.2306180560764322,
+               12.0647872734570285),
+      num_spec_error = c(0, 6),
+      num_col_error = c(4, 7)),
+      tolerance = 0.2)
     expect_equal(novel_ml$endemic_baseline_error,
                  list(nltt = c(3.1439813769708422, 3.5658758943827520)),
                  tolerance = 0.2)
