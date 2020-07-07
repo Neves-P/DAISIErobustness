@@ -27,31 +27,31 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 0.43133218622172592,
+    expect_equal(novel_ml[[1]]$lambda_c, 0.15978278356484077,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$mu, 0.47544751871514929,
+    expect_equal(novel_ml[[1]]$mu, 1.970403739051638,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$K, 2.4734319727446046,
+    expect_equal(novel_ml[[1]]$K, 4.7720297221764669,
                  tolerance = 0.5)
-    expect_equal(novel_ml[[1]]$gamma, 0.010892277621235229,
+    expect_equal(novel_ml[[1]]$gamma, 0.017148740281477039,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$lambda_a, 0.31482039706639625,
+    expect_equal(novel_ml[[1]]$lambda_a, 1.7722392012891294e-06,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$loglik, -128.43439274552915,
+    expect_equal(novel_ml[[1]]$loglik, -57.047195109432728,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 0.16393815461807157,
+    expect_equal(novel_ml[[2]]$lambda_c, 0.18764257459852859,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$mu, 5.276461019508552e-14,
+    expect_equal(novel_ml[[2]]$mu, 0.67315832908331541,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 18.328842689639863,
+    expect_equal(novel_ml[[2]]$K, 1.3962966088757534,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$gamma, 0.0070554413141178758,
+    expect_equal(novel_ml[[2]]$gamma, 0.0069658226588260709,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.90221495126646489,
+    expect_equal(novel_ml[[2]]$lambda_a, 0.4017258845888837,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$loglik, -128.95098882594851,
+    expect_equal(novel_ml[[2]]$loglik, -65.65199950519667,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
@@ -163,7 +163,7 @@ test_that("test calc_ml output is correct for failed convergence", {
   }
 })
 
-test_that("test calc_ml output is correct with geodynamic sim", {
+test_that("test calc_ml output is correct with traits sim", {
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
       || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
@@ -217,6 +217,33 @@ test_that("test calc_ml output is correct with geodynamic sim", {
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
+  } else {
+    skip("Run only on TRAVIS and AppVeyor")
+  }
+})
+
+test_that("test calc_ml output is correct when convergence fails", {
+  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
+      || Sys.getenv("APPVEYOR") != "") {
+    skip("WIP - Find failing convergence")
+    load("inst/extdata/failed_sim_nonoceanic_244_rep_93.RData")
+    # DAISIErobustness has one extra list (replicate level) which must be
+    # added here
+    out <- list(out) # nolint
+
+    k_approx <- calc_max_spec(out_1) # nolint
+    max_spec_number <- calc_max_spec(out_1)
+    k_vector_2 <- k_approx$num_island_spec
+
+    initial_parameters_2_list <- list()
+    initial_parameters_2_list[[1]] <- c(0.9, 1.5, k_vector_2 + 20, 0.01, 2)
+
+
+    novel_ml <- calc_ml(
+      sim = out_1,
+      initial_parameters = initial_parameters_2_list
+    )
+
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
