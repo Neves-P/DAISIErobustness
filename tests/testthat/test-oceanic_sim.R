@@ -46,6 +46,7 @@ test_that("test oceanic sim output is correct", {
 
 
 test_that("test oceanic sim returns string in failed ML", {
+  skip("WIP - Need updated data file from 1.0.1 param spaces")
   load(system.file(
     "extdata",
     "passed_cond_nonoceanic_param_set_244.RData",
