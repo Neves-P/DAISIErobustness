@@ -38,6 +38,7 @@ Description: Conducts a robustness test of the island biogeography DAISIE model
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.5.0)
 Suggests: 
     testthat (>= 2.1.0),
     jap,
