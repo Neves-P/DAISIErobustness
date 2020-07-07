@@ -226,7 +226,11 @@ test_that("test calc_ml output is correct when convergence fails", {
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
       || Sys.getenv("APPVEYOR") != "") {
     skip("WIP - Find failing convergence")
-    load("inst/extdata/failed_sim_nonoceanic_244_rep_93.RData")
+    load(system.file(
+      "extdata",
+      "inst/extdata/failed_sim_nonoceanic_244_rep_93.RData",
+      package = "DAISIErobustness")
+    )
     # DAISIErobustness has one extra list (replicate level) which must be
     # added here
     out <- list(out) # nolint
