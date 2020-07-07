@@ -9,7 +9,7 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.04000, 1.95000, 0.00100, 0.06726, 0.05900))
+  expect_equal(sim_pars$pars, c(0.02000, 0.97500, 0.00100, 0.03363, 0.02950))
   expect_equal(sim_pars$nonoceanic_pars, c(0, 0))
   expect_equal(sim_pars$island_ontogeny, "beta")
   expect_equal(sim_pars$sea_level, "const")
@@ -20,9 +20,9 @@ test_that("test extract_param_set extracts correct param set from
                                         sea_level_amplitude = 0,
                                         sea_level_frequency = 0,
                                         island_gradient_angle = 0))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.15))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
-  })
+})
 
 test_that("test extract_param_set extracts correct param set from
           oceanic_sea_level", {
@@ -33,7 +33,7 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.04000, 1.95000, 0.00100, 0.06726, 0.05900))
+  expect_equal(sim_pars$pars, c(0.02000, 0.97500, 0.00100, 0.03363, 0.02950))
   expect_equal(sim_pars$nonoceanic_pars, c(0, 0))
   expect_equal(sim_pars$island_ontogeny, "const")
   expect_equal(sim_pars$sea_level, "sine")
@@ -43,8 +43,8 @@ test_that("test extract_param_set extracts correct param set from
                                         total_island_age = 2.55,
                                         sea_level_amplitude = 60,
                                         sea_level_frequency = 25.5,
-                                        island_gradient_angle = 75))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.15))
+                                        island_gradient_angle = 80))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
@@ -57,7 +57,7 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.04000, 1.95000, 0.00100, 0.06726, 0.05900))
+  expect_equal(sim_pars$pars, c(0.02000, 0.97500, 0.00100, 0.03363, 0.02950))
   expect_equal(sim_pars$nonoceanic_pars, c(0, 0))
   expect_equal(sim_pars$island_ontogeny, "beta")
   expect_equal(sim_pars$sea_level, "sine")
@@ -67,8 +67,8 @@ test_that("test extract_param_set extracts correct param set from
                                         total_island_age = 2.864,
                                         sea_level_amplitude = 60,
                                         sea_level_frequency = 25.5,
-                                        island_gradient_angle = 75))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.15))
+                                        island_gradient_angle = 80))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
@@ -82,7 +82,7 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
   expect_equal(sim_pars$pars, c(0.5, 0.5, 10, 0.01, 1))
-  expect_equal(sim_pars$nonoceanic_pars, c(0.05, 0.1))
+  expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.10))
 })
 
 test_that("test extract_param_set extracts correct param set from
