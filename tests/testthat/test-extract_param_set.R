@@ -20,7 +20,7 @@ test_that("test extract_param_set extracts correct param set from
                                         sea_level_amplitude = 0,
                                         sea_level_frequency = 0,
                                         island_gradient_angle = 0))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.1108, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
@@ -44,7 +44,7 @@ test_that("test extract_param_set extracts correct param set from
                                         sea_level_amplitude = 60,
                                         sea_level_frequency = 25.5,
                                         island_gradient_angle = 80))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.1108, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
@@ -68,7 +68,7 @@ test_that("test extract_param_set extracts correct param set from
                                         sea_level_amplitude = 60,
                                         sea_level_frequency = 25.5,
                                         island_gradient_angle = 80))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.075))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.1108, x = 0.075))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
@@ -106,7 +106,7 @@ test_that("test extract_param_set extracts correct param set from
                                         sea_level_amplitude = 60,
                                         sea_level_frequency = 25.5,
                                         island_gradient_angle = 75))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.2, x = 0.15))
+  expect_equal(sim_pars$hyper_pars, list(d = 0.1108, x = 0.15))
   expect_equal(sim_pars$extcutoff, 1000)
 })
 
