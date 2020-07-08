@@ -390,12 +390,12 @@ write.csv2(
 
 time <- 2.55
 M <- 1000
-lac <- c(0.04, 0.08)
-mu <- c(1.95, 3.9)
+lac <- c(0.02, 0.04)
+mu <- c(0.975, 1.95)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.06726, 0.13452)
-laa <- c(0.059, 0.118)
-x <- c(0.15, 0.3)
+gam <- c(0.03363, 0.06726)
+laa <- c(0.0295, 0.059)
+x <- c(0.075, 0.15)
 d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -405,9 +405,9 @@ peak_time <- 0
 total_island_age <- 2.55
 sea_level_amplitude <- 60
 sea_level_frequency <- 2.55 * 10
-island_gradient_angle <- c(75, 85)
+island_gradient_angle <- c(80, 85)
 extcutoff <- 1000
-x_s <- c(0.05, 0.1)
+x_s <- c(0.01, 0.05)
 x_nonend <- c(0.1, 0.9)
 
 nonoceanic_sea_level_maui <- expand.grid(
@@ -439,12 +439,12 @@ nonoceanic_sea_level_maui <- expand.grid(
 
 time <- 6.15
 M <- 1000
-lac <- c(0.04, 0.08)
-mu <- c(1.95, 3.9)
+lac <- c(0.02, 0.04)
+mu <- c(0.975, 1.95)
 K <- c(0.001, 0.01, Inf)
-gam <- c(0.06726, 0.13452)
-laa <- c(0.059, 0.118)
-x <- c(0.15, 0.3)
+gam <- c(0.03363, 0.06726)
+laa <- c(0.0295, 0.059)
+x <- c(0.075, 0.15)
 d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
@@ -454,9 +454,9 @@ peak_time <- 0
 total_island_age <- 6.15
 sea_level_amplitude <- 60
 sea_level_frequency <- 6.15 * 10
-island_gradient_angle <- c(75, 85)
+island_gradient_angle <- c(80, 85)
 extcutoff <- 1000
-x_s <- c(0.05, 0.1)
+x_s <- c(0.01, 0.05)
 x_nonend <- c(0.1, 0.9)
 
 nonoceanic_sea_level_kauai <- expand.grid(
