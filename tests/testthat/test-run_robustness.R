@@ -122,7 +122,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
       expect_equal(nrow(errors$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 106)
       expect_equal(ncol(errors$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$branching_times,
-                   c(2.55, 0.80577967734552), tolerance = 0.001))
+                   c(2.55, 0.80577967734552), tolerance = 0.001)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
