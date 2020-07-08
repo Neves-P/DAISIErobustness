@@ -126,7 +126,7 @@ test_that("run full function", {
     expect_equal(nrow(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 106)
     expect_equal(ncol(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$branching_times,
-                 c(2.55, 0.80577967734552003))
+                 c(2.55, 0.80577967734552), tolerance = 0.001)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
   } else{
