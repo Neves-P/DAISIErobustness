@@ -63,7 +63,7 @@ extract_param_set <- function(param_space_name,
       sea_level_frequency = param_space$sea_level_frequency[param_set],
       island_gradient_angle = param_space$island_gradient_angle[param_set])
     sim_pars$hyper_pars <- DAISIE::create_hyper_pars(
-      d = 0.2,
+      d = param_space$d[param_set],
       x = param_space$x[param_set])
     sim_pars$extcutoff <- param_space$extcutoff[param_set]
   }
