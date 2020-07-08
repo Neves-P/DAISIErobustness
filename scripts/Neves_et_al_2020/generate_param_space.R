@@ -10,7 +10,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 13500
@@ -60,7 +60,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "beta"
 sea_level <- "const"
 max_area <- 3787
@@ -114,7 +114,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
@@ -163,7 +163,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
@@ -219,7 +219,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 13500
@@ -269,7 +269,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.03363, 0.06726)
 laa <- c(0.0295, 0.059)
 x <- c(0.075, 0.15)
-d <- c(0.1, 0.2)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "beta"
 sea_level <- "sine"
 max_area <- 3787
@@ -396,6 +396,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.06726, 0.13452)
 laa <- c(0.059, 0.118)
 x <- c(0.15, 0.3)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 13500
@@ -418,6 +419,7 @@ nonoceanic_sea_level_maui <- expand.grid(
   gam = gam,
   laa = laa,
   x = x,
+  d = d,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
@@ -443,6 +445,7 @@ K <- c(0.001, 0.01, Inf)
 gam <- c(0.06726, 0.13452)
 laa <- c(0.059, 0.118)
 x <- c(0.15, 0.3)
+d <- c(0.1108, 0.2216)
 island_ontogeny <- "const"
 sea_level <- "sine"
 max_area <- 3787
@@ -465,6 +468,7 @@ nonoceanic_sea_level_kauai <- expand.grid(
   gam = gam,
   laa = laa,
   x = x,
+  d = d,
   island_ontogeny = island_ontogeny,
   sea_level = sea_level,
   max_area = max_area,
