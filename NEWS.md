@@ -1,3 +1,13 @@
+# DAISIErobustness 1.0.1
+
+* Fix bug in `ml_constraints` when one of the `initpars` attempts in 
+`run_analysis()` did not converge, which prevented some `failed_cond_` results 
+from being saved on Peregrine.
+* Depend on rsetienne/DAISIE@dd54db2.
+* Add revised geodynamics parameter spaces for robustness study.
+* Slightly better test coverage in the pipeline when ML convergence fails.
+* Vignette is in correct location.
+
 # DAISIErobustness 1.0.0
 
 * Package to test the robustness of island biogeography models.
