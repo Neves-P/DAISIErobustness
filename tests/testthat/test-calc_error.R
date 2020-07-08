@@ -41,14 +41,14 @@ test_that("test calc_error output is correct", {
       distance_method = "abs"
     )
     expect_length(error, 3)
-    expect_equal(error$spec_error, list(nltt = c(16.384864091789943,
-                                                 13.662309553053898),
-                                        num_spec_error = c(2, 0),
-                                        num_col_error = c(2, 3)))
-    expect_equal(error$endemic_error, list(nltt = c(25.8687971894513140,
-                                                    9.8651410880918426)))
-    expect_equal(error$nonendemic_error, list(nltt = c(42.215105567407051,
-                                                       23.010834959354479)))
+    expect_equal(error$spec_error, list(nltt = c(7.753141634762742,
+                                                 11.973944813421863),
+                                        num_spec_error = c(6, 3),
+                                        num_col_error = c(8, 4)))
+    expect_equal(error$endemic_error, list(nltt = c(43.55934832128516,
+                                                    22.14770440482302)))
+    expect_equal(error$nonendemic_error, list(nltt = c(46.02495065811670,
+                                                       31.50089644626357)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
   }
