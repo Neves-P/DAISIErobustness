@@ -1,5 +1,6 @@
 run_simulations_peregrine <- function(param_space_name,
-                                      cluster_partition = "gelifes") {
+                                      cluster_partition = "gelifes",
+                                      param_set_range = NULL) {
 
 
   # Create params for the experiment
@@ -8,8 +9,15 @@ run_simulations_peregrine <- function(param_space_name,
   )
 
 
+  if (is.null(param_set_range)) {
+    total_runs <- nrow(param_space)
+    midway_index <- 0
+  } else {
+    testit::assert(is.numeric(param_set_range))
+    total_runs <- param_set_range[2] - param_set_range[1]
+    midway_index <- param_set_range[1]
+  }
   ## Calculate number of jobs to run
-  total_runs <- nrow(param_space)
 
   # Make params list
   params <- vector("list", total_runs)
@@ -18,7 +26,7 @@ run_simulations_peregrine <- function(param_space_name,
   for (i in seq_len(total_runs)) {
     params[[i]] <- list(
       param_space_name = param_space_name,
-      param_set = i,
+      param_set = i + midway_index,
       replicates = 1000,
       pipeline = "novel_sim",
       save_output = TRUE
