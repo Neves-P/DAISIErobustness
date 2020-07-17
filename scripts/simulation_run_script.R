@@ -1,6 +1,8 @@
 run_simulations_peregrine <- function(param_space_name,
                                       cluster_partition = "gelifes",
-                                      param_set_range = NULL) {
+                                      param_set_range = NULL,
+                                      max_n_jobs = 100
+) {
 
 
   # Create params for the experiment
@@ -41,6 +43,7 @@ run_simulations_peregrine <- function(param_space_name,
     params = params,
     cluster_folder = "data",
     cluster_partition = cluster_partition,
-    delete_on_cluster = FALSE
+    delete_on_cluster = FALSE,
+    max_n_jobs = max_n_jobs
   )
 }
