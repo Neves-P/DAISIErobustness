@@ -120,8 +120,8 @@ test_that("test extract_param_set extracts correct param set from
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
   expect_equal(sim_pars$pars, c(0.5, 0.5, Inf, 0.01, 1, 0.25,
-                                       0.25, Inf, 0.02, 0))
-  expect_equal(sim_pars$nonoceanic_pars, c(0.05, 0.1))
+                                       0.25, Inf, 0.05, 0))
+  expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.1))
   expect_equal(sim_pars$shift_times, c(1.225, 1.325))
 })
 
