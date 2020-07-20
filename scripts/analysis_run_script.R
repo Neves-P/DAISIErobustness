@@ -1,8 +1,8 @@
 run_analysis_peregrine <- function(param_space_name,
-                                      cluster_partition = "gelifes",
-                                      param_set_range = NULL,
-                                      max_n_jobs = 100,
-                                      replicate_range = NULL) {
+                                   cluster_partition = "gelifes",
+                                   param_set_range = NULL,
+                                   max_n_jobs = 100,
+                                   replicate_range = NULL) {
 
 
   # Create params for the experiment
@@ -32,6 +32,7 @@ run_analysis_peregrine <- function(param_space_name,
       replicates = 1000,
       pipeline = "analysis",
       save_output = TRUE,
+      load_from_file = TRUE,
       replicate_range = replicate_range
     )
   }
