@@ -1,4 +1,4 @@
-run_simulations_peregrine <- function(param_space_name,
+run_analysis_peregrine <- function(param_space_name,
                                       cluster_partition = "gelifes",
                                       param_set_range = NULL,
                                       max_n_jobs = 100,
