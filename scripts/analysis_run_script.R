@@ -13,7 +13,7 @@ run_analysis_peregrine <- function(param_space_name,
 
   if (is.null(param_set_range)) {
     total_runs <- nrow(param_space)
-    midway_index <- 0
+    midway_index <- 1
   } else {
     testit::assert(is.numeric(param_set_range))
     total_runs <- param_set_range[2] - param_set_range[1]
@@ -25,10 +25,10 @@ run_analysis_peregrine <- function(param_space_name,
   params <- vector("list", total_runs)
 
   # Populate params list with necessary arguments
-  for (i in seq_len(total_runs)) {
+  for (i in midway_index:total_runs) {
     params[[i]] <- list(
       param_space_name = param_space_name,
-      param_set = i + midway_index,
+      param_set = i,
       replicates = 1000,
       pipeline = "analysis",
       save_output = TRUE,
