@@ -1,3 +1,12 @@
+# DAISIErobustness 1.0.2
+
+* Finalize nonoceanic land bridge parameter space.
+* Improve Peregrine HPCC job submission scripts `simulation_run_script` and add 
+`analysis_run_script`. Can now choose number of max concurrent jobs. 
+Improvements to parameter set range selection.
+* Remove deprecated code from scripts folder.
+* Move and add images to `/pics/`.
+
 # DAISIErobustness 1.0.1
 
 * Fix bug in `ml_constraints` when one of the `initpars` attempts in 
