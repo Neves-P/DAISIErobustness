@@ -15,11 +15,11 @@ plot_error_dists <- function(output_file,
   } else if (error == "endemic_nltt") {
     error <- output_file$endemic_error$nltt
     baseline_error <- output_file$endemic_baseline_error$nltt
-    error_label <- "endemic species \u0394nLTT"
+    error_label <- " endemic species \u0394nLTT"
   } else if (error == "nonendemic_nltt") {
     error <- output_file$nonendemic_error$nltt
     baseline_error <- output_file$nonendemic_baseline_error$nltt
-    error_label <- "nonendemic species \u0394nLTT"
+    error_label <- " nonendemic species \u0394nLTT"
   } else if (error == "num_spec") {
     error <- output_file$spec_error$num_spec_error
     baseline_error <- output_file$spec_baseline_error$num_spec_error
@@ -41,7 +41,7 @@ plot_error_dists <- function(output_file,
                               color = "black") +
       ggplot2::theme_bw() +
       ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +
-      ggplot2::ylab("count") +
+      ggplot2::ylab("Count") +
       ggplot2::xlab("Error") +
       ggplot2::ggtitle(title_label)
 
