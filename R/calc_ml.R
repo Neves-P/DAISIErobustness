@@ -20,6 +20,7 @@ calc_ml <- function(sim, initial_parameters) {
             datatype = "single",
             initparsopt = as.numeric(initial_parameters[[i]][1:5]),
             idparsopt = c(1:5),
+            ddmodel = 11,
             parsfix = NULL,
             idparsfix = NULL,
             jitter = -1e-5
