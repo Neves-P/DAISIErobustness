@@ -334,4 +334,3 @@ test_that("ml constraints fail", {
     skip("Run only on TRAVIS and AppVeyor")
   }
 })
-

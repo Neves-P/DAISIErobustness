@@ -223,7 +223,7 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                  "conv" = 0)))
     expect_equal(errors$novel_ml_2,
                  list(data.frame("lambda_c" = 0.23930629500033881,
-                                 "mu" = 0.24471275795757566 ,
+                                 "mu" = 0.24471275795757566,
                                  "K" = 9076775.4404047057,
                                  "gamma" = 0.00909878197724465,
                                  "lambda_a" = 0.73825146025460608,
