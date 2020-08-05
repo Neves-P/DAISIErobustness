@@ -1,5 +1,5 @@
 # Script to test whether windows and mac produce different output
-# All references values are made with a windows running R v4.0
+# All references values are obtained from windows running R v4.0
 
 remotes::install_github("Neves-P/DAISIErobustness")
 
