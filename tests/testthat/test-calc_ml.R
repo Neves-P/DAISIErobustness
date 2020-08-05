@@ -4,7 +4,12 @@ test_that("test calc_ml output is correct with geodynamic sim", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "nonoceanic")
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
     sim_pars <- extract_param_set(
       param_space_name = "nonoceanic",
       param_space = param_space,
@@ -85,7 +90,12 @@ test_that("test calc_ml output is correct with oceanic sim", {
       param_space_name = "oceanic_ontogeny",
       param_space = param_space,
       param_set = 1)
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
     oceanic_sim_1 <- oceanic_sim(
       ml = novel_ml,
       sim_pars = sim_pars)
@@ -132,7 +142,12 @@ test_that("test calc_ml output is correct for failed convergence", {
       Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "oceanic_sea_level")
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
     sim_pars <- extract_param_set(
       param_space_name = "oceanic_sea_level",
       param_space = param_space,
@@ -168,7 +183,12 @@ test_that("test calc_ml output is correct with traits sim", {
       || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
       param_space_name = "trait")
-    set.seed(1)
+    set.seed(
+      1,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
     sim_pars <- extract_param_set(
       param_space_name = "trait",
       param_space = param_space,

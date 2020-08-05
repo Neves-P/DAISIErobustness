@@ -19,7 +19,12 @@ test_that("test oceanic sim output is correct", {
                                    "conv" = 0))
   sim_pars <- list(time = 2.55,
                    M = 1000)
-  set.seed(1)
+  set.seed(
+    1,
+    kind = "Mersenne-Twister",
+    normal.kind = "Inversion",
+    sample.kind = "Rejection"
+  )
   oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
     sim_pars = sim_pars)
