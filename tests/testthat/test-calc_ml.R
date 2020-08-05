@@ -27,31 +27,31 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 0.15978278356484077,
+    expect_equal(novel_ml[[1]]$lambda_c, 4.5993148115327323,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$mu, 1.970403739051638,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$K, 4.7720297221764669,
+    expect_equal(novel_ml[[1]]$K, 1.0387228526800298,
                  tolerance = 0.5)
-    expect_equal(novel_ml[[1]]$gamma, 0.017148740281477039,
+    expect_equal(novel_ml[[1]]$gamma, 0.01729060119343398,
+                 tolerance = 0.0001)
+    expect_equal(novel_ml[[1]]$lambda_a, 2.8713080603994339e-07,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$lambda_a, 1.7722392012891294e-06,
-                 tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$loglik, -57.047195109432728,
+    expect_equal(novel_ml[[1]]$loglik, -56.92533203744248,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 0.18764257459852859,
+    expect_equal(novel_ml[[2]]$lambda_c, 1888.8438278570065,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$mu, 0.67315832908331541,
+    expect_equal(novel_ml[[2]]$mu, 0.73963678697110935,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 1.3962966088757534,
+    expect_equal(novel_ml[[2]]$K, 1.0001507583214155,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$gamma, 0.0069658226588260709,
+    expect_equal(novel_ml[[2]]$gamma, 0.0072877734096834807,
+                 tolerance = 0.0001)
+    expect_equal(novel_ml[[2]]$lambda_a, 0.31198121951530378,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.4017258845888837,
-                 tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$loglik, -65.65199950519667,
+    expect_equal(novel_ml[[2]]$loglik, -65.37295887036116,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
@@ -93,31 +93,31 @@ test_that("test calc_ml output is correct with oceanic sim", {
       sim = oceanic_sim_1,
       initial_parameters = novel_ml)
     expect_length(oceanic_ml, 2)
-    expect_equal(oceanic_ml[[1]]$lambda_c, 0.4703865020955945,
+    expect_equal(oceanic_ml[[1]]$lambda_c, 1.2903465317959615,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
+    expect_equal(oceanic_ml[[1]]$mu, 0.13861399056888973,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$K, 3.8693619159931183,
+    expect_equal(oceanic_ml[[1]]$K, 2.9999966186427014,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
+    expect_equal(oceanic_ml[[1]]$gamma, 0.0047832452358128105,
+                 tolerance = 0.0001)
+    expect_equal(oceanic_ml[[1]]$lambda_a, 1.2515981969998924,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$lambda_a, 1.256814199481393,
-                 tolerance = 0.01)
-    expect_equal(oceanic_ml[[1]]$loglik, -86.44387709521121,
+    expect_equal(oceanic_ml[[1]]$loglik, -84.199536938878992,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[1]]$df, 5)
     expect_equal(oceanic_ml[[1]]$conv, 0)
-    expect_equal(oceanic_ml[[2]]$lambda_c, 1.266996227093286,
+    expect_equal(oceanic_ml[[2]]$lambda_c, 2.5333324741066412,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
+    expect_equal(oceanic_ml[[2]]$mu, 1.1012915916638735,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$K, 4.8545565619356195,
+    expect_equal(oceanic_ml[[2]]$K, 5.000010221885212,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
+    expect_equal(oceanic_ml[[2]]$gamma, 0.013950362038529816,
+                 tolerance = 0.0001)
+    expect_equal(oceanic_ml[[2]]$lambda_a, 4.361328419843256e-06,
                  tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$lambda_a, 7.741644634429056e-08,
-                 tolerance = 0.01)
-    expect_equal(oceanic_ml[[2]]$loglik, -139.8897801706968,
+    expect_equal(oceanic_ml[[2]]$loglik, -137.5430474376393,
                  tolerance = 0.01)
     expect_equal(oceanic_ml[[2]]$df, 5)
     expect_equal(oceanic_ml[[2]]$conv, 0)
@@ -189,31 +189,31 @@ test_that("test calc_ml output is correct with traits sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 0.226250786648358,
+    expect_equal(novel_ml[[1]]$lambda_c, 0.27052616867361423,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$mu, 0.058709082356954,
+    expect_equal(novel_ml[[1]]$mu, 0.077873174353118191,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$K, 4.78803754952229,
+    expect_equal(novel_ml[[1]]$K, 9.5594580320554172,
                  tolerance = 0.5)
-    expect_equal(novel_ml[[1]]$gamma, 0.0100148510973837,
+    expect_equal(novel_ml[[1]]$gamma, 0.010226930211696945,
+                 tolerance = 0.0001)
+    expect_equal(novel_ml[[1]]$lambda_a, 1.9417306863112869,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$lambda_a, 1.94726412724714,
-                 tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$loglik, -160.47163766316476,
+    expect_equal(novel_ml[[1]]$loglik, -160.4318151559622,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 0.33166353970785,
+    expect_equal(novel_ml[[2]]$lambda_c, 0.99001390851336724,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$mu, 0.501133057620236,
+    expect_equal(novel_ml[[2]]$mu, 0.6068065105789977,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 1.70795944253087,
+    expect_equal(novel_ml[[2]]$K, 2.3763087023047014,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$gamma, 0.0164947916716611,
+    expect_equal(novel_ml[[2]]$gamma, 0.017482251983797052,
+                 tolerance = 0.0001)
+    expect_equal(novel_ml[[2]]$lambda_a, 0.70623621688365135,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.891163442089483,
-                 tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$loglik, -171.396512836204,
+    expect_equal(novel_ml[[2]]$loglik, -170.05894428069004,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
