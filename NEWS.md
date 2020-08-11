@@ -1,3 +1,10 @@
+# DAISIErobustness 1.0.3
+
+* Use correct diversity-dependence settings when estimating using `calc_ml()`.
+See #43.
+* Depend on rsetienne/DAISIE@25d0285, which is DAISIE v3.0.0 but prior to CRAN
+release.
+
 # DAISIErobustness 1.0.2
 
 * Finalize nonoceanic land bridge parameter space.
