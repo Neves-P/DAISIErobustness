@@ -21,7 +21,7 @@ environment:
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh install_github rsetienne/DAISIE@dd54db2
+  - travis-tool.sh install_github rsetienne/DAISIE@25d0285
 
 # Adapt as necessary starting from here
 
