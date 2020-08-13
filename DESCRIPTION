@@ -3,7 +3,7 @@ Title: Test the Robustness of DAISIE to Geodynamics and Traits
 Version: 1.0.3
 Date: 2020-08-11
 Authors@R: c(
-    person(given = "Joshua",
+    person(given = "Joshua W.",
            family = "Lambert",
            role = c("aut", "cre"),
            email = "j.w.l.lambert@rug.nl"),
