@@ -14,6 +14,14 @@ jobs:
     osx_image: xcode11.3
 cache: packages
 
+addons:
+  apt:
+    sources: ['ubuntu-toolchain-r-test']
+    packages:
+      - gcc-8
+      - g++-8
+      - gfortran-8
+
 r_packages:
   - doMC
   - stringi
