@@ -20,7 +20,8 @@ addons:
     packages:
       - gcc-8
       - g++-8
-      - gfortran-8
+  #    - gfortran
+  #    - libgfortran
 
 r_packages:
   - doMC
