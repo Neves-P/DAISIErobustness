@@ -14,14 +14,6 @@ jobs:
     osx_image: xcode11.3
 cache: packages
 
-addons:
-  apt:
-    update: true
-    sources:
-      - sourceline: 'ppa:cran/imagemagick'
-    packages:
-      - libmagick++-dev
-
 r_packages:
   - doMC
 
@@ -32,6 +24,8 @@ r_github_packages:
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libssh-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:cran/imagemagick; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install r-cran-ape; fi # temp while on xenial
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr update --self; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr install inconsolata; fi
