@@ -1,7 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 os: linux
-#dist: bionic temp as 'ppa:cran/imagemagick' has no bionic build
+dist: bionic
 language: r
 jobs:
   include:
@@ -16,8 +16,7 @@ cache: packages
 
 r_packages:
   - doMC
-  - rcpp
-  - magick
+  - stringi
 
 r_github_packages:
   - jimhester/covr
@@ -27,7 +26,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libssh-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install r-cran-rcpp; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:cran/imagemagick; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:cran/imagemagick-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install r-cran-ape; fi # temp while on xenial
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo tlmgr update --self; fi
