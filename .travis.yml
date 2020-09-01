@@ -14,14 +14,21 @@ jobs:
     osx_image: xcode11.3
 cache: packages
 
+
 addons:
   apt:
     sources: ['ubuntu-toolchain-r-test']
     packages:
       - gcc-8
       - g++-8
-      - gfortran
-      - libgfortran
+      - gfortran-8
+      
+env:
+  global:
+  - MAKEFLAGS="-j 2"
+  - COMPILER=g++-8
+  - CC=gcc-8
+  - CXX=g++-8
 
 r_packages:
   - doMC
