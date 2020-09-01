@@ -24,6 +24,7 @@ r_github_packages:
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libssh-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install r-cran-rcpp; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:cran/imagemagick; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagick++-dev; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install r-cran-ape; fi # temp while on xenial
