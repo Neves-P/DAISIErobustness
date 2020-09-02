@@ -12,7 +12,7 @@ run_novel_sim <- function(param_space_name,
                           sim_pars,
                           replicates) {
   novel_sim <- list()
-  if (param_space_name == "nonoceanic") {
+  if (param_space_name == "nonoceanic" || param_space_name == "oceanic") {
     for (i in seq_len(replicates)) {
       novel_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
         time = sim_pars$time,

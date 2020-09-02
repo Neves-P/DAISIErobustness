@@ -21,7 +21,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Joshua Lambert \email{j.w.l.lambert@rug.nl}
+\strong{Maintainer}: Joshua W. Lambert \email{j.w.l.lambert@rug.nl}
 
 Authors:
 \itemize{

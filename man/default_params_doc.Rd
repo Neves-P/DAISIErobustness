@@ -40,8 +40,10 @@ default_params_doc(
 \item{param_space_name}{A string with the parameter space to run. Can
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}, \code{"trait"}.}
+\code{"nonoceanic"}, \code{"nonoceanic_sea_level"},
+\code{"nonoceanic_land_bridge"}, \code{"trait"}, or \code{"oceanic"}.
+\code{"oceanic"} is used as a null simulation to test for bias in the
+pipeline.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
@@ -50,7 +52,7 @@ run, as found in the file named in \code{param_space}.}
 simulations}
 
 \item{replicate_range}{A numeric vector of length 2 or, by default,
-\code{NULL} if the entire range should be used. Specificies the range of
+\code{NULL} if the entire range should be used. Specifies the range of
 previously saved replicates from \code{\link{run_novel_sim}()} that should
 be analysed by \code{\link{run_analysis}()}.}
 
