@@ -83,7 +83,7 @@ run_robustness <- function(param_space_name,
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      replicate_range = NULL,
+      replicate_range = replicate_range,
       sim_pars = sim_pars,
       distance_method = distance_method
     )
