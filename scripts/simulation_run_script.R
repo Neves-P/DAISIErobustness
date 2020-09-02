@@ -1,8 +1,8 @@
 run_simulations_peregrine <- function(param_space_name,
                                       cluster_partition = "gelifes",
                                       param_set_range = NULL,
-                                      max_n_jobs = 100
-) {
+                                      max_n_jobs = 100,
+                                      replicates = 1000) {
 
 
   # Create params for the experiment
@@ -33,7 +33,7 @@ run_simulations_peregrine <- function(param_space_name,
     params[[i]] <- list(
       param_space_name = param_space_name,
       param_set = i,
-      replicates = 1000,
+      replicates = replicates,
       pipeline = "novel_sim",
       save_output = TRUE
     )
