@@ -9,7 +9,7 @@ extract_param_set <- function(param_space_name,
                               param_space,
                               param_set) {
   sim_pars <- list()
-  if (param_space_name == "nonoceanic") {
+  if (param_space_name == "nonoceanic" || param_space_name == "oceanic") {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac[param_set],
