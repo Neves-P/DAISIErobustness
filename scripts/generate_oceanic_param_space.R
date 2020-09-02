@@ -3,7 +3,7 @@
 time <- 2.55
 M <- 1000
 lac <- c(0.5)
-mu <- c(0.5)
+mu <- c(0.4)
 K <- c(40)
 gam <- c(0.01)
 laa <- c(1)
@@ -28,7 +28,7 @@ oceanic_maui <- expand.grid(
 time <- 6.15
 M <- 1000
 lac <- c(0.5)
-mu <- c(0.5)
+mu <- c(0.4)
 K <- c(40)
 gam <- c(0.01)
 laa <- c(1)
