@@ -16,6 +16,7 @@ run_analysis_peregrine <- function(param_space_name,
     total_runs <- length(param_set_vector)
   } else {
     total_runs <- nrow(param_space)
+    param_set_vector <- 1:total_runs
   }
 
   ## Calculate number of jobs to run
