@@ -24,4 +24,4 @@ ml R
 # load_from_file <- args[8]
 
 git clone https://github.com/Neves-P/DAISIErobustness.git || (cd DAISIErobustness ; git pull)
-Rscript /home//$USER/DAISIErobustness/scripts/run_robustness_peregrine.R
+Rscript /data//$USER/DAISIErobustness/scripts/run_robustness_peregrine.R
