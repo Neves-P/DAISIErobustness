@@ -26,4 +26,4 @@ param_space_name=$1
 
 git clone https://github.com/Neves-P/DAISIErobustness.git || (cd DAISIErobustness ; git pull)
 Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
-Rscript DAISIErobustness/scripts/run_robustness_peregrine.R param_space_name
+Rscript DAISIErobustness/scripts/run_robustness_peregrine.R ${param_space_name}
