@@ -28,7 +28,7 @@ $for_length= $(( $for_length - 1 ))
 
 for param_set in {1..${for_length}}
 do
-  sbatch DAISIErobustness/submit_run_robustness_param_set.sh ${param_space_name} \
+  sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
                                                              $param_set \
                                                              ${replicates} \
                                                              ${pipeline} \
