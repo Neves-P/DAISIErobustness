@@ -1,5 +1,5 @@
 args <- commandArgs(TRUE)
-
+print(args)
 
 param_space_name <- args[1]
 # param_set <- args[2]
