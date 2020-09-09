@@ -48,7 +48,7 @@ testit::assert(
 }
 \seealso{
 Other I/O: 
-\code{\link{check_create_results_folder}()},
+\code{\link{check_create_folders}()},
 \code{\link{load_novel_section}()},
 \code{\link{save_output}()}
 }

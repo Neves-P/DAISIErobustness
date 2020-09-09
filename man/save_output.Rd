@@ -43,7 +43,7 @@ TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
 }
 \seealso{
 Other I/O: 
-\code{\link{check_create_results_folder}()},
+\code{\link{check_create_folders}()},
 \code{\link{create_output_file_name}()},
 \code{\link{load_novel_section}()}
 }

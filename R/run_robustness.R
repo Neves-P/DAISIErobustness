@@ -31,9 +31,10 @@ run_robustness <- function(param_space_name,
   testit::assert(replicates > 1)
 
 
-  check_create_results_folder(
+  check_create_folders(
     param_space_name = param_space_name,
-    save_output = save_output
+    save_output = save_output,
+    pipeline = pipeline
   )
 
   set.seed(
