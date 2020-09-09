@@ -169,16 +169,12 @@ check_create_folders <- function(param_space_name, save_output, pipeline) {
 #' @family I/O
 load_novel_section <- function(param_space_name,
                                param_set) {
-  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
 
     data_folder <- file.path(
       getwd(),
-      "data",
+      "sims",
       param_space_name
     )
-  } else {
-    data_folder <- file.path(getwd(), "data")
-  }
   if (!dir.exists(data_folder)) {
     stop(paste0(
       data_folder,
