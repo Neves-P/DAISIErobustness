@@ -20,7 +20,6 @@ replicate_range_end=$7
 load_from_file=$8
 
 ml R
-Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
 Rscript DAISIErobustness/scripts/run_robustness_peregrine.R ${param_space_name} \
                                                             ${param_set} \
                                                             ${replicates} \

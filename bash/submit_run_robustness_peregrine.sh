@@ -13,6 +13,9 @@ mkdir -p results
 
 git clone https://github.com/Neves-P/DAISIErobustness.git || (cd DAISIErobustness ; git pull)
 
+ml R
+Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
+
 # See DAISIErobustness::run_robustness() documentation for help.
 # Arguments to follow the Rscript are as follows:
 param_space_name=$1
