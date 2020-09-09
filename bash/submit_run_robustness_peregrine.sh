@@ -22,6 +22,8 @@ ml R
 # replicate_range_end <- args[7]
 # load_from_file <- args[8]
 
+param_space_name=$1
+
 git clone https://github.com/Neves-P/DAISIErobustness.git || (cd DAISIErobustness ; git pull)
 Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
-Rscript DAISIErobustness/scripts/run_robustness_peregrine.R
+Rscript DAISIErobustness/scripts/run_robustness_peregrine.R param_space_name
