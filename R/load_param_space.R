@@ -11,5 +11,6 @@ load_param_space <- function(param_space_name) {
   param_space <- readr::read_csv2(
     file = file
   )
+  print("It worked!")
   return(param_space)
 }
