@@ -1,4 +1,4 @@
-args <- commandArgs()
+args <- commandArgs(TRUE)
 
 
 param_space_name <- args[1]
