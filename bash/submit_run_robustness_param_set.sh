@@ -3,13 +3,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=robustness
-#SBATCH --output=logs/robustness.log
+#SBATCH --output=logs/robustness-%j.log
 #SBATCH --mem=5GB
 #SBATCH --partition=gelifes
 
-# Before running make sure logs folder has been created.
-mkdir -p results
-ml R
 
 # See DAISIErobustness::run_robustness() documentation for help.
 # Arguments to follow the Rscript are as follows:
@@ -22,9 +19,7 @@ replicate_range_start=$6
 replicate_range_end=$7
 load_from_file=$8
 
-for_length=wc -l DAISIErobustness/data/${param_space_name}.csv
-for_length=for_length-1
-
+ml R
 Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
 Rscript DAISIErobustness/scripts/run_robustness_peregrine.R ${param_space_name} \
                                                             ${param_set} \
