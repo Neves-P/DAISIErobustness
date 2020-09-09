@@ -3,12 +3,12 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=robustness
-#SBATCH --output=/data/$USER/logs/robustness.log
+#SBATCH --output=/data/p282067/logs/robustness.log
 #SBATCH --mem=5GB
 #SBATCH --partition=gelifes
 
 # Before running make sure logs folder has been created.
-cd /data/$USER/
+cd /data/p282067/
 mkdir -p results
 ml R
 
