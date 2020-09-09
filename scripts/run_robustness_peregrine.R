@@ -1,51 +1,24 @@
-run_robustness_peregrine <- function(param_space_name,
-                                     cluster_partition = "gelifes",
-                                     param_set_range = NULL,
-                                     max_n_jobs = 100,
-                                     replicate_range = NULL,
-                                     replicates = 1000) {
+args <- commandArgs()
 
 
-  # Create params for the experiment
-  param_space <- DAISIErobustness::load_param_space(
-    param_space_name = param_space_name
-  )
+param_space_name <- args[1]
+param_set <- args[2]
+replicates <- args[3]
+pipeline <- args[4]
+distance_method <- args[5]
+replicate_range_start <- args[6]
+replicate_range_end <- args[7]
+load_from_file <- args[8]
 
-  # Calculate number of jobs to run
-  if (!is.null(param_set_range)) {
-    param_set_vector <- param_set_range[1]:param_set_range[2]
-    total_runs <- length(param_set_vector)
-  } else {
-    total_runs <- nrow(param_space)
-    param_set_vector <- 1:total_runs
-  }
+replicate_range <- c(replicate_range_start, replicate_range_end)
+run_robustness(
+  param_space_name = param_space_name,
+  param_set = param_set,
+  replicates = replicates,
+  pipeline = pipeline,
+  distance_method = distance_method,
+  save_output = TRUE,
+  replicate_range = replicate_range,
+  load_from_file = load_from_file
+)
 
-
-  # Make params list
-  params <- vector("list", total_runs)
-
-  # Populate params list with necessary arguments
-  for (i in midway_index:total_runs) {
-    params[[i]] <- list(
-      param_space_name = param_space_name,
-      param_set = i,
-      replicates = replicates,
-      pipeline = "full",
-      save_output = TRUE,
-      load_from_file = FALSE,
-      replicate_range = replicate_range
-    )
-  }
-
-  # Start RStudio job that submits cluster jobs
-  jap::pocket_experiment(
-    github_name = "Neves-P",
-    project_name = "DAISIErobustness",
-    function_name = "run_robustness",
-    params = params,
-    cluster_folder = "data",
-    cluster_partition = cluster_partition,
-    delete_on_cluster = FALSE,
-    max_n_jobs = max_n_jobs
-  )
-}

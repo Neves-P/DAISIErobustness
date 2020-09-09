@@ -11,7 +11,6 @@ run_robustness <- function(param_space_name,
                            replicates,
                            pipeline = "full",
                            distance_method = "abs",
-                           novel_sim = NULL,
                            save_output = TRUE,
                            replicate_range = NULL,
                            load_from_file = FALSE) {

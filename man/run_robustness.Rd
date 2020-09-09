@@ -10,7 +10,6 @@ run_robustness(
   replicates,
   pipeline = "full",
   distance_method = "abs",
-  novel_sim = NULL,
   save_output = TRUE,
   replicate_range = NULL,
   load_from_file = FALSE
@@ -44,13 +43,6 @@ How the difference between the two nLTTs is summed:
  \item{"abs: "}{the absolute distance between the two nLTTs is summed}
  \item{"squ: "}{the squared distance between the two nLTTs is summed}
 }}
-
-\item{novel_sim}{A list of simulation output in the DAISIE simulation format
-for which the robustness against standard oceanic DAISIE is to be
-determined.
-Can be generated from a preset of models available in
-\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
-format.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 
