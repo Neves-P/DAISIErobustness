@@ -1,5 +1,4 @@
 args <- commandArgs(TRUE)
-print(args)
 
 
 DAISIErobustness::run_robustness(
