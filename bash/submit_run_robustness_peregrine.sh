@@ -23,10 +23,9 @@ replicate_range_start=$5
 replicate_range_end=$6
 load_from_file=$7
 
-for_length=$(wc -l DAISIErobustness/data/${param_space_name}.csv)
-echo ${for_length[0]}
-echo ${for_length[1]}
-for_length=$(( ${for_length[0]} - 1 ))
+for_length=`wc -l DAISIErobustness/data/${param_space_name}.csv | cut -f1 -d' '`
+
+for_length=$(( ${for_length} - 1 ))
 
 for param_set in {1..for_length}
 do
