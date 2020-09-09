@@ -3,7 +3,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=robustness
-#SBATCH --output=/data/p282067/logs/robustness.log
 #SBATCH --mem=5GB
 #SBATCH --partition=gelifes
 
