@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=robustness
-#SBATCH --output=/logs/robustness.log
+#SBATCH --output=logs/robustness.log
 #SBATCH --mem=5GB
 #SBATCH --partition=gelifes
 
@@ -23,4 +23,4 @@ ml R
 # load_from_file <- args[8]
 
 git clone https://github.com/Neves-P/DAISIErobustness.git || (cd DAISIErobustness ; git pull)
-Rscript /DAISIErobustness/scripts/run_robustness_peregrine.R
+Rscript DAISIErobustness/scripts/run_robustness_peregrine.R
