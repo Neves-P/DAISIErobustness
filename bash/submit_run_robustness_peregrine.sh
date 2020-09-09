@@ -9,7 +9,7 @@
 
 
 # Before running make sure logs folder has been created.
-mkdir -p results
+mkdir -p results/$1
 
 ml R
 Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
