@@ -11,7 +11,7 @@ replicate_range_end <- args[7]
 load_from_file <- args[8]
 
 replicate_range <- c(replicate_range_start, replicate_range_end)
-run_robustness(
+DAISIErobustness::run_robustness(
   param_space_name = param_space_name,
   param_set = param_set,
   replicates = replicates,
