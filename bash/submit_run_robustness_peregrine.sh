@@ -27,10 +27,10 @@ for_length=`wc -l DAISIErobustness/data/${param_space_name}.csv | cut -f1 -d' '`
 
 for_length=$(( ${for_length} - 1 ))
 
-for param_set in {1..for_length}
+for param_set in {1..${for_length}}
 do
   sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
-                                                             $param_set \
+                                                             ${param_set} \
                                                              ${replicates} \
                                                              ${pipeline} \
                                                              ${distance_method} \
