@@ -19,7 +19,7 @@ run_analysis <- function(novel_sim,
   testit::assert(
     "replicate_range must be a numeric with 2 sorted elements or NULL",
     is.null(replicate_range) ||
-      is.numeric(replicate_range) && (replicate_range[1] < replicate_range[2])
+      (is.numeric(replicate_range) && (replicate_range[1] < replicate_range[2]))
   )
 
   sim_constraints <- sim_constraints(
