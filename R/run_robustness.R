@@ -10,8 +10,8 @@ run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
                            pipeline = "full",
-                           distance_method = "abs",
                            novel_sim = NULL,
+                           distance_method = "abs",
                            save_output = TRUE,
                            replicate_range = NULL,
                            load_from_file = FALSE) {
@@ -32,9 +32,10 @@ run_robustness <- function(param_space_name,
   testit::assert(replicates > 1)
 
 
-  check_create_results_folder(
+  check_create_folders(
     param_space_name = param_space_name,
-    save_output = save_output
+    save_output = save_output,
+    pipeline = pipeline
   )
 
   set.seed(
@@ -62,9 +63,11 @@ run_robustness <- function(param_space_name,
         param_space_name = param_space_name,
         param_set = param_set
       )
+      testit::assert("For runnning just the analysis
+                   novel_sim must be supplied.", exists("novel_sim"))
     }
     testit::assert("For runnning just the analysis
-                   novel_sim must be supplied.", exists("novel_sim"))
+                   novel_sim must be supplied.", !is.null("novel_sim"))
     output <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,

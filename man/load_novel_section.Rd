@@ -26,7 +26,7 @@ Load intermediate novel sim results to continue pipeline
 }
 \seealso{
 Other I/O: 
-\code{\link{check_create_results_folder}()},
+\code{\link{check_create_folders}()},
 \code{\link{create_output_file_name}()},
 \code{\link{save_output}()}
 }

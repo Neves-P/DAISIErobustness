@@ -9,8 +9,8 @@ run_robustness(
   param_set,
   replicates,
   pipeline = "full",
-  distance_method = "abs",
   novel_sim = NULL,
+  distance_method = "abs",
   save_output = TRUE,
   replicate_range = NULL,
   load_from_file = FALSE
@@ -38,19 +38,19 @@ novel simulation section should run, calling \code{\link{run_novel_sim}()}.
 \code{"analysis"} runs just the estimation, oceanic simulations and error
 calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 
-\item{distance_method}{From the nLTT package.
-How the difference between the two nLTTs is summed:
-\itemize{
- \item{"abs: "}{the absolute distance between the two nLTTs is summed}
- \item{"squ: "}{the squared distance between the two nLTTs is summed}
-}}
-
 \item{novel_sim}{A list of simulation output in the DAISIE simulation format
 for which the robustness against standard oceanic DAISIE is to be
 determined.
 Can be generated from a preset of models available in
 \code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
 format.}
+
+\item{distance_method}{From the nLTT package.
+How the difference between the two nLTTs is summed:
+\itemize{
+ \item{"abs: "}{the absolute distance between the two nLTTs is summed}
+ \item{"squ: "}{the squared distance between the two nLTTs is summed}
+}}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 

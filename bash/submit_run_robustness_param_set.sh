@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH --time=9-23:05:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --job-name=robustness
+#SBATCH --output=logs/robustness-%j.log
+#SBATCH --mem=5GB
+#SBATCH --partition=gelifes
+
+
+# See DAISIErobustness::run_robustness() documentation for help.
+# Arguments to follow the Rscript are as follows:
+param_space_name=$1
+param_set=$2
+replicates=$3
+pipeline=$4
+distance_method=$5
+replicate_range_start=$6
+replicate_range_end=$7
+load_from_file=$8
+
+ml R
+Rscript DAISIErobustness/scripts/run_robustness_peregrine.R ${param_space_name} \
+                                                            ${param_set} \
+                                                            ${replicates} \
+                                                            ${pipeline} \
+                                                            ${distance_method} \
+                                                            ${replicate_range_start} \
+                                                            ${replicate_range_end} \
+                                                            ${load_from_file}
+
+

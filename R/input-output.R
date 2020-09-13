@@ -22,19 +22,14 @@ save_output <- function(output,
       sim_constraints = output$sim_constraints,
       ml_constraints = output$ml_constraints
     )
-    if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
 
-      results_folder <- file.path(
-        getwd(),
-        "Projects",
-        "DAISIErobustness",
-        "results",
-        param_space_name
-      )
-      output_file_path <- file.path(results_folder, output_file_name)
-    } else {
-      output_file_path <- file.path(getwd(), "results", output_file_name)
-    }
+    output_folder <- file.path(
+      getwd(),
+      "results",
+      param_space_name
+    )
+    output_file_path <- file.path(output_folder, output_file_name)
+
   } else if (pipeline == "novel_sim") {
     output_file_name <- paste0(
       "novel_",
@@ -43,21 +38,15 @@ save_output <- function(output,
       param_set,
       ".RData"
     )
-    testit::assert(is.character(output_file_name))
-    if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
+    output_folder <- file.path(
+      getwd(),
+      "sims",
+      param_space_name
+    )
+    output_file_path <- file.path(output_folder, output_file_name)
 
-      data_folder <- file.path(
-        getwd(),
-        "Projects",
-        "DAISIErobustness",
-        "results",
-        param_space_name
-      )
-      output_file_path <- file.path(data_folder, output_file_name)
-    } else {
-      output_file_path <- file.path(getwd(), "data", output_file_name)
-    }
   }
+  testit::assert(is.character(output_file_name))
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
@@ -131,42 +120,45 @@ create_output_file_name <- function(param_space_name,
 #'   folder if needed.
 #' @keywords internal
 #' @family I/O
-check_create_results_folder <- function(param_space_name, save_output) {
+check_create_folders <- function(param_space_name, save_output, pipeline) {
 
   if (!save_output) {
     message("Returning results to object, no I/O used.\n")
     return()
   }
-  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
-    setwd("..")
-    message(paste0("The current working directory is ", getwd(), "."))
-    results_folder <- file.path(
+
+  if (pipeline == "full" || pipeline == "analysis") {
+    output_folder <- file.path(
       getwd(),
-      "Projects",
-      "DAISIErobustness",
       "results",
       param_space_name
     )
-  } else {
-    results_folder <- file.path(getwd(), "results", param_space_name)
+  } else if (pipeline == "novel_sim") {
+    output_folder <- file.path(
+      getwd(),
+      "sims",
+      param_space_name
+    )
   }
-  if (!dir.exists(results_folder)) {
+
+  if (!dir.exists(output_folder)) {
     message(paste0(
-      results_folder,
+      output_folder,
       " folder not found, attempting to create it.\n")
     )
-    dir.create(results_folder, recursive = TRUE)
-    message("\nCreated folder successfully.")
-  } else if (!dir.exists(results_folder)) {
+    dir.create(output_folder, recursive = TRUE)
+    message("Created folder successfully.")
+  } else if (!dir.exists(output_folder)) {
     stop(paste0(
       "Tried creating: ",
-      results_folder,
+      output_folder,
       "Folder still not found, aborting"
     ))
   } else {
-    message(results_folder, " folder found. No creation needed.\n")
+    message(output_folder, " folder found. No creation needed.\n")
   }
 }
+
 
 #' Load intermediate novel sim results to continue pipeline
 #'
@@ -177,18 +169,12 @@ check_create_results_folder <- function(param_space_name, save_output) {
 #' @family I/O
 load_novel_section <- function(param_space_name,
                                param_set) {
-  if (grepl("pg-node", Sys.getenv("HOSTNAME"), fixed = TRUE)) {
 
     data_folder <- file.path(
       getwd(),
-      "Projects",
-      "DAISIErobustness",
-      "data",
+      "sims",
       param_space_name
     )
-  } else {
-    data_folder <- file.path(getwd(), "data")
-  }
   if (!dir.exists(data_folder)) {
     stop(paste0(
       data_folder,
@@ -218,7 +204,7 @@ load_novel_section <- function(param_space_name,
 
   if (exists(x = "output")) {
     testit::assert(all(c("island_age", "not_present", "stt_all") %in%
-                     names(output[[1]][[1]][[1]])))
+                         names(output[[1]][[1]][[1]])))
     message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
   }
   return(output)

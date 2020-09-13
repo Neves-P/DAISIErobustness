@@ -1,56 +1,19 @@
-run_robustness_peregrine <- function(param_space_name,
-                                     cluster_partition = "gelifes",
-                                     param_set_range = NULL,
-                                     max_n_jobs = 100,
-                                     replicate_range = NULL,
-                                     replicates = 1000) {
+args <- commandArgs(TRUE)
 
-
-  # Create params for the experiment
-  param_space <- DAISIErobustness::load_param_space(
-    param_space_name = param_space_name
-  )
-
-  if (is.null(param_set_range)) {
-    total_runs <- nrow(param_space)
-    midway_index <- 1
-  } else {
-    testit::assert(is.numeric(param_set_range))
-    midway_index <- param_set_range[1]
-    if (param_set_range[1] == 1) {
-      total_runs <- param_set_range[2]
-    } else {
-      total_runs <- param_set_range[2] - param_set_range[1]
-    }
-  }
-
-  ## Calculate number of jobs to run
-
-  # Make params list
-  params <- vector("list", total_runs)
-
-  # Populate params list with necessary arguments
-  for (i in midway_index:total_runs) {
-    params[[i]] <- list(
-      param_space_name = param_space_name,
-      param_set = i,
-      replicates = replicates,
-      pipeline = "full",
-      save_output = TRUE,
-      load_from_file = FALSE,
-      replicate_range = replicate_range
-    )
-  }
-
-  # Start RStudio job that submits cluster jobs
-  jap::pocket_experiment(
-    github_name = "Neves-P",
-    project_name = "DAISIErobustness",
-    function_name = "run_robustness",
-    params = params,
-    cluster_folder = "data",
-    cluster_partition = cluster_partition,
-    delete_on_cluster = FALSE,
-    max_n_jobs = max_n_jobs
-  )
+if (args[6] == "NULL") {
+  replicate_range <- NULL
+} else {
+  replicate_range <- c(as.numeric(args[6]), as.numeric(args[7]))
 }
+
+DAISIErobustness::run_robustness(
+  param_space_name = args[1],
+  param_set = as.numeric(args[2]),
+  replicates = as.numeric(args[3]),
+  pipeline = args[4],
+  distance_method = args[5],
+  save_output = TRUE,
+  replicate_range = replicate_range,
+  load_from_file = as.logical(args[8])
+)
+

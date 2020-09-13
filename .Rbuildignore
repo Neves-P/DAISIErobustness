@@ -11,3 +11,4 @@
 ^results/\$
 ^CONTRIBUTING\.md$
 ^\.covrignore$
+^bash$
