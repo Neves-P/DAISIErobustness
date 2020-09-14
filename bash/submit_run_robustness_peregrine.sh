@@ -62,9 +62,19 @@
 #   For a "full" or "novel_sim" pipeline, normal use is FALSE. For an "analysis"
 #   run, TRUE is usually used. This arguments allows decoupling simulation and
 #   analysis jobs.
-
-
+################################################################################
 ##### Before running make sure logs folder has been created! ####
+## Usage example running simulations for the oceanic_ontogeny param space, 1000
+## replicates, entire parameter space:
+# git clone https://github.com/Neves-P/DAISIErobustness.git
+# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 novel_sim abs NULL NULL FALSE
+#
+## Usage example running analysis for the nonoceanic param space, 1000
+## replicates, entire parameter space:
+# git clone https://github.com/Neves-P/DAISIErobustness.git
+# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh nonoceanic 1000 analysis abs NULL NULL TRUE
+################################################################################
+
 
 
 # Start script
