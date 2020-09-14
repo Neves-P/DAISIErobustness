@@ -209,31 +209,31 @@ test_that("test calc_ml output is correct with traits sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 0.27052616867361423,
+    expect_equal(novel_ml[[1]]$lambda_c, 1.2214586632927613,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$mu, 0.077873174353118191,
+    expect_equal(novel_ml[[1]]$mu, 1.1515786807285155,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$K, 9.5594580320554172,
+    expect_equal(novel_ml[[1]]$K, 2.7188225144668534,
                  tolerance = 0.5)
-    expect_equal(novel_ml[[1]]$gamma, 0.010226930211696945,
+    expect_equal(novel_ml[[1]]$gamma, 0.024921740504122835,
                  tolerance = 0.0001)
-    expect_equal(novel_ml[[1]]$lambda_a, 1.9417306863112869,
+    expect_equal(novel_ml[[1]]$lambda_a, 2.6477272278805117e-07,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[1]]$loglik, -160.4318151559622,
+    expect_equal(novel_ml[[1]]$loglik, -157.07466871225336,
                  tolerance = 0.01)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 0.99001390851336724,
+    expect_equal(novel_ml[[2]]$lambda_c, 857.07123594094742,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$mu, 0.6068065105789977,
+    expect_equal(novel_ml[[2]]$mu, 0.83677777310716506,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$K, 2.3763087023047014,
+    expect_equal(novel_ml[[2]]$K, 1.0004646779253812,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$gamma, 0.017482251983797052,
+    expect_equal(novel_ml[[2]]$gamma, 0.024494615867874377,
                  tolerance = 0.0001)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.70623621688365135,
+    expect_equal(novel_ml[[2]]$lambda_a, 0.58816002581759408,
                  tolerance = 0.01)
-    expect_equal(novel_ml[[2]]$loglik, -170.05894428069004,
+    expect_equal(novel_ml[[2]]$loglik, -175.97987104229043,
                  tolerance = 0.01)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
