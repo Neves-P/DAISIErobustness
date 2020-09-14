@@ -5,7 +5,7 @@ on `/DAISIErobustness/bash/submit_run_robustness_peregrine.sh`.
 * `run_robustness_peregrine.R` is no longer a function, but an R script that
 runs the pipeline on Peregrine.
 * Include improved DAISIE traits parameter space.
-* Depend on rsetienne/DAISIE@3.0.1 (which is also the CRAN release).
+* Depend on rsetienne/DAISIE@v3.0.1 (which is also the CRAN release).
 
 # DAISIErobustness 1.0.3
 
