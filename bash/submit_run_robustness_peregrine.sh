@@ -7,14 +7,70 @@
 #SBATCH --mem=1GB
 #SBATCH --partition=short
 
+# DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
+# Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Before running make sure logs folder has been created.
+################################ Usage #########################################
+# This bash script submits one entire DAISIErobustness parameter space as a    #
+# set of individual jobs. Submissions are made to the GELIFES partition. Note  #
+# that only up to 1000 jobs may be running/pending in the GELIFES partition    #
+# per user.                                                                    #
+################################################################################
+### Arguments ###
+# param_space_name - Name of parameter space to run. Options:
+#   oceanic_ontogeny
+#   oceanic_sea_level
+#   oceanic_ontogeny_sea_level
+#   nonoceanic
+#   nonoceanic_sea_level
+#   nonoceanic_land_bridge
+#   trait
+#   oceanic
+# replicates - Total number of replicates to be simulated, or present in input
+#   simulatio.
+# pipeline - Whether the full pipeline should run, only the simulations, or only
+#   the analysis. Options:
+#     full - runs simulations followed analysis.
+#     novel_sim - runs only simulation portion of pipeline and returns output.
+# distance_method - If the absolute or squared distance between nLTTs should be
+#   computed. Options:
+#     abs - (default)
+#     squ
+# replicate_range_start - NULL or integer. If NULL, analysis will be done on all
+#   replicates. If an integer, then the value will mark the start of the window
+#   of replicates to be analysed.
+# replicate_range_end - NULL or integer. If NULL, analysis will be done on all
+#   replicates. If an integer, then the value will mark the start of the window
+#   of replicates to be analysed.
+# load_from_file - Boolean. FALSE indicates the simulations used in the analysis
+#   portion of the pipeline will not be loaded from a file and are expected to
+#   be created beforehand or by the pipeline call itself. TRUE indicates
+#   simulations are to be read from disk in a the home/$USER/sims/ directory.
+#   For a "full" or "novel_sim" pipeline, normal use is FALSE. For an "analysis"
+#   run, TRUE is usually used. This arguments allows decoupling simulation and
+#   analysis jobs.
 
+
+##### Before running make sure logs folder has been created! ####
+
+
+# Start script
 ml R
 Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
 
-# See DAISIErobustness::run_robustness() documentation for help.
-# Arguments to follow the Rscript are as follows:
 param_space_name=$1
 replicates=$2
 pipeline=$3
