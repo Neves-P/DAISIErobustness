@@ -1,3 +1,12 @@
+# DAISIErobustness 1.1.0
+
+* Rework [Peregrine HPC](https://www.rug.nl/society-business/centre-for-information-technology/research/services/hpc/facilities/peregrine-hpc-cluster?lang=en) job submission. Job submissions done by calling `sbatch`
+on `/DAISIErobustness/bash/submit_run_robustness_peregrine.sh`.
+* `run_robustness_peregrine.R` is no longer a function, but an R script that
+runs the pipeline on Peregrine.
+* Include improved DAISIE traits parameter space.
+* Depend on rsetienne/DAISIE@3.0.1 (which is also the CRAN release).
+
 # DAISIErobustness 1.0.3
 
 * Use correct diversity-dependence settings when estimating using `calc_ml()`.
