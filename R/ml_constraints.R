@@ -62,9 +62,9 @@ decide_best_pars <- function(ml_res_initpars_1,
   n_replicates <- length(ml_res_initpars_1)
 
   if (novel_ml_constraints_1 == FALSE) {
-    pars_to_use <- ml_res_initpars_2
+    out <- ml_res_initpars_2
   } else if (novel_ml_constraints_2 == FALSE) {
-    pars_to_use <- ml_res_initpars_1
+    out <- ml_res_initpars_1
   } else {
     for (i in seq_len(n_replicates)) {
       ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
@@ -75,9 +75,7 @@ decide_best_pars <- function(ml_res_initpars_1,
       pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
       pars_to_use <- pars_list[[set_with_highest_loglik]]
 
-      out[[i]] <- list(
-        pars_to_use = pars_to_use
-      )
+      out[[i]] <- pars_to_use
     }
   }
   return(out)

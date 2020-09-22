@@ -82,14 +82,14 @@ run_analysis <- function(novel_sim,
     )
     if (novel_ml_constraints_1 == TRUE || novel_ml_constraints_2 == TRUE) {
 
-      best_pars <- decide_best_pars(
+      novel_ml <- decide_best_pars(
         ml_res_initpars_1 = novel_ml_1,
         ml_res_initpars_2 = novel_ml_2,
         novel_ml_constraints_1 = novel_ml_constraints_1,
         novel_ml_constraints_2 = novel_ml_constraints_2
       )
 
-      novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
+      # novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
 
       if (param_space_name == "trait") {
         sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
