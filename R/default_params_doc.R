@@ -119,6 +119,8 @@ default_params_doc <- function(
   ml_res_initpars_2,
   sim_constraints,
   ml_constraints,
+  novel_ml_constraints_1,
+  novel_ml_constraints_2,
   initial_parameters,
   sim_1,
   sim_2,

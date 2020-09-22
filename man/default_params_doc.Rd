@@ -21,6 +21,8 @@ default_params_doc(
   ml_res_initpars_2,
   sim_constraints,
   ml_constraints,
+  novel_ml_constraints_1,
+  novel_ml_constraints_2,
   initial_parameters,
   sim_1,
   sim_2,
@@ -101,6 +103,12 @@ parameters.}
 \item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
 \code{FALSE} otherwise.}
 
+\item{novel_ml_constraints_1}{A boolean returned from
+\code{\link{ml_constraints}()}.}
+
+\item{novel_ml_constraints_2}{A boolean returned from
+\code{\link{ml_constraints}()}.}
+
 \item{initial_parameters}{A numeric vector of length 5 with the initial
 parameters for the MLE routine. The same as \code{initparsopt}
 from \code{\link[DAISIE]{DAISIE_ML}()}.}
@@ -162,12 +170,6 @@ or similar vectors as obtained within
 \code{\link{calc_error_metrics}()}. Distance is calculated with
 \code{vec_1}.
 @noRd}
-
-\item{novel_ml_constraints_1}{A boolean returned from
-\code{\link{ml_constraints}()}.}
-
-\item{novel_ml_constraints_2}{A boolean returned from
-\code{\link{ml_constraints}()}.}
 }
 \value{
 Nothing
