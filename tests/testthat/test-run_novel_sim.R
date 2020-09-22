@@ -11,6 +11,7 @@ test_that("test run_novel_sim output is correct for
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "oceanic_ontogeny",
     param_space = param_space,
@@ -18,7 +19,8 @@ test_that("test run_novel_sim output is correct for
   novel_sim <- run_novel_sim(
     param_space_name = "oceanic_ontogeny",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 57)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -54,6 +56,7 @@ test_that("test run_novel_sim output is correct for
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "oceanic_sea_level",
     param_space = param_space,
@@ -61,7 +64,8 @@ test_that("test run_novel_sim output is correct for
   novel_sim <- run_novel_sim(
     param_space_name = "oceanic_sea_level",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 38)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -93,6 +97,7 @@ test_that("test run_novel_sim output is correct for
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "oceanic_ontogeny_sea_level",
     param_space = param_space,
@@ -100,7 +105,8 @@ test_that("test run_novel_sim output is correct for
   novel_sim <- run_novel_sim(
     param_space_name = "oceanic_ontogeny_sea_level",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 48)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -136,6 +142,7 @@ test_that("test run_novel_sim output is correct for
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "nonoceanic",
     param_space = param_space,
@@ -143,7 +150,8 @@ test_that("test run_novel_sim output is correct for
   novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 19)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -183,10 +191,12 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "nonoceanic_sea_level",
     param_space = param_space,
     param_set = 1)
+  cond <- 5
   novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic_sea_level",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 48)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -222,6 +232,7 @@ test_that("test run_novel_sim output is correct for
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "nonoceanic_land_bridge",
     param_space = param_space,
@@ -229,7 +240,8 @@ test_that("test run_novel_sim output is correct for
   novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic_land_bridge",
     sim_pars = sim_pars,
-    replicates = 2)
+    replicates = 2,
+    cond = cond)
   expect_length(novel_sim, 2)
   expect_length(novel_sim[[1]][[1]], 25)
   expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -265,6 +277,7 @@ test_that("test run_novel_sim output is correct for
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
+    cond <- 5
     sim_pars <- extract_param_set(
       param_space_name = "trait",
       param_space = param_space,
@@ -272,7 +285,8 @@ test_that("test run_novel_sim output is correct for
     novel_sim <- run_novel_sim(
       param_space_name = "trait",
       sim_pars = sim_pars,
-      replicates = 2)
+      replicates = 2,
+      cond = cond)
     expect_length(novel_sim, 2)
     expect_length(novel_sim[[1]][[1]], 28)
     expect_equal(novel_sim[[1]][[1]][[1]]$island_age, 2.5)
