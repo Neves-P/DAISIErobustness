@@ -17,6 +17,9 @@ in the DAISIE sim format.}
 \item{initial_parameters}{A numeric vector of length 5 with the initial
 parameters for the MLE routine. The same as \code{initparsopt}
 from \code{\link[DAISIE]{DAISIE_ML}()}.}
+
+\item{cond}{A numeric conditioning on number of colonising lineages.
+Default is 5.}
 }
 \value{
 Output from \code{\link[DAISIE]{DAISIE_ML}()}

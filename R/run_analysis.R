@@ -89,8 +89,6 @@ run_analysis <- function(novel_sim,
         novel_ml_constraints_2 = novel_ml_constraints_2
       )
 
-      # novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
-
       if (param_space_name == "trait") {
         sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
       }
@@ -187,7 +185,7 @@ run_analysis <- function(novel_sim,
 #'
 #' @return TRUE if the input is a valid collection of simulation
 #' outputs.
-#' @author Richel J.C Bilderbeek, Pedro Neves
+#' @author Richèl J.C Bilderbeek, Pedro Neves
 is_novel_sim_outputs <- function(novel_sim) {
   for (n_replicate in seq_along(novel_sim)) {
     if (!"island_age" %in% names(novel_sim[[n_replicate]][[1]][[1]]))

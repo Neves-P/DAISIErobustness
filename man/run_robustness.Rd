@@ -32,6 +32,9 @@ run, as found in the file named in \code{param_space}.}
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
 
+\item{cond}{A numeric conditioning on number of colonising lineages.
+Default is 5.}
+
 \item{pipeline}{A string stating what sections of the pipeline should
 run. Default is \code{"full"}, meaning the entire pipeline, including the
 novel model and analysis will run. \code{"novel_sim"} Indicates only the

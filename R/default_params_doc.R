@@ -11,6 +11,12 @@
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
+#' @param cond A numeric conditioning on number of colonising lineages.
+#'   Default is 5.
+#' @param novel_ml_constraints_1 A boolean returned from
+#'   \code{\link{ml_constraints}()}.
+#' @param novel_ml_constraints_2 A boolean returned from
+#'   \code{\link{ml_constraints}()}.
 #' @param replicate_range A numeric vector of length 2 or, by default,
 #'  \code{NULL} if the entire range should be used. Specifies the range of
 #'  previously saved replicates from \code{\link{run_novel_sim}()} that should
@@ -100,6 +106,7 @@ default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
+  cond,
   replicate_range,
   save_output,
   output,
