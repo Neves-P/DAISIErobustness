@@ -23,7 +23,7 @@ oceanic_sim <- function(ml,
           verbose = FALSE,
           sample_freq = Inf
         )
-        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+        num_col <- as.numeric(oceanic_sim[[i]][[1]][[1]]$stt_all[nrow(oceanic_sim[[i]][[1]][[1]]$stt_all), "present"])
       }
     }
   }
