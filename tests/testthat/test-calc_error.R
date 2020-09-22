@@ -68,6 +68,7 @@ test_that("test calc_error output is correct when failed convergence", {
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
   sim_pars <- extract_param_set(
     param_space_name = "nonoceanic",
     param_space = param_space,
@@ -75,7 +76,8 @@ test_that("test calc_error output is correct when failed convergence", {
   novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic",
     sim_pars = sim_pars,
-    replicates = 1)
+    replicates = 1,
+    cond = 5)
   # Mimic a failed ML run
   novel_ml <- list("ML didn't converge")
   novel_ml <- list(novel_ml)

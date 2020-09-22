@@ -19,6 +19,7 @@ test_that("test oceanic sim output is correct", {
                                    "conv" = 0))
   sim_pars <- list(time = 2.55,
                    M = 1000)
+  cond <- 5
   set.seed(
     1,
     kind = "Mersenne-Twister",
@@ -27,7 +28,8 @@ test_that("test oceanic sim output is correct", {
   )
   oceanic_sim <- oceanic_sim(
     ml = geodynamic_ml,
-    sim_pars = sim_pars)
+    sim_pars = sim_pars,
+    cond = cond)
   expect_length(oceanic_sim, 2)
   expect_length(oceanic_sim[[1]][[1]], 12)
   expect_equal(oceanic_sim[[1]][[1]][[1]]$island_age, 2.55)

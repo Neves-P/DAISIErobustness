@@ -8,6 +8,7 @@ test_that("use", {
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
+  cond <- 5
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
@@ -20,7 +21,8 @@ test_that("use", {
   novel_sim <- DAISIErobustness:::run_novel_sim(
     param_space_name = param_space_name,
     sim_pars = sim_pars,
-    replicates = replicates
+    replicates = replicates,
+    cond = cond
   )
 
   expect_silent(calc_max_spec(novel_sim))
