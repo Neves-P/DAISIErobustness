@@ -17,7 +17,7 @@ test_that("test sim_constraints returns TRUE", {
   expect_equal(sim_constraints, TRUE)
 })
 
-test_that("test sim_constraints returns FALSE when number
+test_that("test sim_constraints returns TRUE when number
           of species is under 15", {
   stt_all_rep_1 <- matrix(nrow = 1, ncol = 5)
   colnames(stt_all_rep_1) <- c("Time", "nI", "nA", "nC", "present")
@@ -32,10 +32,10 @@ test_that("test sim_constraints returns FALSE when number
   sim_constraints <- sim_constraints(
     sim = fake_geodynamic_sim,
     replicates = 2)
-  expect_equal(sim_constraints, FALSE)
+  expect_equal(sim_constraints, TRUE)
 })
 
-test_that("test sim_constraints returns FALSE when number
+test_that("test sim_constraints returns TRUE when number
           of species exceeds 100", {
   stt_all_rep_1 <- matrix(nrow = 1, ncol = 5)
   colnames(stt_all_rep_1) <- c("Time", "nI", "nA", "nC", "present")
@@ -50,7 +50,7 @@ test_that("test sim_constraints returns FALSE when number
   sim_constraints <- sim_constraints(
     sim = fake_geodynamic_sim,
     replicates = 2)
-  expect_equal(sim_constraints, FALSE)
+  expect_equal(sim_constraints, TRUE)
 })
 
 test_that("test sim_constraints returns FALSE when number
