@@ -55,23 +55,30 @@ ml_constraints <- function(ml) {
 #' @seealso \code{\link[DAISIE]{DAISIE_ML}()}, \code{\link{calc_ml}()}
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 decide_best_pars <- function(ml_res_initpars_1,
-                             ml_res_initpars_2) {
-  # Initialize variables and set tolerance
+                             ml_res_initpars_2,
+                             novel_ml_constraints_1,
+                             novel_ml_constraints_2) {
   out <- list()
   n_replicates <- length(ml_res_initpars_1)
 
-  for (i in seq_len(n_replicates)) {
-    ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
-    ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
-    logliks <- c(ml_1_loglik, ml_2_loglik)
-    set_with_highest_loglik <- which(max(logliks) == logliks)[1]
-    testit::assert(length(set_with_highest_loglik) == 1)
-    pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
-    pars_to_use <- pars_list[[set_with_highest_loglik]]
+  if (novel_ml_constraints_1 == FALSE) {
+    pars_to_use <- ml_res_initpars_2
+  } else if (novel_ml_constraints_2 == FALSE) {
+    pars_to_use <- ml_res_initpars_1
+  } else {
+    for (i in seq_len(n_replicates)) {
+      ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
+      ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
+      logliks <- c(ml_1_loglik, ml_2_loglik)
+      set_with_highest_loglik <- which(max(logliks) == logliks)[1]
+      testit::assert(length(set_with_highest_loglik) == 1)
+      pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
+      pars_to_use <- pars_list[[set_with_highest_loglik]]
 
-    out[[i]] <- list(
-      pars_to_use = pars_to_use
-    )
+      out[[i]] <- list(
+        pars_to_use = pars_to_use
+      )
+    }
   }
   return(out)
 }
