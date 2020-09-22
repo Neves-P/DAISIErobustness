@@ -4,7 +4,7 @@
 \alias{oceanic_sim}
 \title{Runs original oceanic DAISIE simulation}
 \usage{
-oceanic_sim(ml, sim_pars)
+oceanic_sim(ml, sim_pars, cond)
 }
 \arguments{
 \item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}.}

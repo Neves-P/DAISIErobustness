@@ -4,22 +4,27 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
 oceanic_sim <- function(ml,
-                        sim_pars) {
+                        sim_pars,
+                        cond) {
   oceanic_sim <- list()
   for (i in seq_along(ml)) {
     if (is.character(ml[[i]])) {
       oceanic_sim[[i]] <- "ML didn't converge"
     } else {
-      oceanic_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
-        time = sim_pars$time,
-        M = sim_pars$M,
-        pars = as.numeric(ml[[i]][1:5]),
-        hyper_pars = DAISIE::create_hyper_pars(d = 0, x = 0),
-        replicates = 1,
-        plot_sims = FALSE,
-        verbose = FALSE,
-        sample_freq = Inf
-      )
+      num_col <- NULL
+      while (num_col < cond || is.null(num_col)) {
+        oceanic_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
+          time = sim_pars$time,
+          M = sim_pars$M,
+          pars = as.numeric(ml[[i]][1:5]),
+          hyper_pars = DAISIE::create_hyper_pars(d = 0, x = 0),
+          replicates = 1,
+          plot_sims = FALSE,
+          verbose = FALSE,
+          sample_freq = Inf
+        )
+        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+      }
     }
   }
   return(oceanic_sim)

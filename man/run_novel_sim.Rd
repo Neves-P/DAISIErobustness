@@ -4,7 +4,7 @@
 \alias{run_novel_sim}
 \title{Runs DAISIE simulation with a novel model}
 \usage{
-run_novel_sim(param_space_name, sim_pars, replicates)
+run_novel_sim(param_space_name, sim_pars, replicates, cond)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
