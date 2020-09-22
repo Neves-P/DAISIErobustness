@@ -4,7 +4,7 @@
 \alias{calc_ml}
 \title{Calculate maximum likelihood value for the rates}
 \usage{
-calc_ml(sim, initial_parameters)
+calc_ml(sim, initial_parameters, cond)
 }
 \arguments{
 \item{sim}{A list of simulation output from
