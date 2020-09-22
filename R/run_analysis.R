@@ -8,6 +8,7 @@
 run_analysis <- function(novel_sim,
                          param_space_name,
                          replicates,
+                         cond,
                          replicate_range = NULL,
                          sim_pars,
                          distance_method) {
@@ -54,12 +55,14 @@ run_analysis <- function(novel_sim,
 
     novel_ml_1 <- calc_ml(
       sim = novel_sim,
-      initial_parameters = initial_parameters_1_list
+      initial_parameters = initial_parameters_1_list,
+      cond = cond
     )
 
     novel_ml_2 <- calc_ml(
       sim = novel_sim,
-      initial_parameters = initial_parameters_2_list
+      initial_parameters = initial_parameters_2_list,
+      cond = cond
     )
 
     novel_ml_constraints_1 <- ml_constraints(
@@ -77,12 +80,13 @@ run_analysis <- function(novel_sim,
       sim_constraints = sim_constraints,
       ml_constraints = FALSE
     )
-    if (novel_ml_constraints_1 == TRUE &&
-        novel_ml_constraints_2 == TRUE) {
+    if (novel_ml_constraints_1 == TRUE || novel_ml_constraints_2 == TRUE) {
 
       best_pars <- decide_best_pars(
         ml_res_initpars_1 = novel_ml_1,
-        ml_res_initpars_2 = novel_ml_2
+        ml_res_initpars_2 = novel_ml_2,
+        novel_ml_constraints_1 = novel_ml_constraints_1,
+        novel_ml_constraints_2 = novel_ml_constraints_2
       )
 
       novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
@@ -93,7 +97,8 @@ run_analysis <- function(novel_sim,
 
       oceanic_sim_1 <- oceanic_sim(
         ml = novel_ml,
-        sim_pars = sim_pars)
+        sim_pars = sim_pars,
+        cond = cond)
 
       error <- calc_error(
         sim_1 = novel_sim,
@@ -107,7 +112,9 @@ run_analysis <- function(novel_sim,
 
       oceanic_ml <- calc_ml(
         sim = oceanic_sim_1,
-        initial_parameters = novel_ml)
+        initial_parameters = novel_ml,
+        cond = cond
+      )
 
       ml_constraints <- ml_constraints(
         ml = oceanic_ml)
@@ -127,7 +134,8 @@ run_analysis <- function(novel_sim,
       if (ml_constraints == TRUE) {
         oceanic_sim_2 <- oceanic_sim(
           ml = oceanic_ml,
-          sim_pars = sim_pars)
+          sim_pars = sim_pars,
+          cond = cond)
 
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
