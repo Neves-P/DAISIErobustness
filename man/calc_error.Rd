@@ -26,8 +26,9 @@ simulations}
 \item{distance_method}{From the nLTT package.
 How the difference between the two nLTTs is summed:
 \itemize{
- \item{\code{"abs"}:}{the absolute distance between the two nLTTs is summed}
- \item{\code{"squ"}:}{the squared distance between the two nLTTs is summed}
+ \item{\code{"abs"}: }{the absolute distance between the two nLTTs is
+   summed}
+ \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}
 }}
 }
 \value{
