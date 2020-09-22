@@ -13,7 +13,7 @@ run_novel_sim <- function(param_space_name,
                           replicates,
                           cond) {
   novel_sim <- list()
-  if (param_space_name == "nonoceanic" || param_space_name == "oceanic") {
+  if (param_space_name %in% c("nonoceanic", "oceanic")) {
     for (i in seq_len(replicates)) {
       num_col <- NULL
       while (num_col < cond || is.null(num_col)) {
@@ -27,7 +27,8 @@ run_novel_sim <- function(param_space_name,
           plot_sims = FALSE,
           verbose = FALSE
         )
-        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
+        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
       }
     }
   }
@@ -46,7 +47,8 @@ run_novel_sim <- function(param_space_name,
           plot_sims = FALSE,
           verbose = FALSE
         )
-        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
+        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
       }
     }
   }
@@ -72,7 +74,8 @@ run_novel_sim <- function(param_space_name,
           plot_sims = FALSE,
           verbose = FALSE
         )
-        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
+        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
       }
     }
   }
@@ -90,7 +93,8 @@ run_novel_sim <- function(param_space_name,
           verbose = FALSE,
           trait_pars = sim_pars$trait_pars
         )
-        num_col <- as.numeric(novel_sim[[i]][[1]][[1]]$stt_all[nrow(novel_sim[[i]][[1]][[1]]$stt_all), "present"])
+        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
+        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
       }
     }
   }
