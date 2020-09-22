@@ -8,6 +8,7 @@ run_robustness(
   param_space_name,
   param_set,
   replicates,
+  cond = 5,
   pipeline = "full",
   novel_sim = NULL,
   distance_method = "abs",
@@ -48,8 +49,9 @@ format.}
 \item{distance_method}{From the nLTT package.
 How the difference between the two nLTTs is summed:
 \itemize{
- \item{\code{"abs"}:}{the absolute distance between the two nLTTs is summed}
- \item{\code{"squ"}:}{the squared distance between the two nLTTs is summed}
+ \item{\code{"abs"}: }{the absolute distance between the two nLTTs is
+   summed}
+ \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}
 }}
 
 \item{save_output}{A boolean to determine whether to save or return output.}

@@ -9,6 +9,7 @@
 run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
+                           cond = 5,
                            pipeline = "full",
                            novel_sim = NULL,
                            distance_method = "abs",
@@ -18,7 +19,7 @@ run_robustness <- function(param_space_name,
 
   param_space <- load_param_space(
     param_space_name = param_space_name)
-
+  testit::assert(pipeline %in% c("full", "novel_sim", "analysis"))
   testit::assert(param_space_name %in% c("oceanic_ontogeny",
                                          "oceanic_sea_level",
                                          "oceanic_ontogeny_sea_level",
@@ -54,7 +55,8 @@ run_robustness <- function(param_space_name,
     output <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates
+      replicates = replicates,
+      cond = cond
     )
   } else if (pipeline == "analysis") {
 
@@ -72,6 +74,7 @@ run_robustness <- function(param_space_name,
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
+      cond = cond,
       replicate_range = replicate_range,
       sim_pars = sim_pars,
       distance_method = distance_method
@@ -80,12 +83,14 @@ run_robustness <- function(param_space_name,
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates
+      replicates = replicates,
+      cond = cond
     )
     output <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
+      cond = cond,
       replicate_range = replicate_range,
       sim_pars = sim_pars,
       distance_method = distance_method
