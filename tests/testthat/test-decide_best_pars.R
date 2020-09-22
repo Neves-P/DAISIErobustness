@@ -125,7 +125,7 @@ test_that("use, fail constraints", {
   # Fail difference, fail other set
 
   ml_res_initpars_1 <- list(data.frame(1, 2, 3, 4, 5, 6))
-  ml_res_initpars_2 <- list(data.frame(10, 20, 30, 40, 50, 60))
+  ml_res_initpars_2 <- list(data.frame(10, 20, 30, 40, 50, 5))
 
   # Same as above, FAIL another one
   novel_ml_constraints_1 <- FALSE
@@ -144,7 +144,7 @@ test_that("use, fail constraints", {
     "X30" = 30,
     "X40" = 40,
     "X50" = 50,
-    "X60" = 60
+    "X5" = 5
   ))
 
   expect_equal(object = obtained, expected = expected)
