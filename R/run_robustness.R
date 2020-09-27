@@ -54,8 +54,7 @@ run_robustness <- function(param_space_name,
     output <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
   } else if (pipeline == "analysis") {
 
