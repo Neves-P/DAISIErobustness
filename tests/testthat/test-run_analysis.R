@@ -12,7 +12,6 @@ test_that("run full function", {
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
-    cond <- 5
     param_space <- load_param_space(
       param_space_name = param_space_name)
 
@@ -24,15 +23,13 @@ test_that("run full function", {
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
 
     novel_ml <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      cond = cond,
       sim_pars = sim_pars,
       distance_method = "abs"
     )
@@ -151,7 +148,6 @@ test_that("run failed sim_constraints", {
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
-    cond <- 5
     param_space <- load_param_space(
       param_space_name = param_space_name)
 
@@ -163,15 +159,13 @@ test_that("run failed sim_constraints", {
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
 
     novel_ml <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      cond = cond,
       sim_pars = sim_pars,
       distance_method = "abs"
     )
@@ -193,7 +187,6 @@ test_that("abuse", {
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
-    cond <- 5
 
     param_space <- load_param_space(
       param_space_name = param_space_name)
@@ -206,8 +199,7 @@ test_that("abuse", {
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
 
     expect_error(
@@ -215,7 +207,6 @@ test_that("abuse", {
         novel_sim = "nonsense",
         param_space_name = param_space_name,
         replicates = replicates,
-        cond = cond,
         sim_pars = sim_pars,
         distance_method = "abs"
       )
@@ -225,7 +216,6 @@ test_that("abuse", {
         novel_sim = novel_sim,
         param_space_name = 123,
         replicates = replicates,
-        cond = cond,
         sim_pars = sim_pars,
         distance_method = "abs"
       )
@@ -235,7 +225,6 @@ test_that("abuse", {
         novel_sim = novel_sim,
         param_space_name = param_space_name,
         replicates = "nonsense",
-        cond = cond,
         sim_pars = sim_pars,
         distance_method = "abs"
       )
@@ -245,7 +234,6 @@ test_that("abuse", {
         novel_sim = novel_sim,
         param_space_name = param_space_name,
         replicates = replicates,
-        cond = cond,
         sim_pars = "nonsense",
         distance_method = "abs"
       )
@@ -267,7 +255,6 @@ test_that("ml constraints fail", {
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
-    cond <- 5
     param_space <- load_param_space(
       param_space_name = param_space_name)
 
@@ -279,15 +266,13 @@ test_that("ml constraints fail", {
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
 
     novel_ml <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      cond = cond,
       sim_pars = sim_pars,
       distance_method = "abs"
     )
