@@ -8,7 +8,6 @@
 run_analysis <- function(novel_sim,
                          param_space_name,
                          replicates,
-                         cond,
                          replicate_range = NULL,
                          sim_pars,
                          distance_method) {
@@ -55,14 +54,12 @@ run_analysis <- function(novel_sim,
 
     novel_ml_1 <- calc_ml(
       sim = novel_sim,
-      initial_parameters = initial_parameters_1_list,
-      cond = cond
+      initial_parameters = initial_parameters_1_list
     )
 
     novel_ml_2 <- calc_ml(
       sim = novel_sim,
-      initial_parameters = initial_parameters_2_list,
-      cond = cond
+      initial_parameters = initial_parameters_2_list
     )
 
     novel_ml_constraints_1 <- ml_constraints(
@@ -95,8 +92,7 @@ run_analysis <- function(novel_sim,
 
       oceanic_sim_1 <- oceanic_sim(
         ml = novel_ml,
-        sim_pars = sim_pars,
-        cond = cond)
+        sim_pars = sim_pars)
 
       error <- calc_error(
         sim_1 = novel_sim,
@@ -110,8 +106,7 @@ run_analysis <- function(novel_sim,
 
       oceanic_ml <- calc_ml(
         sim = oceanic_sim_1,
-        initial_parameters = novel_ml,
-        cond = cond
+        initial_parameters = novel_ml
       )
 
       ml_constraints <- ml_constraints(
@@ -132,8 +127,7 @@ run_analysis <- function(novel_sim,
       if (ml_constraints == TRUE) {
         oceanic_sim_2 <- oceanic_sim(
           ml = oceanic_ml,
-          sim_pars = sim_pars,
-          cond = cond)
+          sim_pars = sim_pars)
 
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
