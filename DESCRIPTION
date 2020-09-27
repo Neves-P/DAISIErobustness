@@ -47,12 +47,12 @@ Suggests:
     knitr,
     rmarkdown
 Imports: 
-    DAISIE (>= 3.0.1),
+    DAISIE (>= 3.1.0),
     nLTT,
     readr,
     testit
 Remotes:
-    rsetienne/DAISIE@develop,
+    rsetienne/DAISIE@v3.1.0,
     thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
