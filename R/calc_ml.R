@@ -5,7 +5,8 @@
 #' @importFrom utils capture.output
 #' @keywords internal
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-calc_ml <- function(sim, initial_parameters, cond) {
+calc_ml <- function(sim,
+                    initial_parameters) {
   ml <- list()
 
   for (i in seq_along(sim)) {
@@ -21,7 +22,6 @@ calc_ml <- function(sim, initial_parameters, cond) {
             initparsopt = as.numeric(initial_parameters[[i]][1:5]),
             idparsopt = c(1:5),
             ddmodel = 11,
-            cond = cond,
             parsfix = NULL,
             idparsfix = NULL,
             cond = 5,
