@@ -10,46 +10,37 @@
 #' @seealso \code{\link{run_robustness}()}, \code{\link{run_analysis}()}.
 run_novel_sim <- function(param_space_name,
                           sim_pars,
-                          replicates,
-                          cond) {
+                          replicates) {
   novel_sim <- list()
   if (param_space_name %in% c("nonoceanic", "oceanic")) {
     for (i in seq_len(replicates)) {
-      num_col <- NULL
-      while (num_col < cond || is.null(num_col)) {
-        novel_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
-          time = sim_pars$time,
-          M = sim_pars$M,
-          pars = sim_pars$pars,
-          replicates = 1,
-          nonoceanic_pars = sim_pars$nonoceanic_pars,
-          sample_freq  = Inf,
-          plot_sims = FALSE,
-          verbose = FALSE
-        )
-        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
-        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
-      }
+      novel_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate(
+        time = sim_pars$time,
+        M = sim_pars$M,
+        pars = sim_pars$pars,
+        replicates = 1,
+        nonoceanic_pars = sim_pars$nonoceanic_pars,
+        sample_freq  = Inf,
+        plot_sims = FALSE,
+        cond = 5,
+        verbose = FALSE
+      )
     }
   }
   if (param_space_name == "nonoceanic_land_bridge") {
     for (i in seq_len(replicates)) {
-      num_col <- NULL
-      while (num_col < cond || is.null(num_col)) {
-        novel_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate_shift(
-          time = sim_pars$time,
-          M = sim_pars$M,
-          pars = sim_pars$pars,
-          replicates = 1,
-          nonoceanic_pars = sim_pars$nonoceanic_pars,
-          shift_times = sim_pars$shift_times,
-          sample_freq  = Inf,
-          plot_sims = FALSE,
-          verbose = FALSE
-        )
-        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
-        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
-      }
+      novel_sim[[i]] <- DAISIE::DAISIE_sim_constant_rate_shift(
+        time = sim_pars$time,
+        M = sim_pars$M,
+        pars = sim_pars$pars,
+        replicates = 1,
+        nonoceanic_pars = sim_pars$nonoceanic_pars,
+        shift_times = sim_pars$shift_times,
+        sample_freq  = Inf,
+        plot_sims = FALSE,
+        cond = 5,
+        verbose = FALSE
+      )
     }
   }
   if (param_space_name %in% c("oceanic_ontogeny",
@@ -57,45 +48,37 @@ run_novel_sim <- function(param_space_name,
                               "oceanic_ontogeny_sea_level",
                               "nonoceanic_sea_level")) {
     for (i in seq_len(replicates)) {
-      num_col <- NULL
-      while (num_col < cond || is.null(num_col)) {
-        novel_sim[[i]] <- DAISIE::DAISIE_sim_time_dependent(
-          time = sim_pars$time,
-          M = sim_pars$M,
-          pars = sim_pars$pars,
-          replicates = 1,
-          nonoceanic_pars = sim_pars$nonoceanic_pars,
-          island_ontogeny = sim_pars$island_ontogeny,
-          sea_level = sim_pars$sea_level,
-          area_pars = sim_pars$area_pars,
-          hyper_pars = sim_pars$hyper_pars,
-          extcutoff = sim_pars$extcutoff,
-          sample_freq = Inf,
-          plot_sims = FALSE,
-          verbose = FALSE
-        )
-        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
-        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
-      }
+      novel_sim[[i]] <- DAISIE::DAISIE_sim_time_dependent(
+        time = sim_pars$time,
+        M = sim_pars$M,
+        pars = sim_pars$pars,
+        replicates = 1,
+        nonoceanic_pars = sim_pars$nonoceanic_pars,
+        island_ontogeny = sim_pars$island_ontogeny,
+        sea_level = sim_pars$sea_level,
+        area_pars = sim_pars$area_pars,
+        hyper_pars = sim_pars$hyper_pars,
+        extcutoff = sim_pars$extcutoff,
+        sample_freq = Inf,
+        plot_sims = FALSE,
+        cond = 5,
+        verbose = FALSE
+      )
     }
   }
   if (param_space_name == "trait") {
     for (i in seq_len(replicates)) {
-      num_col <- NULL
-      while (num_col < cond || is.null(num_col)) {
-        novel_sim[[i]] <- DAISIE::DAISIE_sim_trait_dependent(
-          time = sim_pars$time,
-          M = sim_pars$M,
-          pars = sim_pars$pars,
-          replicates = 1,
-          sample_freq  = Inf,
-          plot_sims = FALSE,
-          verbose = FALSE,
-          trait_pars = sim_pars$trait_pars
-        )
-        stt_all <- novel_sim[[i]][[1]][[1]]$stt_all
-        num_col <- as.numeric(stt_all[nrow(stt_all), "present"])
-      }
+      novel_sim[[i]] <- DAISIE::DAISIE_sim_trait_dependent(
+        time = sim_pars$time,
+        M = sim_pars$M,
+        pars = sim_pars$pars,
+        replicates = 1,
+        sample_freq  = Inf,
+        plot_sims = FALSE,
+        cond = 5,
+        verbose = FALSE,
+        trait_pars = sim_pars$trait_pars
+      )
     }
   }
   return(novel_sim)
