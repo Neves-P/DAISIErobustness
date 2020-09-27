@@ -24,6 +24,7 @@ calc_ml <- function(sim, initial_parameters, cond) {
             cond = cond,
             parsfix = NULL,
             idparsfix = NULL,
+            cond = 5,
             jitter = -1e-5
           )
         )
