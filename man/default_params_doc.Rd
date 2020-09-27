@@ -8,7 +8,6 @@ default_params_doc(
   param_space_name,
   param_set,
   replicates,
-  cond,
   replicate_range,
   save_output,
   output,
@@ -53,9 +52,6 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
-
-\item{cond}{A numeric conditioning on number of colonising lineages.
-Default is 5.}
 
 \item{replicate_range}{A numeric vector of length 2 or, by default,
 \code{NULL} if the entire range should be used. Specifies the range of

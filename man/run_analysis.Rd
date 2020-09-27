@@ -8,7 +8,6 @@ run_analysis(
   novel_sim,
   param_space_name,
   replicates,
-  cond,
   replicate_range = NULL,
   sim_pars,
   distance_method
@@ -32,9 +31,6 @@ pipeline.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
-
-\item{cond}{A numeric conditioning on number of colonising lineages.
-Default is 5.}
 
 \item{replicate_range}{A numeric vector of length 2 or, by default,
 \code{NULL} if the entire range should be used. Specifies the range of

@@ -4,15 +4,12 @@
 \alias{oceanic_sim}
 \title{Runs original oceanic DAISIE simulation}
 \usage{
-oceanic_sim(ml, sim_pars, cond)
+oceanic_sim(ml, sim_pars)
 }
 \arguments{
 \item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_pars}{A list of simulation parameters.}
-
-\item{cond}{A numeric conditioning on number of colonising lineages.
-Default is 5.}
 }
 \value{
 Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}

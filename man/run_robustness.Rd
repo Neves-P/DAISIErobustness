@@ -8,7 +8,6 @@ run_robustness(
   param_space_name,
   param_set,
   replicates,
-  cond = 5,
   pipeline = "full",
   novel_sim = NULL,
   distance_method = "abs",
@@ -31,9 +30,6 @@ run, as found in the file named in \code{param_space}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
-
-\item{cond}{A numeric conditioning on number of colonising lineages.
-Default is 5.}
 
 \item{pipeline}{A string stating what sections of the pipeline should
 run. Default is \code{"full"}, meaning the entire pipeline, including the

@@ -4,7 +4,7 @@
 \alias{run_novel_sim}
 \title{Runs DAISIE simulation with a novel model}
 \usage{
-run_novel_sim(param_space_name, sim_pars, replicates, cond)
+run_novel_sim(param_space_name, sim_pars, replicates)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -19,9 +19,6 @@ pipeline.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
-
-\item{cond}{A numeric conditioning on number of colonising lineages.
-Default is 5.}
 }
 \value{
 A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
