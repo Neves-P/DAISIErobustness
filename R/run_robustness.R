@@ -9,7 +9,6 @@
 run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
-                           cond = 5,
                            pipeline = "full",
                            novel_sim = NULL,
                            distance_method = "abs",
@@ -74,7 +73,6 @@ run_robustness <- function(param_space_name,
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      cond = cond,
       replicate_range = replicate_range,
       sim_pars = sim_pars,
       distance_method = distance_method
@@ -83,14 +81,12 @@ run_robustness <- function(param_space_name,
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
-      replicates = replicates,
-      cond = cond
+      replicates = replicates
     )
     output <- run_analysis(
       novel_sim = novel_sim,
       param_space_name = param_space_name,
       replicates = replicates,
-      cond = cond,
       replicate_range = replicate_range,
       sim_pars = sim_pars,
       distance_method = distance_method
