@@ -3,8 +3,7 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return A list of errors and simulation and MLE output if
-#' \code{\link{sim_constraints}()} and \code{\link{ml_constraints}()} returned
-#' TRUE or simulation output if \code{\link{sim_constraints}()} returned FALSE.
+#' \code{\link{ml_constraints}()} returned TRUE.
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
