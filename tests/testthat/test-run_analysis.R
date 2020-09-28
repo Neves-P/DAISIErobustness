@@ -136,46 +136,6 @@ test_that("run full function", {
   }
 })
 
-test_that("run failed sim_constraints", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
-      || Sys.getenv("APPVEYOR") != "") {
-    replicates <- 2
-    param_space_name <- "nonoceanic"
-    param_set <- 195
-    set.seed(
-      1,
-      kind = "Mersenne-Twister",
-      normal.kind = "Inversion",
-      sample.kind = "Rejection"
-    )
-    param_space <- load_param_space(
-      param_space_name = param_space_name)
-
-    sim_pars <- extract_param_set(
-      param_space_name = param_space_name,
-      param_space = param_space,
-      param_set = param_set)
-
-    novel_sim <- run_novel_sim(
-      param_space_name = param_space_name,
-      sim_pars = sim_pars,
-      replicates = replicates
-    )
-
-    novel_ml <- run_analysis(
-      novel_sim = novel_sim,
-      param_space_name = param_space_name,
-      replicates = replicates,
-      sim_pars = sim_pars,
-      distance_method = "abs"
-    )
-
-    expect_false(novel_ml$sim_constraints)
-  } else {
-    skip("Run only on TRAVIS and AppVeyor")
-  }
-})
-
 test_that("abuse", {
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin") {
     replicates <- 2
