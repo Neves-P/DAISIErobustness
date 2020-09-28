@@ -45,8 +45,6 @@
 #' @param ml_res_initpars_2 Numeric data frame.
 #'  Results from MLE run of geodynamics with the second set of initial
 #'  parameters.
-#' @param sim_constraints Boolean. \code{TRUE} if simulation constraints pass,
-#'  \code{FALSE} otherwise.
 #' @param ml_constraints Boolean. \code{TRUE} if MLE constraints pass,
 #'  \code{FALSE} otherwise.
 #' @param sim_1 A list of simulation output from
@@ -114,7 +112,6 @@ default_params_doc <- function(
   ml,
   ml_res_initpars_1,
   ml_res_initpars_2,
-  sim_constraints,
   ml_constraints,
   novel_ml_constraints_1,
   novel_ml_constraints_2,
