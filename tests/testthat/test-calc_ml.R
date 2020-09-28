@@ -156,9 +156,6 @@ test_that("test calc_ml output is correct for failed convergence", {
       param_space_name = "oceanic_sea_level",
       sim_pars = sim_pars,
       replicates = 2)
-    sim_constraints <- sim_constraints(
-      sim = novel_sim,
-      replicates = 2)
     max_spec_number <- calc_max_spec(novel_sim)
     k_vector <- max_spec_number$max_spec_clade + 1
 
