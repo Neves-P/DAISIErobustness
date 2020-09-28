@@ -22,149 +22,137 @@ run_analysis <- function(novel_sim,
       (is.numeric(replicate_range) && (replicate_range[1] < replicate_range[2]))
   )
 
-  sim_constraints <- sim_constraints(
+  if (!is.null(replicate_range)) {
+    novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
+  }
+
+  k_approx <- calc_max_spec(novel_sim) # nolint
+  k_vector_1 <- k_approx$max_spec_clade + 1
+  k_vector_2 <- k_approx$num_island_spec
+
+  initial_parameters_1_list <- vector("list", length = length(novel_sim))
+  initial_parameters_2_list <- vector("list", length = length(novel_sim))
+
+  for (i in seq_along(novel_sim)) {
+    initial_parameters_1_list[[i]] <- c(
+      0.05,
+      0.05,
+      k_vector_1[i],
+      0.0001,
+      0.05
+    )
+    initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector_2[i] + 20, 0.01, 2)
+  }
+
+  novel_ml_1 <- calc_ml(
     sim = novel_sim,
-    replicates = replicates
+    initial_parameters = initial_parameters_1_list
   )
-  output <- list(sim_constraints = sim_constraints)
 
-  if (sim_constraints == TRUE) {
+  novel_ml_2 <- calc_ml(
+    sim = novel_sim,
+    initial_parameters = initial_parameters_2_list
+  )
 
-    if (!is.null(replicate_range)) {
-      novel_sim <- novel_sim[replicate_range[1]:replicate_range[2]]
+  novel_ml_constraints_1 <- ml_constraints(
+    ml = novel_ml_1)
+
+  novel_ml_constraints_2 <- ml_constraints(
+    ml = novel_ml_2
+  )
+
+  # ml_constraints defaults to FALSE and is replaced later if either
+  # ml_constraints_1 and ml_constraints_2 is FALSE
+  output <- list(
+    novel_ml_1 = novel_ml_1,
+    novel_ml_2 = novel_ml_2,
+    ml_constraints = FALSE
+  )
+  if (novel_ml_constraints_1 == TRUE || novel_ml_constraints_2 == TRUE) {
+
+    novel_ml <- decide_best_pars(
+      ml_res_initpars_1 = novel_ml_1,
+      ml_res_initpars_2 = novel_ml_2,
+      novel_ml_constraints_1 = novel_ml_constraints_1,
+      novel_ml_constraints_2 = novel_ml_constraints_2
+    )
+
+    if (param_space_name == "trait") {
+      sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
     }
 
-    k_approx <- calc_max_spec(novel_sim) # nolint
-    k_vector_1 <- k_approx$max_spec_clade + 1
-    k_vector_2 <- k_approx$num_island_spec
+    oceanic_sim_1 <- oceanic_sim(
+      ml = novel_ml,
+      sim_pars = sim_pars)
 
-    initial_parameters_1_list <- vector("list", length = length(novel_sim))
-    initial_parameters_2_list <- vector("list", length = length(novel_sim))
+    error <- calc_error(
+      sim_1 = novel_sim,
+      sim_2 = oceanic_sim_1,
+      replicates = replicates,
+      distance_method = distance_method)
 
-    for (i in seq_along(novel_sim)) {
-      initial_parameters_1_list[[i]] <- c(
-        0.05,
-        0.05,
-        k_vector_1[i],
-        0.0001,
-        0.05
-      )
-      initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector_2[i] + 20, 0.01, 2)
-    }
+    spec_error <- error$spec_error
+    endemic_error <- error$endemic_error
+    nonendemic_error <- error$nonendemic_error
 
-    novel_ml_1 <- calc_ml(
-      sim = novel_sim,
-      initial_parameters = initial_parameters_1_list
+    oceanic_ml <- calc_ml(
+      sim = oceanic_sim_1,
+      initial_parameters = novel_ml
     )
 
-    novel_ml_2 <- calc_ml(
-      sim = novel_sim,
-      initial_parameters = initial_parameters_2_list
-    )
+    ml_constraints <- ml_constraints(
+      ml = oceanic_ml)
 
-    novel_ml_constraints_1 <- ml_constraints(
-      ml = novel_ml_1)
-
-    novel_ml_constraints_2 <- ml_constraints(
-      ml = novel_ml_2
-    )
-
-    # ml_constraints defaults to FALSE and is replaced later if either
-    # ml_constraints_1 and ml_constraints_2 is FALSE
     output <- list(
+      spec_error = spec_error,
+      endemic_error = endemic_error,
+      nonendemic_error = nonendemic_error,
       novel_ml_1 = novel_ml_1,
       novel_ml_2 = novel_ml_2,
-      sim_constraints = sim_constraints,
-      ml_constraints = FALSE
+      novel_ml = novel_ml,
+      oceanic_sim_1 = oceanic_sim_1,
+      oceanic_ml = oceanic_ml,
+      ml_constraints = ml_constraints
     )
-    if (novel_ml_constraints_1 == TRUE || novel_ml_constraints_2 == TRUE) {
-
-      novel_ml <- decide_best_pars(
-        ml_res_initpars_1 = novel_ml_1,
-        ml_res_initpars_2 = novel_ml_2,
-        novel_ml_constraints_1 = novel_ml_constraints_1,
-        novel_ml_constraints_2 = novel_ml_constraints_2
-      )
-
-      if (param_space_name == "trait") {
-        sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
-      }
-
-      oceanic_sim_1 <- oceanic_sim(
-        ml = novel_ml,
+    if (ml_constraints == TRUE) {
+      oceanic_sim_2 <- oceanic_sim(
+        ml = oceanic_ml,
         sim_pars = sim_pars)
 
-      error <- calc_error(
-        sim_1 = novel_sim,
-        sim_2 = oceanic_sim_1,
+      baseline_error <- calc_error(
+        sim_1 = oceanic_sim_1,
+        sim_2 = oceanic_sim_2,
         replicates = replicates,
         distance_method = distance_method)
 
-      spec_error <- error$spec_error
-      endemic_error <- error$endemic_error
-      nonendemic_error <- error$nonendemic_error
+      spec_baseline_error <- baseline_error$spec_error
+      endemic_baseline_error <- baseline_error$endemic_error
+      nonendemic_baseline_error <- baseline_error$nonendemic_error
 
-      oceanic_ml <- calc_ml(
-        sim = oceanic_sim_1,
-        initial_parameters = novel_ml
-      )
-
-      ml_constraints <- ml_constraints(
-        ml = oceanic_ml)
+      error_metrics <- calc_error_metrics(
+        spec_error = spec_error,
+        endemic_error = endemic_error,
+        nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error)
 
       output <- list(
         spec_error = spec_error,
         endemic_error = endemic_error,
         nonendemic_error = nonendemic_error,
+        spec_baseline_error = spec_baseline_error,
+        endemic_baseline_error = endemic_baseline_error,
+        nonendemic_baseline_error = nonendemic_baseline_error,
+        error_metrics = error_metrics,
         novel_ml_1 = novel_ml_1,
         novel_ml_2 = novel_ml_2,
         novel_ml = novel_ml,
         oceanic_sim_1 = oceanic_sim_1,
         oceanic_ml = oceanic_ml,
-        ml_constraints = ml_constraints,
-        sim_constraints = sim_constraints
+        oceanic_sim_2 = oceanic_sim_2,
+        ml_constraints = ml_constraints
       )
-      if (ml_constraints == TRUE) {
-        oceanic_sim_2 <- oceanic_sim(
-          ml = oceanic_ml,
-          sim_pars = sim_pars)
-
-        baseline_error <- calc_error(
-          sim_1 = oceanic_sim_1,
-          sim_2 = oceanic_sim_2,
-          replicates = replicates,
-          distance_method = distance_method)
-
-        spec_baseline_error <- baseline_error$spec_error
-        endemic_baseline_error <- baseline_error$endemic_error
-        nonendemic_baseline_error <- baseline_error$nonendemic_error
-
-        error_metrics <- calc_error_metrics(
-          spec_error = spec_error,
-          endemic_error = endemic_error,
-          nonendemic_error = nonendemic_error,
-          spec_baseline_error = spec_baseline_error,
-          endemic_baseline_error = endemic_baseline_error,
-          nonendemic_baseline_error = nonendemic_baseline_error)
-
-        output <- list(
-          spec_error = spec_error,
-          endemic_error = endemic_error,
-          nonendemic_error = nonendemic_error,
-          spec_baseline_error = spec_baseline_error,
-          endemic_baseline_error = endemic_baseline_error,
-          nonendemic_baseline_error = nonendemic_baseline_error,
-          error_metrics = error_metrics,
-          novel_ml_1 = novel_ml_1,
-          novel_ml_2 = novel_ml_2,
-          novel_ml = novel_ml,
-          oceanic_sim_1 = oceanic_sim_1,
-          oceanic_ml = oceanic_ml,
-          oceanic_sim_2 = oceanic_sim_2,
-          ml_constraints = ml_constraints,
-          sim_constraints = sim_constraints
-        )
-      }
     }
   }
   return(output)
