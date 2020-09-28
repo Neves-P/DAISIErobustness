@@ -1,8 +1,6 @@
 context("run_robustness")
 
-
-test_that("run_robustness output is correct when save_output = FALSE and
-          it passes sim_constraints", {
+test_that("run_robustness output is correct when save_output = FALSE", {
     if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
         Sys.getenv("APPVEYOR") != "") {
       errors <- run_robustness(
@@ -133,47 +131,11 @@ test_that("run_robustness output is correct when save_output = FALSE and
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
-      expect_equal(errors$sim_constraints, TRUE)
       expect_equal(errors$ml_constraints, TRUE)
     } else {
       skip("Run only on TRAVIS and AppVeyor")
     }
   })
-
-test_that("run_robustness output is correct when save_output = FALSE and
-          it fails sim_constraints", {
-            if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
-                Sys.getenv("APPVEYOR") != "") {
-              errors <- run_robustness(
-                param_space_name = "nonoceanic",
-                param_set = 195,
-                replicates = 2,
-                save_output = FALSE)
-              expect_length(errors, 2)
-              expect_false(errors$sim_constraints)
-              expect_length(errors$novel_sim, 2)
-              expect_length(errors$novel_sim[[1]][[1]], 17)
-              expect_equal(errors$novel_sim[[1]][[1]][[1]]$island_age, 6.15)
-              expect_equal(errors$novel_sim[[1]][[1]][[1]]$not_present, 984)
-              expect_equal(nrow(errors$novel_sim[[1]][[1]][[1]]$stt_all), 196)
-              expect_equal(ncol(errors$novel_sim[[1]][[1]][[1]]$stt_all), 5)
-              expect_equal(errors$novel_sim[[1]][[1]][[2]]$branching_times,
-                           c(6.15, 0.68784460201859099))
-              expect_equal(errors$novel_sim[[1]][[1]][[2]]$stac, 4)
-              expect_equal(errors$novel_sim[[1]][[1]][[2]]$missing_species, 0)
-              expect_length(errors$novel_sim[[2]][[1]], 11)
-              expect_equal(errors$novel_sim[[2]][[1]][[1]]$island_age, 6.15)
-              expect_equal(errors$novel_sim[[2]][[1]][[1]]$not_present, 990)
-              expect_equal(nrow(errors$novel_sim[[2]][[1]][[1]]$stt_all), 249)
-              expect_equal(ncol(errors$novel_sim[[2]][[1]][[1]]$stt_all), 5)
-              expect_equal(errors$novel_sim[[2]][[1]][[2]]$branching_times,
-                           c(6.15, 0.82445054549913, 0.75623539857472))
-              expect_equal(errors$novel_sim[[2]][[1]][[2]]$stac, 2)
-              expect_equal(errors$novel_sim[[2]][[1]][[2]]$missing_species, 0)
-            } else {
-              skip("Run only on TRAVIS or AppVeyor")
-            }
-          })
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
@@ -277,7 +239,7 @@ test_that("run pipeline = analysis", {
       || Sys.getenv("APPVEYOR") != "") {
     replicates <- 2
     param_space_name <- "nonoceanic"
-    param_set <- 70
+    param_set <- 1
     set.seed(
       1,
       kind = "Mersenne-Twister",
@@ -309,7 +271,22 @@ test_that("run pipeline = analysis", {
       save_output = FALSE
     )
 
-    expect_false(robustness_output$sim_constraints)
+    expect_equal(robustness_output[[1]],
+                 list(nltt = c(15.0535456449, 10.8167874321),
+                      num_spec_error = c(0, 8),
+                      num_col_error = c(1, 3)))
+    expect_equal(robustness_output[[2]],
+                 list(nltt = c(20.10011550079, 6.46028418133)))
+    expect_equal(robustness_output[[3]],
+                 list(nltt = c(5.79354106727, 5.41235833501)))
+    expect_equal(robustness_output[[4]],
+                 list(nltt = c(3.72638871516, 12.50021786771),
+                      num_spec_error = c(0, 10),
+                      num_col_error = c(1, 9)))
+    expect_equal(robustness_output[[5]],
+                 list(nltt = c(2.99517292662, 5.91814693938)))
+    expect_equal(robustness_output[[6]],
+                 list(nltt = c(4.40207229277, 13.71478256780)))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
