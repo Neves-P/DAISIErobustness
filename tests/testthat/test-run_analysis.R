@@ -47,7 +47,7 @@ test_that("run full function", {
                                                           6.9865356692858667)),
                  tolerance = 0.2)
     expect_equal(novel_ml$spec_baseline_error, list(
-      nltt = c(21.6799281149035714 ,
+      nltt = c(21.6799281149035714,
                3.9836578128417264),
       num_spec_error = c(5, 2),
       num_col_error = c(1, 7)),
@@ -237,33 +237,33 @@ test_that("ml constraints fail", {
       distance_method = "abs"
     )
 
-    expect_length(novel_ml, 10)
-    expect_equal(novel_ml$spec_error, list(nltt = c(27.672866899993707,
-                                                    13.658638064673603),
-                                           num_spec_error = c(7, 4),
+    expect_length(novel_ml, 14)
+    expect_equal(novel_ml$spec_error, list(nltt = c(27.679341973678902,
+                                                    13.671071163292904),
+                                           num_spec_error = c(7, 5),
                                            num_col_error = c(5, 8)),
                  tolerance = 0.2)
-    expect_equal(novel_ml$endemic_error, list(nltt = c(29.5228064145322051,
-                                                       9.8975411551966825)),
+    expect_equal(novel_ml$endemic_error, list(nltt = c(29.5263638870720300,
+                                                       9.8948020034543731)),
                  tolerance = 0.2)
-    expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.4611491100033316,
-                                                          11.9934047964984707)),
+    expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.460350721359557,
+                                                          12.006277962756112)),
                  tolerance = 0.5)
     expect_equal(novel_ml$novel_ml,
-                 list(data.frame("lambda_c" = 0.2391080686600785,
-                                 "mu" = 0.24376346547628622,
-                                 "K" = 1373703.6829030684,
-                                 "gamma" = 0.0090861265426438378,
-                                 "lambda_a" = 0.73849953019711867,
-                                 "loglik" = -125.64128158907532,
+                 list(data.frame("lambda_c" = 0.23906010636220965,
+                                 "mu" = 0.24356250268081175,
+                                 "K" = 140931.62687892388,
+                                 "gamma" = 0.0090833815090014831,
+                                 "lambda_a" = 0.73863832059330292,
+                                 "loglik" = -125.64119535986262,
                                  "df" = 5,
                                  "conv" = 0),
-                      data.frame("lambda_c" = 0.24432201256427705,
-                                 "mu" = 0.42565033735003227,
-                                 "K" = 5746852.9702726277,
-                                 "gamma" = 0.012682615307086051,
-                                 "lambda_a" = 0.85982749644033374,
-                                 "loglik" = -147.52903937918407,
+                      data.frame("lambda_c" = 0.24439860873663627,
+                                 "mu" = 0.42644609536595218,
+                                 "K" = 1576714.5654084363,
+                                 "gamma" = 0.012694373614231853,
+                                 "lambda_a" = 0.85985993559493179,
+                                 "loglik" = -147.5290381584779,
                                  "df" = 5,
                                  "conv" = 0)),
                  tolerance = 0.2)
@@ -275,7 +275,7 @@ test_that("ml constraints fail", {
     expect_equal(nrow(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 35)
     expect_equal(ncol(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 1.1352583531453999))
+                 c(2.55, 1.1348308126515900))
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$stac, 4)
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$missing_species, 0)
     expect_length(novel_ml$oceanic_sim_1[[2]][[1]], 30)
@@ -284,7 +284,7 @@ test_that("ml constraints fail", {
     expect_equal(nrow(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 94)
     expect_equal(ncol(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$branching_times,
-                 c(2.55000000000000, 1.8700821388704600))
+                 c(2.55000000000000, 1.8707119204798599))
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$missing_species, 0)
   } else{
