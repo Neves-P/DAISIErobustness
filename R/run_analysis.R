@@ -17,6 +17,10 @@ run_analysis <- function(novel_sim,
     is_novel_sim_outputs(novel_sim)
   )
   testit::assert(
+    "replicates must be a positive integer greater or equal to 2",
+    is.finite(replicates) && replicates >= 2
+  )
+  testit::assert(
     "replicate_range must be a numeric with 2 sorted elements or NULL",
     is.null(replicate_range) ||
       (is.numeric(replicate_range) && (replicate_range[1] < replicate_range[2]))
