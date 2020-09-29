@@ -195,7 +195,7 @@ test_that("test load_param_space loads trait parameter space", {
   trait <- load_param_space(
     param_space_name = "trait"
   )
-  expect_equal(nrow(trait), 704)
+  expect_equal(nrow(trait), 1216)
   expect_equal(ncol(trait), 14)
   expect_equal(names(trait),
                c("time", "M", "M2", "lac", "mu", "gam", "laa", "trans",
