@@ -281,7 +281,7 @@ test_that("ml constraints fail", {
     expect_length(novel_ml$oceanic_sim_1[[2]][[1]], 30)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$island_age, 2.55)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$not_present, 971)
-    expect_equal(nrow(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 94)
+    expect_equal(nrow(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 95)
     expect_equal(ncol(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$branching_times,
                  c(2.55000000000000, 1.8707119204798599))
