@@ -238,34 +238,3 @@ test_that("test calc_ml output is correct with traits sim", {
     skip("Run only on TRAVIS and AppVeyor")
   }
 })
-
-test_that("test calc_ml output is correct when convergence fails", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
-      || Sys.getenv("APPVEYOR") != "") {
-    skip("WIP - Find failing convergence")
-    load(system.file(
-      "extdata",
-      "inst/extdata/failed_sim_nonoceanic_244_rep_93.RData",
-      package = "DAISIErobustness")
-    )
-    # DAISIErobustness has one extra list (replicate level) which must be
-    # added here
-    out <- list(out) # nolint
-
-    k_approx <- calc_max_spec(out_1) # nolint
-    max_spec_number <- calc_max_spec(out_1)
-    k_vector_2 <- k_approx$num_island_spec
-
-    initial_parameters_2_list <- list()
-    initial_parameters_2_list[[1]] <- c(0.9, 1.5, k_vector_2 + 20, 0.01, 2)
-
-
-    novel_ml <- calc_ml(
-      sim = out_1,
-      initial_parameters = initial_parameters_2_list
-    )
-
-  } else {
-    skip("Run only on TRAVIS and AppVeyor")
-  }
-})
