@@ -9,7 +9,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
         replicates = 2,
         save_output = FALSE)
 
-      expect_length(errors, 16)
+      expect_length(errors, 15)
       expect_equal(errors$spec_error, list(nltt = c(15.504723366971781,
                                                     20.628037579208026),
                                            num_spec_error = c(8, 2),
@@ -22,9 +22,9 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                                                           6.9865356692858667)),
                    tolerance = 0.2)
       expect_equal(errors$spec_baseline_error, list(
-        nltt = c(22.2979430235588900,
+        nltt = c(21.67992811490357,
                  3.9836578128417264),
-        num_spec_error = c(7, 2),
+        num_spec_error = c(5, 2),
         num_col_error = c(1, 7)),
         tolerance = 0.2
       )
@@ -35,16 +35,16 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                    list(nltt = c(6.2852874607336569, 3.6480235281355120)),
                    tolerance = 0.2)
       expect_equal(errors$error_metrics,
-                   list(num_spec_mean_diff = 0.5,
-                        num_spec_sd_diff = 0.70710678118654702,
+                   list(num_spec_mean_diff = 1.5,
+                        num_spec_sd_diff = 2.12132034355964,
                         num_col_mean_diff = 1.5,
-                        num_col_sd_diff = 2.1213203435596424,
-                        spec_nltt_mean_diff = 4.9255800548895952,
-                        endemic_nltt_mean_diff = 13.005994713223998,
-                        nonendemic_nltt_mean_diff = 3.7448183988635959,
-                        spec_nltt_sd_diff = 9.3274250434609414,
-                        endemic_nltt_sd_diff = 6.8298860754469564,
-                        nonendemic_nltt_sd_diff = 0.5746038201351229),
+                        num_col_sd_diff = 2.12132034355964,
+                        spec_nltt_mean_diff = 5.23417108750344,
+                        endemic_nltt_mean_diff = 13.0346736427034,
+                        nonendemic_nltt_mean_diff = 3.83772951885115,
+                        spec_nltt_sd_diff = 8.88983360144104,
+                        endemic_nltt_sd_diff = 6.79038778700444,
+                        nonendemic_nltt_sd_diff = 0.705999986116799),
                    tolerance = 0.2)
       expect_length(errors$novel_sim, 2)
       expect_length(errors$novel_sim[[1]][[1]], 25)
