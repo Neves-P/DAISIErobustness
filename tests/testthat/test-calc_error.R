@@ -51,8 +51,8 @@ test_that("test calc_error output is correct", {
                                         num_spec_error = c(7, 5),
                                         num_col_error = c(5, 8)))
     expect_equal(error$endemic_error, list(nltt = c(29.52636388708,
-                                                    9.89480200345)))
-    expect_equal(error$nonendemic_error, list(nltt = c(9.89480200345,
+                                                    9.8948020034518116)))
+    expect_equal(error$nonendemic_error, list(nltt = c(5.4603507213591591,
                                                        12.00627796269)))
   } else {
     skip("Run only on TRAVIS or AppVeyor")
