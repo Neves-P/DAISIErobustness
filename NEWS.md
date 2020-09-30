@@ -1,3 +1,10 @@
+# DAISIErobustness 1.1.1
+
+* Pipeline now conditions all simulations and MLE on a minimum of 5 colonising
+lineages.
+* Removed `sim_constraints()`.
+* New traits parameter space.
+
 # DAISIErobustness 1.1.0
 
 * Rework [Peregrine HPC](https://www.rug.nl/society-business/centre-for-information-technology/research/services/hpc/facilities/peregrine-hpc-cluster?lang=en) job submission. Job submissions done by calling `sbatch`

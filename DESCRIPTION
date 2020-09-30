@@ -1,6 +1,6 @@
 Package: DAISIErobustness
 Title: Test the Robustness of DAISIE to Geodynamics and Traits
-Version: 1.1.0
+Version: 1.1.1
 Date: 2020-09-14
 Authors@R: c(
     person(given = "Joshua W.",
