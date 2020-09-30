@@ -12,7 +12,7 @@ Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)          
 `develop`|[![Build Status](https://travis-ci.org/Neves-P/DAISIErobustness.svg?branch=develop)](https://travis-ci.org/Neves-P/DAISIErobustness)|[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/Neves-P/DAISIErobustness?branch=develop&svg=true)](https://ci.appveyor.com/project/Neves-P/DAISIErobustness)|[![codecov.io](https://codecov.io/github/Neves-P/DAISIErobustness/coverage.svg?branch=develop)](https://codecov.io/github/Neves-P/DAISIErobustness/branch/develop)
 <!-- badges: end -->
 
-The goal of DAISIErobustness is to run robustness studies using the island biogeography model DAISIE. For the development of the geodynamical and traits models currently in use by DAISIErobustness, see the [DAISIE package v3.0.1](https://github.com/rsetienne/DAISIE/tree/v3.0.1).
+The goal of DAISIErobustness is to run robustness studies using the island biogeography model DAISIE. For the development of the geodynamical and traits models currently in use by DAISIErobustness, see the [DAISIE package v3.1.0](https://github.com/rsetienne/DAISIE/tree/v3.1.0).
 
 # Installation
 
