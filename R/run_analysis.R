@@ -59,10 +59,13 @@ run_analysis <- function(novel_sim,
   )
 
   novel_ml_constraints_1 <- ml_constraints(
-    ml = novel_ml_1)
+    ml = novel_ml_1,
+    replicates = replicates
+  )
 
   novel_ml_constraints_2 <- ml_constraints(
-    ml = novel_ml_2
+    ml = novel_ml_2,
+    replicates = replicates
   )
 
   # ml_constraints defaults to FALSE and is replaced later if either
@@ -105,7 +108,9 @@ run_analysis <- function(novel_sim,
     )
 
     ml_constraints <- ml_constraints(
-      ml = oceanic_ml)
+      ml = oceanic_ml,
+      replicates = replicates
+    )
 
     output <- list(
       spec_error = spec_error,

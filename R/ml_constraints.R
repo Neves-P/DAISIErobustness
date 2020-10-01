@@ -4,13 +4,15 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @keywords internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
-ml_constraints <- function(ml) {
+ml_constraints <- function(ml, replicates) {
   testit::assert(is.list(ml))
   failed_mls <- sapply(ml, FUN = is.character)
-  if (any(failed_mls) == TRUE) {
-    return(FALSE)
-  } else {
+
+  n_failed_mls <- sum(failed_mls)
+  if (n_failed_mls / replicates < 0.05) {
     return(TRUE)
+  } else {
+    return(FALSE)
   }
 }
 

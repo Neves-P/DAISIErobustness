@@ -4,10 +4,13 @@
 \alias{ml_constraints}
 \title{Checks if number of valid errors meet the criteria for data sample size}
 \usage{
-ml_constraints(ml)
+ml_constraints(ml, replicates)
 }
 \arguments{
 \item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML}()}.}
+
+\item{replicates}{A numeric for the number of replicates for the
+simulations}
 }
 \value{
 Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
