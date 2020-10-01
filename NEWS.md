@@ -1,3 +1,8 @@
+# DAISIErobustness 1.1.2
+
+* Rework `decide_best_pars()` to intelligently salvage failed ML convergence whenever possible.
+* Request less memory from the Peregrine HPCC.
+
 # DAISIErobustness 1.1.1
 
 * Pipeline now conditions all simulations and MLE on a minimum of 5 colonising
