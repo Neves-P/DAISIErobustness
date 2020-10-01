@@ -4,15 +4,13 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @keywords internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
-ml_constraints <- function(ml, replicates) {
+ml_constraints <- function(ml) {
   testit::assert(is.list(ml))
   failed_mls <- sapply(ml, FUN = is.character)
-
-  n_failed_mls <- sum(failed_mls)
-  if (n_failed_mls / replicates < 0.05) {
-    return(TRUE)
-  } else {
+  if (any(failed_mls) == TRUE) {
     return(FALSE)
+  } else {
+    return(TRUE)
   }
 }
 
@@ -57,28 +55,41 @@ ml_constraints <- function(ml, replicates) {
 #' @seealso \code{\link[DAISIE]{DAISIE_ML}()}, \code{\link{calc_ml}()}
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 decide_best_pars <- function(ml_res_initpars_1,
-                             ml_res_initpars_2,
-                             novel_ml_constraints_1,
-                             novel_ml_constraints_2) {
+                             ml_res_initpars_2) {
   out <- list()
   n_replicates <- length(ml_res_initpars_1)
 
-  if (novel_ml_constraints_1 == FALSE) {
-    out <- ml_res_initpars_2
-  } else if (novel_ml_constraints_2 == FALSE) {
-    out <- ml_res_initpars_1
-  } else {
-    for (i in seq_len(n_replicates)) {
-      ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
-      ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
-      logliks <- c(ml_1_loglik, ml_2_loglik)
-      set_with_highest_loglik <- which(max(logliks) == logliks)[1]
-      testit::assert(length(set_with_highest_loglik) == 1)
-      pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
-      pars_to_use <- pars_list[[set_with_highest_loglik]]
-
-      out[[i]] <- pars_to_use
-    }
+  for (i in seq_len(n_replicates)) {
+  if (is.character(ml_res_initpars_1[[i]])) {
+    ml_res_initpars_1[[i]] <- data.frame(
+      "lac" = -Inf,
+      "mu" = -Inf,
+      "K" = -Inf,
+      "gam" = -Inf,
+      "laa" = -Inf,
+      "loglik" = -Inf
+    )
   }
+  if (is.character(ml_res_initpars_2[[i]])) {
+    ml_res_initpars_2[[i]] <- data.frame(
+      "lac" = -Inf,
+      "mu" = -Inf,
+      "K" = -Inf,
+      "gam" = -Inf,
+      "laa" = -Inf,
+      "loglik" = -Inf
+    )
+  }
+    ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
+    ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
+    logliks <- c(ml_1_loglik, ml_2_loglik)
+    set_with_highest_loglik <- which(max(logliks) == logliks)[1]
+    testit::assert(length(set_with_highest_loglik) == 1)
+    pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
+    pars_to_use <- pars_list[[set_with_highest_loglik]]
+
+    out[[i]] <- pars_to_use
+  }
+
   return(out)
 }

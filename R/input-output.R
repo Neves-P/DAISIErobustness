@@ -167,11 +167,11 @@ check_create_folders <- function(param_space_name, save_output, pipeline) {
 load_novel_section <- function(param_space_name,
                                param_set) {
 
-    data_folder <- file.path(
-      getwd(),
-      "sims",
-      param_space_name
-    )
+  data_folder <- file.path(
+    getwd(),
+    "sims",
+    param_space_name
+  )
   if (!dir.exists(data_folder)) {
     stop(paste0(
       data_folder,

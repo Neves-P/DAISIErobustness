@@ -19,8 +19,7 @@ test_that("ml_constraints returns TRUE", {
                                    "conv" = 0))
   replicates <- 2
   ml_constraints <- ml_constraints(
-    ml = oceanic_ml,
-    replicates = replicates
+    ml = oceanic_ml
   )
   expect_equal(ml_constraints, TRUE)
 })
@@ -37,8 +36,7 @@ test_that("test ml_constraints returns FALSE when more than 5% MLE fail", {
                      "ML didn't converge")
   replicates <- 2
   ml_constraints <- ml_constraints(
-    ml = oceanic_ml,
-    replicates = replicates
+    ml = oceanic_ml
   )
   expect_equal(ml_constraints, FALSE)
 })
