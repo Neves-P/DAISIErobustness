@@ -4,12 +4,7 @@
 \alias{decide_best_pars}
 \title{Check if MLE results converge and chooses best MLE output}
 \usage{
-decide_best_pars(
-  ml_res_initpars_1,
-  ml_res_initpars_2,
-  novel_ml_constraints_1,
-  novel_ml_constraints_2
-)
+decide_best_pars(ml_res_initpars_1, ml_res_initpars_2)
 }
 \arguments{
 \item{ml_res_initpars_1}{Numeric data frame.
@@ -19,12 +14,6 @@ parameters.}
 \item{ml_res_initpars_2}{Numeric data frame.
 Results from MLE run of geodynamics with the second set of initial
 parameters.}
-
-\item{novel_ml_constraints_1}{A boolean returned from
-\code{\link{ml_constraints}()}.}
-
-\item{novel_ml_constraints_2}{A boolean returned from
-\code{\link{ml_constraints}()}.}
 }
 \value{
 List with item per replicate containing:
