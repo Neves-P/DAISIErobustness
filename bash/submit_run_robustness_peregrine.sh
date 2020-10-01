@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --job-name=start_robustness
 #SBATCH --output=logs/start_robustness.log
-#SBATCH --mem=200MB
+#SBATCH --mem=1GB
 #SBATCH --partition=short
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
