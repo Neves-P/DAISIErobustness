@@ -58,28 +58,22 @@ run_analysis <- function(novel_sim,
     initial_parameters = initial_parameters_2_list
   )
 
-  novel_ml_constraints_1 <- ml_constraints(
-    ml = novel_ml_1)
-
-  novel_ml_constraints_2 <- ml_constraints(
-    ml = novel_ml_2
+  novel_ml <- decide_best_pars(
+    ml_res_initpars_1 = novel_ml_1,
+    ml_res_initpars_2 = novel_ml_2
   )
+
+  novel_ml_constraints <- ml_constraints(ml = novel_ml)
 
   # ml_constraints defaults to FALSE and is replaced later if either
   # ml_constraints_1 and ml_constraints_2 is FALSE
   output <- list(
     novel_ml_1 = novel_ml_1,
     novel_ml_2 = novel_ml_2,
+    novel_ml = novel_ml,
     ml_constraints = FALSE
   )
-  if (novel_ml_constraints_1 == TRUE || novel_ml_constraints_2 == TRUE) {
-
-    novel_ml <- decide_best_pars(
-      ml_res_initpars_1 = novel_ml_1,
-      ml_res_initpars_2 = novel_ml_2,
-      novel_ml_constraints_1 = novel_ml_constraints_1,
-      novel_ml_constraints_2 = novel_ml_constraints_2
-    )
+  if (novel_ml_constraints) {
 
     if (param_space_name == "trait") {
       sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
@@ -105,7 +99,8 @@ run_analysis <- function(novel_sim,
     )
 
     ml_constraints <- ml_constraints(
-      ml = oceanic_ml)
+      ml = oceanic_ml
+    )
 
     output <- list(
       spec_error = spec_error,
