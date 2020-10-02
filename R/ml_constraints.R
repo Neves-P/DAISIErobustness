@@ -60,36 +60,39 @@ decide_best_pars <- function(ml_res_initpars_1,
   n_replicates <- length(ml_res_initpars_1)
 
   for (i in seq_len(n_replicates)) {
-  if (is.character(ml_res_initpars_1[[i]])) {
-    ml_res_initpars_1[[i]] <- data.frame(
-      "lac" = -Inf,
-      "mu" = -Inf,
-      "K" = -Inf,
-      "gam" = -Inf,
-      "laa" = -Inf,
-      "loglik" = -Inf
-    )
+    if (is.character(ml_res_initpars_1[[i]])) {
+      ml_res_initpars_1[[i]] <- data.frame(
+        "lac" = -Inf,
+        "mu" = -Inf,
+        "K" = -Inf,
+        "gam" = -Inf,
+        "laa" = -Inf,
+        "loglik" = -Inf
+      )
+    }
+    if (is.character(ml_res_initpars_2[[i]])) {
+      ml_res_initpars_2[[i]] <- data.frame(
+        "lac" = -Inf,
+        "mu" = -Inf,
+        "K" = -Inf,
+        "gam" = -Inf,
+        "laa" = -Inf,
+        "loglik" = -Inf
+      )
+    }
+    if (ml_res_initpars_1[[i]][6] == -Inf &&
+        ml_res_initpars_2[[i]][6] == -Inf) {
+      out[[i]] <- "ML didn't converge"
+    } else {
+      ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
+      ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
+      logliks <- c(ml_1_loglik, ml_2_loglik)
+      set_with_highest_loglik <- which(max(logliks) == logliks)[1]
+      testit::assert(length(set_with_highest_loglik) == 1)
+      pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
+      pars_to_use <- pars_list[[set_with_highest_loglik]]
+      out[[i]] <- pars_to_use
+    }
   }
-  if (is.character(ml_res_initpars_2[[i]])) {
-    ml_res_initpars_2[[i]] <- data.frame(
-      "lac" = -Inf,
-      "mu" = -Inf,
-      "K" = -Inf,
-      "gam" = -Inf,
-      "laa" = -Inf,
-      "loglik" = -Inf
-    )
-  }
-    ml_1_loglik <- as.numeric(ml_res_initpars_1[[i]][6])
-    ml_2_loglik <- as.numeric(ml_res_initpars_2[[i]][6])
-    logliks <- c(ml_1_loglik, ml_2_loglik)
-    set_with_highest_loglik <- which(max(logliks) == logliks)[1]
-    testit::assert(length(set_with_highest_loglik) == 1)
-    pars_list <- list(ml_res_initpars_1[[i]], ml_res_initpars_2[[i]])
-    pars_to_use <- pars_list[[set_with_highest_loglik]]
-
-    out[[i]] <- pars_to_use
-  }
-
   return(out)
 }
