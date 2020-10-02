@@ -264,92 +264,22 @@ trait_lac_laa <- cbind(
   gam2 = 0.08 - trait_lac_laa[, 6],
   laa2 = 1 - trait_lac_laa[, 7])
 
-### 10. high rates without transition
-time <- c(2.5, 5)
-M <- 500
-M2 <- 500
-lac <- c(0.4, 0.6)   ###mean_lac = 0.8
-mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
-K <- c(40, Inf)
-gam <- c(0.01, 0.03)  ###mean_gam = 0.04
-laa <- c(0.5, 0.8)   ###mean_laa = 1
-trans <- 0
-trans2 <- 0
-trait_high_rates_notrans <- expand.grid(
-  time = time,
-  M = M,
-  M2 = M2,
-  lac = lac,
-  mu = mu,
-  gam = gam,
-  laa = laa,
-  trans = trans,
-  trans2 = trans2,
-  K = K)
-trait_high_rates_notrans <- cbind(
-  trait_high_rates_notrans,
-  lac2 = 1.6 - trait_high_rates_notrans[, 4] ,
-  mu2 = 2.4 - trait_high_rates_notrans[, 5] ,
-  gam2 = 0.08 - trait_high_rates_notrans[, 6],
-  laa2 = 2 - trait_high_rates_notrans[, 7])
+trait_CES <- rbind(
+  trait_low_rates,
+  trait_high_rates,
+  trait_lac,
+  trait_mu,
+  trait_gamma,
+  trait_laa,
+  trait_lac_mu,
+  trait_lac_gamma,
+  trait_lac_laa)
 
-### 11. high rates with unbalance transition
-time <- c(2.5, 5)
-M <- 500
-M2 <- 500
-lac <- c(0.4, 0.6)   ###mean_lac = 0.8
-mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
-K <- c(40, Inf)
-gam <- c(0.01, 0.03)  ###mean_gam = 0.04
-laa <- c(0.5, 0.8)   ###mean_laa = 1
-trans <- 0.5
-trans2 <- 2
-trait_high_rates_trans <- expand.grid(
-  time = time,
-  M = M,
-  M2 = M2,
-  lac = lac,
-  mu = mu,
-  gam = gam,
-  laa = laa,
-  trans = trans,
-  trans2 = trans2,
-  K = K)
-trait_high_rates_trans <- cbind(
-  trait_high_rates_trans,
-  lac2 = 1.6 - trait_high_rates_trans[, 4] ,
-  mu2 = 2.4 - trait_high_rates_trans[, 5] ,
-  gam2 = 0.08 - trait_high_rates_trans[, 6],
-  laa2 = 2 - trait_high_rates_trans[, 7])
-
-### 12. high rates with unbalance transition(exchange)
-time <- c(2.5, 5)
-M <- 500
-M2 <- 500
-lac <- c(0.4, 0.6)   ###mean_lac = 0.8
-mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
-K <- c(40, Inf)
-gam <- c(0.01, 0.03)  ###mean_gam = 0.04
-laa <- c(0.5, 0.8)   ###mean_laa = 1
-trans <- 2
-trans2 <- 0.5
-trait_high_rates_trans2 <- expand.grid(
-  time = time,
-  M = M,
-  M2 = M2,
-  lac = lac,
-  mu = mu,
-  gam = gam,
-  laa = laa,
-  trans = trans,
-  trans2 = trans2,
-  K = K)
-trait_high_rates_trans2 <- cbind(
-  trait_high_rates_trans2,
-  lac2 = 1.6 - trait_high_rates_trans2[, 4] ,
-  mu2 = 2.4 - trait_high_rates_trans2[, 5] ,
-  gam2 = 0.08 - trait_high_rates_trans2[, 6],
-  laa2 = 2 - trait_high_rates_trans2[, 7])
+write.csv2(
+  trait_CES,
+  "data/trait_CES.csv",
+  row.names = FALSE
+)
 
 ####13. mean rates of each group
 time <- c(2.5, 5)
@@ -381,24 +311,103 @@ trait_mean <- cbind(
   laa2 = trait_mean[, 7])
 
 
-trait <- rbind(
-  trait_low_rates,
-  trait_high_rates,
-  trait_lac,
-  trait_mu,
-  trait_gamma,
-  trait_laa,
-  trait_lac_mu,
-  trait_lac_gamma,
-  trait_lac_laa,
+
+### 10. high rates without transition
+time <- c(2.5, 5)
+M <- 500
+M2 <- 500
+lac <- c(0.4, 0.6)   ###mean_lac = 0.8
+mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
+K <- c(40, Inf)
+gam <- c(0.01, 0.03)  ###mean_gam = 0.04
+laa <- c(0.5, 0.8)   ###mean_laa = 1
+trans <- 0
+trans2 <- 0
+trait_high_rates_notrans <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_high_rates_notrans <- cbind(
+  trait_high_rates_notrans,
+  lac2 = 1.6 - trait_high_rates_notrans[, 4] ,
+  mu2 = 2.4 - trait_high_rates_notrans[, 5] ,
+  gam2 = 0.08 - trait_high_rates_notrans[, 6],
+  laa2 = 2 - trait_high_rates_notrans[, 7])
+
+### 11. high rates with asymmetric transition
+time <- c(2.5, 5)
+M <- 500
+M2 <- 500
+lac <- c(0.4, 0.6)   ###mean_lac = 0.8
+mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
+K <- c(40, Inf)
+gam <- c(0.01, 0.03)  ###mean_gam = 0.04
+laa <- c(0.5, 0.8)   ###mean_laa = 1
+trans <- 0.5
+trans2 <- 2
+trait_high_rates_trans <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_high_rates_trans <- cbind(
+  trait_high_rates_trans,
+  lac2 = 1.6 - trait_high_rates_trans[, 4] ,
+  mu2 = 2.4 - trait_high_rates_trans[, 5] ,
+  gam2 = 0.08 - trait_high_rates_trans[, 6],
+  laa2 = 2 - trait_high_rates_trans[, 7])
+
+### 12. high rates with asymmetric transition(exchange)
+time <- c(2.5, 5)
+M <- 500
+M2 <- 500
+lac <- c(0.4, 0.6)   ###mean_lac = 0.8
+mu <- c(0.6, 1.0, 1.4)    ###mean_mu = 1.2
+K <- c(40, Inf)
+gam <- c(0.01, 0.03)  ###mean_gam = 0.04
+laa <- c(0.5, 0.8)   ###mean_laa = 1
+trans <- 2
+trans2 <- 0.5
+trait_high_rates_trans2 <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_high_rates_trans2 <- cbind(
+  trait_high_rates_trans2,
+  lac2 = 1.6 - trait_high_rates_trans2[, 4] ,
+  mu2 = 2.4 - trait_high_rates_trans2[, 5] ,
+  gam2 = 0.08 - trait_high_rates_trans2[, 6],
+  laa2 = 2 - trait_high_rates_trans2[, 7])
+
+trait_trans <- rbind(
+  trait_mean,
   trait_high_rates_notrans,
   trait_high_rates_trans,
-  trait_high_rates_trans2,
-  trait_mean)
+  trait_high_rates_trans2)
 
 write.csv2(
-  trait,
-  "data/trait.csv",
+  trait_trans,
+  "data/trait_trans.csv",
   row.names = FALSE
 )
 
