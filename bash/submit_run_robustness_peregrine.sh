@@ -37,7 +37,8 @@
 #   nonoceanic
 #   nonoceanic_sea_level
 #   nonoceanic_land_bridge
-#   trait
+#   trait_CES
+#   trait_trans
 #   oceanic
 # replicates - Total number of replicates to be simulated, or are present in
 #   the input simulation.

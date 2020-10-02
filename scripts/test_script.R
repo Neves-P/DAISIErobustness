@@ -24,7 +24,8 @@ testit::assert(param_space_name %in% c("oceanic_ontogeny",
                                        "nonoceanic",
                                        "nonoceanic_sea_level",
                                        "nonoceanic_land_bridge",
-                                       "trait"))
+                                       "trait_CES",
+                                       "trait_transition"))
 testit::assert(param_set >= 1)
 testit::assert(param_set <= nrow(param_space))
 testit::assert(replicates > 1)
@@ -190,7 +191,7 @@ if (sim_constraints == TRUE) {
 
     novel_ml <- lapply(best_pars, `[[`, 1) # rearrange
 
-    if (param_space_name == "trait") {
+    if (param_space_name %in% c("trait_CES", "trait_trans")) {
       sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
     }
 

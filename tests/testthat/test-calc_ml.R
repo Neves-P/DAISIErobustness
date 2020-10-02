@@ -179,7 +179,7 @@ test_that("test calc_ml output is correct with traits sim", {
   if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
       || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
-      param_space_name = "trait")
+      param_space_name = "trait_CES")
     set.seed(
       1,
       kind = "Mersenne-Twister",
@@ -187,11 +187,11 @@ test_that("test calc_ml output is correct with traits sim", {
       sample.kind = "Rejection"
     )
     sim_pars <- extract_param_set(
-      param_space_name = "trait",
+      param_space_name = "trait_CES",
       param_space = param_space,
       param_set = 3)
     novel_sim <- run_novel_sim(
-      param_space_name = "trait",
+      param_space_name = "trait_CES",
       sim_pars = sim_pars,
       replicates = 2)
     max_spec_number <- calc_max_spec(novel_sim)
