@@ -75,7 +75,7 @@ run_analysis <- function(novel_sim,
   )
   if (novel_ml_constraints) {
 
-    if (param_space_name == "trait") {
+    if (param_space_name %in% c("trait_CES", "trait_trans")) {
       sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
     }
 

@@ -69,7 +69,7 @@ extract_param_set <- function(param_space_name,
       x = param_space$x[param_set])
     sim_pars$extcutoff <- param_space$extcutoff[param_set]
   }
-  if (param_space_name == "trait") {
+  if (param_space_name %in% c("trait_CES", "trait_trans")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac[param_set],

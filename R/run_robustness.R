@@ -24,7 +24,8 @@ run_robustness <- function(param_space_name,
                                          "nonoceanic",
                                          "nonoceanic_sea_level",
                                          "nonoceanic_land_bridge",
-                                         "trait",
+                                         "trait_CES",
+                                         "trait_trans",
                                          "oceanic"))
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
