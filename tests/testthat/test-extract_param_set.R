@@ -127,9 +127,9 @@ test_that("test extract_param_set extracts correct param set from
 
 test_that("test extract_param_set extracts correct param set from
           trait", {
-  param_space <- load_param_space("trait")
+  param_space <- load_param_space("trait_CES")
   sim_pars <- extract_param_set(
-    param_space_name = "trait",
+    param_space_name = "trait_CES",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.5)
