@@ -257,7 +257,7 @@ test_that("test run_novel_sim output is correct for
 test_that("test run_novel_sim output is correct for trait", {
   if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
     param_space <- load_param_space(
-      param_space_name = "trait")
+      param_space_name = "trait_CES")
     set.seed(
       1,
       kind = "Mersenne-Twister",
@@ -265,11 +265,11 @@ test_that("test run_novel_sim output is correct for trait", {
       sample.kind = "Rejection"
     )
     sim_pars <- extract_param_set(
-      param_space_name = "trait",
+      param_space_name = "trait_CES",
       param_space = param_space,
       param_set = 1)
     novel_sim <- run_novel_sim(
-      param_space_name = "trait",
+      param_space_name = "trait_CES",
       sim_pars = sim_pars,
       replicates = 2)
     expect_length(novel_sim, 2)

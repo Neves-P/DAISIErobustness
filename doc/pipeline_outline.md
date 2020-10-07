@@ -36,7 +36,8 @@ The already available models can easily be run by calling the main function `run
 * Oceanic ontogeny: `oceanic_ontogeny`
 * Oceanic ontogeny with sea-level changes: `oceanic_ontogeny_sea_level`
 * Oceanic with sea-leve changes: `oceanic_sea_level`
-* Trait dependcy:  `trait`
+* Trait dependcy with CES(colonization,extinction and speciation) rates changes:  `trait_CES`
+* Trait dependcy with transition rates changes:  `trait_trans`
 
 The codes in mono-spaced font serve as arguments for the `run_robustness()` function. Then, the corresponding csv parameter space is read from the GitHub repository to the function scope, so that the pipeline can begin.
 

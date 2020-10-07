@@ -66,7 +66,7 @@ run_novel_sim <- function(param_space_name,
       )
     }
   }
-  if (param_space_name == "trait") {
+  if (param_space_name %in% c("trait_CES", "trait_trans")) {
     for (i in seq_len(replicates)) {
       novel_sim[[i]] <- DAISIE::DAISIE_sim_trait_dependent(
         time = sim_pars$time,
