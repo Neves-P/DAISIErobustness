@@ -35,69 +35,61 @@ test_that("run full function", {
     )
 
     expect_length(novel_ml, 14)
-    expect_equal(novel_ml$spec_error, list(nltt = c(15.503890523544152,
-                                                    20.628037579208026),
-                                         num_spec_error = c(8, 2),
-                                         num_col_error = c(7, 4)),
-                 tolerance = 0.2)
-    expect_equal(novel_ml$endemic_error, list(nltt = c(22.501272166425160,
-                                                       27.157312775376028)),
-                 tolerance = 0.2)
-    expect_equal(novel_ml$nonendemic_error, list(nltt = c(10.4366517414679478,
-                                                          6.9865356692858667)),
-                 tolerance = 0.2)
+    expect_equal(novel_ml$spec_error, list(nltt = c(19.56066177046598,
+                                                    20.62803757920803),
+                                         num_spec_error = c(6, 2),
+                                         num_col_error = c(7, 4)))
+    expect_equal(novel_ml$endemic_error, list(nltt = c(26.58818868556481,
+                                                       27.15731277537603)))
+    expect_equal(novel_ml$nonendemic_error, list(nltt = c(10.488444003536307,
+                                                          6.986535669285867)))
     expect_equal(novel_ml$spec_baseline_error, list(
-      nltt = c(21.6799281149035714,
-               3.9836578128417264),
-      num_spec_error = c(5, 2),
-      num_col_error = c(1, 7)),
-      tolerance = 0.2)
+      nltt = c(5.669822544410627,
+               5.513043923340234),
+      num_spec_error = c(1, 9),
+      num_col_error = c(1, 13)))
     expect_equal(novel_ml$endemic_baseline_error,
-                 list(nltt = c(18.9241683837498265, 4.6650692726446508)),
-                 tolerance = 0.2)
+                 list(nltt = c(7.419845462041067, 4.392692416339733)))
     expect_equal(novel_ml$nonendemic_baseline_error,
-                 list(nltt = c(6.0997048449159985, 3.6480235281355120)),
-                 tolerance = 0.2)
+                 list(nltt = c(6.353891433570178, 4.432341543995483)))
     expect_equal(novel_ml$error_metrics,
-                 list(num_spec_mean_diff = 1.5,
-                      num_spec_sd_diff = 2.1213203435596424,
+                 list(num_spec_mean_diff = 1,
+                      num_spec_sd_diff = 2.82842712474619,
                       num_col_mean_diff = 1.5,
-                      num_col_sd_diff = 2.1213203435596424,
-                      spec_nltt_mean_diff = 5.2341710875034391,
-                      endemic_nltt_mean_diff = 13.034673642703355,
-                      nonendemic_nltt_mean_diff = 3.8377295188511527,
-                      spec_nltt_sd_diff = 8.8898336014410368,
-                      endemic_nltt_sd_diff = 6.7903877870044402,
-                      nonendemic_nltt_sd_diff = 0.70599998611679937),
-                 tolerance = 0.2)
+                      num_col_sd_diff = 6.363961030678928,
+                      spec_nltt_mean_diff = 14.50291644096157,
+                      endemic_nltt_mean_diff = 20.96648179128002,
+                      nonendemic_nltt_mean_diff = 3.344373347628256,
+                      spec_nltt_sd_diff = 0.6438894463320254,
+                      endemic_nltt_sd_diff = 1.738088943062793,
+                      nonendemic_nltt_sd_diff = 1.117482172935644))
     expect_equal(novel_ml$novel_ml,
-                 list(data.frame("lambda_c" = 0.88244548959215419,
-                                 "mu" = 0.31137550513861417,
-                                 "K" = 13.828772973091263,
-                                 "gamma" = 0.011864263393319429,
-                                 "lambda_a" = 0.70153259936404377,
-                                 "loglik" = -192.12110891415833,
+                 list(data.frame("lambda_c" = 0.8236330150593614,
+                                 "mu" = 0.2214781714472619,
+                                 "K" = 13.59983211441053,
+                                 "gamma" = 0.0106794766544443,
+                                 "lambda_a" = 0.6987602100153518,
+                                 "loglik" = -187.8997920405084,
                                  "df" = 5,
                                  "conv" = 0),
-                      data.frame("lambda_c" = 0.80346632893912595,
-                                 "mu" = 2.0016823546260964e-07,
-                                 "K" = 9.0918224176815556,
-                                 "gamma" = 0.0098273147856722566,
-                                 "lambda_a" = 0.95684544043417874,
-                                 "loglik" = -200.16984729494939,
+                      data.frame("lambda_c" = 0.803466328939126,
+                                 "mu" = 2.001682354626096e-07,
+                                 "K" = 9.091822417681556,
+                                 "gamma" = 0.009827314785672257,
+                                 "lambda_a" = 0.9568454404341787,
+                                 "loglik" = -200.1698472949494,
                                  "df" = 5,
-                                 "conv" = 0)),
-                 tolerance = 0.2)
+                                 "conv" = 0)))
     # oceanic_sim_1 reference
     expect_length(novel_ml$oceanic_sim_1, 2)
-    expect_length(novel_ml$oceanic_sim_1[[1]][[1]], 32)
+    expect_length(novel_ml$oceanic_sim_1[[1]][[1]], 31)
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$not_present, 969)
-    expect_equal(nrow(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 118)
+    expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$not_present, 970)
+    expect_equal(nrow(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 105)
     expect_equal(ncol(novel_ml$oceanic_sim_1[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.041908179742209797))
-    expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$stac, 4)
+                 c(2.55, 2.34337661579997))
+    expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_1[[1]][[1]][[2]]$missing_species, 0)
     expect_length(novel_ml$oceanic_sim_1[[2]][[1]], 30)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$island_age, 2.55)
@@ -105,30 +97,29 @@ test_that("run full function", {
     expect_equal(nrow(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 78)
     expect_equal(ncol(novel_ml$oceanic_sim_1[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$branching_times,
-                 c(2.55000000000000, 0.82320728572358004))
+                 c(2.55000000000000, 0.82320728572358))
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_1[[2]][[1]][[2]]$missing_species, 0)
     # oceanic_sim_2 reference
     expect_length(novel_ml$oceanic_sim_2, 2)
-    expect_length(novel_ml$oceanic_sim_2[[1]][[1]], 31)
+    expect_length(novel_ml$oceanic_sim_2[[1]][[1]], 32)
     expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$island_age, 2.55)
-    expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$not_present, 970)
-    expect_equal(nrow(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 139)
+    expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$not_present, 969)
+    expect_equal(nrow(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 74)
     expect_equal(ncol(novel_ml$oceanic_sim_2[[1]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[2]]$branching_times,
-                 c(2.55, 0.229137735142440013, 0.056686987265089701))
-    expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[2]]$stac, 2)
+                 c(2.54999999999999982, 0.87069341955535))
+    expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[2]]$stac, 4)
     expect_equal(novel_ml$oceanic_sim_2[[1]][[1]][[2]]$missing_species, 0)
-    expect_length(novel_ml$oceanic_sim_2[[2]][[1]], 37)
+    expect_length(novel_ml$oceanic_sim_2[[2]][[1]], 43)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$island_age, 2.55)
-    expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$not_present, 964)
-    expect_equal(nrow(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 83)
+    expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$not_present, 958)
+    expect_equal(nrow(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 94)
     expect_equal(ncol(novel_ml$oceanic_sim_2[[2]][[1]][[1]]$stt_all), 5)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$branching_times,
                  c(2.55,
-                   0.432405070355510013,
-                   0.261396415512720026,
-                   0.065332249010409807), tolerance = 0.001)
+                   0.59640943885209,
+                   0.16582137166132))
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
     expect_equal(novel_ml$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
   } else{
