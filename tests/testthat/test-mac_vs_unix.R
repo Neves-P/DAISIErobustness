@@ -6,12 +6,12 @@ test_that("compare mac vs unix", {
     param_space_name <- "nonoceanic"
     param_set <- 1
     replicates <- 2
-    pipeline = "full"
-    distance_method = "abs"
-    novel_sim = NULL
-    save_output = FALSE
-    replicate_range = NULL
-    load_from_file = FALSE
+    pipeline <- "full"
+    distance_method <- "abs"
+    novel_sim <- NULL
+    save_output <- FALSE
+    replicate_range <- NULL
+    load_from_file <- FALSE
 
     param_space <- DAISIErobustness:::load_param_space(
       param_space_name = param_space_name)
@@ -102,7 +102,13 @@ test_that("compare mac vs unix", {
           0.0001,
           0.05
         )
-        initial_parameters_2_list[[i]] <- c(0.9, 1.5, k_vector_2[i] + 20, 0.01, 2)
+        initial_parameters_2_list[[i]] <- c(
+          0.9,
+          1.5,
+          k_vector_2[i] + 20,
+          0.01,
+          2
+        )
       }
 
       novel_ml_1 <- DAISIErobustness:::calc_ml(
@@ -299,14 +305,17 @@ test_that("compare mac vs unix", {
           nonendemic_baseline_error <- baseline_error$nonendemic_error
 
           expect_length(baseline_error, 3)
-          expect_equal(spec_baseline_error, list(nltt = c(6.6871935760451153,
-                                                          7.9324498375027988),
-                                                 num_spec_error = c(3, 6),
-                                                 num_col_error = c(0, 11)))
-          expect_equal(endemic_baseline_error, list(nltt = c(6.0303417137707926,
-                                                             3.2955637287629389)))
-          expect_equal(nonendemic_baseline_error, list(nltt = c(8.4604383475926994,
-                                                                7.0612577672453387)))
+          expect_equal(spec_baseline_error, list(
+            nltt = c(6.6871935760451153,
+                     7.9324498375027988),
+            num_spec_error = c(3, 6),
+            num_col_error = c(0, 11)))
+          expect_equal(endemic_baseline_error, list(
+            nltt = c(6.0303417137707926,
+                     3.2955637287629389)))
+          expect_equal(nonendemic_baseline_error, list(
+            nltt = c(8.4604383475926994,
+                     7.0612577672453387)))
 
           error_metrics <- DAISIErobustness:::calc_error_metrics(
             spec_error = spec_error,
@@ -316,19 +325,32 @@ test_that("compare mac vs unix", {
             endemic_baseline_error = endemic_baseline_error,
             nonendemic_baseline_error = nonendemic_baseline_error)
 
-          expect_equal(error_metrics$num_spec_mean_diff, 8)
-          expect_equal(error_metrics$num_spec_sd_diff, 5.6568542494923797)
-          expect_equal(error_metrics$num_col_mean_diff, 0.5)
-          expect_equal(error_metrics$num_col_sd_diff, 0.70710678118654702)
-          expect_equal(error_metrics$spec_nltt_mean_diff, 81.421312482655878)
-          expect_equal(error_metrics$endemic_nltt_mean_diff, 95.722390840267664)
-          expect_equal(error_metrics$nonendemic_nltt_mean_diff, 6.1405148330028352)
-          expect_equal(error_metrics$spec_nltt_sd_diff, 17.377223161156753)
-          expect_equal(error_metrics$endemic_nltt_sd_diff, 15.986994704658983)
-          expect_equal(error_metrics$nonendemic_nltt_sd_diff, 0.29578435315632279)
-          expect_equal(error_metrics$spec_nltt_ks_dist, 0.030160413299745448)
-          expect_equal(error_metrics$endemic_nltt_ks_dist, 0.20973894467876592)
-          expect_equal(error_metrics$nonendemic_nltt_ks_dist, 0.077757103468281963)
+          expect_equal(error_metrics$num_spec_mean_diff,
+                       8)
+          expect_equal(error_metrics$num_spec_sd_diff,
+                       5.6568542494923797)
+          expect_equal(error_metrics$num_col_mean_diff,
+                       0.5)
+          expect_equal(error_metrics$num_col_sd_diff,
+                       0.70710678118654702)
+          expect_equal(error_metrics$spec_nltt_mean_diff,
+                       81.421312482655878)
+          expect_equal(error_metrics$endemic_nltt_mean_diff,
+                       95.722390840267664)
+          expect_equal(error_metrics$nonendemic_nltt_mean_diff,
+                       6.1405148330028352)
+          expect_equal(error_metrics$spec_nltt_sd_diff,
+                       17.377223161156753)
+          expect_equal(error_metrics$endemic_nltt_sd_diff,
+                       15.986994704658983)
+          expect_equal(error_metrics$nonendemic_nltt_sd_diff,
+                       0.29578435315632279)
+          expect_equal(error_metrics$spec_nltt_ks_dist,
+                       0.030160413299745448)
+          expect_equal(error_metrics$endemic_nltt_ks_dist,
+                       0.20973894467876592)
+          expect_equal(error_metrics$nonendemic_nltt_ks_dist,
+                       0.077757103468281963)
         }
       }
     }
