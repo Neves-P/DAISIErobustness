@@ -273,21 +273,21 @@ test_that("run pipeline = analysis", {
     )
 
     expect_equal(robustness_output[[1]],
-                 list(nltt = c(15.0535456449, 10.8167874321),
+                 list(nltt = c(12.84885596382858, 10.8167874321),
                       num_spec_error = c(0, 8),
                       num_col_error = c(1, 3)))
     expect_equal(robustness_output[[2]],
-                 list(nltt = c(20.10011550079, 6.46028418133)))
+                 list(nltt = c(17.895425819702712, 6.460284181334946)))
     expect_equal(robustness_output[[3]],
-                 list(nltt = c(5.79354106727, 5.41235833501)))
+                 list(nltt = c(5.793541067272008, 5.412358335005100)))
     expect_equal(robustness_output[[4]],
-                 list(nltt = c(3.72638871516, 12.50021786771),
+                 list(nltt = c(3.726388715156172, 12.500217867707285),
                       num_spec_error = c(0, 10),
                       num_col_error = c(1, 9)))
     expect_equal(robustness_output[[5]],
-                 list(nltt = c(2.99517292662, 5.91814693938)))
+                 list(nltt = c(2.995172926617303, 5.918146939380573)))
     expect_equal(robustness_output[[6]],
-                 list(nltt = c(4.40207229277, 13.71478256780)))
+                 list(nltt = c(4.402072292771494, 13.714782567804495)))
   } else {
     skip("Run only on TRAVIS and AppVeyor")
   }
