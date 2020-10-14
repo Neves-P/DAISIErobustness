@@ -229,28 +229,28 @@ test_that("ml constraints fail", {
     )
 
     expect_length(novel_ml, 14)
-    expect_equal(novel_ml$spec_error, list(nltt = c(27.679341973678902,
-                                                    13.671071163292904),
+    expect_equal(novel_ml$spec_error, list(nltt = c(25.47465229259151,
+                                                    13.67107116329290),
                                            num_spec_error = c(7, 5),
                                            num_col_error = c(5, 8)))
-    expect_equal(novel_ml$endemic_error, list(nltt = c(29.5263638870720300,
-                                                       9.8948020034543731)))
+    expect_equal(novel_ml$endemic_error, list(nltt = c(27.321674205984635,
+                                                       9.894802003454373)))
     expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.460350721359557,
                                                           12.006277962756112)))
     expect_equal(novel_ml$novel_ml,
-                 list(data.frame("lambda_c" = 0.23906010636220965,
-                                 "mu" = 0.24356250268081175,
-                                 "K" = 140931.62687892388,
-                                 "gamma" = 0.0090833815090014831,
-                                 "lambda_a" = 0.73863832059330292,
-                                 "loglik" = -125.64119535986262,
+                 list(data.frame("lambda_c" = 0.2390601063622096,
+                                 "mu" = 0.2435625026808118,
+                                 "K" = 140931.6268789239,
+                                 "gamma" = 0.009083381509001483,
+                                 "lambda_a" = 0.7386383205933029,
+                                 "loglik" = -125.6411953598626,
                                  "df" = 5,
                                  "conv" = 0),
-                      data.frame("lambda_c" = 0.24439860873663627,
-                                 "mu" = 0.42644609536595218,
-                                 "K" = 1576714.5654084363,
-                                 "gamma" = 0.012694373614231853,
-                                 "lambda_a" = 0.85985993559493179,
+                      data.frame("lambda_c" = 0.2443986087366363,
+                                 "mu" = 0.4264460953659522,
+                                 "K" = 1576714.565408436,
+                                 "gamma" = 0.01269437361423185,
+                                 "lambda_a" = 0.8598599355949318,
                                  "loglik" = -147.5290381584779,
                                  "df" = 5,
                                  "conv" = 0)))
