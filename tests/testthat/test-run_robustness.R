@@ -10,24 +10,24 @@ test_that("run_robustness output is correct when save_output = FALSE", {
         save_output = FALSE)
 
       expect_length(errors, 15)
-      expect_equal(errors$spec_error, list(nltt = c(15.504723366971781,
-                                                    20.628037579208026),
+      expect_equal(errors$spec_error, list(nltt = c(15.50389052354415,
+                                                    20.6280375792080),
                                            num_spec_error = c(8, 2),
                                            num_col_error = c(7, 4)))
-      expect_equal(errors$endemic_error, list(nltt = c(22.500522744548768,
-                                                       27.157312775376028)))
-      expect_equal(errors$nonendemic_error, list(nltt = c(10.4364121173104927,
-                                                          6.9865356692858667)))
+      expect_equal(errors$endemic_error, list(nltt = c(22.50127216642516,
+                                                       27.15731277537603)))
+      expect_equal(errors$nonendemic_error, list(nltt = c(10.436651741467948,
+                                                          6.986535669285867)))
       expect_equal(errors$spec_baseline_error, list(
-        nltt = c(21.67992811490357,
-                 3.9836578128417264),
+        nltt = c(21.679928114903571,
+                 3.983657812841726),
         num_spec_error = c(5, 2),
         num_col_error = c(1, 7))
       )
       expect_equal(errors$endemic_baseline_error,
-                   list(nltt = c(18.9807768208321477, 4.6650692726446508)))
+                   list(nltt = c(18.924168383749826, 4.665069272644651)))
       expect_equal(errors$nonendemic_baseline_error,
-                   list(nltt = c(6.2852874607336569, 3.6480235281355120)))
+                   list(nltt = c(6.099704844915999, 3.648023528135512)))
       expect_equal(errors$error_metrics,
                    list(num_spec_mean_diff = 1.5,
                         num_spec_sd_diff = 2.12132034355964,
@@ -63,20 +63,20 @@ test_that("run_robustness output is correct when save_output = FALSE", {
       expect_equal(errors$novel_sim[[2]][[1]][[2]]$stac, 4)
       expect_equal(errors$novel_sim[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$novel_ml,
-                   list(data.frame("lambda_c" = 0.88235459277564676,
-                                   "mu" = 0.31150272931213729,
-                                   "K" = 13.836817739664562,
-                                   "gamma" = 0.0098273147856722566,
-                                   "lambda_a" = 0.70146033703308563,
-                                   "loglik" = -192.12110941516548,
+                   list(data.frame("lambda_c" = 0.8824454895921542,
+                                   "mu" = 0.3113755051386142,
+                                   "K" = 13.82877297309126,
+                                   "gamma" = 0.01186426339331943,
+                                   "lambda_a" = 0.7015325993640438,
+                                   "loglik" = -192.1211089141583,
                                    "df" = 5,
                                    "conv" = 0),
-                        data.frame("lambda_c" = 0.80346632893912595,
-                                   "mu" = 2.0016823546260964e-07,
-                                   "K" = 9.0918224176815556,
-                                   "gamma" = 0.0098273147856722566,
-                                   "lambda_a" = 0.95684544043417874,
-                                   "loglik" = -200.16984755974138,
+                        data.frame("lambda_c" = 0.803466328939126,
+                                   "mu" = 2.001682354626096e-07,
+                                   "K" = 9.091822417681556,
+                                   "gamma" = 0.009827314785672257,
+                                   "lambda_a" = 0.9568454404341787,
+                                   "loglik" = -200.1698472949494,
                                    "df" = 5,
                                    "conv" = 0)))
       # oceanic_sim_1 reference
