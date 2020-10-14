@@ -13,27 +13,21 @@ test_that("run_robustness output is correct when save_output = FALSE", {
       expect_equal(errors$spec_error, list(nltt = c(15.504723366971781,
                                                     20.628037579208026),
                                            num_spec_error = c(8, 2),
-                                           num_col_error = c(7, 4)),
-                   tolerance = 0.2)
+                                           num_col_error = c(7, 4)))
       expect_equal(errors$endemic_error, list(nltt = c(22.500522744548768,
-                                                       27.157312775376028)),
-                   tolerance = 0.2)
+                                                       27.157312775376028)))
       expect_equal(errors$nonendemic_error, list(nltt = c(10.4364121173104927,
-                                                          6.9865356692858667)),
-                   tolerance = 0.2)
+                                                          6.9865356692858667)))
       expect_equal(errors$spec_baseline_error, list(
         nltt = c(21.67992811490357,
                  3.9836578128417264),
         num_spec_error = c(5, 2),
-        num_col_error = c(1, 7)),
-        tolerance = 0.2
+        num_col_error = c(1, 7))
       )
       expect_equal(errors$endemic_baseline_error,
-                   list(nltt = c(18.9807768208321477, 4.6650692726446508)),
-                   tolerance = 0.2)
+                   list(nltt = c(18.9807768208321477, 4.6650692726446508)))
       expect_equal(errors$nonendemic_baseline_error,
-                   list(nltt = c(6.2852874607336569, 3.6480235281355120)),
-                   tolerance = 0.2)
+                   list(nltt = c(6.2852874607336569, 3.6480235281355120)))
       expect_equal(errors$error_metrics,
                    list(num_spec_mean_diff = 1.5,
                         num_spec_sd_diff = 2.12132034355964,
@@ -44,8 +38,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                         nonendemic_nltt_mean_diff = 3.83772951885115,
                         spec_nltt_sd_diff = 8.88983360144104,
                         endemic_nltt_sd_diff = 6.79038778700444,
-                        nonendemic_nltt_sd_diff = 0.705999986116799),
-                   tolerance = 0.2)
+                        nonendemic_nltt_sd_diff = 0.705999986116799))
       expect_length(errors$novel_sim, 2)
       expect_length(errors$novel_sim[[1]][[1]], 25)
       expect_equal(errors$novel_sim[[1]][[1]][[1]]$island_age, 2.55)
@@ -85,8 +78,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                                    "lambda_a" = 0.95684544043417874,
                                    "loglik" = -200.16984755974138,
                                    "df" = 5,
-                                   "conv" = 0)),
-                   tolerance = 0.2)
+                                   "conv" = 0)))
       # oceanic_sim_1 reference
       expect_length(errors$oceanic_sim_1, 2)
       expect_length(errors$oceanic_sim_1[[1]][[1]], 32)
@@ -127,7 +119,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                    c(2.549999999999999822,
                      0.432405070355510013,
                      0.261396415512720026,
-                     0.065332249010409807), tolerance = 0.001)
+                     0.065332249010409807))
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)

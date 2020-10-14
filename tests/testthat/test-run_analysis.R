@@ -232,14 +232,11 @@ test_that("ml constraints fail", {
     expect_equal(novel_ml$spec_error, list(nltt = c(27.679341973678902,
                                                     13.671071163292904),
                                            num_spec_error = c(7, 5),
-                                           num_col_error = c(5, 8)),
-                 tolerance = 0.2)
+                                           num_col_error = c(5, 8)))
     expect_equal(novel_ml$endemic_error, list(nltt = c(29.5263638870720300,
-                                                       9.8948020034543731)),
-                 tolerance = 0.2)
+                                                       9.8948020034543731)))
     expect_equal(novel_ml$nonendemic_error, list(nltt = c(5.460350721359557,
-                                                          12.006277962756112)),
-                 tolerance = 0.5)
+                                                          12.006277962756112)))
     expect_equal(novel_ml$novel_ml,
                  list(data.frame("lambda_c" = 0.23906010636220965,
                                  "mu" = 0.24356250268081175,
@@ -256,8 +253,7 @@ test_that("ml constraints fail", {
                                  "lambda_a" = 0.85985993559493179,
                                  "loglik" = -147.5290381584779,
                                  "df" = 5,
-                                 "conv" = 0)),
-                 tolerance = 0.2)
+                                 "conv" = 0)))
     # oceanic_sim_1 reference
     expect_length(novel_ml$oceanic_sim_1, 2)
     expect_length(novel_ml$oceanic_sim_1[[1]][[1]], 14)
