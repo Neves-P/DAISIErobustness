@@ -165,7 +165,7 @@ test_that("test calc_ml output is correct with traits sim", {
     sim_pars <- extract_param_set(
       param_space_name = "trait_CES",
       param_space = param_space,
-      param_set = 3)
+      param_set = 1)
     novel_sim <- run_novel_sim(
       param_space_name = "trait_CES",
       sim_pars = sim_pars,
@@ -182,20 +182,20 @@ test_that("test calc_ml output is correct with traits sim", {
       sim = novel_sim,
       initial_parameters = initial_parameters_1_list)
     expect_length(novel_ml, 2)
-    expect_equal(novel_ml[[1]]$lambda_c, 1.2223887472810917)
-    expect_equal(novel_ml[[1]]$mu, 1.1512896404012887)
-    expect_equal(novel_ml[[1]]$K, 2.7168840657527613)
-    expect_equal(novel_ml[[1]]$gamma, 0.024916121197736864)
-    expect_equal(novel_ml[[1]]$lambda_a, 2.1065500323177081e-08)
-    expect_equal(novel_ml[[1]]$loglik, -157.07466876950016)
+    expect_equal(novel_ml[[1]]$lambda_c, 0.9298054505184763)
+    expect_equal(novel_ml[[1]]$mu, 0.98595075294401635)
+    expect_equal(novel_ml[[1]]$K, 5.0752756953749492)
+    expect_equal(novel_ml[[1]]$gamma, 0.023442697933727469)
+    expect_equal(novel_ml[[1]]$lambda_a, 0.12049592404810311)
+    expect_equal(novel_ml[[1]]$loglik, -176.05610566953322)
     expect_equal(novel_ml[[1]]$df, 5)
     expect_equal(novel_ml[[1]]$conv, 0)
-    expect_equal(novel_ml[[2]]$lambda_c, 857.07123594094742)
-    expect_equal(novel_ml[[2]]$mu, 0.83677777310716506)
-    expect_equal(novel_ml[[2]]$K, 1.0004646779253812)
-    expect_equal(novel_ml[[2]]$gamma, 0.024494615867874377)
-    expect_equal(novel_ml[[2]]$lambda_a, 0.58816002581759408)
-    expect_equal(novel_ml[[2]]$loglik, -175.97987102745003)
+    expect_equal(novel_ml[[2]]$lambda_c, 0.91360415145920415)
+    expect_equal(novel_ml[[2]]$mu, 0.32803674688549767)
+    expect_equal(novel_ml[[2]]$K, 2.9995487385695201)
+    expect_equal(novel_ml[[2]]$gamma, 0.015887768051067439)
+    expect_equal(novel_ml[[2]]$lambda_a, 0.29760991944869841)
+    expect_equal(novel_ml[[2]]$loglik, -193.8286672479091)
     expect_equal(novel_ml[[2]]$df, 5)
     expect_equal(novel_ml[[2]]$conv, 0)
   } else {
