@@ -46,6 +46,7 @@
 #   the analysis. Options:
 #     full - runs simulations followed analysis.
 #     novel_sim - runs only simulation portion of pipeline and returns output.
+#     analysis - runs only analysis portion of pipeline and returns output.
 # distance_method - If the absolute or squared distance between nLTTs should be
 #   computed. Options:
 #     abs - (default)
