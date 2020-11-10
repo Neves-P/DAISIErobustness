@@ -9,24 +9,24 @@ plot_error_dists <- function(output_file,
                              error = "spec_nltt",
                              param_set) {
   if (error == "spec_nltt") {
-    error <- output_file$spec_error$nltt
-    baseline_error <- output_file$spec_baseline_error$nltt
+    error <- output_file$spec_error_nltt
+    baseline_error <- output_file$spec_baseline_error_nltt
     error_label <- " species \u0394nLTT"
   } else if (error == "endemic_nltt") {
-    error <- output_file$endemic_error$nltt
-    baseline_error <- output_file$endemic_baseline_error$nltt
+    error <- output_file$endemic_error
+    baseline_error <- output_file$endemic_baseline_error
     error_label <- " endemic species \u0394nLTT"
   } else if (error == "nonendemic_nltt") {
-    error <- output_file$nonendemic_error$nltt
-    baseline_error <- output_file$nonendemic_baseline_error$nltt
+    error <- output_file$nonendemic_error
+    baseline_error <- output_file$nonendemic_baseline_error
     error_label <- " nonendemic species \u0394nLTT"
   } else if (error == "num_spec") {
-    error <- output_file$spec_error$num_spec_error
-    baseline_error <- output_file$spec_baseline_error$num_spec_error
+    error <- output_file$spec_error_num_spec_error
+    baseline_error <- output_file$spec_baseline_error_num_spec_error
     error_label <- " species number"
   } else if (error == "num_col") {
-    error <- output_file$spec_error$num_col_error
-    baseline_error <- output_file$spec_baseline_error$num_col_error
+    error <- output_file$spec_error_num_col_error
+    baseline_error <- output_file$spec_baseline_error_num_col_error
     error_label <- " colonist number"
   }
     data <- data.frame(error, baseline_error)
