@@ -8,26 +8,28 @@
 #' @author Pedro Neves, Joshua Lambert
 #' @examples
 #'
-#' totaltime_2 <- 2.55
-#' totaltime_1 <- 6.15
-#' area_pars_2 <- DAISIE::create_area_pars(
-#'   max_area = 13500,
-#'   proportional_peak_t = 0.53,
-#'   peak_sharpness = 1,
-#'   total_island_age = 2.864,
-#'   sea_level_amplitude = 60,
-#'   sea_level_frequency = 25.5,
-#'   island_gradient_angle = 85
-#' )
+#' param_space <- load_param_space("oceanic_ontogeny_sea_level")
+#'
 #' area_pars_1 <- DAISIE::create_area_pars(
-#'   max_area = 3787,
-#'   proportional_peak_t = 0.27,
-#'   peak_sharpness = 1,
-#'   total_island_age = 8.473,
-#'   sea_level_amplitude = 60,
-#'   sea_level_frequency = 61.5,
-#'   island_gradient_angle = 85
+#'   max_area = param_space$max_area[1],
+#'   current_area = param_space$current_area[1],
+#'   proportional_peak_t = param_space$peak_time[1],
+#'   total_island_age = param_space$total_island_age[1],
+#'   sea_level_amplitude = param_space$sea_level_amplitude[1],
+#'   sea_level_frequency = param_space$sea_level_frequency[1],
+#'   island_gradient_angle = param_space$island_gradient_angle[1]
 #' )
+#'
+#' area_pars_2 <- DAISIE::create_area_pars(
+#'   max_area = param_space$max_area[nrow(param_space)],
+#'   current_area = param_space$current_area[nrow(param_space)],
+#'   proportional_peak_t = param_space$peak_time[nrow(param_space)],
+#'   total_island_age = param_space$total_island_age[nrow(param_space)],
+#'   sea_level_amplitude = param_space$sea_level_amplitude[nrow(param_space)],
+#'   sea_level_frequency = param_space$sea_level_frequency[nrow(param_space)],
+#'   island_gradient_angle = param_space$island_gradient_angle[nrow(param_space)]
+#' )
+#'
 #' island_ontogeny_1 <- "beta"
 #' island_ontogeny_2 <- "beta"
 #' sea_level_1 <- "sine"
@@ -74,26 +76,26 @@ plot_areas <- function(totaltime_1,
     resolution = resolution,
     overlay_sea_level_ontogeny = overlay_sea_level_ontogeny
   )
-  island_ontogeny_1 <- DAISIE::translate_island_ontogeny(island_ontogeny_1)
-  island_ontogeny_2 <- DAISIE::translate_island_ontogeny(island_ontogeny_2)
-  sea_level_1 <- DAISIE::translate_sea_level(sea_level_1)
-  sea_level_2 <- DAISIE::translate_sea_level(sea_level_2)
+  island_ontogeny_1 <- DAISIE:::translate_island_ontogeny(island_ontogeny_1)
+  island_ontogeny_2 <- DAISIE:::translate_island_ontogeny(island_ontogeny_2)
+  sea_level_1 <- DAISIE:::translate_sea_level(sea_level_1)
+  sea_level_2 <- DAISIE:::translate_sea_level(sea_level_2)
 
 
-  if (overlay_sea_level_ontogeny || overlay_sea_level) {
-
-    area_pars_1_sea_level <- area_pars_1
-    area_pars_2_sea_level <- area_pars_2
-
-    sea_level_1 <- 0
-    sea_level_2 <- 0
-    area_pars_1$sea_level_amplitude <- 0
-    area_pars_1$sea_level_frequency <- 0
-    area_pars_1$island_gradient_angle <- 0
-    area_pars_2$sea_level_amplitude <- 0
-    area_pars_2$sea_level_frequency <- 0
-    area_pars_2$island_gradient_angle <- 0
-  }
+  # if (overlay_sea_level_ontogeny || overlay_sea_level) {
+  #
+  #   area_pars_1_sea_level <- area_pars_1
+  #   area_pars_2_sea_level <- area_pars_2
+  #
+  #   sea_level_1 <- 0
+  #   sea_level_2 <- 0
+  #   area_pars_1$sea_level_amplitude <- 0
+  #   area_pars_1$sea_level_frequency <- 0
+  #   area_pars_1$island_gradient_angle <- 0
+  #   area_pars_2$sea_level_amplitude <- 0
+  #   area_pars_2$sea_level_frequency <- 0
+  #   area_pars_2$island_gradient_angle <- 0
+  # }
 
   x_axis <- seq(0, totaltime_1, by = resolution)
   if (!is.null(area_pars_2)) {
@@ -110,17 +112,27 @@ plot_areas <- function(totaltime_1,
   }
   area_1 <- c()
   area_2 <- c()
+  area_1_peak <- DAISIE:::calc_peak(
+    totaltime = totaltime_1,
+    area_pars = area_pars_1
+  )
+  area_2_peak <- DAISIE:::calc_peak(
+    totaltime = totaltime_2,
+    area_pars = area_pars_2
+  )
   area_1 <- sapply(
     x_axis,
-    FUN = DAISIE::island_area,
+    FUN = DAISIE:::island_area,
     area_pars_1,
+    peak = area_1_peak,
     island_ontogeny_1,
     sea_level_1
   )
   area_2 <- sapply(
     second_island_timepoints_rel_time,
-    FUN = DAISIE::island_area,
+    FUN = DAISIE:::island_area,
     area_pars_2,
+    peak = area_2_peak,
     island_ontogeny_2,
     sea_level_2
   )
@@ -151,13 +163,13 @@ plot_areas <- function(totaltime_1,
 
     area_1_sea_level_ontogeny <- sapply(
       x_axis,
-      FUN = DAISIE::island_area,
+      FUN = DAISIE:::island_area,
       area_pars_1_sea_level,
       island_ontogeny_1,
       sea_level_1)
     area_2_sea_level_ontogeny <- sapply(
       second_island_timepoints_rel_time,
-      FUN = DAISIE::island_area,
+      FUN = DAISIE:::island_area,
       area_pars_2_sea_level,
       island_ontogeny_2,
       sea_level_2
@@ -192,13 +204,13 @@ plot_areas <- function(totaltime_1,
 
       area_1_sea_level <- sapply(
         x_axis,
-        FUN = DAISIE::island_area,
+        FUN = DAISIE:::island_area,
         area_pars_1_sea_level,
         island_ontogeny_1,
         sea_level_1)
       area_2_sea_level <- sapply(
         second_island_timepoints_rel_time,
-        FUN = DAISIE::island_area,
+        FUN = DAISIE:::island_area,
         area_pars_2_sea_level,
         island_ontogeny_2,
         sea_level_2
@@ -249,12 +261,12 @@ check_area_plot_input <- function(totaltime_1,
                                   overlay_sea_level_ontogeny) {
   testit::assert(is.numeric(totaltime_1))
   testit::assert(resolution > 0 && resolution < 1)
-  testit::assert(DAISIE::is_island_ontogeny_input(island_ontogeny_1))
-  testit::assert(DAISIE::is_sea_level_input(sea_level_1))
-  island_ontogeny_1 <- DAISIE::translate_island_ontogeny(
+  testit::assert(DAISIE:::is_island_ontogeny_input(island_ontogeny_1))
+  testit::assert(DAISIE:::is_sea_level_input(sea_level_1))
+  island_ontogeny_1 <- DAISIE:::translate_island_ontogeny(
     island_ontogeny = island_ontogeny_1
   )
-  sea_level_1 <- DAISIE::translate_sea_level(
+  sea_level_1 <- DAISIE:::translate_sea_level(
     sea_level = sea_level_1
   )
   testit::assert(DAISIE::are_area_pars(area_pars_1))
@@ -274,15 +286,15 @@ check_area_plot_input <- function(totaltime_1,
                  sea level and valid sea level parameters must be specified")
 
   if (!is.null(area_pars_2)) {
-    testit::assert(DAISIE::is_island_ontogeny_input(island_ontogeny_2))
+    testit::assert(DAISIE:::is_island_ontogeny_input(island_ontogeny_2))
     testit::assert(is.numeric(totaltime_2))
-    testit::assert(DAISIE::is_sea_level_input(sea_level_2))
-    island_ontogeny_2 <- DAISIE::translate_island_ontogeny(
+    testit::assert(DAISIE:::is_sea_level_input(sea_level_2))
+    island_ontogeny_2 <- DAISIE:::translate_island_ontogeny(
       island_ontogeny = island_ontogeny_2
     )
-    sea_level_2 <- DAISIE::translate_sea_level(
+    sea_level_2 <- DAISIE:::translate_sea_level(
       sea_level = sea_level_2
     )
-    testit::assert(DAISIE::are_area_pars(area_pars_2))
+    testit::assert(DAISIE:::are_area_pars(area_pars_2))
   }
 }
