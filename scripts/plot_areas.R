@@ -21,13 +21,13 @@
 #' )
 #'
 #' area_pars_2 <- DAISIE::create_area_pars(
-#'   max_area = param_space$max_area[nrow(param_space)],
-#'   current_area = param_space$current_area[nrow(param_space)],
-#'   proportional_peak_t = param_space$peak_time[nrow(param_space)],
-#'   total_island_age = param_space$total_island_age[nrow(param_space)],
-#'   sea_level_amplitude = param_space$sea_level_amplitude[nrow(param_space)],
-#'   sea_level_frequency = param_space$sea_level_frequency[nrow(param_space)],
-#'   island_gradient_angle = param_space$island_gradient_angle[nrow(param_space)]
+#'   max_area = param_space$max_area[nrow(param_space) / 2 + 1],
+#'   current_area = param_space$current_area[nrow(param_space) / 2 + 1],
+#'   proportional_peak_t = param_space$peak_time[nrow(param_space) / 2 + 1],
+#'   total_island_age = param_space$total_island_age[nrow(param_space) / 2 + 1],
+#'   sea_level_amplitude = param_space$sea_level_amplitude[nrow(param_space) / 2 + 1],
+#'   sea_level_frequency = param_space$sea_level_frequency[nrow(param_space) / 2 + 1],
+#'   island_gradient_angle = param_space$island_gradient_angle[nrow(param_space) / 2 + 1]
 #' )
 #'
 #' island_ontogeny_1 <- "beta"
@@ -36,7 +36,9 @@
 #' sea_level_2 <- "sine"
 #' resolution <- 0.001
 #' overlay_sea_level_ontogeny <- TRUE
-#' overlay_sea_level = TRUE
+#' overlay_sea_level <- TRUE
+#' totaltime_1 <- param_space$time[1]
+#' totaltime_2 <- param_space$time[nrow(param_space)]
 #'
 #' plot_areas(
 #'   totaltime_1 = totaltime_1,
@@ -82,20 +84,20 @@ plot_areas <- function(totaltime_1,
   sea_level_2 <- DAISIE:::translate_sea_level(sea_level_2)
 
 
-  # if (overlay_sea_level_ontogeny || overlay_sea_level) {
-  #
-  #   area_pars_1_sea_level <- area_pars_1
-  #   area_pars_2_sea_level <- area_pars_2
-  #
-  #   sea_level_1 <- 0
-  #   sea_level_2 <- 0
-  #   area_pars_1$sea_level_amplitude <- 0
-  #   area_pars_1$sea_level_frequency <- 0
-  #   area_pars_1$island_gradient_angle <- 0
-  #   area_pars_2$sea_level_amplitude <- 0
-  #   area_pars_2$sea_level_frequency <- 0
-  #   area_pars_2$island_gradient_angle <- 0
-  # }
+  if (overlay_sea_level_ontogeny || overlay_sea_level) {
+
+    area_pars_1_sea_level <- area_pars_1
+    area_pars_2_sea_level <- area_pars_2
+
+    sea_level_1 <- 0
+    sea_level_2 <- 0
+    area_pars_1$sea_level_amplitude <- 0
+    area_pars_1$sea_level_frequency <- 0
+    area_pars_1$island_gradient_angle <- 0
+    area_pars_2$sea_level_amplitude <- 0
+    area_pars_2$sea_level_frequency <- 0
+    area_pars_2$island_gradient_angle <- 0
+  }
 
   x_axis <- seq(0, totaltime_1, by = resolution)
   if (!is.null(area_pars_2)) {
@@ -123,18 +125,20 @@ plot_areas <- function(totaltime_1,
   area_1 <- sapply(
     x_axis,
     FUN = DAISIE:::island_area,
-    area_pars_1,
+    totaltime = totaltime_1,
+    area_pars = area_pars_1,
     peak = area_1_peak,
-    island_ontogeny_1,
-    sea_level_1
+    island_ontogeny = island_ontogeny_1,
+    sea_level = sea_level_1
   )
   area_2 <- sapply(
     second_island_timepoints_rel_time,
     FUN = DAISIE:::island_area,
-    area_pars_2,
+    totaltime = totaltime_1,
+    area_pars = area_pars_2,
     peak = area_2_peak,
-    island_ontogeny_2,
-    sea_level_2
+    island_ontogeny = island_ontogeny_2,
+    sea_level = sea_level_2
   )
 
   island_area_time_1 <- data.frame(
@@ -164,15 +168,20 @@ plot_areas <- function(totaltime_1,
     area_1_sea_level_ontogeny <- sapply(
       x_axis,
       FUN = DAISIE:::island_area,
-      area_pars_1_sea_level,
-      island_ontogeny_1,
-      sea_level_1)
+      totaltime = totaltime_1,
+      area_pars = area_pars_1_sea_level,
+      peak = area_1_peak,
+      island_ontogeny = island_ontogeny_1,
+      sea_level = sea_level_1
+    )
     area_2_sea_level_ontogeny <- sapply(
       second_island_timepoints_rel_time,
       FUN = DAISIE:::island_area,
-      area_pars_2_sea_level,
-      island_ontogeny_2,
-      sea_level_2
+      totaltime = totaltime_1,
+      area_pars = area_pars_2_sea_level,
+      peak = area_2_peak,
+      island_ontogeny = island_ontogeny_2,
+      sea_level = sea_level_2
     )
 
     island_area_time_sea_level_ontogeny_1 <- data.frame(
@@ -205,15 +214,20 @@ plot_areas <- function(totaltime_1,
       area_1_sea_level <- sapply(
         x_axis,
         FUN = DAISIE:::island_area,
-        area_pars_1_sea_level,
-        island_ontogeny_1,
-        sea_level_1)
+        totaltime = totaltime_1,
+        area_pars = area_pars_1,
+        peak = area_1_peak,
+        island_ontogeny = island_ontogeny_1,
+        sea_level = sea_level_1
+      )
       area_2_sea_level <- sapply(
         second_island_timepoints_rel_time,
         FUN = DAISIE:::island_area,
-        area_pars_2_sea_level,
-        island_ontogeny_2,
-        sea_level_2
+        totaltime = totaltime_1,
+        area_pars = area_pars_2,
+        peak = area_2_peak,
+        island_ontogeny = island_ontogeny_2,
+        sea_level = sea_level_2
       )
 
       island_area_time_sea_level_1 <- data.frame(
