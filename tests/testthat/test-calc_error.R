@@ -15,27 +15,18 @@ test_that("test calc_error output is correct", {
       param_space_name = "nonoceanic",
       param_space = param_space,
       param_set = 1)
-    novel_sim <- run_novel_sim(
+    novel_sim <- novel_sim(
       param_space_name = "nonoceanic",
       sim_pars = sim_pars,
       replicates = 2)
-    #ML output from nonoceanic param_set 1 with seed 1
-    novel_ml <- list(data.frame("lambda_c" = 0.239060106362,
-                                "mu" = 0.243562502681,
-                                "K" = 140931.626879,
-                                "gamma" = 0.009083381509,
-                                "lambda_a" = 0.738638320593,
-                                "loglik" = -125.64119536,
+    novel_ml <- data.frame("lambda_c" = 0.5,
+                                "mu" = 0.5,
+                                "K" = 20,
+                                "gamma" = 0.01,
+                                "lambda_a" = 0.5,
+                                "loglik" = -125.5,
                                 "df" = 5,
-                                "conv" = 0),
-                     data.frame("lambda_c" = 0.244398608737,
-                                "mu" = 0.426446095366,
-                                "K" = 1576714.56541,
-                                "gamma" = 0.0126943736142,
-                                "lambda_a" = 0.859859935595,
-                                "loglik" = -147.529038158,
-                                "df" = 5,
-                                "conv" = 0))
+                                "conv" = 0)
     oceanic_sim <- oceanic_sim(
       ml = novel_ml,
       sim_pars = sim_pars)
