@@ -77,24 +77,14 @@ check_calc_error_metrics_input <- function(spec_nltt_error,
                                            num_col_baseline_error,
                                            endemic_baseline_nltt_error,
                                            nonendemic_baseline_nltt_error) {
-  num_spec <- na.omit(num_spec_error)
   testit::assert(all(num_spec_error >= 0))
-  num_spec_baseline_error <- na.omit(num_spec_baseline_error)
   testit::assert(all(num_spec_baseline_error >= 0))
-  num_col_baseline_error <- na.omit(num_col_baseline_error)
   testit::assert(all(num_col_baseline_error >= 0))
-  num_col <- na.omit(num_col_baseline_error)
-  testit::assert(all(num_col >= 0))
-  spec_nltt <- na.omit(spec_nltt_error)
+  testit::assert(all(num_col_error >= 0))
   testit::assert(all(spec_nltt_error >= 0))
-  spec_baseline_nltt <- na.omit(spec_baseline_nltt_error)
   testit::assert(all(spec_baseline_nltt_error >= 0))
-  endemic_nltt <- na.omit(endemic_nltt_error)
   testit::assert(all(endemic_nltt_error >= 0))
-  endemic_baseline_nltt <- na.omit(endemic_baseline_nltt_error)
   testit::assert(all(endemic_baseline_nltt_error >= 0))
-  nonendemic_nltt <- na.omit(nonendemic_nltt_error)
   testit::assert(all(nonendemic_nltt_error >= 0))
-  nonendemic_baseline_nltt <- na.omit(nonendemic_baseline_nltt_error)
   testit::assert(all(nonendemic_baseline_nltt_error >= 0))
 }
