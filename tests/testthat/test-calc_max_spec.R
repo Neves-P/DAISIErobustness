@@ -17,17 +17,16 @@ test_that("use", {
     param_space = param_space,
     param_set = param_set)
 
-  novel_sim <- DAISIErobustness:::run_novel_sim(
+  novel_sim <- DAISIErobustness:::novel_sim(
     param_space_name = param_space_name,
     sim_pars = sim_pars,
     replicates = replicates
   )
 
   expect_silent(calc_max_spec(novel_sim))
-  expect_true(length(calc_max_spec(novel_sim)[[1]]) == length(novel_sim))
-  expect_true(length(calc_max_spec(novel_sim)[[2]]) == length(novel_sim))
-  expect_equal(calc_max_spec(novel_sim), list(max_spec_clade = c(2, 3),
-                                              num_island_spec = c(8, 15)))
+  expect_true(is.numeric(calc_max_spec(novel_sim)))
+  expect_length(calc_max_spec(novel_sim), 1)
+  expect_equal(calc_max_spec(novel_sim), 2)
 })
 
 test_that("abuse", {
