@@ -1,42 +1,27 @@
 context("ml_constraints")
 
-test_that("ml_constraints returns TRUE", {
-  oceanic_ml <- list(data.frame("lambda_c" = 1,
+test_that("ml_constraints returns TRUE when mle passes", {
+  oceanic_ml <- data.frame("lambda_c" = 1,
                                    "mu" = 1,
                                    "K" = 25,
                                    "gamma" = 0.01,
                                    "lambda_a" = 1,
                                    "loglik" = -90,
                                    "df" = 5,
-                                   "conv" = 0),
-                        data.frame("lambda_c" = 1,
-                                   "mu" = 1,
-                                   "K" = 25,
-                                   "gamma" = 0.01,
-                                   "lambda_a" = 1,
-                                   "loglik" = -90,
-                                   "df" = 5,
-                                   "conv" = 0))
-  replicates <- 2
-  ml_constraints <- ml_constraints(
-    ml = oceanic_ml
-  )
+                                   "conv" = 0)
+  ml_constraints <- ml_constraints(ml = oceanic_ml)
   expect_equal(ml_constraints, TRUE)
 })
 
-test_that("test ml_constraints returns FALSE when more than 5% MLE fail", {
-  oceanic_ml <- list(data.frame("lambda_c" = 1,
-                                "mu" = 1,
-                                "K" = 25,
-                                "gamma" = 0.01,
-                                "lambda_a" = 1,
-                                "loglik" = -90,
-                                "df" = 5,
-                                "conv" = 0),
-                     "ML didn't converge")
-  replicates <- 2
-  ml_constraints <- ml_constraints(
-    ml = oceanic_ml
-  )
+test_that("ml_constraints returns FALSE when mle fails", {
+  oceanic_ml <- data.frame("lambda_c" = NA,
+                                "mu" = NA,
+                                "K" = NA,
+                                "gamma" = NA,
+                                "lambda_a" = NA,
+                                "loglik" = NA,
+                                "df" = NA,
+                                "conv" = 1)
+  ml_constraints <- ml_constraints(ml = oceanic_ml)
   expect_equal(ml_constraints, FALSE)
 })
