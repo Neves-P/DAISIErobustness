@@ -34,20 +34,12 @@
 param_space_name=$1
 param_set=$2
 replicates=$3
-pipeline=$4
-distance_method=$5
-replicate_range_start=$6
-replicate_range_end=$7
-load_from_file=$8
+distance_method=$4
 
 ml R
 Rscript DAISIErobustness/scripts/run_robustness_peregrine.R ${param_space_name} \
                                                             ${param_set} \
                                                             ${replicates} \
-                                                            ${pipeline} \
-                                                            ${distance_method} \
-                                                            ${replicate_range_start} \
-                                                            ${replicate_range_end} \
-                                                            ${load_from_file}
+                                                            ${distance_method}
 
 
