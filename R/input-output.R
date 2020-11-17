@@ -11,8 +11,7 @@
 #' @family I/O
 save_output <- function(output,
                         param_space_name,
-                        param_set,
-                        pipeline) {
+                        param_set) {
 
   if (pipeline == "full" || pipeline == "analysis") {
 
@@ -25,21 +24,6 @@ save_output <- function(output,
     output_folder <- file.path(
       getwd(),
       "results",
-      param_space_name
-    )
-    output_file_path <- file.path(output_folder, output_file_name)
-
-  } else if (pipeline == "novel_sim") {
-    output_file_name <- paste0(
-      "novel_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".RData"
-    )
-    output_folder <- file.path(
-      getwd(),
-      "sims",
       param_space_name
     )
     output_file_path <- file.path(output_folder, output_file_name)
@@ -117,26 +101,19 @@ create_output_file_name <- function(param_space_name,
 #'   folder if needed.
 #' @keywords internal
 #' @family I/O
-check_create_folders <- function(param_space_name, save_output, pipeline) {
+check_create_folders <- function(param_space_name,
+                                 save_output) {
 
   if (!save_output) {
     message("Returning results to object, no I/O used.\n")
     return()
   }
 
-  if (pipeline == "full" || pipeline == "analysis") {
-    output_folder <- file.path(
-      getwd(),
-      "results",
-      param_space_name
-    )
-  } else if (pipeline == "novel_sim") {
-    output_folder <- file.path(
-      getwd(),
-      "sims",
-      param_space_name
-    )
-  }
+  output_folder <- file.path(
+    getwd(),
+    "results",
+    param_space_name
+  )
 
   if (!dir.exists(output_folder)) {
     message(paste0(
