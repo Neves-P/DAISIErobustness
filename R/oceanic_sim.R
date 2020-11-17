@@ -7,7 +7,7 @@ oceanic_sim <- function(ml,
                         sim_pars) {
   oceanic_sim <- list()
   if (is.character(ml)) {
-    oceanic_sim[[i]] <- "ML didn't converge"
+    oceanic_sim <- "ML didn't converge"
   } else {
     oceanic_sim <- DAISIE::DAISIE_sim_constant_rate(
       time = sim_pars$time,
