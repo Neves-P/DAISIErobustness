@@ -7,19 +7,12 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim,
                     initial_parameters) {
-  ml <- list()
-
-  for (i in seq_along(sim)) {
-    message(paste0("Running ML ", i, " of ", length(sim)))
-    if (is.character(sim[[i]])) {
-      ml[[i]] <- "ML didn't converge"
-    } else {
       try(
         suppressMessages(invisible(capture.output(
-          ml[[i]] <- DAISIE::DAISIE_ML_CS(
-            datalist = sim[[i]][[1]],
+          ml <- DAISIE::DAISIE_ML_CS(
+            datalist = sim[[1]],
             datatype = "single",
-            initparsopt = as.numeric(initial_parameters[[i]][1:5]),
+            initparsopt = as.numeric(initial_parameters[1:5]),
             idparsopt = c(1:5),
             ddmodel = 11,
             parsfix = NULL,
@@ -29,10 +22,8 @@ calc_ml <- function(sim,
           )
         )
         )))
-      if (ml[[i]]$conv != 0) {
-        ml[[i]] <- "ML didn't converge"
+      if (ml$conv != 0) {
+        ml <- "ML didn't converge"
       }
-    }
-  }
   return(ml)
 }
