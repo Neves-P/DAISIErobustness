@@ -2,22 +2,15 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @return A list of errors and simulation and MLE output if
-#' \code{\link{ml_constraints}()} returned TRUE.
+#' @return A list of errors and simulation and MLE output.
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
-                           pipeline = "full",
-                           novel_sim = NULL,
                            distance_method = "abs",
-                           save_output = TRUE,
-                           replicate_range = NULL,
-                           load_from_file = FALSE) {
+                           save_output = TRUE) {
 
-  param_space <- load_param_space(
-    param_space_name = param_space_name)
-  testit::assert(pipeline %in% c("full", "novel_sim", "analysis"))
+  testit::assert(is.character(param_space_name))
   testit::assert(param_space_name %in% c("oceanic_ontogeny",
                                          "oceanic_sea_level",
                                          "oceanic_ontogeny_sea_level",
@@ -25,17 +18,22 @@ run_robustness <- function(param_space_name,
                                          "nonoceanic_sea_level",
                                          "nonoceanic_land_bridge",
                                          "trait_CES",
-                                         "trait_trans",
-                                         "oceanic"))
+                                         "trait_trans"))
+  param_space <- load_param_space(
+    param_space_name = param_space_name)
   testit::assert(param_set >= 1)
   testit::assert(param_set <= nrow(param_space))
   testit::assert(replicates > 1)
-
+  testit::assert(
+    "replicates must be a positive integer greater or equal to 2",
+    is.finite(replicates) && replicates >= 2
+  )
+  testit::assert("distance_method must be either 'abs' or 'squ'",
+                 distance_method == "abs" || distance_method == "squ")
 
   check_create_folders(
     param_space_name = param_space_name,
-    save_output = save_output,
-    pipeline = pipeline
+    save_output = save_output
   )
 
   set.seed(
@@ -50,55 +48,158 @@ run_robustness <- function(param_space_name,
     param_space = param_space,
     param_set = param_set)
 
-  if (pipeline == "novel_sim") {
-    output <- run_novel_sim(
-      param_space_name = param_space_name,
-      sim_pars = sim_pars,
-      replicates = replicates
-    )
-  } else if (pipeline == "analysis") {
+  passed_novel_mls <- list()
+  failed_novel_mls <- list()
+  passed_novel_sims <- list()
+  failed_novel_sims <- list()
+  passed_oceanic_mls <- list()
+  failed_oceanic_mls <- list()
+  passed_oceanic_sims <- list()
+  failed_oceanic_sims <- list()
+  spec_nltt_error <- c()
+  num_spec_error <- c()
+  num_col_error <- c()
+  endemic_nltt_error <- c()
+  nonendemic_nltt_error <- c()
+  spec_baseline_nltt_error <- c()
+  num_spec_baseline_error <- c()
+  num_col_baseline_error <- c()
+  endemic_baseline_nltt_error <- c()
+  nonendemic_baseline_nltt_error <- c()
 
-    if (load_from_file) {
-      novel_sim <- load_novel_section(
-        param_space_name = param_space_name,
-        param_set = param_set
-      )
-      testit::assert("For runnning just the analysis
-                   novel_sim must be supplied.", exists("novel_sim"))
-    }
-    testit::assert("For runnning just the analysis
-                   novel_sim must be supplied.", !is.null("novel_sim"))
-    output <- run_analysis(
-      novel_sim = novel_sim,
-      param_space_name = param_space_name,
-      replicates = replicates,
-      replicate_range = replicate_range,
-      sim_pars = sim_pars,
-      distance_method = distance_method
-    )
-  } else if (pipeline == "full") {
-    novel_sim <- run_novel_sim(
+  while (length(passed_novel_mls) < replicates) {
+    novel_sim <- novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates
     )
-    output <- run_analysis(
-      novel_sim = novel_sim,
-      param_space_name = param_space_name,
-      replicates = replicates,
-      replicate_range = replicate_range,
-      sim_pars = sim_pars,
-      distance_method = distance_method
+    testit::assert(
+      "novel_sim must be in the DAISIE simulation output format",
+      is_novel_sim_outputs(novel_sim)
     )
-    output$novel_sim <- novel_sim
+    k_approx <- calc_max_spec(novel_sim) + 1
+
+    novel_ml <- calc_ml(
+      sim = novel_sim,
+      initial_parameters = c(0.05, 0.05, k_approx, 0.0001, 0.05)
+    )
+
+    novel_ml_constraints <- ml_constraints(ml = novel_ml)
+
+    if (novel_ml_constraints == TRUE) {
+      passed_novel_mls[[length(passed_novel_mls) + 1]] <- novel_ml
+      passed_novel_sims[[length(passed_novel_sims) + 1]] <- novel_sim
+
+      if (param_space_name %in% c("trait_CES", "trait_trans")) {
+        sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
+      }
+
+      oceanic_sim_1 <- oceanic_sim(
+        ml = novel_ml,
+        sim_pars = sim_pars)
+
+      error <- calc_error(
+        sim_1 = novel_sim,
+        sim_2 = oceanic_sim_1,
+        replicates = replicates,
+        distance_method = distance_method)
+
+      spec_nltt_error <- append(spec_nltt_error, error$spec_error$nltt)
+      num_spec_error <- append(num_spec_error, error$spec_error$num_spec_error)
+      num_col_error <- append(num_col_error, error$spec_error$num_col_error)
+      endemic_nltt_error <- append(endemic_nltt_error, error$endemic_error$nltt)
+      nonendemic_nltt_error <- append(
+        nonendemic_nltt_error,
+        error$nonendemic_error$nltt)
+
+      oceanic_ml <- calc_ml(
+        sim = oceanic_sim_1,
+        initial_parameters = novel_ml
+      )
+
+      oceanic_ml_constraints <- ml_constraints(
+        ml = oceanic_ml
+      )
+
+      if (oceanic_ml_constraints == TRUE) {
+        passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
+        passed_oceanic_sims[[length(passed_oceanic_sims) + 1]] <- oceanic_sim
+
+        oceanic_sim_2 <- oceanic_sim(
+          ml = oceanic_ml,
+          sim_pars = sim_pars)
+
+        baseline_error <- calc_error(
+          sim_1 = oceanic_sim_1,
+          sim_2 = oceanic_sim_2,
+          replicates = replicates,
+          distance_method = distance_method)
+
+        spec_baseline_nltt_error <- append(
+          spec_baseline_nltt_error,
+          baseline_error$spec_error$nltt)
+        num_spec_baseline_error <- append(
+          num_spec_baseline_error,
+          baseline_error$spec_error$num_spec)
+        num_col_baseline_error <- append(
+          num_col_baseline_error,
+          baseline_error$spec_error$num_col)
+        endemic_baseline_nltt_error <- append(
+          endemic_baseline_nltt_error,
+          baseline_error$endemic_error$nltt)
+        nonendemic_baseline_nltt_error <- append(
+          nonendemic_baseline_nltt_error,
+          baseline_error$nonendemic_error$nltt)
+
+      } else {
+        failed_oceanic_mls[[length(failed_oceanic_mls) + 1]] <- oceanic_ml
+        failed_oceanic_sims[[length(failed_oceanic_sims) + 1]] <- oceanic_sim
+      }
+    } else {
+      failed_novel_mls[[length(failed_novel_mls) + 1]] <- novel_ml
+      failed_novel_sims[[length(failed_novel_sims) + 1]] <- novel_sim
+    }
+    message(paste0("Number of results: ", length(passed_novel_mls)))
   }
+  error_metrics <- calc_error_metrics(
+    spec_nltt_error = spec_nltt_error,
+    num_spec_error = num_spec_error,
+    num_col_error = num_col_error,
+    endemic_nltt_error = endemic_nltt_error,
+    nonendemic_nltt_error = nonendemic_nltt_error,
+    spec_baseline_nltt_error = spec_baseline_nltt_error,
+    num_spec_baseline_error = num_spec_baseline_error,
+    num_col_baseline_error = num_col_baseline_error,
+    endemic_baseline_nltt_error = endemic_baseline_nltt_error,
+    nonendemic_baseline_nltt_error = nonendemic_baseline_nltt_error)
+
+  output <- list(
+    spec_nltt_error = spec_nltt_error,
+    num_spec_error = num_spec_error,
+    num_col_error = num_col_error,
+    endemic_nltt_error = endemic_nltt_error,
+    nonendemic_nltt_error = nonendemic_nltt_error,
+    spec_baseline_nltt_error = spec_baseline_nltt_error,
+    num_spec_baseline_error = num_spec_baseline_error,
+    num_col_baseline_error = num_col_baseline_error,
+    endemic_baseline_nltt_error = endemic_baseline_nltt_error,
+    nonendemic_baseline_nltt_error = nonendemic_baseline_nltt_error,
+    error_metrics = error_metrics,
+    passed_novel_mls = passed_novel_mls,
+    failed_novel_mls = failed_novel_mls,
+    passed_oceanic_mls = passed_oceanic_mls,
+    failed_oceanic_mls = failed_oceanic_mls,
+    passed_novel_sims = passed_novel_sims,
+    failed_novel_sims = failed_novel_sims,
+    passed_oceanic_sims = passed_oceanic_sims,
+    failed_oceanic_sims = failed_oceanic_sims
+  )
 
   if (save_output == TRUE) {
     save_output(
       output = output,
       param_space_name = param_space_name,
-      param_set = param_set,
-      pipeline = pipeline
+      param_set = param_set
     )
   } else {
     return(output)
