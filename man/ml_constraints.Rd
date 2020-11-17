@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml_constraints.R
 \name{ml_constraints}
 \alias{ml_constraints}
-\title{Checks if number of valid errors meet the criteria for data sample size}
+\title{Checks if MLE passed or errored}
 \usage{
 ml_constraints(ml)
 }
@@ -13,7 +13,7 @@ ml_constraints(ml)
 Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 }
 \description{
-Checks if number of valid errors meet the criteria for data sample size
+Checks if MLE passed or errored
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie

@@ -8,12 +8,8 @@ run_robustness(
   param_space_name,
   param_set,
   replicates,
-  pipeline = "full",
-  novel_sim = NULL,
   distance_method = "abs",
-  save_output = TRUE,
-  replicate_range = NULL,
-  load_from_file = FALSE
+  save_output = TRUE
 )
 }
 \arguments{
@@ -32,20 +28,6 @@ run, as found in the file named in \code{param_space}.}
 \item{replicates}{A numeric for the number of replicates for the
 simulations}
 
-\item{pipeline}{A string stating what sections of the pipeline should
-run. Default is \code{"full"}, meaning the entire pipeline, including the
-novel model and analysis will run. \code{"novel_sim"} Indicates only the
-novel simulation section should run, calling \code{\link{run_novel_sim}()}.
-\code{"analysis"} runs just the estimation, oceanic simulations and error
-calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
-
-\item{novel_sim}{A list of simulation output in the DAISIE simulation format
-for which the robustness against standard oceanic DAISIE is to be
-determined.
-Can be generated from a preset of models available in
-\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
-format.}
-
 \item{distance_method}{From the nLTT package.
 How the difference between the two nLTTs is summed:
 \itemize{
@@ -55,19 +37,9 @@ How the difference between the two nLTTs is summed:
 }}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
-
-\item{replicate_range}{A numeric vector of length 2 or, by default,
-\code{NULL} if the entire range should be used. Specifies the range of
-previously saved replicates from \code{\link{run_novel_sim}()} that should
-be analysed by \code{\link{run_analysis}()}.}
-
-\item{load_from_file}{A boolean for the \code{\link{run_analysis}()} part of
-the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
-loaded from a file, otherwise, the object is retrieved from scope.}
 }
 \value{
-A list of errors and simulation and MLE output if
-\code{\link{ml_constraints}()} returned TRUE.
+A list of errors and simulation and MLE output.
 }
 \description{
 Run robustness analysis pipeline

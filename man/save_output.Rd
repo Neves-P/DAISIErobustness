@@ -4,7 +4,7 @@
 \alias{save_output}
 \title{Save \code{run_robustness()} output}
 \usage{
-save_output(output, param_space_name, param_set, pipeline)
+save_output(output, param_space_name, param_set)
 }
 \arguments{
 \item{output}{List. Contains all the pipeline output that was able to
@@ -23,13 +23,6 @@ pipeline.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
-
-\item{pipeline}{A string stating what sections of the pipeline should
-run. Default is \code{"full"}, meaning the entire pipeline, including the
-novel model and analysis will run. \code{"novel_sim"} Indicates only the
-novel simulation section should run, calling \code{\link{run_novel_sim}()}.
-\code{"analysis"} runs just the estimation, oceanic simulations and error
-calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 }
 \value{
 .RData file named by \code{\link{create_output_file_name}()} in

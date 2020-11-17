@@ -5,30 +5,17 @@
 \title{Checks calc_error_metrics_input is correct}
 \usage{
 check_calc_error_metrics_input(
-  spec_error,
-  endemic_error,
-  nonendemic_error,
-  spec_baseline_error,
-  endemic_baseline_error,
-  nonendemic_baseline_error
+  spec_nltt_error,
+  num_spec_error,
+  num_col_error,
+  endemic_nltt_error,
+  nonendemic_nltt_error,
+  spec_baseline_nltt_error,
+  num_spec_baseline_error,
+  num_col_baseline_error,
+  endemic_baseline_nltt_error,
+  nonendemic_baseline_nltt_error
 )
-}
-\arguments{
-\item{spec_error}{A list with three elements each with a numeric
-vector.}
-
-\item{endemic_error}{A list with one element with a numeric vector.}
-
-\item{nonendemic_error}{A list with one element with a numeric vector.}
-
-\item{spec_baseline_error}{A list with three elements each with
-a numeric vector.}
-
-\item{endemic_baseline_error}{A list with one element with a numeric
-vector.}
-
-\item{nonendemic_baseline_error}{A list with one element with a numeric
-vector.}
 }
 \value{
 Nothing. Throws error if input is not correct

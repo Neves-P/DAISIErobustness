@@ -2,8 +2,9 @@
 % Please edit documentation in R/calc_error.R
 \name{calc_error}
 \alias{calc_error}
-\title{Calcualtes error in rates, number of species-through-time, number
-of endemics-through-time and non-endemics-through-time}
+\title{Calcualtes error in number of species and colonists, number of
+species-through-time, number of endemics-through-time and
+non-endemics-through-time}
 \usage{
 calc_error(sim_1, sim_2, replicates, distance_method)
 }
@@ -35,8 +36,9 @@ How the difference between the two nLTTs is summed:
 A list with three error metrics
 }
 \description{
-Calcualtes error in rates, number of species-through-time, number
-of endemics-through-time and non-endemics-through-time
+Calcualtes error in number of species and colonists, number of
+species-through-time, number of endemics-through-time and
+non-endemics-through-time
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_max_spec.R
 \name{calc_max_spec}
 \alias{calc_max_spec}
-\title{Obtain the number of species in the largest clade of each island}
+\title{Obtain the number of species in the largest clade}
 \usage{
 calc_max_spec(novel_sim)
 }
@@ -15,11 +15,11 @@ Can be generated from a preset of models available in
 format.}
 }
 \value{
-A numeric vector with the number of species in the largest clade
- in a given island, per replicate.
+A numeric with the number of species in the largest clade
+ in a given island.
 }
 \description{
-Obtain the number of species in the largest clade of each island
+Obtain the number of species in the largest clade
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie

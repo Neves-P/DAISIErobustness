@@ -4,7 +4,7 @@
 \alias{check_create_folders}
 \title{Checks and create results folder for output}
 \usage{
-check_create_folders(param_space_name, save_output, pipeline)
+check_create_folders(param_space_name, save_output)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -17,13 +17,6 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 pipeline.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
-
-\item{pipeline}{A string stating what sections of the pipeline should
-run. Default is \code{"full"}, meaning the entire pipeline, including the
-novel model and analysis will run. \code{"novel_sim"} Indicates only the
-novel simulation section should run, calling \code{\link{run_novel_sim}()}.
-\code{"analysis"} runs just the estimation, oceanic simulations and error
-calculation sections of the pipeline calling \code{\link{run_analysis}()}.}
 }
 \value{
 Helpful messages with info on folder status. Tries to create
