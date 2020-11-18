@@ -5,21 +5,16 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
 oceanic_sim <- function(ml,
                         sim_pars) {
-  oceanic_sim <- list()
-  if (is.character(ml)) {
-    oceanic_sim <- "ML didn't converge"
-  } else {
-    oceanic_sim <- DAISIE::DAISIE_sim_constant_rate(
-      time = sim_pars$time,
-      M = sim_pars$M,
-      pars = as.numeric(ml[1:5]),
-      hyper_pars = DAISIE::create_hyper_pars(d = 0, x = 0),
-      replicates = 1,
-      plot_sims = FALSE,
-      cond = 5,
-      verbose = FALSE,
-      sample_freq = Inf
-    )
-  }
+  oceanic_sim <- DAISIE::DAISIE_sim_constant_rate(
+    time = sim_pars$time,
+    M = sim_pars$M,
+    pars = as.numeric(ml[1:5]),
+    hyper_pars = DAISIE::create_hyper_pars(d = 0, x = 0),
+    replicates = 1,
+    plot_sims = FALSE,
+    cond = 5,
+    verbose = FALSE,
+    sample_freq = Inf
+  )
   return(oceanic_sim)
 }
