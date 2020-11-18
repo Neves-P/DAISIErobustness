@@ -63,7 +63,7 @@ test_that("test calc_error output is correct when failed convergence", {
     param_space_name = "nonoceanic",
     param_space = param_space,
     param_set = 244)
-  novel_sim <- run_novel_sim(
+  novel_sim <- novel_sim(
     param_space_name = "nonoceanic",
     sim_pars = sim_pars,
     replicates = 1)

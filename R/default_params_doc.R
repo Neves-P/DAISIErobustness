@@ -18,7 +18,7 @@
 #'   \code{\link{ml_constraints}()}.
 #' @param replicate_range A numeric vector of length 2 or, by default,
 #'  \code{NULL} if the entire range should be used. Specifies the range of
-#'  previously saved replicates from \code{\link{run_novel_sim}()} that should
+#'  previously saved replicates from \code{\link{novel_sim}()} that should
 #'  be analysed by \code{\link{run_analysis}()}.
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output List. Contains all the pipeline output that was able to
@@ -37,7 +37,7 @@
 #'  for which the robustness against standard oceanic DAISIE is to be
 #'  determined.
 #'  Can be generated from a preset of models available in
-#'  \code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
+#'  \code{\link{novel_sim}()}, or loaded from a file, if in the correct
 #'  format.
 #' @param ml Output from \code{\link[DAISIE]{DAISIE_ML}()}.
 #' @param ml_res_initpars_1 Numeric data frame.
@@ -74,11 +74,11 @@
 #' @param pipeline A string stating what sections of the pipeline should
 #'  run. Default is \code{"full"}, meaning the entire pipeline, including the
 #'  novel model and analysis will run. \code{"novel_sim"} Indicates only the
-#'  novel simulation section should run, calling \code{\link{run_novel_sim}()}.
+#'  novel simulation section should run, calling \code{\link{novel_sim}()}.
 #'  \code{"analysis"} runs just the estimation, oceanic simulations and error
 #'  calculation sections of the pipeline calling \code{\link{run_analysis}()}.
 #' @param load_from_file A boolean for the \code{\link{run_analysis}()} part of
-#'  the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
+#'  the pipeline. If \code{TRUE}, \code{\link{novel_sim}()} output is
 #'  loaded from a file, otherwise, the object is retrieved from scope.
 #' @param distance_method From the nLTT package.
 #'  How the difference between the two nLTTs is summed:

@@ -6,8 +6,8 @@
 #' @export
 merge_analysis_replicates <- function(param_space = "oceanic_ontogeny") {
   if (param_space == "oceanic_ontogeny") {
-    wd_1 <- "C:/Users/user/Desktop/DAISIE_analysis/oceanic_ontogeny_1_500"
-    wd_2 <- "C:/Users/user/Desktop/DAISIE_analysis/oceanic_ontogeny_501_1000"
+    wd_1 <- "C:/Users/poisn/Desktop/oceanic_ontogeny_1_500"
+    wd_2 <- "C:/Users/poisn/Desktop/oceanic_ontogeny_501_1000"
   }
 
   setwd(wd_1)
