@@ -104,14 +104,6 @@ run_robustness <- function(param_space_name,
         replicates = replicates,
         distance_method = distance_method)
 
-      spec_nltt_error <- append(spec_nltt_error, error$spec_error$nltt)
-      num_spec_error <- append(num_spec_error, error$spec_error$num_spec_error)
-      num_col_error <- append(num_col_error, error$spec_error$num_col_error)
-      endemic_nltt_error <- append(endemic_nltt_error, error$endemic_error$nltt)
-      nonendemic_nltt_error <- append(
-        nonendemic_nltt_error,
-        error$nonendemic_error$nltt)
-
       oceanic_ml <- calc_ml(
         sim = oceanic_sim_1,
         initial_parameters = novel_ml
@@ -135,6 +127,21 @@ run_robustness <- function(param_space_name,
           replicates = replicates,
           distance_method = distance_method)
 
+        spec_nltt_error <- append(
+          spec_nltt_error,
+          error$spec_error$nltt)
+        num_spec_error <- append(
+          num_spec_error,
+          error$spec_error$num_spec_error)
+        num_col_error <- append(
+          num_col_error,
+          error$spec_error$num_col_error)
+        endemic_nltt_error <- append(
+          endemic_nltt_error,
+          error$endemic_error$nltt)
+        nonendemic_nltt_error <- append(
+          nonendemic_nltt_error,
+          error$nonendemic_error$nltt)
         spec_baseline_nltt_error <- append(
           spec_baseline_nltt_error,
           baseline_error$spec_error$nltt)
