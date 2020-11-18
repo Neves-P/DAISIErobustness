@@ -7,23 +7,20 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim,
                     initial_parameters) {
-      try(
-        suppressMessages(invisible(capture.output(
-          ml <- DAISIE::DAISIE_ML_CS(
-            datalist = sim[[1]],
-            datatype = "single",
-            initparsopt = as.numeric(initial_parameters[1:5]),
-            idparsopt = c(1:5),
-            ddmodel = 11,
-            parsfix = NULL,
-            idparsfix = NULL,
-            cond = 5,
-            jitter = -1e-5
-          )
-        )
-        )))
-      if (ml$conv != 0) {
-        ml <- "ML didn't converge"
-      }
+  try(
+    suppressMessages(invisible(capture.output(
+      ml <- DAISIE::DAISIE_ML_CS(
+        datalist = sim[[1]],
+        datatype = "single",
+        initparsopt = as.numeric(initial_parameters[1:5]),
+        idparsopt = c(1:5),
+        ddmodel = 11,
+        parsfix = NULL,
+        idparsfix = NULL,
+        cond = 5,
+        jitter = -1e-5
+      )
+    )
+    )))
   return(ml)
 }
