@@ -4,7 +4,7 @@
 \alias{create_output_file_name}
 \title{Generated name for saving output of \code{run_robustness()}}
 \usage{
-create_output_file_name(param_space_name, param_set, ml_constraints)
+create_output_file_name(param_space_name, param_set)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -18,9 +18,6 @@ pipeline.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
-
-\item{ml_constraints}{Boolean. \code{TRUE} if MLE constraints pass,
-\code{FALSE} otherwise.}
 }
 \value{
 Character with name indicating the name of the parameter space,
@@ -33,9 +30,8 @@ Generated name for saving output of \code{run_robustness()}
 testit::assert(
   DAISIErobustness:::create_output_file_name(
     param_space_name = "oceanic_ontogeny",
-    param_set = 1,
-    ml_constraints = TRUE
-  ) == "passed_cond_oceanic_ontogeny_param_set_1.RData"
+    param_set = 1
+  ) == "oceanic_ontogeny_param_set_1.RData"
 )
 }
 \seealso{
