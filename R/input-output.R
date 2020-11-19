@@ -2,8 +2,10 @@
 #'
 #' @inheritParams default_params_doc
 #'
-#' @details Files are saved following the standardized file structure of the
-#' TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
+#' @details Files are saved to a subdirectory named after
+#'   \code{param_space_name} within the current directory. The \code{/results/}
+#'   directory and subfolders are created if they don't exist. The status of
+#'   saving is printed as a message if successful, a warning if unsuccessful.
 #' @return .RData file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
@@ -13,22 +15,19 @@ save_output <- function(output,
                         param_space_name,
                         param_set) {
 
-  if (pipeline == "full" || pipeline == "analysis") {
+  output_file_name <- create_output_file_name(
+    param_space_name = param_space_name,
+    param_set = param_set,
+    ml_constraints = output$ml_constraints
+  )
 
-    output_file_name <- create_output_file_name(
-      param_space_name = param_space_name,
-      param_set = param_set,
-      ml_constraints = output$ml_constraints
-    )
+  output_folder <- file.path(
+    getwd(),
+    "results",
+    param_space_name
+  )
+  output_file_path <- file.path(output_folder, output_file_name)
 
-    output_folder <- file.path(
-      getwd(),
-      "results",
-      param_space_name
-    )
-    output_file_path <- file.path(output_folder, output_file_name)
-
-  }
   testit::assert(is.character(output_file_name))
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")

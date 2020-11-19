@@ -32,8 +32,10 @@ default location. See details for more information on filesystem. This
 Save \code{run_robustness()} output
 }
 \details{
-Files are saved following the standardized file structure of the
-TECE lab, as implemented in \code{\link[jap]{folder_structure}()}.
+Files are saved to a subdirectory named after
+  \code{param_space_name} within the current directory. The \code{/results/}
+  directory and subfolders are created if they don't exist. The status of
+  saving is printed as a message if successful, a warning if unsuccessful.
 }
 \seealso{
 Other I/O: 
