@@ -17,8 +17,7 @@ save_output <- function(output,
 
   output_file_name <- create_output_file_name(
     param_space_name = param_space_name,
-    param_set = param_set,
-    ml_constraints = output$ml_constraints
+    param_set = param_set
   )
 
   output_folder <- file.path(
@@ -59,34 +58,18 @@ save_output <- function(output,
 #' testit::assert(
 #'   DAISIErobustness:::create_output_file_name(
 #'     param_space_name = "oceanic_ontogeny",
-#'     param_set = 1,
-#'     ml_constraints = TRUE
-#'   ) == "passed_cond_oceanic_ontogeny_param_set_1.RData"
+#'     param_set = 1
+#'   ) == "oceanic_ontogeny_param_set_1.RData"
 #' )
 create_output_file_name <- function(param_space_name,
-                                    param_set,
-                                    ml_constraints) {
-  if (ml_constraints == FALSE) {
-
+                                    param_set) {
     output_file_name <- paste0(
-      "failed_cond_",
       param_space_name,
       "_param_set_",
       param_set,
       ".RData"
     )
 
-  } else if (ml_constraints == TRUE) {
-
-    output_file_name <- paste0(
-      "passed_cond_",
-      param_space_name,
-      "_param_set_",
-      param_set,
-      ".RData"
-    )
-
-  }
   testit::assert(is.character(output_file_name))
   return(output_file_name)
 }

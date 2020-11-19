@@ -206,7 +206,8 @@ run_robustness <- function(param_space_name,
     save_output(
       output = output,
       param_space_name = param_space_name,
-      param_set = param_set
+      param_set = param_set,
+      ml_constraints = ml_constraints
     )
   } else {
     return(output)
