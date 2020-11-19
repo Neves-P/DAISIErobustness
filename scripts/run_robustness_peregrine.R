@@ -1,19 +1,11 @@
 args <- commandArgs(TRUE)
 
-if (args[6] == "NULL") {
-  replicate_range <- NULL
-} else {
-  replicate_range <- c(as.numeric(args[6]), as.numeric(args[7]))
-}
 
 DAISIErobustness::run_robustness(
   param_space_name = args[1],
   param_set = as.numeric(args[2]),
   replicates = as.numeric(args[3]),
-  pipeline = args[4],
-  distance_method = args[5],
-  save_output = TRUE,
-  replicate_range = replicate_range,
-  load_from_file = as.logical(args[8])
+  distance_method = args[4],
+  save_output = TRUE
 )
 
