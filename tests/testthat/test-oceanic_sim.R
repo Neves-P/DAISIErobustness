@@ -31,21 +31,3 @@ test_that("test oceanic sim output is correct", {
   expect_equal(oceanic_sim[[1]][[2]]$stac, 4)
   expect_equal(oceanic_sim[[1]][[2]]$missing_species, 0)
 })
-
-
-test_that("test oceanic sim returns string in failed ML", {
-  skip("WIP - Need updated data file from 1.0.1 param spaces")
-  load(system.file(
-    "extdata",
-    "passed_cond_nonoceanic_param_set_244.RData",
-    package = "DAISIErobustness"
-  ))
-  param_space <- load_param_space(param_space_name = "nonoceanic")
-  sim_pars <- extract_param_set(
-    param_space_name = "nonceanic",
-    param_space = param_space,
-    param_set = 93
-  )
-  out <- oceanic_sim(ml = output$novel_ml_2[[93]], sim_pars = sim_pars)
-  expect_equal(out, list("ML didn't converge"))
-})
