@@ -42,7 +42,7 @@ sim_pars <- DAISIErobustness:::extract_param_set(
   param_space = param_space,
   param_set = param_set)
 
-novel_sim <- DAISIErobustness:::run_novel_sim(
+novel_sim <- DAISIErobustness:::run_run_novel_sim(
   param_space_name = param_space_name,
   sim_pars = sim_pars,
   replicates = replicates
@@ -195,7 +195,7 @@ if (sim_constraints == TRUE) {
       sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
     }
 
-    oceanic_sim_1 <- DAISIErobustness:::oceanic_sim(
+    oceanic_sim_1 <- DAISIErobustness:::run_oceanic_sim(
       ml = novel_ml,
       sim_pars = sim_pars)
 
@@ -266,7 +266,7 @@ if (sim_constraints == TRUE) {
       ml = oceanic_ml)
 
     if (ml_constraints == TRUE) {
-      oceanic_sim_2 <- DAISIErobustness:::oceanic_sim(
+      oceanic_sim_2 <- DAISIErobustness:::run_oceanic_sim(
         ml = oceanic_ml,
         sim_pars = sim_pars)
 
