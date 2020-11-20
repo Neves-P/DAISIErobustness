@@ -12,14 +12,6 @@
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
 #'  simulations
-#' @param novel_ml_constraints_1 A boolean returned from
-#'   \code{\link{ml_constraints}()}.
-#' @param novel_ml_constraints_2 A boolean returned from
-#'   \code{\link{ml_constraints}()}.
-#' @param replicate_range A numeric vector of length 2 or, by default,
-#'  \code{NULL} if the entire range should be used. Specifies the range of
-#'  previously saved replicates from \code{\link{run_novel_sim}()} that should
-#'  be analysed by \code{\link{run_analysis}()}.
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output List. Contains all the pipeline output that was able to
 #'  run up to a given point. Will be saved into .RData file by
@@ -71,15 +63,6 @@
 #' @param initial_parameters A numeric vector of length 5 with the initial
 #'  parameters for the MLE routine. The same as \code{initparsopt}
 #'  from \code{\link[DAISIE]{DAISIE_ML}()}.
-#' @param pipeline A string stating what sections of the pipeline should
-#'  run. Default is \code{"full"}, meaning the entire pipeline, including the
-#'  novel model and analysis will run. \code{"novel_sim"} Indicates only the
-#'  novel simulation section should run, calling \code{\link{run_novel_sim}()}.
-#'  \code{"analysis"} runs just the estimation, oceanic simulations and error
-#'  calculation sections of the pipeline calling \code{\link{run_analysis}()}.
-#' @param load_from_file A boolean for the \code{\link{run_analysis}()} part of
-#'  the pipeline. If \code{TRUE}, \code{\link{run_novel_sim}()} output is
-#'  loaded from a file, otherwise, the object is retrieved from scope.
 #' @param distance_method From the nLTT package.
 #'  How the difference between the two nLTTs is summed:
 #'  \itemize{
@@ -87,15 +70,6 @@
 #'     summed}
 #'   \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}
 #'  }
-#' @param vec_1 A numeric vector. Usually a distribution of nLTT statistics
-#'  or similar vectors as obtained within
-#'  \code{\link{calc_error_metrics}()}. Distance is calculated with
-#'  \code{vec_2}.
-#' @param vec_2 A numeric vector. Usually a distribution of nLTT statistics
-#'  or similar vectors as obtained within
-#'  \code{\link{calc_error_metrics}()}. Distance is calculated with
-#'  \code{vec_1}.
-#'  @noRd
 #'
 #' @return Nothing
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
@@ -103,7 +77,6 @@ default_params_doc <- function(
   param_space_name,
   param_set,
   replicates,
-  replicate_range,
   save_output,
   output,
   param_space,
@@ -114,8 +87,6 @@ default_params_doc <- function(
   ml_res_initpars_1,
   ml_res_initpars_2,
   ml_constraints,
-  novel_ml_constraints_1,
-  novel_ml_constraints_2,
   initial_parameters,
   sim_1,
   sim_2,
@@ -125,11 +96,7 @@ default_params_doc <- function(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  pipeline,
-  load_from_file,
-  distance_method,
-  vec_1,
-  vec_2
+  distance_method
 ) {
   # Nothing
 }
