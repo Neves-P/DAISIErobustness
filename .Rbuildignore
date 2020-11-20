@@ -13,3 +13,4 @@
 ^\.covrignore$
 ^bash$
 ^pics$
+^\.github$
