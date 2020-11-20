@@ -15,7 +15,7 @@ test_that("test calc_error output is correct", {
       param_space_name = "nonoceanic",
       param_space = param_space,
       param_set = 1)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "nonoceanic",
       sim_pars = sim_pars,
       replicates = 2)

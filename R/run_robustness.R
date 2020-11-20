@@ -68,7 +68,7 @@ run_robustness <- function(param_space_name,
   nonendemic_baseline_nltt_error <- c()
 
   while (length(passed_novel_mls) < replicates) {
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates

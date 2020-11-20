@@ -9,7 +9,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
         replicates = 2,
         save_output = FALSE)
 
-      expect_length(errors, 15)
+      expect_length(errors, 19)
       expect_equal(errors$spec_error, list(nltt = c(15.50389052354415,
                                                     20.6280375792080),
                                            num_spec_error = c(8, 2),
@@ -248,7 +248,7 @@ test_that("run pipeline = analysis", {
       param_space = param_space,
       param_set = param_set)
 
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates

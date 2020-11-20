@@ -15,7 +15,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "oceanic_ontogeny",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "oceanic_ontogeny",
     sim_pars = sim_pars,
     replicates = 2)
@@ -58,7 +58,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "oceanic_sea_level",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "oceanic_sea_level",
     sim_pars = sim_pars,
     replicates = 2)
@@ -97,7 +97,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "oceanic_ontogeny_sea_level",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "oceanic_ontogeny_sea_level",
     sim_pars = sim_pars,
     replicates = 2)
@@ -140,7 +140,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "nonoceanic",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic",
     sim_pars = sim_pars,
     replicates = 2)
@@ -183,7 +183,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "nonoceanic_sea_level",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic_sea_level",
     sim_pars = sim_pars,
     replicates = 2)
@@ -226,7 +226,7 @@ test_that("test run_novel_sim output is correct for
     param_space_name = "nonoceanic_land_bridge",
     param_space = param_space,
     param_set = 1)
-  novel_sim <- novel_sim(
+  novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic_land_bridge",
     sim_pars = sim_pars,
     replicates = 2)
@@ -268,7 +268,7 @@ test_that("test run_novel_sim output is correct for trait", {
       param_space_name = "trait_CES",
       param_space = param_space,
       param_set = 1)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "trait_CES",
       sim_pars = sim_pars,
       replicates = 2)

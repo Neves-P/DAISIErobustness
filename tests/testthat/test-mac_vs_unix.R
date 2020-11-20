@@ -39,7 +39,7 @@ test_that("compare mac vs unix", {
       param_space = param_space,
       param_set = param_set)
 
-    novel_sim <- DAISIErobustness:::novel_sim(
+    novel_sim <- DAISIErobustness:::run_novel_sim(
       param_space_name = param_space_name,
       sim_pars = sim_pars,
       replicates = replicates

@@ -14,7 +14,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
       param_space_name = "nonoceanic",
       param_space = param_space,
       param_set = 3)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "nonoceanic",
       sim_pars = sim_pars,
       replicates = 2)
@@ -128,7 +128,7 @@ test_that("test calc_ml output is correct for failed convergence", {
       param_space_name = "oceanic_sea_level",
       param_space = param_space,
       param_set = 233)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "oceanic_sea_level",
       sim_pars = sim_pars,
       replicates = 2)
@@ -166,7 +166,7 @@ test_that("test calc_ml output is correct with traits sim", {
       param_space_name = "trait_CES",
       param_space = param_space,
       param_set = 1)
-    novel_sim <- novel_sim(
+    novel_sim <- run_novel_sim(
       param_space_name = "trait_CES",
       sim_pars = sim_pars,
       replicates = 2)
