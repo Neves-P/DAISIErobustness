@@ -4,7 +4,7 @@
 \alias{run_novel_sim}
 \title{Runs DAISIE simulation with a novel model}
 \usage{
-run_novel_sim(param_space_name, sim_pars, replicates)
+run_novel_sim(param_space_name, sim_pars)
 }
 \arguments{
 \item{param_space_name}{A string with the parameter space to run. Can
@@ -17,9 +17,6 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 pipeline.}
 
 \item{sim_pars}{A list of simulation parameters.}
-
-\item{replicates}{A numeric for the number of replicates for the
-simulations}
 }
 \value{
 A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
