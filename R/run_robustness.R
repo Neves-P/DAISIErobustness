@@ -115,7 +115,7 @@ run_robustness <- function(param_space_name,
 
       if (oceanic_ml_constraints == TRUE) {
         passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
-        passed_oceanic_sims[[length(passed_oceanic_sims) + 1]] <- oceanic_sim
+        passed_oceanic_sims[[length(passed_oceanic_sims) + 1]] <- oceanic_sim_1
 
         oceanic_sim_2 <- run_oceanic_sim(
           ml = oceanic_ml,
@@ -160,7 +160,7 @@ run_robustness <- function(param_space_name,
 
       } else {
         failed_oceanic_mls[[length(failed_oceanic_mls) + 1]] <- oceanic_ml
-        failed_oceanic_sims[[length(failed_oceanic_sims) + 1]] <- oceanic_sim
+        failed_oceanic_sims[[length(failed_oceanic_sims) + 1]] <- oceanic_sim_1
       }
     } else {
       failed_novel_mls[[length(failed_novel_mls) + 1]] <- novel_ml
