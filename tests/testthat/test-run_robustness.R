@@ -1,8 +1,8 @@
 context("run_robustness")
 
 test_that("run_robustness output is correct when save_output = FALSE", {
-    if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
-        Sys.getenv("APPVEYOR") != "") {
+  skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
+
       errors <- run_robustness(
         param_space_name = "nonoceanic",
         param_set = 2,
@@ -124,16 +124,14 @@ test_that("run_robustness output is correct when save_output = FALSE", {
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$oceanic_sim_2[[2]][[1]][[2]]$missing_species, 0)
       expect_equal(errors$ml_constraints, TRUE)
-    } else {
-      skip("Run only on TRAVIS and AppVeyor")
-    }
+
   })
 
 test_that("run_robustness output is correct when save_output = FALSE and
           it fails ml_constraints", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin" ||
-      Sys.getenv("APPVEYOR") != "") {
+    skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
     skip("ml doesn't fail converge")
+
     errors <- run_robustness(
       param_space_name = "nonoceanic",
       param_set = 1,
@@ -222,14 +220,11 @@ test_that("run_robustness output is correct when save_output = FALSE and
                                  "df" = 5,
                                  "conv" = 0),
                       "ML didn't converge"))
-  } else {
-    skip("Run only on TRAVIS or AppVeyor")
-  }
 })
 
 test_that("run pipeline = analysis", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
-      || Sys.getenv("APPVEYOR") != "") {
+  skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
+
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 1
@@ -280,14 +275,11 @@ test_that("run pipeline = analysis", {
                  list(nltt = c(2.995172926617303, 5.918146939380573)))
     expect_equal(robustness_output[[6]],
                  list(nltt = c(4.402072292771494, 13.714782567804495)))
-  } else {
-    skip("Run only on TRAVIS and AppVeyor")
-  }
 })
 
 test_that("run pipeline = novel_sim", {
-  if (Sys.getenv("TRAVIS") != "" && Sys.info()[[1]] != "Darwin"
-      || Sys.getenv("APPVEYOR") != "") {
+  skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
+
     replicates <- 2
     param_space_name <- "nonoceanic"
     param_set <- 195
@@ -320,9 +312,6 @@ test_that("run pipeline = novel_sim", {
                  c(6.15, 0.82445054549913, 0.75623539857472))
     expect_equal(robustness_output[[2]][[1]][[2]]$stac, 2)
     expect_equal(robustness_output[[2]][[1]][[2]]$missing_species, 0)
-  } else {
-    skip("Run only on TRAVIS and AppVeyor")
-  }
 })
 
 test_that("abuse param_set", {
