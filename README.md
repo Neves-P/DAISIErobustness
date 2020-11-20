@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![R build status](https://github.com/Neves-P/DAISIErobustness/workflows/R-CMD-check/badge.svg)](https://github.com/Neves-P/DAISIErobustness/actions)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Neves-P/DAISIErobustness)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3897237.svg)](https://doi.org/10.5281/zenodo.3897237)
 
@@ -10,7 +11,6 @@ Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)          
 --------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 `master`|[![Build Status](https://travis-ci.org/Neves-P/DAISIErobustness.svg?branch=master)](https://travis-ci.org/Neves-P/DAISIErobustness)|[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/Neves-P/DAISIErobustness?branch=master&svg=true)](https://ci.appveyor.com/project/Neves-P/DAISIErobustness)|[![codecov.io](https://codecov.io/github/Neves-P/DAISIErobustness/coverage.svg?branch=master)](https://codecov.io/github/Neves-P/DAISIErobustness/branch/master)
 `develop`|[![Build Status](https://travis-ci.org/Neves-P/DAISIErobustness.svg?branch=develop)](https://travis-ci.org/Neves-P/DAISIErobustness)|[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/Neves-P/DAISIErobustness?branch=develop&svg=true)](https://ci.appveyor.com/project/Neves-P/DAISIErobustness)|[![codecov.io](https://codecov.io/github/Neves-P/DAISIErobustness/coverage.svg?branch=develop)](https://codecov.io/github/Neves-P/DAISIErobustness/branch/develop)
-[![R build status](https://github.com/Neves-P/DAISIErobustness/workflows/R-CMD-check/badge.svg)](https://github.com/Neves-P/DAISIErobustness/actions)
 <!-- badges: end -->
 
 The goal of DAISIErobustness is to run robustness studies using the island biogeography model DAISIE. For the development of the geodynamical and traits models currently in use by DAISIErobustness, see the [DAISIE package v3.1.0](https://github.com/rsetienne/DAISIE/tree/v3.1.0).
