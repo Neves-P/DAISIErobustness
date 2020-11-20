@@ -74,4 +74,3 @@ test_that("test calc_error_metrics output is correct when all error
   expect_true(error_metrics$endemic_nltt_sd_diff != 0)
   expect_true(error_metrics$nonendemic_nltt_sd_diff != 0)
 })
-
