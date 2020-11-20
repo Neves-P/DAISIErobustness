@@ -7,9 +7,9 @@
 #' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
 #' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
 #' \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
-novel_sim <- function(param_space_name,
-                      sim_pars,
-                      replicates) {
+run_novel_sim <- function(param_space_name,
+                          sim_pars,
+                          replicates) {
   if (param_space_name %in% c("nonoceanic", "oceanic")) {
     novel_sim <- DAISIE::DAISIE_sim_constant_rate(
       time = sim_pars$time,

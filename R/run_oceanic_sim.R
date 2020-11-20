@@ -3,8 +3,8 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
-oceanic_sim <- function(ml,
-                        sim_pars) {
+run_oceanic_sim <- function(ml,
+                            sim_pars) {
   oceanic_sim <- DAISIE::DAISIE_sim_constant_rate(
     time = sim_pars$time,
     M = sim_pars$M,

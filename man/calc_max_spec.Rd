@@ -11,7 +11,7 @@ calc_max_spec(novel_sim)
 for which the robustness against standard oceanic DAISIE is to be
 determined.
 Can be generated from a preset of models available in
-\code{\link{novel_sim}()}, or loaded from a file, if in the correct
+\code{\link{run_novel_sim}()}, or loaded from a file, if in the correct
 format.}
 }
 \value{
