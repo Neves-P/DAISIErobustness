@@ -70,8 +70,7 @@ run_robustness <- function(param_space_name,
   while (length(passed_novel_mls) < replicates) {
     novel_sim <- run_novel_sim(
       param_space_name = param_space_name,
-      sim_pars = sim_pars,
-      replicates = replicates
+      sim_pars = sim_pars
     )
     testit::assert(
       "novel_sim must be in the DAISIE simulation output format",
