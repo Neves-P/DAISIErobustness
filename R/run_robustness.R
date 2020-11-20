@@ -94,7 +94,7 @@ run_robustness <- function(param_space_name,
         sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
       }
 
-      oceanic_sim_1 <- oceanic_sim(
+      oceanic_sim_1 <- run_oceanic_sim(
         ml = novel_ml,
         sim_pars = sim_pars)
 
@@ -117,7 +117,7 @@ run_robustness <- function(param_space_name,
         passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
         passed_oceanic_sims[[length(passed_oceanic_sims) + 1]] <- oceanic_sim
 
-        oceanic_sim_2 <- oceanic_sim(
+        oceanic_sim_2 <- run_oceanic_sim(
           ml = oceanic_ml,
           sim_pars = sim_pars)
 

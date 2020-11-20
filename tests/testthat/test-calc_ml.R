@@ -84,7 +84,7 @@ test_that("test calc_ml output is correct with oceanic sim", {
       normal.kind = "Inversion",
       sample.kind = "Rejection"
     )
-    oceanic_sim_1 <- oceanic_sim(
+    oceanic_sim_1 <- run_oceanic_sim(
       ml = novel_ml,
       sim_pars = sim_pars)
     oceanic_ml <- calc_ml(

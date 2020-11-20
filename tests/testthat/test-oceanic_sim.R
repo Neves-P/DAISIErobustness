@@ -17,7 +17,7 @@ test_that("test oceanic sim output is correct", {
     normal.kind = "Inversion",
     sample.kind = "Rejection"
   )
-  oceanic_sim <- oceanic_sim(
+  oceanic_sim <- run_oceanic_sim(
     ml = geodynamic_ml,
     sim_pars = sim_pars)
   expect_length(oceanic_sim, 1)

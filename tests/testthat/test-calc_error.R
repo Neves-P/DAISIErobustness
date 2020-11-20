@@ -27,7 +27,7 @@ test_that("test calc_error output is correct", {
                                 "loglik" = -125.5,
                                 "df" = 5,
                                 "conv" = 0)
-    oceanic_sim <- oceanic_sim(
+    oceanic_sim <- run_oceanic_sim(
       ml = novel_ml,
       sim_pars = sim_pars)
     error <- calc_error(

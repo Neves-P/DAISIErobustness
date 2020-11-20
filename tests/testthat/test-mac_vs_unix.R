@@ -198,7 +198,7 @@ test_that("compare mac vs unix", {
           sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
         }
 
-        oceanic_sim_1 <- DAISIErobustness:::oceanic_sim(
+        oceanic_sim_1 <- DAISIErobustness:::run_oceanic_sim(
           ml = novel_ml,
           sim_pars = sim_pars)
 
@@ -269,7 +269,7 @@ test_that("compare mac vs unix", {
           ml = oceanic_ml)
 
         if (ml_constraints == TRUE) {
-          oceanic_sim_2 <- DAISIErobustness:::oceanic_sim(
+          oceanic_sim_2 <- DAISIErobustness:::run_oceanic_sim(
             ml = oceanic_ml,
             sim_pars = sim_pars)
 
