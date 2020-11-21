@@ -136,7 +136,10 @@ test_that("test calc_ml output is correct with traits sim", {
   k_approx <- max_spec_number + 1
   initial_parameters_1 <- c(0.05, 0.05, k_approx, 0.0001, 0.05)
 
-  novel_ml <- calc_ml(sim = novel_sim,initial_parameters = initial_parameters_1)
+  novel_ml <- calc_ml(
+    sim = novel_sim,
+    initial_parameters = initial_parameters_1
+  )
 
   expect_length(novel_ml, 8)
   expect_equal(novel_ml$lambda_c, 0.9298054505184763)
