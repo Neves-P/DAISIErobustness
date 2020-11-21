@@ -17,8 +17,8 @@ test_that("test calc_error output is correct", {
     param_set = 1)
   novel_sim <- run_novel_sim(
     param_space_name = "nonoceanic",
-    sim_pars = sim_pars,
-    replicates = 2)
+    sim_pars = sim_pars
+  )
   novel_ml <- data.frame("lambda_c" = 0.5,
                          "mu" = 0.5,
                          "K" = 20,
