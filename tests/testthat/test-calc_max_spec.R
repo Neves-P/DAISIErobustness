@@ -19,8 +19,7 @@ test_that("use", {
 
   novel_sim <- DAISIErobustness:::run_novel_sim(
     param_space_name = param_space_name,
-    sim_pars = sim_pars,
-    replicates = replicates
+    sim_pars = sim_pars
   )
 
   expect_silent(calc_max_spec(novel_sim))
