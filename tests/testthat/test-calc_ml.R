@@ -95,22 +95,14 @@ test_that("test calc_ml output is correct for failed convergence", {
     param_set = 233)
   novel_sim <- run_novel_sim(
     param_space_name = "oceanic_sea_level",
-    sim_pars = sim_pars,
-    replicates = 2)
-  max_spec_number <- calc_max_spec(novel_sim)
-  k_vector <- max_spec_number$max_spec_clade + 1
+    sim_pars = sim_pars)
+  k_approx <- calc_max_spec(novel_sim) + 1
 
-  initial_parameters_1_list <- vector("list", length = length(novel_sim))
-
-  for (i in seq_along(novel_sim)) {
-    initial_parameters_1_list[[i]] <- c(0.05, 0.05, k_vector[i], 0.0001, 0.05)
-  }
   novel_ml <- calc_ml(
     sim = novel_sim,
-    initial_parameters = initial_parameters_1_list
+    initial_parameters = c(0.05, 0.05, k_approx, 0.0001, 0.05)
   )
-  expect_length(novel_ml, 2)
-  expect_equal(novel_ml[[1]], "ML didn't converge")
+  expect_length(novel_ml, 1)
 })
 
 test_that("test calc_ml output is correct with traits sim", {
@@ -132,13 +124,11 @@ test_that("test calc_ml output is correct with traits sim", {
     param_space_name = "trait_CES",
     sim_pars = sim_pars)
 
-  max_spec_number <- calc_max_spec(novel_sim)
-  k_approx <- max_spec_number + 1
-  initial_parameters_1 <- c(0.05, 0.05, k_approx, 0.0001, 0.05)
+  k_approx <- calc_max_spec(novel_sim) + 1
 
   novel_ml <- calc_ml(
     sim = novel_sim,
-    initial_parameters = initial_parameters_1
+    initial_parameters = c(0.05, 0.05, k_approx, 0.0001, 0.05)
   )
 
   expect_length(novel_ml, 8)
