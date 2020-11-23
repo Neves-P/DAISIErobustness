@@ -77,7 +77,7 @@
 #'   the oceanic DAISIE simulation.
 #' @param num_col_error Numeric vector with the difference in the number of
 #'  colonists at the end of the simulation between the novel simulation and the
-#'   oceanic DAISIE simulatuon.
+#'   oceanic DAISIE simulation.
 #' @param endemic_nltt_error Numeric vector with the nltt error of the
 #'   endemic species from the novel simulation and the oceanic DAISIE
 #'   simulation.
