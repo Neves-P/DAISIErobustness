@@ -128,34 +128,34 @@ run_robustness <- function(param_space_name,
 
         spec_nltt_error <- append(
           spec_nltt_error,
-          error$spec_error$nltt)
+          error$spec_nltt_error)
         num_spec_error <- append(
           num_spec_error,
-          error$spec_error$num_spec_error)
+          error$num_spec_error)
         num_col_error <- append(
           num_col_error,
-          error$spec_error$num_col_error)
+          error$num_col_error)
         endemic_nltt_error <- append(
           endemic_nltt_error,
-          error$endemic_error$nltt)
+          error$endemic_nltt_error)
         nonendemic_nltt_error <- append(
           nonendemic_nltt_error,
-          error$nonendemic_error$nltt)
+          error$nonendemic_nltt_error)
         spec_baseline_nltt_error <- append(
           spec_baseline_nltt_error,
-          baseline_error$spec_error$nltt)
+          baseline_error$spec_nltt_error)
         num_spec_baseline_error <- append(
           num_spec_baseline_error,
-          baseline_error$spec_error$num_spec)
+          baseline_error$num_spec_error)
         num_col_baseline_error <- append(
           num_col_baseline_error,
-          baseline_error$spec_error$num_col)
+          baseline_error$num_col_error)
         endemic_baseline_nltt_error <- append(
           endemic_baseline_nltt_error,
-          baseline_error$endemic_error$nltt)
+          baseline_error$endemic_nltt_error)
         nonendemic_baseline_nltt_error <- append(
           nonendemic_baseline_nltt_error,
-          baseline_error$nonendemic_error$nltt)
+          baseline_error$nonendemic_nltt_error)
 
       } else {
         failed_oceanic_mls[[length(failed_oceanic_mls) + 1]] <- oceanic_ml

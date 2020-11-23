@@ -9,9 +9,11 @@ calc_error <- function(sim_1,
                        sim_2,
                        replicates,
                        distance_method) {
-  spec_error <- list()
-  endemic_error <- list()
-  nonendemic_error <- list()
+  spec_nltt_error <- c()
+  num_spec_error <- c()
+  num_col_error <- c()
+  endemic_nltt_error <- c()
+  nonendemic_nltt_error <- c()
   # Spec error
   sim_1_event_times <-
     sim_1[[1]][[1]]$stt_all[, "Time"]
@@ -25,7 +27,7 @@ calc_error <- function(sim_1,
     sim_2[[1]][[1]]$stt_all[, "nI"] +
     sim_2[[1]][[1]]$stt_all[, "nA"] +
     sim_2[[1]][[1]]$stt_all[, "nC"]
-  spec_error$nltt <- nLTT::nltt_diff_exact_extinct(
+  spec_nltt_error <- nLTT::nltt_diff_exact_extinct(
     event_times = sim_1_event_times,
     species_number = sim_1_num_spec,
     event_times2 = sim_2_event_times,
@@ -48,13 +50,13 @@ calc_error <- function(sim_1,
       sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "nI"] +
         sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "nA"] +
         sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "nC"])
-  spec_error$num_spec_error <-
+  num_spec_error <-
     abs(num_spec_sim_1 - num_spec_sim_2)
   num_col_sim_1 <-
     as.numeric(sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "present"])
   num_col_sim_2 <-
     as.numeric(sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "present"])
-  spec_error$num_col_error <-
+  num_col_error <-
     abs(num_col_sim_1 - num_col_sim_2)
 
   # Endemic error
@@ -68,7 +70,7 @@ calc_error <- function(sim_1,
   sim_2_endemic_spec <-
     sim_2[[1]][[1]]$stt_all[, "nA"] +
     sim_2[[1]][[1]]$stt_all[, "nC"]
-  endemic_error$nltt <- nLTT::nltt_diff_exact_extinct(
+  endemic_nltt_error <- nLTT::nltt_diff_exact_extinct(
     event_times = sim_1_event_times,
     species_number = sim_1_endemic_spec,
     event_times2 = sim_2_event_times,
@@ -87,7 +89,7 @@ calc_error <- function(sim_1,
     sim_2[[1]][[1]]$stt_all[, "Time"]
   sim_2_nonendemic_spec <-
     sim_2[[1]][[1]]$stt_all[, "nI"]
-  nonendemic_error$nltt <- nLTT::nltt_diff_exact_extinct(
+  nonendemic_nltt_error <- nLTT::nltt_diff_exact_extinct(
     event_times = sim_1_event_times,
     species_number = sim_1_nonendemic_spec,
     event_times2 = sim_2_event_times,
@@ -97,9 +99,10 @@ calc_error <- function(sim_1,
     normalize = FALSE
   )
 
-
   return(
-    list(spec_error = spec_error,
-         endemic_error = endemic_error,
-         nonendemic_error = nonendemic_error))
+    list(spec_nltt_error = spec_nltt_error,
+         num_spec_error = num_spec_error,
+         num_col_error = num_col_error,
+         endemic_nltt_error = endemic_nltt_error,
+         nonendemic_nltt_error = nonendemic_nltt_error))
 }
