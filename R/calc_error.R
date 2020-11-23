@@ -1,9 +1,26 @@
-#' Calcualtes error in number of species and colonists, number of
+#' Calculates error metrics between two simulations
+#'
+#' Calculates error in number of species and colonists, number of
 #' species-through-time, number of endemics-through-time and
-#' non-endemics-through-time
+#' non-endemics-through-time.
 #'
 #' @inheritParams default_params_doc
-#' @return A list with three error metrics
+#' @return A list with five error metrics:
+#' \describe{
+#'   \item{\code{$spec_nltt_error}}{Numeric vector with the nltt error between
+#'     the two simulations.}
+#'   \item{\code{$num_spec_error}}{Numeric vector with the difference in the
+#'     number of species at the end of the simulation between the two
+#'     simulations.}
+#'   \item{\code{$num_col_error}}{Numeric vector with the difference in the
+#'     number of colonists at the end of the simulation between the two
+#'     simulations.}
+#'   \item{\code{$endemic_nltt_error}}{Numeric vector with the nltt error of the
+#'     endemic species between the two simulations.}
+#'   \item{\code{$nonendemic_nltt_error}}{Numeric vector with the nltt error of
+#'     the non-endemic species between the two simulations.}
+#' }
+#'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_error <- function(sim_1,
                        sim_2,
@@ -104,5 +121,6 @@ calc_error <- function(sim_1,
          num_spec_error = num_spec_error,
          num_col_error = num_col_error,
          endemic_nltt_error = endemic_nltt_error,
-         nonendemic_nltt_error = nonendemic_nltt_error))
+         nonendemic_nltt_error = nonendemic_nltt_error)
+  )
 }

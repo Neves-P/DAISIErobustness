@@ -2,9 +2,7 @@
 % Please edit documentation in R/calc_error.R
 \name{calc_error}
 \alias{calc_error}
-\title{Calcualtes error in number of species and colonists, number of
-species-through-time, number of endemics-through-time and
-non-endemics-through-time}
+\title{Calculates error metrics between two simulations}
 \usage{
 calc_error(sim_1, sim_2, replicates, distance_method)
 }
@@ -33,12 +31,26 @@ How the difference between the two nLTTs is summed:
 }}
 }
 \value{
-A list with three error metrics
+A list with five error metrics:
+\describe{
+  \item{\code{$spec_nltt_error}}{Numeric vector with the nltt error between
+    the two simulations.}
+  \item{\code{$num_spec_error}}{Numeric vector with the difference in the
+    number of species at the end of the simulation between the two
+    simulations.}
+  \item{\code{$num_col_error}}{Numeric vector with the difference in the
+    number of colonists at the end of the simulation between the two
+    simulations.}
+  \item{\code{$endemic_nltt_error}}{Numeric vector with the nltt error of the
+    endemic species between the two simulations.}
+  \item{\code{$nonendemic_nltt_error}}{Numeric vector with the nltt error of
+    the non-endemic species between the two simulations.}
+}
 }
 \description{
-Calcualtes error in number of species and colonists, number of
+Calculates error in number of species and colonists, number of
 species-through-time, number of endemics-through-time and
-non-endemics-through-time
+non-endemics-through-time.
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
