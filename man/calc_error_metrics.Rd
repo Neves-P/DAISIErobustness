@@ -30,7 +30,8 @@ colonists at the end of the simulation between the novel simulation and the
  oceanic DAISIE simulatuon.}
 
 \item{endemic_nltt_error}{Numeric vector with the nltt error of the
-endemic species from the novel simulation and the oceanic DAISIE simulation.}
+endemic species from the novel simulation and the oceanic DAISIE
+simulation.}
 
 \item{nonendemic_nltt_error}{Numeric vector with the nltt error of the
 non-endemic species from the novel simulation and the oceanic DAISIE

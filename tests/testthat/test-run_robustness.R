@@ -15,13 +15,18 @@ test_that("run_robustness output is correct when save_output = FALSE", {
       )
       expect_equal(errors$num_spec_error, c(0, 3))
       expect_equal(errors$num_col_error, c(0, 1))
-      expect_equal(errors$endemic_nltt_error, c(17.25912182228838, 12.53126140868229))
-      expect_equal(errors$nonendemic_nltt_error, c(6.342975372372706, 6.180380779545204))
-      expect_equal(errors$spec_baseline_nltt_error, c(9.255668289933380, 8.384191123443467))
+      expect_equal(errors$endemic_nltt_error, c(17.25912182228838,
+                                                12.53126140868229))
+      expect_equal(errors$nonendemic_nltt_error, c(6.342975372372706,
+                                                   6.180380779545204))
+      expect_equal(errors$spec_baseline_nltt_error, c(9.255668289933380,
+                                                      8.384191123443467))
       expect_equal(errors$num_spec_baseline_error, c(6, 12))
       expect_equal(errors$num_col_baseline_error, c(8, 14))
-      expect_equal(errors$endemic_baseline_nltt_error, c(7.523345330264918, 7.355242155237033))
-      expect_equal(errors$nonendemic_baseline_nltt_error, c(5.967789871010382, 12.200632581701466))
+      expect_equal(errors$endemic_baseline_nltt_error, c(7.523345330264918,
+                                                         7.355242155237033))
+      expect_equal(errors$nonendemic_baseline_nltt_error, c(5.967789871010382,
+                                                            12.200632581701466))
       expect_equal(errors$error_metrics,
                    list(num_spec_mean_diff = 7.5,
                         num_spec_sd_diff = 2.12132034355964,
