@@ -148,7 +148,8 @@ test_that("run_robustness output is correct when save_output = FALSE", {
           0.08370595190420980)
       )
       expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[2]]$stac, 2)
-      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[2]]$missing_species, 0)
+      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[2]]$missing_species,
+                   0)
 
       # Failed oceanic_sims
       expect_length(errors$failed_oceanic_sims, 0)
