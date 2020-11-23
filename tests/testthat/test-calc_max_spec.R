@@ -1,5 +1,4 @@
 test_that("use", {
-  replicates <- 2
   param_space_name <- "nonoceanic"
   param_set <- 27
   set.seed(
