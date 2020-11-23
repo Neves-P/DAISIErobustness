@@ -36,13 +36,10 @@ test_that("test calc_error output is correct", {
     replicates = 2,
     distance_method = "abs"
   )
-  expect_length(error, 3)
-  expect_equal(error$spec_error, list(nltt = c(27.6793419737,
-                                               13.6710711632),
-                                      num_spec_error = c(7, 5),
-                                      num_col_error = c(5, 8)))
-  expect_equal(error$endemic_error, list(nltt = c(29.52636388708,
-                                                  9.8948020034518116)))
-  expect_equal(error$nonendemic_error, list(nltt = c(5.4603507213591591,
-                                                     12.00627796269)))
+  expect_length(error, 5)
+  expect_equal(error, list(spec_nltt_error = 17.4168077642,
+                           num_spec_error = 6,
+                           num_col_error = 1,
+                           endemic_nltt_error = 17.78989431,
+                           nonendemic_nltt_error = 5.15996202771))
 })
