@@ -9,7 +9,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
         replicates = 2,
         save_output = FALSE)
 
-      expect_length(errors, 19)
+      expect_length(errors, 20)
       expect_equal(errors$spec_nltt_error,
                    c(15.64120547852360, 17.20955054767382)
       )
@@ -79,15 +79,17 @@ test_that("run_robustness output is correct when save_output = FALSE", {
                                    "loglik" = -223.3609848973665,
                                    "df" = 5,
                                    "conv" = 0)))
-      # passed_oceanic_sims reference
-      expect_length(errors$passed_oceanic_sims, 2)
-      expect_length(errors$passed_oceanic_sims[[1]][[1]], 25)
-      expect_equal(errors$passed_oceanic_sims[[1]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$passed_oceanic_sims[[1]][[1]][[1]]$not_present, 976)
-      expect_equal(nrow(errors$passed_oceanic_sims[[1]][[1]][[1]]$stt_all), 111)
-      expect_equal(ncol(errors$passed_oceanic_sims[[1]][[1]][[1]]$stt_all), 5)
+      # passed_oceanic_sims_1 reference
+      expect_length(errors$passed_oceanic_sims_1, 2)
+      expect_length(errors$passed_oceanic_sims_1[[1]][[1]], 25)
+      expect_equal(errors$passed_oceanic_sims_1[[1]][[1]][[1]]$island_age, 2.55)
+      expect_equal(errors$passed_oceanic_sims_1[[1]][[1]][[1]]$not_present, 976)
       expect_equal(
-        errors$passed_oceanic_sims[[1]][[1]][[2]]$branching_times,
+        nrow(errors$passed_oceanic_sims_1[[1]][[1]][[1]]$stt_all), 111
+      )
+      expect_equal(ncol(errors$passed_oceanic_sims_1[[1]][[1]][[1]]$stt_all), 5)
+      expect_equal(
+        errors$passed_oceanic_sims_1[[1]][[1]][[2]]$branching_times,
         c(2.55,
           1.90783279646280,
           1.62272377720208,
@@ -95,15 +97,17 @@ test_that("run_robustness output is correct when save_output = FALSE", {
           0.60612219135438,
           0.53180055805722)
       )
-      expect_equal(errors$passed_oceanic_sims[[1]][[1]][[2]]$stac, 2)
-      expect_equal(errors$passed_oceanic_sims[[1]][[1]][[2]]$missing_species, 0)
-      expect_length(errors$passed_oceanic_sims[[2]][[1]], 31)
-      expect_equal(errors$passed_oceanic_sims[[2]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$passed_oceanic_sims[[2]][[1]][[1]]$not_present, 970)
-      expect_equal(nrow(errors$passed_oceanic_sims[[2]][[1]][[1]]$stt_all), 72)
-      expect_equal(ncol(errors$passed_oceanic_sims[[2]][[1]][[1]]$stt_all), 5)
+      expect_equal(errors$passed_oceanic_sims_1[[1]][[1]][[2]]$stac, 2)
+      expect_equal(errors$passed_oceanic_sims_1[[1]][[1]][[2]]$missing_species,
+                   0)
+      expect_length(errors$passed_oceanic_sims_1[[2]][[1]], 31)
+      expect_equal(errors$passed_oceanic_sims_1[[2]][[1]][[1]]$island_age, 2.55)
+      expect_equal(errors$passed_oceanic_sims_1[[2]][[1]][[1]]$not_present, 970)
+      expect_equal(nrow(errors$passed_oceanic_sims_1[[2]][[1]][[1]]$stt_all),
+                   72)
+      expect_equal(ncol(errors$passed_oceanic_sims_1[[2]][[1]][[1]]$stt_all), 5)
       expect_equal(
-        errors$passed_oceanic_sims[[2]][[1]][[2]]$branching_times,
+        errors$passed_oceanic_sims_1[[2]][[1]][[2]]$branching_times,
         c(2.55,
           1.46150144074839,
           1.07054096335454,
@@ -111,9 +115,45 @@ test_that("run_robustness output is correct when save_output = FALSE", {
           0.71687359188619,
           0.34640863790593)
       )
-      expect_equal(errors$passed_oceanic_sims[[2]][[1]][[2]]$stac, 2)
-      expect_equal(errors$passed_oceanic_sims[[2]][[1]][[2]]$missing_species, 0)
+      expect_equal(errors$passed_oceanic_sims_1[[2]][[1]][[2]]$stac, 2)
+      expect_equal(errors$passed_oceanic_sims_1[[2]][[1]][[2]]$missing_species,
+                   0)
+
+      # passed_oceanic_sims_2 reference
+      expect_length(errors$passed_oceanic_sims_2, 2)
+      expect_length(errors$passed_oceanic_sims_2[[1]][[1]], 33)
+      expect_equal(errors$passed_oceanic_sims_2[[1]][[1]][[1]]$island_age, 2.55)
+      expect_equal(errors$passed_oceanic_sims_2[[1]][[1]][[1]]$not_present, 968)
+      expect_equal(
+        nrow(errors$passed_oceanic_sims_2[[1]][[1]][[1]]$stt_all), 108
+      )
+      expect_equal(ncol(errors$passed_oceanic_sims_2[[1]][[1]][[1]]$stt_all), 5)
+      expect_equal(
+        errors$passed_oceanic_sims_2[[1]][[1]][[2]]$branching_times,
+        c(2.55, 1.95327908492871)
+      )
+      expect_equal(errors$passed_oceanic_sims_2[[1]][[1]][[2]]$stac, 4)
+      expect_equal(errors$passed_oceanic_sims_2[[1]][[1]][[2]]$missing_species,
+                   0)
+      expect_length(errors$passed_oceanic_sims_2[[2]][[1]], 45)
+      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[1]]$island_age, 2.55)
+      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[1]]$not_present, 956)
+      expect_equal(nrow(errors$passed_oceanic_sims_2[[2]][[1]][[1]]$stt_all),
+                   89)
+      expect_equal(ncol(errors$passed_oceanic_sims_2[[2]][[1]][[1]]$stt_all), 5)
+      expect_equal(
+        errors$passed_oceanic_sims_2[[2]][[1]][[2]]$branching_times,
+        c(2.55,
+          0.63950191180121996,
+          0.08370595190420980)
+      )
+      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[2]]$stac, 2)
+      expect_equal(errors$passed_oceanic_sims_2[[2]][[1]][[2]]$missing_species, 0)
+
+      # Failed oceanic_sims
       expect_length(errors$failed_oceanic_sims, 0)
+
+      # Reference passed_oceanic_ml
       expect_length(errors$passed_oceanic_ml, 2)
       expect_equal(errors$passed_oceanic_ml,
                    list(data.frame("lambda_c" = 0.970578602639516,

@@ -54,7 +54,8 @@ run_robustness <- function(param_space_name,
   failed_novel_sims <- list()
   passed_oceanic_mls <- list()
   failed_oceanic_mls <- list()
-  passed_oceanic_sims <- list()
+  passed_oceanic_sims_1 <- list()
+  passed_oceanic_sims_2 <- list()
   failed_oceanic_sims <- list()
   spec_nltt_error <- c()
   num_spec_error <- c()
@@ -114,11 +115,15 @@ run_robustness <- function(param_space_name,
 
       if (oceanic_ml_constraints == TRUE) {
         passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
-        passed_oceanic_sims[[length(passed_oceanic_sims) + 1]] <- oceanic_sim_1
+        l_passed_oceanic_sims_1 <- length(passed_oceanic_sims_1)
+        passed_oceanic_sims_1[[l_passed_oceanic_sims_1 + 1]] <- oceanic_sim_1
 
         oceanic_sim_2 <- run_oceanic_sim(
           ml = oceanic_ml,
           sim_pars = sim_pars)
+
+        l_passed_oceanic_sims_2 <- length(passed_oceanic_sims_2)
+        passed_oceanic_sims_2[[l_passed_oceanic_sims_2 + 1]] <- oceanic_sim_2
 
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
@@ -197,7 +202,8 @@ run_robustness <- function(param_space_name,
     failed_oceanic_mls = failed_oceanic_mls,
     passed_novel_sims = passed_novel_sims,
     failed_novel_sims = failed_novel_sims,
-    passed_oceanic_sims = passed_oceanic_sims,
+    passed_oceanic_sims_1 = passed_oceanic_sims_1,
+    passed_oceanic_sims_2 = passed_oceanic_sims_2,
     failed_oceanic_sims = failed_oceanic_sims
   )
 
