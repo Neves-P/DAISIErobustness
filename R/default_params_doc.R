@@ -70,6 +70,32 @@
 #'     summed}
 #'   \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}
 #'  }
+#' @param spec_nltt_error Numeric vector with the nltt error from the novel
+#'   simulation and the oceanic DAISIE simulation.
+#' @param num_spec_error Numeric vector with the difference in the number
+#'   of species at the end of the simulation between the novel simulation and
+#'   the oceanic DAISIE simulation.
+#' @param num_col_error Numeric vector with the difference in the number of
+#'  colonists at the end of the simulation between the novel simulation and the
+#'   oceanic DAISIE simulatuon.
+#' @param endemic_nltt_error Numeric vector with the nltt error of the
+#'   endemic species from the novel simulation and the oceanic DAISIE
+#'   simulation.
+#' @param nonendemic_nltt_error Numeric vector with the nltt error of the
+#'   non-endemic species from the novel simulation and the oceanic DAISIE
+#'   simulation.
+#' @param spec_baseline_nltt_error Numeric vector with the baseline nltt error
+#'   between oceanic DAISIE simulations.
+#' @param num_spec_baseline_error Numeric vector with the difference in the
+#'   number of species at the end of the simulation between the oceanic DAISIE
+#'   simulations.
+#' @param num_col_baseline_error Numeric vector with the difference in the
+#'   number of colonists at the end of the simulation between the oceanic DAISIE
+#'   simulations.
+#' @param endemic_baseline_nltt_error Numeric vector with the nltt error of the
+#'   endemic species from the oceanic DAISIE simulations.
+#' @param nonendemic_baseline_nltt_error Numeric vector with the nltt error of
+#'   the non-endemic species from the oceanic DAISIE simulations.
 #'
 #' @return Nothing
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
@@ -96,7 +122,17 @@ default_params_doc <- function(
   spec_baseline_error,
   endemic_baseline_error,
   nonendemic_baseline_error,
-  distance_method
+  distance_method,
+  spec_nltt_error,
+  num_spec_error,
+  num_col_error,
+  endemic_nltt_error,
+  nonendemic_nltt_error,
+  spec_baseline_nltt_error,
+  num_spec_baseline_error,
+  num_col_baseline_error,
+  endemic_baseline_nltt_error,
+  nonendemic_baseline_nltt_error
 ) {
   # Nothing
 }

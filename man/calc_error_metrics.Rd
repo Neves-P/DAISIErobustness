@@ -17,6 +17,42 @@ calc_error_metrics(
   nonendemic_baseline_nltt_error
 )
 }
+\arguments{
+\item{spec_nltt_error}{Numeric vector with the nltt error from the novel
+simulation and the oceanic DAISIE simulation.}
+
+\item{num_spec_error}{Numeric vector with the difference in the number
+of species at the end of the simulation between the novel simulation and
+the oceanic DAISIE simulation.}
+
+\item{num_col_error}{Numeric vector with the difference in the number of
+colonists at the end of the simulation between the novel simulation and the
+ oceanic DAISIE simulatuon.}
+
+\item{endemic_nltt_error}{Numeric vector with the nltt error of the
+endemic species from the novel simulation and the oceanic DAISIE simulation.}
+
+\item{nonendemic_nltt_error}{Numeric vector with the nltt error of the
+non-endemic species from the novel simulation and the oceanic DAISIE
+simulation.}
+
+\item{spec_baseline_nltt_error}{Numeric vector with the baseline nltt error
+between oceanic DAISIE simulations.}
+
+\item{num_spec_baseline_error}{Numeric vector with the difference in the
+number of species at the end of the simulation between the oceanic DAISIE
+simulations.}
+
+\item{num_col_baseline_error}{Numeric vector with the difference in the
+number of colonists at the end of the simulation between the oceanic DAISIE
+simulations.}
+
+\item{endemic_baseline_nltt_error}{Numeric vector with the nltt error of the
+endemic species from the oceanic DAISIE simulations.}
+
+\item{nonendemic_baseline_nltt_error}{Numeric vector with the nltt error of
+the non-endemic species from the oceanic DAISIE simulations.}
+}
 \value{
 a list of numerics
 }

@@ -1,7 +1,6 @@
 #' Calculates metrics between error and baseline error distributions
 #'
 #' @inheritParams default_params_doc
-#'
 #' @return a list of numerics
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @importFrom stats sd
