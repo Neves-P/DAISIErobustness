@@ -79,7 +79,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Install covr and test coverage
-        if: r-version == 'devel'
+        if: runner.r-version == 'devel'
         run: |
           remotes::install_cran("covr")
           covr::codecov()
