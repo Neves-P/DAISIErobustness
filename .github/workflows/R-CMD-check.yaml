@@ -87,7 +87,7 @@ jobs:
 
   test-coverage:
     runs-on: ubuntu-20.04
-      name: Install covr
+    name: Install covr
       run: remotes::install_cran("covr")
       shell: Rscript {0}
 
