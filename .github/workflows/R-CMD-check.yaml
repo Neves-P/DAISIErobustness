@@ -78,6 +78,16 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
+      - name: Install covr
+        if: ubuntu-latest
+        run: remotes::install_cran("covr")
+        shell: Rscript {0}
+
+      - name: Test coverage
+        if: ubuntu-latest
+        run: covr::codecov()
+        shell: Rscript {0}
+
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@main
@@ -85,12 +95,4 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
 
-  test-coverage:
-    runs-on: ubuntu-20.04
-    name: Install covr
-    run: remotes::install_cran("covr")
-    shell: Rscript {0}
 
-    name: Test coverage
-    run: covr::codecov()
-    shell: Rscript {0}
