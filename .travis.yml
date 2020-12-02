@@ -25,6 +25,7 @@ env:
   - COMPILER=g++-8
   - CC=gcc-8
   - CXX=g++-8
+  - LINTR_COMMENT_BOT=false
 
 r_packages:
   - doMC
