@@ -79,12 +79,12 @@ jobs:
         shell: Rscript {0}
 
       - name: Install covr
-        if: runner.r == 'devel'
+        if: runner.os == ubuntu-20.04 (release)
         run: remotes::install_cran("covr")
         shell: Rscript {0}
 
       - name: Test coverage
-        if: runner.r == 'devel'
+        if: runner.r == ubuntu-20.04 (release)
         run: covr::codecov()
         shell: Rscript {0}
 
