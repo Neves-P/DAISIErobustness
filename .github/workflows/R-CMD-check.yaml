@@ -79,7 +79,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Install covr and test coverage
-        if: installed-r-version == 'devel'
+        if: matrix.config.r == 'devel'
         run: |
           remotes::install_cran("covr")
           covr::codecov()
