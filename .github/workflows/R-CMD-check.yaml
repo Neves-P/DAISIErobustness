@@ -6,13 +6,11 @@ on:
       - main
       - master
       - develop
-      - new_pl
   pull_request:
     branches:
       - main
       - master
       - develop
-      - new_pl
 
 name: R-CMD-check
 
@@ -90,8 +88,8 @@ jobs:
   test-coverage:
     runs-on: ubuntu-20.04
     env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install covr
         run: remotes::install_cran("covr")
         shell: Rscript {0}
