@@ -87,8 +87,6 @@ run_robustness <- function(param_space_name,
     novel_ml_constraints <- ml_constraints(ml = novel_ml)
 
     if (novel_ml_constraints == TRUE) {
-      passed_novel_mls[[length(passed_novel_mls) + 1]] <- novel_ml
-      passed_novel_sims[[length(passed_novel_sims) + 1]] <- novel_sim
 
       if (param_space_name %in% c("trait_CES", "trait_trans")) {
         sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
@@ -114,6 +112,9 @@ run_robustness <- function(param_space_name,
       )
 
       if (oceanic_ml_constraints == TRUE) {
+        passed_novel_mls[[length(passed_novel_mls) + 1]] <- novel_ml
+        passed_novel_sims[[length(passed_novel_sims) + 1]] <- novel_sim
+
         passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
         l_passed_oceanic_sims_1 <- length(passed_oceanic_sims_1)
         passed_oceanic_sims_1[[l_passed_oceanic_sims_1 + 1]] <- oceanic_sim_1
