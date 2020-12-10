@@ -134,9 +134,9 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(sim_pars$time, 2.5)
   expect_equal(sim_pars$M, 500)
-  expect_equal(sim_pars$pars, c(0.25, 0.4, 40, 0.01, 0.25))
+  expect_equal(sim_pars$pars, c(0.25, 0.4, 40, 0.005, 0.25))
   expect_equal(sim_pars$trait_pars, list(trans_rate = 0.5,
-                                         immig_rate2 = 0.03,
+                                         immig_rate2 = 0.015,
                                          ext_rate2 = 1.2,
                                          ana_rate2 = 0.75,
                                          clado_rate2 = 0.75,
