@@ -7,7 +7,7 @@ M2 <- 500
 lac <- c(0.25, 0.5)   ###mean_lac = 0.5
 mu <- c(0.4, 0.8, 1.2)    ###mean_mu = 0.8
 K <- c(40, Inf)
-gam <- c(0.01, 0.02)  ###mean_gam = 0.02
+gam <- c(0.005, 0.01)  ###mean_gam = 0.01
 laa <- c(0.25, 0.5)   ###mean_laa = 0.5
 trans <- 0.5
 trans2 <- 0.5
@@ -26,7 +26,7 @@ trait_low_rates <- cbind(
   trait_low_rates,
   lac2 = 1 - trait_low_rates[, 4] ,
   mu2 = 1.6 - trait_low_rates[, 5] ,
-  gam2 = 0.04 - trait_low_rates[, 6],
+  gam2 = 0.02 - trait_low_rates[, 6],
   laa2 = 1 - trait_low_rates[, 7])
 
 ####2. high rates for all
@@ -36,7 +36,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 0.5
@@ -55,7 +55,7 @@ trait_high_rates <- cbind(
   trait_high_rates,
   lac2 = 1.6 - trait_high_rates[, 4] ,
   mu2 = 2.4 - trait_high_rates[, 5] ,
-  gam2 = 0.08 - trait_high_rates[, 6],
+  gam2 = 0.04 - trait_high_rates[, 6],
   laa2 = 2 - trait_high_rates[, 7])
 
 ### 3. lambdac/mu+gamma+lambdaa
@@ -65,7 +65,7 @@ M2 <- 500
 lac <- c(0.25, 0.5)   ###mean_lac = 0.5
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 0.5
@@ -84,7 +84,7 @@ trait_lac <- cbind(
   trait_lac,
   lac2 = 1.0 - trait_lac[, 4] ,
   mu2 = 2.4 - trait_lac[, 5] ,
-  gam2 = 0.08 - trait_lac[, 6],
+  gam2 = 0.04 - trait_lac[, 6],
   laa2 = 2 - trait_lac[, 7])
 
 ### 4. mu/lambdac+gamma+lambdaa
@@ -94,7 +94,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.4, 0.8, 1.2)    ###mean_mu = 0.8
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 0.5
@@ -113,7 +113,7 @@ trait_mu <- cbind(
   trait_mu,
   lac2 = 1.6 - trait_mu[, 4] ,
   mu2 = 1.6 - trait_mu[, 5] ,
-  gam2 = 0.08 - trait_mu[, 6],
+  gam2 = 0.04 - trait_mu[, 6],
   laa2 = 2 - trait_mu[, 7])
 
 ### 5. gamma/lambdac+mu+lambdaa
@@ -123,7 +123,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.01, 0.02)  ###mean_gam = 0.02
+gam <- c(0.005, 0.01)  ###mean_gam = 0.01
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 0.5
@@ -142,7 +142,7 @@ trait_gamma <- cbind(
   trait_gamma,
   lac2 = 1.6 - trait_gamma[, 4] ,
   mu2 = 2.4 - trait_gamma[, 5] ,
-  gam2 = 0.04 - trait_gamma[, 6],
+  gam2 = 0.02 - trait_gamma[, 6],
   laa2 = 2 - trait_gamma[, 7])
 
 
@@ -153,7 +153,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.25, 0.5)   ###mean_laa = 0.5
 trans <- 0.5
 trans2 <- 0.5
@@ -172,7 +172,7 @@ trait_laa <- cbind(
   trait_laa,
   lac2 = 1.6 - trait_laa[, 4] ,
   mu2 = 2.4 - trait_laa[, 5] ,
-  gam2 = 0.08 - trait_laa[, 6],
+  gam2 = 0.04 - trait_laa[, 6],
   laa2 = 1 - trait_laa[, 7])
 
 
@@ -183,7 +183,7 @@ M2 <- 500
 lac <- c(0.25, 0.5)   ###mean_lac = 0.5
 mu <- c(0.4, 0.8, 1.2)    ###mean_mu = 0.8
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 0.5
@@ -202,7 +202,7 @@ trait_lac_mu <- cbind(
   trait_lac_mu,
   lac2 = 1 - trait_lac_mu[, 4] ,
   mu2 = 1.6 - trait_lac_mu[, 5] ,
-  gam2 = 0.08 - trait_lac_mu[, 6],
+  gam2 = 0.04 - trait_lac_mu[, 6],
   laa2 = 2 - trait_lac_mu[, 7])
 
 
@@ -213,7 +213,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.4, 0.8, 1.2)    ###mean_mu = 0.8
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.25, 0.5)   ###mean_laa = 0.5
 trans <- 0.5
 trans2 <- 0.5
@@ -232,7 +232,7 @@ trait_lac_gamma <- cbind(
   trait_lac_gamma,
   lac2 = 1.6 - trait_lac_gamma[, 4] ,
   mu2 = 1.6 - trait_lac_gamma[, 5] ,
-  gam2 = 0.08 - trait_lac_gamma[, 6],
+  gam2 = 0.04 - trait_lac_gamma[, 6],
   laa2 = 1 - trait_lac_gamma[, 7])
 
 ### 9. mu+gamma/lambdac+lambdaa
@@ -242,7 +242,7 @@ M2 <- 500
 lac <- c(0.25, 0.5)   ###mean_lac = 0.5
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.25, 0.5)   ###mean_laa = 0.5
 trans <- 0.5
 trans2 <- 0.5
@@ -261,7 +261,7 @@ trait_lac_laa <- cbind(
   trait_lac_laa,
   lac2 = 1 - trait_lac_laa[, 4] ,
   mu2 = 2.4 - trait_lac_laa[, 5] ,
-  gam2 = 0.08 - trait_lac_laa[, 6],
+  gam2 = 0.04 - trait_lac_laa[, 6],
   laa2 = 1 - trait_lac_laa[, 7])
 
 trait_CES <- rbind(
@@ -289,7 +289,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0
 trans2 <- 0
@@ -308,7 +308,7 @@ trait_high_rates_notrans <- cbind(
   trait_high_rates_notrans,
   lac2 = 1.6 - trait_high_rates_notrans[, 4] ,
   mu2 = 2.4 - trait_high_rates_notrans[, 5] ,
-  gam2 = 0.08 - trait_high_rates_notrans[, 6],
+  gam2 = 0.04 - trait_high_rates_notrans[, 6],
   laa2 = 2 - trait_high_rates_notrans[, 7])
 
 ### 11. high rates with asymmetric transition
@@ -318,7 +318,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 0.5
 trans2 <- 2
@@ -337,7 +337,7 @@ trait_high_rates_trans <- cbind(
   trait_high_rates_trans,
   lac2 = 1.6 - trait_high_rates_trans[, 4] ,
   mu2 = 2.4 - trait_high_rates_trans[, 5] ,
-  gam2 = 0.08 - trait_high_rates_trans[, 6],
+  gam2 = 0.04 - trait_high_rates_trans[, 6],
   laa2 = 2 - trait_high_rates_trans[, 7])
 
 ### 12. high rates with asymmetric transition(exchange)
@@ -347,7 +347,7 @@ M2 <- 500
 lac <- c(0.4, 0.8)   ###mean_lac = 0.8
 mu <- c(0.6, 1.2, 1.8)    ###mean_mu = 1.2
 K <- c(40, Inf)
-gam <- c(0.02, 0.04)  ###mean_gam = 0.04
+gam <- c(0.01, 0.02)  ###mean_gam = 0.02
 laa <- c(0.5, 1)   ###mean_laa = 1
 trans <- 2
 trans2 <- 0.5
@@ -366,7 +366,7 @@ trait_high_rates_trans2 <- cbind(
   trait_high_rates_trans2,
   lac2 = 1.6 - trait_high_rates_trans2[, 4] ,
   mu2 = 2.4 - trait_high_rates_trans2[, 5] ,
-  gam2 = 0.08 - trait_high_rates_trans2[, 6],
+  gam2 = 0.04 - trait_high_rates_trans2[, 6],
   laa2 = 2 - trait_high_rates_trans2[, 7])
 
 trait_trans <- rbind(
