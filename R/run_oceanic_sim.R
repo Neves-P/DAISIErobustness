@@ -5,7 +5,7 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
 run_oceanic_sim <- function(ml,
                             sim_pars) {
-  if ("trait_pars" %in% names(sim_pars)){
+  if ("trait_pars" %in% names(sim_pars)) {
     oceanic_sim <- DAISIE::DAISIE_sim_constant_rate(
       time = sim_pars$time,
       M = sim_pars$M + sim_pars$trait_pars$M2, # nolint
