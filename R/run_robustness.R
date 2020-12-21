@@ -88,10 +88,6 @@ run_robustness <- function(param_space_name,
 
     if (novel_ml_constraints == TRUE) {
 
-      if (param_space_name %in% c("trait_CES", "trait_trans")) {
-        sim_pars$M <- sim_pars$M + sim_pars$trait_pars$M2 # nolint
-      }
-
       oceanic_sim_1 <- run_oceanic_sim(
         ml = novel_ml,
         sim_pars = sim_pars)
