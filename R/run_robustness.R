@@ -108,62 +108,73 @@ run_robustness <- function(param_space_name,
       )
 
       if (oceanic_ml_constraints == TRUE) {
-        passed_novel_mls[[length(passed_novel_mls) + 1]] <- novel_ml
-        passed_novel_sims[[length(passed_novel_sims) + 1]] <- novel_sim
+        oceanic_sim_2 <- NULL
+        tryCatch({
+          oceanic_sim_2 <- R.utils:::withTimeout({
+            run_oceanic_sim(ml = oceanic_ml,
+                            sim_pars = sim_pars)
+          }, timeout = 100)
+        }, TimeoutException = function(ex) {
+          message("Timeout. Skipping.")
+        })
+        if (is.null(oceanic_sim_2)) {
+          failed_oceanic_mls[[length(failed_oceanic_mls) + 1]] <- oceanic_ml
+          failed_oceanic_sims[[length(
+            failed_oceanic_sims) + 1]] <- oceanic_sim_1
+        } else {
+          passed_novel_mls[[length(passed_novel_mls) + 1]] <- novel_ml
+          passed_novel_sims[[length(passed_novel_sims) + 1]] <- novel_sim
 
-        passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
-        l_passed_oceanic_sims_1 <- length(passed_oceanic_sims_1)
-        passed_oceanic_sims_1[[l_passed_oceanic_sims_1 + 1]] <- oceanic_sim_1
+          passed_oceanic_mls[[length(passed_oceanic_mls) + 1]] <- oceanic_ml
+          l_passed_oceanic_sims_1 <- length(passed_oceanic_sims_1)
+          passed_oceanic_sims_1[[l_passed_oceanic_sims_1 + 1]] <- oceanic_sim_1
+          l_passed_oceanic_sims_2 <- length(passed_oceanic_sims_2)
+          passed_oceanic_sims_2[[l_passed_oceanic_sims_2 + 1]] <- oceanic_sim_2
 
-        oceanic_sim_2 <- run_oceanic_sim(
-          ml = oceanic_ml,
-          sim_pars = sim_pars)
+          baseline_error <- calc_error(
+            sim_1 = oceanic_sim_1,
+            sim_2 = oceanic_sim_2,
+            replicates = replicates,
+            distance_method = distance_method)
 
-        l_passed_oceanic_sims_2 <- length(passed_oceanic_sims_2)
-        passed_oceanic_sims_2[[l_passed_oceanic_sims_2 + 1]] <- oceanic_sim_2
-
-        baseline_error <- calc_error(
-          sim_1 = oceanic_sim_1,
-          sim_2 = oceanic_sim_2,
-          replicates = replicates,
-          distance_method = distance_method)
-
-        spec_nltt_error <- append(
-          spec_nltt_error,
-          error$spec_nltt_error)
-        num_spec_error <- append(
-          num_spec_error,
-          error$num_spec_error)
-        num_col_error <- append(
-          num_col_error,
-          error$num_col_error)
-        endemic_nltt_error <- append(
-          endemic_nltt_error,
-          error$endemic_nltt_error)
-        nonendemic_nltt_error <- append(
-          nonendemic_nltt_error,
-          error$nonendemic_nltt_error)
-        spec_baseline_nltt_error <- append(
-          spec_baseline_nltt_error,
-          baseline_error$spec_nltt_error)
-        num_spec_baseline_error <- append(
-          num_spec_baseline_error,
-          baseline_error$num_spec_error)
-        num_col_baseline_error <- append(
-          num_col_baseline_error,
-          baseline_error$num_col_error)
-        endemic_baseline_nltt_error <- append(
-          endemic_baseline_nltt_error,
-          baseline_error$endemic_nltt_error)
-        nonendemic_baseline_nltt_error <- append(
-          nonendemic_baseline_nltt_error,
-          baseline_error$nonendemic_nltt_error)
+          spec_nltt_error <- append(
+            spec_nltt_error,
+            error$spec_nltt_error)
+          num_spec_error <- append(
+            num_spec_error,
+            error$num_spec_error)
+          num_col_error <- append(
+            num_col_error,
+            error$num_col_error)
+          endemic_nltt_error <- append(
+            endemic_nltt_error,
+            error$endemic_nltt_error)
+          nonendemic_nltt_error <- append(
+            nonendemic_nltt_error,
+            error$nonendemic_nltt_error)
+          spec_baseline_nltt_error <- append(
+            spec_baseline_nltt_error,
+            baseline_error$spec_nltt_error)
+          num_spec_baseline_error <- append(
+            num_spec_baseline_error,
+            baseline_error$num_spec_error)
+          num_col_baseline_error <- append(
+            num_col_baseline_error,
+            baseline_error$num_col_error)
+          endemic_baseline_nltt_error <- append(
+            endemic_baseline_nltt_error,
+            baseline_error$endemic_nltt_error)
+          nonendemic_baseline_nltt_error <- append(
+            nonendemic_baseline_nltt_error,
+            baseline_error$nonendemic_nltt_error)
+        }
 
       } else {
         failed_oceanic_mls[[length(failed_oceanic_mls) + 1]] <- oceanic_ml
         failed_oceanic_sims[[length(failed_oceanic_sims) + 1]] <- oceanic_sim_1
       }
     } else {
+      message(paste0("failed"))
       failed_novel_mls[[length(failed_novel_mls) + 1]] <- novel_ml
       failed_novel_sims[[length(failed_novel_sims) + 1]] <- novel_sim
     }
