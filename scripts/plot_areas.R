@@ -11,16 +11,6 @@
 #' param_space <- load_param_space("oceanic_ontogeny_sea_level")
 #'
 #' area_pars_1 <- DAISIE::create_area_pars(
-#'   max_area = param_space$max_area[1],
-#'   current_area = param_space$current_area[1],
-#'   proportional_peak_t = param_space$peak_time[1],
-#'   total_island_age = param_space$total_island_age[1],
-#'   sea_level_amplitude = param_space$sea_level_amplitude[1],
-#'   sea_level_frequency = param_space$sea_level_frequency[1],
-#'   island_gradient_angle = param_space$island_gradient_angle[1]
-#' )
-#'
-#' area_pars_2 <- DAISIE::create_area_pars(
 #'   max_area = param_space$max_area[nrow(param_space) / 2 + 1],
 #'   current_area = param_space$current_area[nrow(param_space) / 2 + 1],
 #'   proportional_peak_t = param_space$peak_time[nrow(param_space) / 2 + 1],
@@ -30,6 +20,16 @@
 #'   island_gradient_angle = param_space$island_gradient_angle[nrow(param_space) / 2 + 1]
 #' )
 #'
+#' area_pars_2 <- DAISIE::create_area_pars(
+#'   max_area = param_space$max_area[1],
+#'   current_area = param_space$current_area[1],
+#'   proportional_peak_t = param_space$peak_time[1],
+#'   total_island_age = param_space$total_island_age[1],
+#'   sea_level_amplitude = param_space$sea_level_amplitude[1],
+#'   sea_level_frequency = param_space$sea_level_frequency[1],
+#'   island_gradient_angle = param_space$island_gradient_angle[1]
+#' )
+#'
 #' island_ontogeny_1 <- "beta"
 #' island_ontogeny_2 <- "beta"
 #' sea_level_1 <- "sine"
@@ -37,8 +37,8 @@
 #' resolution <- 0.001
 #' overlay_sea_level_ontogeny <- TRUE
 #' overlay_sea_level <- TRUE
-#' totaltime_1 <- param_space$time[1]
-#' totaltime_2 <- param_space$time[nrow(param_space)]
+#' totaltime_1 <- param_space$time[nrow(param_space)]
+#' totaltime_2 <- param_space$time[1]
 #'
 #' plot_areas(
 #'   totaltime_1 = totaltime_1,
@@ -143,21 +143,24 @@ plot_areas <- function(totaltime_1,
 
   island_area_time_1 <- data.frame(
     Area = area_1,
-    Time = x_axis
+    Time = totaltime_1 - x_axis
   )
   island_area_time_2 <- data.frame(
     Area = area_2,
-    Time = second_island_timepoints_abs_time
+    Time = totaltime_1 - second_island_timepoints_abs_time
   )
   Time <- NULL; rm(Time)
   Area <- NULL; rm(Area)
   area_plot <- ggplot2::ggplot(
     data = island_area_time_1,
     ggplot2::aes(x = Time, y = Area)) +
+    ggplot2::scale_x_reverse() +
     ggplot2::ggtitle("Variation of island area during simulation")  +
     ggplot2::theme_classic() +
     ggplot2::geom_line(size = 1.2, color = "black") +
-    ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black")
+    ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black") +
+    ggplot2::xlab("Time (MYA)") + ggplot2::ylab(bquote('Area '~(km^2)))
+
 
   if (overlay_sea_level_ontogeny) {
     area_1_sea_level_ontogeny <- c()
@@ -186,11 +189,11 @@ plot_areas <- function(totaltime_1,
 
     island_area_time_sea_level_ontogeny_1 <- data.frame(
       Area = area_1_sea_level_ontogeny,
-      Time = x_axis
+      Time = totaltime_1 - x_axis
     )
     island_area_time_sea_level_ontogeny_2 <- data.frame(
       Area = area_2_sea_level_ontogeny,
-      Time = second_island_timepoints_abs_time
+      Time = totaltime_1 - second_island_timepoints_abs_time
     )
 
     area_plot <- area_plot +
