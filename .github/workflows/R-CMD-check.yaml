@@ -6,6 +6,8 @@ on:
       - main
       - master
       - develop
+      - error_metrics
+
   pull_request:
     branches:
       - main
