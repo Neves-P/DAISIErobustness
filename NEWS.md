@@ -1,3 +1,15 @@
+# DAISIErobustness 2.0.0
+
+* Rework pipeline flow. `pipeline`, `load_from_file`, `replicate_range` removed as arguments from `run_robustness()`. No longer possible to run the simulation part of the pipeline separately from the analysis part.
+* Failed ML runs will now result in a new generating simulation being run to overcome numerical issues in MLE. This results in the output of `run_robustness()` directly matching the number of replicates (barring run time constraints).
+* New traits parameter space. These are now split into two files called `trait_CES.csv` and `trait_trans.csv`.
+* Add regular partition job scripts for Peregrine HPCC.
+* Improved geodynamics plots in `scripts/`.
+* Add new `calc_stat_diff()` unexported function in `scripts/`for data analysis.
+* Add new `extract_error_metrics()` unexported function in `scripts/`for data analysis.
+* Fix bug in calculation of number of mainland species in the traits model.
+* Minor documentation improvements.
+
 # DAISIErobustness 1.1.2
 
 * Rework `decide_best_pars()` to intelligently salvage failed ML convergence whenever possible.
