@@ -1,13 +1,8 @@
-#' Title
+#' Calculate stat diff
 #'
-#' @param folder_path
-#' @param error
-#' @param param_set_range
+#' @inheritParams default_params_doc
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @return Numeric vector with computed statistic.
 calc_stat_diff <- function(folder_path, error, param_set_range = NULL) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
