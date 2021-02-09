@@ -132,14 +132,14 @@ test_that("test extract_param_set extracts correct param set from
     param_space_name = "trait_CES",
     param_space = param_space,
     param_set = 1)
-  expect_equal(sim_pars$time, 2.5)
+  expect_equal(sim_pars$time, 5)
   expect_equal(sim_pars$M, 500)
-  expect_equal(sim_pars$pars, c(0.25, 0.4, 40, 0.005, 0.25))
-  expect_equal(sim_pars$trait_pars, list(trans_rate = 0.5,
-                                         immig_rate2 = 0.015,
-                                         ext_rate2 = 1.2,
-                                         ana_rate2 = 0.75,
-                                         clado_rate2 = 0.75,
-                                         trans_rate2 = 0.5,
+  expect_equal(sim_pars$pars, c(0.1, 0.08, 40, 0.003, 0.05))
+  expect_equal(sim_pars$trait_pars, list(trans_rate = 0.05,
+                                         immig_rate2 = 0.007,
+                                         ext_rate2 = 0.12,
+                                         ana_rate2 = 0.15,
+                                         clado_rate2 = 0.3,
+                                         trans_rate2 = 0.05,
                                          M2 = 500))
 })
