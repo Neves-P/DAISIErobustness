@@ -6,7 +6,7 @@
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 ml_constraints <- function(ml) {
   testit::assert(is.data.frame(ml))
-  failed_ml <- any(sapply(ml, is.na))
+  failed_ml <- any(sapply(ml, is.na)) || (ml$loglik == Inf)
   if (failed_ml == TRUE) {
     return(FALSE)
   } else {
