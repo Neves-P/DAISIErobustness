@@ -30,7 +30,7 @@ plot_error_dists <- function(output_file,
     error_label <- " colonist number"
   }
     data <- data.frame(error, baseline_error)
-    colnames(data) <- c("Geodynamic error", "Oceanic error")
+    colnames(data) <- c("Error", "Baseline error")
     data <- tidyr::gather(data) #change gather to pivot_longer
     title_label <- paste0("Parameter set ", param_set, error_label)
 
@@ -41,6 +41,7 @@ plot_error_dists <- function(output_file,
                               color = "black") +
       ggplot2::theme_bw() +
       ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +
+      ggplot2::geom_vline(xintercept = 69.97683, linetype = "dashed", colour = "blue") +
       ggplot2::ylab("Count") +
       ggplot2::xlab("Error") +
       ggplot2::ggtitle(title_label)
