@@ -17,15 +17,29 @@ check_inf_loglik <- function(folder_path) {
   infinite_index_output <- list()
   for (i in data_file_indices) {
     load(file.path(folder_path, files[i]))
-    infinite_index <- c()
+    infinite_index_novel <- c()
+    infinite_index_oceanic <- c()
     # For every replicate of each param space
     for (j in seq_along(output[["passed_novel_mls"]])) {
-      infinite_index[j] <- is.infinite(unlist(output[["passed_novel_mls"]][[j]][6]))
+      infinite_index_novel[j] <- is.infinite(
+        unlist(output[["passed_novel_mls"]][[j]][6])
+      )
+      infinite_index_oceanic[j] <- is.infinite(
+        unlist(output[["passed_oceanic_mls"]][[j]][6])
+      )
+
       if (is.infinite(unlist(output[["passed_novel_mls"]][[j]][6]))) {
-        message("Replicate ", j, " of param set ", i, " has Inf loglik.\n")
+        message("Replicate ", j, " of novel ml param set ", i, " has Inf loglik.\n")
+      }
+      if (is.infinite(unlist(output[["passed_oceanic_mls"]][[j]][6]))) {
+        message("Replicate ", j, " of oceanice ml param set ", i, " has Inf loglik.\n")
       }
     }
-    infinite_index_output[[i]] <- infinite_index
+
+    infinite_index_output[[i]] <- list(
+      infinite_index_novel,
+      infinite_index_oceanic
+    )
     utils::setTxtProgressBar(pb, i)
   }
   message("\nTime elapsed: ", Sys.time() - start_time)
