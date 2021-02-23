@@ -155,11 +155,15 @@ plot_areas <- function(totaltime_1,
     data = island_area_time_1,
     ggplot2::aes(x = Time, y = Area)) +
     ggplot2::scale_x_reverse() +
-    ggplot2::ggtitle("Variation of island area during simulation")  +
-    ggplot2::theme_classic() +
+    # ggplot2::ggtitle("Variation of island area during simulation")  +
+    ggplot2::theme_bw() +
     ggplot2::geom_line(size = 1.2, color = "black") +
     ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black") +
-    ggplot2::xlab("Time (MYA)") + ggplot2::ylab(bquote('Area '~(km^2)))
+    ggplot2::theme(axis.title.y = ggplot2::element_text(size = 12)) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
+    ggplot2::xlab("Time (M.Y.A)") + ggplot2::ylab(bquote('Area '~(km^2)))
 
 
   if (overlay_sea_level_ontogeny) {
@@ -198,13 +202,13 @@ plot_areas <- function(totaltime_1,
 
     area_plot <- area_plot +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_1,
-                         color = "skyblue3",
-                         size = 1,
-                         alpha = 0.4) +
+                         color = "#B3CDE3",
+                         size = 0.55,
+                         alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
-                         color = "coral1",
-                         size = 1,
-                         alpha = 0.5)
+                         color = "#FBB4AE",
+                         size = 0.55,
+                         alpha = 0.8)
 
     if (overlay_sea_level) {
       area_1_sea_level <- c()
@@ -244,13 +248,13 @@ plot_areas <- function(totaltime_1,
 
       area_plot <- area_plot +
         ggplot2::geom_line(data = island_area_time_sea_level_1,
-                           color = "skyblue4",
-                           size = 1,
-                           alpha = 0.4) +
+                           color = "#B3CDE3",
+                           size = 0.55,
+                           alpha = 0.8) +
         ggplot2::geom_line(data = island_area_time_sea_level_2,
-                           color = "coral4",
-                           size = 1,
-                           alpha = 0.5)
+                           color = "#FBB4AE",
+                           size = 0.55,
+                           alpha = 0.8)
     }
 
 
