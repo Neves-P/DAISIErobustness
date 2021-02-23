@@ -6,7 +6,7 @@
 #' @export
 load_param_space <- function(param_space_name) {
   file_domain <-
-    "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/master/data/"
+    "https://raw.githubusercontent.com/Neves-P/DAISIErobustness/trait/data/"
   file <- paste0(file_domain, param_space_name, ".csv")
   param_space <- readr::read_csv2(
     file = file
