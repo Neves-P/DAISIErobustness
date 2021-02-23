@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return Numeric vector with computed statistic.
-calc_stat_diff <- function(folder_path, error, param_set_range = NULL) {
+calc_stat_diff <- function(folder_path, param_set_range = NULL) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 
@@ -29,7 +29,11 @@ calc_stat_diff <- function(folder_path, error, param_set_range = NULL) {
     style = 3
   )
 
-  stat_diff <- c()
+  stat_diff_spec_nltt <- c()
+  stat_diff_endemic_nltt <- c()
+  stat_diff_nonendemic_nltt <- c()
+  stat_diff_num_spec <- c()
+  stat_diff_num_col <- c()
 
   for (i in param_set_range) {
     file_to_load <- grep(paste0("_", i, ".RData"),
@@ -40,36 +44,58 @@ calc_stat_diff <- function(folder_path, error, param_set_range = NULL) {
     if (!identical(file_to_load, character())) {
       load(file.path(folder_path, file_to_load))
 
-      if (error == "spec_nltt") {
-        geodynamic_error <- output$spec_nltt_error
-        oceanic_error <- output$spec_baseline_nltt_error
-      } else if (error == "endemic_nltt") {
-        geodynamic_error <- output$endemic_nltt_error
-        oceanic_error <- output$endemic_baseline_nltt_error
+      geodynamic_error_spec_nltt <- output$spec_nltt_error
+      oceanic_error_spec_nltt <- output$spec_baseline_nltt_error
 
-      } else if (error == "nonendemic_nltt") {
-        geodynamic_error <- output$nonendemic_nltt_error
-        oceanic_error <- output$nonendemic_baseline_nltt_error
+      geodynamic_error_endemic_nltt <- output$endemic_nltt_error
+      oceanic_error_endemic_nltt <- output$endemic_baseline_nltt_error
 
-      } else if (error == "num_spec") {
-        geodynamic_error <- output$num_spec_error
-        oceanic_error <- output$num_spec_baseline_error
+      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error
+      oceanic_error_nonendemic_nltt <- output$nonendemic_baseline_nltt_error
 
-      } else if (error == "num_col") {
-        geodynamic_error <- output$num_col_error
-        oceanic_error <- output$num_col_baseline_error
-      }
+      geodynamic_error_num_spec <- output$num_spec_error
+      oceanic_error_num_spec <- output$num_spec_baseline_error
 
-      sorted_oceanic_error <- sort(oceanic_error, decreasing = FALSE)
-      boundary <- sorted_oceanic_error[950]
+      geodynamic_error_num_col <- output$num_col_error
+      oceanic_error_num_col <- output$num_col_baseline_error
 
-      stat_diff[i] <- (sum(geodynamic_error > boundary) + 1) /
-        (length(sorted_oceanic_error) + 1)
+      sorted_oceanic_error_spec_nltt <- sort(oceanic_error_spec_nltt, decreasing = FALSE)
+      sorted_oceanic_error_endemic_nltt <- sort(oceanic_error_endemic_nltt, decreasing = FALSE)
+      sorted_oceanic_error_nonendemic_nltt <- sort(oceanic_error_nonendemic_nltt, decreasing = FALSE)
+      sorted_oceanic_error_num_spec <- sort(oceanic_error_num_spec, decreasing = FALSE)
+      sorted_oceanic_error_num_col <- sort(oceanic_error_num_col, decreasing = FALSE)
+
+      boundary_spec_nltt <- sorted_oceanic_error_spec_nltt[950]
+      boundary_endemic_nltt <- sorted_oceanic_error_endemic_nltt[950]
+      boundary_nonendemic_nltt <- sorted_oceanic_error_nonendemic_nltt[950]
+      boundary_num_spec <- sorted_oceanic_error_num_spec[950]
+      boundary_num_col <- sorted_oceanic_error_num_col[950]
+
+      stat_diff_spec_nltt[i] <- (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
+        (length(sorted_oceanic_error_spec_nltt) + 1)
+      stat_diff_endemic_nltt[i] <- (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
+        (length(sorted_oceanic_error_endemic_nltt) + 1)
+      stat_diff_nonendemic_nltt[i] <- (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
+        (length(sorted_oceanic_error_nonendemic_nltt) + 1)
+      stat_diff_num_spec[i] <- (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
+        (length(sorted_oceanic_error_num_spec) + 1)
+      stat_diff_num_col[i] <- (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
+        (length(sorted_oceanic_error_num_col) + 1)
     }
     utils::setTxtProgressBar(pb, i)
   }
-  stat_diff <- stat_diff[!is.na(stat_diff)]
+  stat_diff_spec_nltt <- stat_diff_spec_nltt[!is.na(stat_diff_spec_nltt)]
+  stat_diff_endemic_nltt <- stat_diff_endemic_nltt[!is.na(stat_diff_endemic_nltt)]
+  stat_diff_nonendemic_nltt <- stat_diff_nonendemic_nltt[!is.na(stat_diff_nonendemic_nltt)]
+  stat_diff_num_spec <- stat_diff_num_spec[!is.na(stat_diff_num_spec)]
+  stat_diff_num_col <- stat_diff_num_col[!is.na(stat_diff_num_col)]
 
   message("\nTime elapsed: ", Sys.time() - start_time)
-  return(stat_diff)
+  return(list(
+    stat_diff_spec_nltt = stat_diff_spec_nltt,
+    stat_diff_endemic_nltt = stat_diff_endemic_nltt,
+    stat_diff_nonendemic_nltt = stat_diff_nonendemic_nltt,
+    stat_diff_num_spec = stat_diff_num_spec,
+    stat_diff_num_col = stat_diff_num_col
+  ))
 }
