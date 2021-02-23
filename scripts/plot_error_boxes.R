@@ -1,6 +1,7 @@
 plot_error_boxes <- function(error_metrics_list,
                              error = "spec_nltt",
-                             error_metrics_names) {
+                             error_metrics_names
+                             ) {
   error_metrics_sizes <- sapply(X = error_metrics_list, FUN = length)
   larger_vector_size <- max(error_metrics_sizes)
   for (i in seq_along(error_metrics_list)) {
@@ -27,8 +28,32 @@ plot_error_boxes <- function(error_metrics_list,
   data <- as.data.frame(do.call(cbind, error_metrics_list))
   colnames(data) <- error_metrics_names
   data <- tidyr::gather(data)
+  # island_name <- c(rep("Maui Nui", larger_vector_size),
+  #   rep("Kauai", larger_vector_size),
+  #   rep("Maui Nui", larger_vector_size),
+  #   rep("Kauai", larger_vector_size),
+  #   rep("Maui Nui", larger_vector_size),
+  #   rep("Kauai", larger_vector_size),
+  #   rep("Maui Nui", larger_vector_size),
+  #   rep("Kauai", larger_vector_size))
+
+  data$key <- factor(
+    data$key,
+    error_metrics_names
+  )
+  # data <- cbind(data, island_name)
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, fill = key)) +
-    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = FALSE) + ggplot2::xlab("Island") + ggplot2::ylab(error_label)
+    ggplot2::theme_bw() +
+    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = FALSE) +
+    ggplot2::scale_fill_brewer(palette = "Pastel1") +
+    # ggplot2::scale_x_discrete(labels = xlabels) +
+    ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.75) +
+    ggplot2::xlab("Geodynamic scenario") +
+    ggplot2::ylab(error_label) +
+    ggplot2::theme(axis.title.y = ggplot2::element_text(size = ggplot2::rel(1.3))) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = ggplot2::rel(1.4))) +
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = ggplot2::rel(1.3))) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = ggplot2::rel(1.4)))
  p
 }
 
