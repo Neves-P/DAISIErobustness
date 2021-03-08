@@ -208,7 +208,9 @@ plot_areas <- function(totaltime_1,
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
                          color = "#FBB4AE",
                          size = 0.55,
-                         alpha = 0.8)
+                         alpha = 0.8) +
+      ggplot2::geom_line(data = island_area_time_1, size = 1.2, color = "black") +
+      ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black")
 
     if (overlay_sea_level) {
       area_1_sea_level <- c()
