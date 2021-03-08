@@ -6,8 +6,7 @@
 #' @return a plot with two error distributions
 #' @author Pedro Neves, Joshua Lambert
 plot_error_dists <- function(output_file,
-                             error = "spec_nltt",
-                             param_set) {
+                             error = "spec_nltt") {
   if (error == "spec_nltt") {
     error <- output_file$spec_nltt_error
     baseline_error <- output_file$spec_baseline_nltt_error
@@ -37,19 +36,25 @@ plot_error_dists <- function(output_file,
 
   colnames(data) <- c("Error", "Baseline error")
   data <- tidyr::gather(data) #change gather to pivot_longer
-  title_label <- paste0("Parameter set ", param_set, error_label)
 
   ggplot2::ggplot(data = data, ggplot2::aes(x = value, fill = key)) +
-    ggplot2::geom_histogram(binwidth = 1,
+    ggplot2::geom_histogram(bins = 40,
                             alpha = 0.5,
                             position = "identity",
                             color = "black") +
     ggplot2::theme_bw() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.7)) +
-    ggplot2::scale_color_brewer(palette = "Pastel1") +
-    ggplot2::geom_vline(xintercept = boundary, linetype = "dashed", colour = "#F8766D", size = 1) +
-    ggplot2::ylab("Count") +
+    ggplot2::scale_fill_brewer(
+      palette = "Set2",
+      name = "",
+      labels = c(expression(E ), expression(E[B]))
+    ) +
+    ggplot2::theme(legend.box.just = "right") +
+    ggplot2::geom_vline(xintercept = boundary, linetype = "dashed", colour = "#FC8D62", size = 0.5) +
     ggplot2::xlab("Error") +
-    ggplot2::ggtitle(title_label)
-
+    ggplot2::theme(axis.title.y = ggplot2::element_blank()) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
+    ggplot2::theme(plot.margin = ggplot2::margin(6, 5, 6, 5))
 }
