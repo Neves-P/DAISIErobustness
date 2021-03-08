@@ -18,7 +18,6 @@ sea_level_k_l_h_hg <- calc_stat_diff(folder_path, 673:720)
 sea_level_k_h_h_hg <- calc_stat_diff(folder_path, 721:768)
 beepr::beep(8)
 
-
 error_metrics_list_sea_level <- list(
   c(sea_level_m_l_l_lg[[5]], sea_level_m_l_l_hg[[5]]),
   c(sea_level_m_h_l_lg[[5]], sea_level_m_h_l_hg[[5]]),
@@ -35,7 +34,7 @@ xlabel_vec <- c(expression(atop("Low"~x, "Low"~d)),
                 expression(atop("High"~x,"Low"~d)),
                 expression(atop("High"~x,"High"~d)))
 plot_error_boxes_grouped(
-  error_metrics_list = error_metrics_list_sea_level,
+  error_metrics_list = oceanic_sea_level,
   error = "num_col",
   error_metrics_names = c(
     "l_l",
@@ -47,7 +46,8 @@ plot_error_boxes_grouped(
     "l_h",
     "h_h"
   ),
-  xlabels = xlabel_vec
+  xlabels = xlabel_vec,
+  x_axis_text = "Hyperparameters"
 )
 
 
