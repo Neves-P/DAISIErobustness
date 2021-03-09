@@ -205,13 +205,13 @@ test_that("test run_novel_sim output is correct for trait", {
     param_space_name = "trait_CES",
     sim_pars = sim_pars)
   expect_length(novel_sim, 1)
-  expect_length(novel_sim[[1]], 23)
+  expect_length(novel_sim[[1]], 32)
   expect_equal(novel_sim[[1]][[1]]$island_age, 5)
-  expect_equal(novel_sim[[1]][[1]]$not_present, 978)
-  expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 61)
+  expect_equal(novel_sim[[1]][[1]]$not_present, 969)
+  expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 79)
   expect_equal(ncol(novel_sim[[1]][[1]]$stt_all), 5)
   expect_equal(novel_sim[[1]][[2]]$branching_times,
-               c(5.0, 4.4330084882676601))
+               c(5.0, 0.94991737976669999))
   expect_equal(novel_sim[[1]][[2]]$stac, 4)
   expect_equal(novel_sim[[1]][[2]]$missing_species, 0)
 })
