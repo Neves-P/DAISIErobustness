@@ -1,8 +1,8 @@
 plot_error_boxes_grouped <- function(error_metrics_list,
-                             error = "spec_nltt",
-                             error_metrics_names,
-                             xlabels,
-                             x_axis_text) {
+                                     error = "spec_nltt",
+                                     error_metrics_names,
+                                     xlabels,
+                                     x_axis_text) {
   error_metrics_sizes <- sapply(X = error_metrics_list, FUN = length)
   larger_vector_size <- max(error_metrics_sizes)
   for (i in seq_along(error_metrics_list)) {
