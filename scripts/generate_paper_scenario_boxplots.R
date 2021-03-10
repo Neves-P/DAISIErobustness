@@ -1,4 +1,6 @@
 # Scenario boxplots for Neves et al 2021
+source("scripts/calc_stat_diff.R")
+source("scripts/plot_error_boxes.R")
 root_folder <- "G:/Discos partilhados/DAISIE-RUG/Josh_Pedro_paper/results/"
 # Load and calculate P95 stat from all results
 oceanic_ontogeny_stat_diff <- calc_stat_diff(
