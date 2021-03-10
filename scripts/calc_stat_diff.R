@@ -16,6 +16,10 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
     ".RData files exist",
     n_files > 0
   )
+  if (is.null(param_set_range)) {
+    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.RData*$', '', files)))
+    param_set_range <- 1:max_param_range
+  }
   message(n_files, " data files found.")
   message("Looking for parameter set ",
           min(param_set_range),
