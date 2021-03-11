@@ -35,16 +35,16 @@ plot_error_boxes_grouped <- function(error_metrics_list,
                      ordered = TRUE,
                      levels = unique(pars_scenario)
   )
-  Island <- c(rep("Maui\nNui", length(pars_scenario) / 2),
-                   rep("Kauai", length(pars_scenario) / 2))
+  Island <- c(rep("Short", length(pars_scenario) / 2),
+                   rep("Long", length(pars_scenario) / 2))
 
   data <- cbind(data, Island)
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, fill = Island)) +
     ggplot2::theme_bw() +
-    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = TRUE) +
-    ggplot2::scale_fill_brewer(palette = "Pastel1") +
+    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = TRUE, outlier.shape = 1) +
+    ggplot2::scale_fill_brewer(palette = "Set2") +
     ggplot2::scale_x_discrete(labels = xlabels) +
-    ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.75) +
+    ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.5) +
     ggplot2::xlab(x_axis_text) +
     ggplot2::ylab(error_label) +
     ggplot2::scale_y_continuous(labels = function(x){sprintf("%.3f", x)}) +
@@ -52,6 +52,8 @@ plot_error_boxes_grouped <- function(error_metrics_list,
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 10)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2))
   p
