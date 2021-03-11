@@ -103,11 +103,19 @@ final_area_plot <- cowplot::plot_grid(
 
 ggplot2::ggsave(
   plot = final_area_plot,
-  filename = "area.png",
+  filename = "area.tif",
   device = "tiff",
   width = 5.2,
   height = 3.9,
   dpi = 300,
   compression = "lzw"
+)
+ggplot2::ggsave(
+  plot = final_area_plot,
+  filename = "area.png",
+  device = "png",
+  width = 5.2,
+  height = 3.9,
+  dpi = 300
 )
 
