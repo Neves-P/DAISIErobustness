@@ -202,11 +202,11 @@ plot_areas <- function(totaltime_1,
 
     area_plot <- area_plot +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_1,
-                         color = "#B3CDE3",
+                         color = "#66C2A5",
                          size = 0.55,
                          alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
-                         color = "#FBB4AE",
+                         color = "#FC8D62",
                          size = 0.55,
                          alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_1, size = 1.2, color = "black") +
@@ -250,11 +250,11 @@ plot_areas <- function(totaltime_1,
 
       area_plot <- area_plot +
         ggplot2::geom_line(data = island_area_time_sea_level_1,
-                           color = "#B3CDE3",
+                           color = "#66C2A5",
                            size = 0.55,
                            alpha = 0.8) +
         ggplot2::geom_line(data = island_area_time_sea_level_2,
-                           color = "#FBB4AE",
+                           color = "#FC8D62",
                            size = 0.55,
                            alpha = 0.8)
     }
