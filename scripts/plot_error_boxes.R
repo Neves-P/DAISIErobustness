@@ -35,7 +35,7 @@ plot_error_boxes <- function(error_metrics_list,
 
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, fill = key)) +
     ggplot2::theme_bw() +
-    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = FALSE) +
+    ggplot2::geom_boxplot(na.rm = TRUE, show.legend = FALSE, outlier.shape = 1) +
     ggplot2::scale_fill_manual(values = c(rep("#66C2A5", 3), rep("#FC8D62", 2))) +
     ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.5) +
     ggplot2::ylab(error_label) +
