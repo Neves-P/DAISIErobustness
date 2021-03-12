@@ -47,10 +47,10 @@ oceanic_sea_level_metrics_names <- c(
   "h_h"
 )
 
-xlabel_vec <- c(expression(atop("Low"~x, "Low"~d)),
-                expression(atop("Low"~x,"High"~d)),
-                expression(atop("High"~x,"Low"~d)),
-                expression(atop("High"~x,"High"~d)))
+xlabel_vec <- c("🠗 x\n🠗 d",
+                "🠗 x\n🠕 d",
+                "🠕 x\n🠗 d",
+                "🠕 x\n🠕 d")
 oceanic_sea_level_plots <- generate_paper_plots(
   list_to_plot = oceanic_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
@@ -112,21 +112,22 @@ final_hyperpars <- cowplot::plot_grid(prow, legend, rel_widths = c(3, 0.6))
 final_hyperpars_2 <- cowplot::plot_grid(
   prow_2,
   legend,
-  rel_widths = c(3, 0.6)
+  rel_widths = c(3, 0.5)
 )
 
-cowplot::ggdraw(cowplot::add_sub(final_hyperpars_2, "Hyperparameters", vpadding=grid::unit(0, "lines"),y = 5, x = 0.5, vjust = 4.5))
+final_hyperpars_2 <- cowplot::add_sub(final_hyperpars_2, "Hyperparameters", vpadding=grid::unit(0, "lines"),y = 5, x = 0.5, vjust = 4.5, size = 10)
 
 ggplot2::ggsave(
   plot = final_hyperpars_2,
-  filename = "hyperpars_2_short.png",
-  device = "png",
+  filename = "hyperpars_short.tif",
+  device = "tiff",
   width = 5.2,
   height = 2.9,
-  dpi = 300
+  dpi = 300,
+  compression = "lzw"
 )
 ggplot2::ggsave(
-  plot = final_hyperpars,
+  plot = final_hyperpars_2,
   filename = "hyperpars_tall.tif",
   device = "tiff",
   width = 5.2,
