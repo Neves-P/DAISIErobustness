@@ -51,10 +51,12 @@ Imports:
     DAISIE (>= 3.1.0),
     nLTT,
     readr,
-    testit
-Remotes:
+    testit,
+    DAISIEutils (>= 0.0.0.9001)
+Remotes: 
     rsetienne/DAISIE@v3.2.0,
-    thijsjanzen/nltt
+    thijsjanzen/nltt,
+    tece-lab/DAISIEutils
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 RoxygenNote: 7.1.1
