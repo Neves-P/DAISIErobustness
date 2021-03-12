@@ -38,8 +38,7 @@ run_novel_sim <- function(param_space_name,
   }
   if (param_space_name %in% c("oceanic_ontogeny",
                               "oceanic_sea_level",
-                              "oceanic_ontogeny_sea_level",
-                              "nonoceanic_sea_level")) {
+                              "oceanic_ontogeny_sea_level")) {
     novel_sim <- DAISIE::DAISIE_sim_time_dependent(
       time = sim_pars$time,
       M = sim_pars$M,

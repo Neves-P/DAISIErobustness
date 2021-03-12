@@ -42,8 +42,7 @@ extract_param_set <- function(param_space_name,
   if (param_space_name %in% c(
     "oceanic_ontogeny",
     "oceanic_sea_level",
-    "oceanic_ontogeny_sea_level",
-    "nonoceanic_sea_level"
+    "oceanic_ontogeny_sea_level"
   )) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
