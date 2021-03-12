@@ -128,41 +128,6 @@ test_that("test load_param_space loads nonoceanic parameter space", {
   expect_true(is.numeric(nonoceanic[[9]]))
 })
 
-test_that("test load_param_space loads nonoceanic_sea_level parameter space", {
-  nonoceanic_sea_level <- load_param_space(
-    param_space_name = "nonoceanic_sea_level"
-  )
-  expect_equal(nrow(nonoceanic_sea_level), 3072)
-  expect_equal(ncol(nonoceanic_sea_level), 21)
-  expect_equal(names(nonoceanic_sea_level),
-               c("time", "M", "lac", "mu", "K", "gam", "laa", "x", "d",
-                 "island_ontogeny", "sea_level", "max_area", "current_area",
-                 "peak_time", "total_island_age", "sea_level_amplitude",
-                 "sea_level_frequency", "island_gradient_angle",
-                 "extcutoff", "x_s", "x_nonend"))
-  expect_true(is.numeric(nonoceanic_sea_level[[1]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[2]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[3]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[4]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[5]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[6]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[7]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[8]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[9]]))
-  expect_true(is.character(nonoceanic_sea_level[[10]]))
-  expect_true(is.character(nonoceanic_sea_level[[11]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[12]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[13]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[14]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[15]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[16]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[17]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[18]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[19]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[20]]))
-  expect_true(is.numeric(nonoceanic_sea_level[[21]]))
-})
-
 test_that("test load_param_space loads nonoceanic_land_bridge parameter
           space", {
   nonoceanic_land_bridge <- load_param_space(

@@ -86,31 +86,6 @@ test_that("test extract_param_set extracts correct param set from
 })
 
 test_that("test extract_param_set extracts correct param set from
-          nonoceanic_sea_level", {
-  param_space <- load_param_space("nonoceanic_sea_level")
-  sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_sea_level",
-    param_space = param_space,
-    param_set = 1)
-
-  expect_equal(sim_pars$time, 2.55)
-  expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.02000, 0.97500, 0.00100, 0.03363, 0.02950))
-  expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.1))
-  expect_equal(sim_pars$island_ontogeny, "const")
-  expect_equal(sim_pars$sea_level, "sine")
-  expect_equal(sim_pars$area_pars, list(max_area = 13500,
-                                        current_area = 3155,
-                                        proportional_peak_t = 0,
-                                        total_island_age = 2.55,
-                                        sea_level_amplitude = 60,
-                                        sea_level_frequency = 25.5,
-                                        island_gradient_angle = 80))
-  expect_equal(sim_pars$hyper_pars, list(d = 0.1108, x = 0.075))
-  expect_equal(sim_pars$extcutoff, 1000)
-})
-
-test_that("test extract_param_set extracts correct param set from
           nonoceanic_land_bridge", {
   param_space <- load_param_space("nonoceanic_land_bridge")
   sim_pars <- extract_param_set(

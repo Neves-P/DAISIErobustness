@@ -125,37 +125,6 @@ test_that("test run_novel_sim output is correct for
 })
 
 test_that("test run_novel_sim output is correct for
-          nonoceanic_sea_level", {
-            skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
-
-            param_space <- load_param_space(
-              param_space_name = "nonoceanic_sea_level")
-            set.seed(
-              1,
-              kind = "Mersenne-Twister",
-              normal.kind = "Inversion",
-              sample.kind = "Rejection"
-            )
-            sim_pars <- extract_param_set(
-              param_space_name = "nonoceanic_sea_level",
-              param_space = param_space,
-              param_set = 1)
-            novel_sim <- run_novel_sim(
-              param_space_name = "nonoceanic_sea_level",
-              sim_pars = sim_pars)
-            expect_length(novel_sim, 1)
-            expect_length(novel_sim[[1]], 48)
-            expect_equal(novel_sim[[1]][[1]]$island_age, 2.55)
-            expect_equal(novel_sim[[1]][[1]]$not_present, 953)
-            expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 135)
-            expect_equal(ncol(novel_sim[[1]][[1]]$stt_all), 5)
-            expect_equal(novel_sim[[1]][[2]]$branching_times,
-                         c(2.55, 1.44526390195017))
-            expect_equal(novel_sim[[1]][[2]]$stac, 2)
-            expect_equal(novel_sim[[1]][[2]]$missing_species, 0)
-})
-
-test_that("test run_novel_sim output is correct for
           nonoceanic_land_bridge", {
             skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 

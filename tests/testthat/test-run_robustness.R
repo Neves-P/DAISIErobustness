@@ -219,16 +219,6 @@ test_that("abuse param_set", {
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic_sea_level",
-    param_set = 0,
-    replicates = 2))
-
-  expect_error(run_robustness(
-    param_space_name = "nonoceanic_sea_level",
-    param_set = 1000000,
-    replicates = 2))
-
-  expect_error(run_robustness(
     param_space_name = "nonoceanic_land_bridge",
     param_set = 0,
     replicates = 2))
