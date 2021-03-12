@@ -10,9 +10,8 @@ run_novel_sim(param_space_name, sim_pars)
 \item{param_space_name}{A string with the parameter space to run. Can
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_sea_level"},
-\code{"nonoceanic_land_bridge"}, \code{"trait_CES"},
-\code{"trait_trans"}, or \code{"oceanic"}.
+\code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
+\code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
 \code{"oceanic"} is used as a null simulation to test for bias in the
 pipeline.}
 
