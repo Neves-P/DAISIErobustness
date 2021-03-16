@@ -16,9 +16,9 @@ plot_error_boxes <- function(error_metrics_list,
   if (error == "spec_nltt") {
     error_label <- expression(P[95] ~ Delta * "STT")
   } else if (error == "endemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "endTT")
+    error_label <- expression(P[95] ~ Delta * "ESTT")
   } else if (error == "nonendemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "nonendTT")
+    error_label <- expression(P[95] ~ Delta * "NESTT")
   } else if (error == "num_spec") {
     error_label <- expression(P[95] * " Species Number")
   } else if (error == "num_col") {
@@ -48,5 +48,3 @@ plot_error_boxes <- function(error_metrics_list,
     ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2))
  p
 }
-
-
