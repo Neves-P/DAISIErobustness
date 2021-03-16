@@ -112,7 +112,7 @@ test_that("test load_param_space loads nonoceanic parameter space", {
   nonoceanic <- load_param_space(
     param_space_name = "nonoceanic"
   )
-  expect_equal(nrow(nonoceanic), 384)
+  expect_equal(nrow(nonoceanic), 576)
   expect_equal(ncol(nonoceanic), 9)
   expect_equal(names(nonoceanic),
                c("time", "M", "lac", "mu", "K", "gam", "laa", "x_s",
