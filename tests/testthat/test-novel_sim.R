@@ -144,10 +144,10 @@ test_that("test run_novel_sim output is correct for
               param_space_name = "nonoceanic_land_bridge",
               sim_pars = sim_pars)
             expect_length(novel_sim, 1)
-            expect_length(novel_sim[[1]], 25)
+            expect_length(novel_sim[[1]], 23)
             expect_equal(novel_sim[[1]][[1]]$island_age, 2.55)
-            expect_equal(novel_sim[[1]][[1]]$not_present, 976)
-            expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 89)
+            expect_equal(novel_sim[[1]][[1]]$not_present, 978)
+            expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 82)
             expect_equal(ncol(novel_sim[[1]][[1]]$stt_all), 5)
             expect_equal(novel_sim[[1]][[2]]$branching_times,
                          c(2.55, 2.09983694478869, 2.09199464856839))
