@@ -31,7 +31,7 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
     n_files > 0
   )
   if (is.null(param_set_range)) {
-    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.RData*$', '', files)))
+    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.RData*$', '', files))) # nolint
     param_set_range <- 1:max_param_range
   }
   message(n_files, " data files found.")
@@ -69,7 +69,7 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
       geodynamic_error_endemic_nltt <- output$endemic_nltt_error
       oceanic_error_endemic_nltt <- output$endemic_baseline_nltt_error
 
-      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error
+      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error # nolint
       oceanic_error_nonendemic_nltt <- output$nonendemic_baseline_nltt_error
 
       geodynamic_error_num_spec <- output$num_spec_error
@@ -78,11 +78,26 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
       geodynamic_error_num_col <- output$num_col_error
       oceanic_error_num_col <- output$num_col_baseline_error
 
-      sorted_oceanic_error_spec_nltt <- sort(oceanic_error_spec_nltt, decreasing = FALSE)
-      sorted_oceanic_error_endemic_nltt <- sort(oceanic_error_endemic_nltt, decreasing = FALSE)
-      sorted_oceanic_error_nonendemic_nltt <- sort(oceanic_error_nonendemic_nltt, decreasing = FALSE)
-      sorted_oceanic_error_num_spec <- sort(oceanic_error_num_spec, decreasing = FALSE)
-      sorted_oceanic_error_num_col <- sort(oceanic_error_num_col, decreasing = FALSE)
+      sorted_oceanic_error_spec_nltt <- sort(
+        oceanic_error_spec_nltt,
+        decreasing = FALSE
+      )
+      sorted_oceanic_error_endemic_nltt <- sort( # nolint
+        oceanic_error_endemic_nltt,
+        decreasing = FALSE
+      )
+      sorted_oceanic_error_nonendemic_nltt <- sort( # nolint
+        oceanic_error_nonendemic_nltt,
+        decreasing = FALSE
+      )
+      sorted_oceanic_error_num_spec <- sort(
+        oceanic_error_num_spec,
+        decreasing = FALSE
+      )
+      sorted_oceanic_error_num_col <- sort(
+        oceanic_error_num_col,
+        decreasing = FALSE
+      )
 
       boundary_spec_nltt <- sorted_oceanic_error_spec_nltt[950]
       boundary_endemic_nltt <- sorted_oceanic_error_endemic_nltt[950]
@@ -90,22 +105,29 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
       boundary_num_spec <- sorted_oceanic_error_num_spec[950]
       boundary_num_col <- sorted_oceanic_error_num_col[950]
 
-      stat_diff_spec_nltt[i] <- (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
+      stat_diff_spec_nltt[i] <-
+        (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
         (length(sorted_oceanic_error_spec_nltt) + 1)
-      stat_diff_endemic_nltt[i] <- (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
+      stat_diff_endemic_nltt[i] <-
+        (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
         (length(sorted_oceanic_error_endemic_nltt) + 1)
-      stat_diff_nonendemic_nltt[i] <- (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
+      stat_diff_nonendemic_nltt[i] <-
+        (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
         (length(sorted_oceanic_error_nonendemic_nltt) + 1)
-      stat_diff_num_spec[i] <- (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
+      stat_diff_num_spec[i] <-
+        (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
         (length(sorted_oceanic_error_num_spec) + 1)
-      stat_diff_num_col[i] <- (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
+      stat_diff_num_col[i] <-
+        (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
         (length(sorted_oceanic_error_num_col) + 1)
     }
     utils::setTxtProgressBar(pb, i)
   }
   stat_diff_spec_nltt <- stat_diff_spec_nltt[!is.na(stat_diff_spec_nltt)]
-  stat_diff_endemic_nltt <- stat_diff_endemic_nltt[!is.na(stat_diff_endemic_nltt)]
-  stat_diff_nonendemic_nltt <- stat_diff_nonendemic_nltt[!is.na(stat_diff_nonendemic_nltt)]
+  stat_diff_endemic_nltt <-
+    stat_diff_endemic_nltt[!is.na(stat_diff_endemic_nltt)]
+  stat_diff_nonendemic_nltt <-
+    stat_diff_nonendemic_nltt[!is.na(stat_diff_nonendemic_nltt)]
   stat_diff_num_spec <- stat_diff_num_spec[!is.na(stat_diff_num_spec)]
   stat_diff_num_col <- stat_diff_num_col[!is.na(stat_diff_num_col)]
 
