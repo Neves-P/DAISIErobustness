@@ -1,8 +1,22 @@
-#' Calculate stat diff
+#' Calculate P95 statistic for all parameter sets of a parameter space.
+#'
+#' This function will load the results of each parameter set from a given
+#' parameter space and compute all associated P95 statistics. All parameter sets
+#' of the parameter space must be in the same folder, located in
+#' \code{folder_path}.
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return Numeric vector with computed statistic.
+#' @return A list with numeric vectors of P95 statistic for:
+#' \itemize{
+#'   \item{\code{$stat_diff_spec_nltt}}
+#'   \item{\code{$stat_diff_endemic_nltt}}
+#'   \item{\code{$stat_diff_nonendemic_nltt}}
+#'   \item{\code{$stat_diff_num_spec}}
+#'   \item{\code{$stat_diff_num_col}}
+#' }
+#' @author Pedro Neves, Joshua W. Lambert
+#' @export
 calc_stat_diff <- function(folder_path, param_set_range = NULL) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
@@ -45,6 +59,7 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
                          value = TRUE,
                          fixed = TRUE)
 
+    output <- NULL; rm(output) # nolint ; hack around global var
     if (!identical(file_to_load, character())) {
       load(file.path(folder_path, file_to_load))
 
