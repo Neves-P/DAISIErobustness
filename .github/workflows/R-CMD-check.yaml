@@ -6,7 +6,7 @@ on:
       - main
       - master
       - develop
-      - error_metrics
+      - new_params
 
   pull_request:
     branches:
