@@ -17,9 +17,9 @@ plot_error_boxes_grouped <- function(error_metrics_list,
   if (error == "spec_nltt") {
     error_label <- expression(P[95] ~ Delta * "STT")
   } else if (error == "endemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "endTT")
+    error_label <- expression(P[95] ~ Delta * "ESTT")
   } else if (error == "nonendemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "nonendTT")
+    error_label <- expression(P[95] ~ Delta * "NESTT")
   } else if (error == "num_spec") {
     error_label <- expression(P[95] * " Species Number")
   } else if (error == "num_col") {
@@ -35,8 +35,8 @@ plot_error_boxes_grouped <- function(error_metrics_list,
                      ordered = TRUE,
                      levels = unique(pars_scenario)
   )
-  Island <- c(rep("Short", length(pars_scenario) / 2),
-                   rep("Long", length(pars_scenario) / 2))
+  Island <- c(rep("Young", length(pars_scenario) / 2),
+                   rep("Old", length(pars_scenario) / 2))
 
   data <- cbind(data, Island)
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, fill = Island)) +
