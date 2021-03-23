@@ -1,5 +1,5 @@
 # Barplots for Neves et al 2021
-source("scripts/plot_error_dists.R")
+source("scripts/plots/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
 load("G:/Discos partilhados/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic/nonoceanic_param_set_13.RData")
 barplot_13 <- plot_error_dists(output, "spec_nltt")
