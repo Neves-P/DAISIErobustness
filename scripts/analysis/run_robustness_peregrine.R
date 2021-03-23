@@ -8,7 +8,9 @@ save_output <- TRUE
 m <- 1000
 metadata <- paste0("This is parameter set ", param_set)
 
-DAISIEutils::print_main_header(
+library(DAISIEutils)
+
+print_main_header(
   run_name = param_space_name,
   m = m,
   metadata = metadata
@@ -21,4 +23,3 @@ DAISIErobustness::run_robustness(
   distance_method = args[4],
   save_output = save_output
 )
-
