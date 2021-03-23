@@ -5,12 +5,13 @@ param_set <- as.numeric(args[2])
 replicates <- as.numeric(args[3])
 distance_method <- args[4]
 save_output <- TRUE
-M <- 1000
+m <- 1000
+metadata <- paste0("This is parameter set ", param_set)
 
 DAISIEutils::print_main_header(
   run_name = param_space_name,
-  M = M,
-  metadata = param_set
+  m = m,
+  metadata = metadata
 )
 
 DAISIErobustness::run_robustness(
