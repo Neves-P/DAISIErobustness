@@ -12,7 +12,7 @@ Branch|[![GitHub Actions logo](pics/github_actions_logo.png)](https://github.com
 `develop`|[![R build status](https://github.com/Neves-P/DAISIErobustness/workflows/R-CMD-check/badge.svg?branch=develop)](https://github.com/Neves-P/DAISIErobustness/actions)|[![codecov.io](https://codecov.io/github/Neves-P/DAISIErobustness/coverage.svg?branch=develop)](https://codecov.io/github/Neves-P/DAISIErobustness/branch/develop)
 <!-- badges: end -->
 
-The goal of DAISIErobustness is to run robustness studies using the island biogeography model DAISIE. For the development of the geodynamical and traits models currently in use by DAISIErobustness, see the [DAISIE package v3.1.0](https://github.com/rsetienne/DAISIE/tree/v3.1.0).
+The goal of DAISIErobustness is to run robustness studies using the island biogeography model DAISIE. For the development of the geodynamical and traits models currently in use by DAISIErobustness, see the [DAISIE package v3.2.1](https://github.com/rsetienne/DAISIE/tree/v3.2.1).
 
 # Installation
 
