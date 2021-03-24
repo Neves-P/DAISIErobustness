@@ -1,3 +1,12 @@
+# DAISIErobustness 2.1.0
+
+* Depend on DAISIE v3.2.1.
+* Add a number of plotting functions and scripts, which live on `scripts/plots/`.
+* Change traits, nonoceanic, and nonoceanic sea-level parameter spaces.
+* Add better metadata on HPCC log files. Depend on DAISIEutils to do so.
+* `calc_stat_diff()` is now an exported function.
+* Move analysis scripts files from `scripts/` to `scripts/analysis/`.
+
 # DAISIErobustness 2.0.0
 
 * Rework pipeline flow. `pipeline`, `load_from_file`, `replicate_range` removed as arguments from `run_robustness()`. No longer possible to run the simulation part of the pipeline separately from the analysis part.
