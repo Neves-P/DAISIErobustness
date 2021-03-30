@@ -41,21 +41,19 @@ plot_error_jitters_grouped <- function(error_metrics_list,
   data <- cbind(data, Island)
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, color = Island)) +
     ggplot2::theme_bw() +
-    ggplot2::geom_jitter() +
-    ggplot2::ylim(0, 1) +
-    ggplot2::scale_fill_brewer(palette = "Set2") +
+    ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2)) +
+    ggplot2::scale_color_brewer(palette = "Set2") +
     ggplot2::scale_x_discrete(labels = xlabels) +
     ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.5) +
     ggplot2::xlab(x_axis_text) +
     ggplot2::ylab(error_label) +
-    ggplot2::scale_y_continuous(labels = function(x){sprintf("%.3f", x)}) +
     ggplot2::theme(axis.title.y = ggplot2::element_text(size = 10)) +
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 10)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
-    ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
-    ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
+    ggplot2::theme(legend.title = ggplot2::element_text(size = 10)) +
+    ggplot2::guides( = ggplot2::guide_legend(title = "Island")) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2))
   p
 }
