@@ -20,7 +20,7 @@ compile_stat_diffs <- function(scenario, chunk_size, total_length) {
     n_data = n_data))
 }
 
-generate_paper_plots <- function(list_to_plot,
+generate_paper_boxplots <- function(list_to_plot,
                                  error_metrics_names,
                                  x_axis_text,
                                  scenario,

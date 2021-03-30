@@ -51,7 +51,7 @@ xlabel_vec <- c("🠗 x\n🠗 d",
                 "🠗 x\n🠕 d",
                 "🠕 x\n🠗 d",
                 "🠕 x\n🠕 d")
-oceanic_sea_level_plots <- generate_paper_plots(
+oceanic_sea_level_plots <- generate_paper_boxplots(
   list_to_plot = oceanic_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",
@@ -59,7 +59,7 @@ oceanic_sea_level_plots <- generate_paper_plots(
   xlabels = xlabel_vec,
   save = FALSE
 )
-oceanic_ontogeny_plots <- generate_paper_plots(
+oceanic_ontogeny_plots <- generate_paper_boxplots(
   list_to_plot = oceanic_ontogeny_stat_diff$stat_diffs,
   error_metrics_names = oceanic_ontogeny_metrics_names,
   x_axis_text = "Hyperparameters",
@@ -68,7 +68,7 @@ oceanic_ontogeny_plots <- generate_paper_plots(
   save = FALSE
 )
 
-oceanic_ontogeny_sea_level_plots <- generate_paper_plots(
+oceanic_ontogeny_sea_level_plots <- generate_paper_boxplots(
   list_to_plot = oceanic_ontogeny_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",
