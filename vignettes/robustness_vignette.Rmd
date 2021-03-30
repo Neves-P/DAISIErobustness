@@ -2,7 +2,7 @@
 title: "DAISIErobustness vignette"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{robustness_vignette}
+  %\VignetteIndexEntry{DAISIErobustness vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
