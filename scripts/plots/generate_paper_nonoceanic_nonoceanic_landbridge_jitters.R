@@ -1,7 +1,7 @@
 # Boxplots for nonoceanic vs nonoceanic_land_bridge for
 # Neves et al 2021
-source("scripts/plots/plot_error_boxes_grouped.R")
-source("scripts/plots/plot_stat_diffs_boxplots.R")
+source("scripts/plots/plot_error_jitters_grouped.R")
+source("scripts/plots/plot_stat_diffs_jitters.R")
 nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic_land_bridge",
   chunk_size = 32,
