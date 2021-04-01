@@ -53,7 +53,7 @@ plot_error_jitters_grouped <- function(error_metrics_list,
     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.title = ggplot2::element_text(size = 10)) +
-    ggplot2::guides( = ggplot2::guide_legend(title = "Island")) +
+    ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2))
   p
 }
