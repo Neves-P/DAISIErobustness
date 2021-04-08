@@ -30,12 +30,11 @@ generate_paper_jitter_plots <- function(list_to_plot,
     if (save) {
       ggplot2::ggsave(
         plot = p,
-        filename = paste0(scenario, "_", metric_to_plot[i], ".tif"),
-        device = "tiff",
+        filename = paste0(scenario, "_", metric_to_plot[i], ".png"),
+        device = "png",
         width = 5.2,
         height = 3.9,
-        dpi = 300,
-        compression = "lzw"
+        dpi = 300
       )
     } else {
       output_list[[i]] <- p
