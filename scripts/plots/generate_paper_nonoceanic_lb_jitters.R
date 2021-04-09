@@ -2,11 +2,7 @@
 # Neves et al 2021
 source("scripts/plots/plot_error_jitters_grouped.R")
 # source("scripts/plots/plot_stat_diffs_boxplots.R")
-nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(
-  scenario = "nonoceanic_land_bridge",
-  chunk_size = 32,
-  total_length = 512
-)
+
 nonoceanic_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic",
   chunk_size = 48,
@@ -50,76 +46,16 @@ xlabel_vec_nonoceanic <- c(expression(atop(Low~x[s], Low~x[nonend])),
 nonoceanic_plots <- generate_paper_jitter_plots(
   list_to_plot = nonoceanic_stat_diff$stat_diffs,
   error_metrics_names = oceanic_ontogeny_metrics_names,
-  x_axis_text = "Number and duration of land-bridges",
+  x_axis_text = "Hyperparameters",
   scenario = "nonoceanic",
   xlabels = xlabel_vec_nonoceanic,
   save = TRUE
 )
 
-xlabel_vec_nonoceanic_lb <- c("1 long", "3 long", "1 short", "3 short")
-
-nonoceanic_land_bridge_plots <- generate_paper_jitter_plots(
-  list_to_plot = nonoceanic_land_bridge_stat_diff$stat_diffs,
-  error_metrics_names = oceanic_sea_level_metrics_names,
-  x_axis_text = "Number and duration of land-bridges",
-  scenario = "oceanic_sea_level",
-  xlabels = xlabel_vec_nonoceanic_lb,
-  save = FALSE
-)
-
-
-prow <- cowplot::plot_grid(
-  nonoceanic_land_bridge_plots[[1]] + ggplot2::theme(legend.position = "none", axis.title.x = ggplot2::element_blank()),
-  nonoceanic_land_bridge_plots[[3]] + ggplot2::theme(legend.position = "none", axis.title.y = ggplot2::element_blank(), axis.title.x = ggplot2::element_blank()),
-  align = 'vh',
-  labels = c("A", "B"),
-  hjust = -0.2,
-  nrow = 1
-)
 
 
 legend <- cowplot::get_legend(
   # create some space to the left of the legend
   nonoceanic_land_bridge_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
-)
-
-final_hyperpars <- cowplot::plot_grid(prow, legend, rel_widths = c(3, 0.6))
-final_hyperpars <- cowplot::add_sub(final_hyperpars, "Number and duration of land-bridges", vpadding=grid::unit(0, "lines"),y = 5, x = 0.5, vjust = 4.5, size = 10)
-
-
-ggplot2::ggsave(
-  plot = final_hyperpars,
-  filename = "nonoceanic_lb_short.tif",
-  device = "tiff",
-  width = 5.2,
-  height = 2.9,
-  dpi = 300,
-  compression = "lzw"
-)
-ggplot2::ggsave(
-  plot = final_hyperpars,
-  filename = "nonoceanic_lb_tall.tif",
-  device = "tiff",
-  width = 5.2,
-  height = 3.9,
-  dpi = 300,
-  compression = "lzw"
-)
-
-ggplot2::ggsave(
-  plot = final_hyperpars,
-  filename = "nonoceanic_lb_short.png",
-  device = "png",
-  width = 5.2,
-  height = 2.9,
-  dpi = 300
-)
-ggplot2::ggsave(
-  plot = final_hyperpars,
-  filename = "nonoceanic_lb_tall.png",
-  device = "png",
-  width = 5.2,
-  height = 3.9,
-  dpi = 300
 )
 

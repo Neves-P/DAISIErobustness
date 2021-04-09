@@ -59,7 +59,7 @@ oceanic_sea_level_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_sea_level",
   xlabels = xlabel_vec,
-  save = FALSE
+  save = TRUE
 )
 oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   list_to_plot = oceanic_ontogeny_stat_diff$stat_diffs,
@@ -67,7 +67,7 @@ oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny",
   xlabels = xlabel_vec,
-  save = FALSE
+  save = TRUE
 )
 
 oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
@@ -76,7 +76,7 @@ oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny_sea_level",
   xlabels = xlabel_vec,
-  save = FALSE
+  save = TRUE
 )
 
 prow <- cowplot::plot_grid(
