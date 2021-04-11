@@ -1,7 +1,7 @@
 # Boxplots for nonoceanic vs nonoceanic_land_bridge for
 # Neves et al 2021
-source("scripts/plots/plot_error_jitters_grouped.R")
-source("scripts/plots/plot_stat_diffs_jitters.R")
+source("scripts/plots/generate_paper_jitter_plots.R")
+source("scripts/plots/compile_stat_diffs.R")
 nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic_land_bridge",
   chunk_size = 32,
@@ -42,28 +42,29 @@ oceanic_sea_level_metrics_names <- c(
   "h_h"
 )
 
-xlabel_vec <- c("Low xₙₒₙₑₙ\Low🠗 xs",
-                "🠗 x\n🠕 d",
-                "🠕 x\n🠗 d",
-                "🠕 x\n🠕 d")
-nonoceanic_land_bridge_plots <- generate_paper_boxplots(
+xlabel_vec_nonoceanic <- c(expression(atop(Low~x[s], Low~x[nonend])),
+                           expression(atop(Low~x[s], High~x[nonend])),
+                           expression(atop(High~x[s], Low~x[nonend])),
+                           expression(atop(High~x[s], High~x[nonend])))
+
+nonoceanic_land_bridge_plots <- generate_paper_jitter_plots(
   list_to_plot = nonoceanic_land_bridge_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_sea_level",
-  xlabels = xlabel_vec,
+  xlabels = xlabel_vec_nonoceanic,
   save = FALSE
 )
-nonoceanic_plots <- generate_paper_boxplots(
+nonoceanic_plots <- generate_paper_jitter_plots(
   list_to_plot = nonoceanic_stat_diff$stat_diffs,
   error_metrics_names = oceanic_ontogeny_metrics_names,
   x_axis_text = "Hyperparameters",
-  scenario = "oceanic_sea_level",
-  xlabels = xlabel_vec,
-  save = FALSE
+  scenario = "nonoceanic",
+  xlabels = xlabel_vec_nonoceanic,
+  save = TRUE
 )
 
-oceanic_ontogeny_sea_level_plots <- generate_paper_boxplots(
+oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
   list_to_plot = oceanic_ontogeny_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",
