@@ -1,33 +1,16 @@
 # Boxplots for nonoceanic vs nonoceanic_land_bridge for
 # Neves et al 2021
-source("scripts/plots/generate_paper_jitter_plots.R")
 source("scripts/plots/compile_stat_diffs.R")
-nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(
-  scenario = "nonoceanic_land_bridge",
-  chunk_size = 32,
-  total_length = 512
-)
+source("scripts/plots/generate_paper_jitter_nonoceanic.R")
+source("scripts/plots/plot_error_jitters_nonoceanic.R")
+
 nonoceanic_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic",
   chunk_size = 48,
-  total_length = 384
+  total_length = 576
 )
 
-oceanic_ontogeny_metrics_names <- c(
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h"
-)
-oceanic_sea_level_metrics_names <- c(
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
+nonoceanic_metrics_names <- c(
   "l_l",
   "h_l",
   "l_h",
@@ -42,92 +25,69 @@ oceanic_sea_level_metrics_names <- c(
   "h_h"
 )
 
-xlabel_vec_nonoceanic <- c(expression(atop(Low~x[s], Low~x[nonend])),
-                           expression(atop(Low~x[s], High~x[nonend])),
-                           expression(atop(High~x[s], Low~x[nonend])),
-                           expression(atop(High~x[s], High~x[nonend])))
+xlabel_vec_nonoceanic <- c(expression(atop(Low~x[s], Low~x[n])),
+                           expression(atop(High~x[s], Low~x[n])),
+                           expression(atop(Low~x[s], High~x[n])),
+                           expression(atop(High~x[s], High~x[n])))
 
-nonoceanic_land_bridge_plots <- generate_paper_jitter_plots(
-  list_to_plot = nonoceanic_land_bridge_stat_diff$stat_diffs,
-  error_metrics_names = oceanic_sea_level_metrics_names,
-  x_axis_text = "Hyperparameters",
-  scenario = "oceanic_sea_level",
-  xlabels = xlabel_vec_nonoceanic,
-  save = FALSE
-)
-nonoceanic_plots <- generate_paper_jitter_plots(
+nonoceanic_plots <- generate_paper_jitter_nonoceanic(
   list_to_plot = nonoceanic_stat_diff$stat_diffs,
-  error_metrics_names = oceanic_ontogeny_metrics_names,
-  x_axis_text = "Hyperparameters",
+  error_metrics_names = nonoceanic_metrics_names,
+  x_axis_text = "Non-oceanic sampling parameters",
   scenario = "nonoceanic",
   xlabels = xlabel_vec_nonoceanic,
   save = TRUE
 )
 
-oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
-  list_to_plot = oceanic_ontogeny_sea_level_stat_diff$stat_diffs,
-  error_metrics_names = oceanic_sea_level_metrics_names,
-  x_axis_text = "Hyperparameters",
-  scenario = "oceanic_sea_level",
-  xlabels = xlabel_vec,
-  save = FALSE
-)
 
+
+# Faceted
 prow <- cowplot::plot_grid(
-  oceanic_ontogeny_plots[[1]] + ggplot2::theme(legend.position = "none"),
-  oceanic_sea_level_plots[[1]] + ggplot2::theme(legend.position = "none", axis.title.y = ggplot2::element_blank()),
+  nonoceanic_plots[[1]] + ggplot2::theme(legend.position = "none", axis.title.x = ggplot2::element_blank()) + ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
+  nonoceanic_plots[[2]] + ggplot2::theme(legend.position = "none", axis.title.x = ggplot2::element_blank()) + ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
+  nonoceanic_plots[[3]] + ggplot2::theme(legend.position = "none", axis.title.x = ggplot2::element_blank()) + ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
-  labels = c("A", "B"),
-  hjust = -0.2,
-  nrow = 1
-)
-prow_2 <- cowplot::plot_grid(
-  oceanic_ontogeny_plots[[1]] + ggplot2::theme(
-    legend.position = "none",
-    axis.title.x = ggplot2::element_blank()
-  ), oceanic_sea_level_plots[[1]] + ggplot2::theme(
-    legend.position = "none",
-    axis.title.y = ggplot2::element_blank(),
-    axis.title.x = ggplot2::element_blank()
-  ), oceanic_ontogeny_sea_level_plots[[1]] + ggplot2::theme(
-    legend.position = "none",
-    axis.title.y = ggplot2::element_blank(),
-    axis.title.x = ggplot2::element_blank()
-  ), align = 'vh',
-  labels = c("A", "B", "C"),
+  labels = c("a", "b", "c"),
   hjust = -0.2,
   nrow = 1
 )
 
 legend <- cowplot::get_legend(
   # create some space to the left of the legend
-  oceanic_ontogeny_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
+  nonoceanic_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 4))
 )
 
-final_hyperpars <- cowplot::plot_grid(prow, legend, rel_widths = c(3, 0.6))
-final_hyperpars_2 <- cowplot::plot_grid(
-  prow_2,
+nonoceanic_facet <- cowplot::plot_grid(
+  prow,
   legend,
-  rel_widths = c(3, 0.5)
+  rel_widths = c(3, 0.4)
 )
 
-final_hyperpars_2 <- cowplot::add_sub(final_hyperpars_2, "Hyperparameters", vpadding=grid::unit(0, "lines"),y = 5, x = 0.5, vjust = 4.5, size = 10)
+final_nonoceanic_facet <- cowplot::add_sub(
+  nonoceanic_facet,
+  "Non-oceanic sampling parameters",
+  vpadding = grid::unit(0, "lines"),
+  y = 5,
+  x = 0.5,
+  vjust = 4.5,
+  size = 8
+)
+
 
 ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_short.tif",
-  device = "tiff",
-  width = 5.2,
-  height = 2.9,
-  dpi = 300,
-  compression = "lzw"
+  plot = final_nonoceanic_facet,
+  filename = "nonoceanic_fact.png",
+  device = "png",
+  width = 168,
+  height = 100,
+  units = "mm",
+  dpi = 600
 )
 ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_tall.tif",
-  device = "tiff",
-  width = 5.2,
-  height = 3.9,
-  dpi = 300,
-  compression = "lzw"
+  plot = final_nonoceanic_facet,
+  filename = "nonoceanic_fact.eps",
+  device = "eps",
+  width = 168,
+  height = 100,
+  units = "mm"
 )
