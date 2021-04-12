@@ -47,7 +47,7 @@ plot_error_dists <- function(output_file,
     ggplot2::scale_fill_brewer(
       palette = "Set2",
       name = "",
-      labels = c(expression(E ), expression(E[B]))
+      labels = c(paste0(expression(E), " "), expression(E[0]))
     ) +
     ggplot2::theme(legend.box.just = "right") +
     ggplot2::geom_vline(xintercept = boundary, linetype = "dashed", colour = "#FC8D62", size = 0.5) +
