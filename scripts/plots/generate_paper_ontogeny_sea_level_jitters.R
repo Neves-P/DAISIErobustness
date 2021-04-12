@@ -1,6 +1,7 @@
-# Boxplots for oceanic_ontogeny vs oceanic_ontogeny_sea_level for
-# Neves et al 2021
-
+# Strip charts for oceanic param spaces for Neves et al 2021
+source("scripts/plots/compile_stat_diffs.R")
+source("scripts/plots/plot_error_jitters_grouped.R")
+source("scripts/plots/generate_paper_jitter_plots.R")
 oceanic_ontogeny_stat_diff <- compile_stat_diffs(
   scenario = "oceanic_ontogeny",
   chunk_size = 48,
@@ -47,10 +48,10 @@ oceanic_sea_level_metrics_names <- c(
   "h_h"
 )
 
-xlabel_vec <- c("🠗 x\n🠗 d",
-                "🠗 x\n🠕 d",
-                "🠕 x\n🠗 d",
-                "🠕 x\n🠕 d")
+xlabel_vec <- c("Low x\nLow d",
+                "Low x\nHigh d",
+                "High x\nLow d",
+                "High x\nHigh  d")
 
 
 oceanic_sea_level_plots <- generate_paper_jitter_plots(
@@ -59,7 +60,7 @@ oceanic_sea_level_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_sea_level",
   xlabels = xlabel_vec,
-  save = TRUE
+  save = FALSE
 )
 oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   list_to_plot = oceanic_ontogeny_stat_diff$stat_diffs,
@@ -67,7 +68,7 @@ oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny",
   xlabels = xlabel_vec,
-  save = TRUE
+  save = FALSE
 )
 
 oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
@@ -76,18 +77,10 @@ oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny_sea_level",
   xlabels = xlabel_vec,
-  save = TRUE
+  save = FALSE
 )
 
 prow <- cowplot::plot_grid(
-  oceanic_ontogeny_plots[[1]] + ggplot2::theme(legend.position = "none"),
-  oceanic_sea_level_plots[[1]] + ggplot2::theme(legend.position = "none", axis.title.y = ggplot2::element_blank()),
-  align = 'vh',
-  labels = c("A", "B"),
-  hjust = -0.2,
-  nrow = 1
-)
-prow_2 <- cowplot::plot_grid(
   oceanic_ontogeny_plots[[1]] + ggplot2::theme(
     legend.position = "none",
     axis.title.x = ggplot2::element_blank()
@@ -100,55 +93,36 @@ prow_2 <- cowplot::plot_grid(
     axis.title.y = ggplot2::element_blank(),
     axis.title.x = ggplot2::element_blank()
   ), align = 'vh',
-  labels = c("A", "B", "C"),
+  labels = c("a", "b", "c"),
   hjust = -0.2,
   nrow = 1
 )
 
 legend <- cowplot::get_legend(
   # create some space to the left of the legend
-  oceanic_ontogeny_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
+  oceanic_ontogeny_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 4))
 )
 
-final_hyperpars_2 <- cowplot::plot_grid(
-  prow_2,
+final_hyperpars <- cowplot::plot_grid(
+  prow,
   legend,
-  rel_widths = c(3, 0.55)
+  rel_widths = c(3, 0.4)
 )
 
-final_hyperpars_2 <- cowplot::add_sub(final_hyperpars_2, "Hyperparameters", vpadding=grid::unit(0, "lines"),y = 5, x = 0.5, vjust = 4.5, size = 10)
-
 ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_short_jitter.png",
+  plot = final_hyperpars,
+  filename = "hyperpars_facet.png",
   device = "png",
-  width = 5.2,
-  height = 2.9,
-  dpi = 300
+  width = 168,
+  height = 100,
+  units = "mm",
+  dpi = 600
 )
 ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_tall_jitter.png",
-  device = "png",
-  width = 5.2,
-  height = 3.9,
-  dpi = 30
-)
-ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_short_jitter.tif",
-  device = "tiff",
-  width = 5.2,
-  height = 2.9,
-  dpi = 300,
-  compression = "lzw"
-)
-ggplot2::ggsave(
-  plot = final_hyperpars_2,
-  filename = "hyperpars_tall_jitter.tiff",
-  device = "tiff",
-  width = 5.2,
-  height = 3.9,
-  dpi = 300,
-  compression = "lzw"
+  plot = final_hyperpars,
+  filename = "hyperpars_facet.eps",
+  device = "eps",
+  width = 168,
+  height = 100,
+  units = "mm"
 )
