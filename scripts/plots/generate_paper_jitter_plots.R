@@ -30,11 +30,20 @@ generate_paper_jitter_plots <- function(list_to_plot,
     if (save) {
       ggplot2::ggsave(
         plot = p,
+        filename = paste0(scenario, "_", metric_to_plot[i], ".eps"),
+        device = "eps",
+        width = 168,
+        height = 100,
+        units = "mm"
+      )
+      ggplot2::ggsave(
+        plot = p,
         filename = paste0(scenario, "_", metric_to_plot[i], ".png"),
         device = "png",
-        width = 5.2,
-        height = 3.9,
-        dpi = 300
+        width = 168,
+        height = 100,
+        units = "mm",
+        dpi = 600
       )
     } else {
       output_list[[i]] <- p
