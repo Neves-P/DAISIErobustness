@@ -43,40 +43,40 @@ stat_diff_error_name <- c(
 )
 
 
-# Subset by oceanic vs nonoceanic
 oceanic_list <- list()
 nonoceanic_list <- list()
-for (i in stat_diff_error_name) {
-  oceanic_list[[i]] <- list(
-    oceanic_ontogeny_stat_diff[[i]],
-    oceanic_sea_level_stat_diff[[i]],
-    oceanic_ontogeny_sea_level_stat_diff[[i]]
-  )
-  nonoceanic_list[[i]] <- list(
-    nonoceanic_stat_diff[[i]],
-    nonoceanic_land_bridge_stat_diff[[i]]
-  )
-}
+oceanic_list[[1]] <- oceanic_ontogeny_stat_diff
+oceanic_list[[2]] <- oceanic_sea_level_stat_diff
+oceanic_list[[3]] <- oceanic_ontogeny_sea_level_stat_diff
+nonoceanic_list[[1]] <- nonoceanic_stat_diff
+nonoceanic_list[[2]] <- nonoceanic_land_bridge_stat_diff
 
 
 for (i in seq_along(error_names_vec)) {
-
-
   # Create spec nltt strip charts
+  list_plot_oceanic <- list(
+    oceanic_list[[1]][[i]],
+    oceanic_list[[2]][[i]],
+    oceanic_list[[3]][[i]]
+  )
+  list_plot_nonoceanic <- list(
+    nonoceanic_list[[1]][[i]],
+    nonoceanic_list[[2]][[i]]
+  )
   spec_nltt_oceanic_jitters <- plot_error_jitters(
-    error_metrics_list = oceanic_list[[i]][[stat_diff_error_name[i]]],
+    error_metrics_list = list_plot_oceanic,
     error = error_names_vec[i],
     error_metrics_names = scenario_name[1:3],
     x_axis_text = "Geodynamic scenario"
-  ) + ggplot2::scale_color_manual(values = c(rep("#FC8D62#66C2A5", 3)))
+  ) + ggplot2::scale_color_manual(values = c(rep("#66C2A5", 3)))
 
 
   spec_nltt_nonoceanic_jitters <- plot_error_jitters(
-    error_metrics_list = nonoceanic_list[[i]][[stat_diff_error_name[i]]],
+    error_metrics_list = list_plot_nonoceanic,
     error = error_names_vec[i],
     error_metrics_names = scenario_name[4:5],
     x_axis_text = "Geodynamic scenario"
-  ) + ggplot2::scale_color_manual(values = c(rep("#66C2A5", 2)))
+  ) + ggplot2::scale_color_manual(values = c(rep("#FC8D62", 2)))
 
 
   facet_spec_nltt_jitters <- cowplot::plot_grid(
@@ -89,5 +89,21 @@ for (i in seq_along(error_names_vec)) {
     hjust = -0.2,
     nrow = 1
   )
-
+  ggplot2::ggsave(
+    plot = facet_spec_nltt_jitters,
+    filename = paste0("scenario_", error_names_vec[i],".png"),
+    device = "png",
+    width = 168,
+    height = 100,
+    units = "mm",
+    dpi = 600
+  )
+  ggplot2::ggsave(
+    plot = facet_spec_nltt_jitters,
+    filename = paste0("scenario_", error_names_vec[i],".eps"),
+    device = "eps",
+    width = 168,
+    height = 100,
+    units = "mm"
+  )
 }
