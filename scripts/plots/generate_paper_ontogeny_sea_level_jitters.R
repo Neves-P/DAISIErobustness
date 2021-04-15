@@ -48,10 +48,10 @@ oceanic_sea_level_metrics_names <- c(
   "h_h"
 )
 
-xlabel_vec <- c("Low x\nLow d",
-                "Low x\nHigh d",
-                "High x\nLow d",
-                "High x\nHigh  d")
+xlabel_vec <- c("\nLow x\nLow d",
+                "\nHigh x\nLow d",
+                "\nLow x\nHigh d",
+                "\nHigh x\nHigh d")
 
 
 oceanic_sea_level_plots <- generate_paper_jitter_plots(
@@ -60,7 +60,7 @@ oceanic_sea_level_plots <- generate_paper_jitter_plots(
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_sea_level",
   xlabels = xlabel_vec,
-  save = FALSE
+  save = TRUE
 )
 oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   list_to_plot = oceanic_ontogeny_stat_diff$stat_diffs,
@@ -83,16 +83,19 @@ oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
 prow <- cowplot::plot_grid(
   oceanic_ontogeny_plots[[1]] + ggplot2::theme(
     legend.position = "none",
-    axis.title.x = ggplot2::element_blank()
-  ), oceanic_sea_level_plots[[1]] + ggplot2::theme(
+    axis.title.x = ggplot2::element_blank()) +
+    ggplot2::ylim(0, 0.3),
+  oceanic_sea_level_plots[[1]] + ggplot2::theme(
+    legend.position = "none",
+    axis.title.y = ggplot2::element_blank(),
+    axis.title.x = ggplot2::element_blank()) +
+    ggplot2::ylim(0, 0.3),
+  oceanic_ontogeny_sea_level_plots[[1]] + ggplot2::theme(
     legend.position = "none",
     axis.title.y = ggplot2::element_blank(),
     axis.title.x = ggplot2::element_blank()
-  ), oceanic_ontogeny_sea_level_plots[[1]] + ggplot2::theme(
-    legend.position = "none",
-    axis.title.y = ggplot2::element_blank(),
-    axis.title.x = ggplot2::element_blank()
-  ), align = 'vh',
+  ) + ggplot2::ylim(0, 0.3),
+  align = 'vh',
   labels = c("a", "b", "c"),
   hjust = -0.2,
   nrow = 1

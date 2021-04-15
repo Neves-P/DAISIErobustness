@@ -42,6 +42,19 @@ plot_error_jitters_grouped <- function(error_metrics_list,
 
 
   data <- cbind(data, Island)
+  data_no_na <- na.omit(data)
+  n_df <- data_no_na %>% dplyr::group_by(key, Island) %>%
+    dplyr::tally() %>% dplyr::arrange(Island)
+  label_ns <- c()
+  for (i in seq_along(unique(n_df$key))) {
+    matched_ns <- as.character(n_df$n[which(n_df$key[i] == n_df$key)])
+    matched_n_y <- matched_ns[1]
+    matched_n_o <- matched_ns[2]
+    ns_line <- bquote(N[Y]*" = "*.(matched_n_y)~N[O]*" = "*.(matched_n_o))
+    label_ns[i] <- as.expression(bquote(atop(.(xlabels[i]), .(ns_line))))
+  }
+
+  xlabels <- label_ns
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, color = Island)) +
     ggplot2::theme_bw() +
     ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2)) +
@@ -57,7 +70,8 @@ plot_error_jitters_grouped <- function(error_metrics_list,
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
-    ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2))
+    ggplot2::theme(plot.margin = ggplot2::margin(6, 0.2, 6, 0.2)) +
+    ggplot2::theme(legend.text.align = 0)
   p
 }
 
