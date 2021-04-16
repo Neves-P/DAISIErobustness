@@ -3,7 +3,9 @@ generate_paper_jitter_plots <- function(list_to_plot,
                                         x_axis_text,
                                         scenario,
                                         xlabels,
-                                        save = TRUE) {
+                                        save = TRUE,
+                                        n_ages = 2,
+                                        add_plot_title = TRUE) {
   metric_to_plot <- c(
     "spec_nltt",
     "endemic_nltt",
@@ -25,7 +27,11 @@ generate_paper_jitter_plots <- function(list_to_plot,
       error = metric_to_plot[i],
       error_metrics_names = error_metrics_names,
       xlabels = xlabels,
-      x_axis_text = x_axis_text
+      x_axis_text = x_axis_text,
+      scenario = scenario,
+      save = save,
+      n_ages = n_ages,
+      add_plot_title = add_plot_title
     )
     if (save) {
       ggplot2::ggsave(
