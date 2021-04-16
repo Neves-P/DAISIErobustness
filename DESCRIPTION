@@ -46,7 +46,11 @@ Suggests:
     testthat (>= 2.1.0),
     lintr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2,
+    dplyr,
+    ggtext,
+    glue
 Imports: 
     DAISIE (>= 3.2.1),
     nLTT,
