@@ -19,12 +19,12 @@ saved_faceted <- function(plot_list_1,
       ggplot2::ylim(0, faceted_ylim),
     plot_list_2[[i]] + ggplot2::theme(
       legend.position = "none",
-      axis.title.y = ggplot2::element_blank(),
+      # axis.title.y = ggplot2::element_blank(),
       axis.title.x = ggplot2::element_blank()) +
       ggplot2::ylim(0, faceted_ylim),
     plot_list_3[[i]] + ggplot2::theme(
       legend.position = "none",
-      axis.title.y = ggplot2::element_blank(),
+      # axis.title.y = ggplot2::element_blank(),
       axis.title.x = ggplot2::element_blank()
     ) + ggplot2::ylim(0, faceted_ylim),
     align = 'vh',
