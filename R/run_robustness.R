@@ -8,7 +8,8 @@ run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
                            distance_method = "abs",
-                           save_output = TRUE) {
+                           save_output = TRUE,
+                           test = FALSE) {
 
   testit::assert(is.character(param_space_name))
   testit::assert(param_space_name %in% c("oceanic_ontogeny",
@@ -35,13 +36,19 @@ run_robustness <- function(param_space_name,
     save_output = save_output
   )
 
-  set.seed(
-    1,
-    kind = "Mersenne-Twister",
-    normal.kind = "Inversion",
-    sample.kind = "Rejection"
-  )
+  if (test) {
+    seed <- 1
+  } else {
 
+    seed <- as.integer(as.integer(Sys.time()) / param_set)
+  }
+
+    set.seed(
+      seed,
+      kind = "Mersenne-Twister",
+      normal.kind = "Inversion",
+      sample.kind = "Rejection"
+    )
   sim_pars <- extract_param_set(
     param_space_name = param_space_name,
     param_space = param_space,

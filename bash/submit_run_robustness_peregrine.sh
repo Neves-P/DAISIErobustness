@@ -73,7 +73,7 @@ for_length=$(( ${for_length} - 1 ))
 for (( param_set = 1; param_set <= $for_length; param_set++ ))
 do
   sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
-                                                             ${param_set} \
-                                                             ${replicates} \
-                                                             ${distance_method}
+                                                                  ${param_set} \
+                                                                  ${replicates} \
+                                                                  ${distance_method}
 done
