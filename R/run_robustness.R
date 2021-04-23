@@ -39,15 +39,23 @@ run_robustness <- function(param_space_name,
   if (test) {
     seed <- 1
   } else {
-    seed <- as.integer(as.integer(Sys.time()) / param_set)
+    seed <- as.integer(Sys.time()) %% 1000000L * param_set
   }
 
-    set.seed(
-      seed,
-      kind = "Mersenne-Twister",
-      normal.kind = "Inversion",
-      sample.kind = "Rejection"
-    )
+  DAISIEutils::print_metadata(
+    data_name = param_space_name,
+    model = "robustness",
+    array_index = param_set,
+    seed = seed
+  )
+
+  set.seed(
+    seed,
+    kind = "Mersenne-Twister",
+    normal.kind = "Inversion",
+    sample.kind = "Rejection"
+  )
+
   sim_pars <- extract_param_set(
     param_space_name = param_space_name,
     param_space = param_space,
