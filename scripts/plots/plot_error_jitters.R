@@ -14,15 +14,15 @@ plot_error_jitters <- function(error_metrics_list,
   }
 
   if (error == "spec_nltt") {
-    error_label <- expression(P[95] ~ Delta * "STT")
+    error_label <- expression(ED[95] ~ Delta * "STT")
   } else if (error == "endemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "ESTT")
+    error_label <- expression(ED[95] ~ Delta * "ESTT")
   } else if (error == "nonendemic_nltt") {
-    error_label <- expression(P[95] ~ Delta * "NESTT")
+    error_label <- expression(ED[95] ~ Delta * "NESTT")
   } else if (error == "num_spec") {
-    error_label <- expression(P[95] * " Species Number")
+    error_label <- expression(ED[95] * " Species Number")
   } else if (error == "num_col") {
-    error_label <- expression(P[95] * " Colonist Number")
+    error_label <- expression(ED[95] * " Colonist Number")
   }
 
   data <- as.data.frame(do.call(cbind, error_metrics_list))
