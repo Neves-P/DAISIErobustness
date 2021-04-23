@@ -42,12 +42,13 @@ run_robustness <- function(param_space_name,
     seed <- as.integer(Sys.time()) %% 1000000L * param_set
   }
 
-  DAISIEutils::print_metadata(
-    data_name = param_space_name,
-    model = "robustness",
-    array_index = param_set,
-    seed = seed
-  )
+  print(sessioninfo::session_info(pkgs = "DAISIErobusntess"))
+  message(Sys.time())
+  message("Param space name: ", param_space_name)
+  message("Running param set: ", param_set)
+  message("Running analysis with seed: ", seed)
+  message("CAUTION: Do not submit jobs simultaneously in order for jobs to have
+          different seeds.")
 
   set.seed(
     seed,
