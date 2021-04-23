@@ -52,15 +52,14 @@ Suggests:
     ggtext,
     glue
 Imports: 
+    sessioninfo,
     DAISIE (>= 3.2.1),
     nLTT,
     readr,
-    testit,
-    DAISIEutils (>= 0.0.0.9001)
+    testit
 Remotes: 
     rsetienne/DAISIE@v3.2.1,
-    thijsjanzen/nltt,
-    tece-lab/DAISIEutils
+    thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
 RoxygenNote: 7.1.1

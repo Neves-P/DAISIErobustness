@@ -10,12 +10,6 @@ metadata <- paste0("This is parameter set ", param_set)
 
 library(DAISIErobustness)
 
-DAISIEutils::print_main_header(
-  run_name = param_space_name,
-  m = m,
-  metadata = metadata
-)
-
 run_robustness(
   param_space_name = args[1],
   param_set = as.numeric(args[2]),
