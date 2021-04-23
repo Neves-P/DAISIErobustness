@@ -48,6 +48,7 @@ Suggests:
     knitr,
     rmarkdown
 Imports: 
+    sessioninfo,
     DAISIE (>= 3.2.1),
     nLTT,
     readr,
