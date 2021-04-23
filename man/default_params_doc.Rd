@@ -39,7 +39,8 @@ default_params_doc(
   endemic_baseline_nltt_error,
   nonendemic_baseline_nltt_error,
   folder_path,
-  param_set_range
+  param_set_range,
+  test
 )
 }
 \arguments{
@@ -183,6 +184,9 @@ parameter sets to load compute P95 for, i.e \code{c(1, 20)} will attempt
 to compute and load parameter sets 1 to 20. If there are gaps in this
 range, the function works regardless, and will return P95 for the parameter
 set results within the 1 to 20 range.}
+
+\item{test}{A boolean, defaults to `FALSE`. Set to `TRUE` for testing
+purposes, to fix the seed.}
 }
 \value{
 Nothing

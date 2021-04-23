@@ -37,6 +37,9 @@ How the difference between the two nLTTs is summed:
 }}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
+
+\item{test}{A boolean, defaults to `FALSE`. Set to `TRUE` for testing
+purposes, to fix the seed.}
 }
 \value{
 A list of errors and simulation and MLE output.
