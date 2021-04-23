@@ -9,7 +9,8 @@ run_robustness(
   param_set,
   replicates,
   distance_method = "abs",
-  save_output = TRUE
+  save_output = TRUE,
+  test = FALSE
 )
 }
 \arguments{
