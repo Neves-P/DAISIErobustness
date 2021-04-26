@@ -2,7 +2,7 @@
 title: "DAISIErobustness vignette"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{robustness_vignette}
+  %\VignetteIndexEntry{DAISIErobustness vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +17,7 @@ DAISIErobustness consists of a pipeline designed to measure the error one create
 
 ## Usage
 ### Running the pipeline
-The full pipeline can be called by the external function `run_robustness()`. If the `save_output` argument is set to `TRUE`, a folder named results will be created in the current working directory, into which a folder named after the selected parameter space with an .RData file will be saved. This file .RData will contain the results for all the replicates of a given parameter set. If `save_output` is set to `FALSE`, the results object will be returned and not saved to a file.
+The full pipeline can be called by the external function `run_robustness()`. If the `save_output` argument is set to `TRUE`, a folder named results will be created in the current working directory, into which a folder named after the selected parameter space with an `.RData` file will be saved. This `.RData` file will contain the results for all the replicates of a given parameter set. If `save_output` is set to `FALSE`, the results object will be returned and not saved to a file.
 ```{r eval = FALSE, run_robustness}
 library(DAISIErobustness)
 run_robustness(
@@ -28,6 +28,9 @@ run_robustness(
   save_output = FALSE
 )
 ```
+
+### RNG concencerns when batching jobs
+While this package can run locally without issues, it was designed primarily to run in batch jobs on HPCCs, in particular the University of Groningen Peregrine HPCC. For this purpose, and assuming a user has access to the Peregrine Cluster, there are pre-prepared submission bash scripts in the `bash/` folder. However, care should be taken when running this package (through the `run_robustness()` function) in a distributed computing setting. The RNG algorithm used (Mersenne-Twister) is seeded within each run by a combination of the system time and the index of the current parameter set. For this reason, if jobs for multiple parameter spaces (which will always share parameter set indices) are started simultaneously, **said jobs WILL be running with the same seed**! To prevent this, make sure all jobs from a given parameter space have started (and are not on queue) before submitting the next parameter space.
 
 ## References
 <sup>1</sup>Whittaker, Robert J., Kostas A. Triantis, and Richard J. Ladle. "A general dynamic theory of oceanic island biogeography." _Journal of Biogeography_ 35.6 (2008): 977-994.
