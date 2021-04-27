@@ -559,8 +559,6 @@ write.csv2(
 
 
 
-
-
 # ### 1. high rates without transition
 # time <- 5
 # M <- 500
@@ -1300,6 +1298,124 @@ trait_diff2_high_low <- cbind(
   laa2 = 0.4 - trait_diff2_high_low[, 7])
 
 
+## new add with both low transition rates or both high transition rates
+# 14. median differences low q12 and low q21
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.2, 0.4)   ###mean_lac = 0.4
+mu <- c(0.1, 0.2, 0.3)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.006, 0.012)  ###mean_gam = 0.012
+laa <- c(0.08, 0.2)   ###mean_laa = 0.2
+trans <- 0.05
+trans2 <- 0.05
+trait_diff1_low_low <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_diff1_low_low <- cbind(
+  trait_diff1_low_low,
+  lac2 = 0.8 - trait_diff1_low_low[, 4] ,
+  mu2 = 0.4 - trait_diff1_low_low[, 5] ,
+  gam2 = 0.024 - trait_diff1_low_low[, 6],
+  laa2 = 0.4 - trait_diff1_low_low[, 7])
+
+# 15. median differences high q12 and high q21
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.2, 0.4)   ###mean_lac = 0.4
+mu <- c(0.1, 0.2, 0.3)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.006, 0.012)  ###mean_gam = 0.012
+laa <- c(0.08, 0.2)   ###mean_laa = 0.2
+trans <- 0.2
+trans2 <- 0.2
+trait_diff1_high_high <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_diff1_high_high <- cbind(
+  trait_diff1_high_high,
+  lac2 = 0.8 - trait_diff1_high_high[, 4] ,
+  mu2 = 0.4 - trait_diff1_high_high[, 5] ,
+  gam2 = 0.024 - trait_diff1_high_high[, 6],
+  laa2 = 0.4 - trait_diff1_high_high[, 7])
+
+# 16. larger differences low q12 and low q21
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.1, 0.4)   ###mean_lac = 0.4
+mu <- c(0.05, 0.2, 0.35)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.004, 0.012)  ###mean_gam = 0.012
+laa <- c(0.05, 0.2)   ###mean_laa = 0.2
+trans <- 0.05
+trans2 <- 0.05
+trait_diff2_low_low <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_diff2_low_low <- cbind(
+  trait_diff2_low_low,
+  lac2 = 0.8 - trait_diff2_low_low[, 4] ,
+  mu2 = 0.4 - trait_diff2_low_low[, 5] ,
+  gam2 = 0.024 - trait_diff2_low_low[, 6],
+  laa2 = 0.4 - trait_diff2_low_low[, 7])
+
+# 17. larger differences high q12 and high q21
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.1, 0.4)   ###mean_lac = 0.4
+mu <- c(0.05, 0.2, 0.35)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.004, 0.012)  ###mean_gam = 0.012
+laa <- c(0.05, 0.2)   ###mean_laa = 0.2
+trans <- 0.2
+trans2 <- 0.2
+trait_diff2_high_high <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_diff2_high_high <- cbind(
+  trait_diff2_high_high,
+  lac2 = 0.8 - trait_diff2_high_high[, 4] ,
+  mu2 = 0.4 - trait_diff2_high_high[, 5] ,
+  gam2 = 0.024 - trait_diff2_high_high[, 6],
+  laa2 = 0.4 - trait_diff2_high_high[, 7])
+
+
 
 trait_trans <- rbind(
   trait_low_rates_low_high,
@@ -1323,7 +1439,11 @@ trait_trans <- rbind(
   trait_diff1_low_high,
   trait_diff1_high_low,
   trait_diff2_low_high,
-  trait_diff2_high_low
+  trait_diff2_high_low,
+  trait_diff1_low_low,
+  trait_diff1_high_high,
+  trait_diff2_low_low,
+  trait_diff2_high_high
   )
 
 write.csv2(
