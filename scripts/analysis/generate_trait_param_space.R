@@ -1416,6 +1416,124 @@ trait_diff2_high_high <- cbind(
   laa2 = 0.4 - trait_diff2_high_high[, 7])
 
 
+## change one param at a time and control all the others (scenario2 with all high rates)
+# 1. larger diff in lac
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.1, 0.2)   ###mean_lac = 0.4
+mu <- c(0.15, 0.2, 0.25)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.008, 0.012)  ###mean_gam = 0.012
+laa <- c(0.1, 0.2)   ###mean_laa = 0.2
+trans <- c(0.05, 0.2)
+trans2 <- c(0.05, 0.2)
+trait_large_diff_lac <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_large_diff_lac <- cbind(
+  trait_large_diff_lac,
+  lac2 = 0.8 - trait_large_diff_lac[, 4] ,
+  mu2 = 0.4 - trait_large_diff_lac[, 5] ,
+  gam2 = 0.024 - trait_large_diff_lac[, 6],
+  laa2 = 0.4 - trait_large_diff_lac[, 7])
+
+# 2. larger diff in mu
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.3, 0.4)   ###mean_lac = 0.4
+mu <- c(0.05, 0.1, 0.3)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.008, 0.012)  ###mean_gam = 0.012
+laa <- c(0.1, 0.2)   ###mean_laa = 0.2
+trans <- c(0.05, 0.2)
+trans2 <- c(0.05, 0.2)
+trait_large_diff_mu <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_large_diff_mu <- cbind(
+  trait_large_diff_mu,
+  lac2 = 0.8 - trait_large_diff_mu[, 4] ,
+  mu2 = 0.4 - trait_large_diff_mu[, 5] ,
+  gam2 = 0.024 - trait_large_diff_mu[, 6],
+  laa2 = 0.4 - trait_large_diff_mu[, 7])
+
+# 3. larger diff in gam
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.3, 0.4)   ###mean_lac = 0.4
+mu <- c(0.15, 0.2, 0.25)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.004, 0.006)  ###mean_gam = 0.012
+laa <- c(0.1, 0.2)   ###mean_laa = 0.2
+trans <- c(0.05, 0.2)
+trans2 <- c(0.05, 0.2)
+trait_large_diff_gam <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_large_diff_gam <- cbind(
+  trait_large_diff_gam,
+  lac2 = 0.8 - trait_large_diff_gam[, 4] ,
+  mu2 = 0.4 - trait_large_diff_gam[, 5] ,
+  gam2 = 0.024 - trait_large_diff_gam[, 6],
+  laa2 = 0.4 - trait_large_diff_gam[, 7])
+
+# 4. larger diff in laa
+time <- 5
+M <- 500
+M2 <- 500
+lac <- c(0.3, 0.4)   ###mean_lac = 0.4
+mu <- c(0.15, 0.2, 0.25)    ###mean_mu = 0.2
+K <- c(40, Inf)
+gam <- c(0.008, 0.012)  ###mean_gam = 0.012
+laa <- c(0.04, 0.08)   ###mean_laa = 0.2
+trans <- c(0.05, 0.2)
+trans2 <- c(0.05, 0.2)
+trait_large_diff_laa <- expand.grid(
+  time = time,
+  M = M,
+  M2 = M2,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  trans = trans,
+  trans2 = trans2,
+  K = K)
+trait_large_diff_laa <- cbind(
+  trait_large_diff_laa,
+  lac2 = 0.8 - trait_large_diff_laa[, 4] ,
+  mu2 = 0.4 - trait_large_diff_laa[, 5] ,
+  gam2 = 0.024 - trait_large_diff_laa[, 6],
+  laa2 = 0.4 - trait_large_diff_laa[, 7])
+
+
 
 trait_trans <- rbind(
   trait_low_rates_low_high,
@@ -1443,7 +1561,11 @@ trait_trans <- rbind(
   trait_diff1_low_low,
   trait_diff1_high_high,
   trait_diff2_low_low,
-  trait_diff2_high_high
+  trait_diff2_high_high,
+  trait_large_diff_lac,
+  trait_large_diff_mu,
+  trait_large_diff_gam,
+  trait_large_diff_laa
   )
 
 write.csv2(
