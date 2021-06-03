@@ -1,10 +1,11 @@
 # DAISIErobustness 2.1.0
 
+* RNG is no longer seeded it `1L` by default. The seed used for each parameter set is now chosen from the current system time and parameter set index.
+* ML runs again fail when computed loglikelihood is `Inf`.
 * Depend on DAISIE v3.2.1.
 * Add a number of plotting functions and scripts, which live on `scripts/plots/`.
-* Change traits, nonoceanic, and nonoceanic sea-level parameter spaces.
-* Add better metadata on HPCC log files. Depend on DAISIEutils to do so.
-* `calc_stat_diff()` is now an exported function.
+* Change traits, nonoceanic (termed continental island on the paper), and nonoceanic sea-level parameter spaces.
+* Add better metadata on HPCC log files.
 * Move analysis scripts files from `scripts/` to `scripts/analysis/`.
 
 # DAISIErobustness 2.0.0

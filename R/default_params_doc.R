@@ -106,6 +106,8 @@
 #'   to compute and load parameter sets 1 to 20. If there are gaps in this
 #'   range, the function works regardless, and will return P95 for the parameter
 #'   set results within the 1 to 20 range.
+#' @param test A boolean, defaults to `FALSE`. Set to `TRUE` for testing
+#'   purposes, to fix the seed.
 #'
 #' @keywords internal
 #' @return Nothing
@@ -145,7 +147,8 @@ default_params_doc <- function(
   endemic_baseline_nltt_error,
   nonendemic_baseline_nltt_error,
   folder_path,
-  param_set_range
+  param_set_range,
+  test
 ) {
   # Nothing
 }

@@ -8,7 +8,8 @@ run_robustness <- function(param_space_name,
                            param_set,
                            replicates,
                            distance_method = "abs",
-                           save_output = TRUE) {
+                           save_output = TRUE,
+                           test = FALSE) {
 
   testit::assert(is.character(param_space_name))
   testit::assert(param_space_name %in% c("oceanic_ontogeny",
@@ -35,8 +36,22 @@ run_robustness <- function(param_space_name,
     save_output = save_output
   )
 
+  if (test) {
+    seed <- 1
+  } else {
+    seed <- as.integer(Sys.time()) %% 1000000L * param_set
+  }
+
+  print(sessioninfo::session_info(pkgs = "DAISIErobusntess"))
+  message(Sys.time())
+  message("Param space name: ", param_space_name)
+  message("Running param set: ", param_set)
+  message("Running analysis with seed: ", seed)
+  message("CAUTION: Do not submit jobs simultaneously in order for jobs to have
+          different seeds.")
+
   set.seed(
-    1,
+    seed,
     kind = "Mersenne-Twister",
     normal.kind = "Inversion",
     sample.kind = "Rejection"

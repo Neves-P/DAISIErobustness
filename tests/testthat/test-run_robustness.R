@@ -7,7 +7,8 @@ test_that("run_robustness output is correct when save_output = FALSE", {
         param_space_name = "nonoceanic",
         param_set = 2,
         replicates = 2,
-        save_output = FALSE)
+        save_output = FALSE,
+        test = TRUE)
 
       expect_length(errors, 20)
       expect_equal(errors$spec_nltt_error,
