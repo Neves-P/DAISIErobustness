@@ -61,7 +61,7 @@
 
 # Start script
 ml R
-Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
+Rscript -e "remotes::install_github('Neves-P/DAISIErobustness@cpp')"
 
 param_space_name=$1
 replicates=$2
@@ -70,7 +70,7 @@ distance_method=$3
 for_length=`wc -l DAISIErobustness/data/${param_space_name}.csv | cut -f1 -d' '`
 for_length=$(( ${for_length} - 1 ))
 
-for (( param_set = 1; param_set <= $for_length; param_set++ ))
+for (( param_set = 1; param_set <= 50; param_set++ ))
 do
   sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
                                                                   ${param_set} \
