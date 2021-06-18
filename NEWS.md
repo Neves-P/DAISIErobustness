@@ -1,3 +1,9 @@
+# DAISIErobustness 2.2.0
+
+# DAISIErobustness 2.1.1
+
+* Depend on DAISIE v4.0.2 to make use of all of it's corrections. See [here](https://github.com/rsetienne/DAISIE/blob/master/NEWS.md#daisie-402) for  DAISIE v4.0.0, v4.0.1 and v4.0.2 patch notes for details on the changes.
+
 # DAISIErobustness 2.1.0
 
 * RNG is no longer seeded it `1L` by default. The seed used for each parameter set is now chosen from the current system time and parameter set index.
