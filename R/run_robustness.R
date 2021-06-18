@@ -42,7 +42,7 @@ run_robustness <- function(param_space_name,
     seed <- as.integer(Sys.time()) %% 1000000L * param_set
   }
 
-  print(sessioninfo::session_info(pkgs = "DAISIErobusntess"))
+  print(sessioninfo::session_info(pkgs = "DAISIErobustness"))
   message(Sys.time())
   message("Param space name: ", param_space_name)
   message("Running param set: ", param_set)
