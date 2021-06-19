@@ -134,7 +134,7 @@ test_that("test calc_ml output is correct with traits sim", {
   expect_length(novel_ml, 8)
   expect_equal(novel_ml$lambda_c, 0.1747376474713921)
   expect_equal(novel_ml$mu, 0.0746774736985277)
-  expect_equal(novel_ml$K,234692.0757436767)
+  expect_equal(novel_ml$K, 234692.0757436767)
   expect_equal(novel_ml$gamma, 0.007694551908237508)
   expect_equal(novel_ml$lambda_a, 0.0889807891493178)
   expect_equal(novel_ml$loglik, -252.4632225702918)
