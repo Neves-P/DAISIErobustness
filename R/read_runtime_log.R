@@ -6,15 +6,15 @@
 #' @inheritParams default_params_doc
 #'
 #' @return An atomic numeric vector with the elapsed run time of the associated
-#'   job.
+#'   job in seconds.
 #' @author Pedro Neves
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' runtime <- calc_runtime_log(log_file_path = "logs/robustness-20596511.log")
+#' runtime <- read_runtime_log(log_file_path = "logs/robustness-20596511.log")
 #' }
-calc_runtime_log <- function(log_file_path) {
+read_runtime_log <- function(log_file_path) {
   log_lines <- readLines(con = log_file_path, n = 2000)
   starttime_line_bools <- grepl("Start               : ", log_lines)
   starttime_line <- log_lines[starttime_line_bools]
