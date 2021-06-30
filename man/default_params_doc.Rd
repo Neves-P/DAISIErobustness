@@ -41,7 +41,8 @@ default_params_doc(
   folder_path,
   param_set_range,
   test,
-  log_file_path
+  log_file_path,
+  logs_folder_path
 )
 }
 \arguments{
@@ -191,6 +192,9 @@ purposes, to fix the seed.}
 
 \item{log_file_path}{A string with the path for a standard Peregrine HPCC log
 file.}
+
+\item{logs_folder_path}{A string with the path for a directory containing the
+Peregrine HPCC log files.}
 }
 \value{
 Nothing

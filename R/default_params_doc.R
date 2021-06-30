@@ -110,6 +110,8 @@
 #'   purposes, to fix the seed.
 #' @param log_file_path A string with the path for a standard Peregrine HPCC log
 #'   file.
+#' @param logs_folder_path A string with the path for a directory containing the
+#'   Peregrine HPCC log files.
 #'
 #' @keywords internal
 #' @return Nothing
@@ -151,7 +153,8 @@ default_params_doc <- function(
   folder_path,
   param_set_range,
   test,
-  log_file_path
+  log_file_path,
+  logs_folder_path
 ) {
   # Nothing
 }
