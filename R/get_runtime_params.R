@@ -1,15 +1,15 @@
 #' Make runtime data frame
 #'
-#' @inheritParams logs_folder_path
+#' @inheritParams default_params_doc
 #'
 #' @return
 #' A data frame with three columns:
 #' \describe{
 #'   \item{\code{param_space_name}}{Atomic character vector with parameter space
-#'   name}
-#'   \item{\code{param_set}}{Atomic numeric vector with parameter space number}
+#'     name.}
+#'   \item{\code{param_set}}{Atomic numeric vector with parameter space number.}
 #'   \item{\code{runtime}}{Atomic numeric vector with Peregrine job run time in
-#'   seconds}
+#'   seconds.}
 #' }
 #' @export
 #'
