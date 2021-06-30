@@ -40,7 +40,8 @@ default_params_doc(
   nonendemic_baseline_nltt_error,
   folder_path,
   param_set_range,
-  test
+  test,
+  log_file_path
 )
 }
 \arguments{
@@ -187,6 +188,9 @@ set results within the 1 to 20 range.}
 
 \item{test}{A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 purposes, to fix the seed.}
+
+\item{log_file_path}{A string with the path for a standard Peregrine HPCC log
+file.}
 }
 \value{
 Nothing

@@ -108,6 +108,8 @@
 #'   set results within the 1 to 20 range.
 #' @param test A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 #'   purposes, to fix the seed.
+#' @param log_file_path A string with the path for a standard Peregrine HPCC log
+#'   file.
 #'
 #' @keywords internal
 #' @return Nothing
@@ -148,7 +150,8 @@ default_params_doc <- function(
   nonendemic_baseline_nltt_error,
   folder_path,
   param_set_range,
-  test
+  test,
+  log_file_path
 ) {
   # Nothing
 }
