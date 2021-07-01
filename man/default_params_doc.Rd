@@ -42,7 +42,9 @@ default_params_doc(
   param_set_range,
   test,
   log_file_path,
-  logs_folder_path
+  logs_folder_path,
+  runtime_params,
+  ed95_param_sets
 )
 }
 \arguments{
@@ -195,6 +197,13 @@ file.}
 
 \item{logs_folder_path}{A string with the path for a directory containing the
 Peregrine HPCC log files.}
+
+\item{runtime_params}{A data frame with runtime of each parameter set in each
+parameter space as returned by \code{\link{get_runtime_params}()}.}
+
+\item{ed95_param_sets}{A data frame with all ED95 statistics of each
+parameter set in each parameter space as returned by
+\code{\link{calc_ed95_param_set}()}.}
 }
 \value{
 Nothing

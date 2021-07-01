@@ -112,6 +112,11 @@
 #'   file.
 #' @param logs_folder_path A string with the path for a directory containing the
 #'   Peregrine HPCC log files.
+#' @param runtime_params A data frame with runtime of each parameter set in each
+#'   parameter space as returned by \code{\link{get_runtime_params}()}.
+#' @param ed95_param_sets A data frame with all ED95 statistics of each
+#'   parameter set in each parameter space as returned by
+#'   \code{\link{calc_ed95_param_set}()}.
 #'
 #' @keywords internal
 #' @return Nothing
@@ -154,7 +159,9 @@ default_params_doc <- function(
   param_set_range,
   test,
   log_file_path,
-  logs_folder_path
+  logs_folder_path,
+  runtime_params,
+  ed95_param_sets
 ) {
   # Nothing
 }
