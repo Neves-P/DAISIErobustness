@@ -25,8 +25,8 @@ A data frame with E95 statistics containing 7 columns:
 }
 \description{
 This function will load the results of each parameter set from a given
-parameter space and compute all associated ED95 statistics. All parameter sets
-of the parameter space must be in the same folder, located in
+parameter space and compute all associated ED95 statistics. All parameter
+sets of the parameter space must be in the same folder, located in
 \code{folder_path}.
 }
 \author{

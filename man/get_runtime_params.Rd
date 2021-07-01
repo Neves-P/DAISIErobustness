@@ -23,3 +23,11 @@ A data frame with three columns:
 \description{
 Make runtime data frame
 }
+\examples{
+\dontrun{
+runtimes_data_frame <- get_runtime_params("logs/")
+}
+}
+\author{
+Pedro Neves
+}
