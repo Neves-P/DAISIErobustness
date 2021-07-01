@@ -4,10 +4,7 @@
 \alias{calc_runtime_param_corr}
 \title{Calculate correlation between parameters}
 \usage{
-calc_runtime_param_corr(logs_folder_path)
-}
-\arguments{
-\item{logs_folder_path}{}
+calc_runtime_param_corr(jobs_runtime)
 }
 \value{
 
