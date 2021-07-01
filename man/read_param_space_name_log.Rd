@@ -17,9 +17,11 @@ A character atomic vector with the parameter space name
 Obtains the parameter space name from a standard Peregrine HPCC log file.
 }
 \examples{
+\dontrun{
 param_space_name <- read_param_space_name_log(
   log_file_path = "logs/robustness-20596511.log"
 )
+}
 }
 \author{
 Pedro Neves

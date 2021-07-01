@@ -9,9 +9,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' param_space_name <- read_param_space_name_log(
 #'   log_file_path = "logs/robustness-20596511.log"
 #' )
+#' }
 read_param_space_name_log <- function(log_file_path) {
   log_lines <- readLines(con = log_file_path, n = 300)
 
