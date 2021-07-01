@@ -1,8 +1,8 @@
 #' Calculate ED95 statistic for all parameter sets of a parameter space.
 #'
 #' This function will load the results of each parameter set from a given
-#' parameter space and compute all associated ED95 statistics. All parameter sets
-#' of the parameter space must be in the same folder, located in
+#' parameter space and compute all associated ED95 statistics. All parameter
+#' sets of the parameter space must be in the same folder, located in
 #' \code{folder_path}.
 #'
 #' @inheritParams default_params_doc
@@ -42,12 +42,6 @@ calc_ed95_param_set <- function(folder_path) {
     style = 3
   )
 
-  # stat_diff_spec_nltt <- c()
-  # stat_diff_endemic_nltt <- c()
-  # stat_diff_nonendemic_nltt <- c()
-  # stat_diff_num_spec <- c()
-  # stat_diff_num_col <- c()
-  #
   out <- data.frame(
     "param_space_name" = character(),
     "param_set" = numeric(),
@@ -143,13 +137,6 @@ row_number <- 1
       row_number <- row_number + 1
     utils::setTxtProgressBar(pb, row_number)
   }
-  # stat_diff_spec_nltt <- stat_diff_spec_nltt[!is.na(stat_diff_spec_nltt)]
-  # stat_diff_endemic_nltt <-
-  #   stat_diff_endemic_nltt[!is.na(stat_diff_endemic_nltt)]
-  # stat_diff_nonendemic_nltt <-
-  #   stat_diff_nonendemic_nltt[!is.na(stat_diff_nonendemic_nltt)]
-  # stat_diff_num_spec <- stat_diff_num_spec[!is.na(stat_diff_num_spec)]
-  # stat_diff_num_col <- stat_diff_num_col[!is.na(stat_diff_num_col)]
 
   message("\nTime elapsed: ", Sys.time() - start_time)
   return(out)
