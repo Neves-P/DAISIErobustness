@@ -6,10 +6,10 @@
 #'   and each of the ED95 metrics.
 #' @author Pedro Neves
 #' @export
-calc_runtime_ed95_corr <- function(runtime_params, ed95_param_sets) {
+calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
   merged_data_frame <- merge(
     x = runtime_params, ed95_param_sets,
-    by = c("param_space_name" ,"param_set")
+    by = c("param_space_name", "param_set")
   )
   spec_nltt_cor <- cor(
     merged_data_frame$stat_diff_spec_nltt,
@@ -41,4 +41,3 @@ calc_runtime_ed95_corr <- function(runtime_params, ed95_param_sets) {
   )
   out
 }
-
