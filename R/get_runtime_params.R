@@ -33,6 +33,7 @@ get_runtime_params <- function(logs_folder_path) {
     out[i, "runtime"] <- runtime
   }
 
+  out <- out[order(out$param_space_name, out$param_set), ]
   testit::assert(nrow(out) == length(log_files))
   testit::assert(is.data.frame(out))
   out
