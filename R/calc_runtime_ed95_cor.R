@@ -11,23 +11,23 @@ calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
     x = runtime_params, ed95_param_sets,
     by = c("param_space_name", "param_set")
   )
-  spec_nltt_cor <- cor(
+  spec_nltt_cor <- stats::cor(
     merged_data_frame$stat_diff_spec_nltt,
     merged_data_frame$runtime
   )
-  endemic_nltt_cor <- cor(
+  endemic_nltt_cor <- stats::cor(
     merged_data_frame$stat_diff_endemic_nltt,
     merged_data_frame$runtime
   )
-  nonendemic_nltt_cor <- cor(
+  nonendemic_nltt_cor <- stats::cor(
     merged_data_frame$stat_diff_nonendemic_nltt,
     merged_data_frame$runtime
   )
-  num_spec_cor <- cor(
+  num_spec_cor <- stats::cor(
     merged_data_frame$stat_diff_num_spec,
     merged_data_frame$runtime
   )
-  num_col_cor <- cor(
+  num_col_cor <- stats::cor(
     merged_data_frame$stat_diff_num_col,
     merged_data_frame$runtime
   )
