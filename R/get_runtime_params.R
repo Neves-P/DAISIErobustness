@@ -11,9 +11,13 @@
 #'   \item{\code{runtime}}{Atomic numeric vector with Peregrine job run time in
 #'   seconds.}
 #' }
+#' @author Pedro Neves
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' runtimes_data_frame <- get_runtime_params("logs/")
+#' }
 get_runtime_params <- function(logs_folder_path) {
   log_files <- list.files(logs_folder_path, full.names = TRUE, pattern = ".log")
 
