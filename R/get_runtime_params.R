@@ -13,6 +13,7 @@
 #' }
 #' @author Pedro Neves
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' \dontrun{

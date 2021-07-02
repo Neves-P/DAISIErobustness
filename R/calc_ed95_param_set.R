@@ -18,6 +18,7 @@
 #'   \item{\code{$stat_diff_num_col}}
 #' }
 #' @author Pedro Neves, Joshua W. Lambert
+#' @keywords internal
 #' @export
 calc_ed95_param_set <- function(folder_path) {
 
@@ -51,7 +52,7 @@ calc_ed95_param_set <- function(folder_path) {
     "stat_diff_num_spec" = numeric(),
     "stat_diff_num_col" = numeric()
   )
-row_number <- 1
+  row_number <- 1
   for (i in param_sets) {
     file_to_load <- grep(paste0("_", i, ".RData"),
                          files,
