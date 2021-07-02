@@ -44,7 +44,8 @@ default_params_doc(
   log_file_path,
   logs_folder_path,
   runtime_params,
-  ed95_param_sets
+  ed95_param_sets,
+  param_space_data_frame
 )
 }
 \arguments{
@@ -204,6 +205,10 @@ parameter space as returned by \code{\link{get_runtime_params}()}.}
 \item{ed95_param_sets}{A data frame with all ED95 statistics of each
 parameter set in each parameter space as returned by
 \code{\link{calc_ed95_param_set}()}.}
+
+\item{param_space_data_frame}{A data frame with ED95 statistics of ONLY one
+parameter space, together with associated runtime. Used for plotting
+correlation between runtime and ED95.}
 }
 \value{
 Nothing

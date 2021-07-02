@@ -52,7 +52,9 @@ Imports:
     DAISIE (>= 4.0.2),
     nLTT,
     readr,
-    testit
+    testit,
+    ggplot2,
+    cowplot
 Remotes: 
     rsetienne/DAISIE@v4.0.2,
     thijsjanzen/nltt
