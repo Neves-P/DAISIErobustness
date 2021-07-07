@@ -49,7 +49,7 @@ Suggests:
     rmarkdown
 Imports: 
     sessioninfo,
-    DAISIE (>= 3.2.1),
+    DAISIE (>= 4.0.2),
     nLTT,
     readr,
     testit
