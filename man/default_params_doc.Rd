@@ -40,7 +40,12 @@ default_params_doc(
   nonendemic_baseline_nltt_error,
   folder_path,
   param_set_range,
-  test
+  test,
+  log_file_path,
+  logs_folder_path,
+  runtime_params,
+  ed95_param_sets,
+  param_space_data_frame
 )
 }
 \arguments{
@@ -187,6 +192,23 @@ set results within the 1 to 20 range.}
 
 \item{test}{A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 purposes, to fix the seed.}
+
+\item{log_file_path}{A string with the path for a standard Peregrine HPCC log
+file.}
+
+\item{logs_folder_path}{A string with the path for a directory containing the
+Peregrine HPCC log files.}
+
+\item{runtime_params}{A data frame with runtime of each parameter set in each
+parameter space as returned by \code{\link{get_runtime_params}()}.}
+
+\item{ed95_param_sets}{A data frame with all ED95 statistics of each
+parameter set in each parameter space as returned by
+\code{\link{calc_ed95_param_set}()}.}
+
+\item{param_space_data_frame}{A data frame with ED95 statistics of ONLY one
+parameter space, together with associated runtime. Used for plotting
+correlation between runtime and ED95.}
 }
 \value{
 Nothing
