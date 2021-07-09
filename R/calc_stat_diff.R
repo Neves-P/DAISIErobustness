@@ -78,48 +78,28 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
       geodynamic_error_num_col <- output$num_col_error
       oceanic_error_num_col <- output$num_col_baseline_error
 
-      sorted_oceanic_error_spec_nltt <- sort(
-        oceanic_error_spec_nltt,
-        decreasing = FALSE
-      )
-      sorted_oceanic_error_endemic_nltt <- sort( # nolint
-        oceanic_error_endemic_nltt,
-        decreasing = FALSE
-      )
-      sorted_oceanic_error_nonendemic_nltt <- sort( # nolint
-        oceanic_error_nonendemic_nltt,
-        decreasing = FALSE
-      )
-      sorted_oceanic_error_num_spec <- sort(
-        oceanic_error_num_spec,
-        decreasing = FALSE
-      )
-      sorted_oceanic_error_num_col <- sort(
-        oceanic_error_num_col,
-        decreasing = FALSE
-      )
 
-      boundary_spec_nltt <- sorted_oceanic_error_spec_nltt[950]
-      boundary_endemic_nltt <- sorted_oceanic_error_endemic_nltt[950]
-      boundary_nonendemic_nltt <- sorted_oceanic_error_nonendemic_nltt[950]
-      boundary_num_spec <- sorted_oceanic_error_num_spec[950]
-      boundary_num_col <- sorted_oceanic_error_num_col[950]
+      boundary_spec_nltt <- quantile(oceanic_error_spec_nltt, 0.95)
+      boundary_endemic_nltt <- quantile(oceanic_error_endemic_nltt, 0.95)
+      boundary_nonendemic_nltt <- quantile(oceanic_error_nonendemic_nltt, 0.95)
+      boundary_num_spec <- quantile(oceanic_error_num_spec, 0.95)
+      boundary_num_col <- quantile(oceanic_error_num_col, 0.95)
 
       stat_diff_spec_nltt[i] <-
         (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
-        (length(sorted_oceanic_error_spec_nltt) + 1)
+        (length(oceanic_error_spec_nltt) + 1)
       stat_diff_endemic_nltt[i] <-
         (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
-        (length(sorted_oceanic_error_endemic_nltt) + 1)
+        (length(oceanic_error_endemic_nltt) + 1)
       stat_diff_nonendemic_nltt[i] <-
         (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
-        (length(sorted_oceanic_error_nonendemic_nltt) + 1)
+        (length(oceanic_error_nonendemic_nltt) + 1)
       stat_diff_num_spec[i] <-
         (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
-        (length(sorted_oceanic_error_num_spec) + 1)
+        (length(oceanic_error_num_spec) + 1)
       stat_diff_num_col[i] <-
         (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
-        (length(sorted_oceanic_error_num_col) + 1)
+        (length(oceanic_error_num_col) + 1)
     }
     utils::setTxtProgressBar(pb, i)
   }

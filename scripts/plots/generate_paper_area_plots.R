@@ -81,41 +81,21 @@ steep <- plot_areas(
 side_by_side_plot <- cowplot::plot_grid(steep, shallow, ncol= 2 , labels = "AUTO")
 
 
-title <- cowplot::ggdraw() +
-  cowplot::draw_label(
-    "Variation in island area through time",
-    fontface = 'bold',
-    x = 0,
-    hjust = 0
-  ) +
-  ggplot2::theme(
-    # add margin on the left of the drawing canvas,
-    # so title is aligned with left edge of first plot
-    plot.margin = ggplot2::margin(0, 0, 0, 7)
-  )
-
-final_area_plot <- cowplot::plot_grid(
-  title, side_by_side_plot,
-  ncol = 1,
-  # rel_heights values control vertical title margins
-  rel_heights = c(0.1, 1)
-)
-
 ggplot2::ggsave(
-  plot = final_area_plot,
+  plot = side_by_side_plot,
   filename = "area.tif",
   device = "tiff",
   width = 5.2,
-  height = 3.9,
+  height = 2.7,
   dpi = 300,
   compression = "lzw"
 )
 ggplot2::ggsave(
-  plot = final_area_plot,
+  plot = side_by_side_plot,
   filename = "area.png",
   device = "png",
   width = 5.2,
-  height = 3.9,
+  height = 2.7,
   dpi = 300
 )
 

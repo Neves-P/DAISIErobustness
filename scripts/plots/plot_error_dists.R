@@ -29,9 +29,7 @@ plot_error_dists <- function(output_file,
     error_label <- " colonist number"
   }
 
-  sorted_baseline_error <- sort(baseline_error)
-  boundary <- sorted_baseline_error[950]
-
+  boundary <- quantile(baseline_error, 0.95)
   data <- data.frame(error, baseline_error)
 
   colnames(data) <- c("Error", "Baseline error")
@@ -47,10 +45,13 @@ plot_error_dists <- function(output_file,
     ggplot2::scale_fill_brewer(
       palette = "Set2",
       name = "",
-      labels = c(paste0(expression(E), " "), expression(E[0]))
-    ) +
+      labels = c(expression(E[0]), paste0(expression(E), " "))) +
     ggplot2::theme(legend.box.just = "right") +
-    ggplot2::geom_vline(xintercept = boundary, linetype = "dashed", colour = "#FC8D62", size = 0.5) +
+    ggplot2::geom_vline(
+      xintercept = boundary,
+      linetype = "dashed",
+      colour = "#FC8D62",
+      size = 0.5) +
     ggplot2::xlab("Error") +
     ggplot2::theme(axis.title.y = ggplot2::element_blank()) +
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +

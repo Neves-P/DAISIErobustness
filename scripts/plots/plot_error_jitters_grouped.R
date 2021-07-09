@@ -28,9 +28,9 @@ plot_error_jitters_grouped <- function(error = "spec_nltt",
   } else if (scenario == "oceanic_ontogeny_sea_level") {
     plot_title <- "Oceanic ontogeny sea-level"
   } else if (scenario == "nonoceanic") {
-    plot_title <- "Non-oceanic"
+    plot_title <- "Continental"
   } else if (scenario == "nonoceanic_land_bridge") {
-    plot_title <- "Non-oceanic land-bridge"
+    plot_title <- "Continental land-bridge"
   }
 
 

@@ -59,6 +59,7 @@ plot_cor <- function(param_space_data_frame) {
       ggplot2::theme(axis.title.y = ggplot2::element_text(size = 7)) +
       ggplot2::theme(axis.title.x = ggplot2::element_text(size = 7)) +
       ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7)) +
+      ggplot2::theme(axis.text.y = ggplot2::element_text(size = 7)) +
       ggplot2::theme(plot.margin = ggplot2::margin(6, 0.3, 6, 0.3))
   }
 
