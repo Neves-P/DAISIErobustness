@@ -98,13 +98,13 @@
 #' @param folder_path A file path (use \code{file.path()} for formatting
 #'   convenience) where all the parameter sets results of a given parameter
 #'   space are stored in .RData format.
-#' @param param_set_range Defaults to \code{NULL}, which computes the P95
+#' @param param_set_range Defaults to \code{NULL}, which computes the ED95
 #'   statistic for all parameter sets in the file of the parameter space located
 #'   in \code{folder_path}. Otherwise, a numeric vector of length 2, where the
 #'   first element must be lower than the second. This specifies the range of
-#'   parameter sets to load compute P95 for, i.e \code{c(1, 20)} will attempt
+#'   parameter sets to load compute ED95 for, i.e \code{c(1, 20)} will attempt
 #'   to compute and load parameter sets 1 to 20. If there are gaps in this
-#'   range, the function works regardless, and will return P95 for the parameter
+#'   range, the function works regardless, and will return ED95 for the parameter
 #'   set results within the 1 to 20 range.
 #' @param test A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 #'   purposes, to fix the seed.

@@ -26,23 +26,23 @@ calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
     # plot
 
     spec_nltt_cor <- stats::cor(
-      param_space_data_frame$stat_diff_spec_nltt,
+      param_space_data_frame$ed95_spec_nltt,
       param_space_data_frame$runtime
     )
     endemic_nltt_cor <- stats::cor(
-      param_space_data_frame$stat_diff_endemic_nltt,
+      param_space_data_frame$ed95_endemic_nltt,
       param_space_data_frame$runtime
     )
     nonendemic_nltt_cor <- stats::cor(
-      param_space_data_frame$stat_diff_nonendemic_nltt,
+      param_space_data_frame$ed95_nonendemic_nltt,
       param_space_data_frame$runtime
     )
     num_spec_cor <- stats::cor(
-      param_space_data_frame$stat_diff_num_spec,
+      param_space_data_frame$ed95_num_spec,
       param_space_data_frame$runtime
     )
     num_col_cor <- stats::cor(
-      param_space_data_frame$stat_diff_num_col,
+      param_space_data_frame$ed95_num_col,
       param_space_data_frame$runtime
     )
 

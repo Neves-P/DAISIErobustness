@@ -1,23 +1,24 @@
-#' Calculate P95 statistic for all parameter sets of a parameter space.
+#' Calculate ED95 statistic for all parameter sets of a parameter space
 #'
 #' This function will load the results of each parameter set from a given
-#' parameter space and compute all associated P95 statistics. All parameter sets
-#' of the parameter space must be in the same folder, located in
-#' \code{folder_path}.
+#' parameter space and compute all associated ED95 statistics. All parameter
+#' sets of the parameter space must be in the same folder, located in
+#' \code{folder_path}. The return type is appropriate for the main plot
+#' functions.
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return A list with numeric vectors of P95 statistic for:
+#' @return A list with numeric vectors of ED95 statistic for:
 #' \itemize{
-#'   \item{\code{$stat_diff_spec_nltt}}
-#'   \item{\code{$stat_diff_endemic_nltt}}
-#'   \item{\code{$stat_diff_nonendemic_nltt}}
-#'   \item{\code{$stat_diff_num_spec}}
-#'   \item{\code{$stat_diff_num_col}}
+#'   \item{\code{$ed95_spec_nltt}}
+#'   \item{\code{$ed95_endemic_nltt}}
+#'   \item{\code{$ed95_nonendemic_nltt}}
+#'   \item{\code{$ed95_num_spec}}
+#'   \item{\code{$ed95_num_col}}
 #' }
 #' @author Pedro Neves, Joshua W. Lambert
 #' @export
-calc_stat_diff <- function(folder_path, param_set_range = NULL) {
+calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 
@@ -47,11 +48,11 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
     style = 3
   )
 
-  stat_diff_spec_nltt <- c()
-  stat_diff_endemic_nltt <- c()
-  stat_diff_nonendemic_nltt <- c()
-  stat_diff_num_spec <- c()
-  stat_diff_num_col <- c()
+  ed95_spec_nltt <- c()
+  ed95_endemic_nltt <- c()
+  ed95_nonendemic_nltt <- c()
+  ed95_num_spec <- c()
+  ed95_num_col <- c()
 
   for (i in param_set_range) {
     file_to_load <- grep(paste0("_", i, ".RData"),
@@ -85,38 +86,38 @@ calc_stat_diff <- function(folder_path, param_set_range = NULL) {
       boundary_num_spec <- quantile(oceanic_error_num_spec, 0.95)
       boundary_num_col <- quantile(oceanic_error_num_col, 0.95)
 
-      stat_diff_spec_nltt[i] <-
+      ed95_spec_nltt[i] <-
         (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
         (length(oceanic_error_spec_nltt) + 1)
-      stat_diff_endemic_nltt[i] <-
+      ed95_endemic_nltt[i] <-
         (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
         (length(oceanic_error_endemic_nltt) + 1)
-      stat_diff_nonendemic_nltt[i] <-
+      ed95_nonendemic_nltt[i] <-
         (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
         (length(oceanic_error_nonendemic_nltt) + 1)
-      stat_diff_num_spec[i] <-
+      ed95_num_spec[i] <-
         (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
         (length(oceanic_error_num_spec) + 1)
-      stat_diff_num_col[i] <-
+      ed95_num_col[i] <-
         (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
         (length(oceanic_error_num_col) + 1)
     }
     utils::setTxtProgressBar(pb, i)
   }
-  stat_diff_spec_nltt <- stat_diff_spec_nltt[!is.na(stat_diff_spec_nltt)]
-  stat_diff_endemic_nltt <-
-    stat_diff_endemic_nltt[!is.na(stat_diff_endemic_nltt)]
-  stat_diff_nonendemic_nltt <-
-    stat_diff_nonendemic_nltt[!is.na(stat_diff_nonendemic_nltt)]
-  stat_diff_num_spec <- stat_diff_num_spec[!is.na(stat_diff_num_spec)]
-  stat_diff_num_col <- stat_diff_num_col[!is.na(stat_diff_num_col)]
+  ed95_spec_nltt <- ed95_spec_nltt[!is.na(ed95_spec_nltt)]
+  ed95_endemic_nltt <-
+    ed95_endemic_nltt[!is.na(ed95_endemic_nltt)]
+  ed95_nonendemic_nltt <-
+    ed95_nonendemic_nltt[!is.na(ed95_nonendemic_nltt)]
+  ed95_num_spec <- ed95_num_spec[!is.na(ed95_num_spec)]
+  ed95_num_col <- ed95_num_col[!is.na(ed95_num_col)]
 
   message("\nTime elapsed: ", Sys.time() - start_time)
   return(list(
-    stat_diff_spec_nltt = stat_diff_spec_nltt,
-    stat_diff_endemic_nltt = stat_diff_endemic_nltt,
-    stat_diff_nonendemic_nltt = stat_diff_nonendemic_nltt,
-    stat_diff_num_spec = stat_diff_num_spec,
-    stat_diff_num_col = stat_diff_num_col
+    ed95_spec_nltt = ed95_spec_nltt,
+    ed95_endemic_nltt = ed95_endemic_nltt,
+    ed95_nonendemic_nltt = ed95_nonendemic_nltt,
+    ed95_num_spec = ed95_num_spec,
+    ed95_num_col = ed95_num_col
   ))
 }

@@ -10,11 +10,11 @@
 plot_cor <- function(param_space_data_frame) {
 
   metrics <- c(
-    "stat_diff_spec_nltt",
-    "stat_diff_endemic_nltt",
-    "stat_diff_nonendemic_nltt",
-    "stat_diff_num_spec",
-    "stat_diff_num_col"
+    "ed95_spec_nltt",
+    "ed95_endemic_nltt",
+    "ed95_nonendemic_nltt",
+    "ed95_num_spec",
+    "ed95_num_col"
   )
   param_space_name <- param_space_data_frame$param_space_name[1]
 
@@ -32,15 +32,15 @@ plot_cor <- function(param_space_data_frame) {
 
   plots <- list()
   for (i in seq_along(metrics)) {
-    if (metrics[i] == "stat_diff_spec_nltt") {
+    if (metrics[i] == "ed95_spec_nltt") {
       error_label <- expression(ED95[95] ~ Delta * "STT")
-    } else if (metrics[i] == "stat_diff_endemic_nltt") {
+    } else if (metrics[i] == "ed95_endemic_nltt") {
       error_label <- expression(ED95[95] ~ Delta * "ESTT")
-    } else if (metrics[i] == "stat_diff_nonendemic_nltt") {
+    } else if (metrics[i] == "ed95_nonendemic_nltt") {
       error_label <- expression(ED95[95] ~ Delta * "NESTT")
-    } else if (metrics[i] == "stat_diff_num_spec") {
+    } else if (metrics[i] == "ed95_num_spec") {
       error_label <- expression(ED95[95] * " Species Number")
-    } else if (metrics[i] == "stat_diff_num_col") {
+    } else if (metrics[i] == "ed95_num_col") {
       error_label <- expression(ED95[95] * " Colonist Number")
     }
 

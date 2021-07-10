@@ -1,20 +1,20 @@
 # Scenario strip charts for Neves et al 2021
 source("scripts/plots/plot_error_jitters.R")
 root_folder <- "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/"
-# Load and calculate P95 stat from all results
-oceanic_ontogeny_stat_diff <- calc_stat_diff(
+# Load and calculate ED95 stat from all results
+oceanic_ontogeny_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "oceanic_ontogeny")
 )
-oceanic_sea_level_stat_diff <- calc_stat_diff(
+oceanic_sea_level_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "oceanic_sea_level")
 )
-oceanic_ontogeny_sea_level_stat_diff <- calc_stat_diff(
+oceanic_ontogeny_sea_level_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "oceanic_ontogeny_sea_level")
 )
-nonoceanic_stat_diff <- calc_stat_diff(
+nonoceanic_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "nonoceanic")
 )
-nonoceanic_land_bridge_stat_diff <- calc_stat_diff(
+nonoceanic_land_bridge_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "nonoceanic_land_bridge")
 )
 
@@ -34,22 +34,22 @@ error_names_vec <- c(
   "num_col"
 )
 
-stat_diff_error_name <- c(
-  "stat_diff_spec_nltt",
-  "stat_diff_endemic_nltt",
-  "stat_diff_nonendemic_nltt",
-  "stat_diff_num_spec",
-  "stat_diff_num_col"
+ed95_error_name <- c(
+  "ed95_spec_nltt",
+  "ed95_endemic_nltt",
+  "ed95_nonendemic_nltt",
+  "ed95_num_spec",
+  "ed95_num_col"
 )
 
 
 oceanic_list <- list()
 nonoceanic_list <- list()
-oceanic_list[[1]] <- oceanic_ontogeny_stat_diff
-oceanic_list[[2]] <- oceanic_sea_level_stat_diff
-oceanic_list[[3]] <- oceanic_ontogeny_sea_level_stat_diff
-nonoceanic_list[[1]] <- nonoceanic_stat_diff
-nonoceanic_list[[2]] <- nonoceanic_land_bridge_stat_diff
+oceanic_list[[1]] <- oceanic_ontogeny_ed95
+oceanic_list[[2]] <- oceanic_sea_level_ed95
+oceanic_list[[3]] <- oceanic_ontogeny_sea_level_ed95
+nonoceanic_list[[1]] <- nonoceanic_ed95
+nonoceanic_list[[2]] <- nonoceanic_land_bridge_ed95
 
 
 for (i in seq_along(error_names_vec)) {

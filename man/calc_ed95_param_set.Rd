@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_ed95_param_set.R
 \name{calc_ed95_param_set}
 \alias{calc_ed95_param_set}
-\title{Calculate ED95 statistic for all parameter sets of a parameter space.}
+\title{Calculate ED95 statistic for all results in folder}
 \usage{
 calc_ed95_param_set(folder_path)
 }
@@ -12,22 +12,23 @@ convenience) where all the parameter sets results of a given parameter
 space are stored in .RData format.}
 }
 \value{
-A data frame with E95 statistics containing 7 columns:
+A data frame with ED95 statistics containing 7 columns:
 \itemize{
   \item{\code{$param_space_name}}
   \item{\code{$param_set}}
-  \item{\code{$stat_diff_spec_nltt}}
-  \item{\code{$stat_diff_endemic_nltt}}
-  \item{\code{$stat_diff_nonendemic_nltt}}
-  \item{\code{$stat_diff_num_spec}}
-  \item{\code{$stat_diff_num_col}}
+  \item{\code{$ed95_spec_nltt}}
+  \item{\code{$ed95_endemic_nltt}}
+  \item{\code{$ed95_nonendemic_nltt}}
+  \item{\code{$ed95_num_spec}}
+  \item{\code{$ed95_num_col}}
 }
 }
 \description{
 This function will load the results of each parameter set from a given
 parameter space and compute all associated ED95 statistics. All parameter
 sets of the parameter space must be in the same folder, located in
-\code{folder_path}.
+\code{folder_path}. Return type is appropriate for functions dealing with
+run time vs ED95 correlations.
 }
 \author{
 Pedro Neves, Joshua W. Lambert
