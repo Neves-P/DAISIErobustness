@@ -17,8 +17,8 @@ in \code{folder_path}. Otherwise, a numeric vector of length 2, where the
 first element must be lower than the second. This specifies the range of
 parameter sets to load compute ED95 for, i.e \code{c(1, 20)} will attempt
 to compute and load parameter sets 1 to 20. If there are gaps in this
-range, the function works regardless, and will return ED95 for the parameter
-set results within the 1 to 20 range.}
+range, the function works regardless, and will return ED95 for the
+parameter set results within the 1 to 20 range.}
 }
 \value{
 A list with numeric vectors of ED95 statistic for:

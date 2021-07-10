@@ -104,8 +104,8 @@
 #'   first element must be lower than the second. This specifies the range of
 #'   parameter sets to load compute ED95 for, i.e \code{c(1, 20)} will attempt
 #'   to compute and load parameter sets 1 to 20. If there are gaps in this
-#'   range, the function works regardless, and will return ED95 for the parameter
-#'   set results within the 1 to 20 range.
+#'   range, the function works regardless, and will return ED95 for the
+#'   parameter set results within the 1 to 20 range.
 #' @param test A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 #'   purposes, to fix the seed.
 #' @param log_file_path A string with the path for a standard Peregrine HPCC log
