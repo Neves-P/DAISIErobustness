@@ -9,7 +9,7 @@ test_that("read_param_space_log works", {
   )
 
   param_space_name <- read_param_space_name_log(
-    log_file_path = "logs/robustness-20596511.log"
+    log_file_path = log_file_path
   )
 
   expect_equal(param_space_name, "oceanic_sea_level")

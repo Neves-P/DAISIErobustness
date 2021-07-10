@@ -9,7 +9,7 @@ test_that("read_param_set_log works", {
   )
 
   param_set <- read_param_set_log(
-    log_file_path = "logs/robustness-20596511.log"
+    log_file_path = log_file_path
   )
 
   expect_equal(param_set, 569)
