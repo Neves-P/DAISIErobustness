@@ -1,20 +1,20 @@
 # Strip charts for oceanic param spaces for Neves et al 2021
-source("scripts/plots/compile_stat_diffs.R")
+source("scripts/plots/compile_ed95s.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
 source("scripts/plots/generate_paper_stripchart_plots.R")
 source("scripts/plots/save_faceted.R")
 
-oceanic_ontogeny_stat_diff <- compile_stat_diffs(
+oceanic_ontogeny_stat_diff <- compile_ed95s(
   scenario = "oceanic_ontogeny",
   chunk_size = 48,
   total_length = 384
 )
-oceanic_sea_level_stat_diff <- compile_stat_diffs(
+oceanic_sea_level_stat_diff <- compile_ed95s(
   scenario = "oceanic_sea_level",
   chunk_size = 48,
   total_length = 768
 )
-oceanic_ontogeny_sea_level_stat_diff <- compile_stat_diffs(
+oceanic_ontogeny_sea_level_stat_diff <- compile_ed95s(
   scenario = "oceanic_ontogeny_sea_level",
   chunk_size = 48,
   total_length = 768

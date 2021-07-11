@@ -1,9 +1,9 @@
 # Strip charts for nonoceanic for Neves et al 2021
-source("scripts/plots/compile_stat_diffs.R")
+source("scripts/plots/compile_ed95s.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
 source("scripts/plots/generate_paper_stripchart_plots.R")
 
-nonoceanic_stat_diff <- compile_stat_diffs(
+nonoceanic_stat_diff <- compile_ed95s(
   scenario = "nonoceanic",
   chunk_size = 48,
   total_length = 576
