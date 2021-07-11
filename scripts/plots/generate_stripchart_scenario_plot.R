@@ -1,5 +1,5 @@
 # Scenario strip charts for Neves et al 2021
-source("scripts/plots/plot_error_jitters.R")
+source("scripts/plots/plot_error_stripchart.R")
 root_folder <- "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/"
 # Load and calculate ED95 stat from all results
 oceanic_ontogeny_ed95 <- calc_ed95_for_plots(
@@ -63,7 +63,7 @@ for (i in seq_along(error_names_vec)) {
     nonoceanic_list[[1]][[i]],
     nonoceanic_list[[2]][[i]]
   )
-  spec_nltt_oceanic_jitters <- plot_error_jitters(
+  spec_nltt_oceanic_stripchart <- plot_error_stripchart(
     error_metrics_list = list_plot_oceanic,
     error = error_names_vec[i],
     error_metrics_names = scenario_name[1:3],
@@ -71,7 +71,7 @@ for (i in seq_along(error_names_vec)) {
   ) + ggplot2::scale_color_manual(values = c(rep("#66C2A5", 3)))
 
 
-  spec_nltt_nonoceanic_jitters <- plot_error_jitters(
+  spec_nltt_nonoceanic_stripchart <- plot_error_stripchart(
     error_metrics_list = list_plot_nonoceanic,
     error = error_names_vec[i],
     error_metrics_names = scenario_name[4:5],
@@ -79,9 +79,9 @@ for (i in seq_along(error_names_vec)) {
   ) + ggplot2::scale_color_manual(values = c(rep("#FC8D62", 2)))
 
 
-  facet_spec_nltt_jitters <- cowplot::plot_grid(
-    spec_nltt_oceanic_jitters + ggplot2::theme(legend.position = "none"),
-    spec_nltt_nonoceanic_jitters + ggplot2::theme(
+  facet_spec_nltt_stripchart <- cowplot::plot_grid(
+    spec_nltt_oceanic_stripchart + ggplot2::theme(legend.position = "none"),
+    spec_nltt_nonoceanic_stripchart + ggplot2::theme(
       legend.position = "none",
       axis.title.y = ggplot2::element_blank()),
     align = 'vh',
@@ -90,7 +90,7 @@ for (i in seq_along(error_names_vec)) {
     nrow = 1
   )
   ggplot2::ggsave(
-    plot = facet_spec_nltt_jitters,
+    plot = facet_spec_nltt_stripchart,
     filename = paste0("scenario_", error_names_vec[i],".png"),
     device = "png",
     width = 168,
@@ -99,7 +99,7 @@ for (i in seq_along(error_names_vec)) {
     dpi = 600
   )
   ggplot2::ggsave(
-    plot = facet_spec_nltt_jitters,
+    plot = facet_spec_nltt_stripchart,
     filename = paste0("scenario_", error_names_vec[i],".eps"),
     device = "eps",
     width = 168,

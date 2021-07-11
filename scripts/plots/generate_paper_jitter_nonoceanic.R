@@ -20,7 +20,7 @@ generate_paper_jitter_nonoceanic <- function(list_to_plot,
     for (j in seq_along(list_to_plot)) {
       error_metrics_list[[j]] <- list_to_plot[[j]][[i]]
     }
-    p <- plot_error_jitters_nonoceanic(
+    p <- plot_error_stripchart_nonoceanic(
       error_metrics_list = error_metrics_list,
       error = metric_to_plot[i],
       error_metrics_names = error_metrics_names,

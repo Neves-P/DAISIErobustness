@@ -1,4 +1,4 @@
-plot_error_jitters <- function(error_metrics_list,
+plot_error_stripchart <- function(error_metrics_list,
                                error = "spec_nltt",
                                error_metrics_names,
                                x_axis_text) {

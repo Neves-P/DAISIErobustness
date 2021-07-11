@@ -1,6 +1,6 @@
 # Strip charts for nonoceanic_land_bridge lb effect for Neves et al 2021
 source("scripts/plots/compile_stat_diffs.R")
-source("scripts/plots/plot_error_jitters_grouped.R")
+source("scripts/plots/plot_error_stripchart_grouped.R")
 source("scripts/plots/generate_paper_jitter_plots.R")
 source("scripts/plots/save_faceted.R")
 nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(

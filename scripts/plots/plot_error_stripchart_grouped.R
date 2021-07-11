@@ -1,4 +1,4 @@
-plot_error_jitters_grouped <- function(error = "spec_nltt",
+plot_error_stripchart_grouped <- function(error = "spec_nltt",
                                        xlabels,
                                        x_axis_text,
                                        scenario,

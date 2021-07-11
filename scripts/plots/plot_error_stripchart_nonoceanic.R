@@ -1,4 +1,4 @@
-plot_error_jitters_nonoceanic <- function(error_metrics_list,
+plot_error_stripchart_nonoceanic <- function(error_metrics_list,
                                           error = "spec_nltt",
                                           error_metrics_names,
                                           xlabels,
