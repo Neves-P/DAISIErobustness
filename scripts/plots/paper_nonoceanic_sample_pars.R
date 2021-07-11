@@ -1,7 +1,7 @@
 # Strip charts for nonoceanic for Neves et al 2021
 source("scripts/plots/compile_stat_diffs.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_jitter_plots.R")
+source("scripts/plots/generate_paper_stripchart_plots.R")
 
 nonoceanic_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic",
@@ -29,7 +29,7 @@ xlabel_vec_nonoceanic <- c("Low x<sub>s</sub>  \nLow x<sub>n</sub>",
                            "Low x<sub>s</sub>  \nHigh x<sub>n</sub>",
                            "High x<sub>s</sub>  \nHigh x<sub>n</sub>")
 
-nonoceanic_plots <- generate_paper_jitter_plots(
+nonoceanic_plots <- generate_paper_stripchart_plots(
   list_to_plot = nonoceanic_stat_diff$stat_diffs,
   error_metrics_names = nonoceanic_metrics_names,
   x_axis_text = "Non-oceanic sampling parameters",

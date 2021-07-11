@@ -1,4 +1,4 @@
-generate_paper_jitter_nonoceanic <- function(list_to_plot,
+generate_paper_stripchart_nonoceanic <- function(list_to_plot,
                                              error_metrics_names,
                                              x_axis_text,
                                              scenario,

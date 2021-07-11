@@ -1,7 +1,7 @@
 # Strip charts for oceanic param spaces for Neves et al 2021
 source("scripts/plots/compile_stat_diffs.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_jitter_plots.R")
+source("scripts/plots/generate_paper_stripchart_plots.R")
 source("scripts/plots/save_faceted.R")
 
 oceanic_ontogeny_stat_diff <- compile_stat_diffs(
@@ -56,7 +56,7 @@ xlabel_vec <- c("Low x  \nLow d",
                 "High x  \nHigh d")
 
 
-oceanic_sea_level_plots <- generate_paper_jitter_plots(
+oceanic_sea_level_plots <- generate_paper_stripchart_plots(
   list_to_plot = oceanic_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",
@@ -64,7 +64,7 @@ oceanic_sea_level_plots <- generate_paper_jitter_plots(
   xlabels = xlabel_vec,
   save = FALSE
 )
-oceanic_ontogeny_plots <- generate_paper_jitter_plots(
+oceanic_ontogeny_plots <- generate_paper_stripchart_plots(
   list_to_plot = oceanic_ontogeny_stat_diff$stat_diffs,
   error_metrics_names = oceanic_ontogeny_metrics_names,
   x_axis_text = "Hyperparameters",
@@ -73,7 +73,7 @@ oceanic_ontogeny_plots <- generate_paper_jitter_plots(
   save = FALSE
 )
 
-oceanic_ontogeny_sea_level_plots <- generate_paper_jitter_plots(
+oceanic_ontogeny_sea_level_plots <- generate_paper_stripchart_plots(
   list_to_plot = oceanic_ontogeny_sea_level_stat_diff$stat_diffs,
   error_metrics_names = oceanic_sea_level_metrics_names,
   x_axis_text = "Hyperparameters",

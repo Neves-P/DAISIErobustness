@@ -1,7 +1,7 @@
 # Strip charts for oceanic sea level gradient param spaces for Neves et al 2021
 source("scripts/plots/compile_ed95s.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_jitter_plots.R")
+source("scripts/plots/generate_paper_stripchart_plots.R")
 source("scripts/plots/save_faceted.R")
 
 oceanic_sea_level_ed95 <- compile_ed95s(
@@ -24,7 +24,7 @@ xlabel_vec <- c("80",
                 "85")
 
 
-oceanic_sea_level_plots <- generate_paper_jitter_plots(
+oceanic_sea_level_plots <- generate_paper_stripchart_plots(
   list_to_plot = oceanic_sea_level_ed95$ed95s,
   error_metrics_names = gradient_metrics,
   x_axis_text = "Island gradient",
@@ -34,7 +34,7 @@ oceanic_sea_level_plots <- generate_paper_jitter_plots(
   add_plot_title = FALSE
 )
 
-oceanic_ontongeny_sea_level_plots <- generate_paper_jitter_plots(
+oceanic_ontongeny_sea_level_plots <- generate_paper_stripchart_plots(
   list_to_plot = oceanic_ontogeny_sea_level_ed95$ed95s,
   error_metrics_names = gradient_metrics,
   x_axis_text = "Island gradient",

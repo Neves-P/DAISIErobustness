@@ -1,7 +1,7 @@
 # Strip charts for nonoceanic_land_bridge lb effect for Neves et al 2021
 source("scripts/plots/compile_ed95s.R")
 source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_jitter_plots.R")
+source("scripts/plots/generate_paper_stripchart_plots.R")
 source("scripts/plots/save_faceted.R")
 nonoceanic_land_bridge_stat_diff <- compile_stat_diffs(
   scenario = "nonoceanic_land_bridge",
@@ -24,7 +24,7 @@ xlabel_vec <- c("2",
                 "10",
                 "2",
                 "10")
-nonoceanic_land_bridge_plots <- generate_paper_jitter_plots(
+nonoceanic_land_bridge_plots <- generate_paper_stripchart_plots(
   list_to_plot = nonoceanic_land_bridge_stat_diff$stat_diffs,
   error_metrics_names = nonoceanic_land_bridge_metrics_names,
   x_axis_text = "Land-bridge immigration multiplier",
