@@ -1,9 +1,9 @@
 generate_paper_stripchart_nonoceanic <- function(list_to_plot,
-                                             error_metrics_names,
-                                             x_axis_text,
-                                             scenario,
-                                             xlabels,
-                                             save = TRUE) {
+                                                 error_metrics_names,
+                                                 x_axis_text,
+                                                 scenario,
+                                                 xlabels,
+                                                 save = TRUE) {
   metric_to_plot <- c(
     "spec_nltt",
     "endemic_nltt",
