@@ -1,4 +1,4 @@
-# Accessory functions for boxplot plotting for Neves et al 2021
+# Accessory functions for stripchart plotting for Neves et al 2021
 compile_ed95s <- function(scenario, chunk_size, total_length) {
   folder_path <- file.path("G:\\Discos partilhados\\DAISIE-RUG\\Josh_Pedro_paper\\results", scenario)
   n_chunks <- total_length / chunk_size
