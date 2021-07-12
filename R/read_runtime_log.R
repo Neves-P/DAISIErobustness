@@ -18,7 +18,10 @@ read_runtime_log <- function(log_file_path) {
   log_lines <- readLines(con = log_file_path, n = 2000)
   starttime_line_bools <- grepl("Start               : ", log_lines)
   starttime_line <- log_lines[starttime_line_bools]
-  testit::assert(length(starttime_line) == 1 && is.character(starttime_line))
+  if (!length(starttime_line) == 1 || !is.character(starttime_line)) {
+    starttime_line <- NA
+    warning("No start time found for job: ", basename(log_file_path))
+  }
   starttime_string <- sub(".*: ", replacement = "", x = starttime_line)
   starttime <- strptime(
     starttime_string,
@@ -28,7 +31,10 @@ read_runtime_log <- function(log_file_path) {
 
   endtime_line_bools <- grepl("End                 : ", log_lines)
   endtime_line <- log_lines[endtime_line_bools]
-  testit::assert(length(endtime_line) == 1 && is.character(endtime_line))
+  if (!length(starttime_line) == 1 || !is.character(starttime_line)) {
+    endtime_line <- NA
+    warning("No end time found for job: ", basename(log_file_path))
+  }
   endtime_string <- sub(".*: ", replacement = "", x = endtime_line)
   endtime <- strptime(
     endtime_string,
