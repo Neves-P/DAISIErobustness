@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("calc_ed95_for_plots works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
   ed95 <- calc_ed95_for_plots(file.path(getwd(), "testdata/results"))
