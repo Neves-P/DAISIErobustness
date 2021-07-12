@@ -30,8 +30,8 @@ generate_paper_stripchart_nonoceanic <- function(list_to_plot,
     if (save) {
       ggplot2::ggsave(
         plot = p,
-        filename = paste0(scenario, "_", metric_to_plot[i], ".eps"),
-        device = "eps",
+        filename = paste0(scenario, "_", metric_to_plot[i], ".pdf"),
+        device = "pdf",
         width = 168,
         height = 100,
         units = "mm"

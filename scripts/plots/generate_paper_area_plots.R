@@ -78,17 +78,21 @@ steep <- plot_areas(
   overlay_sea_level = overlay_sea_level
 )
 
-side_by_side_plot <- cowplot::plot_grid(steep, shallow, ncol= 2 , labels = "AUTO")
+side_by_side_plot <- cowplot::plot_grid(
+  steep,
+  shallow,
+  ncol = 2,
+  labels = c("(a)", "(b)")
+)
 
 
 ggplot2::ggsave(
   plot = side_by_side_plot,
-  filename = "area.tif",
-  device = "tiff",
+  filename = "area.pdf",
+  device = "pdf",
   width = 5.2,
   height = 2.7,
-  dpi = 300,
-  compression = "lzw"
+  dpi = 300
 )
 ggplot2::ggsave(
   plot = side_by_side_plot,
@@ -96,6 +100,6 @@ ggplot2::ggsave(
   device = "png",
   width = 5.2,
   height = 2.7,
-  dpi = 300
+  dpi = 600
 )
 

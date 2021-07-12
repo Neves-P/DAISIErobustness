@@ -100,8 +100,8 @@ for (i in seq_along(error_names_vec)) {
   )
   ggplot2::ggsave(
     plot = facet_spec_nltt_stripchart,
-    filename = paste0("scenario_", error_names_vec[i],".eps"),
-    device = "eps",
+    filename = paste0("scenario_", error_names_vec[i],".pdf"),
+    device = "pdf",
     width = 168,
     height = 100,
     units = "mm"

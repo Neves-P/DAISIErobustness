@@ -131,8 +131,8 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = final_nonoceanic_facet,
-  filename = "nonoceanic_facet.eps",
-  device = "eps",
+  filename = "nonoceanic_facet.pdf",
+  device = "pdf",
   width = 168,
   height = 100,
   units = "mm"
@@ -148,8 +148,8 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = final_nonoceanic_spec_col_facet,
-  filename = "nonoceanic_spec_col_facet.eps",
-  device = "eps",
+  filename = "nonoceanic_spec_col_facet.pdf",
+  device = "pdf",
   width = 168,
   height = 100,
   units = "mm"
