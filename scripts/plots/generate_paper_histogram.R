@@ -32,8 +32,8 @@ side_by_side_plot_legend <- cowplot::plot_grid(
 # Save plot
 ggplot2::ggsave(
   plot = side_by_side_plot_legend,
-  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_161.eps",
-  device = "eps",
+  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_161.pdf",
+  device = "pdf",
   width = 168,
   height = 100,
   units = "mm"
