@@ -1,7 +1,9 @@
 test_that("calc_ed95_for_plots works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
-  ed95 <- calc_ed95_for_plots(file.path(getwd(), "testdata/results"))
+  ed95 <- suppressMessages(
+    calc_ed95_for_plots(file.path(getwd(), "testdata/nonoceanic_land_bridge/"))
+  )
 
   expected_output <- list(
     ed95_spec_nltt = c(0.44655345, 0.50949051, 0.05294705),
