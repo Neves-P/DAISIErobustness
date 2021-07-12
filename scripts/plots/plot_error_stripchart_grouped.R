@@ -1,11 +1,11 @@
-plot_error_stripchart_grouped <- function(error = "spec_nltt",
-                                       xlabels,
-                                       x_axis_text,
-                                       scenario,
-                                       save,
-                                       add_plot_title = TRUE) {
-
-
+plot_error_stripchart_grouped <- function(data_n_df,
+                                          error = "spec_nltt",
+                                          xlabels,
+                                          x_axis_text,
+                                          scenario,
+                                          n_ages,
+                                          save,
+                                          add_plot_title = TRUE) {
 
   # y axis labels
   if (error == "spec_nltt") {
@@ -32,7 +32,8 @@ plot_error_stripchart_grouped <- function(error = "spec_nltt",
   } else if (scenario == "nonoceanic_land_bridge") {
     plot_title <- "Continental land-bridge"
   }
-
+  data <- data_n_df$data
+  n_df <- data_n_df$n_df
 
   label_ns <- c()
   for (i in seq_along(unique(n_df$key))) {
@@ -41,19 +42,19 @@ plot_error_stripchart_grouped <- function(error = "spec_nltt",
     matched_n_o <- matched_ns[2]
     matched_n_a <- matched_ns[3]
     if (n_ages == 2) {
-    label_ns[i] <- glue::glue(
-      paste0(
-        xlabels[i],
-        "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+      label_ns[i] <- glue::glue(
+        paste0(
+          xlabels[i],
+          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+        )
       )
-    )
     } else if (n_ages == 3) {
-    label_ns[i] <- glue::glue(
-      paste0(
-        xlabels[i],
-        "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}  \nN<sub>A</sub> = {matched_n_a}"
+      label_ns[i] <- glue::glue(
+        paste0(
+          xlabels[i],
+          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}  \nN<sub>A</sub> = {matched_n_a}"
+        )
       )
-    )
     }
   }
   xlabels <- label_ns
