@@ -13,7 +13,8 @@ side_by_side_plot <- cowplot::plot_grid(
   barplot_161 +  ggplot2::theme(legend.position = "none"),
   barplot_13 + ggplot2::theme(legend.position = "none"),
   ncol = 2,
-  labels = c("a", "b")
+  labels = c("(a)", "(b)"),
+  label_size = 10.5
 )
 
 ## Make legend
