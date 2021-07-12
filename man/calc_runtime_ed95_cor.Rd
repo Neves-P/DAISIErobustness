@@ -15,7 +15,7 @@ parameter set in each parameter space as returned by
 \code{\link{calc_ed95_param_set}()}.}
 }
 \value{
-A data frame with the Pearson correaltion coefficient between runtime
+A data frame with the Pearson correlation coefficient between runtime
   and each of the ED95 metrics.
 }
 \description{

@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return A data frame with the Pearson correaltion coefficient between runtime
+#' @return A data frame with the Pearson correlation coefficient between runtime
 #'   and each of the ED95 metrics.
 #' @author Pedro Neves
 #' @export
