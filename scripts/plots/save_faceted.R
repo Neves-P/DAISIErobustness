@@ -28,7 +28,8 @@ saved_faceted <- function(plot_list_1,
       axis.title.x = ggplot2::element_blank()
     ) + ggplot2::ylim(0, faceted_ylim),
     align = 'vh',
-    labels = c("a", "b", "c"),
+    labels = c("(a)", "(b)", "(c)"),
+    label_size = 10.5,
     hjust = -0.2,
     nrow = 1
   )
@@ -76,8 +77,8 @@ saved_faceted <- function(plot_list_1,
   )
   ggplot2::ggsave(
     plot = final_plot,
-    filename = paste0(sub_text, name_suffix, ".eps"),
-    device = "eps",
+    filename = paste0(sub_text, name_suffix, ".pdf"),
+    device = "pdf",
     width = 168,
     height = 100,
     units = "mm"
