@@ -101,4 +101,12 @@ plot_cor <- function(param_space_data_frame) {
     units = "mm",
     dpi = 600
   )
+  ggplot2::ggsave(
+    plot = faceted_plot,
+    filename = paste0("runtime_ed95_corr_", param_space_name, ".pdf"),
+    device = "pdf",
+    width = 168,
+    height = 100,
+    units = "mm"
+  )
 }
