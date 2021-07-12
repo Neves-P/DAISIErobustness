@@ -22,22 +22,26 @@ generate_paper_stripchart_plots <- function(list_to_plot,
     for (j in seq_along(list_to_plot)) {
       error_metrics_list[[j]] <- list_to_plot[[j]][[i]]
     }
-    p <- plot_error_stripchart_grouped(
+    data_n_df <- tidy_data(
       error_metrics_list = error_metrics_list,
-      error = metric_to_plot[i],
       error_metrics_names = error_metrics_names,
+      n_ages = n_ages
+    )
+    p <- plot_error_stripchart_grouped(
+      data_n_df = data_n_df,
+      error = metric_to_plot[i],
       xlabels = xlabels,
       x_axis_text = x_axis_text,
       scenario = scenario,
-      save = save,
       n_ages = n_ages,
+      save = save,
       add_plot_title = add_plot_title
     )
     if (save) {
       ggplot2::ggsave(
         plot = p,
-        filename = paste0(scenario, "_", metric_to_plot[i], ".eps"),
-        device = "eps",
+        filename = paste0(scenario, "_", metric_to_plot[i], ".pdf"),
+        device = "pdf",
         width = 168,
         height = 100,
         units = "mm"
