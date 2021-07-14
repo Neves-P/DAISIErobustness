@@ -10,6 +10,8 @@
 #'   \item{\code{param_set}}{Atomic numeric vector with parameter space number.}
 #'   \item{\code{runtime}}{Atomic numeric vector with Peregrine job run time in
 #'   seconds.}
+#'   \item{\code{log_name}}{Character vector with name of corresponding log file
+#'   to facilitate debugging.}
 #' }
 #' @author Pedro Neves
 #' @export
@@ -25,7 +27,8 @@ get_runtime_params <- function(logs_folder_path) {
   out <- data.frame(
     "param_space_name" = character(),
     "param_set" = numeric(),
-    "runtime" = numeric()
+    "runtime" = numeric(),
+    "log_name" = character()
   )
 
   for (i in seq_along(log_files)) {
@@ -36,6 +39,7 @@ get_runtime_params <- function(logs_folder_path) {
     out[i, "param_space_name"] <- param_space_name
     out[i, "param_set"] <- param_set
     out[i, "runtime"] <- runtime
+    out[i, "log_name"] <- basename(log_files[i])
   }
 
   out <- out[order(out$param_space_name, out$param_set), ]
