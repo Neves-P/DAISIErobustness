@@ -7,9 +7,10 @@
 plot_cor(param_space_data_frame)
 }
 \arguments{
-\item{param_space_data_frame}{A data frame with ED95 statistics of ONLY one
-parameter space, together with associated runtime. Used for plotting
-correlation between runtime and ED95.}
+\item{param_space_data_frame}{A data frame with ED95 statistics all
+parameter spaces, together with associated runtime. Used for plotting
+correlation between runtime and ED95. Obtained by running
+\code{\link{calc_ed95_param_set}()}.}
 }
 \value{
 Saves runtime vs ED95 correlation plot to working directory as .png file.

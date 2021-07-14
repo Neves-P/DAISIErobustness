@@ -206,9 +206,10 @@ parameter space as returned by \code{\link{get_runtime_params}()}.}
 parameter set in each parameter space as returned by
 \code{\link{calc_ed95_param_set}()}.}
 
-\item{param_space_data_frame}{A data frame with ED95 statistics of ONLY one
-parameter space, together with associated runtime. Used for plotting
-correlation between runtime and ED95.}
+\item{param_space_data_frame}{A data frame with ED95 statistics all
+parameter spaces, together with associated runtime. Used for plotting
+correlation between runtime and ED95. Obtained by running
+\code{\link{calc_ed95_param_set}()}.}
 }
 \value{
 Nothing

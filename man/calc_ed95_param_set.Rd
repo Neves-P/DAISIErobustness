@@ -24,11 +24,10 @@ A data frame with ED95 statistics containing 7 columns:
 }
 }
 \description{
-This function will load the results of each parameter set from a given
-parameter space and compute all associated ED95 statistics. All parameter
-sets of the parameter space must be in the same folder, located in
-\code{folder_path}. Return type is appropriate for functions dealing with
-run time vs ED95 correlations.
+This function will load the results of each parameter set from all
+parameter spaces and compute all associated ED95 statistics. All parameter
+sets must be inside named sub folders inside \code{folder_path}. Return type
+is appropriate for functions dealing with run time vs ED95 correlations.
 }
 \author{
 Pedro Neves, Joshua W. Lambert
