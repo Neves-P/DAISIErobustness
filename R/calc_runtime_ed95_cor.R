@@ -27,23 +27,28 @@ calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
 
     spec_nltt_cor <- stats::cor(
       param_space_data_frame$ed95_spec_nltt,
-      param_space_data_frame$runtime
+      param_space_data_frame$runtime,
+      use = "complete.obs"
     )
     endemic_nltt_cor <- stats::cor(
       param_space_data_frame$ed95_endemic_nltt,
-      param_space_data_frame$runtime
+      param_space_data_frame$runtime,
+      use = "complete.obs"
     )
     nonendemic_nltt_cor <- stats::cor(
       param_space_data_frame$ed95_nonendemic_nltt,
-      param_space_data_frame$runtime
+      param_space_data_frame$runtime,
+      use = "complete.obs"
     )
     num_spec_cor <- stats::cor(
       param_space_data_frame$ed95_num_spec,
-      param_space_data_frame$runtime
+      param_space_data_frame$runtime,
+      use = "complete.obs"
     )
     num_col_cor <- stats::cor(
       param_space_data_frame$ed95_num_col,
-      param_space_data_frame$runtime
+      param_space_data_frame$runtime,
+      use = "complete.obs"
     )
 
     out[[i]] <- data.frame(
