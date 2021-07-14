@@ -16,19 +16,6 @@ plot_cor <- function(param_space_data_frame) {
     "ed95_num_spec",
     "ed95_num_col"
   )
-  param_space_name <- param_space_data_frame$param_space_name[1]
-
-  if (param_space_name == "oceanic_ontogeny") {
-    param_space_label <- "Oceanic ontogeny"
-  } else if (param_space_name == "oceanic_ontogeny_sea_level") {
-    param_space_label <- "Oceanic ontogeny sea-level"
-  } else if (param_space_name == "oceanic_sea_level") {
-    param_space_label <- "Oceanic sea-level"
-  } else if (param_space_name == "nonoceanic") {
-    param_space_label <- "Non-oceanic"
-  } else if (param_space_name == "nonoceanic_land_bridge") {
-    param_space_label <- "Non-oceanic land-bridge"
-  }
 
   plots <- list()
   for (i in seq_along(metrics)) {
@@ -63,38 +50,19 @@ plot_cor <- function(param_space_data_frame) {
       ggplot2::theme(plot.margin = ggplot2::margin(6, 0.3, 6, 0.3))
   }
 
-
   faceted_plot <- cowplot::plot_grid(
     plots[[1]], plots[[2]], plots[[3]], plots[[4]], plots[[5]],
         align = "vh",
-    labels = c("a", "b", "c", "d", "e"),
+    labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
+    label_size = 9,
     hjust = -0.10,
     nrow = 2
   )
 
-  # now add the title
-  title <- cowplot::ggdraw() +
-    cowplot::draw_label(
-      param_space_label,
-      fontface = "bold",
-      x = 0,
-      hjust = 0
-    ) +
-    ggplot2::theme(
-      # add margin on the left of the drawing canvas,
-      # so title is aligned with left edge of first plot
-      plot.margin = ggplot2::margin(0, 0, 0, 7)
-    )
-  faceted_plot <- cowplot::plot_grid(
-    title, faceted_plot,
-    ncol = 1,
-    # rel_heights values control vertical title margins
-    rel_heights = c(0.1, 1)
-  )
 
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr_", param_space_name, ".png"),
+    filename = paste0("runtime_ed95_corr.png"),
     device = "png",
     width = 168,
     height = 100,
@@ -103,7 +71,7 @@ plot_cor <- function(param_space_data_frame) {
   )
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr_", param_space_name, ".pdf"),
+    filename = paste0("runtime_ed95_corr.pdf"),
     device = "pdf",
     width = 168,
     height = 100,
