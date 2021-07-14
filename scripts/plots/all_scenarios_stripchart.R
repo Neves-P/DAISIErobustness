@@ -1,6 +1,6 @@
 # Scenario strip charts for Neves et al 2021
 # Figure 4
-source("scripts/plots/plot_error_stripchart.R")
+source("scripts/plots/functions/plot_error_stripchart.R")
 root_folder <- "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/"
 # Load and calculate ED95 stat from all results
 oceanic_ontogeny_ed95 <- calc_ed95_for_plots(
