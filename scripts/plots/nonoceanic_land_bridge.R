@@ -10,7 +10,7 @@ nonoceanic_land_bridge_stat_diff <- compile_ed95s(
   total_length = 256
 )
 
-nonoceanic_land_bridge_metrics_names <- rep(c("l_l", "h_l", "l_h", "h_h"), 64)
+nonoceanic_land_bridge_metrics_names <- c("l_l", "h_l", "l_h", "h_h", "l_l", "h_l", "l_h", "h_h")
 
 xlabel_vec <- c("Low x  \nLow d",
                 "High x  \nLow d",
@@ -23,8 +23,8 @@ nonoceanic_land_bridge_plots <- generate_paper_stripchart_plots(
   x_axis_text = "Non-oceanic sampling parameters",
   scenario = "nonoceanic_land_bridge",
   xlabels = xlabel_vec,
-  save = TRUE,
-  add_plot_title = TRUE
+  save = FALSE,
+  add_plot_title = FALSE
 )
 
 
@@ -53,7 +53,8 @@ prow <- cowplot::plot_grid(
     plot.margin = ggplot2::margin(6, 1.5, 6, 1.5)) +
     ggplot2::ylim(0, faceted_ylim),
   align = 'vh',
-  labels = c("a", "b", "c"),
+  labels = c("(a)", "(b)", "(c)"),
+  label_size = 10.5,
   hjust = -0.2,
   nrow = 1
 )
@@ -76,7 +77,8 @@ prow_spec_col <- cowplot::plot_grid(
     plot.margin = ggplot2::margin(6, 1.5, 6, 1.5)) +
     ggplot2::ylim(0, faceted_ylim),
   align = 'vh',
-  labels = c("a", "b", "c"),
+  labels = c("(a)", "(b)", "(c)"),
+  label_size = 10.5,
   hjust = -0.2,
   nrow = 1
 )
@@ -91,7 +93,7 @@ final_land_bridge_spec_col <- cowplot::plot_grid(prow_spec_col, legend, rel_widt
 
 final_land_bridge <- cowplot::add_sub(
   final_land_bridge,
-  "Land-bridge immigration multiplier",
+  "Non-oceanic sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,
@@ -101,7 +103,7 @@ final_land_bridge <- cowplot::add_sub(
 
 final_land_bridge_spec_col <- cowplot::add_sub(
   final_land_bridge_spec_col,
-  "Land-bridge immigration multiplier",
+  "Non-oceanic sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,
@@ -111,7 +113,7 @@ final_land_bridge_spec_col <- cowplot::add_sub(
 
 ggplot2::ggsave(
   plot = final_land_bridge,
-  filename = "nonoceanic_lb_facet.png",
+  filename = "nonoceanic_lb_sampling_facet.png",
   device = "png",
   width = 168,
   height = 100,
@@ -120,7 +122,7 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = final_land_bridge,
-  filename = "nonoceanic_lb_facet.pdf",
+  filename = "nonoceanic_lb_sampling_facet.pdf",
   device = "pdf",
   width = 168,
   height = 100,
@@ -129,7 +131,7 @@ ggplot2::ggsave(
 
 ggplot2::ggsave(
   plot = final_land_bridge_spec_col,
-  filename = "nonoceanic_lb_spec_col_facet.png",
+  filename = "nonoceanic_lb_sampling_spec_col_facet.png",
   device = "png",
   width = 168,
   height = 100,
@@ -138,7 +140,7 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = final_land_bridge_spec_col,
-  filename = "nonoceanic_lb_spec_col_facet.pdf",
+  filename = "nonoceanic_lb_sampling_spec_col_facet.pdf",
   device = "pdf",
   width = 168,
   height = 100,
