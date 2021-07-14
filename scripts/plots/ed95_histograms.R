@@ -1,4 +1,5 @@
-# Barplots for Neves et al 2021
+# Histograms for Neves et al 2021
+# Fig 3
 source("scripts/plots/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
 load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_13.RData")

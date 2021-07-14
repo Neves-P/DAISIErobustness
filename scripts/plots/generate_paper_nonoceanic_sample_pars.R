@@ -1,7 +1,9 @@
 # Strip charts for nonoceanic for Neves et al 2021
-source("scripts/plots/compile_ed95s.R")
-source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_stripchart_plots.R")
+# Fig 6 S12
+source("scripts/plots/functions/compile_ed95s.R")
+source("scripts/plots/functions/plot_error_stripchart_grouped.R")
+source("scripts/plots/functions/generate_paper_stripchart_plots.R")
+source("scripts/plots/functions/tidy_data.R")
 
 nonoceanic_stat_diff <- compile_ed95s(
   scenario = "nonoceanic",
@@ -30,7 +32,7 @@ xlabel_vec_nonoceanic <- c("Low x<sub>s</sub>  \nLow x<sub>n</sub>",
                            "High x<sub>s</sub>  \nHigh x<sub>n</sub>")
 
 nonoceanic_plots <- generate_paper_stripchart_plots(
-  list_to_plot = nonoceanic_stat_diff$stat_diffs,
+  list_to_plot = nonoceanic_stat_diff$ed95s,
   error_metrics_names = nonoceanic_metrics_names,
   x_axis_text = "Non-oceanic sampling parameters",
   scenario = "nonoceanic",
@@ -60,7 +62,8 @@ prow <- cowplot::plot_grid(
     ggplot2::ylim(0, faceted_ylim) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
-  labels = c("a", "b", "c"),
+  labels = c("(a)", "(b)", "(c)"),
+  label_size = 10.5,
   hjust = -0.2,
   nrow = 1
 )
@@ -78,7 +81,8 @@ prow_spec_col <- cowplot::plot_grid(
     ggplot2::ylim(0, faceted_ylim) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
-  labels = c("a", "b"),
+  labels = c("(a)", "(b)"),
+  label_size = 10.5,
   hjust = -0.2,
   nrow = 1
 )

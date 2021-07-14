@@ -1,10 +1,10 @@
 # Strip charts for oceanic sea level gradient param spaces for Neves et al 2021
-# Fig S5-S8
-source("scripts/plots/compile_ed95s.R")
-source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_stripchart_plots.R")
-source("scripts/plots/save_faceted.R")
-source("scripts/plots/tidy_data.R")
+# Fig S6-S9
+source("scripts/plots/functions/compile_ed95s.R")
+source("scripts/plots/functions/plot_error_stripchart_grouped.R")
+source("scripts/plots/functions/generate_paper_stripchart_plots.R")
+source("scripts/plots/functions/save_faceted.R")
+source("scripts/plots/functions/tidy_data.R")
 
 oceanic_sea_level_ed95 <- compile_ed95s(
   scenario = "oceanic_sea_level",

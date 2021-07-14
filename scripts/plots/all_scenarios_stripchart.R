@@ -1,4 +1,5 @@
 # Scenario strip charts for Neves et al 2021
+# Figure 4
 source("scripts/plots/plot_error_stripchart.R")
 root_folder <- "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/"
 # Load and calculate ED95 stat from all results
@@ -85,7 +86,8 @@ for (i in seq_along(error_names_vec)) {
       legend.position = "none",
       axis.title.y = ggplot2::element_blank()),
     align = 'vh',
-    labels = c("a", "b"),
+    labels = c("(a)", "(b)"),
+    label_size = 10.5,
     hjust = -0.2,
     nrow = 1
   )
