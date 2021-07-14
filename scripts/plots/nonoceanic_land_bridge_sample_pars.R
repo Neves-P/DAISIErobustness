@@ -1,4 +1,6 @@
-# Strip charts for nonoceanic_land_bridge lb effect for Neves et al 2021
+# Strip charts for nonoceanic_land_bridge non oceanic sampling effect for Neves
+# et al 2021
+# Fig S10
 source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")
 source("scripts/plots/functions/generate_paper_stripchart_plots.R")
