@@ -31,16 +31,16 @@ read_runtime_log <- function(log_file_path) {
 
   endtime_line_bools <- grepl("End                 : ", log_lines)
   endtime_line <- log_lines[endtime_line_bools]
-  if (!length(starttime_line) == 1 || !is.character(starttime_line)) {
+  if (!length(endtime_line) == 1 || !is.character(endtime_line)) {
     endtime_line <- NA
     warning("No end time found for job: ", basename(log_file_path))
   }
-  endtime_string <- sub(".*: ", replacement = "", x = endtime_line)
-  endtime <- strptime(
-    endtime_string,
-    format = "%Y-%m-%dT%H:%M:%OS",
-    tz = "Europe/Amsterdam"
-  )
+    endtime_string <- sub(".*: ", replacement = "", x = endtime_line)
+    endtime <- strptime(
+      endtime_string,
+      format = "%Y-%m-%dT%H:%M:%OS",
+      tz = "Europe/Amsterdam"
+    )
 
   elapsed_seconds <- as.numeric(difftime(
     time1 = endtime,
