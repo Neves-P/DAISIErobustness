@@ -80,11 +80,14 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
       oceanic_error_num_col <- output$num_col_baseline_error
 
 
-      boundary_spec_nltt <- quantile(oceanic_error_spec_nltt, 0.95)
-      boundary_endemic_nltt <- quantile(oceanic_error_endemic_nltt, 0.95)
-      boundary_nonendemic_nltt <- quantile(oceanic_error_nonendemic_nltt, 0.95)
-      boundary_num_spec <- quantile(oceanic_error_num_spec, 0.95)
-      boundary_num_col <- quantile(oceanic_error_num_col, 0.95)
+      boundary_spec_nltt <- stats::quantile(oceanic_error_spec_nltt, 0.95)
+      boundary_endemic_nltt <- stats::quantile(oceanic_error_endemic_nltt, 0.95)
+      boundary_nonendemic_nltt <- stats::quantile(
+        oceanic_error_nonendemic_nltt,
+        0.95
+      )
+      boundary_num_spec <- stats::quantile(oceanic_error_num_spec, 0.95)
+      boundary_num_col <- stats::quantile(oceanic_error_num_col, 0.95)
 
       ed95_spec_nltt[i] <-
         (sum(geodynamic_error_spec_nltt > boundary_spec_nltt) + 1) /
