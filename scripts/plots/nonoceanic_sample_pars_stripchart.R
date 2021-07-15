@@ -34,7 +34,7 @@ xlabel_vec_nonoceanic <- c("Low x<sub>s</sub>  \nLow x<sub>n</sub>",
 nonoceanic_plots <- generate_paper_stripchart_plots(
   list_to_plot = nonoceanic_stat_diff$ed95s,
   error_metrics_names = nonoceanic_metrics_names,
-  x_axis_text = "Non-oceanic sampling parameters",
+  x_axis_text = "Continental sampling parameters",
   scenario = "nonoceanic",
   xlabels = xlabel_vec_nonoceanic,
   save = FALSE,
@@ -105,7 +105,7 @@ nonoceanic_spec_col_facet <- cowplot::plot_grid(
 
 final_nonoceanic_facet <- cowplot::add_sub(
   nonoceanic_facet,
-  "Non-oceanic sampling parameters",
+  "Continental sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,
@@ -115,7 +115,7 @@ final_nonoceanic_facet <- cowplot::add_sub(
 
 final_nonoceanic_spec_col_facet <- cowplot::add_sub(
   nonoceanic_spec_col_facet,
-  "Non-oceanic sampling parameters",
+  "Continental sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,

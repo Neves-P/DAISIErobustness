@@ -22,7 +22,7 @@ xlabel_vec <- c("Low x  \nLow d",
 nonoceanic_land_bridge_plots <- generate_paper_stripchart_plots(
   list_to_plot = nonoceanic_land_bridge_stat_diff$ed95s,
   error_metrics_names = nonoceanic_land_bridge_metrics_names,
-  x_axis_text = "Non-oceanic sampling parameters",
+  x_axis_text = "Continental sampling parameters",
   scenario = "nonoceanic_land_bridge",
   xlabels = xlabel_vec,
   save = FALSE,
@@ -95,7 +95,7 @@ final_land_bridge_spec_col <- cowplot::plot_grid(prow_spec_col, legend, rel_widt
 
 final_land_bridge <- cowplot::add_sub(
   final_land_bridge,
-  "Non-oceanic sampling parameters",
+  "Continental sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,
@@ -105,7 +105,7 @@ final_land_bridge <- cowplot::add_sub(
 
 final_land_bridge_spec_col <- cowplot::add_sub(
   final_land_bridge_spec_col,
-  "Non-oceanic sampling parameters",
+  "Continental sampling parameters",
   vpadding = grid::unit(0, "lines"),
   y = 5,
   x = 0.5,
