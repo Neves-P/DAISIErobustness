@@ -25,8 +25,8 @@ nonoceanic_land_bridge_ed95 <- calc_ed95_for_plots(
 scenario_name <- c("Oceanic\nontogeny",
                    "Oceanic\nsea-level",
                    "Oceanic\nontogeny\nsea-level",
-                   "Non-oceanic",
-                   "Non-oceanic\nland-bridge")
+                   "Continental",
+                   "Continental\nland-bridge")
 error_names_vec <- c(
   "spec_nltt",
   "endemic_nltt",
