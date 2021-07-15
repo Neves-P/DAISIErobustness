@@ -31,6 +31,8 @@ plot_cor <- function(param_space_data_frame) {
       error_label <- expression(ED95[95] * " Colonist Number")
     }
 
+    runtime <- NULL # ggplot2 nonstandard evalution hack
+    .data <- NULL
     plots[[i]] <- ggplot2::ggplot(
       data = param_space_data_frame,
       ggplot2::aes(x = runtime, y = .data[[metrics[i]]])) +
