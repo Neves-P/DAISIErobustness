@@ -1,9 +1,9 @@
 # Strip charts for oceanic param spaces for Neves et al 2021
-# Fig 5 and Fig S1-4
-source("scripts/plots/compile_ed95s.R")
-source("scripts/plots/plot_error_stripchart_grouped.R")
-source("scripts/plots/generate_paper_stripchart_plots.R")
-source("scripts/plots/save_faceted.R")
+# Fig 5 and Fig S2-5
+source("scripts/plots/functions/compile_ed95s.R")
+source("scripts/plots/functions/plot_error_stripchart_grouped.R")
+source("scripts/plots/functions/generate_paper_stripchart_plots.R")
+source("scripts/plots/functions/save_faceted.R")
 
 oceanic_ontogeny_ed95 <- compile_ed95s(
   scenario = "oceanic_ontogeny",

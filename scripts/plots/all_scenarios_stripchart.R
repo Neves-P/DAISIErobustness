@@ -53,6 +53,12 @@ nonoceanic_list[[1]] <- nonoceanic_ed95
 nonoceanic_list[[2]] <- nonoceanic_land_bridge_ed95
 
 
+facet_spec_nltt_stripchart <- list()
+label_list <- list(c("(a)", "(b)"),
+                   c("(c)", "(d)"),
+                   c("(e)", "(f)"),
+                   c("(g)", "(h)"),
+                   c("(i)", "(j)"))
 for (i in seq_along(error_names_vec)) {
   # Create spec nltt strip charts
   list_plot_oceanic <- list(
@@ -80,32 +86,48 @@ for (i in seq_along(error_names_vec)) {
   ) + ggplot2::scale_color_manual(values = c(rep("#FC8D62", 2)))
 
 
-  facet_spec_nltt_stripchart <- cowplot::plot_grid(
+  facet_spec_nltt_stripchart[[i]] <- cowplot::plot_grid(
     spec_nltt_oceanic_stripchart + ggplot2::theme(legend.position = "none"),
     spec_nltt_nonoceanic_stripchart + ggplot2::theme(
       legend.position = "none",
       axis.title.y = ggplot2::element_blank()),
     align = 'vh',
-    labels = c("(a)", "(b)"),
-    label_size = 10.5,
+    labels = label_list[[i]],
+    label_size = 8,
     hjust = -0.2,
     nrow = 1
   )
-  ggplot2::ggsave(
-    plot = facet_spec_nltt_stripchart,
-    filename = paste0("scenario_", error_names_vec[i],".png"),
-    device = "png",
-    width = 168,
-    height = 100,
-    units = "mm",
-    dpi = 600
-  )
-  ggplot2::ggsave(
-    plot = facet_spec_nltt_stripchart,
-    filename = paste0("scenario_", error_names_vec[i],".pdf"),
-    device = "pdf",
-    width = 168,
-    height = 100,
-    units = "mm"
-  )
 }
+
+final_facet <- cowplot::plot_grid(
+  facet_spec_nltt_stripchart[[1]] + ggplot2::theme(legend.position = "none"),
+  facet_spec_nltt_stripchart[[2]] + ggplot2::theme(legend.position = "none"),
+  facet_spec_nltt_stripchart[[3]] + ggplot2::theme(legend.position = "none"),
+  facet_spec_nltt_stripchart[[4]] + ggplot2::theme(legend.position = "none"),
+  facet_spec_nltt_stripchart[[5]] + ggplot2::theme(
+    legend.position = "none",
+    axis.title.y = ggplot2::element_blank()),
+  align = 'vh',
+  hjust = -0.2,
+  nrow = 5
+
+)
+
+ggplot2::ggsave(
+  plot = final_facet,
+  filename = paste0("facet_scenario", ".png"),
+  device = "png",
+  width = 168,
+  height = 200,
+  units = "mm",
+  dpi = 600
+)
+ggplot2::ggsave(
+  plot = final_facet,
+  filename = paste0("facet_scenario", ".pdf"),
+  device = "pdf",
+  width = 168,
+  height = 200,
+  units = "mm"
+)
+
