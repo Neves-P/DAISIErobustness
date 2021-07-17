@@ -20,9 +20,9 @@ plot_error_stripchart <- function(error_metrics_list,
   } else if (error == "nonendemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "NESTT")
   } else if (error == "num_spec") {
-    error_label <- expression(ED[95] * " Species Number")
+    error_label <- expression(ED[95] * " N Spec")
   } else if (error == "num_col") {
-    error_label <- expression(ED[95] * " Colonist Number")
+    error_label <- expression(ED[95] * " N Col")
   }
 
   data <- as.data.frame(do.call(cbind, error_metrics_list))
@@ -49,10 +49,10 @@ plot_error_stripchart <- function(error_metrics_list,
       ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.4) +
       ggplot2::ylab(error_label) +
       ggplot2::scale_x_discrete(labels = label_ns) +
-      ggplot2::theme(axis.title.y = ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.title.y = ggplot2::element_text(size = 7.5)) +
       ggplot2::theme(axis.title.x = ggplot2::element_blank()) +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
-      ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 9)) +
+      ggplot2::theme(axis.text.y = ggplot2::element_text(size = 7.5)) +
       # ggplot2::theme(axis.text.x = ggplot2::element_text()) +
       ggplot2::theme(legend.position = "none") +
       ggplot2::theme(plot.margin = ggplot2::margin(6, 0.7, 6, 0.7))
