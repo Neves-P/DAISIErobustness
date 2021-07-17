@@ -6,11 +6,14 @@ test_that("calc_ed95_param_set works", {
   )
 
   expected_output <- data.frame(
-    param_space_name = c(rep("nonoceanic_land_bridge", 2), rep("oceanic_sea_level", 4)),
+    param_space_name = c(
+      rep("nonoceanic_land_bridge", 2),
+      rep("oceanic_sea_level", 4)
+    ),
     param_set = c(123, 92, 237, 279, 473, 569),
     ed95_spec_nltt = c(
       0.99900099900099903,
-      0.99600399600399603 ,
+      0.99600399600399603,
       0.05394605394605394,
       0.04995004995004995,
       0.03496503496503497,
