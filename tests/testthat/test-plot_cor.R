@@ -8,20 +8,16 @@ test_that("multiplication works", {
     "testdata/results"
   )
 
-  runtime_cors <- calc_runtime_ed95_cor(
-    runtime_params = runtime_params,
-    ed95_param_sets = results_total
-  )
-
   runtime_pars <- merge(
     runtime_params, results_total, by = c("param_space_name", "param_set")
   )
 
   plot_cor(runtime_pars)
-  expect_identical(
+  expect_known_output(
     "runtime_ed95_corr.pdf",
-    "testdata/plots/runtime_ed95_corr.pdf")
-  expect_identical(
+    "testdata/plots/runtime_ed95_corr.pdf"
+  )
+  expect_known_output(
     "runtime_ed95_corr.png",
     "testdata/plots/runtime_ed95_corr.png"
   )
