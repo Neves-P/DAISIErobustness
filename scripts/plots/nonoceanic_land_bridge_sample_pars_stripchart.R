@@ -1,4 +1,4 @@
-# Fig S11
+# Fig S10 - S11
 # Strip charts for nonoceanic land bridge by sample parameter for Neves et al 2021
 source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")
