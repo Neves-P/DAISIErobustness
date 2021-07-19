@@ -163,7 +163,7 @@ plot_areas <- function(totaltime_1,
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
-    ggplot2::xlab("Time (M.Y.A)") + ggplot2::ylab(bquote('Area '~(km^2)))
+    ggplot2::xlab("Time (mya)") + ggplot2::ylab(bquote('Area '~(km^2)))
 
 
   if (overlay_sea_level_ontogeny) {
