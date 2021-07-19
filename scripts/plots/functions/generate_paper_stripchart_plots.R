@@ -1,11 +1,11 @@
 generate_paper_stripchart_plots <- function(list_to_plot,
-                                        error_metrics_names,
-                                        x_axis_text,
-                                        scenario,
-                                        xlabels,
-                                        save = TRUE,
-                                        n_ages = 2,
-                                        add_plot_title = TRUE) {
+                                            error_metrics_names,
+                                            x_axis_text,
+                                            scenario,
+                                            xlabels,
+                                            save = TRUE,
+                                            n_ages = 2,
+                                            add_plot_title = TRUE) {
   metric_to_plot <- c(
     "spec_nltt",
     "endemic_nltt",
