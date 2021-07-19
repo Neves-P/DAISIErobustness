@@ -15,9 +15,9 @@ plot_error_stripchart_grouped <- function(data_n_df,
   } else if (error == "nonendemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "NESTT")
   } else if (error == "num_spec") {
-    error_label <- expression(ED[95] * " Species Number")
+    error_label <- expression(ED[95] * " N Spec")
   } else if (error == "num_col") {
-    error_label <- expression(ED[95] * " Colonist Number")
+    error_label <- expression(ED[95] * " N Col")
   }
 
   # Title
