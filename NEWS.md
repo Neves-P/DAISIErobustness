@@ -1,3 +1,13 @@
+# DAISIErobustness 2.2.0
+
+* Completely rework all plotting functions for Santos Neves, Lambert, Valente, and Etienne  2021. Scripts associated with the paper can be found in the `scripts/folder/` and the necessary functions are found in the sub directory `scripts/folder/functions`.
+* Add functions for reading log files and checking checking correlations between error and run time. Functions are `calc_ed95_param_set()`, `read_runtime_log()`, `read_param_space_log()`, `read_param_set_log()`, `get_runtime_params()`, `calc_runtime_ed95_cor()`, and `plot_cor()`.
+* Rename `calc_stat_diff()` to `calc_ed_95_for_plot()`. This is the function upon which
+the plotting functions for publications rely. Add tests for this function.
+* `load_param_space()` no longer uses the function `read_csv2()` from the `readr` package in favour of base R `read.csv2()`. This change was prompted by the release of `readr` v2.0.0, which parses column types in a different way, resulting in the incorrect reading of `K` from the parameter spaces. Either character vectors or `NA`s were returned due to a combination of ',' as decimal and `Inf` in the data set. The change to `read.csv()` is functionally the same.
+* Improve `run_robustness()` documentation.
+
+
 # DAISIErobustness 2.1.1
 
 * Depend on DAISIE v4.0.2 to make use of all of it's corrections. See [here](https://github.com/rsetienne/DAISIE/blob/master/NEWS.md#daisie-402) for  DAISIE v4.0.0, v4.0.1 and v4.0.2 patch notes for details on the changes.
@@ -82,6 +92,6 @@ implemented models.
 model from a file.
 * Store intermediate simulation output and read said output to finish analyses
 and save to file.
-* Interact and submit jobs to the Pergrine HPCC at the RUG.
+* Interact and submit jobs to the Peregrine HPCC at the RUG.
 * Generate parameter spaces used for geodynamics and trait dependence robustness
 studies.
