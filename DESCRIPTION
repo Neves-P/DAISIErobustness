@@ -55,7 +55,6 @@ Imports:
     sessioninfo,
     DAISIE (>= 4.0.2),
     nLTT,
-    readr,
     testit,
     ggplot2,
     cowplot

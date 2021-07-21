@@ -16,7 +16,7 @@ be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 pipeline.}
 }
 \value{
-tibble parameter space.
+Data frame with the parameter space.
 }
 \description{
 Loads the parameter space into the environment for simulations

@@ -16,7 +16,7 @@
 #'  run up to a given point. Will be saved into .RData file by
 #'  \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 #'  \code{save_output} is \code{TRUE}.
-#' @param param_space tibble of the parameter space.
+#' @param param_space A data frame of the parameter space.
 #' @param sim_pars A list of simulation parameters.
 #' @param sim A list of simulation output from
 #'  \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},

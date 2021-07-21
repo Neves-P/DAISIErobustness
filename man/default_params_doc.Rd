@@ -70,7 +70,7 @@ run up to a given point. Will be saved into .RData file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
 
-\item{param_space}{tibble of the parameter space.}
+\item{param_space}{A data frame of the parameter space.}
 
 \item{sim_pars}{A list of simulation parameters.}
 
