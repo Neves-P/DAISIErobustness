@@ -47,7 +47,6 @@ Suggests:
     lintr,
     knitr,
     rmarkdown,
-    ggplot2,
     dplyr,
     ggtext,
     glue
