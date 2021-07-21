@@ -20,15 +20,15 @@ plot_cor <- function(param_space_data_frame) {
   plots <- list()
   for (i in seq_along(metrics)) {
     if (metrics[i] == "ed95_spec_nltt") {
-      error_label <- expression(ED95[95] ~ Delta * "STT")
+      error_label <- expression(ED[95] ~ Delta * "STT")
     } else if (metrics[i] == "ed95_endemic_nltt") {
-      error_label <- expression(ED95[95] ~ Delta * "ESTT")
+      error_label <- expression(ED[95] ~ Delta * "ESTT")
     } else if (metrics[i] == "ed95_nonendemic_nltt") {
-      error_label <- expression(ED95[95] ~ Delta * "NESTT")
+      error_label <- expression(ED[95] ~ Delta * "NESTT")
     } else if (metrics[i] == "ed95_num_spec") {
-      error_label <- expression(ED95[95] * " Species Number")
+      error_label <- expression(ED[95] * " Species Number")
     } else if (metrics[i] == "ed95_num_col") {
-      error_label <- expression(ED95[95] * " Colonist Number")
+      error_label <- expression(ED[95] * " Colonist Number")
     }
 
     runtime <- NULL # ggplot2 nonstandard evalution hack
