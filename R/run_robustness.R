@@ -2,7 +2,133 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @return A list of errors and simulation and MLE output.
+#' @return
+#' A named list of length 20 containing errors, error metrics, simulation and
+#' MLE output:
+#' \describe{
+#'   \item{spec_nltt_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate). Each value is the nltt
+#'     error for species through time (deltaSTT) between a geodynamic simulation
+#'     and an oceanic simulation.}
+#'   \item{num_spec_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate) with the difference in the
+#'     number of species at the end of the simulation between a geodynamic and
+#'     an oceanic simulation.}
+#'   \item{num_col_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate) with the difference in the
+#'     number of colonists at the end of the simulation between a geodynamic and
+#'     an oceanic simulation.}
+#'   \item{endemic_nltt_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate). Each value is the nltt
+#'     error for endemics through time (deltaESTT) between a geodynamic
+#'     simulation and an oceanic simulation.}
+#'   \item{nonendemic_nltt_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate). Each value is the nltt
+#'     error for non-endemics through time (deltaNESTT) between a geodynamic
+#'     simulation and an oceanic simulation.}
+#'   \item{spec_baseline_nltt_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate). Each value is the nltt
+#'     error for species through time (deltaSTT) between the first oceanic
+#'     simulation and the second oceanic simulation.}
+#'   \item{num_spec_baseline_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate) with the difference in the
+#'     number of species at the end of the simulation between the first oceanic
+#'     simulation and and the second oceanic simulation. }
+#'   \item{num_col_baseline_error}{a numeric vector with as many elements as
+#'     \code{replicates} (one element per replicate) with the difference in the
+#'     number of colonists at the end of the simulation between the first
+#'     oceanic simulation and and the second oceanic simulation.}
+#'   \item{endemic_baseline_nltt_error}{a numeric vector with as many elements
+#'     as \code{replicates} (one element per replicate). Each value is the nltt
+#'     error for endemics through time (deltaESTT) between the first oceanic
+#'     simulation and and the second oceanic simulation.}
+#'   \item{nonendemic_baseline_nltt_error}{a numeric vector with as many
+#'     elements as \code{replicates} (one element per replicate). Each value is
+#'     the nltt error for non-endemics through time (deltaNESTT) between a the
+#'     first oceanic simulation and and the second oceanic simulation.}
+#'   \item{error_metrics}{a named list with 10 elements:
+#'     \describe{
+#'       \item{num_spec_mean_diff}{a numeric atomic vector with the absolute
+#'       difference between the mean of the \code{$num_spec_error} vector and
+#'       the mean of the \code{$num_spec_baseline_error} vector.}
+#'       \item{num_spec_sd_diff}{a numeric atomic vector with the absolute
+#'       difference between the standard deviation of the \code{$num_spec_error}
+#'       vector and the standard deviation of the
+#'       \code{$num_spec_baseline_error} vector.}
+#'       \item{num_col_mean_diff}{a numeric atomic vector with the absolute
+#'       difference between the mean of the \code{$num_col_error} vector and
+#'       the mean of the \code{$num_col_baseline_error} vector.}
+#'       \item{num_col_sd_diff}{a numeric atomic vector with the absolute
+#'       difference between the standard deviation of the \code{$num_col_error}
+#'       vector and the standard deviation of the \code{$num_col_baseline_error}
+#'       vector.}
+#'       \item{spec_nltt_mean_diff}{a numeric atomic vector with the absolute
+#'       difference between the mean of the \code{$spec_nltt_error} vector and
+#'       the mean of the \code{$spec_baseline_nltt_error} vector.}
+#'       \item{endemic_nltt_mean_diff}{a numeric atomic vector with the absolute
+#'       difference between the mean of the \code{$endemic_nltt_error} vector
+#'       and the mean of the \code{$endemic_baseline_nltt_error}
+#'       vector.}
+#'       \item{nonendemic_nltt_mean_diff}{a numeric atomic vector with the
+#'       absolute difference between the mean of the
+#'       \code{$nonendemic_nltt_error} vector and the standard deviation of the
+#'       \code{$nonendemic_baseline_nltt_error} vector.}
+#'       \item{spec_nltt_sd_diff}{a numeric atomic vector with the absolute
+#'       difference between the standard deviation of the
+#'       \code{$spec_nltt_error} vector and the standard deviation of the
+#'       \code{$spec_baseline_nltt_error} vector.}
+#'       \item{endemic_nltt_sd_diff}{a numeric atomic vector with the absolute
+#'       difference between the standard deviation of the
+#'       \code{$endemic_nltt_error} vector and the standard deviation of the
+#'       \code{$endemic_baseline_nltt_error} vector.}
+#'       \item{nonendemic_nltt_sd_diff}{a numeric atomic vector with the
+#'       absolute difference between the standard deviation of the
+#'       \code{$nonendemic_nltt_error} vector and the standard deviation of the
+#'       \code{$nonendemic_baseline_nltt_error} vector.}
+#'     }
+#'   }
+#'   \item{passed_novel_mls}{a list of up to as many elements as specified in
+#'     \code{replicates}, containing the output of successful MLE runs on
+#'     geodynamic simulations. Only successful MLE are stored in this list,
+#'     hence the size may be lower than \code{replicates} Each list element is a
+#'     data frame containing the estimated parameters, degrees of freedom and
+#'     convergence flag.}
+#'   \item{failed_novel_mls}{a list of up to as many elements as specified in
+#'     \code{replicates}, containing the output of failed MLE runs on
+#'     geodynamic simulations. Only failed MLE are stored in this list, hence
+#'     the size may be (and usually is much) lower than \code{replicates}. Each
+#'     list element is a data frame containing the estimated parameters, degrees
+#'      of freedom and convergence flag.}
+#'   \item{passed_oceanic_mls}{a list of up to as many elements as specified in
+#'     \code{replicates}, containing the output of successful MLE runs on
+#'     geodynamic simulations. Only successful MLE are stored in this list,
+#'     hence the size may be lower than \code{replicates}. Each list element
+#'     is a data frame containing the estimated parameters, degrees of freedom
+#'     and convergence flag.}
+#'   \item{failed_oceanic_mls}{a list of up to as many elements as specified in
+#'     \code{replicates}, containing the output of failed MLE runs on
+#'     geodynamic simulations. Only failed MLE are stored in this list, hence
+#'     the size may be lower than \code{replicates}. Each list element
+#'     is a data frame containing the estimated parameters, degrees of freedom
+#'     and convergence flag.}
+#'   \item{failed_novel_sims}{a list of up to as many elements as specified in
+#'     \code{replicates}, each element containing the geodynamic simulation
+#'     output that caused MLE runs to fail. Only simulations which result in
+#'     downstream MLE failure are stored in this list, hence the size may be
+#'     (and usually is much) lower than \code{replicates}.}
+#'   \item{passed_oceanic_sims_1}{a list of up to as many elements as specified
+#'     in \code{replicates}, each element containing the first set of oceanic
+#'     simulation output that is passed to MLE and runs without issues.}
+#'   \item{passed_oceanic_sims_2}{a list of up to as many elements as specified
+#'     in \code{replicates}, each element containing the second set of oceanic
+#'     simulation output that is passed to MLE and runs without issues.}
+#'   \item{failed_oceanic_sims}{a list of up to as many elements as specified
+#'     in \code{replicates}, each element containing the first set of oceanic
+#'     simulation output that caused MLE runs to fail. Only simulations which
+#'     result in downstream MLE failure are stored in this list, hence the size
+#'     may be (and usually is much) lower than \code{replicates}.}
+#' }
+#'
 #' @export
 run_robustness <- function(param_space_name,
                            param_set,
