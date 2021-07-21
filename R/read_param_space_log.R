@@ -1,4 +1,4 @@
-#' Reads parameter set number written in log file.
+#' Reads parameter space name written in log file
 #'
 #' Obtains the parameter space name from a standard Peregrine HPCC log file.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_param_space_log.R
 \name{read_param_space_name_log}
 \alias{read_param_space_name_log}
-\title{Reads parameter set number written in log file.}
+\title{Reads parameter space name written in log file}
 \usage{
 read_param_space_name_log(log_file_path)
 }
