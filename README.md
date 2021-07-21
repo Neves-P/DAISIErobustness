@@ -3,7 +3,7 @@
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/Neves-P/DAISIErobustness)
+![GitHub R package version](https://img.shields.io/github/r-package/v/Neves-P/DAISIErobustness)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3897237.svg)](https://doi.org/10.5281/zenodo.3897237)
 
 Branch|[![GitHub Actions logo](pics/github_actions_logo.png)](https://github.com/features/actions)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
