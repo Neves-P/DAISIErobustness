@@ -40,7 +40,12 @@ default_params_doc(
   nonendemic_baseline_nltt_error,
   folder_path,
   param_set_range,
-  test
+  test,
+  log_file_path,
+  logs_folder_path,
+  runtime_params,
+  ed95_param_sets,
+  param_space_data_frame
 )
 }
 \arguments{
@@ -65,7 +70,7 @@ run up to a given point. Will be saved into .RData file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
 
-\item{param_space}{tibble of the parameter space.}
+\item{param_space}{A data frame of the parameter space.}
 
 \item{sim_pars}{A list of simulation parameters.}
 
@@ -176,17 +181,35 @@ the non-endemic species from the oceanic DAISIE simulations.}
 convenience) where all the parameter sets results of a given parameter
 space are stored in .RData format.}
 
-\item{param_set_range}{Defaults to \code{NULL}, which computes the P95
+\item{param_set_range}{Defaults to \code{NULL}, which computes the ED95
 statistic for all parameter sets in the file of the parameter space located
 in \code{folder_path}. Otherwise, a numeric vector of length 2, where the
 first element must be lower than the second. This specifies the range of
-parameter sets to load compute P95 for, i.e \code{c(1, 20)} will attempt
+parameter sets to load compute ED95 for, i.e \code{c(1, 20)} will attempt
 to compute and load parameter sets 1 to 20. If there are gaps in this
-range, the function works regardless, and will return P95 for the parameter
-set results within the 1 to 20 range.}
+range, the function works regardless, and will return ED95 for the
+parameter set results within the 1 to 20 range.}
 
 \item{test}{A boolean, defaults to `FALSE`. Set to `TRUE` for testing
 purposes, to fix the seed.}
+
+\item{log_file_path}{A string with the path for a standard Peregrine HPCC log
+file.}
+
+\item{logs_folder_path}{A string with the path for a directory containing the
+Peregrine HPCC log files.}
+
+\item{runtime_params}{A data frame with runtime of each parameter set in each
+parameter space as returned by \code{\link{get_runtime_params}()}.}
+
+\item{ed95_param_sets}{A data frame with all ED95 statistics of each
+parameter set in each parameter space as returned by
+\code{\link{calc_ed95_param_set}()}.}
+
+\item{param_space_data_frame}{A data frame with ED95 statistics all
+parameter spaces, together with associated runtime. Used for plotting
+correlation between runtime and ED95. Obtained by running
+\code{\link{calc_ed95_param_set}()}.}
 }
 \value{
 Nothing
