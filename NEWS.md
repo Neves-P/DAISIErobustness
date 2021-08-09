@@ -1,3 +1,7 @@
+# DAISIErobustness 2.2.1
+
+* Change plot legend to read "colonisation multiplier" rather than "immigration multiplier".
+
 # DAISIErobustness 2.2.0
 
 * Completely rework all plotting functions for Santos Neves, Lambert, Valente, and Etienne  2021. Scripts associated with the paper can be found in the `scripts/folder/` and the necessary functions are found in the sub directory `scripts/folder/functions`.
