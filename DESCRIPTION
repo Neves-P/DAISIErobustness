@@ -52,13 +52,13 @@ Suggests:
     glue
 Imports: 
     sessioninfo,
-    DAISIE (>= 4.0.2),
+    DAISIE (>= 4.0.5),
     nLTT,
     testit,
     ggplot2,
     cowplot
 Remotes: 
-    rsetienne/DAISIE@v4.0.2,
+    rsetienne/DAISIE@e894c311cbf0fb0734c8e045eeb9a10f6c1a7791,
     thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
