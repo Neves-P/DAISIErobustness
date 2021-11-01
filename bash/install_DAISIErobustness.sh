@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --job-name=install_DAISIErobustness
 #SBATCH --output=install_DAISIErobustness.log
-#SBATCH --mem=1GB
+#SBATCH --mem=2GB
 
 mkdir -p logs
 mkdir -p results
