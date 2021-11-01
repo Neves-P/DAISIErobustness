@@ -37,9 +37,9 @@ replicates=$3
 distance_method=$4
 
 ml R
-Rscript DAISIErobustness/scripts/analysis/run_robustness_peregrine.R ${param_space_name} \
-                                                                     ${param_set} \
-                                                                     ${replicates} \
-                                                                     ${distance_method}
+Rscript scripts/analysis/run_robustness_peregrine.R ${param_space_name} \
+                                                    ${param_set} \
+                                                    ${replicates} \
+                                                    ${distance_method}
 
 

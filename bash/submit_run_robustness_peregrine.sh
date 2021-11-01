@@ -49,12 +49,14 @@
 ## Usage example running simulations for the oceanic_ontogeny param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
-# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 abs
+# cd DAISIErobustness
+# sbatch bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 abs
 #
 ## Usage example running analysis for the nonoceanic param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
-# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh nonoceanic 1000 abs
+# cd DAISIErobustness
+# sbatch bash/submit_run_robustness_peregrine.sh nonoceanic 1000 abs
 ################################################################################
 
 
@@ -67,13 +69,13 @@ param_space_name=$1
 replicates=$2
 distance_method=$3
 
-for_length=`wc -l DAISIErobustness/data/${param_space_name}.csv | cut -f1 -d' '`
+for_length=`wc -l data/${param_space_name}.csv | cut -f1 -d' '`
 for_length=$(( ${for_length} - 1 ))
 
 for (( param_set = 1; param_set <= $for_length; param_set++ ))
 do
-  sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
-                                                                  ${param_set} \
-                                                                  ${replicates} \
-                                                                  ${distance_method}
+  sbatch bash/submit_run_robustness_param_set.sh ${param_space_name} \
+                                                 ${param_set} \
+                                                 ${replicates} \
+                                                 ${distance_method}
 done
