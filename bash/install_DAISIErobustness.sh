@@ -3,8 +3,8 @@
 #SBATCH --partition=gelifes
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name=install_DAISIEmainland
-#SBATCH --output=/data/$USER/DAISIErobustness/install_DAISIEmainland.log
+#SBATCH --job-name=install_DAISIErobustness
+#SBATCH --output=/home/$USER/DAISIErobustness/install_DAISIErobustness.log
 #SBATCH --mem=1GB
 
 mkdir -p logs
