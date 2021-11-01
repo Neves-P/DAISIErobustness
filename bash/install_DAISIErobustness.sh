@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=install_DAISIErobustness
-#SBATCH --output=/home/$USER/DAISIErobustness/install_DAISIErobustness.log
+#SBATCH --output=install_DAISIErobustness.log
 #SBATCH --mem=1GB
 
 mkdir -p logs
