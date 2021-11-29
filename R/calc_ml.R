@@ -18,7 +18,8 @@ calc_ml <- function(sim,
         parsfix = NULL,
         idparsfix = NULL,
         cond = 5,
-        jitter = -1e-5
+        jitter = -1e-5,
+        methode = "odeint::runge_kutta_fehlberg78"
       )
     )
     )))
