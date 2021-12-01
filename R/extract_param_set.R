@@ -19,6 +19,7 @@ extract_param_set <- function(param_space_name,
                        param_space$laa[param_set])
     sim_pars$nonoceanic_pars <- c(param_space$x_s[param_set],
                                   param_space$x_nonend[param_set])
+    sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
   if (param_space_name == "nonoceanic_land_bridge") {
     sim_pars$time <- param_space$time[param_set]
@@ -38,6 +39,7 @@ extract_param_set <- function(param_space_name,
 
     sim_pars$shift_times <-
       eval(str2expression(param_space$shift_times[param_set]))
+    sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
   if (param_space_name %in% c(
     "oceanic_ontogeny",
@@ -67,6 +69,7 @@ extract_param_set <- function(param_space_name,
       d = param_space$d[param_set],
       x = param_space$x[param_set])
     sim_pars$extcutoff <- param_space$extcutoff[param_set]
+    sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
   if (param_space_name %in% c("trait_CES", "trait_trans")) {
     sim_pars$time <- param_space$time[param_set]

@@ -10,11 +10,12 @@
 run_novel_sim <- function(param_space_name,
                           sim_pars) {
   if (param_space_name %in% c("nonoceanic", "oceanic")) {
-    novel_sim <- DAISIE::DAISIE_sim_constant_rate(
+    novel_sim <- DAISIE::DAISIE_sim_cr(
       time = sim_pars$time,
       M = sim_pars$M,
       pars = sim_pars$pars,
       replicates = 1,
+      divdepmodel = sim_pars$divdepmodel,
       nonoceanic_pars = sim_pars$nonoceanic_pars,
       sample_freq  = Inf,
       plot_sims = FALSE,
@@ -23,11 +24,12 @@ run_novel_sim <- function(param_space_name,
     )
   }
   if (param_space_name == "nonoceanic_land_bridge") {
-    novel_sim <- DAISIE::DAISIE_sim_constant_rate_shift(
+    novel_sim <- DAISIE::DAISIE_sim_cr_shift(
       time = sim_pars$time,
       M = sim_pars$M,
       pars = sim_pars$pars,
       replicates = 1,
+      divdepmodel = sim_pars$divdepmodel,
       nonoceanic_pars = sim_pars$nonoceanic_pars,
       shift_times = sim_pars$shift_times,
       sample_freq  = Inf,
@@ -44,6 +46,7 @@ run_novel_sim <- function(param_space_name,
       M = sim_pars$M,
       pars = sim_pars$pars,
       replicates = 1,
+      divdepmodel = sim_pars$divdepmodel,
       nonoceanic_pars = sim_pars$nonoceanic_pars,
       island_ontogeny = sim_pars$island_ontogeny,
       sea_level = sim_pars$sea_level,
