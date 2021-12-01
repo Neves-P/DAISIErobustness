@@ -38,7 +38,7 @@ nonoceanic_ancient <- expand.grid(
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40, Inf),
+  K = c(10, 40),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
