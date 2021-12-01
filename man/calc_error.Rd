@@ -8,16 +8,16 @@ calc_error(sim_1, sim_2, replicates, distance_method)
 }
 \arguments{
 \item{sim_1}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{sim_2}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()} or
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations}

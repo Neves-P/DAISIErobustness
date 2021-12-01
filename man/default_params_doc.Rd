@@ -75,10 +75,10 @@ run up to a given point. Will be saved into .RData file by
 \item{sim_pars}{A list of simulation parameters.}
 
 \item{sim}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()} or other input simulation
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
 in the DAISIE sim format.}
 
 \item{novel_sim}{A list of simulation output in the DAISIE simulation format
@@ -106,16 +106,16 @@ parameters for the MLE routine. The same as \code{initparsopt}
 from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_1}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{sim_2}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()} or
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{spec_error}{A list with three elements each with a numeric
 vector.}

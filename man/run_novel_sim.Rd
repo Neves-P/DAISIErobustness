@@ -18,10 +18,10 @@ pipeline.}
 \item{sim_pars}{A list of simulation parameters.}
 }
 \value{
-A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+A list output from \code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.
 }
 \description{
 Runs DAISIE simulation with a novel model

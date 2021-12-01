@@ -3,8 +3,8 @@
 \docType{data}
 \name{oceanic_ontogeny_cs}
 \alias{oceanic_ontogeny_cs}
-\title{Parameter space of the oceanic ontogeny clade-specific diversity-dependent
-analysis}
+\title{Parameter space of the oceanic ontogeny clade-specific
+diversity-dependent analysis}
 \format{
 A data frame with 256 rows and 22 variables:
 \describe{
@@ -45,10 +45,7 @@ A data frame with 256 rows and 22 variables:
   clades.}
 }
 }
-\usage{
-oceanic_ontogeny_cs
-}
 \description{
-A dataset containing the DAISIE parameters for 256 parameter sets.
+A dataset containing the DAISIE parameters for 256 parameter
+sets.
 }
-\keyword{datasets}

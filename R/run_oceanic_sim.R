@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @return Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
+#' @return Output from \code{\link[DAISIE]{DAISIE_sim_cr}()}
 run_oceanic_sim <- function(ml,
                             sim_pars) {
   if ("trait_pars" %in% names(sim_pars)) {

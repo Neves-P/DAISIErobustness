@@ -3,10 +3,10 @@
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 #' @keywords internal
-#' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-#' \code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+#' @return A list output from \code{\link[DAISIE]{DAISIE_sim_cr}()},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+#' \code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+#' \code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.
 run_novel_sim <- function(param_space_name,
                           sim_pars) {
   if (param_space_name %in% c("nonoceanic", "oceanic")) {
@@ -41,7 +41,7 @@ run_novel_sim <- function(param_space_name,
   if (param_space_name %in% c("oceanic_ontogeny",
                               "oceanic_sea_level",
                               "oceanic_ontogeny_sea_level")) {
-    novel_sim <- DAISIE::DAISIE_sim_time_dependent(
+    novel_sim <- DAISIE::DAISIE_sim_time_dep(
       time = sim_pars$time,
       M = sim_pars$M,
       pars = sim_pars$pars,
@@ -61,7 +61,7 @@ run_novel_sim <- function(param_space_name,
 
   }
   if (param_space_name %in% c("trait_CES", "trait_trans")) {
-    novel_sim <- DAISIE::DAISIE_sim_trait_dependent(
+    novel_sim <- DAISIE::DAISIE_sim_trait_dep(
       time = sim_pars$time,
       M = sim_pars$M,
       pars = sim_pars$pars,

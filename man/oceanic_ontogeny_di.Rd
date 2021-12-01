@@ -44,10 +44,7 @@ A data frame with 128 rows and 22 variables:
   clades.}
 }
 }
-\usage{
-oceanic_ontogeny_di
-}
 \description{
-A dataset containing the DAISIE parameters for 128 parameter sets.
+A dataset containing the DAISIE parameters for 128 parameter
+sets.
 }
-\keyword{datasets}

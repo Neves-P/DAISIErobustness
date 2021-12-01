@@ -8,10 +8,10 @@ calc_ml(sim, initial_parameters)
 }
 \arguments{
 \item{sim}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()} or other input simulation
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
 in the DAISIE sim format.}
 
 \item{initial_parameters}{A numeric vector of length 5 with the initial
