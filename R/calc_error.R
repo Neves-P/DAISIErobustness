@@ -75,13 +75,19 @@ calc_error <- function(sim_1,
     as.numeric(sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "present"])
   num_col_sim_1_np <- as.numeric(mainland_n - sim_1[[1]][[1]]$not_present)
 
-  testit::assert(identical(num_col_sim_1, num_col_sim_1_np))
+  testit::assert(
+    fact = "ways of calculating num_col are the same",
+    identical(num_col_sim_1, num_col_sim_1_np)
+  )
 
   num_col_sim_2 <-
     as.numeric(sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "present"])
   num_col_sim_2_np <- as.numeric(mainland_n - sim_2[[1]][[1]]$not_present)
 
-  testit::assert(identical(num_col_sim_2, num_col_sim_2_np))
+  testit::assert(
+    fact = "ways of calculating num_col are the same",
+    identical(num_col_sim_2, num_col_sim_2_np)
+  )
   num_col_error <-
     abs(num_col_sim_1 - num_col_sim_2)
 
