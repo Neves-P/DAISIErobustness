@@ -2,7 +2,7 @@ test_that("test calc_error output is correct", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
   param_space <- load_param_space(
-    param_space_name = "nonoceanic")
+    param_space_name = "nonoceanic_cs")
   set.seed(
     1,
     kind = "Mersenne-Twister",
@@ -10,11 +10,11 @@ test_that("test calc_error output is correct", {
     sample.kind = "Rejection"
   )
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic",
+    param_space_name = "nonoceanic_cs",
     param_space = param_space,
     param_set = 1)
   novel_sim <- run_novel_sim(
-    param_space_name = "nonoceanic",
+    param_space_name = "nonoceanic_cs",
     sim_pars = sim_pars
   )
   novel_ml <- data.frame("lambda_c" = 0.5,
