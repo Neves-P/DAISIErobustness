@@ -1,5 +1,3 @@
-context("run_robustness")
-
 test_that("run_robustness output is correct when save_output = FALSE", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
@@ -238,16 +236,6 @@ test_that("abuse param_set", {
     param_space_name = "trait_CES",
     param_set = 1000000,
     replicates = 2))
-
-  expect_error(run_robustness(
-    param_space_name = "trait_trans",
-    param_set = 0,
-    replicates = 2))
-
-  expect_error(run_robustness(
-    param_space_name = "trait_trans",
-    param_set = 1000000,
-    replicates = 2))
 })
 
 test_that("abuse replicates", {
@@ -283,11 +271,6 @@ test_that("abuse replicates", {
 
   expect_error(run_robustness(
     param_space_name = "trait_CES",
-    param_set = 1,
-    replicates = 0))
-
-  expect_error(run_robustness(
-    param_space_name = "trait_trans",
     param_set = 1,
     replicates = 0))
 })

@@ -1,5 +1,3 @@
-context("create_output_file_name")
-
 test_that("use", {
 
   param_space_name <- "oceanic_ontogeny"

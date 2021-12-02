@@ -1,5 +1,3 @@
-context("oceanic_sim")
-
 test_that("test oceanic sim output is correct", {
   geodynamic_ml <- data.frame("lambda_c" = 1,
                               "mu" = 1,
@@ -10,7 +8,10 @@ test_that("test oceanic sim output is correct", {
                               "df" = 5,
                               "conv" = 0)
   sim_pars <- list(time = 2.55,
-                   M = 1000)
+                   M = 1000,
+                   pars = c(0.25, 0.25, 10, 0.01, 0.25),
+                   nonoceanic_pars = c(0.01, 0.1),
+                   divdepmodel = "CS")
   set.seed(
     1,
     kind = "Mersenne-Twister",

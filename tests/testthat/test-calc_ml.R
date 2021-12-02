@@ -1,5 +1,3 @@
-context("calc_ml")
-
 test_that("test calc_ml output is correct with geodynamic sim", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 

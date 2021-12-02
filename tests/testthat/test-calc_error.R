@@ -1,5 +1,3 @@
-context("calc_error")
-
 test_that("test calc_error output is correct", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 

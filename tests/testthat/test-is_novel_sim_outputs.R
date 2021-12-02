@@ -1,5 +1,3 @@
-context("is_novel_sim_outputs")
-
 test_that("use", {
   novel_sim <- list()
   # Nested list that replicates run_novel_sim() output

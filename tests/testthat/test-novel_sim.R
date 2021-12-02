@@ -1,5 +1,3 @@
-context("novel_sim")
-
 test_that("test run_novel_sim output is correct for
           oceanic_ontogeny", {
             skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
