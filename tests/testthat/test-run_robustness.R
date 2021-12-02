@@ -2,7 +2,7 @@ test_that("run_robustness output is correct when save_output = FALSE", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
       errors <- run_robustness(
-        param_space_name = "nonoceanic",
+        param_space_name = "nonoceanic_cs",
         param_set = 2,
         replicates = 2,
         save_output = FALSE,
@@ -178,52 +178,52 @@ test_that("run_robustness output is correct when save_output = FALSE", {
 
 test_that("abuse param_set", {
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny",
+    param_space_name = "oceanic_ontogeny_cs",
     param_set = 0,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny",
+    param_space_name = "oceanic_ontogeny_cs",
     param_set = 1000000,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_sea_level",
+    param_space_name = "oceanic_sea_level_cs",
     param_set = 0,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_sea_level",
+    param_space_name = "oceanic_sea_level_cs",
     param_set = 1000000,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny_sea_level",
+    param_space_name = "oceanic_ontogeny_sea_level_cs",
     param_set = 0,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny_sea_level",
+    param_space_name = "oceanic_ontogeny_sea_level_cs",
     param_set = 1000000,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic",
+    param_space_name = "nonoceanic_cs",
     param_set = 0,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic",
+    param_space_name = "nonoceanic_cs",
     param_set = 1000000,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic_land_bridge",
+    param_space_name = "nonoceanic_land_bridge_cs",
     param_set = 0,
     replicates = 2))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic_land_bridge",
+    param_space_name = "nonoceanic_land_bridge_cs",
     param_set = 1000000,
     replicates = 2))
 
@@ -240,32 +240,32 @@ test_that("abuse param_set", {
 
 test_that("abuse replicates", {
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny",
+    param_space_name = "oceanic_ontogeny_cs",
     param_set = 1,
     replicates = 0))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_sea_level",
+    param_space_name = "oceanic_sea_level_cs",
     param_set = 1,
     replicates = 0))
 
   expect_error(run_robustness(
-    param_space_name = "oceanic_ontogeny_sea_level",
+    param_space_name = "oceanic_ontogeny_sea_level_cs",
     param_set = 1,
     replicates = 0))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic",
+    param_space_name = "nonoceanic_cs",
     param_set = 1,
     replicates = 0))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic_sea_level",
+    param_space_name = "nonoceanic_sea_level_cs",
     param_set = 1,
     replicates = 0))
 
   expect_error(run_robustness(
-    param_space_name = "nonoceanic_land_bridge",
+    param_space_name = "nonoceanic_land_bridge_cs",
     param_set = 1,
     replicates = 0))
 
