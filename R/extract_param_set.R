@@ -9,7 +9,10 @@ extract_param_set <- function(param_space_name,
                               param_space,
                               param_set) {
   sim_pars <- list()
-  if (param_space_name %in% c("nonoceanic", "oceanic")) {
+  if (param_space_name %in% c("nonoceanic_cs",
+                              "nonoceanic_di",
+                              "nonoceanic_iw",
+                              "oceanic")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac[param_set],
@@ -21,7 +24,9 @@ extract_param_set <- function(param_space_name,
                                   param_space$x_nonend[param_set])
     sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
-  if (param_space_name == "nonoceanic_land_bridge") {
+  if (param_space_name %in% c("nonoceanic_land_bridge_cs",
+                              "nonoceanic_land_bridge_di",
+                              "nonoceanic_land_bridge_iw")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac_1[param_set],
@@ -41,10 +46,15 @@ extract_param_set <- function(param_space_name,
       eval(str2expression(param_space$shift_times[param_set]))
     sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
-  if (param_space_name %in% c(
-    "oceanic_ontogeny",
-    "oceanic_sea_level",
-    "oceanic_ontogeny_sea_level"
+  if (param_space_name %in% c("oceanic_ontogeny_cs",
+                              "oceanic_ontogeny_di",
+                              "oceanic_ontogeny_iw",
+                              "oceanic_sea_level_cs",
+                              "oceanic_sea_level_di",
+                              "oceanic_sea_level_iw",
+                              "oceanic_ontogeny_sea_level_cs",
+                              "oceanic_ontogeny_sea_level_di",
+                              "oceanic_ontogeny_sea_level_iw"
   )) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
@@ -71,7 +81,7 @@ extract_param_set <- function(param_space_name,
     sim_pars$extcutoff <- param_space$extcutoff[param_set]
     sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
-  if (param_space_name %in% c("trait_CES", "trait_trans")) {
+  if (param_space_name %in% c("trait_CES")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac[param_set],
