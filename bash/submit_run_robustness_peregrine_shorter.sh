@@ -37,7 +37,6 @@
 #   nonoceanic
 #   nonoceanic_land_bridge
 #   trait_CES
-#   oceanic
 # replicates - Total number of replicates to be simulated, or are present in
 #   the input simulation.
 # distance_method - If the absolute or squared distance between nLTTs should be
@@ -50,19 +49,20 @@
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
 # cd DAISIErobustness
-# sbatch bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 novel_sim abs
+# sbatch bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 abs
 #
 ## Usage example running analysis for the nonoceanic param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
 # cd DAISIErobustness
-# sbatch bash/submit_run_robustness_peregrine.sh nonoceanic 1000 analysis abs
+# sbatch bash/submit_run_robustness_peregrine.sh nonoceanic 1000 abs
 ################################################################################
 
 
 
 # Start script
 ml R
+Rscript -e "remotes::install_github('Neves-P/DAISIErobustness@revision_rates')"
 
 param_space_name=$1
 replicates=$2
@@ -73,8 +73,8 @@ for_length=$(( ${for_length} - 1 ))
 
 for (( param_set = 1; param_set <= $for_length; param_set++ ))
 do
-  sbatch bash/submit_run_robustness_param_set_regular.sh ${param_space_name} \
-                                                             ${param_set} \
-                                                             ${replicates} \
-                                                             ${distance_method}
+  sbatch bash/submit_run_robustness_param_set_shorter.sh ${param_space_name} \
+                                                 ${param_set} \
+                                                 ${replicates} \
+                                                 ${distance_method}
 done
