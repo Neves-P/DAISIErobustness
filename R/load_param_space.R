@@ -6,7 +6,6 @@
 #' @export
 load_param_space <- function(param_space_name) {
   testit::assert(is_param_space_name(param_space_name))
-  do.call(data, args = list(param_space_name, package = "DAISIErobustness"))
   assign("param_space", get(param_space_name))
   return(param_space)
 }
