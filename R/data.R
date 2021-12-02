@@ -238,7 +238,8 @@ NULL
 #' @title Parameter space of the oceanic sea-level island-wide
 #' diversity-dependent analysis
 #'
-#' @description A dataset containing the DAISIE parameters for 512 parameter sets.
+#' @description A dataset containing the DAISIE parameters for 512 parameter
+#' sets.
 #'
 #' @format A data frame with 512 rows and 22 variables:
 #' \describe{
