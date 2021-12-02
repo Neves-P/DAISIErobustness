@@ -62,7 +62,6 @@
 
 # Start script
 ml R
-Rscript -e "remotes::install_github('Neves-P/DAISIErobustness@revision_rates')"
 
 param_space_name=$1
 replicates=$2
