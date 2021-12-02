@@ -1,12 +1,7 @@
 #' Default parameter documentation
 #'
-#' @param param_space_name A string with the parameter space to run. Can
-#'  be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-#'  \code{"oceanic_ontogeny_sea_level"},
-#'  \code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
-#'  \code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
-#'  \code{"oceanic"} is used as a null simulation to test for bias in the
-#'  pipeline.
+#' @param param_space_name A string with the parameter space to run. See
+#' \code{\link{is_param_space_name}()} for options.
 #' @param param_set A numeric with the line corresponding to parameter set to
 #'  run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the
