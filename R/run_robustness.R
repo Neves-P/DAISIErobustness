@@ -138,13 +138,7 @@ run_robustness <- function(param_space_name,
                            test = FALSE) {
 
   testit::assert(is.character(param_space_name))
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+  testit::assert(is_param_space_name(param_space_name))
   param_space <- load_param_space(
     param_space_name = param_space_name)
   testit::assert(param_set >= 1)
