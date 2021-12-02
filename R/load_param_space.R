@@ -6,7 +6,7 @@
 #' @export
 load_param_space <- function(param_space_name) {
   testit::assert(is_param_space_name(param_space_name))
-
-  param_space <- get0(param_space_name, envir = asNamespace("DAISIErobustness"))
-  return(param_space)
+  new_env <- new.env()
+  data(param_space_name, envir = new_env)
+  return(new_env[[param_space_name]])
 }
