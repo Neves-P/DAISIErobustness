@@ -70,8 +70,7 @@ create_output_file_name <- function(param_space_name,
                                          "oceanic_ontogeny_sea_level",
                                          "nonoceanic",
                                          "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+                                         "trait_CES"))
 
     output_file_name <- paste0(
       param_space_name,
