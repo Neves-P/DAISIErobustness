@@ -7,7 +7,7 @@
 ml_constraints <- function(ml) {
   testit::assert(is.data.frame(ml))
   failed_ml <- any(sapply(ml, is.na))
-  if (failed_ml == TRUE) {
+  if (isTRUE(failed_ml)) {
     return(FALSE)
   } else {
     return(TRUE)
