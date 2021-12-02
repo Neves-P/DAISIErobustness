@@ -9,7 +9,10 @@
 #' \code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.
 run_novel_sim <- function(param_space_name,
                           sim_pars) {
-  if (param_space_name %in% c("nonoceanic", "oceanic")) {
+  if (param_space_name %in% c("nonoceanic_cs",
+                              "nonoceanic_di",
+                              "nonoceanic_iw",
+                              "oceanic")) {
     novel_sim <- DAISIE::DAISIE_sim_cr(
       time = sim_pars$time,
       M = sim_pars$M,
@@ -23,7 +26,9 @@ run_novel_sim <- function(param_space_name,
       verbose = FALSE
     )
   }
-  if (param_space_name == "nonoceanic_land_bridge") {
+  if (param_space_name %in% c("nonoceanic_land_bridge_cs",
+                              "nonoceanic_land_bridge_di",
+                              "nonoceanic_land_bridge_iw")) {
     novel_sim <- DAISIE::DAISIE_sim_cr_shift(
       time = sim_pars$time,
       M = sim_pars$M,
@@ -60,7 +65,7 @@ run_novel_sim <- function(param_space_name,
     )
 
   }
-  if (param_space_name %in% c("trait_CES", "trait_trans")) {
+  if (param_space_name %in% c("trait_CES")) {
     novel_sim <- DAISIE::DAISIE_sim_trait_dep(
       time = sim_pars$time,
       M = sim_pars$M,
