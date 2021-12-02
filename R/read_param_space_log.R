@@ -31,7 +31,6 @@ read_param_space_name_log <- function(log_file_path) {
                                          "oceanic_ontogeny_sea_level",
                                          "nonoceanic",
                                          "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+                                         "trait_CES"))
   param_space_name
 }
