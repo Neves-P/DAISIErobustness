@@ -26,11 +26,6 @@ read_param_space_name_log <- function(log_file_path) {
 
 
   testit::assert(length(param_space_name) == 1)
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES"))
+  testit::assert(is_param_space_name(param_space_name))
   param_space_name
 }

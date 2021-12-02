@@ -65,12 +65,7 @@ create_output_file_name <- function(param_space_name,
                                     param_set) {
 
   testit::assert(is.numeric(param_set) && is.finite(param_set))
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES"))
+  testit::assert(is_param_space_name(param_space_name))
 
     output_file_name <- paste0(
       param_space_name,
