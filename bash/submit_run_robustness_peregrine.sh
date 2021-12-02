@@ -37,7 +37,6 @@
 #   nonoceanic
 #   nonoceanic_land_bridge
 #   trait_CES
-#   trait_trans
 # replicates - Total number of replicates to be simulated, or are present in
 #   the input simulation.
 # distance_method - If the absolute or squared distance between nLTTs should be
