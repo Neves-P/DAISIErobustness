@@ -6,9 +6,7 @@
 #' @export
 load_param_space <- function(param_space_name) {
   testit::assert(is_param_space_name(param_space_name))
-  param_space_path <- file.path(system.file(package = "DAISIErobustness"),
-                                "data",
-                                paste0(param_space_name, ".rda"))
-  param_space <- get(load(param_space_path))
+  do.call(data, args = list(param_space_name, package = "DAISIErobustness"))
+  assign("param_space", get(param_space_name))
   return(param_space)
 }
