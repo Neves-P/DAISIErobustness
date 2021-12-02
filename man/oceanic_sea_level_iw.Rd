@@ -45,5 +45,6 @@ A data frame with 512 rows and 22 variables:
 }
 }
 \description{
-A dataset containing the DAISIE parameters for 512 parameter sets.
+A dataset containing the DAISIE parameters for 512 parameter
+sets.
 }
