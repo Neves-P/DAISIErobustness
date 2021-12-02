@@ -6,11 +6,7 @@
 \alias{DAISIErobustness-package}
 \title{DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits}
 \description{
-Conducts a robustness test of the island biogeography DAISIE model
-    to the effects of geodynamics or trait dependency. Tests processes such as 
-    island ontogeny, sea-level change and land-bridge dynamics. 
-    Contains acessory code for easy use with the University of Groningen 
-    Peregrine HPCC.
+Conducts a robustness test of the island biogeography DAISIE model to the effects of geodynamics or trait dependency. Tests processes such as island ontogeny, sea-level change and land-bridge dynamics. Contains acessory code for easy use with the University of Groningen Peregrine HPCC.
 }
 \seealso{
 Useful links:

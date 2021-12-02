@@ -229,6 +229,7 @@ run_robustness <- function(param_space_name,
       error <- calc_error(
         sim_1 = novel_sim,
         sim_2 = oceanic_sim_1,
+        sim_pars = sim_pars,
         replicates = replicates,
         distance_method = distance_method)
 
@@ -259,6 +260,7 @@ run_robustness <- function(param_space_name,
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
           sim_2 = oceanic_sim_2,
+          sim_pars = sim_pars,
           replicates = replicates,
           distance_method = distance_method)
 

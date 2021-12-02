@@ -24,6 +24,7 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_error <- function(sim_1,
                        sim_2,
+                       sim_pars,
                        replicates,
                        distance_method) {
   spec_nltt_error <- c()
@@ -31,6 +32,9 @@ calc_error <- function(sim_1,
   num_col_error <- c()
   endemic_nltt_error <- c()
   nonendemic_nltt_error <- c()
+
+  # M
+  mainland_n <- sim_pars$M
   # Spec error
   sim_1_event_times <-
     sim_1[[1]][[1]]$stt_all[, "Time"]
@@ -53,15 +57,13 @@ calc_error <- function(sim_1,
     time_unit = "ago",
     normalize = FALSE
   )
-  stt_last_row_sim_1 <-
-    length(sim_1[[1]][[1]]$stt_all[, "present"])
+  stt_last_row_sim_1 <- nrow(sim_1[[1]][[1]]$stt_all)
   num_spec_sim_1 <-
     as.numeric(
       sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "nI"] +
         sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "nA"] +
         sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "nC"])
-  stt_last_row_sim_2 <-
-    length(sim_2[[1]][[1]]$stt_all[, "present"])
+  stt_last_row_sim_2 <- nrow(sim_2[[1]][[1]]$stt_all)
   num_spec_sim_2 <-
     as.numeric(
       sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "nI"] +
@@ -71,8 +73,21 @@ calc_error <- function(sim_1,
     abs(num_spec_sim_1 - num_spec_sim_2)
   num_col_sim_1 <-
     as.numeric(sim_1[[1]][[1]]$stt_all[stt_last_row_sim_1, "present"])
+  num_col_sim_1_np <- as.numeric(mainland_n - sim_1[[1]][[1]]$not_present)
+
+  testit::assert(
+    fact = "ways of calculating num_col are the same",
+    identical(num_col_sim_1, num_col_sim_1_np)
+  )
+
   num_col_sim_2 <-
     as.numeric(sim_2[[1]][[1]]$stt_all[stt_last_row_sim_2, "present"])
+  num_col_sim_2_np <- as.numeric(mainland_n - sim_2[[1]][[1]]$not_present)
+
+  testit::assert(
+    fact = "ways of calculating num_col are the same",
+    identical(num_col_sim_2, num_col_sim_2_np)
+  )
   num_col_error <-
     abs(num_col_sim_1 - num_col_sim_2)
 
