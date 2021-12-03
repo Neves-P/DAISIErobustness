@@ -1,5 +1,6 @@
 test_that("get_runtime_params works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
+  skip("Needs new reference files from runs")
 
   runtime_params <- get_runtime_params(file.path(getwd(), "testdata/logs"))
   expected <- data.frame(
