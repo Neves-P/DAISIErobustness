@@ -49,14 +49,14 @@ test_that("test run_novel_sim output is correct for
               param_space_name = "oceanic_sea_level_cs",
               sim_pars = sim_pars)
             expect_length(novel_sim, 1)
-            expect_length(novel_sim[[1]], 32)
-            expect_equal(novel_sim[[1]][[1]]$island_age, 5)
-            expect_equal(novel_sim[[1]][[1]]$not_present, 969)
-            expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 94)
+            expect_length(novel_sim[[1]], 38)
+            expect_equal(novel_sim[[1]][[1]]$island_age, 2.55)
+            expect_equal(novel_sim[[1]][[1]]$not_present, 963)
+            expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 115)
             expect_equal(ncol(novel_sim[[1]][[1]]$stt_all), 5)
             expect_equal(novel_sim[[1]][[2]]$branching_times,
-                         c(5.0, 0.3414342016913))
-            expect_equal(novel_sim[[1]][[2]]$stac, 2)
+                         c(2.55, 0.78784699357233))
+            expect_equal(novel_sim[[1]][[2]]$stac, 4)
             expect_equal(novel_sim[[1]][[2]]$missing_species, 0)
 })
 
