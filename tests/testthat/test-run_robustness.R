@@ -27,37 +27,33 @@ test_that("run_robustness output is correct when save_output = FALSE", {
       expect_equal(errors$nonendemic_baseline_nltt_error, c(4.84059933234724,
                                                             9.53419053853203))
       expect_equal(errors$error_metrics,
-                   list(num_spec_mean_diff = 10,
-                        num_spec_sd_diff = 0,
-                        num_col_mean_diff = 7,
-                        num_col_sd_diff = 2.82842712474619,
-                        spec_nltt_mean_diff = 1.853899634442268,
-                        endemic_nltt_mean_diff = 4.01474266314057,
-                        nonendemic_nltt_mean_diff = 5.218311736834481,
-                        spec_nltt_sd_diff = 1.93335104096739,
-                        endemic_nltt_sd_diff = 1.934446117436603,
-                        nonendemic_nltt_sd_diff = 7.710491485590693))
+                   list(num_spec_mean_diff = 5,
+                        num_spec_sd_diff = 5.65685424949238,
+                        num_col_mean_diff = 1.5,
+                        num_col_sd_diff = 7.77817459305202,
+                        spec_nltt_mean_diff = 1.60046061276426,
+                        endemic_nltt_mean_diff = 5.62176148759777,
+                        nonendemic_nltt_mean_diff = 0.739128741207514,
+                        spec_nltt_sd_diff = 7.285148249958,
+                        endemic_nltt_sd_diff = 2.78440912045395,
+                        nonendemic_nltt_sd_diff = 2.45760290328537))
       expect_length(errors$passed_novel_sims, 2)
-      expect_length(errors$passed_novel_sims[[1]][[1]], 25)
+      expect_length(errors$passed_novel_sims[[1]][[1]], 29)
       expect_equal(errors$passed_novel_sims[[1]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$passed_novel_sims[[1]][[1]][[1]]$not_present, 976)
-      expect_equal(nrow(errors$passed_novel_sims[[1]][[1]][[1]]$stt_all), 120)
+      expect_equal(errors$passed_novel_sims[[1]][[1]][[1]]$not_present, 972)
+      expect_equal(nrow(errors$passed_novel_sims[[1]][[1]][[1]]$stt_all), 61)
       expect_equal(ncol(errors$passed_novel_sims[[1]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$passed_novel_sims[[1]][[1]][[2]]$branching_times,
-                   c(2.55,
-                     1.02163553349673997,
-                     0.37188819214780000,
-                     0.18270240256150000,
-                     0.11913435616494999))
-      expect_equal(errors$passed_novel_sims[[1]][[1]][[2]]$stac, 2)
+                   c(2.55, 1.02163553349674))
+      expect_equal(errors$passed_novel_sims[[1]][[1]][[2]]$stac, 4)
       expect_equal(errors$passed_novel_sims[[1]][[1]][[2]]$missing_species, 0)
-      expect_length(errors$passed_novel_sims[[2]][[1]], 30)
+      expect_length(errors$passed_novel_sims[[2]][[1]], 33)
       expect_equal(errors$passed_novel_sims[[2]][[1]][[1]]$island_age, 2.55)
-      expect_equal(errors$passed_novel_sims[[2]][[1]][[1]]$not_present, 971)
-      expect_equal(nrow(errors$passed_novel_sims[[2]][[1]][[1]]$stt_all), 138)
+      expect_equal(errors$passed_novel_sims[[2]][[1]][[1]]$not_present, 968)
+      expect_equal(nrow(errors$passed_novel_sims[[2]][[1]][[1]]$stt_all), 88)
       expect_equal(ncol(errors$passed_novel_sims[[2]][[1]][[1]]$stt_all), 5)
       expect_equal(errors$passed_novel_sims[[2]][[1]][[2]]$branching_times,
-                   c(2.55, 0.43385268494715))
+                   c(2.55, 0.71058548167348))
       expect_equal(errors$passed_novel_sims[[2]][[1]][[2]]$stac, 2)
       expect_equal(errors$passed_novel_sims[[2]][[1]][[2]]$missing_species, 0)
       expect_length(errors$failed_novel_sims, 0)
@@ -263,3 +259,4 @@ test_that("abuse replicates", {
     param_set = 1,
     replicates = 0))
 })
+

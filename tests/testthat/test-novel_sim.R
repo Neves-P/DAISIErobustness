@@ -49,7 +49,7 @@ test_that("test run_novel_sim output is correct for
               param_space_name = "oceanic_sea_level_cs",
               sim_pars = sim_pars)
             expect_length(novel_sim, 1)
-            expect_length(novel_sim[[1]], 38)
+            expect_length(novel_sim[[1]], 32)
             expect_equal(novel_sim[[1]][[1]]$island_age, 5)
             expect_equal(novel_sim[[1]][[1]]$not_present, 969)
             expect_equal(nrow(novel_sim[[1]][[1]]$stt_all), 94)
