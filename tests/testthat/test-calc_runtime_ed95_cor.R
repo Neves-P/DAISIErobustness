@@ -1,9 +1,9 @@
 test_that("calc_runtime_ed95_cor works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
-  runtime_params <- get_runtime_params(file.path("testdata", "logs"))
+  runtime_params <- get_runtime_params(file.path(getwd(), "testdata", "logs"))
 
   ed95 <- suppressMessages(
-    calc_ed95_param_set(file.path("testdata", "results"))
+    calc_ed95_param_set(file.path(getwd(), "testdata", "results"))
   )
 
   runtime_ed95_cor <- calc_runtime_ed95_cor(
