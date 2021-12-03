@@ -11,11 +11,23 @@ calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
     x = runtime_params, ed95_param_sets,
     by = c("param_space_name", "param_set")
   )
-  param_space_names <- c("oceanic_ontogeny",
-                         "oceanic_sea_level",
-                         "oceanic_ontogeny_sea_level",
-                         "nonoceanic",
-                         "nonoceanic_land_bridge")
+  param_space_names <- c("oceanic_ontogeny_cs",
+                         "oceanic_ontogeny_di",
+                         "oceanic_ontogeny_iw",
+                         "oceanic_sea_level_cs",
+                         "oceanic_sea_level_di",
+                         "oceanic_sea_level_iw",
+                         "oceanic_ontogeny_sea_level_cs",
+                         "oceanic_ontogeny_sea_level_di",
+                         "oceanic_ontogeny_sea_level_iw",
+                         "nonoceanic_cs",
+                         "nonoceanic_di",
+                         "nonoceanic_iw",
+                         "nonoceanic_land_bridge_cs",
+                         "nonoceanic_land_bridge_di",
+                         "nonoceanic_land_bridge_iw",
+                         "trait_CES",
+                         "oceanic")
   out <- list()
 
   spec_nltt_cor <- stats::cor(
