@@ -67,7 +67,8 @@ param_space_name=$1
 replicates=$2
 distance_method=$3
 
-for_length=`wc -l data/${param_space_name}.csv | cut -f1 -d' '`
+data_path=`Rscript -e "load('inst/extdata/$1.rda'); nrow($1)"`
+for_length=`echo $data_path | awk '{ print substr( $0, 5 ) }'`
 for_length=$(( ${for_length} - 1 ))
 
 for (( param_set = 1; param_set <= $for_length; param_set++ ))
