@@ -9,6 +9,7 @@ extract_param_set <- function(param_space_name,
                               param_space,
                               param_set) {
   sim_pars <- list()
+  testit::assert(is_param_space_name(param_space_name))
   if (param_space_name %in% c("nonoceanic_cs",
                               "nonoceanic_di",
                               "nonoceanic_iw",
