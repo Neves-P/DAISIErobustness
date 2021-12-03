@@ -259,4 +259,3 @@ test_that("abuse replicates", {
     param_set = 1,
     replicates = 0))
 })
-
