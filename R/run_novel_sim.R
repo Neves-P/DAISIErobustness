@@ -9,6 +9,7 @@
 #' \code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.
 run_novel_sim <- function(param_space_name,
                           sim_pars) {
+  testit::assert(is_param_space_name(param_space_name))
   if (param_space_name %in% c("nonoceanic_cs",
                               "nonoceanic_di",
                               "nonoceanic_iw",
