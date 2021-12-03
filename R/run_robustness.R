@@ -157,7 +157,7 @@ run_robustness <- function(param_space_name,
   )
 
   if (test) {
-    seed <- 1
+    seed <- 3716944
   } else {
     seed <- as.integer(Sys.time()) %% 1000000L * param_set
   }

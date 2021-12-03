@@ -259,3 +259,16 @@ test_that("abuse replicates", {
     param_set = 1,
     replicates = 0))
 })
+
+
+test_that("expose #63", {
+  skip("Loop never finishes")
+  run_robustness(
+    "oceanic_sea_level_cs",
+    param_set = 7,
+    replicates = 2,
+    distance_method = "abs",
+    save_output = FALSE,
+    test = TRUE
+  )
+})
