@@ -7,9 +7,9 @@
 load_param_space <- function(param_space_name) {
   testit::assert(is_param_space_name(param_space_name))
 
-  param_space <- readRDS(system.file(
-    "extdata", paste0(param_space_name, ".rda", package = "DAISIErobustness")
-  ))
-
+ loaded_name <- load(system.file(
+    "extdata", paste0(param_space_name, ".rda"), package = "DAISIErobustness")
+  )
+  assign("param_space", get(loaded_name))
   return(param_space)
 }
