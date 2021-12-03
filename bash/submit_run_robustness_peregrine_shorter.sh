@@ -5,7 +5,7 @@
 #SBATCH --job-name=start_robustness
 #SBATCH --output=logs/start_robustness.log
 #SBATCH --mem=2GB
-#SBATCH --partition=short
+#SBATCH --partition=gelifes
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
 # Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
