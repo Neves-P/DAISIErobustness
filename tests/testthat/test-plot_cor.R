@@ -1,12 +1,11 @@
 test_that("Plot works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
-  skip("Needs new reference files from runs")
   runtime_params <- get_runtime_params(
-    "testdata/logs/"
+    file.path("testdata", "logs"
   )
 
   results_total <- calc_ed95_param_set(
-    "testdata/results"
+    file.path("testdata", "results"
   )
 
   runtime_pars <- merge(
