@@ -15,7 +15,7 @@ test_that("calc_runtime_ed95_cor works", {
   expected_output <- data.frame(
     spec_nltt_cor = 0.291921902389,
     endemic_nltt_cor = -0.0777961487649631,
-    nonendemic_nltt_cor = 0.0191562137145573 ,
+    nonendemic_nltt_cor = 0.0191562137145573,
     num_spec_cor = 0.0865181123855519,
     num_col_cor = 0.199292921739181
   )
