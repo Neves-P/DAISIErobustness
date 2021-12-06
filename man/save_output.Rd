@@ -34,8 +34,7 @@ Files are saved to a subdirectory named after
 \seealso{
 Other I/O: 
 \code{\link{check_create_folders}()},
-\code{\link{create_output_file_name}()},
-\code{\link{load_novel_section}()}
+\code{\link{create_output_file_name}()}
 }
 \author{
 Joshua Lambert, Pedro Neves, Shu Xie
