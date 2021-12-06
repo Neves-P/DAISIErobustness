@@ -7,7 +7,8 @@
 #' @author Pedro Neves
 #' @export
 #'
-plot_cor <- function(param_space_data_frame) {
+plot_cor <- function(param_space_data_frame,
+                     folder_path = ".") {
 
   metrics <- c(
     "ed95_spec_nltt",
@@ -64,7 +65,7 @@ plot_cor <- function(param_space_data_frame) {
 
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr.png"),
+    filename = file.path(folder_path, "runtime_ed95_corr.png"),
     device = "png",
     width = 168,
     height = 100,
@@ -73,7 +74,7 @@ plot_cor <- function(param_space_data_frame) {
   )
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr.pdf"),
+    filename = file.path(folder_path, "runtime_ed95_corr.pdf"),
     device = "pdf",
     width = 168,
     height = 100,
