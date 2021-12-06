@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --time=2-23:05:00
+#SBATCH --time=03:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name=robustness
+#SBATCH --job-name=short_robustness
 #SBATCH --output=logs/robustness-%j.log
 #SBATCH --mem=2GB
 #SBATCH --partition=regular
