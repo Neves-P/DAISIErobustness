@@ -1,4 +1,4 @@
-#' Runs original oceanic DAISIE simulation
+#' Runs original clade-specific oceanic DAISIE simulation
 #'
 #' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
@@ -16,7 +16,7 @@ run_oceanic_sim <- function(ml,
     pars = as.numeric(ml[1:5]),
     hyper_pars = DAISIE::create_hyper_pars(d = 0, x = 0),
     replicates = 1,
-    divdepmodel = sim_pars$divdepmodel,
+    divdepmodel = "CS",
     plot_sims = FALSE,
     cond = 5,
     verbose = FALSE,
