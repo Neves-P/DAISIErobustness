@@ -157,7 +157,7 @@ run_robustness <- function(param_space_name,
   )
 
   if (test) {
-    seed <- 3716944
+    seed <- 1
   } else {
     seed <- as.integer(Sys.time()) %% 1000000L * param_set
   }
@@ -221,7 +221,7 @@ run_robustness <- function(param_space_name,
     novel_ml_constraints <- ml_constraints(ml = novel_ml)
 
     if (novel_ml_constraints == TRUE) {
-
+      message("novel_ml: ", sapply(X = novel_ml, FUN = paste0, " "))
       oceanic_sim_1 <- run_oceanic_sim(
         ml = novel_ml,
         sim_pars = sim_pars)
@@ -237,7 +237,7 @@ run_robustness <- function(param_space_name,
         sim = oceanic_sim_1,
         initial_parameters = novel_ml
       )
-
+      message("oceanic_ml: ", sapply(X = oceanic_ml, FUN = paste0, " "))
       oceanic_ml_constraints <- ml_constraints(
         ml = oceanic_ml
       )
