@@ -27,4 +27,3 @@ test_that("Plot works", {
   expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.png")))
   expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.pdf")))
 })
-
