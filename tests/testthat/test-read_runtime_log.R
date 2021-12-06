@@ -3,11 +3,11 @@ test_that("read_runtime works", {
 
   # Find test environment file path
   log_file_path <- list.files(
-    file.path(getwd(), "testdata/logs"),
+    file.path("testdata", "logs"),
     full.names = TRUE,
-    pattern = "robustness-20596511.log"
+    pattern = "robustness-22353751.log"
   )
 
   runtime <- read_runtime_log(log_file_path = log_file_path)
-  expect_equal(runtime, 369715)
+  expect_equal(runtime, 5834)
 })
