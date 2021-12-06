@@ -12,7 +12,8 @@ for (i in seq_along(names)) {
 
   nas_list[[i]] <- dplyr::filter(
     out,
-    param_space_name == names[i], is.na(runtime)
+    param_space_name == names[i],
+    is.na(runtime)
   )
   fail_ratio[i] <- nrow(nas_list[[i]]) / space_length
 }
