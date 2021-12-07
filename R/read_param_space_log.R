@@ -19,9 +19,11 @@ read_param_space_name_log <- function(log_file_path) {
 
   param_space_line_bools <- grepl("Param space name: ", log_lines)
   param_space_line <- log_lines[param_space_line_bools]
-  testit::assert(
-    length(param_space_line) == 1 && is.character(param_space_line)
-  )
+
+  if (!(length(param_space_line) == 1 && is.character(param_space_line))) {
+    stop("Aborting: Corrupted log file ", basename(log_file_path))
+  }
+
   param_space_name <- sub(".*: ", replacement = "", x = param_space_line)
 
 
