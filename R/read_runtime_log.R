@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' runtime <- read_runtime_log(log_file_path = "logs/robustness-20596511.log")
+#' runtime <- read_runtime_log(log_file_path = "logs/robustness-22353751.log")
 #' }
 read_runtime_log <- function(log_file_path) {
   log_lines <- readLines(con = log_file_path, n = 2000)
