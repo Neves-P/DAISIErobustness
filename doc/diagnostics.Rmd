@@ -1,13 +1,19 @@
-out <- get_runtime_params(logs_folder_path = "robustness_pilot/logs/")
-length(which(is.na(out$runtime)))
-n_logs_total <- nrow(out)
-total_n_res_total <- length(
-  list.files("robustness_pilot/results/", recursive = TRUE)
-)
-success_ratio_total <-  total_n_res_total / n_logs_total
+---
+title: "DAISIErobustness diagnostics"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+Notes on parameter spaces failing
+```{r}
+out <- DAISIErobustness::get_runtime_params(logs_folder_path = "D:/code/DAISIErobustness/robustness_pilot/logs/")
 
 names <- unique(out$param_space_name)
+names <- names[!grepl("corrupted_", names)]
 status <- unique(out$status)
+status
 
 resultless_list <- list()
 failed_list <- list()
@@ -19,7 +25,7 @@ success_ratio <- data.frame(
   "timeout_rate" = numeric()
 )
 for (i in seq_along(names)) {
-  space_length <- nrow(load_param_space(names[i]))
+  space_length <- nrow(DAISIErobustness::load_param_space(names[i]))
 
   resultless_list[[i]] <- dplyr::filter(
     out,
@@ -46,36 +52,62 @@ for (i in seq_along(names)) {
 names(resultless_list) <- names
 names(failed_list) <- names
 names(timeout_list) <- names
+resultless_list
+failed_list
+timeout_list
+```
 
-
+Proportion of successful runs in pilot
+```{r}
 ggplot2::ggplot(data = success_ratio, ggplot2::aes(param_space, sucess_rate)) +
   ggplot2::geom_col() +
   ggplot2::theme_classic() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 25))
-
+```
+ 
+Proportion of failed (errors in ML mostly)
+ 
+```{r}
 ggplot2::ggplot(data = success_ratio, ggplot2::aes(param_space, failed_rate)) +
   ggplot2::geom_col() +
   ggplot2::theme_classic() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 25))
+```
 
+Proportion of timeouts
+
+```{r}
 ggplot2::ggplot(data = success_ratio, ggplot2::aes(param_space, timeout_rate)) +
   ggplot2::geom_col() +
   ggplot2::theme_classic() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 25))
+```
 
+Of the timeouts, how many single novel_sim runs per replicate, and how many fail hang from the begining?
+
+```{r}
 ran_novel_sim_list <- list()
-ran_sim <- c()
+never_finish_list <- list()
 for (i in seq_along(timeout_list)) {
-  paths <- file.path("robustness_pilot", "logs", timeout_list[[i]]$log_name)
-
+  paths <- file.path("D:/code/DAISIErobustness/robustness_pilot/logs", timeout_list[[i]]$log_name)
+  ran_sim <- c()
   for (j in seq_along(paths)) {
     log_lines <- readLines(con = paths[j], n = 2000)
     ran_sim[j] <- sum(grepl("novel_ml:", log_lines))
-
   }
   ran_novel_sim_list[[i]] <- ran_sim
+  never_finish <- sum(ran_sim == 0)
+  never_finish_list[[i]] <- never_finish
 }
 names(ran_novel_sim_list) <- names(timeout_list)
+names(never_finish_list) <- names(timeout_list)
+```
+How many novel_sims ran in job
+```{r}
+ran_novel_sim_list
+```
 
-
-run_robustness(param_space_name = "oceanic_ontogeny_iw", param_set = 219, replicates = 2,save_output = FALSE, test = TRUE)
+How many never ran a single novel sim
+```{r}
+never_finish_list
+```
