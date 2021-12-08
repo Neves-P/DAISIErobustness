@@ -19,7 +19,10 @@ read_param_set_log <- function(log_file_path) {
 
   param_set_line_bools <- grepl("Running param set: ", log_lines)
   param_set_line <- log_lines[param_set_line_bools]
-  testit::assert(length(param_set_line) == 1 && is.character(param_set_line))
+  if (!(length(param_set_line) == 1 && is.character(param_set_line))) {
+    warning("Corrupted log file: ", basename(log_file_path))
+    return(NA)
+  }
   param_set <- as.numeric(
     sub(".*: ", replacement = "", x = param_set_line)
   )

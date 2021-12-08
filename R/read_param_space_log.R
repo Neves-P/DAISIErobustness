@@ -21,13 +21,15 @@ read_param_space_name_log <- function(log_file_path) {
   param_space_line <- log_lines[param_space_line_bools]
 
   if (!(length(param_space_line) == 1 && is.character(param_space_line))) {
-    stop("Aborting: Corrupted log file ", basename(log_file_path))
+    warning("Corrupted log file: ", basename(log_file_path))
+    return(paste0("corrupted_", basename(log_file_path)))
   }
 
   param_space_name <- sub(".*: ", replacement = "", x = param_space_line)
 
 
   testit::assert(length(param_space_name) == 1)
-  testit::assert(is_param_space_name(param_space_name))
+  testit::assert(is_param_space_name(param_space_name) ||
+                   grepl("corrupted_", param_space_name))
   param_space_name
 }
