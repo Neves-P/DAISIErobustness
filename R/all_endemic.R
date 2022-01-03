@@ -15,8 +15,8 @@ all_endemic <- function(island) {
     species_type <- unlist(
       lapply(all_cols, function(x) {lapply(x, "[[", "species_type")})
     )
-    endemics <- length(which(species_type %in% c("C", "A")))
-    non_endemics <- length(which(species_type %in% c("I")))
+    num_recol_endemic_cols <- length(which(species_type %in% c("C", "A")))
+    num_recol_non_endemic_cols <- length(which(species_type %in% c("I")))
     num_endemic_cols <- num_endemic_cols + num_recol_endemic_cols
     num_non_endemic_cols <- num_non_endemic_cols + num_recol_non_endemic_cols
   }
