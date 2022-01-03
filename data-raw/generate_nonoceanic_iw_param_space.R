@@ -6,7 +6,7 @@ nonoceanic_young <- expand.grid(
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(50, 100),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -22,7 +22,7 @@ nonoceanic_old <- expand.grid(
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(50, 100),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -38,7 +38,7 @@ nonoceanic_ancient <- expand.grid(
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(50, 100),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -55,4 +55,4 @@ nonoceanic_iw <- rbind(
   nonoceanic_ancient
 )
 
-usethis::use_data(nonoceanic_iw, overwrite = TRUE)
+save(nonoceanic_iw, file = "inst/extdata/nonoceanic_iw.rda")
