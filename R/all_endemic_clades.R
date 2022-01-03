@@ -7,7 +7,6 @@
 #' @author Joshua W. Lambert
 #' @export
 all_endemic_clades <- function(island) {
-  browser()
   testit::assert(is.list(island))
   all_endemic <- all_endemic(island)
   if (isFALSE(all_endemic)) {

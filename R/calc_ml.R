@@ -7,7 +7,6 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim,
                     initial_parameters) {
-browser()
   all_endemic <- all_endemic(sim[[1]])
   any_recols <- any_recols(sim[[1]])
   optim_ana <- all_endemic || any_recols

@@ -5,7 +5,6 @@
 #' @return Boolean
 #' @author Joshua W. Lambert
 all_endemic <- function(island) {
-  browser()
   island <- island[-1]
   stacs <- unlist(lapply(island, "[[", "stac"))
   num_endemic_cols <- length(which(stacs %in% c(2, 5, 6)))

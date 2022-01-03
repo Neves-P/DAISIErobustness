@@ -5,7 +5,6 @@
 #' @return Boolean
 #' @export
 any_recols <- function(island) {
-  browser()
   testit::assert(is.list(island))
   island <- island[-1]
   stacs <- unlist(lapply(island, "[[", "stac"))
