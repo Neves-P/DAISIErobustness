@@ -92,11 +92,11 @@ test_that("test run_novel_sim output is correct for
 })
 
 test_that("test run_novel_sim output is correct for
-          nonoceanic_cs", {
+          continental_cs", {
             skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
             param_space <- load_param_space(
-              param_space_name = "nonoceanic_cs")
+              param_space_name = "continental_cs")
             set.seed(
               1,
               kind = "Mersenne-Twister",
@@ -104,11 +104,11 @@ test_that("test run_novel_sim output is correct for
               sample.kind = "Rejection"
             )
             sim_pars <- extract_param_set(
-              param_space_name = "nonoceanic_cs",
+              param_space_name = "continental_cs",
               param_space = param_space,
               param_set = 1)
             novel_sim <- run_novel_sim(
-              param_space_name = "nonoceanic_cs",
+              param_space_name = "continental_cs",
               sim_pars = sim_pars)
             expect_length(novel_sim, 1)
             expect_length(novel_sim[[1]], 25)
@@ -123,11 +123,11 @@ test_that("test run_novel_sim output is correct for
 })
 
 test_that("test run_novel_sim output is correct for
-          nonoceanic_land_bridge_cs", {
+          continental_land_bridge_cs", {
             skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
             param_space <- load_param_space(
-              param_space_name = "nonoceanic_land_bridge_cs")
+              param_space_name = "continental_land_bridge_cs")
             set.seed(
               1,
               kind = "Mersenne-Twister",
@@ -135,11 +135,11 @@ test_that("test run_novel_sim output is correct for
               sample.kind = "Rejection"
             )
             sim_pars <- extract_param_set(
-              param_space_name = "nonoceanic_land_bridge_cs",
+              param_space_name = "continental_land_bridge_cs",
               param_space = param_space,
               param_set = 1)
             novel_sim <- run_novel_sim(
-              param_space_name = "nonoceanic_land_bridge_cs",
+              param_space_name = "continental_land_bridge_cs",
               sim_pars = sim_pars)
             expect_length(novel_sim, 1)
             expect_length(novel_sim[[1]], 24)

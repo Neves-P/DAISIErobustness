@@ -2,7 +2,7 @@ test_that("test calc_ml output is correct with geodynamic sim", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
   param_space <- load_param_space(
-    param_space_name = "nonoceanic_cs")
+    param_space_name = "continental_cs")
   set.seed(
     1,
     kind = "Mersenne-Twister",
@@ -10,11 +10,11 @@ test_that("test calc_ml output is correct with geodynamic sim", {
     sample.kind = "Rejection"
   )
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_cs",
+    param_space_name = "continental_cs",
     param_space = param_space,
     param_set = 3)
   novel_sim <- run_novel_sim(
-    param_space_name = "nonoceanic_cs",
+    param_space_name = "continental_cs",
     sim_pars = sim_pars)
 
   max_spec_number <- calc_max_spec(novel_sim)

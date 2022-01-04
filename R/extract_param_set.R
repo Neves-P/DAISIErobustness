@@ -10,9 +10,9 @@ extract_param_set <- function(param_space_name,
                               param_set) {
   sim_pars <- list()
   testit::assert(is_param_space_name(param_space_name))
-  if (param_space_name %in% c("nonoceanic_cs",
-                              "nonoceanic_di",
-                              "nonoceanic_iw",
+  if (param_space_name %in% c("continental_cs",
+                              "continental_di",
+                              "continental_iw",
                               "oceanic")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
@@ -25,9 +25,9 @@ extract_param_set <- function(param_space_name,
                                   param_space$x_nonend[param_set])
     sim_pars$divdepmodel <- param_space$divdepmodel[param_set]
   }
-  if (param_space_name %in% c("nonoceanic_land_bridge_cs",
-                              "nonoceanic_land_bridge_di",
-                              "nonoceanic_land_bridge_iw")) {
+  if (param_space_name %in% c("continental_land_bridge_cs",
+                              "continental_land_bridge_di",
+                              "continental_land_bridge_iw")) {
     sim_pars$time <- param_space$time[param_set]
     sim_pars$M <- param_space$M[param_set] #nolint
     sim_pars$pars <- c(param_space$lac_1[param_set],

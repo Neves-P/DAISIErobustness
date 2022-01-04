@@ -57,4 +57,3 @@ get_runtime_params <- function(logs_folder_path) {
   testit::assert(is.data.frame(out))
   out
 }
-

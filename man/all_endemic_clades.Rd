@@ -5,7 +5,15 @@
 \title{Checks if all island species are endemic clades. Clade are colonisations that
 have formed an island clade of two or more species surviving to the present.}
 \usage{
-all_endemic_clades(island)
+all_endemic_clades(sim)
+}
+\arguments{
+\item{sim}{A list of simulation output from
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
+in the DAISIE sim format.}
 }
 \value{
 Boolean

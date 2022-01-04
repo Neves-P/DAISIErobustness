@@ -71,23 +71,23 @@ test_that("test extract_param_set extracts correct param set from
 })
 
 test_that("test extract_param_set extracts correct param set from
-          nonoceanic", {
-  param_space <- load_param_space("nonoceanic_cs")
+          continental", {
+  param_space <- load_param_space("continental_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_cs",
+    param_space_name = "continental_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.25, 0.25, 10, 0.01, 0.25))
+  expect_equal(sim_pars$pars, c(0.25, 0.25, 5, 0.01, 0.25))
   expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.10))
 })
 
 test_that("test extract_param_set extracts correct param set from
-          nonoceanic_land_bridge_cs", {
-  param_space <- load_param_space("nonoceanic_land_bridge_cs")
+          continental_land_bridge_cs", {
+  param_space <- load_param_space("continental_land_bridge_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_land_bridge_cs",
+    param_space_name = "continental_land_bridge_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)

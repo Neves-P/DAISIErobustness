@@ -34,8 +34,8 @@
 #   oceanic_ontogeny
 #   oceanic_sea_level
 #   oceanic_ontogeny_sea_level
-#   nonoceanic
-#   nonoceanic_land_bridge
+#   continental
+#   continental_land_bridge
 #   trait_CES
 #   oceanic
 # replicates - Total number of replicates to be simulated, or are present in
@@ -52,11 +52,11 @@
 # cd DAISIErobustness
 # sbatch bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 novel_sim abs
 #
-## Usage example running analysis for the nonoceanic param space, 1000
+## Usage example running analysis for the continental param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
 # cd DAISIErobustness
-# sbatch bash/submit_run_robustness_peregrine.sh nonoceanic 1000 analysis abs
+# sbatch bash/submit_run_robustness_peregrine.sh continental 1000 analysis abs
 ################################################################################
 
 

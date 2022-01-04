@@ -5,7 +5,15 @@
 \title{Determines if the island contains any recolonisations that survived to the
 present}
 \usage{
-any_recols(island)
+any_recols(sim)
+}
+\arguments{
+\item{sim}{A list of simulation output from
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
+in the DAISIE sim format.}
 }
 \value{
 Boolean

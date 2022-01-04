@@ -5,7 +5,15 @@
 \title{Calculates the number of endemic and non-endemics species on a single island
 replicate}
 \usage{
-all_endemic(island)
+all_endemic(sim)
+}
+\arguments{
+\item{sim}{A list of simulation output from
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
+in the DAISIE sim format.}
 }
 \value{
 Boolean
