@@ -55,4 +55,4 @@ nonoceanic_di <- rbind(
   nonoceanic_ancient
 )
 
-usethis::use_data(nonoceanic_di, overwrite = TRUE)
+save(nonoceanic_di, file = "inst/extdata/nonoceanic_di.rda")
