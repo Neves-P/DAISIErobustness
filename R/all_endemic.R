@@ -4,16 +4,18 @@
 #' @inheritParams default_params_doc
 #' @return Boolean
 #' @author Joshua W. Lambert
-all_endemic <- function(island) {
-  island <- island[-1]
-  stacs <- unlist(lapply(island, "[[", "stac"))
+all_endemic <- function(sim) {
+  sim <- sim[-1]
+  stacs <- unlist(lapply(sim, "[[", "stac"))
   num_endemic_cols <- length(which(stacs %in% c(2, 5, 6)))
   num_non_endemic_cols <- length(which(stacs %in% c(1, 4)))
   if (any(stacs == 3)) {
-    recol <- island[which(stacs == 3)]
+    recol <- sim[which(stacs == 3)]
     all_cols <- lapply(recol, "[[", "all_colonisations")
     species_type <- unlist(
-      lapply(all_cols, function(x) {lapply(x, "[[", "species_type")})
+      lapply(all_cols, function(x) {
+        lapply(x, "[[", "species_type")
+      })
     )
     num_recol_endemic_cols <- length(which(species_type %in% c("C", "A")))
     num_recol_non_endemic_cols <- length(which(species_type %in% c("I")))
