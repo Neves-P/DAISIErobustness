@@ -6,7 +6,7 @@ young_oceanic_sea_level <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -34,7 +34,7 @@ old_oceanic_sea_level <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -58,4 +58,5 @@ old_oceanic_sea_level <- expand.grid(
 # Complete oceanic sea-level island-wide diversity-dependent parameter set
 
 oceanic_sea_level_iw <- rbind(young_oceanic_sea_level, old_oceanic_sea_level)
-usethis::use_data(oceanic_sea_level_iw, overwrite = TRUE)
+
+save(oceanic_sea_level_iw, file = "inst/extdata/oceanic_sea_level_iw.rda")

@@ -58,4 +58,5 @@ old_oceanic_sea_level <- expand.grid(
 # Complete oceanic sea-level clade-specific diversity-dependent parameter set
 
 oceanic_sea_level_cs <- rbind(young_oceanic_sea_level, old_oceanic_sea_level)
-usethis::use_data(oceanic_sea_level_cs, overwrite = TRUE)
+
+save(oceanic_sea_level_cs, file = "inst/extdata/oceanic_sea_level_cs.rda")

@@ -1,4 +1,4 @@
-# Nonoceanic land-bridge diversity-independent
+# Continental land-bridge diversity-independent
 ## Young
 
 young_lb_di_temp <- expand.grid(time = 2.55,
@@ -61,11 +61,12 @@ old_lb_di_10 <- cbind(old_lb_di_temp,
 
 old_lb_di <- rbind(old_lb_di_2, old_lb_di_10)
 
-# Complete nonoceanic land-bridge diversity-independent parameter set
+# Complete continental land-bridge diversity-independent parameter set
 
-nonoceanic_land_bridge_di <- rbind(
+continental_land_bridge_di <- rbind(
   young_lb_di,
   old_lb_di
 )
 
-usethis::use_data(nonoceanic_land_bridge_di, overwrite = TRUE)
+save(continental_land_bridge_di,
+     file = "inst/extdata/continental_land_bridge_di.rda")

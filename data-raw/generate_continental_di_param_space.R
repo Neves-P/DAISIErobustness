@@ -1,7 +1,7 @@
-# Nonoceanic diversity-independent
+# Continental diversity-independent
 # Young
 
-nonoceanic_young <- expand.grid(
+continental_young <- expand.grid(
   time = 2.55,
   M = 1000,
   lac = c(0.25, 0.5),
@@ -17,7 +17,7 @@ nonoceanic_young <- expand.grid(
 
 ## Old
 
-nonoceanic_old <- expand.grid(
+continental_old <- expand.grid(
   time = 6.15,
   M = 1000,
   lac = c(0.25, 0.5),
@@ -33,7 +33,7 @@ nonoceanic_old <- expand.grid(
 
 ## Ancient
 
-nonoceanic_ancient <- expand.grid(
+continental_ancient <- expand.grid(
   time = 50,
   M = 1000,
   lac = c(0.25, 0.5),
@@ -47,12 +47,12 @@ nonoceanic_ancient <- expand.grid(
   stringsAsFactors = FALSE
 )
 
-# Complete nonoceanic diversity-independent parameter set
+# Complete continental diversity-independent parameter set
 
-nonoceanic_di <- rbind(
-  nonoceanic_young,
-  nonoceanic_old,
-  nonoceanic_ancient
+continental_di <- rbind(
+  continental_young,
+  continental_old,
+  continental_ancient
 )
 
-save(nonoceanic_di, file = "inst/extdata/nonoceanic_di.rda")
+save(continental_di, file = "inst/extdata/continental_di.rda")
