@@ -8,6 +8,7 @@ test_that("get_runtime_params works", {
     ),
     "param_set" = c(228, 230, 240, 251, 255, 483, 443, 445),
     "runtime" = c(2748, 3757, 6379, 4641, 5326, 3713, 3303, 5834),
+    "status" = rep("COMPLETED", 8),
     "log_name" = c(
       "robustness-22352504.log",
       "robustness-22352506.log",
