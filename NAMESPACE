@@ -2,6 +2,7 @@
 
 export(calc_ed95_for_plots)
 export(calc_ed95_param_set)
+export(calc_run_success_ratio)
 export(calc_runtime_ed95_cor)
 export(extract_param_set)
 export(get_runtime_params)
