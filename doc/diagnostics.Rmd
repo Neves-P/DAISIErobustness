@@ -8,7 +8,7 @@ output:
 
 Notes on parameter spaces failing
 ```{r}
-out <- DAISIErobustness::get_runtime_params(logs_folder_path = "D:/code/DAISIErobustness/robustness_pilot/logs/")
+out <- DAISIErobustness::get_runtime_params(logs_folder_path = "tests/testthat/testdata/logs")
 
 names <- unique(out$param_space_name)
 names <- names[!grepl("corrupted_", names)]

@@ -39,11 +39,21 @@ get_runtime_params <- function(logs_folder_path) {
 
   for (i in seq_along(log_paths)) {
     log_name <- basename(log_paths[i])
+    log_lines <- read_log_file(log_paths[i])
 
-    param_space_name <- read_param_space_name_log(log_file_path = log_paths[i])
-    param_set <- read_param_set_log(log_file_path = log_paths[i])
-    runtime <- read_runtime_log(log_file_path = log_paths[i])
-    status <- read_status_log(log_file_path = log_paths[i])
+    param_space_name <- read_param_space_name_log(
+      log_lines = log_lines,
+      log_file_path = log_paths[i]
+    )
+    param_set <- read_param_set_log(
+      log_lines = log_lines,
+      log_file_path = log_paths[i]
+    )
+    runtime <- read_runtime_log(
+      log_lines = log_lines,
+      log_file_path = log_paths[i]
+    )
+    status <- read_status_log(log_lines = log_lines)
 
     out[i, "param_space_name"] <- param_space_name
     out[i, "param_set"] <- param_set

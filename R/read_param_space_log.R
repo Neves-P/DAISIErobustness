@@ -10,12 +10,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' param_space_name <- read_param_space_name_log(
+#' log_lines <- read_log_file(log_file_path = "logs/robustness-20596511.log")
+#' param_space_name <- read_param_space_name_log(,
+#'   log_lines = log_lines,
 #'   log_file_path = "logs/robustness-20596511.log"
 #' )
 #' }
-read_param_space_name_log <- function(log_file_path) {
-  log_lines <- readLines(con = log_file_path, n = 300)
+read_param_space_name_log <- function(log_lines, log_file_path) {
 
   param_space_line_bools <- grepl("Param space name: ", log_lines)
   param_space_line <- log_lines[param_space_line_bools]
@@ -26,7 +27,6 @@ read_param_space_name_log <- function(log_file_path) {
   }
 
   param_space_name <- sub(".*: ", replacement = "", x = param_space_line)
-
 
   testit::assert(length(param_space_name) == 1)
   testit::assert(is_param_space_name(param_space_name) ||

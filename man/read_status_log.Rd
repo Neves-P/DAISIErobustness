@@ -4,11 +4,7 @@
 \alias{read_status_log}
 \title{Calculate job elapsed time from log file}
 \usage{
-read_status_log(log_file_path)
-}
-\arguments{
-\item{log_file_path}{A string with the path for a standard Peregrine HPCC log
-file.}
+read_status_log(log_lines)
 }
 \value{
 A character vector with the status of the job noted in a given log
@@ -17,11 +13,6 @@ A character vector with the status of the job noted in a given log
 \description{
 Obtains the elapsed job time in seconds from a standard Peregrine HPCC log
 file
-}
-\examples{
-\dontrun{
-status <- read_status_log(log_file_path = "logs/robustness-22353751.log")
-}
 }
 \author{
 Pedro Neves

@@ -9,13 +9,7 @@
 #'   file
 #' @author Pedro Neves
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' status <- read_status_log(log_file_path = "logs/robustness-22353751.log")
-#' }
-read_status_log <- function(log_file_path) {
-  log_lines <- readLines(con = log_file_path, n = 2000)
+read_status_log <- function(log_lines) {
   state_line_bools <- grepl("State               : ", log_lines)
   state_line <- log_lines[state_line_bools]
   state_line <- sub(".*: ", replacement = "", x = state_line)
