@@ -2,7 +2,7 @@
 #'
 #' Simply sanitizes the input path and reads log files into a character vector.
 #'
-#' @param default_params_docs
+#' @inheritParams default_params_doc
 #'
 #' @return Character vector with the contents of the log file as returned by
 #'   \code{\link{readLines}()}.

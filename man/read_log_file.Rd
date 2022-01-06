@@ -7,7 +7,8 @@
 read_log_file(log_file_path)
 }
 \arguments{
-\item{default_params_docs}{}
+\item{log_file_path}{A string with the path for a standard Peregrine HPCC log
+file.}
 }
 \value{
 Character vector with the contents of the log file as returned by
