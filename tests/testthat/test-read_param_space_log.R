@@ -7,7 +7,9 @@ test_that("read_param_space_log works", {
     pattern = "robustness-22352504.log"
   )
 
+  log_lines <- read_log_file(log_file_path = log_file_path)
   param_space_name <- read_param_space_name_log(
+    log_lines = log_lines,
     log_file_path = log_file_path
   )
 
