@@ -6,6 +6,10 @@
 \usage{
 read_status_log(log_lines)
 }
+\arguments{
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_files}()}.}
+}
 \value{
 A character vector with the status of the job noted in a given log
   file

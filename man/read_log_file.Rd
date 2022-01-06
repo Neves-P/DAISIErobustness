@@ -10,7 +10,7 @@ read_log_file(log_file_path)
 \item{default_params_docs}{}
 }
 \value{
-Character vector with the contents of the log file as returns,
+Character vector with the contents of the log file as returned by
   \code{\link{readLines}()}.
 }
 \description{

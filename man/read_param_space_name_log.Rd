@@ -7,6 +7,9 @@
 read_param_space_name_log(log_lines, log_file_path)
 }
 \arguments{
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_files}()}.}
+
 \item{log_file_path}{A string with the path for a standard Peregrine HPCC log
 file.}
 }

@@ -45,7 +45,8 @@ default_params_doc(
   logs_folder_path,
   runtime_params,
   ed95_param_sets,
-  param_space_data_frame
+  param_space_data_frame,
+  log_lines
 )
 }
 \arguments{
@@ -205,6 +206,9 @@ parameter set in each parameter space as returned by
 parameter spaces, together with associated runtime. Used for plotting
 correlation between runtime and ED95. Obtained by running
 \code{\link{calc_ed95_param_set}()}.}
+
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_files}()}.}
 }
 \value{
 Nothing

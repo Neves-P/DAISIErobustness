@@ -4,7 +4,7 @@
 #'
 #' @param default_params_docs
 #'
-#' @return Character vector with the contents of the log file as returns,
+#' @return Character vector with the contents of the log file as returned by
 #'   \code{\link{readLines}()}.
 #' @export
 #'

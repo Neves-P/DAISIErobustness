@@ -116,6 +116,8 @@
 #'   parameter spaces, together with associated runtime. Used for plotting
 #'   correlation between runtime and ED95. Obtained by running
 #'   \code{\link{calc_ed95_param_set}()}.
+#' @param log_lines Character vector containing the contents of the log files
+#'   as read by \code{\link{read_log_files}()}.
 #'
 #' @keywords internal
 #' @return Nothing
@@ -161,7 +163,8 @@ default_params_doc <- function(
   logs_folder_path,
   runtime_params,
   ed95_param_sets,
-  param_space_data_frame
+  param_space_data_frame,
+  log_lines
 ) {
   # Nothing
 }
