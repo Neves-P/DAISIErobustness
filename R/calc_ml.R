@@ -7,9 +7,13 @@
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
 calc_ml <- function(sim,
                     initial_parameters) {
+
   all_endemic <- all_endemic(sim[[1]])
   any_recols <- any_recols(sim[[1]])
   optim_ana <- isFALSE(all_endemic) || any_recols
+
+  # sets the number of steps for the integrations of the ODES
+  DAISIE::DAISIE_CS_max_steps(1e8)
 
   if (optim_ana) {
     ml <- DAISIE::DAISIE_ML_CS(
