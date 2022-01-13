@@ -2,7 +2,7 @@ test_that("calc_ed95_for_plots works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
   ed95 <- suppressMessages(
     calc_ed95_for_plots(
-      file.path("testdata", "results", "oceanic_sea_level_cs")
+      file.path("testdata", "results", "nonoceanic_cs")
     )
   )
 
