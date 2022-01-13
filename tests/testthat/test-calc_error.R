@@ -36,9 +36,9 @@ test_that("test calc_error output is correct", {
     distance_method = "abs"
   )
   expect_length(error, 5)
-  expect_equal(error, list(spec_nltt_error = 16.034733208092,
-                           num_spec_error = 5,
-                           num_col_error = 6,
-                           endemic_nltt_error = 14.7933281238329,
-                           nonendemic_nltt_error = 5.94337896210511))
+  expect_equal(error, list(spec_nltt_error = 14.7790182365,
+                           num_spec_error = 4,
+                           num_col_error = 7,
+                           endemic_nltt_error = 14.154769913,
+                           nonendemic_nltt_error = 6.201976856))
 })

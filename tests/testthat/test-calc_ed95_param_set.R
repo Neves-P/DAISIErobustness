@@ -1,7 +1,7 @@
 test_that("calc_ed95_param_set works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
   ed95 <- suppressMessages(
-    calc_ed95_param_set(file.path(getwd(), "testdata/results/"))
+    calc_ed95_param_set(file.path("testdata", "results"))
   )
 
   expected_output <- data.frame(
