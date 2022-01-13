@@ -117,7 +117,7 @@
 #'   correlation between runtime and ED95. Obtained by running
 #'   \code{\link{calc_ed95_param_set}()}.
 #' @param log_lines Character vector containing the contents of the log files
-#'   as read by \code{\link{read_log_files}()}.
+#'   as read by \code{\link{read_log_file}()}.
 #'
 #' @keywords internal
 #' @return Nothing

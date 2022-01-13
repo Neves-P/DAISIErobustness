@@ -18,6 +18,8 @@
 #'
 #' @author Pedro Neves
 calc_run_success_ratio <- function(logs_folder_path) {
+  param_space_name <- NULL; rm(param_space_name) # nolint, fixes warning: no visible binding for global variable
+
   runtime_params <- get_runtime_params(logs_folder_path = logs_folder_path)
 
   param_space_names <- unique(runtime_params$param_space_name)
@@ -25,7 +27,6 @@ calc_run_success_ratio <- function(logs_folder_path) {
     !grepl("corrupted_", param_space_names)
   ]
   status <- unique(runtime_params$status)
-  status
 
   resultless_list <- list()
   failed_list <- list()
