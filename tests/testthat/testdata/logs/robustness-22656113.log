@@ -1,4 +1,4 @@
-/home/p287218/DAISIErobustness/results/nonoceanic_cs folder found. No creation needed.
+/home/p287218/DAISIErobustness/results/continental_cs folder found. No creation needed.
 
 ─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -87,7 +87,7 @@
 
 ──────────────────────────────────────────────────────────────────────────────
 2022-01-03 20:06:09
-Param space name: nonoceanic_cs
+Param space name: continental_cs
 Running param set: 4
 Running analysis with seed: 947068
 CAUTION: Do not submit jobs simultaneously in order for jobs to have
@@ -238,9 +238,9 @@ Positive values of loglik encountered without possibility for approximation. Set
  Maximum loglikelihood: -204.177294 
 oceanic_ml: 1.03132510577722 0.0297758017252542 2.17853581031429 0.0126185912669492 1.27903888650271 -204.177294406684 5 0 
 Number of results: 3
-Trying to save nonoceanic_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/nonoceanic_cs/nonoceanic_cs_param_set_4.RData
+Trying to save continental_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_4.RData
 
-Saved nonoceanic_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/nonoceanic_cs/nonoceanic_cs_param_set_4.RData
+Saved continental_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_4.RData
 
 
 

@@ -3,7 +3,7 @@ test_that("get_runtime_params works", {
 
   runtime_params <- get_runtime_params(file.path("testdata", "logs"))
   expected <- data.frame(
-    "param_space_name" = rep("nonoceanic_cs", 8),
+    "param_space_name" = rep("continental_cs", 8),
     "param_set" = 1:8,
     "runtime" = c(72, 52, 51, 81, 94, 77, 58, 60),
     "status" = rep("COMPLETED", 8),

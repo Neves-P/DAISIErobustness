@@ -5,7 +5,7 @@ test_that("calc_ed95_param_set works", {
   )
 
   expected_output <- data.frame(
-    param_space_name = rep("nonoceanic_cs", 8),
+    param_space_name = rep("continental_cs", 8),
     param_set = 1:8,
     ed95_spec_nltt = c(
       1.00,

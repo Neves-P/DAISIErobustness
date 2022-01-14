@@ -13,5 +13,5 @@ test_that("read_param_space_log works", {
     log_file_path = log_file_path
   )
 
-  expect_equal(param_space_name, "nonoceanic_cs")
+  expect_equal(param_space_name, "continental_cs")
 })
