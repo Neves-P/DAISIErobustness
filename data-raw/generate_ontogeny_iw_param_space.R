@@ -6,7 +6,7 @@ young_parameter_set <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -34,7 +34,7 @@ old_parameter_set <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -58,4 +58,5 @@ old_parameter_set <- expand.grid(
 # Complete oceanic ontogeny island-wide diversity-dependent parameter set
 
 oceanic_ontogeny_iw <- rbind(young_parameter_set, old_parameter_set)
-usethis::use_data(oceanic_ontogeny_iw, overwrite = TRUE)
+
+save(oceanic_ontogeny_iw, file = "inst/extdata/oceanic_ontogeny_iw.rda")

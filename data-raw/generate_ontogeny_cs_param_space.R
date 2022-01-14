@@ -58,4 +58,5 @@ old_parameter_set <- expand.grid(
 # Complete oceanic ontogeny clade-specific diversity-dependent parameter set
 
 oceanic_ontogeny_cs <- rbind(young_parameter_set, old_parameter_set)
-usethis::use_data(oceanic_ontogeny_cs, overwrite = TRUE)
+
+save(oceanic_ontogeny_cs, file = "inst/extdata/oceanic_ontogeny_cs.rda")

@@ -6,7 +6,7 @@ oceanic_ontogeny_sea_level_young <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -34,7 +34,7 @@ oceanic_ontogeny_sea_level_old <- expand.grid(
   M = 1000,
   lac = c(0.02, 0.04),
   mu = c(0.975, 1.95),
-  K = c(0.001, 0.01),
+  K = c(0.01, 0.1),
   gam = c(0.03363, 0.06726),
   laa = c(0.0295, 0.059),
   x = c(0.075, 0.15),
@@ -63,4 +63,5 @@ oceanic_ontogeny_sea_level_iw <- rbind(
   oceanic_ontogeny_sea_level_old
 )
 
-usethis::use_data(oceanic_ontogeny_sea_level_iw, overwrite = TRUE)
+save(oceanic_ontogeny_sea_level_iw,
+     file = "inst/extdata/oceanic_ontogeny_sea_level_iw.rda")

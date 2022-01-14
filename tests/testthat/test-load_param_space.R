@@ -109,53 +109,53 @@ test_that("test load_param_space loads oceanic_ontogeny_sea_level
   expect_true(is.character(oceanic_ontogeny_sea_level[[22]]))
 })
 
-test_that("test load_param_space loads nonoceanic parameter space", {
-  nonoceanic <- load_param_space(
-    param_space_name = "nonoceanic_cs"
+test_that("test load_param_space loads continental parameter space", {
+  continental <- load_param_space(
+    param_space_name = "continental_cs"
   )
-  expect_equal(nrow(nonoceanic), 384)
-  expect_equal(ncol(nonoceanic), 10)
-  expect_equal(names(nonoceanic),
+  expect_equal(nrow(continental), 384)
+  expect_equal(ncol(continental), 10)
+  expect_equal(names(continental),
                c("time", "M", "lac", "mu", "K", "gam", "laa", "x_s",
                  "x_nonend", "divdepmodel"))
-  expect_true(is.numeric(nonoceanic[[1]]))
-  expect_true(is.numeric(nonoceanic[[2]]))
-  expect_true(is.numeric(nonoceanic[[3]]))
-  expect_true(is.numeric(nonoceanic[[4]]))
-  expect_true(is.numeric(nonoceanic[[5]]))
-  expect_true(is.numeric(nonoceanic[[6]]))
-  expect_true(is.numeric(nonoceanic[[7]]))
-  expect_true(is.numeric(nonoceanic[[8]]))
-  expect_true(is.numeric(nonoceanic[[9]]))
-  expect_true(is.character(nonoceanic[[10]]))
+  expect_true(is.numeric(continental[[1]]))
+  expect_true(is.numeric(continental[[2]]))
+  expect_true(is.numeric(continental[[3]]))
+  expect_true(is.numeric(continental[[4]]))
+  expect_true(is.numeric(continental[[5]]))
+  expect_true(is.numeric(continental[[6]]))
+  expect_true(is.numeric(continental[[7]]))
+  expect_true(is.numeric(continental[[8]]))
+  expect_true(is.numeric(continental[[9]]))
+  expect_true(is.character(continental[[10]]))
 })
 
-test_that("test load_param_space loads nonoceanic_land_bridge parameter
+test_that("test load_param_space loads continental_land_bridge parameter
           space", {
-  nonoceanic_land_bridge <- load_param_space(
-    param_space_name = "nonoceanic_land_bridge_cs"
+  continental_land_bridge <- load_param_space(
+    param_space_name = "continental_land_bridge_cs"
   )
-  expect_equal(nrow(nonoceanic_land_bridge), 128)
-  expect_equal(ncol(nonoceanic_land_bridge), 16)
-  expect_equal(names(nonoceanic_land_bridge),
+  expect_equal(nrow(continental_land_bridge), 128)
+  expect_equal(ncol(continental_land_bridge), 16)
+  expect_equal(names(continental_land_bridge),
                c("time", "M", "lac_1", "mu_1", "K_1", "gam_1",
                  "laa_1", "x_s", "x_nonend", "shift_times", "divdepmodel",
                  "lac_2", "mu_2", "K_2", "gam_2", "laa_2"))
-  expect_true(is.numeric(nonoceanic_land_bridge[[1]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[2]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[3]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[4]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[5]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[6]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[7]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[8]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[9]]))
-  expect_true(is.list(nonoceanic_land_bridge[[10]]))
-  expect_true(is.character(nonoceanic_land_bridge[[11]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[12]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[13]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[14]]))
-  expect_true(is.numeric(nonoceanic_land_bridge[[15]]))
+  expect_true(is.numeric(continental_land_bridge[[1]]))
+  expect_true(is.numeric(continental_land_bridge[[2]]))
+  expect_true(is.numeric(continental_land_bridge[[3]]))
+  expect_true(is.numeric(continental_land_bridge[[4]]))
+  expect_true(is.numeric(continental_land_bridge[[5]]))
+  expect_true(is.numeric(continental_land_bridge[[6]]))
+  expect_true(is.numeric(continental_land_bridge[[7]]))
+  expect_true(is.numeric(continental_land_bridge[[8]]))
+  expect_true(is.numeric(continental_land_bridge[[9]]))
+  expect_true(is.list(continental_land_bridge[[10]]))
+  expect_true(is.character(continental_land_bridge[[11]]))
+  expect_true(is.numeric(continental_land_bridge[[12]]))
+  expect_true(is.numeric(continental_land_bridge[[13]]))
+  expect_true(is.numeric(continental_land_bridge[[14]]))
+  expect_true(is.numeric(continental_land_bridge[[15]]))
 })
 
 test_that("test load_param_space loads trait parameter space", {

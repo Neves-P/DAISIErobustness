@@ -18,12 +18,12 @@ is_param_space_name <- function(param_space_name) {
                               "oceanic_ontogeny_sea_level_cs",
                               "oceanic_ontogeny_sea_level_di",
                               "oceanic_ontogeny_sea_level_iw",
-                              "nonoceanic_cs",
-                              "nonoceanic_di",
-                              "nonoceanic_iw",
-                              "nonoceanic_land_bridge_cs",
-                              "nonoceanic_land_bridge_di",
-                              "nonoceanic_land_bridge_iw",
+                              "continental_cs",
+                              "continental_di",
+                              "continental_iw",
+                              "continental_land_bridge_cs",
+                              "continental_land_bridge_di",
+                              "continental_land_bridge_iw",
                               "trait_CES",
                               "oceanic")) {
     return(TRUE)

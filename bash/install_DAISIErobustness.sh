@@ -10,4 +10,4 @@
 mkdir -p logs
 mkdir -p results
 ml R
-Rscript -e "remotes::install_github('Neves-P/DAISIErobustness@extdata_alternative')"
+Rscript -e "remotes::install_github('Neves-P/DAISIErobustness@sim_coverage')"

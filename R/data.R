@@ -422,8 +422,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_cs
-#' @title Parameter space of the nonoceanic clade-specific diversity-dependent
+#' @name continental_cs
+#' @title Parameter space of the continental clade-specific diversity-dependent
 #' analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 384 parameter
@@ -451,8 +451,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_di
-#' @title Parameter space of the nonoceanic diversity-independent analysis
+#' @name continental_di
+#' @title Parameter space of the continental diversity-independent analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 192 parameter
 #' sets.
@@ -479,8 +479,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_iw
-#' @title Parameter space of the nonoceanic island-wide diversity-dependent
+#' @name continental_iw
+#' @title Parameter space of the continental island-wide diversity-dependent
 #' analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 384 parameter
@@ -508,8 +508,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_land_bridge_cs
-#' @title Parameter space of the nonoceanic land-bridge clade-specific
+#' @name continental_land_bridge_cs
+#' @title Parameter space of the continental land-bridge clade-specific
 #' diversity-dependent analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 128 parameter
@@ -546,8 +546,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_land_bridge_di
-#' @title Parameter space of the nonoceanic land-bridge diversity-independent
+#' @name continental_land_bridge_di
+#' @title Parameter space of the continental land-bridge diversity-independent
 #' analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 128 parameter
@@ -584,8 +584,8 @@ NULL
 #' }
 NULL
 
-#' @name nonoceanic_land_bridge_iw
-#' @title Parameter space of the nonoceanic land-bridge island-wide
+#' @name continental_land_bridge_iw
+#' @title Parameter space of the continental land-bridge island-wide
 #' diversity-dependent analysis
 #'
 #' @description A dataset containing the DAISIE parameters for 128 parameter

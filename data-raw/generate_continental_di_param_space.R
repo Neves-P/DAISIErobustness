@@ -1,12 +1,12 @@
-# Nonoceanic clade-specific diversity-dependent
-## Young
+# Continental diversity-independent
+# Young
 
-nonoceanic_young <- expand.grid(
+continental_young <- expand.grid(
   time = 2.55,
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(Inf),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -17,12 +17,12 @@ nonoceanic_young <- expand.grid(
 
 ## Old
 
-nonoceanic_old <- expand.grid(
+continental_old <- expand.grid(
   time = 6.15,
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(Inf),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -33,12 +33,12 @@ nonoceanic_old <- expand.grid(
 
 ## Ancient
 
-nonoceanic_ancient <- expand.grid(
+continental_ancient <- expand.grid(
   time = 50,
   M = 1000,
   lac = c(0.25, 0.5),
   mu = c(0.25, 0.5),
-  K = c(10, 40),
+  K = c(Inf),
   gam = c(0.01, 0.02),
   laa = c(0.25, 0.5),
   x_s = c(0.01, 0.05),
@@ -47,12 +47,12 @@ nonoceanic_ancient <- expand.grid(
   stringsAsFactors = FALSE
 )
 
-# Complete nonoceanic clade-specific diversity-dependent parameter set
+# Complete continental diversity-independent parameter set
 
-nonoceanic_cs <- rbind(
-  nonoceanic_young,
-  nonoceanic_old,
-  nonoceanic_ancient
+continental_di <- rbind(
+  continental_young,
+  continental_old,
+  continental_ancient
 )
 
-usethis::use_data(nonoceanic_cs, overwrite = TRUE)
+save(continental_di, file = "inst/extdata/continental_di.rda")

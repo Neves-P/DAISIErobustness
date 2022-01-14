@@ -1,4 +1,4 @@
-# Nonoceanic land-bridge island-wide diversity-dependent
+# Continental land-bridge clade-specific diversity-dependent
 ## Young
 
 young_lb_dd_temp <- expand.grid(time = 2.55,
@@ -11,7 +11,7 @@ young_lb_dd_temp <- expand.grid(time = 2.55,
                                 x_s = c(0.01, 0.05),
                                 x_nonend = c(0.1, 0.9),
                                 shift_times = I(list(c(1.225, 1.325))),
-                                divdepmodel = "IW",
+                                divdepmodel = "CS",
                                 stringsAsFactors = FALSE)
 
 young_lb_dd_2 <- cbind(young_lb_dd_temp,
@@ -42,7 +42,7 @@ old_lb_dd_temp <- expand.grid(time = 6.15,
                               x_s = c(0.01, 0.05),
                               x_nonend = c(0.1, 0.9),
                               shift_times = I(list(c(3.025, 3.125))),
-                              divdepmodel = "IW",
+                              divdepmodel = "CS",
                               stringsAsFactors = FALSE)
 
 old_lb_dd_2 <- cbind(old_lb_dd_temp,
@@ -61,12 +61,13 @@ old_lb_dd_10 <- cbind(old_lb_dd_temp,
 
 old_lb_dd <- rbind(old_lb_dd_2, old_lb_dd_10)
 
-# Complete nonoceanic land-bridge island-wide diversity-dependent parameter
+# Complete continental land-bridge clade-specific diversity-dependent parameter
 # set
 
-nonoceanic_land_bridge_iw <- rbind(
+continental_land_bridge_cs <- rbind(
   young_lb_dd,
   old_lb_dd
 )
 
-usethis::use_data(nonoceanic_land_bridge_iw, overwrite = TRUE)
+save(continental_land_bridge_cs,
+     file = "inst/extdata/continental_land_bridge_cs.rda")

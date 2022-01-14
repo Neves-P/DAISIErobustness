@@ -2,7 +2,7 @@ test_that("test calc_error output is correct", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
   param_space <- load_param_space(
-    param_space_name = "nonoceanic_cs")
+    param_space_name = "continental_cs")
   set.seed(
     1,
     kind = "Mersenne-Twister",
@@ -10,11 +10,11 @@ test_that("test calc_error output is correct", {
     sample.kind = "Rejection"
   )
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_cs",
+    param_space_name = "continental_cs",
     param_space = param_space,
     param_set = 1)
   novel_sim <- run_novel_sim(
-    param_space_name = "nonoceanic_cs",
+    param_space_name = "continental_cs",
     sim_pars = sim_pars
   )
   novel_ml <- data.frame("lambda_c" = 0.5,
@@ -36,9 +36,9 @@ test_that("test calc_error output is correct", {
     distance_method = "abs"
   )
   expect_length(error, 5)
-  expect_equal(error, list(spec_nltt_error = 16.034733208092,
-                           num_spec_error = 5,
-                           num_col_error = 6,
-                           endemic_nltt_error = 14.7933281238329,
-                           nonendemic_nltt_error = 5.94337896210511))
+  expect_equal(error, list(spec_nltt_error = 14.7790182365,
+                           num_spec_error = 4,
+                           num_col_error = 7,
+                           endemic_nltt_error = 14.154769913,
+                           nonendemic_nltt_error = 6.201976856))
 })

@@ -62,4 +62,5 @@ oceanic_ontogeny_sea_level_di <- rbind(
   oceanic_ontogeny_sea_level_old
 )
 
-usethis::use_data(oceanic_ontogeny_sea_level_di, overwrite = TRUE)
+save(oceanic_ontogeny_sea_level_di,
+     file = "inst/extdata/oceanic_ontogeny_sea_level_di.rda")
