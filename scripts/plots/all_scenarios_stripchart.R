@@ -1,7 +1,7 @@
 # Scenario strip charts for Neves et al 2021
 # Figure 4
 source("scripts/plots/functions/plot_error_stripchart.R")
-root_folder <- "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/"
+root_folder <- "G:/Discos partilhados/DAISIE-RUG/Robustness/results/"
 # Load and calculate ED95 stat from all results
 oceanic_ontogeny_ed95 <- calc_ed95_for_plots(
   folder_path = file.path(root_folder, "oceanic_ontogeny")
@@ -75,38 +75,51 @@ for (i in seq_along(error_names_vec)) {
     error = error_names_vec[i],
     error_metrics_names = scenario_name[1:3],
     x_axis_text = "Geodynamic scenario"
-  ) + ggplot2::scale_color_manual(values = c(rep("#66C2A5", 3)))
-
+  )
+  spec_nltt_oceanic_stripchart$mapping$colour <- NULL
 
   spec_nltt_nonoceanic_stripchart <- plot_error_stripchart(
     error_metrics_list = list_plot_nonoceanic,
     error = error_names_vec[i],
     error_metrics_names = scenario_name[4:5],
     x_axis_text = "Geodynamic scenario"
-  ) + ggplot2::scale_color_manual(values = c(rep("#FC8D62", 2)))
-
-
-  facet_spec_nltt_stripchart[[i]] <- cowplot::plot_grid(
-    spec_nltt_oceanic_stripchart + ggplot2::theme(legend.position = "none"),
-    spec_nltt_nonoceanic_stripchart + ggplot2::theme(
-      legend.position = "none",
-      axis.title.y = ggplot2::element_blank()),
-    align = 'vh',
-    labels = label_list[[i]],
-    label_size = 8,
-    hjust = -0.2,
-    nrow = 1
   )
+  spec_nltt_nonoceanic_stripchart$mapping$colour <- NULL
+
+  if (i == 5) {
+    facet_spec_nltt_stripchart[[i]] <- cowplot::plot_grid(
+      spec_nltt_oceanic_stripchart + ggplot2::theme(legend.position = "none"),
+      spec_nltt_nonoceanic_stripchart + ggplot2::theme(
+        axis.title.y = ggplot2::element_blank()),
+      align = 'vh',
+      labels = label_list[[i]],
+      label_size = 8,
+      hjust = -0.2,
+      nrow = 1
+    )
+  } else {
+    facet_spec_nltt_stripchart[[i]] <- cowplot::plot_grid(
+      spec_nltt_oceanic_stripchart + ggplot2::theme(
+        legend.position = "none",
+        axis.text.x = ggplot2::element_blank()),
+      spec_nltt_nonoceanic_stripchart + ggplot2::theme(
+        axis.title.y = ggplot2::element_blank(),
+        axis.text.x = ggplot2::element_blank()),
+      align = 'vh',
+      labels = label_list[[i]],
+      label_size = 8,
+      hjust = -0.2,
+      nrow = 1
+    )
+  }
 }
 
 final_facet <- cowplot::plot_grid(
-  facet_spec_nltt_stripchart[[1]] + ggplot2::theme(legend.position = "none"),
-  facet_spec_nltt_stripchart[[2]] + ggplot2::theme(legend.position = "none"),
-  facet_spec_nltt_stripchart[[3]] + ggplot2::theme(legend.position = "none"),
-  facet_spec_nltt_stripchart[[4]] + ggplot2::theme(legend.position = "none"),
-  facet_spec_nltt_stripchart[[5]] + ggplot2::theme(
-    legend.position = "none",
-    axis.title.y = ggplot2::element_blank()),
+  facet_spec_nltt_stripchart[[1]],
+  facet_spec_nltt_stripchart[[2]],
+  facet_spec_nltt_stripchart[[3]],
+  facet_spec_nltt_stripchart[[4]],
+  facet_spec_nltt_stripchart[[5]],
   align = 'vh',
   hjust = -0.2,
   nrow = 5
