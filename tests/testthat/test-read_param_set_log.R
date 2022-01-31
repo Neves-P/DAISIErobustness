@@ -5,7 +5,7 @@ test_that("read_param_set_log works", {
   log_file_path <- list.files(
     file.path("testdata", "logs"),
     full.names = TRUE,
-    pattern = "robustness-22656117.log"
+    pattern = "robustness-22891163.log"
   )
   log_lines <- read_log_file(log_file_path = log_file_path)
   param_set <- read_param_set_log(
