@@ -10,14 +10,14 @@
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Europe/Amsterdam
- date     2022-01-03
+ date     2022-01-31
  pandoc   NA
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package           * version    date (UTC) lib source
- ape                 5.6        2021-12-21 [1] CRAN (R 4.1.0)
+ ape                 5.6-1      2022-01-07 [1] CRAN (R 4.1.0)
  BH                  1.78.0-0   2021-12-15 [1] CRAN (R 4.1.0)
- cli                 3.1.0      2021-10-27 [1] CRAN (R 4.1.0)
+ cli                 3.1.1      2022-01-20 [1] CRAN (R 4.1.0)
  clusterGeneration   1.3.7      2020-12-15 [2] CRAN (R 4.1.0)
  coda                0.19-4     2020-09-30 [2] CRAN (R 4.1.0)
  codetools           0.2-18     2020-11-04 [2] CRAN (R 4.1.0)
@@ -26,27 +26,27 @@
  cowplot             1.1.1      2020-12-30 [2] CRAN (R 4.1.0)
  crayon              1.4.2      2021-10-29 [1] CRAN (R 4.1.0)
  DAISIE              4.0.5      2022-01-03 [1] Github (rsetienne/DAISIE@1e229d3)
- DAISIErobustness  * 2.2.1      2022-01-03 [1] Github (Neves-P/DAISIErobustness@099c72c)
+ DAISIErobustness  * 2.2.1      2022-01-31 [1] Github (Neves-P/DAISIErobustness@98e2fb7)
  DDD                 5.0        2021-07-19 [1] CRAN (R 4.1.0)
  deSolve             1.30       2021-10-07 [1] CRAN (R 4.1.0)
  digest              0.6.29     2021-12-01 [1] CRAN (R 4.1.0)
  doParallel          1.0.16     2020-10-16 [2] CRAN (R 4.1.0)
  ellipsis            0.3.2      2021-04-29 [2] CRAN (R 4.1.0)
  expm                0.999-6    2021-01-13 [2] CRAN (R 4.1.0)
- fansi               0.5.0      2021-05-25 [2] CRAN (R 4.1.0)
+ fansi               1.0.2      2022-01-14 [1] CRAN (R 4.1.0)
  farver              2.1.0      2021-02-28 [2] CRAN (R 4.1.0)
  fastmatch           1.1-3      2021-07-23 [1] CRAN (R 4.1.0)
  foreach             1.5.1      2020-10-15 [2] CRAN (R 4.1.0)
  ggplot2             3.3.5      2021-06-25 [1] CRAN (R 4.1.0)
- glue                1.6.0      2021-12-17 [1] CRAN (R 4.1.0)
+ glue                1.6.1      2022-01-22 [1] CRAN (R 4.1.0)
  gtable              0.3.0      2019-03-25 [2] CRAN (R 4.1.0)
- igraph              1.2.10     2021-12-15 [1] CRAN (R 4.1.0)
+ igraph              1.2.11     2022-01-04 [1] CRAN (R 4.1.0)
  isoband             0.2.5      2021-07-13 [1] CRAN (R 4.1.0)
  iterators           1.0.13     2020-10-15 [2] CRAN (R 4.1.0)
  labeling            0.4.2      2020-10-20 [2] CRAN (R 4.1.0)
  lattice             0.20-44    2021-05-02 [2] CRAN (R 4.1.0)
  lifecycle           1.0.1      2021-09-24 [1] CRAN (R 4.1.0)
- magrittr            2.0.1      2020-11-17 [2] CRAN (R 4.1.0)
+ magrittr            2.0.2      2022-01-26 [1] CRAN (R 4.1.0)
  maps                3.4.0      2021-09-25 [1] CRAN (R 4.1.0)
  MASS                7.3-54     2021-05-03 [2] CRAN (R 4.1.0)
  Matrix              1.3-4      2021-06-01 [2] CRAN (R 4.1.0)
@@ -54,25 +54,25 @@
  mnormt              2.0.2      2020-09-01 [2] CRAN (R 4.1.0)
  munsell             0.5.0      2018-06-12 [2] CRAN (R 4.1.0)
  nlme                3.1-152    2021-02-04 [2] CRAN (R 4.1.0)
- nLTT                1.4.5      2021-06-19 [1] Github (thijsjanzen/nltt@85882ae)
+ nLTT                1.4.5      2022-01-31 [1] Github (thijsjanzen/nltt@b06462c)
  numDeriv            2016.8-1.1 2019-06-06 [2] CRAN (R 4.1.0)
  phangorn            2.8.1      2021-12-15 [1] CRAN (R 4.1.0)
  phytools            1.0-1      2022-01-03 [1] CRAN (R 4.1.0)
- pillar              1.6.4      2021-10-18 [1] CRAN (R 4.1.0)
+ pillar              1.6.5      2022-01-25 [1] CRAN (R 4.1.0)
  pkgconfig           2.0.3      2019-09-22 [2] CRAN (R 4.1.0)
  plotrix             3.8-2      2021-09-08 [1] CRAN (R 4.1.0)
  pracma              2.3.6      2021-12-07 [1] CRAN (R 4.1.0)
  quadprog            1.5-8      2019-11-20 [2] CRAN (R 4.1.0)
  R6                  2.5.1      2021-08-19 [1] CRAN (R 4.1.0)
  RColorBrewer        1.1-2      2014-12-07 [2] CRAN (R 4.1.0)
- Rcpp                1.0.7      2021-07-07 [1] CRAN (R 4.1.0)
+ Rcpp                1.0.8      2022-01-13 [1] CRAN (R 4.1.0)
  RcppEigen           0.3.3.9.1  2020-12-17 [2] CRAN (R 4.1.0)
- rlang               0.4.12     2021-10-18 [1] CRAN (R 4.1.0)
+ rlang               1.0.0      2022-01-26 [1] CRAN (R 4.1.0)
  scales              1.1.1      2020-05-11 [2] CRAN (R 4.1.0)
  scatterplot3d       0.3-41     2018-03-14 [2] CRAN (R 4.1.0)
  sessioninfo         1.2.2      2021-12-06 [1] CRAN (R 4.1.0)
  SparseM             1.81       2021-02-18 [2] CRAN (R 4.1.0)
- subplex             1.6        2020-02-23 [2] CRAN (R 4.1.0)
+ subplex             1.7        2022-01-16 [1] CRAN (R 4.1.0)
  tensor              1.5        2012-05-05 [2] CRAN (R 4.1.0)
  testit              0.13       2021-04-14 [2] CRAN (R 4.1.0)
  tibble              3.1.6      2021-11-07 [1] CRAN (R 4.1.0)
@@ -86,18 +86,35 @@
  [2] /apps/haswell/software/R/4.1.0-foss-2021a/lib64/R/library
 
 ──────────────────────────────────────────────────────────────────────────────
-2022-01-03 20:06:09
+2022-01-31 10:36:34
 Param space name: continental_cs
-Running param set: 4
-Running analysis with seed: 947068
+Running param set: 3
+Running analysis with seed: 1865376
 CAUTION: Do not submit jobs simultaneously in order for jobs to have
           different seeds.
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
 An approximation of logcond must be made. Results may be unreliable.
-The loglikelihood for the initial parameter values is -140.7061 
+The loglikelihood for the initial parameter values is -141.7391 
 Optimizing the likelihood - this may take a while. 
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
@@ -132,70 +149,84 @@ An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
 
- Maximum likelihood parameter estimates: lambda_c: 0.262927, mu: 0.462856, K: Inf,
-      gamma: 0.008741, lambda_a: 0.504011 
- Maximum loglikelihood: -98.865851 
-novel_ml: 0.262927221928652 0.462856481086849 Inf 0.00874130414101762 0.504010983552543 -98.8658507609291 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.096950, mu: 0.000010, K: 2.000981,
+      gamma: 0.005513, lambda_a: 1.135921 
+ Maximum loglikelihood: -95.073977 
+novel_ml: 0.0969497495693475 9.96518573118698e-06 2.00098112027826 0.00551282882709688 1.13592108866256 -95.0739767408557 5 0 
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
-The loglikelihood for the initial parameter values is -106.2135 
+The loglikelihood for the initial parameter values is -79.04819 
 Optimizing the likelihood - this may take a while. 
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 
- Maximum likelihood parameter estimates: lambda_c: 0.000000, mu: 0.656824, K: 2.000296,
-      gamma: 0.013071, lambda_a: 0.475377 
- Maximum loglikelihood: -102.729916 
-oceanic_ml: 1.58110229664215e-07 0.656823796200261 2.00029574132908 0.0130713817149507 0.475376764268593 -102.729915991435 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.000000, mu: 0.266878, K: 2.000002,
+      gamma: 0.005927, lambda_a: 0.768379 
+ Maximum loglikelihood: -77.413955 
+oceanic_ml: 7.38970295643026e-08 0.266878454768411 2.00000241413425 0.00592654282267211 0.768379207801597 -77.4139547512845 5 0 
 Number of results: 1
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
 An approximation of logcond must be made. Results may be unreliable.
-The loglikelihood for the initial parameter values is -268.6808 
+The loglikelihood for the initial parameter values is -253.6498 
 Optimizing the likelihood - this may take a while. 
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
-An approximation of logcond must be made. Results may be unreliable.
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
 An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
 
- Maximum likelihood parameter estimates: lambda_c: 0.772256, mu: 0.460958, K: 3.000005,
-      gamma: 0.014881, lambda_a: 0.286193 
- Maximum loglikelihood: -168.000933 
-novel_ml: 0.772256367941276 0.460957759018927 3.00000451991104 0.0148813359792757 0.28619291976877 -168.000932658952 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.436077, mu: 0.395373, K: 3.000051,
+      gamma: 0.014698, lambda_a: 0.316075 
+ Maximum loglikelihood: -160.122265 
+novel_ml: 0.436076579824023 0.395372722513864 3.00005110579728 0.0146977516542224 0.316074981575516 -160.122265410058 5 0 
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
-The loglikelihood for the initial parameter values is -192.8092 
+The loglikelihood for the initial parameter values is -187.5058 
 Optimizing the likelihood - this may take a while. 
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
 
- Maximum likelihood parameter estimates: lambda_c: 0.732977, mu: 1.072576, K: 4.000002,
-      gamma: 0.030567, lambda_a: 0.380818 
- Maximum loglikelihood: -189.445232 
-oceanic_ml: 0.732977464765357 1.07257574804225 4.000001898632 0.0305673114411401 0.380818453522736 -189.445231826074 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.474732, mu: 0.460748, K: 3.000000,
+      gamma: 0.018059, lambda_a: 0.492994 
+ Maximum loglikelihood: -186.580668 
+oceanic_ml: 0.474731854003985 0.46074755926514 3.00000007155792 0.0180586143761193 0.49299440362824 -186.58066778289 5 0 
 Number of results: 2
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
 An approximation of logcond must be made. Results may be unreliable.
-The loglikelihood for the initial parameter values is -264.7172 
+The loglikelihood for the initial parameter values is -208.2796 
 Optimizing the likelihood - this may take a while. 
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
@@ -219,40 +250,72 @@ An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
 An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
+An approximation of logcond must be made. Results may be unreliable.
 
- Maximum likelihood parameter estimates: lambda_c: 1.303451, mu: 0.128216, K: 2.272133,
-      gamma: 0.010432, lambda_a: 0.409803 
- Maximum loglikelihood: -163.116325 
-novel_ml: 1.30345122808167 0.128216346835743 2.27213310468489 0.0104316727209831 0.409802848630931 -163.116324991351 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.000002, mu: 0.000001, K: 2193837.671667,
+      gamma: 0.008692, lambda_a: 0.274177 
+ Maximum loglikelihood: -135.801396 
+novel_ml: 1.68898661399091e-06 1.17510817929787e-06 2193837.67166723 0.00869175209723984 0.274176818169128 -135.801396474147 5 0 
 You are optimizing lambda_c mu K gamma lambda_a 
 You are fixing nothing 
 Calculating the likelihood for the initial parameters. 
-The loglikelihood for the initial parameter values is -208.7533 
+The loglikelihood for the initial parameter values is -135.8246 
 Optimizing the likelihood - this may take a while. 
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
 Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
+Positive values of loglik encountered without possibility for approximation. Setting loglik to -Inf.
 
- Maximum likelihood parameter estimates: lambda_c: 1.031325, mu: 0.029776, K: 2.178536,
-      gamma: 0.012619, lambda_a: 1.279039 
- Maximum loglikelihood: -204.177294 
-oceanic_ml: 1.03132510577722 0.0297758017252542 2.17853581031429 0.0126185912669492 1.27903888650271 -204.177294406684 5 0 
+ Maximum likelihood parameter estimates: lambda_c: 0.000014, mu: 0.000001, K: 1.000258,
+      gamma: 0.008716, lambda_a: 0.239708 
+ Maximum loglikelihood: -135.760410 
+oceanic_ml: 1.3523642476412e-05 5.65799073067213e-07 1.00025844668476 0.00871581614724828 0.239707606764527 -135.76041016146 5 0 
 Number of results: 3
-Trying to save continental_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_4.RData
+Trying to save continental_cs_param_set_3.rds to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_3.rds
 
-Saved continental_cs_param_set_4.RData to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_4.RData
+Saved continental_cs_param_set_3.rds to /home/p287218/DAISIErobustness/results/continental_cs/continental_cs_param_set_3.rds
 
 
 
 ###############################################################################
 Peregrine Cluster
-Job 22656113 for user 'p287218'
-Finished at: Mon Jan  3 20:07:26 CET 2022
+Job 22891158 for user 'p287218'
+Finished at: Mon Jan 31 10:37:20 CET 2022
 
 Job details:
 ============
 
-Job ID              : 22656113
+Job ID              : 22891158
 Name                : robustness
 User                : p287218
 Partition           : gelifes
@@ -261,18 +324,18 @@ Number of Nodes     : 1
 Cores               : 1
 Number of Tasks     : 1
 State               : COMPLETED
-Submit              : 2022-01-03T20:05:56
-Start               : 2022-01-03T20:06:05
-End                 : 2022-01-03T20:07:26
-Reserved walltime   : 01:00:00
-Used walltime       : 00:01:21
-Used CPU time       : 00:01:18 (efficiency: 97.05%)
-% User (Computation): 98.85%
-% System (I/O)      :  1.15%
-Mem reserved        : 2G/node
-Max Mem (Node/step) : 142.47M (pg-node225, per node)
-Full Max Mem usage  : 142.47M
-Total Disk Read     : 1.26M
+Submit              : 2022-01-31T10:36:23
+Start               : 2022-01-31T10:36:30
+End                 : 2022-01-31T10:37:20
+Reserved walltime   : 03:00:00
+Used walltime       : 00:00:50
+Used CPU time       : 00:00:43 (efficiency: 87.69%)
+% User (Computation): 96.75%
+% System (I/O)      :  3.24%
+Mem reserved        : 2G
+Max Mem (Node/step) : 113.37M (pg-node225, per node)
+Full Max Mem usage  : 113.37M
+Total Disk Read     : 1.18M
 Total Disk Write    : 101.87K
 
 
