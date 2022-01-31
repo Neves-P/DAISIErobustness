@@ -115,11 +115,11 @@ plot_areas <- function(totaltime_1,
   area_1 <- c()
   area_2 <- c()
   area_1_peak <- DAISIE:::calc_peak(
-    totaltime = totaltime_1,
+    total_time = totaltime_1,
     area_pars = area_pars_1
   )
   area_2_peak <- DAISIE:::calc_peak(
-    totaltime = totaltime_2,
+    total_time = totaltime_2,
     area_pars = area_pars_2
   )
   area_1 <- sapply(
@@ -202,11 +202,11 @@ plot_areas <- function(totaltime_1,
 
     area_plot <- area_plot +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_1,
-                         color = "#66C2A5",
+                         color = viridis::viridis(1),
                          size = 0.55,
                          alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
-                         color = "#FC8D62",
+                         color = viridis::viridis(1),
                          size = 0.55,
                          alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_1, size = 1.2, color = "black") +
@@ -250,11 +250,11 @@ plot_areas <- function(totaltime_1,
 
       area_plot <- area_plot +
         ggplot2::geom_line(data = island_area_time_sea_level_1,
-                           color = "#66C2A5",
+                           color = viridis::viridis(1),
                            size = 0.55,
                            alpha = 0.8) +
         ggplot2::geom_line(data = island_area_time_sea_level_2,
-                           color = "#FC8D62",
+                           color = viridis::viridis(1),
                            size = 0.55,
                            alpha = 0.8)
     }
