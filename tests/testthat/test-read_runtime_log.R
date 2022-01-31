@@ -5,12 +5,12 @@ test_that("read_runtime works", {
   log_file_path <- list.files(
     file.path("testdata", "logs"),
     full.names = TRUE,
-    pattern = "robustness-22656117.log"
+    pattern = "robustness-22891163.log"
   )
   log_lines <- read_log_file(log_file_path = log_file_path)
   runtime <- read_runtime_log(
     log_lines = log_lines,
     log_file_path = log_file_path
   )
-  expect_equal(runtime, 60)
+  expect_equal(runtime, 127)
 })
