@@ -55,14 +55,13 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
   ed95_num_col <- c()
 
   for (i in param_set_range) {
-    file_to_load <- grep(paste0("_", i, ".RData"),
+    file_to_load <- grep(paste0("_", i, ".rds"),
                          files,
                          value = TRUE,
                          fixed = TRUE)
 
-    output <- NULL; rm(output) # nolint ; hack around global var
     if (!identical(file_to_load, character())) {
-      readRDS(file.path(folder_path, file_to_load))
+      output <- readRDS(file.path(folder_path, file_to_load))
 
       geodynamic_error_spec_nltt <- output$spec_nltt_error
       oceanic_error_spec_nltt <- output$spec_baseline_nltt_error

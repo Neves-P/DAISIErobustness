@@ -55,8 +55,7 @@ calc_ed95_param_set <- function(folder_path) {
   row_number <- 1
   for (file_to_load in files) {
 
-    output <- NULL; rm(output) # nolint ; hack around global var
-    readRDS(file.path(folder_path, file_to_load))
+    output <- readRDS(file.path(folder_path, file_to_load))
 
     param_space_name <- sub(
       "/.*\\_param_set_.*",
