@@ -37,7 +37,7 @@ plot_cor <- function(param_space_data_frame,
     plots[[i]] <- ggplot2::ggplot(
       data = param_space_data_frame,
       ggplot2::aes(x = runtime, y = .data[[metrics[i]]])) +
-      ggplot2::theme_bw() +
+      ggplot2::theme_classic() +
       ggplot2::scale_x_continuous() +
       ggplot2::geom_point(size = 0.3) +
       ggplot2::geom_smooth(method = "lm",
