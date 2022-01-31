@@ -39,10 +39,11 @@ plot_cor <- function(param_space_data_frame,
       ggplot2::aes(x = runtime, y = .data[[metrics[i]]])) +
       ggplot2::theme_bw() +
       ggplot2::geom_point(size = 0.3) +
-      # ggplot2::geom_smooth(method = "lm",
-      #                      formula = y ~ x,
-      #                      se = FALSE,
-      #                      size = 0.7) +
+      ggplot2::scale_type(1) +
+      ggplot2::geom_smooth(method = "lm",
+                           formula = y ~ x,
+                           se = FALSE,
+                           size = 0.7) +
       ggplot2::coord_cartesian(ylim = c(0, 1)) +
       ggplot2::ylab(error_label) +
       ggplot2::xlab("Run time in seconds") +
