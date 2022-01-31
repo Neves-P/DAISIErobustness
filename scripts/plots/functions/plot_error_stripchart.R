@@ -43,7 +43,7 @@ plot_error_stripchart <- function(error_metrics_list,
 
 
     p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, color = key)) +
-      ggplot2::theme_bw() +
+      ggplot2::theme_classic() +
       ggplot2::geom_jitter(cex = 0.5) +
       ggplot2::ylim(0, 1) +
       ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.4) +
