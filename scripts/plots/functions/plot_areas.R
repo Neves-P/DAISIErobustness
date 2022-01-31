@@ -8,7 +8,7 @@
 #' @author Pedro Neves, Joshua Lambert
 #' @examples
 #'
-#' param_space <- load_param_space("oceanic_ontogeny_sea_level")
+#' param_space <- load_param_space("oceanic_ontogeny_sea_level_cs")
 #'
 #' area_pars_1 <- DAISIE::create_area_pars(
 #'   max_area = param_space$max_area[nrow(param_space) / 2 + 1],
@@ -125,7 +125,7 @@ plot_areas <- function(totaltime_1,
   area_1 <- sapply(
     x_axis,
     FUN = DAISIE:::island_area,
-    totaltime = totaltime_1,
+    total_time = totaltime_1,
     area_pars = area_pars_1,
     peak = area_1_peak,
     island_ontogeny = island_ontogeny_1,
@@ -134,7 +134,7 @@ plot_areas <- function(totaltime_1,
   area_2 <- sapply(
     second_island_timepoints_rel_time,
     FUN = DAISIE:::island_area,
-    totaltime = totaltime_1,
+    total_time = totaltime_1,
     area_pars = area_pars_2,
     peak = area_2_peak,
     island_ontogeny = island_ontogeny_2,
@@ -156,9 +156,9 @@ plot_areas <- function(totaltime_1,
     ggplot2::aes(x = Time, y = Area)) +
     ggplot2::scale_x_reverse() +
     # ggplot2::ggtitle("Variation of island area during simulation")  +
-    ggplot2::theme_bw() +
-    ggplot2::geom_line(size = 1.2, color = "black") +
-    ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black") +
+    ggplot2::theme_classic() +
+    ggplot2::geom_line(size = 0.7, color = "black") +
+    ggplot2::geom_line(data = island_area_time_2, size = 0.7, color = "black") +
     ggplot2::theme(axis.title.y = ggplot2::element_text(size = 12)) +
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
@@ -175,7 +175,7 @@ plot_areas <- function(totaltime_1,
     area_1_sea_level_ontogeny <- sapply(
       x_axis,
       FUN = DAISIE:::island_area,
-      totaltime = totaltime_1,
+      total_time = totaltime_1,
       area_pars = area_pars_1_sea_level,
       peak = area_1_peak,
       island_ontogeny = island_ontogeny_1,
@@ -184,7 +184,7 @@ plot_areas <- function(totaltime_1,
     area_2_sea_level_ontogeny <- sapply(
       second_island_timepoints_rel_time,
       FUN = DAISIE:::island_area,
-      totaltime = totaltime_1,
+      total_time = totaltime_1,
       area_pars = area_pars_2_sea_level,
       peak = area_2_peak,
       island_ontogeny = island_ontogeny_2,
@@ -202,15 +202,15 @@ plot_areas <- function(totaltime_1,
 
     area_plot <- area_plot +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_1,
-                         color = viridis::viridis(1),
-                         size = 0.55,
+                         color = "#11ada1",
+                         size = 0.35,
                          alpha = 0.8) +
       ggplot2::geom_line(data = island_area_time_sea_level_ontogeny_2,
-                         color = viridis::viridis(1),
-                         size = 0.55,
+                         color = "#11ada1",
+                         size = 0.35,
                          alpha = 0.8) +
-      ggplot2::geom_line(data = island_area_time_1, size = 1.2, color = "black") +
-      ggplot2::geom_line(data = island_area_time_2, size = 1.2, color = "black")
+      ggplot2::geom_line(data = island_area_time_1, size = 0.7, color = "black") +
+      ggplot2::geom_line(data = island_area_time_2, size = 0.7, color = "black")
 
     if (overlay_sea_level) {
       area_1_sea_level <- c()
@@ -223,7 +223,7 @@ plot_areas <- function(totaltime_1,
       area_1_sea_level <- sapply(
         x_axis,
         FUN = DAISIE:::island_area,
-        totaltime = totaltime_1,
+        total_time = totaltime_1,
         area_pars = area_pars_1,
         peak = area_1_peak,
         island_ontogeny = island_ontogeny_1,
@@ -232,7 +232,7 @@ plot_areas <- function(totaltime_1,
       area_2_sea_level <- sapply(
         second_island_timepoints_rel_time,
         FUN = DAISIE:::island_area,
-        totaltime = totaltime_1,
+        total_time = totaltime_1,
         area_pars = area_pars_2,
         peak = area_2_peak,
         island_ontogeny = island_ontogeny_2,
@@ -250,12 +250,12 @@ plot_areas <- function(totaltime_1,
 
       area_plot <- area_plot +
         ggplot2::geom_line(data = island_area_time_sea_level_1,
-                           color = viridis::viridis(1),
-                           size = 0.55,
+                           color = "#11ada1",
+                           size = 0.35,
                            alpha = 0.8) +
         ggplot2::geom_line(data = island_area_time_sea_level_2,
-                           color = viridis::viridis(1),
-                           size = 0.55,
+                           color = "#11ada1",
+                           size = 0.35,
                            alpha = 0.8)
     }
 
