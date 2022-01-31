@@ -6,7 +6,7 @@
 #'   \code{param_space_name} within the current directory. The \code{/results/}
 #'   directory and subfolders are created if they don't exist. The status of
 #'   saving is printed as a message if successful, a warning if unsuccessful.
-#' @return .RData file named by \code{\link{create_output_file_name}()} in
+#' @return .rds file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
 #' @author Joshua Lambert, Pedro Neves, Shu Xie
@@ -31,7 +31,7 @@ save_output <- function(output,
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
-  save(output, file = output_file_path)
+  saveRDS(output, file = output_file_path)
 
   if (file.exists(output_file_path)) {
     message(paste0("Saved ", output_file_name, " to ", output_file_path, "\n"))
@@ -59,7 +59,7 @@ save_output <- function(output,
 #'   DAISIErobustness:::create_output_file_name(
 #'     param_space_name = "oceanic_ontogeny_cs",
 #'     param_set = 1
-#'   ) == "oceanic_ontogeny_cs_param_set_1.RData"
+#'   ) == "oceanic_ontogeny_cs_param_set_1.rds"
 #' )
 create_output_file_name <- function(param_space_name,
                                     param_set) {
@@ -71,7 +71,7 @@ create_output_file_name <- function(param_space_name,
       param_space_name,
       "_param_set_",
       param_set,
-      ".RData"
+      ".rds"
     )
 
   testit::assert(is.character(output_file_name))

@@ -25,14 +25,14 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
   start_time <- Sys.time()
   message("Start time: ", start_time)
   files <- list.files(folder_path)
-  data_file_indices <- grep(x = files, pattern = ".RData")
+  data_file_indices <- grep(x = files, pattern = ".rds")
   n_files <- length(data_file_indices)
   testit::assert(
-    ".RData files exist",
+    ".rds files exist",
     n_files > 0
   )
   if (is.null(param_set_range)) {
-    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.RData*$', '', files))) # nolint
+    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.rds*$', '', files))) # nolint
     param_set_range <- 1:max_param_range
   }
   message(n_files, " data files found.")
@@ -62,7 +62,7 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
 
     output <- NULL; rm(output) # nolint ; hack around global var
     if (!identical(file_to_load, character())) {
-      load(file.path(folder_path, file_to_load))
+      readRDS(file.path(folder_path, file_to_load))
 
       geodynamic_error_spec_nltt <- output$spec_nltt_error
       oceanic_error_spec_nltt <- output$spec_baseline_nltt_error

@@ -8,7 +8,7 @@
 #'  simulations
 #' @param save_output A boolean to determine whether to save or return output.
 #' @param output List. Contains all the pipeline output that was able to
-#'  run up to a given point. Will be saved into .RData file by
+#'  run up to a given point. Will be saved into .rds file by
 #'  \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 #'  \code{save_output} is \code{TRUE}.
 #' @param param_space A data frame of the parameter space.
@@ -92,7 +92,7 @@
 #'   the non-endemic species from the oceanic DAISIE simulations.
 #' @param folder_path A file path (use \code{file.path()} for formatting
 #'   convenience) where all the parameter sets results of a given parameter
-#'   space are stored in .RData format.
+#'   space are stored in .rds format.
 #' @param param_set_range Defaults to \code{NULL}, which computes the ED95
 #'   statistic for all parameter sets in the file of the parameter space located
 #'   in \code{folder_path}. Otherwise, a numeric vector of length 2, where the

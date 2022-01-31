@@ -6,7 +6,7 @@ test_that("use", {
     create_output_file_name(
       param_space_name = param_space_name,
       param_set = param_set
-    ), expected = "oceanic_ontogeny_cs_param_set_1.RData"
+    ), expected = "oceanic_ontogeny_cs_param_set_1.rds"
   )
 })
 

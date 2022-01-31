@@ -25,7 +25,7 @@ testit::assert(
   DAISIErobustness:::create_output_file_name(
     param_space_name = "oceanic_ontogeny_cs",
     param_set = 1
-  ) == "oceanic_ontogeny_cs_param_set_1.RData"
+  ) == "oceanic_ontogeny_cs_param_set_1.rds"
 )
 }
 \seealso{

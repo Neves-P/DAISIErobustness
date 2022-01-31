@@ -62,7 +62,7 @@ simulations}
 \item{save_output}{A boolean to determine whether to save or return output.}
 
 \item{output}{List. Contains all the pipeline output that was able to
-run up to a given point. Will be saved into .RData file by
+run up to a given point. Will be saved into .rds file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
 
@@ -175,7 +175,7 @@ the non-endemic species from the oceanic DAISIE simulations.}
 
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 
 \item{param_set_range}{Defaults to \code{NULL}, which computes the ED95
 statistic for all parameter sets in the file of the parameter space located

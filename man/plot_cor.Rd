@@ -14,7 +14,7 @@ correlation between runtime and ED95. Obtained by running
 
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 }
 \value{
 Saves runtime vs ED95 correlation plot to working directory as .png file.

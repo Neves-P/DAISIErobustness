@@ -2,11 +2,11 @@
 # Fig 3
 source("scripts/plots/functions/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
-load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_13.RData")
+load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_13.rds")
 barplot_13 <- plot_error_dists(output, "spec_nltt")
 
 # Nonoceanic 161
-load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_161.RData")
+load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_161.rds")
 barplot_161 <- plot_error_dists(output, "spec_nltt")
 
 # Arrange in grid, hide legends

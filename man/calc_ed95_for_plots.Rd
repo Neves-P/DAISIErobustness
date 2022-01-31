@@ -9,7 +9,7 @@ calc_ed95_for_plots(folder_path, param_set_range = NULL)
 \arguments{
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 
 \item{param_set_range}{Defaults to \code{NULL}, which computes the ED95
 statistic for all parameter sets in the file of the parameter space located

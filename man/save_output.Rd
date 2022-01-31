@@ -8,7 +8,7 @@ save_output(output, param_space_name, param_set)
 }
 \arguments{
 \item{output}{List. Contains all the pipeline output that was able to
-run up to a given point. Will be saved into .RData file by
+run up to a given point. Will be saved into .rds file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
 
@@ -19,7 +19,7 @@ run up to a given point. Will be saved into .RData file by
 run, as found in the file named in \code{param_space}.}
 }
 \value{
-.RData file named by \code{\link{create_output_file_name}()} in
+.rds file named by \code{\link{create_output_file_name}()} in
 default location. See details for more information on filesystem. This
 }
 \description{
