@@ -26,7 +26,7 @@ plot_error_stripchart_grouped <- function(data_n_df,
   } else if (scenario == "oceanic_ontogeny") {
     plot_title <- "Oceanic ontogeny"
   } else if (scenario == "oceanic_ontogeny_sea_level") {
-    plot_title <- "Oceanic ontogeny sea-level"
+    plot_title <- "Oceanic ontogeny + sea-level"
   } else if (scenario == "nonoceanic") {
     plot_title <- "Continental"
   } else if (scenario == "nonoceanic_land_bridge") {
@@ -45,9 +45,10 @@ plot_error_stripchart_grouped <- function(data_n_df,
       label_ns[i] <- glue::glue(
         paste0(
           xlabels[i],
-          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+          "  \nN<sub>K</sub> = {matched_n_y}  \nN<sub>M</sub> = {matched_n_o}"
         )
       )
+      colours <- c("#8DA0CB", "#E78AC3", "#A6D854")
     } else if (n_ages == 3) {
       label_ns[i] <- glue::glue(
         paste0(
@@ -60,9 +61,9 @@ plot_error_stripchart_grouped <- function(data_n_df,
   xlabels <- label_ns
   # Generate plot
   p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, color = Island)) +
-    ggplot2::theme_bw() +
+    ggplot2::theme_classic() +
     ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2)) +
-    ggplot2::scale_color_brewer(palette = "Set2") +
+    ggplot2::scale_colour_manual(values = colours) +
     ggplot2::scale_x_discrete(labels = xlabels) +
     ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.5) +
     ggplot2::xlab(x_axis_text) +
