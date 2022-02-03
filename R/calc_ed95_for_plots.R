@@ -8,7 +8,10 @@
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return A list with numeric vectors of ED95 statistic for:
+#' @return A data frame which is identical to each scenarios' parameter spaces
+#'   as as read by \code{\link{load_param_space}()}. In addition to the columns
+#'   in the parameter spaces, 5 columns are appended with the ed95 statistic
+#'   obtained for each set parameter set.
 #' \itemize{
 #'   \item{\code{$ed95_spec_nltt}}
 #'   \item{\code{$ed95_endemic_nltt}}
@@ -18,7 +21,7 @@
 #' }
 #' @author Pedro Neves, Joshua W. Lambert
 #' @export
-calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
+calc_ed95_for_plots <- function(folder_path, scenario) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 
@@ -31,20 +34,21 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
     ".rds files exist",
     n_files > 0
   )
-  if (is.null(param_set_range)) {
-    max_param_range <- max(as.numeric(gsub('^.*_\\s*|\\s*.rds*$', '', files))) # nolint
-    param_set_range <- 1:max_param_range
-  }
+
+  max_param_range <- nrow(scenario)
+
+  param_set_range <- 1:max_param_range
+
   message(n_files, " data files found.")
   message("Looking for parameter set ",
-          min(param_set_range),
+          1,
           " to ",
-          max(param_set_range),
+          max_param_range,
           ".")
 
   pb <- utils::txtProgressBar(
-    min = min(param_set_range),
-    max = max(param_set_range),
+    min = 1,
+    max = max_param_range,
     style = 3
   )
 
@@ -69,7 +73,7 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
       geodynamic_error_endemic_nltt <- output$endemic_nltt_error
       oceanic_error_endemic_nltt <- output$endemic_baseline_nltt_error
 
-      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error # nolint
+      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error
       oceanic_error_nonendemic_nltt <- output$nonendemic_baseline_nltt_error
 
       geodynamic_error_num_spec <- output$num_spec_error
@@ -103,23 +107,27 @@ calc_ed95_for_plots <- function(folder_path, param_set_range = NULL) {
       ed95_num_col[i] <-
         (sum(geodynamic_error_num_col > boundary_num_col) + 1) /
         (length(oceanic_error_num_col) + 1)
+
+    } else {
+      # Missing files get NA ed95s
+      ed95_spec_nltt[i] <- NA
+      ed95_endemic_nltt[i] <- NA
+      ed95_nonendemic_nltt[i] <- NA
+      ed95_num_spec[i] <- NA
+      ed95_num_col[i] <- NA
     }
     utils::setTxtProgressBar(pb, i)
   }
-  ed95_spec_nltt <- ed95_spec_nltt[!is.na(ed95_spec_nltt)]
-  ed95_endemic_nltt <-
-    ed95_endemic_nltt[!is.na(ed95_endemic_nltt)]
-  ed95_nonendemic_nltt <-
-    ed95_nonendemic_nltt[!is.na(ed95_nonendemic_nltt)]
-  ed95_num_spec <- ed95_num_spec[!is.na(ed95_num_spec)]
-  ed95_num_col <- ed95_num_col[!is.na(ed95_num_col)]
+  # Append columns to scenario data frame
+  scenario_res <- cbind(
+    scenario,
+    ed95_spec_nltt,
+    ed95_endemic_nltt,
+    ed95_nonendemic_nltt,
+    ed95_num_spec,
+    ed95_num_col
+  )
 
   message("\nTime elapsed: ", Sys.time() - start_time)
-  return(list(
-    ed95_spec_nltt = ed95_spec_nltt,
-    ed95_endemic_nltt = ed95_endemic_nltt,
-    ed95_nonendemic_nltt = ed95_nonendemic_nltt,
-    ed95_num_spec = ed95_num_spec,
-    ed95_num_col = ed95_num_col
-  ))
+  return(scenario_res)
 }
