@@ -21,9 +21,9 @@ tidy_data <- function(error_metrics_list, error_metrics_names, n_ages = 2) {
                      levels = unique(pars_scenario)
   )
   if (n_ages == 2) {
-    Island <- factor(c(rep("Young", length(pars_scenario) / 2),
-                       rep("Old", length(pars_scenario) / 2)),
-                     levels = c("Young", "Old"),
+    Island <- factor(c(rep("Kaua'i", length(pars_scenario) / 2),
+                       rep("Maui Nui", length(pars_scenario) / 2)),
+                     levels = c("Kaua'i", "Maui Nui"),
                      ordered = FALSE)
   } else if (n_ages == 3) {
     Island <- factor(c(rep("Young", length(pars_scenario) / 3),
