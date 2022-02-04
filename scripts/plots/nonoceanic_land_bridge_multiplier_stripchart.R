@@ -5,7 +5,7 @@ source("scripts/plots/functions/plot_error_stripchart_grouped.R")
 source("scripts/plots/functions/generate_paper_stripchart_plots.R")
 source("scripts/plots/functions/save_faceted.R")
 source("scripts/plots/functions/tidy_data.R")
-nonoceanic_land_bridge_stat_diff <- compile_ed95s(
+continental_land_bridge_cs_res <- compile_ed95s(
   scenario = "continental_land_bridge_cs"
 )
 
@@ -25,10 +25,10 @@ xlabel_vec <- c("2",
                 "2",
                 "10")
 nonoceanic_land_bridge_plots <- generate_paper_stripchart_plots(
-  list_to_plot = nonoceanic_land_bridge_stat_diff$ed95s,
+  list_to_plot = continental_land_bridge_cs_res,
   error_metrics_names = nonoceanic_land_bridge_metrics_names,
   x_axis_text = "Land-bridge colonisation multiplier",
-  scenario = "nonoceanic_land_bridge",
+  scenario = "continental_land_bridge_cs",
   xlabels = xlabel_vec,
   save = TRUE,
   add_plot_title = FALSE
