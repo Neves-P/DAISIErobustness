@@ -1,22 +1,20 @@
 # Scenario strip charts for Neves et al 2021
 # Figure 4
 source("scripts/plots/functions/plot_error_stripchart.R")
-root_folder <- "G:/Discos partilhados/DAISIE-RUG/Robustness/results/"
 # Load and calculate ED95 stat from all results
-oceanic_ontogeny_ed95 <- calc_ed95_for_plots(
-  folder_path = file.path(root_folder, "oceanic_ontogeny")
-)
+oceanic_ontogeny_ed95 <- compile_ed95s("continental_land_bridge_cs")
+
 oceanic_sea_level_ed95 <- calc_ed95_for_plots(
-  folder_path = file.path(root_folder, "oceanic_sea_level")
+  folder_path = file.path(folder_path, "oceanic_sea_level")
 )
 oceanic_ontogeny_sea_level_ed95 <- calc_ed95_for_plots(
-  folder_path = file.path(root_folder, "oceanic_ontogeny_sea_level")
+  folder_path = file.path(folder_path, "oceanic_ontogeny_sea_level")
 )
 nonoceanic_ed95 <- calc_ed95_for_plots(
-  folder_path = file.path(root_folder, "nonoceanic")
+  folder_path = file.path(folder_path, "nonoceanic")
 )
 nonoceanic_land_bridge_ed95 <- calc_ed95_for_plots(
-  folder_path = file.path(root_folder, "nonoceanic_land_bridge")
+  folder_path = file.path(folder_path, "nonoceanic_land_bridge")
 )
 
 

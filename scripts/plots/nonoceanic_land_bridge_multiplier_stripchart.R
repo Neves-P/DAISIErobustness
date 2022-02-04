@@ -6,9 +6,7 @@ source("scripts/plots/functions/generate_paper_stripchart_plots.R")
 source("scripts/plots/functions/save_faceted.R")
 source("scripts/plots/functions/tidy_data.R")
 nonoceanic_land_bridge_stat_diff <- compile_ed95s(
-  scenario = "nonoceanic_land_bridge",
-  chunk_size = 32,
-  total_length = 256
+  scenario = "continental_land_bridge_cs"
 )
 
 nonoceanic_land_bridge_metrics_names <- c(
