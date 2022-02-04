@@ -12,7 +12,10 @@ convenience) where all the parameter sets results of a given parameter
 space are stored in .rds format.}
 }
 \value{
-A list with numeric vectors of ED95 statistic for:
+A data frame which is identical to each scenarios' parameter spaces
+  as as read by \code{\link{load_param_space}()}. In addition to the columns
+  in the parameter spaces, 5 columns are appended with the ed95 statistic
+  obtained for each set parameter set.
 \itemize{
   \item{\code{$ed95_spec_nltt}}
   \item{\code{$ed95_endemic_nltt}}
