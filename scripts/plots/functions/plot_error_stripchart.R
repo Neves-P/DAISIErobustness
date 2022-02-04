@@ -1,7 +1,7 @@
 plot_error_stripchart <- function(error_metrics_list,
-                               error = "spec_nltt",
-                               error_metrics_names,
-                               x_axis_text) {
+                                  error = "spec_nltt",
+                                  error_metrics_names,
+                                  x_axis_text) {
   error_metrics_sizes <- sapply(X = error_metrics_list, FUN = length)
   larger_vector_size <- max(error_metrics_sizes)
   for (i in seq_along(error_metrics_list)) {
@@ -13,15 +13,15 @@ plot_error_stripchart <- function(error_metrics_list,
     )
   }
 
-  if (error == "spec_nltt") {
+  if (error == "ed95_spec_nltt") {
     error_label <- expression(ED[95] ~ Delta * "STT")
-  } else if (error == "endemic_nltt") {
+  } else if (error == "ed95_endemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "ESTT")
-  } else if (error == "nonendemic_nltt") {
+  } else if (error == "ed95_nonendemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "NESTT")
-  } else if (error == "num_spec") {
+  } else if (error == "ed95_num_spec") {
     error_label <- expression(ED[95] * " N Spec")
-  } else if (error == "num_col") {
+  } else if (error == "ed95_num_col") {
     error_label <- expression(ED[95] * " N Col")
   }
 
