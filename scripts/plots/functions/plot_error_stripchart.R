@@ -36,7 +36,7 @@ plot_error_stripchart <- function(error_metrics_list,
 
   # Compute N per strip and make it into legend
   data_no_na <- na.omit(data)
-  n_df <- data_no_na %>% dplyr::group_by(key) %>%
+  scenario_res %>% dplyr::group_by(key) %>%
     dplyr::tally()
   label_ns <- c()
   label_ns <- paste0(error_metrics_names, "\nN = ", as.character(n_df$n))

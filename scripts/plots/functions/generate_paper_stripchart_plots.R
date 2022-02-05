@@ -1,41 +1,29 @@
-generate_paper_stripchart_plots <- function(list_to_plot,
-                                            error_metrics_names,
+generate_paper_stripchart_plots <- function(scenario_res,
+                                            partition_by,
                                             x_axis_text,
                                             scenario,
                                             xlabels,
                                             save = TRUE,
-                                            n_ages = 2,
                                             add_plot_title = TRUE) {
   metric_to_plot <- c(
-    "spec_nltt",
-    "endemic_nltt",
-    "nonendemic_nltt",
-    "num_spec",
-    "num_col"
+    "ed95_spec_nltt",
+    "ed95_endemic_nltt",
+    "ed95_nonendemic_nltt",
+    "ed95_num_spec",
+    "ed95_num_col"
   )
-
-  error_metrics_list <- list()
+  scenario_res <- append_factor_key(scenario_res, partition_by = partition_by)
   output_list <- list()
   # Cycle over metrics
   for (i in seq_along(metric_to_plot)) {
-    # Cycle over param space divisions
-    for (j in seq_along(list_to_plot)) {
-      error_metrics_list[[j]] <- list_to_plot[[j]][[i]]
-    }
-    data_n_df <- tidy_data(
-      error_metrics_list = error_metrics_list,
-      error_metrics_names = error_metrics_names,
-      n_ages = n_ages
-    )
     p <- plot_error_stripchart_grouped(
-      data_n_df = data_n_df,
+      scenario_res,
       error = metric_to_plot[i],
-      xlabels = xlabels,
-      x_axis_text = x_axis_text,
-      scenario = scenario,
-      n_ages = n_ages,
-      save = save,
-      add_plot_title = add_plot_title
+      xlabels,
+      x_axis_text,
+      scenario,
+      save,
+      add_plot_title = TRUE
     )
     if (save) {
       ggplot2::ggsave(

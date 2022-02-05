@@ -11,6 +11,14 @@ saved_faceted <- function(plot_list_1,
     plot_2_ylim <- ggplot2::layer_scales(plot_list_2[[i]])$y$range$range[2]
     plot_3_ylim <- ggplot2::layer_scales(plot_list_3[[i]])$y$range$range[2]
     faceted_ylim <- max(plot_1_ylim, plot_2_ylim, plot_3_ylim)
+
+    # Figure out if y title is the same
+    identical_y_title <- all.equal(
+      plot_list_1[[i]]$labels$y,
+      plot_list_2[[i]]$labels$y,
+      plot_list_3[[i]]$labels$y
+    )
+    # TODO: If statement here removing axis.title.y if identical_y_title = TRUE
     # Make plot grid, remove legends and titles
   prow <- cowplot::plot_grid(
     plot_list_1[[i]] + ggplot2::theme(

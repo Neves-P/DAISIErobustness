@@ -1,22 +1,21 @@
-plot_error_stripchart_grouped <- function(data_n_df,
+plot_error_stripchart_grouped <- function(scenario_res,
                                           error = "spec_nltt",
                                           xlabels,
                                           x_axis_text,
                                           scenario,
-                                          n_ages,
                                           save,
                                           add_plot_title = TRUE) {
 
   # y axis labels
-  if (error == "spec_nltt") {
+  if (error == "ed95_spec_nltt") {
     error_label <- expression(ED[95] ~ Delta * "STT")
-  } else if (error == "endemic_nltt") {
+  } else if (error == "ed95_endemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "ESTT")
-  } else if (error == "nonendemic_nltt") {
+  } else if (error == "ed95_nonendemic_nltt") {
     error_label <- expression(ED[95] ~ Delta * "NESTT")
-  } else if (error == "num_spec") {
+  } else if (error == "ed95_num_spec") {
     error_label <- expression(ED[95] * " N Spec")
-  } else if (error == "num_col") {
+  } else if (error == "ed95_num_col") {
     error_label <- expression(ED[95] * " N Col")
   }
 
@@ -32,12 +31,13 @@ plot_error_stripchart_grouped <- function(data_n_df,
   } else if (scenario == "nonoceanic_land_bridge") {
     plot_title <- "Continental land-bridge"
   }
-  data <- data_n_df$data
-  n_df <- data_n_df$n_df
 
   label_ns <- c()
-  for (i in seq_along(unique(n_df$key))) {
-    matched_ns <- as.character(n_df$n[which(n_df$key[i] == n_df$key)])
+  ns <- tidy_data(scenario_res = scenario_res, partition_by = partition_by)
+  aggregate(ns$n, by = list(key = ns$key), sum)
+  n_ages <- length(unique(ns$Island))
+  for (i in seq_along(unique(ns$key))) {
+    matched_ns <- as.character(ns$n[which(ns$key[i] == ns$key)])
     matched_n_y <- matched_ns[1]
     matched_n_o <- matched_ns[2]
     matched_n_a <- matched_ns[3]
@@ -60,7 +60,7 @@ plot_error_stripchart_grouped <- function(data_n_df,
   }
   xlabels <- label_ns
   # Generate plot
-  p <- ggplot2::ggplot(data = data, ggplot2::aes(y = value, x = key, color = Island)) +
+  p <- ggplot2::ggplot(data = scenario_res, ggplot2::aes(y = get(error), x = key, color = Island)) +
     ggplot2::theme_classic() +
     ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2)) +
     ggplot2::scale_colour_manual(values = colours) +
