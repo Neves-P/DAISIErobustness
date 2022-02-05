@@ -4,16 +4,14 @@ compile_ed95s <- function(scenario) {
     folder_path <- file.path(
       "G:\\Shared drives\\DAISIE-RUG\\Robustness\\results", scenario
     )
-    testit::assert("Chosen directory exists", dir.exists(folder_path))
   } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
     folder_path <- file.path(
       "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results", scenario
     )
-    testit::assert("Chosen directory exists", dir.exists(folder_path))
   } else {
     folder_path <- choose.dir(caption = "Select 'results' folder")
-    testit::assert("Chosen directory exists", dir.exists(folder_path))
   }
+  testit::assert("Chosen directory exists", dir.exists(folder_path))
 
   scenario <- load_param_space(param_space_name = scenario)
   scenario_res <- calc_ed95_for_plots(
