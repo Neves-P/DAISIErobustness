@@ -6,50 +6,23 @@ source("scripts/plots/functions/generate_paper_stripchart_plots.R")
 source("scripts/plots/functions/save_faceted.R")
 source("scripts/plots/functions/tidy_data.R")
 
-oceanic_ontogeny_ed95 <- compile_ed95s(
-  scenario = "oceanic_ontogeny",
-  chunk_size = 48,
-  total_length = 384
+oceanic_ontogeny_ed95 <- rbind(
+  compile_ed95s(scenario = "oceanic_ontogeny_cs"),
+  compile_ed95s(scenario = "oceanic_ontogeny_di"),
+  compile_ed95s(scenario = "oceanic_ontogeny_iw")
 )
-oceanic_sea_level_ed95 <- compile_ed95s(
-  scenario = "oceanic_sea_level",
-  chunk_size = 48,
-  total_length = 768
+oceanic_sea_level_ed95 <- rbind(
+  compile_ed95s(scenario = "oceanic_sea_level_cs"),
+  compile_ed95s(scenario = "oceanic_sea_level_di"),
+  compile_ed95s(scenario = "oceanic_sea_level_iw")
 )
-oceanic_ontogeny_sea_level_ed95 <- compile_ed95s(
-  scenario = "oceanic_ontogeny_sea_level",
-  chunk_size = 48,
-  total_length = 768
+oceanic_ontogeny_sea_level_ed95 <- rbind(
+  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_cs"),
+  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_di"),
+  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_iw")
 )
 
-oceanic_ontogeny_metrics_names <- c(
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h"
-)
-oceanic_sea_level_metrics_names <- c(
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h",
-  "l_l",
-  "h_l",
-  "l_h",
-  "h_h"
-)
+
 
 xlabel_vec <- c("Low x  \nLow d",
                 "High x  \nLow d",
@@ -58,8 +31,8 @@ xlabel_vec <- c("Low x  \nLow d",
 
 
 oceanic_sea_level_plots <- generate_paper_stripchart_plots(
-  list_to_plot = oceanic_sea_level_ed95$ed95s,
-  error_metrics_names = oceanic_sea_level_metrics_names,
+  scenario_res = oceanic_sea_level_ed95,
+  partition_by = "hyperparameters",
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_sea_level",
   xlabels = xlabel_vec,
@@ -67,8 +40,8 @@ oceanic_sea_level_plots <- generate_paper_stripchart_plots(
 )
 
 oceanic_ontogeny_plots <- generate_paper_stripchart_plots(
-  list_to_plot = oceanic_ontogeny_ed95$ed95s,
-  error_metrics_names = oceanic_ontogeny_metrics_names,
+  scenario_res = oceanic_ontogeny_ed95,
+  partition_by = "hyperparameters",
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny",
   xlabels = xlabel_vec,
@@ -76,8 +49,8 @@ oceanic_ontogeny_plots <- generate_paper_stripchart_plots(
 )
 
 oceanic_ontogeny_sea_level_plots <- generate_paper_stripchart_plots(
-  list_to_plot = oceanic_ontogeny_sea_level_ed95$ed95s,
-  error_metrics_names = oceanic_sea_level_metrics_names,
+  scenario_res = oceanic_ontogeny_sea_level_ed95,
+  partition_by = "hyperparameters",
   x_axis_text = "Hyperparameters",
   scenario = "oceanic_ontogeny_sea_level",
   xlabels = xlabel_vec,
