@@ -18,7 +18,14 @@ saved_faceted <- function(plot_list_1,
       plot_list_2[[i]]$labels$y,
       plot_list_3[[i]]$labels$y
     )
-    # TODO: If statement here removing axis.title.y if identical_y_title = TRUE
+    if (identical_y_title) {
+      axis_title_y <- "ggplot2::element_blank()"
+
+    } else {
+      axis_title_y <- "ggplot2::element_text()"
+    }
+
+
     # Make plot grid, remove legends and titles
   prow <- cowplot::plot_grid(
     plot_list_1[[i]] + ggplot2::theme(
@@ -27,12 +34,12 @@ saved_faceted <- function(plot_list_1,
       ggplot2::ylim(0, faceted_ylim),
     plot_list_2[[i]] + ggplot2::theme(
       legend.position = "none",
-      # axis.title.y = ggplot2::element_blank(),
+      axis.title.y = eval(parse(text=as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()) +
       ggplot2::ylim(0, faceted_ylim),
     plot_list_3[[i]] + ggplot2::theme(
       legend.position = "none",
-      # axis.title.y = ggplot2::element_blank(),
+      axis.title.y = eval(parse(text=as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()
     ) + ggplot2::ylim(0, faceted_ylim),
     align = 'vh',
