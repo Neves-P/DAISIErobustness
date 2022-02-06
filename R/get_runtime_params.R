@@ -37,7 +37,13 @@ get_runtime_params <- function(logs_folder_path) {
     "log_name" = character()
   )
 
+  pb <- utils::txtProgressBar(
+    min = 1,
+    max = length(log_paths),
+    style = 3
+  )
   for (i in seq_along(log_paths)) {
+
     log_name <- basename(log_paths[i])
     log_lines <- read_log_file(log_paths[i])
 
@@ -60,6 +66,7 @@ get_runtime_params <- function(logs_folder_path) {
     out[i, "runtime"] <- runtime
     out[i, "status"] <- status
     out[i, "log_name"] <- log_name
+    utils::setTxtProgressBar(pb, i)
   }
 
   out <- out[order(out$param_space_name, out$param_set), ]
