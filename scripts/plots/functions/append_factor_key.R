@@ -17,6 +17,14 @@ append_factor_key <- function(scenario_res, partition_by) {
       all(as.character(key) == paste0(x_fac, d_fac))
     )
     out <- cbind(scenario_res, key)
+  } else if (partition_by == "gradient") {
+    key <- factor(scenario_res$island_gradient_angle)
+
+    testit::assert(
+      "Key order is kept",
+      all(key == scenario_res$island_gradient_angle)
+    )
+    out <- cbind(scenario_res, key)
   }
   return(out)
 }
