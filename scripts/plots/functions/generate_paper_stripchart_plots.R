@@ -23,7 +23,7 @@ generate_paper_stripchart_plots <- function(scenario_res,
       x_axis_text,
       scenario,
       save,
-      add_plot_title = TRUE
+      add_plot_title = add_plot_title
     )
     if (save) {
       ggplot2::ggsave(
