@@ -13,11 +13,14 @@ saved_faceted <- function(plot_list_1,
     faceted_ylim <- max(plot_1_ylim, plot_2_ylim, plot_3_ylim)
 
     # Figure out if y title is the same
-    identical_y_title <- all.equal(
+    identical_y_title <- all(identical(
       plot_list_1[[i]]$labels$y,
-      plot_list_2[[i]]$labels$y,
+      plot_list_2[[i]]$labels$y
+    ),
+    identical(
+      plot_list_1[[i]]$labels$y,
       plot_list_3[[i]]$labels$y
-    )
+    ))
     if (identical_y_title) {
       axis_title_y <- "ggplot2::element_blank()"
 
