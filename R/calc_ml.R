@@ -16,8 +16,8 @@ calc_ml <- function(sim,
   DAISIE::DAISIE_CS_max_steps(1e8)
 
   if (optim_ana) {
-    ml <- suppressMessages(invisible(capture.output(
-      DAISIE::DAISIE_ML_CS(
+    suppressMessages(invisible(capture.output(
+      ml <- DAISIE::DAISIE_ML_CS(
         datalist = sim[[1]],
         datatype = "single",
         initparsopt = as.numeric(initial_parameters[1:5]),
@@ -33,8 +33,8 @@ calc_ml <- function(sim,
   } else {
     fix_ana_zero <- all_endemic_clades(sim[[1]])
     if (fix_ana_zero) {
-      ml <- suppressMessages(invisible(capture.output(
-        DAISIE::DAISIE_ML_CS(
+      suppressMessages(invisible(capture.output(
+        ml <- DAISIE::DAISIE_ML_CS(
           datalist = sim[[1]],
           datatype = "single",
           initparsopt = as.numeric(initial_parameters[1:4]),
@@ -47,8 +47,8 @@ calc_ml <- function(sim,
           jitter = 1e-5)
       )))
     } else {
-      ml <- suppressMessages(invisible(capture.output(
-        DAISIE::DAISIE_ML_CS(
+      suppressMessages(invisible(capture.output(
+        ml <- DAISIE::DAISIE_ML_CS(
           datalist = sim[[1]],
           datatype = "single",
           initparsopt = as.numeric(initial_parameters[1:4]),
@@ -60,7 +60,7 @@ calc_ml <- function(sim,
           methode = "odeint::runge_kutta_fehlberg78",
           jitter = 1e-5)
       )))
-        }
     }
+  }
   return(ml)
 }
