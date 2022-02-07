@@ -1,22 +1,22 @@
 # Accessory functions for stripchart plotting for Neves et al 2022
-compile_ed95s <- function(scenario) {
+compile_ed95s <- function(param_space_name) {
   if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
     folder_path <- file.path(
-      "G:\\Shared drives\\DAISIE-RUG\\Robustness\\results", scenario
+      "G:\\Shared drives\\DAISIE-RUG\\Robustness\\results", param_space_name
     )
   } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
     folder_path <- file.path(
-      "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results", scenario
+      "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results", param_space_name
     )
   } else {
     folder_path <- choose.dir(caption = "Select 'results' folder")
   }
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 
-  param_space <- DAISIErobustness::load_param_space(param_space_name = scenario)
+  param_space <- DAISIErobustness::load_param_space(param_space_name = param_space_name)
   scenario_res <- calc_ed95_for_plots(
     folder_path = folder_path,
-    scenario = param_space
+    param_space = param_space
   )
 
   if (length(unique(scenario_res$time)) == 2) {

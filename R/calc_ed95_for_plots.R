@@ -35,7 +35,7 @@ calc_ed95_for_plots <- function(folder_path, param_space) {
     n_files > 0
   )
 
-  max_param_range <- nrow(scenario)
+  max_param_range <- nrow(param_space)
 
   param_set_range <- 1:max_param_range
 
@@ -120,7 +120,7 @@ calc_ed95_for_plots <- function(folder_path, param_space) {
   }
   # Append columns to scenario data frame
   scenario_res <- cbind(
-    scenario,
+    param_space,
     ed95_spec_nltt,
     ed95_endemic_nltt,
     ed95_nonendemic_nltt,
