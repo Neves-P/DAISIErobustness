@@ -19,7 +19,7 @@ test_that("Plot works", {
 
 
   expect_silent(
-    plot_cor(param_space_data_frame = runtime_pars, folder_path = ".")
+    plot_cor(param_space_data_frame = runtime_pars, folder_path = temp_dir_path)
   )
 
   file.remove(file.path(temp_dir_path, "runtime_ed95_corr.png"))
