@@ -115,4 +115,3 @@ test_that("test extract_param_set extracts correct param set from
                                          trans_rate2 = 0.02,
                                          M2 = 500))
 })
-
