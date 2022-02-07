@@ -73,7 +73,7 @@ calc_ed95_for_plots <- function(folder_path, scenario) {
       geodynamic_error_endemic_nltt <- output$endemic_nltt_error
       oceanic_error_endemic_nltt <- output$endemic_baseline_nltt_error
 
-      geodynamic_error_nonendemic_nltt <- output$nonendemic_nltt_error
+      geodynamic_error_nonend_nltt <- output$nonendemic_nltt_error
       oceanic_error_nonendemic_nltt <- output$nonendemic_baseline_nltt_error
 
       geodynamic_error_num_spec <- output$num_spec_error
@@ -99,7 +99,7 @@ calc_ed95_for_plots <- function(folder_path, scenario) {
         (sum(geodynamic_error_endemic_nltt > boundary_endemic_nltt) + 1) /
         (length(oceanic_error_endemic_nltt) + 1)
       ed95_nonendemic_nltt[i] <-
-        (sum(geodynamic_error_nonendemic_nltt > boundary_nonendemic_nltt) + 1) /
+        (sum(geodynamic_error_nonend_nltt > boundary_nonendemic_nltt) + 1) /
         (length(oceanic_error_nonendemic_nltt) + 1)
       ed95_num_spec[i] <-
         (sum(geodynamic_error_num_spec > boundary_num_spec) + 1) /
