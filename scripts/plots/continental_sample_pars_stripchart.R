@@ -6,9 +6,9 @@ source("scripts/plots/functions/generate_paper_stripchart_plots.R")
 source("scripts/plots/functions/tidy_data.R")
 
 continental_stat_diff <- rbind(
-  compile_ed95s(scenario = "continental_cs"),
-  compile_ed95s(scenario = "continental_di"),
-  compile_ed95s(scenario = "continental_iw")
+  compile_ed95s(param_space_name = "continental_cs"),
+  compile_ed95s(param_space_name = "continental_di"),
+  compile_ed95s(param_space_name = "continental_iw")
 )
 
 xlabel_vec <- c("Low x<sub>s</sub>  \nLow x<sub>n</sub>",
