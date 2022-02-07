@@ -2,16 +2,30 @@
 # Fig 3
 source("scripts/plots/functions/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
-load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_13.rds")
-barplot_13 <- plot_error_dists(output, "spec_nltt")
+if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
+  folder_path <-
+    "G:\\Shared drives\\DAISIE-RUG\\Robustness\\results\\continental_land_bridge_cs\\"
+
+} else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
+  folder_path <-
+    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results\\continental_land_bridge_cs\\"
+
+} else {
+  folder_path <- choose.dir(caption = "Select 'results/continental_land_bridge_cs' folder")
+}
+testit::assert("Chosen directory exists", dir.exists(folder_path))
+
+
+res_13 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_13.rds"))
+barplot_13 <- plot_error_dists(res_13, "spec_nltt")
 
 # Nonoceanic 161
-load("G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results/nonoceanic_land_bridge/nonoceanic_land_bridge_param_set_161.rds")
-barplot_161 <- plot_error_dists(output, "spec_nltt")
+res_111 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_111.rds"))
+barplot_111 <- plot_error_dists(res_111, "spec_nltt")
 
 # Arrange in grid, hide legends
 side_by_side_plot <- cowplot::plot_grid(
-  barplot_161 +  ggplot2::theme(legend.position = "none"),
+  barplot_111 +  ggplot2::theme(legend.position = "none"),
   barplot_13 + ggplot2::theme(legend.position = "none"),
   ncol = 2,
   labels = c("(a)", "(b)"),
@@ -34,7 +48,7 @@ side_by_side_plot_legend <- cowplot::plot_grid(
 # Save plot
 ggplot2::ggsave(
   plot = side_by_side_plot_legend,
-  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_161.pdf",
+  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_111.pdf",
   device = "pdf",
   width = 168,
   height = 100,
@@ -42,10 +56,11 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = side_by_side_plot_legend,
-  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_161.png",
+  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_111.png",
   device = "png",
   width = 168,
   height = 100,
   units = "mm",
   dpi = 600
 )
+
