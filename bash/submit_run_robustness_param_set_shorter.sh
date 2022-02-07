@@ -34,12 +34,8 @@
 param_space_name=$1
 param_set=$2
 replicates=$3
-distance_method=$4
 
 ml R
 Rscript scripts/analysis/run_robustness_peregrine.R ${param_space_name} \
                                                     ${param_set} \
-                                                    ${replicates} \
-                                                    ${distance_method}
-
-
+                                                    ${replicates}
