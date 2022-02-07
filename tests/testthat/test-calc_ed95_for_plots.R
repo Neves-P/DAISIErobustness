@@ -1,15 +1,15 @@
 test_that("calc_ed95_for_plots works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
-  scenario <- load_param_space("continental_cs")
+  param_space <- load_param_space("continental_cs")
   ed95 <- suppressMessages(
     calc_ed95_for_plots(
       folder_path = file.path("testdata", "results", "continental_cs"),
-      scenario = scenario
+      param_space = param_space
     )
   )
-  n_nas <- nrow(scenario) - 8
+  n_nas <- nrow(param_space) - 8
   expected_output <- cbind(
-    scenario,
+    param_space,
     ed95_spec_nltt = c(
       1.00, 0.50, 0.75, 0.75, 1.00, 1.00, 0.75, 0.50,
       rep(NA, n_nas)),
