@@ -1,4 +1,4 @@
-# Histograms for Neves et al 2021
+# Histograms for Neves et al 2022
 # Fig 3
 source("scripts/plots/functions/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
