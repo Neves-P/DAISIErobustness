@@ -2,17 +2,10 @@
 #'
 #' @inheritParams default_params_doc
 #'
-#' @return A data frame which is identical to each scenarios' parameter spaces
-#'   as as read by \code{\link{load_param_space}()}. In addition to the columns
-#'   in the parameter spaces, 5 columns are appended with the ed95 statistic
-#'   obtained for each set parameter set:
-#' \itemize{
-#'   \item{\code{$ed95_spec_nltt}}
-#'   \item{\code{$ed95_endemic_nltt}}
-#'   \item{\code{$ed95_nonendemic_nltt}}
-#'   \item{\code{$ed95_num_spec}}
-#'   \item{\code{$ed95_num_col}}
-#' }
+#' @return A data frame with a parameter space and corresponding ed95 results
+#'   returned by \code{\link{calc_ed95_for_plots}()}. In addition, a column
+#'   \code{$key} is appended at the right hand side with the factors by which
+#'   the data should be grouped for plotting.
 #' @keywords internal
 #' @author Pedro Santos Neves
 append_factor_key <- function(scenario_res, partition_by) {
