@@ -1,4 +1,4 @@
-# Scenario strip charts for Neves et al 2021
+# Scenario strip charts for Neves et al 2022
 # Figure 4
 source("scripts/plots/functions/plot_error_stripchart.R")
 source("scripts/plots/functions/compile_ed95s.R")

@@ -1,4 +1,4 @@
-# Area and sea-level plots for Neves et al 2021
+# Area and sea-level plots for Neves et al 2022
 # Fig 1
 source("scripts/plots/functions/plot_areas.R")
 
