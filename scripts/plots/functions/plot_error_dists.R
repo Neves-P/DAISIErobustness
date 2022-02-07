@@ -1,6 +1,6 @@
 #' Plot histogram of errors
 #'
-#' @param run_robustness
+#' @param output_file
 #' @param error
 #'
 #' @return a plot with two error distributions
