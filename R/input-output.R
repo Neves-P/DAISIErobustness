@@ -9,7 +9,7 @@
 #' @return .rds file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @family I/O
 save_output <- function(output,
                         param_space_name,
@@ -51,7 +51,7 @@ save_output <- function(output,
 #' @return Character with name indicating the name of the parameter space,
 #'   the numeric id of the param_set and whether the run passed constraints.
 #'
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @family I/O
 #' @keywords internal
 #' @examples
@@ -82,7 +82,7 @@ create_output_file_name <- function(param_space_name,
 #'
 #' @inheritParams default_params_doc
 #'
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return Helpful messages with info on folder status. Tries to create
 #'   folder if needed.
 #' @keywords internal

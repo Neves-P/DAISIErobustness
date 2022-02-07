@@ -141,7 +141,7 @@
 #'
 #' @keywords internal
 #' @return Nothing
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 default_params_doc <- function(
   param_space_name,
   param_set,

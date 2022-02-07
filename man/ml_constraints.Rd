@@ -16,6 +16,6 @@ Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 Checks if MLE passed or errored
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 #' simulation
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return a list of simulation parameters
 #' @export
 extract_param_set <- function(param_space_name,

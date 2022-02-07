@@ -25,6 +25,6 @@ Output from \code{\link[DAISIE]{DAISIE_ML}()}
 Calculate maximum likelihood value for the rates
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}

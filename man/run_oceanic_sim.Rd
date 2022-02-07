@@ -18,5 +18,5 @@ Output from \code{\link[DAISIE]{DAISIE_sim_cr}()}
 Runs original clade-specific oceanic DAISIE simulation
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }

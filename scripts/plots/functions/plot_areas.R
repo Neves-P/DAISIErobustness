@@ -5,7 +5,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return a plot with the area size through time
-#' @author Pedro Santos Neves, Joshua Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 #' @examples
 #'
 #' param_space <- load_param_space("oceanic_ontogeny_sea_level_cs")
@@ -270,7 +270,7 @@ plot_areas <- function(totaltime_1,
 #' a helpful error message is returned.
 #' @inheritParams default_params_doc
 #'
-#' @author Pedro Santos Neves, Joshua Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 #' @return Nothing, breaks with helpful error message if input is wrong.
 check_area_plot_input <- function(totaltime_1,
                                   totaltime_2,

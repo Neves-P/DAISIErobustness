@@ -61,5 +61,5 @@ a list of numerics
 Calculates metrics between error and baseline error distributions
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }

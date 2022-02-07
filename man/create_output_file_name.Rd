@@ -34,7 +34,7 @@ Other I/O:
 \code{\link{save_output}()}
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \concept{I/O}
 \keyword{internal}

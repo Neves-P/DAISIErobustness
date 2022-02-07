@@ -1,7 +1,7 @@
 #' Runs original clade-specific oceanic DAISIE simulation
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return Output from \code{\link[DAISIE]{DAISIE_sim_cr}()}
 run_oceanic_sim <- function(ml,
                             sim_pars) {

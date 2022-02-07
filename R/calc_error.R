@@ -21,7 +21,7 @@
 #'     the non-endemic species between the two simulations.}
 #' }
 #'
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 calc_error <- function(sim_1,
                        sim_2,
                        sim_pars,

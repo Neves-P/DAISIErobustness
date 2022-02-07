@@ -55,5 +55,5 @@ species-through-time, number of endemics-through-time and
 non-endemics-through-time.
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }

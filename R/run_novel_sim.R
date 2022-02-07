@@ -1,7 +1,7 @@
 #' Runs DAISIE simulation with a novel model
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @keywords internal
 #' @return A list output from \code{\link[DAISIE]{DAISIE_sim_cr}()},
 #' \code{\link[DAISIE]{DAISIE_sim_time_dep}()},

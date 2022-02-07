@@ -4,7 +4,7 @@
 #' @param error
 #'
 #' @return a plot with two error distributions
-#' @author Pedro Santos Neves, Joshua Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 plot_error_dists <- function(output_file,
                              error = "spec_nltt") {
   if (error == "spec_nltt") {

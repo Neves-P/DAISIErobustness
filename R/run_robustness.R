@@ -1,7 +1,7 @@
 #' Run robustness analysis pipeline
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return
 #' A named list of length 20 containing errors, error metrics, simulation and
 #' MLE output:

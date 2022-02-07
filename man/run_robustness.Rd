@@ -167,5 +167,5 @@ MLE output:
 Run robustness analysis pipeline
 }
 \author{
-Joshua Lambert, Pedro Santos Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
