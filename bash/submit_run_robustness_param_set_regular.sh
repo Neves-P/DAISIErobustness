@@ -8,7 +8,7 @@
 #SBATCH --partition=regular
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
-# Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
+# Copyright (C) 2022 Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
