@@ -5,7 +5,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return An numeric atomic vector with the parameter set number
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 #' @examples

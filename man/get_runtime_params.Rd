@@ -32,6 +32,6 @@ runtimes_data_frame <- get_runtime_params("logs/")
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }
 \keyword{internal}

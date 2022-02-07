@@ -19,5 +19,5 @@ Obtains the elapsed job time in seconds from a standard Peregrine HPCC log
 file
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

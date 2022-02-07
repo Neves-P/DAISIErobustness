@@ -17,5 +17,5 @@ Data frame with the parameter space.
 Loads the parameter space into the environment for simulations
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua Lambert, Pedro Santos Neves, Shu Xie
 }

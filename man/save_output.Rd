@@ -37,6 +37,6 @@ Other I/O:
 \code{\link{create_output_file_name}()}
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua Lambert, Pedro Santos Neves, Shu Xie
 }
 \concept{I/O}

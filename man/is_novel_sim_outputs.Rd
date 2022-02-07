@@ -27,5 +27,5 @@ outputs.
 Adapted from \code{\link[DAISIE]{is_simulation_outputs}()}
 }
 \author{
-Richèl J.C Bilderbeek, Pedro Neves
+Richèl J.C Bilderbeek, Pedro Santos Neves
 }

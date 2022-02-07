@@ -31,5 +31,5 @@ runtime <- read_runtime_log(
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

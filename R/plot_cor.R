@@ -4,7 +4,7 @@
 #'
 #' @return
 #' Saves runtime vs ED95 correlation plot to working directory as .png file.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 plot_cor <- function(param_space_data_frame,

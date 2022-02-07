@@ -45,4 +45,7 @@ A data frame which is identical to each scenarios' parameter spaces
 \description{
 Create key to partition results by scenario
 }
+\author{
+Pedro Santos Neves
+}
 \keyword{internal}

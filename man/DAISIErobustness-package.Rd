@@ -21,7 +21,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Pedro Neves \email{p.m.santos.neves@rug.nl} (\href{https://orcid.org/0000-0003-2561-4677}{ORCID})
+  \item Pedro Santos Neves \email{p.m.santos.neves@rug.nl} (\href{https://orcid.org/0000-0003-2561-4677}{ORCID})
   \item Shu Xie \email{s.xie@rug.nl} (\href{https://orcid.org/0000-0001-9594-946X}{ORCID})
 }
 

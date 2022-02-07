@@ -28,5 +28,5 @@ A data frame containing 4 columns and as many rows as the parameter
 Calculate success rate of \code{\link{run_robustness}()} HPCC runs
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

@@ -22,5 +22,5 @@ A numeric with the number of species in the largest clade
 Obtain the number of species in the largest clade
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua Lambert, Pedro Santos Neves, Shu Xie
 }

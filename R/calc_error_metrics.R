@@ -2,7 +2,7 @@
 #'
 #' @inheritParams default_params_doc
 #' @return a list of numerics
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
 #' @importFrom stats sd
 calc_error_metrics <- function(spec_nltt_error,
                                num_spec_error,
@@ -64,7 +64,7 @@ calc_error_metrics <- function(spec_nltt_error,
 #' @inheritParams default_params_doc
 #'
 #' @return Nothing. Throws error if input is not correct
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
 #' @importFrom stats na.omit
 check_calc_error_metrics_input <- function(spec_nltt_error,
                                            num_spec_error,

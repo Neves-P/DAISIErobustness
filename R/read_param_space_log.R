@@ -5,7 +5,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return A character atomic vector with the parameter space name
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 #' @examples

@@ -241,6 +241,6 @@ Nothing
 Default parameter documentation
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}

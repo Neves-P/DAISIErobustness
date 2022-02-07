@@ -30,6 +30,6 @@ sets must be inside named sub folders inside \code{folder_path}. Return type
 is appropriate for functions dealing with run time vs ED95 correlations.
 }
 \author{
-Pedro Neves, Joshua W. Lambert
+Pedro Santos Neves, Joshua W. Lambert
 }
 \keyword{internal}

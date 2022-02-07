@@ -14,6 +14,7 @@
 #'   \item{\code{$ed95_num_col}}
 #' }
 #' @keywords internal
+#' @author Pedro Santos Neves
 append_factor_key <- function(scenario_res, partition_by) {
   if (identical(partition_by, "hyperparameters")) {
     x <- scenario_res$x

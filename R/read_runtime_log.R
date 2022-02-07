@@ -7,7 +7,7 @@
 #'
 #' @return An atomic numeric vector with the elapsed run time of the associated
 #'   job in seconds.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 #' @examples

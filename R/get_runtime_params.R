@@ -14,7 +14,7 @@
 #'   \item{\code{log_name}}{Character vector with name of corresponding log file
 #'   to facilitate debugging.}
 #' }
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #' @keywords internal
 #'

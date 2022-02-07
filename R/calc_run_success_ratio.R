@@ -16,7 +16,7 @@
 #'  }
 #' @export
 #'
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 calc_run_success_ratio <- function(logs_folder_path) {
   param_space_name <- NULL; rm(param_space_name) # nolint, fixes warning: no visible binding for global variable
 

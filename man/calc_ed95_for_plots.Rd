@@ -34,5 +34,5 @@ sets of the parameter space must be in the same folder, located in
 functions.
 }
 \author{
-Pedro Neves, Joshua W. Lambert
+Pedro Santos Neves, Joshua W. Lambert
 }

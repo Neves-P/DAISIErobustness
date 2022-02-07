@@ -1,7 +1,7 @@
 #' Checks if MLE passed or errored
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
 #' @keywords internal
 #' @return Logical \code{TRUE} if criteria are met, \code{FALSE} if not.
 ml_constraints <- function(ml) {

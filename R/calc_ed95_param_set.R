@@ -17,7 +17,7 @@
 #'   \item{\code{$ed95_num_spec}}
 #'   \item{\code{$ed95_num_col}}
 #' }
-#' @author Pedro Neves, Joshua W. Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 #' @keywords internal
 #' @export
 calc_ed95_param_set <- function(folder_path) {

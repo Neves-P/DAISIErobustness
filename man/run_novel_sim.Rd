@@ -22,6 +22,6 @@ A list output from \code{\link[DAISIE]{DAISIE_sim_cr}()},
 Runs DAISIE simulation with a novel model
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}

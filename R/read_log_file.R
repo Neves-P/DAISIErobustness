@@ -8,7 +8,7 @@
 #'   \code{\link{readLines}()}.
 #' @export
 #'
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 read_log_file <- function(log_file_path) {
   testit::assert(is.character(log_file_path) && length(log_file_path) > 0)
   log_lines <- readLines(con = log_file_path, n = 3000)

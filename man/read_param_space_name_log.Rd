@@ -29,5 +29,5 @@ param_space_name <- read_param_space_name_log(,
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

@@ -29,5 +29,5 @@ param_set <- read_param_set_log(
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

@@ -7,7 +7,7 @@
 #'
 #' @return A character vector with the status of the job noted in a given log
 #'   file
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 read_status_log <- function(log_lines) {
   state_line_bools <- grepl("State               : ", log_lines)

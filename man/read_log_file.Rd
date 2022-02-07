@@ -18,5 +18,5 @@ Character vector with the contents of the log file as returned by
 Simply sanitizes the input path and reads log files into a character vector.
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

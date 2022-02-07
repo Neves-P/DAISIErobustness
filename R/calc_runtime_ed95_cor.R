@@ -4,7 +4,7 @@
 #'
 #' @return A data frame with the Pearson correlation coefficient between runtime
 #'   and each of the ED95 metrics.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
   merged_data_frame <- merge(

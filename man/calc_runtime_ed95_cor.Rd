@@ -22,5 +22,5 @@ A data frame with the Pearson correlation coefficient between runtime
 Calculate correlation between ED95 statistics and runtime
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

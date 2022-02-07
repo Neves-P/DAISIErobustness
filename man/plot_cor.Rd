@@ -23,5 +23,5 @@ Saves runtime vs ED95 correlation plot to working directory as .png file.
 Runtime vs ED95 correlation plot
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

@@ -4,7 +4,7 @@
 #' @return Output from \code{\link[DAISIE]{DAISIE_ML}()}
 #' @importFrom utils capture.output
 #' @keywords internal
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua Lambert, Pedro Santos Neves, Shu Xie
 calc_ml <- function(sim,
                     initial_parameters) {
 
