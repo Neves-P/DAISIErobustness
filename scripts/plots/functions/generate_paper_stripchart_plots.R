@@ -12,7 +12,10 @@ generate_paper_stripchart_plots <- function(scenario_res,
     "ed95_num_spec",
     "ed95_num_col"
   )
-  scenario_res <- append_factor_key(scenario_res, partition_by = partition_by)
+  scenario_res <- DAISIErobustness:::append_factor_key(
+    scenario_res,
+    partition_by = partition_by
+  )
   output_list <- list()
   # Cycle over metrics
   for (i in seq_along(metric_to_plot)) {
