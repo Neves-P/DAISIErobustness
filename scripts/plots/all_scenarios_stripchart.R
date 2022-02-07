@@ -69,6 +69,12 @@ error_names_vec <- c(
   "ed95_num_col"
 )
 
+label_list <- list(c("(a)", "(b)"),
+                   c("(c)", "(d)"),
+                   c("(e)", "(f)"),
+                   c("(g)", "(h)"),
+                   c("(i)", "(j)"))
+
 #### All sets ####
 
 
@@ -82,11 +88,6 @@ continental_list[[2]] <- continental_land_bridge_ed95
 
 
 facet_spec_nltt_stripchart <- list()
-label_list <- list(c("(a)", "(b)"),
-                   c("(c)", "(d)"),
-                   c("(e)", "(f)"),
-                   c("(g)", "(h)"),
-                   c("(i)", "(j)"))
 for (i in seq_along(error_names_vec)) {
   # Create spec nltt strip charts
   list_plot_oceanic <- list(
@@ -183,11 +184,6 @@ continental_list_cs[[2]] <- continental_land_bridge_ed95_cs
 
 
 facet_spec_nltt_stripchart_cs <- list()
-label_list <- list(c("(a)", "(b)"),
-                   c("(c)", "(d)"),
-                   c("(e)", "(f)"),
-                   c("(g)", "(h)"),
-                   c("(i)", "(j)"))
 for (i in seq_along(error_names_vec)) {
   # Create spec nltt strip charts
   list_plot_oceanic_cs <- list(
@@ -275,7 +271,6 @@ ggplot2::ggsave(
 
 #### DI ####
 
-
 oceanic_list_di <- list()
 continental_list_di <- list()
 oceanic_list_di[[1]] <- oceanic_ontogeny_ed95_di
@@ -286,21 +281,16 @@ continental_list_di[[2]] <- continental_land_bridge_ed95_di
 
 
 facet_spec_nltt_stripchart_di <- list()
-label_list <- list(c("(a)", "(b)"),
-                   c("(c)", "(d)"),
-                   c("(e)", "(f)"),
-                   c("(g)", "(h)"),
-                   c("(i)", "(j)"))
 for (i in seq_along(error_names_vec)) {
   # Create spec nltt strip charts
   list_plot_oceanic_di <- list(
-    oceanic_list_cs[[1]][[error_names_vec[i]]],
-    oceanic_list_cs[[2]][[error_names_vec[i]]],
-    oceanic_list_cs[[3]][[error_names_vec[i]]]
+    oceanic_list_di[[1]][[error_names_vec[i]]],
+    oceanic_list_di[[2]][[error_names_vec[i]]],
+    oceanic_list_di[[3]][[error_names_vec[i]]]
   )
   list_plot_continental_di <- list(
-    continental_list_cs[[1]][[error_names_vec[i]]],
-    continental_list_cs[[2]][[error_names_vec[i]]]
+    continental_list_di[[1]][[error_names_vec[i]]],
+    continental_list_di[[2]][[error_names_vec[i]]]
   )
   spec_nltt_oceanic_stripchart_di <- plot_error_stripchart(
     scenarios_res = list_plot_oceanic_di,
@@ -376,7 +366,6 @@ ggplot2::ggsave(
 )
 
 #### IW ####
-
 
 oceanic_list_iw <- list()
 continental_list_iw <- list()
