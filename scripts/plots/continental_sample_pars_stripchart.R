@@ -1,4 +1,4 @@
-# Strip charts for continental for Neves et al 2021
+# Strip charts for continental for Neves et al 2022
 # Fig 6 S12
 source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")

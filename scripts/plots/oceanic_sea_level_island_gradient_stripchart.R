@@ -1,4 +1,4 @@
-# Strip charts for oceanic sea level gradient param spaces for Neves et al 2021
+# Strip charts for oceanic sea level gradient param spaces for Neves et al 2022
 # Fig S6-S9
 source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")

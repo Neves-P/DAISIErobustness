@@ -1,4 +1,4 @@
-# Strip charts for oceanic param spaces for Neves et al 2021
+# Strip charts for oceanic param spaces for Neves et al 2022
 # Fig 5 and Fig S2 S3, S6, S7
 source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")
