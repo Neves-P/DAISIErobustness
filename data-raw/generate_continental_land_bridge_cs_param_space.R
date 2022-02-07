@@ -15,15 +15,15 @@ young_lb_dd_temp <- expand.grid(time = 2.55,
                                 stringsAsFactors = FALSE)
 
 young_lb_dd_2 <- cbind(young_lb_dd_temp,
-                       lac_2 = young_lb_dd_temp[, 3] / 2,
-                       mu_2 = young_lb_dd_temp[, 4] / 2,
+                       lac_2 = young_lb_dd_temp[, 3],
+                       mu_2 = young_lb_dd_temp[, 4],
                        K_2 = 10,
                        gam_2 = young_lb_dd_temp[, 6] * 2,
                        laa_2 = 0)
 
 young_lb_dd_10 <- cbind(young_lb_dd_temp,
-                        lac_2 = young_lb_dd_temp[, 3] / 2,
-                        mu_2 = young_lb_dd_temp[, 4] / 2,
+                        lac_2 = young_lb_dd_temp[, 3],
+                        mu_2 = young_lb_dd_temp[, 4],
                         K_2 = 10,
                         gam_2 = young_lb_dd_temp[, 6] * 10,
                         laa_2 = 0)
@@ -46,15 +46,15 @@ old_lb_dd_temp <- expand.grid(time = 6.15,
                               stringsAsFactors = FALSE)
 
 old_lb_dd_2 <- cbind(old_lb_dd_temp,
-                     lac_2 = old_lb_dd_temp[, 3] / 2,
-                     mu_2 = old_lb_dd_temp[, 4] / 2,
+                     lac_2 = old_lb_dd_temp[, 3],
+                     mu_2 = old_lb_dd_temp[, 4],
                      K_2 = 10,
                      gam_2 = old_lb_dd_temp[, 6] * 2,
                      laa_2 = 0)
 
 old_lb_dd_10 <- cbind(old_lb_dd_temp,
-                      lac_2 = old_lb_dd_temp[, 3] / 2,
-                      mu_2 = old_lb_dd_temp[, 4] / 2,
+                      lac_2 = old_lb_dd_temp[, 3],
+                      mu_2 = old_lb_dd_temp[, 4],
                       K_2 = 10,
                       gam_2 = old_lb_dd_temp[, 6] * 10,
                       laa_2 = 0)
