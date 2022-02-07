@@ -46,7 +46,9 @@ default_params_doc(
   runtime_params,
   ed95_param_sets,
   param_space_data_frame,
-  log_lines
+  log_lines,
+  partition_by,
+  scenario_res
 )
 }
 \arguments{
@@ -209,6 +211,28 @@ correlation between runtime and ED95. Obtained by running
 
 \item{log_lines}{Character vector containing the contents of the log files
 as read by \code{\link{read_log_file}()}.}
+
+\item{partition_by}{String with the feature by which the results should be
+  grouped for plotting. Options are:
+\itemize{
+  \item{\code{"hyperparameters"}}
+  \item{\code{"gradient"}}
+  \item{\code{"sample_parameters"}}
+  \item{\code{"land_bridge_multiplier"}}
+}}
+
+\item{scenario_res}{Data frame as returned by
+  \code{\link{load_param_space}()}which is identical to a scenarios'
+  parameter space as as read by \code{\link{calc_ed95_for_plots}()}. In
+  addition to the columns in the parameter spaces, 5 columns are appended
+  with the ed95 statistic obtained for each set parameter set:
+\itemize{
+  \item{\code{$ed95_spec_nltt}}
+  \item{\code{$ed95_endemic_nltt}}
+  \item{\code{$ed95_nonendemic_nltt}}
+  \item{\code{$ed95_num_spec}}
+  \item{\code{$ed95_num_col}}
+}}
 }
 \value{
 Nothing
