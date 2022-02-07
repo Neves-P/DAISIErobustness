@@ -4,18 +4,20 @@
 \alias{calc_ed95_for_plots}
 \title{Calculate ED95 statistic for all parameter sets of a parameter space}
 \usage{
-calc_ed95_for_plots(folder_path, scenario)
+calc_ed95_for_plots(folder_path, param_space)
 }
 \arguments{
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
 space are stored in .rds format.}
+
+\item{param_space}{A data frame of the parameter space.}
 }
 \value{
 A data frame which is identical to each scenarios' parameter spaces
   as as read by \code{\link{load_param_space}()}. In addition to the columns
   in the parameter spaces, 5 columns are appended with the ed95 statistic
-  obtained for each set parameter set.
+  obtained for each set parameter set:
 \itemize{
   \item{\code{$ed95_spec_nltt}}
   \item{\code{$ed95_endemic_nltt}}

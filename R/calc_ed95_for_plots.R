@@ -11,7 +11,7 @@
 #' @return A data frame which is identical to each scenarios' parameter spaces
 #'   as as read by \code{\link{load_param_space}()}. In addition to the columns
 #'   in the parameter spaces, 5 columns are appended with the ed95 statistic
-#'   obtained for each set parameter set.
+#'   obtained for each set parameter set:
 #' \itemize{
 #'   \item{\code{$ed95_spec_nltt}}
 #'   \item{\code{$ed95_endemic_nltt}}
@@ -21,7 +21,7 @@
 #' }
 #' @author Pedro Neves, Joshua W. Lambert
 #' @export
-calc_ed95_for_plots <- function(folder_path, scenario) {
+calc_ed95_for_plots <- function(folder_path, param_space) {
 
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 

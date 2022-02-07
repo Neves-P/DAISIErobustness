@@ -13,10 +13,10 @@ compile_ed95s <- function(scenario) {
   }
   testit::assert("Chosen directory exists", dir.exists(folder_path))
 
-  scenario <- DAISIErobustness::load_param_space(param_space_name = scenario)
+  param_space <- DAISIErobustness::load_param_space(param_space_name = scenario)
   scenario_res <- calc_ed95_for_plots(
     folder_path = folder_path,
-    scenario = scenario
+    scenario = param_space
   )
 
   if (length(unique(scenario_res$time)) == 2) {
