@@ -20,3 +20,4 @@ Checks if log file shows integration error
 \author{
 Pedro Santos Neves
 }
+\keyword{internal}
