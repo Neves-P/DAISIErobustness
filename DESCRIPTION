@@ -58,7 +58,7 @@ Imports:
     ggplot2,
     cowplot
 Remotes: 
-    rsetienne/DAISIE@8717225b3255639457adda4bf8c1695f49acc41e,
+    rsetienne/DAISIE@c3556895d839d0713a7c276eeafe38a3f3aa0d74,
     thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
