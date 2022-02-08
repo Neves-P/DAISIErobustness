@@ -36,7 +36,7 @@ plot_error_stripchart <- function(scenarios_res,
 
   # Compute N per strip and make it into legend
   data_no_na <- na.omit(data)
-  n_df <- data_no_na %>% dplyr::group_by(key) %>%
+  n_df <- data_no_na |> dplyr::group_by(key) |>
     dplyr::tally()
   label_ns <- c()
   label_ns <- paste0(scenario, "\nN = ", as.character(n_df$n))

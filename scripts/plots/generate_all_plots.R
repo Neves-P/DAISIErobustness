@@ -1,5 +1,5 @@
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
-# Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
+# Copyright (C) 2022 Joshua W. Lambert, Pedro Neves, Shu Xie
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,3 +33,40 @@
 # DAISIErobustness/ directory.
 
 #### RUN ####
+rm(list = ls())
+library(DAISIErobustness)
+
+source("scripts/plots/area_through_time.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/ed95_histograms.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/all_scenarios_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/ontogeny_sea_level_hyperpars_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/oceanic_sea_level_island_gradient_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/continental_land_bridge_multiplier_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/continental_land_bridge_sample_pars_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/continental_sample_pars_stripchart.R")
+
+rm(list = ls())
+library(DAISIErobustness)
+source("scripts/plots/runtime_correlation_plots.R")
+
