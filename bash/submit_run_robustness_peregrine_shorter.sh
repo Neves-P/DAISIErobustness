@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --time=0:05:00
+#SBATCH --time=0:15:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=start_robustness
 #SBATCH --output=logs/start_robustness.log
-#SBATCH --mem=2GB
+#SBATCH --mem=1GB
 #SBATCH --partition=short
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
