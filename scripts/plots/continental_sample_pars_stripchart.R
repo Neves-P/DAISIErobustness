@@ -35,15 +35,15 @@ faceted_ylim <- max(plot_1_ylim, plot_2_ylim, plot_3_ylim)
 prow <- cowplot::plot_grid(
   continental_plots[[1]] + ggplot2::theme(
     legend.position = "none", axis.title.x = ggplot2::element_blank()) +
-    ggplot2::ylim(0, faceted_ylim) +
+    ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[2]] + ggplot2::theme(
     legend.position = "none", axis.title.x = ggplot2::element_blank()) +
-    ggplot2::ylim(0, faceted_ylim) +
+    ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[3]] + ggplot2::theme(
     legend.position = "none", axis.title.x = ggplot2::element_blank()) +
-    ggplot2::ylim(0, faceted_ylim) +
+    ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
   labels = c("(a)", "(b)", "(c)"),
@@ -58,11 +58,11 @@ faceted_ylim <- max(plot_1_ylim, plot_2_ylim)
 prow_spec_col <- cowplot::plot_grid(
   continental_plots[[4]] + ggplot2::theme(
     legend.position = "none", axis.title.x = ggplot2::element_blank()) +
-    ggplot2::ylim(0, faceted_ylim) +
+    ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[5]] + ggplot2::theme(
     legend.position = "none", axis.title.x = ggplot2::element_blank()) +
-    ggplot2::ylim(0, faceted_ylim) +
+    ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
   labels = c("(a)", "(b)"),

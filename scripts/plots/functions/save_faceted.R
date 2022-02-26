@@ -34,17 +34,17 @@ saved_faceted <- function(plot_list_1,
     plot_list_1[[i]] + ggplot2::theme(
       legend.position = "none",
       axis.title.x = ggplot2::element_blank()) +
-      ggplot2::ylim(0, faceted_ylim),
+      ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     plot_list_2[[i]] + ggplot2::theme(
       legend.position = "none",
       axis.title.y = eval(parse(text=as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()) +
-      ggplot2::ylim(0, faceted_ylim),
+      ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     plot_list_3[[i]] + ggplot2::theme(
       legend.position = "none",
       axis.title.y = eval(parse(text=as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()
-    ) + ggplot2::ylim(0, faceted_ylim),
+    ) + ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     align = 'vh',
     labels = c("(a)", "(b)", "(c)"),
     label_size = 10.5,
