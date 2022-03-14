@@ -12,7 +12,7 @@ as read by \code{\link{read_log_file}()}.}
 }
 \value{
 A character vector with the status of the job noted in a given log
-  file
+  file, or \code{"UNEXPECTED ERROR"} if there is no log termination.
 }
 \description{
 Obtains the elapsed job time in seconds from a standard Peregrine HPCC log

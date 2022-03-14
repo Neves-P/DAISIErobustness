@@ -6,7 +6,7 @@
 #' @inheritParams default_params_doc
 #'
 #' @return A character vector with the status of the job noted in a given log
-#'   file
+#'   file, or \code{"UNEXPECTED ERROR"} if there is no log termination.
 #' @author Pedro Santos Neves
 #' @export
 read_status_log <- function(log_lines) {
@@ -17,6 +17,8 @@ read_status_log <- function(log_lines) {
     state_line_bools <- grepl("DUE TO TIME LIMIT", log_lines)
     if (any(state_line_bools)) {
       state_line <- "TIMEOUT"
+    } else {
+      state_line <- "UNEXPECTED_ERROR"
     }
   }
   return(state_line)
