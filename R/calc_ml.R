@@ -27,7 +27,7 @@ calc_ml <- function(sim,
         idparsfix = NULL,
         cond = 5,
         jitter = 1e-5,
-        methode = "odeint::runge_kutta_fehlberg78"
+        methode = "lsodes"
       )
     )))
   } else {
@@ -43,7 +43,7 @@ calc_ml <- function(sim,
           idparsfix = 5,
           cond = 5,
           ddmodel = 11,
-          methode = "odeint::runge_kutta_fehlberg78",
+          methode = "lsodes",
           jitter = 1e-5)
       )))
     } else {
@@ -57,7 +57,7 @@ calc_ml <- function(sim,
           idparsfix = 5,
           cond = 5,
           ddmodel = 11,
-          methode = "odeint::runge_kutta_fehlberg78",
+          methode = "lsodes",
           jitter = 1e-5)
       )))
     }
