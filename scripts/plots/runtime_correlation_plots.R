@@ -1,10 +1,11 @@
 # Fig S1
 runtime_params <- get_runtime_params(
-  "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/logs/"
+  "G:/Shared drives/DAISIE-RUG/Robustness/resubmission/logs/"
 )
 
+
 results_total <- calc_ed95_param_set(
-  "G:/Shared drives/DAISIE-RUG/Josh_Pedro_paper/results"
+  "G:/Shared drives/DAISIE-RUG/Robustness/resubmission/results"
 )
 
 runtime_cors <- calc_runtime_ed95_cor(

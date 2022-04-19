@@ -4,7 +4,7 @@ source("scripts/plots/functions/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
 if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
   folder_path <-
-    "G:\\Shared drives\\DAISIE-RUG\\Robustness\\results\\continental_land_bridge_cs\\"
+    "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\results\\\\continental_land_bridge_cs\\"
 
 } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
   folder_path <-

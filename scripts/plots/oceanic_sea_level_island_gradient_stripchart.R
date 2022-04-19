@@ -7,19 +7,19 @@ source("scripts/plots/functions/save_faceted.R")
 source("scripts/plots/functions/tidy_data.R")
 
 oceanic_ontogeny_ed95 <- rbind(
-  compile_ed95s(scenario = "oceanic_ontogeny_cs"),
-  compile_ed95s(scenario = "oceanic_ontogeny_di"),
-  compile_ed95s(scenario = "oceanic_ontogeny_iw")
+  compile_ed95s(param_space_name = "oceanic_ontogeny_cs"),
+  compile_ed95s(param_space_name = "oceanic_ontogeny_di"),
+  compile_ed95s(param_space_name = "oceanic_ontogeny_iw")
 )
 oceanic_sea_level_ed95 <- rbind(
-  compile_ed95s(scenario = "oceanic_sea_level_cs"),
-  compile_ed95s(scenario = "oceanic_sea_level_di"),
-  compile_ed95s(scenario = "oceanic_sea_level_iw")
+  compile_ed95s(param_space_name = "oceanic_sea_level_cs"),
+  compile_ed95s(param_space_name = "oceanic_sea_level_di"),
+  compile_ed95s(param_space_name = "oceanic_sea_level_iw")
 )
 oceanic_ontogeny_sea_level_ed95 <- rbind(
-  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_cs"),
-  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_di"),
-  compile_ed95s(scenario = "oceanic_ontogeny_sea_level_iw")
+  compile_ed95s(param_space_name = "oceanic_ontogeny_sea_level_cs"),
+  compile_ed95s(param_space_name = "oceanic_ontogeny_sea_level_di"),
+  compile_ed95s(param_space_name = "oceanic_ontogeny_sea_level_iw")
 )
 
 

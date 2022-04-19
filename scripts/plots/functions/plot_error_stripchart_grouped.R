@@ -32,6 +32,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     plot_title <- "Continental land-bridge"
   }
 
+  # N labels
   label_ns <- c()
   ns <- tidy_data(scenario_res = scenario_res, partition_by = partition_by)
   aggregate(ns$n, by = list(key = ns$key), sum)
@@ -72,7 +73,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     ggplot2::theme(axis.title.y = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
-    ggplot2::theme(axis.text.x = ggtext::element_markdown(size = 7)) +
+    ggplot2::theme(axis.text.x = ggtext::element_markdown(size = 6)) +
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +

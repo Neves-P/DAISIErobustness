@@ -28,8 +28,8 @@
 # Please clone the repository to a local directory by running
 # git clone https://github.com/Neves-P/DAISIErobustness.git
 # Ensure your current directory is the DAISIErobustness package root
-# (i.e. ~/DAISIErobustness).
-# Finally, run the code chunk below. The resulting files will be placed in the
+# (i.e. ~/DAISIErobustness/).
+# Finally, run the code below. The resulting files will be placed in the
 # DAISIErobustness/ directory.
 
 #### RUN ####

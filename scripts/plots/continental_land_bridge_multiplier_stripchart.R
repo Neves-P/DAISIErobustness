@@ -5,7 +5,7 @@ source("scripts/plots/functions/compile_ed95s.R")
 source("scripts/plots/functions/plot_error_stripchart_grouped.R")
 source("scripts/plots/functions/generate_paper_stripchart_plots.R")
 source("scripts/plots/functions/save_faceted.R")
-# source("scripts/plots/functions/tidy_data.R")
+source("scripts/plots/functions/tidy_data.R")
 continental_land_bridge_ed95 <- rbind(
   compile_ed95s(param_space_name = "continental_land_bridge_cs"),
   compile_ed95s(param_space_name = "continental_land_bridge_di"),
