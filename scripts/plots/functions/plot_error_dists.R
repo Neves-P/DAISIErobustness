@@ -40,7 +40,7 @@ plot_error_dists <- function(output_file,
                             alpha = 0.5,
                             position = "identity",
                             color = "black") +
-    ggplot2::theme_bw() +
+    ggplot2::theme_classic() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.7)) +
     ggplot2::scale_fill_brewer(
       palette = "Set2",
