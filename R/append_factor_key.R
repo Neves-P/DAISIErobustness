@@ -36,7 +36,6 @@ append_factor_key <- function(scenario_res, partition_by) {
     )
     out <- cbind(scenario_res, key)
   } else if (identical(partition_by, "sample_parameters")) {
-    # TODO: Condense with x and d case in ontogeny?
     x_s <- scenario_res$x_s
     x_nonend <- scenario_res$x_nonend
 

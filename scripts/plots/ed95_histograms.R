@@ -16,17 +16,17 @@ if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
 testit::assert("Chosen directory exists", dir.exists(folder_path))
 
 
-res_13 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_13.rds"))
-barplot_13 <- plot_error_dists(res_13, "spec_nltt")
+res_2 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_2.rds"))
+barplot_2 <- plot_error_dists(res_2, "spec_nltt")
 
-# Nonoceanic 161
-res_111 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_111.rds"))
-barplot_111 <- plot_error_dists(res_111, "spec_nltt")
+# Nonoceanic 61
+res_61 <- readRDS(file.path(folder_path, "continental_land_bridge_cs_param_set_61.rds"))
+barplot_61 <- plot_error_dists(res_61, "spec_nltt")
 
 # Arrange in grid, hide legends
 side_by_side_plot <- cowplot::plot_grid(
-  barplot_111 +  ggplot2::theme(legend.position = "none"),
-  barplot_13 + ggplot2::theme(legend.position = "none"),
+  barplot_2 + ggplot2::theme(legend.position = "none"),
+  barplot_61 +  ggplot2::theme(legend.position = "none"),
   ncol = 2,
   labels = c("(a)", "(b)"),
   label_size = 10.5
@@ -35,7 +35,7 @@ side_by_side_plot <- cowplot::plot_grid(
 ## Make legend
 legend <- cowplot::get_legend(
   # create some space to the left of the legend
-  barplot_13 + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
+  barplot_2 + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
 )
 
 ## Add legend
@@ -48,7 +48,7 @@ side_by_side_plot_legend <- cowplot::plot_grid(
 # Save plot
 ggplot2::ggsave(
   plot = side_by_side_plot_legend,
-  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_111.pdf",
+  filename = "hist_spec_nltt_nonoceanic_land_bridge_2_61.pdf",
   device = "pdf",
   width = 168,
   height = 100,
@@ -56,7 +56,7 @@ ggplot2::ggsave(
 )
 ggplot2::ggsave(
   plot = side_by_side_plot_legend,
-  filename = "hist_spec_nltt_nonoceanic_land_bridge_13_111.png",
+  filename = "hist_spec_nltt_nonoceanic_land_bridge_2_61.png",
   device = "png",
   width = 168,
   height = 100,

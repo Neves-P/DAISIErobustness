@@ -51,7 +51,13 @@ oceanic_ontongeny_sea_level_plots <- generate_paper_stripchart_plots(
   add_plot_title = FALSE
 )
 
-saved_faceted(oceanic_ontongeny_sea_level_plots[1], oceanic_ontongeny_sea_level_plots[2], oceanic_ontongeny_sea_level_plots[3], sub_text = "Island gradient")
+saved_faceted(
+  oceanic_ontongeny_sea_level_plots[1],
+  oceanic_ontongeny_sea_level_plots[2],
+  oceanic_ontongeny_sea_level_plots[3],
+  sub_text = "Island gradient",
+  save_name = "oceanic_ontogeny_sea_level_gradient_nltt"
+)
 ggplot2::ggsave(
   plot = oceanic_ontongeny_sea_level_plots[[4]],
   filename = paste0("Island_gradient_ontogeny_sea_level_num_spec.png"),
@@ -70,7 +76,14 @@ ggplot2::ggsave(
   units = "mm"
 )
 
-saved_faceted(oceanic_sea_level_plots[1], oceanic_sea_level_plots[2], oceanic_sea_level_plots[3], sub_text = "Island gradient")
+saved_faceted(
+  oceanic_sea_level_plots[1],
+  oceanic_sea_level_plots[2],
+  oceanic_sea_level_plots[3],
+  sub_text = "Island gradient",
+  save_name = "oceanic_sea_level_gradient_nltt"
+)
+
 ggplot2::ggsave(
   plot = oceanic_sea_level_plots[[4]],
   filename = paste0("Island_gradient_sea_level_num_spec.png"),

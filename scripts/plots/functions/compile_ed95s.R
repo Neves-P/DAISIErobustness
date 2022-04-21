@@ -21,8 +21,8 @@ compile_ed95s <- function(param_space_name) {
 
   if (length(unique(scenario_res$time)) == 2) {
     Island <- factor(
-      ifelse(scenario_res$time == 2.55, "Kaua'i", "Maui Nui"),
-      levels = c("Kaua'i", "Maui Nui"),
+      ifelse(scenario_res$time == 2.55, "Maui Nui", "Kaua'i"),
+      levels = c("Maui Nui", "Kaua'i"),
       ordered = FALSE
     )
   } else {
