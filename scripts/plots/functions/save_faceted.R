@@ -1,7 +1,8 @@
 saved_faceted <- function(plot_list_1,
                           plot_list_2,
                           plot_list_3,
-                          sub_text) {
+                          sub_text,
+                          save_name = NULL) {
 
 
   for (i in seq_along(plot_list_1)) {
@@ -37,12 +38,12 @@ saved_faceted <- function(plot_list_1,
       ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     plot_list_2[[i]] + ggplot2::theme(
       legend.position = "none",
-      axis.title.y = eval(parse(text=as.character(axis_title_y))),
+      axis.title.y = eval(parse(text = as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()) +
       ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     plot_list_3[[i]] + ggplot2::theme(
       legend.position = "none",
-      axis.title.y = eval(parse(text=as.character(axis_title_y))),
+      axis.title.y = eval(parse(text = as.character(axis_title_y))),
       axis.title.x = ggplot2::element_blank()
     ) + ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     align = 'vh',
@@ -84,9 +85,11 @@ saved_faceted <- function(plot_list_1,
     "_num_col"
   )
 
+  filename <- ifelse(is.null(save_name), sub_text, save_name)
+
   ggplot2::ggsave(
     plot = final_plot,
-    filename = paste0(sub_text, name_suffix, ".png"),
+    filename = paste0(filename, ".png"),
     device = "png",
     width = 168,
     height = 100,
@@ -95,7 +98,7 @@ saved_faceted <- function(plot_list_1,
   )
   ggplot2::ggsave(
     plot = final_plot,
-    filename = paste0(sub_text, name_suffix, ".pdf"),
+    filename = paste0(filename, ".pdf"),
     device = "pdf",
     width = 168,
     height = 100,
