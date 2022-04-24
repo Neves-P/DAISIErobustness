@@ -85,7 +85,11 @@ saved_faceted <- function(plot_list_1,
     "_num_col"
   )
 
-  filename <- ifelse(is.null(save_name), sub_text, save_name)
+  filename <- ifelse(
+    is.null(save_name),
+    paste0(sub_text, name_suffix),
+    save_name
+  )
 
   ggplot2::ggsave(
     plot = final_plot,
