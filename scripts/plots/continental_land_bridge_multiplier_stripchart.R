@@ -21,8 +21,11 @@ continental_land_bridge_plots <- generate_paper_stripchart_plots(
   partition_by = "land_bridge_multiplier",
   xlabels = xlabel_vec,
   save = FALSE,
-  add_plot_title = FALSE
+  add_plot_title = FALSE,
+  alt_colours = TRUE
 )
+
+
 
 # Save individual plots
 generate_paper_stripchart_plots(
@@ -32,7 +35,8 @@ generate_paper_stripchart_plots(
   partition_by = "land_bridge_multiplier",
   xlabels = xlabel_vec,
   save = TRUE,
-  add_plot_title = FALSE
+  add_plot_title = FALSE,
+  alt_colours = TRUE
 )
 
 

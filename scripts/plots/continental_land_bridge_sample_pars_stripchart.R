@@ -29,7 +29,8 @@ continental_land_bridge_plots <- generate_paper_stripchart_plots(
   scenario = "continental_land_bridge",
   xlabels = xlabel,
   save = FALSE,
-  add_plot_title = FALSE
+  add_plot_title = FALSE,
+  alt_colours = TRUE
 )
 
 # Figure out ylim
