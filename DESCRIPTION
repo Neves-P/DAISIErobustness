@@ -52,7 +52,7 @@ Suggests:
     glue
 Imports: 
     sessioninfo,
-    DAISIE (>= 4.0.5),
+    DAISIE (>= 4.1.1),
     nLTT,
     testit,
     ggplot2,
