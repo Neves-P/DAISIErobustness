@@ -1,5 +1,10 @@
 # DAISIErobustness 2.3.0
 
+* Depend on DAISIE v4.1.1.
+* Restructured parameter spaces using scripts in `/data-raw/`.
+* Changes to summary metrics.
+* Added new diagnostic functions that use generated log files.
+
 # DAISIErobustness 2.2.1
 
 * Change plot legend to read "colonisation multiplier" rather than "immigration multiplier".
