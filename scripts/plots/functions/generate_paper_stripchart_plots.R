@@ -4,7 +4,8 @@ generate_paper_stripchart_plots <- function(scenario_res,
                                             scenario,
                                             xlabels,
                                             save = TRUE,
-                                            add_plot_title = TRUE) {
+                                            add_plot_title = TRUE,
+                                            alt_colours = FALSE) {
   metric_to_plot <- c(
     "ed95_spec_nltt",
     "ed95_endemic_nltt",
@@ -26,7 +27,8 @@ generate_paper_stripchart_plots <- function(scenario_res,
       x_axis_text,
       scenario,
       save,
-      add_plot_title = add_plot_title
+      add_plot_title = add_plot_title,
+      alt_colours = alt_colours
     )
     if (save) {
       ggplot2::ggsave(

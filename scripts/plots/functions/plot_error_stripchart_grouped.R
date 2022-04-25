@@ -4,7 +4,8 @@ plot_error_stripchart_grouped <- function(scenario_res,
                                           x_axis_text,
                                           scenario,
                                           save,
-                                          add_plot_title = TRUE) {
+                                          add_plot_title = TRUE,
+                                          alt_colours = FALSE) {
 
   # y axis labels
   if (error == "ed95_spec_nltt") {
@@ -46,7 +47,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
       label_ns[i] <- glue::glue(
         paste0(
           xlabels[i],
-          "  \nN<sub>K</sub> = {matched_n_y}  \nN<sub>M</sub> = {matched_n_o}"
+          "  \nN<sub>M</sub> = {matched_n_y}  \nN<sub>K</sub> = {matched_n_o}"
         )
       )
       colours <- c("#8DA0CB", "#E78AC3")
@@ -59,6 +60,15 @@ plot_error_stripchart_grouped <- function(scenario_res,
       )
       colours <- c("#A6D854", "#FFD92F", "#E5C494")
     }
+  }
+  if (isTRUE(alt_colours)) {
+    label_ns[i] <- glue::glue(
+      paste0(
+        xlabels[i],
+        "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+      )
+    )
+    colours <- c("#A6D854", "#FFD92F")
   }
   xlabels <- label_ns
   # Generate plot
