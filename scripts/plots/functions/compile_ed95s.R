@@ -25,7 +25,15 @@ compile_ed95s <- function(param_space_name) {
       levels = c("Maui Nui", "Kaua'i"),
       ordered = TRUE
     )
-  } else {
+  }
+  if (length(unique(scenario_res$x_s)) > 1) {
+    Island <- factor(
+      ifelse(scenario_res$time == 2.55, "Young", "Old"),
+      levels = c("Young", "Old"),
+      ordered = TRUE
+    )
+  }
+  if (length(unique(scenario_res$time)) == 3) {
     Island <- factor(
       ifelse(scenario_res$time == 2.55, "Young",
              ifelse(scenario_res$time == 6.15, "Old",
@@ -34,8 +42,8 @@ compile_ed95s <- function(param_space_name) {
              )
       ),
       levels = c("Young", "Old", "Ancient"), ordered = FALSE)
-
   }
+
   scenario_res <- cbind(scenario_res, Island)
 
   return(scenario_res)

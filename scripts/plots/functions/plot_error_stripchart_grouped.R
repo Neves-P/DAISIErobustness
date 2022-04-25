@@ -60,15 +60,15 @@ plot_error_stripchart_grouped <- function(scenario_res,
       )
       colours <- c("#A6D854", "#FFD92F", "#E5C494")
     }
-  }
-  if (isTRUE(alt_colours)) {
-    label_ns[i] <- glue::glue(
-      paste0(
-        xlabels[i],
-        "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+    if (isTRUE(alt_colours)) {
+      label_ns[i] <- glue::glue(
+        paste0(
+          xlabels[i],
+          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+        )
       )
-    )
-    colours <- c("#A6D854", "#FFD92F")
+      colours <- c("#A6D854", "#FFD92F")
+    }
   }
   xlabels <- label_ns
   # Generate plot
