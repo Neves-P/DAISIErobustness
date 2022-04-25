@@ -113,7 +113,7 @@ for (i in seq_along(error_names_vec)) {
     scenario = scenario_name[4:5],
     x_axis_text = "Geodynamic scenario"
   )
-  spec_nltt_continental_stripchart$mapping$colour <- NULLü
+  spec_nltt_continental_stripchart$mapping$colour <- NULL
 
   if (i == 5) {
     facet_spec_nltt_stripchart[[i]] <- cowplot::plot_grid(
