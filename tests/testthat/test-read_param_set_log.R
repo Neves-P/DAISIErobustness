@@ -3,14 +3,15 @@ test_that("read_param_set_log works", {
 
   # Find test environment file path
   log_file_path <- list.files(
-    file.path(getwd(), "testdata/logs"),
+    file.path("testdata", "logs"),
     full.names = TRUE,
-    pattern = "robustness-20596511.log"
+    pattern = "robustness-22891163.log"
   )
-
+  log_lines <- read_log_file(log_file_path = log_file_path)
   param_set <- read_param_set_log(
+    log_lines = log_lines,
     log_file_path = log_file_path
   )
 
-  expect_equal(param_set, 569)
+  expect_equal(param_set, 8)
 })

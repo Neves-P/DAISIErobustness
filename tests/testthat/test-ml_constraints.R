@@ -1,5 +1,3 @@
-context("ml_constraints")
-
 test_that("ml_constraints returns TRUE when mle passes", {
   oceanic_ml <- data.frame("lambda_c" = 1,
                                    "mu" = 1,

@@ -1,7 +1,7 @@
 #' Run robustness analysis pipeline
 #'
 #' @inheritParams default_params_doc
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return
 #' A named list of length 20 containing errors, error metrics, simulation and
 #' MLE output:
@@ -138,13 +138,7 @@ run_robustness <- function(param_space_name,
                            test = FALSE) {
 
   testit::assert(is.character(param_space_name))
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+  testit::assert(is_param_space_name(param_space_name))
   param_space <- load_param_space(
     param_space_name = param_space_name)
   testit::assert(param_set >= 1)
@@ -227,7 +221,7 @@ run_robustness <- function(param_space_name,
     novel_ml_constraints <- ml_constraints(ml = novel_ml)
 
     if (novel_ml_constraints == TRUE) {
-
+      message("novel_ml: ", sapply(X = novel_ml, FUN = paste0, " "))
       oceanic_sim_1 <- run_oceanic_sim(
         ml = novel_ml,
         sim_pars = sim_pars)
@@ -235,6 +229,7 @@ run_robustness <- function(param_space_name,
       error <- calc_error(
         sim_1 = novel_sim,
         sim_2 = oceanic_sim_1,
+        sim_pars = sim_pars,
         replicates = replicates,
         distance_method = distance_method)
 
@@ -242,7 +237,7 @@ run_robustness <- function(param_space_name,
         sim = oceanic_sim_1,
         initial_parameters = novel_ml
       )
-
+      message("oceanic_ml: ", sapply(X = oceanic_ml, FUN = paste0, " "))
       oceanic_ml_constraints <- ml_constraints(
         ml = oceanic_ml
       )
@@ -265,6 +260,7 @@ run_robustness <- function(param_space_name,
         baseline_error <- calc_error(
           sim_1 = oceanic_sim_1,
           sim_2 = oceanic_sim_2,
+          sim_pars = sim_pars,
           replicates = replicates,
           distance_method = distance_method)
 

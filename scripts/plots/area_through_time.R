@@ -1,8 +1,8 @@
-# Area and sea-level plots for Neves et al 2021
+# Area and sea-level plots for Neves et al 2022
 # Fig 1
 source("scripts/plots/functions/plot_areas.R")
 
-param_space <- load_param_space("oceanic_ontogeny_sea_level")
+param_space <- load_param_space("oceanic_ontogeny_sea_level_cs")
 area_pars_1 <- DAISIE::create_area_pars(
   max_area = param_space$max_area[nrow(param_space) / 2 + 1],
   current_area = param_space$current_area[nrow(param_space) / 2 + 1],

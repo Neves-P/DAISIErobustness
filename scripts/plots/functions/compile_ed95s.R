@@ -1,21 +1,50 @@
-# Accessory functions for stripchart plotting for Neves et al 2021
-compile_ed95s <- function(scenario, chunk_size, total_length) {
-  folder_path <- file.path("G:\\Shared drives\\DAISIE-RUG\\Robustness\\results", scenario)
-  n_chunks <- total_length / chunk_size
-  testit::assert("Is whole number", identical(round(n_chunks), n_chunks))
-
-  lower_range <- seq(from = 1, to = total_length, by = chunk_size)
-  upper_range <- seq(from = 0, to = total_length, by = chunk_size)[-1]
-  testit::assert(identical(length(lower_range), length(upper_range)))
-  testit::assert(identical(upper_range[length(upper_range)], total_length))
-
-  ed95s <- list()
-  n_data <- c()
-  for (i in seq_len(n_chunks)) {
-    ed95s[[i]] <- calc_ed95_for_plots(folder_path, lower_range[i]:upper_range[i])
-    n_data[i] <- length(ed95s[[i]][[1]])
+# Accessory functions for stripchart plotting for Neves et al 2022
+compile_ed95s <- function(param_space_name) {
+  if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
+    folder_path <- file.path(
+      "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\results\\", param_space_name
+    )
+  } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
+    folder_path <- file.path(
+      "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results", param_space_name
+    )
+  } else {
+    folder_path <- choose.dir(caption = "Select 'results' folder")
   }
-  return(list(
-    ed95s = ed95s,
-    n_data = n_data))
+  testit::assert("Chosen directory exists", dir.exists(folder_path))
+
+  param_space <- DAISIErobustness::load_param_space(param_space_name = param_space_name)
+  scenario_res <- calc_ed95_for_plots(
+    folder_path = folder_path,
+    param_space = param_space
+  )
+
+  if (length(unique(scenario_res$time)) == 2) {
+    Island <- factor(
+      ifelse(scenario_res$time == 2.55, "Maui Nui", "Kaua'i"),
+      levels = c("Maui Nui", "Kaua'i"),
+      ordered = TRUE
+    )
+  }
+  if (length(unique(scenario_res$x_s)) > 1) {
+    Island <- factor(
+      ifelse(scenario_res$time == 2.55, "Young", "Old"),
+      levels = c("Young", "Old"),
+      ordered = TRUE
+    )
+  }
+  if (length(unique(scenario_res$time)) == 3) {
+    Island <- factor(
+      ifelse(scenario_res$time == 2.55, "Young",
+             ifelse(scenario_res$time == 6.15, "Old",
+                    ifelse(scenario_res$time == 50, "Ancient", "Ancient"
+                    )
+             )
+      ),
+      levels = c("Young", "Old", "Ancient"), ordered = FALSE)
+  }
+
+  scenario_res <- cbind(scenario_res, Island)
+
+  return(scenario_res)
 }

@@ -1,5 +1,5 @@
 test_that("use", {
-  param_space_name <- "nonoceanic"
+  param_space_name <- "continental_cs"
   param_set <- 27
   set.seed(
     1,

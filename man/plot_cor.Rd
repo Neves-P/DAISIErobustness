@@ -4,13 +4,17 @@
 \alias{plot_cor}
 \title{Runtime vs ED95 correlation plot}
 \usage{
-plot_cor(param_space_data_frame)
+plot_cor(param_space_data_frame, folder_path = ".")
 }
 \arguments{
 \item{param_space_data_frame}{A data frame with ED95 statistics all
 parameter spaces, together with associated runtime. Used for plotting
 correlation between runtime and ED95. Obtained by running
 \code{\link{calc_ed95_param_set}()}.}
+
+\item{folder_path}{A file path (use \code{file.path()} for formatting
+convenience) where all the parameter sets results of a given parameter
+space are stored in .rds format.}
 }
 \value{
 Saves runtime vs ED95 correlation plot to working directory as .png file.
@@ -19,5 +23,5 @@ Saves runtime vs ED95 correlation plot to working directory as .png file.
 Runtime vs ED95 correlation plot
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

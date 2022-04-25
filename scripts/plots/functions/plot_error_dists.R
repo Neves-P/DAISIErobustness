@@ -1,10 +1,10 @@
 #' Plot histogram of errors
 #'
-#' @param run_robustness
+#' @param output_file
 #' @param error
 #'
 #' @return a plot with two error distributions
-#' @author Pedro Neves, Joshua Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 plot_error_dists <- function(output_file,
                              error = "spec_nltt") {
   if (error == "spec_nltt") {
@@ -40,7 +40,7 @@ plot_error_dists <- function(output_file,
                             alpha = 0.5,
                             position = "identity",
                             color = "black") +
-    ggplot2::theme_bw() +
+    ggplot2::theme_classic() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.7)) +
     ggplot2::scale_fill_brewer(
       palette = "Set2",

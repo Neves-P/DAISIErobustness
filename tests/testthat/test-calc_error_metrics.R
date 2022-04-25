@@ -1,5 +1,3 @@
-context("calc_error_metrics")
-
 test_that("test calc_error_metrics output is correct when all error
           distributions are equal", {
   spec_nltt_error <- c(1, 1, 1, 1)

@@ -7,13 +7,8 @@
 check_create_folders(param_space_name, save_output)
 }
 \arguments{
-\item{param_space_name}{A string with the parameter space to run. Can
-be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-\code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
-\code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
-\code{"oceanic"} is used as a null simulation to test for bias in the
-pipeline.}
+\item{param_space_name}{A string with the parameter space to run. See
+\code{\link{is_param_space_name}()} for options.}
 
 \item{save_output}{A boolean to determine whether to save or return output.}
 }
@@ -27,11 +22,10 @@ Checks and create results folder for output
 \seealso{
 Other I/O: 
 \code{\link{create_output_file_name}()},
-\code{\link{load_novel_section}()},
 \code{\link{save_output}()}
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \concept{I/O}
 \keyword{internal}

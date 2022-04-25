@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --time=0:05:00
+#SBATCH --time=0:15:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=start_robustness
 #SBATCH --output=logs/start_robustness.log
-#SBATCH --mem=2GB
+#SBATCH --mem=1GB
 #SBATCH --partition=short
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
-# Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
+# Copyright (C) 2022 Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,46 +34,41 @@
 #   oceanic_ontogeny
 #   oceanic_sea_level
 #   oceanic_ontogeny_sea_level
-#   nonoceanic
-#   nonoceanic_land_bridge
+#   continental
+#   continental_land_bridge
 #   trait_CES
-#   trait_trans
 # replicates - Total number of replicates to be simulated, or are present in
 #   the input simulation.
-# distance_method - If the absolute or squared distance between nLTTs should be
-#   computed. Options:
-#     abs - (default)
-#     squ
 ################################################################################
 ##### Before running make sure logs folder has been created! ####
 ## Usage example running simulations for the oceanic_ontogeny param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
-# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000 abs
+# cd DAISIErobustness
+# sbatch bash/submit_run_robustness_peregrine.sh oceanic_ontogeny 1000
 #
-## Usage example running analysis for the nonoceanic param space, 1000
+## Usage example running analysis for the continental param space, 1000
 ## replicates, entire parameter space:
 # git clone https://github.com/Neves-P/DAISIErobustness.git
-# sbatch DAISIErobustness/bash/submit_run_robustness_peregrine.sh nonoceanic 1000 abs
+# cd DAISIErobustness
+# sbatch bash/submit_run_robustness_peregrine.sh continental 1000
 ################################################################################
 
 
 
 # Start script
 ml R
-Rscript -e "remotes::install_github('Neves-P/DAISIErobustness')"
 
 param_space_name=$1
 replicates=$2
-distance_method=$3
 
-for_length=`wc -l DAISIErobustness/data/${param_space_name}.csv | cut -f1 -d' '`
-for_length=$(( ${for_length} - 1 ))
+data_path=`Rscript -e "load('inst/extdata/$1.rda'); nrow($1)"`
+for_length=`echo $data_path | awk '{ print substr( $0, 5 ) }'`
+for_length=$(( ${for_length}))
 
 for (( param_set = 1; param_set <= $for_length; param_set++ ))
 do
-  sbatch DAISIErobustness/bash/submit_run_robustness_param_set.sh ${param_space_name} \
-                                                                  ${param_set} \
-                                                                  ${replicates} \
-                                                                  ${distance_method}
+  sbatch bash/submit_run_robustness_param_set.sh ${param_space_name} \
+                                                 ${param_set} \
+                                                 ${replicates}
 done

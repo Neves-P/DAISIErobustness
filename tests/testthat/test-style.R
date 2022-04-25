@@ -1,5 +1,5 @@
 if (requireNamespace("lintr", quietly = TRUE)) {
-  context("lints")
+  skip_if(Sys.getenv("CI") == "")
   test_that("Package Style", {
     lintr::expect_lint_free()
   })

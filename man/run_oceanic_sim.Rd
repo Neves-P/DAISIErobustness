@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_oceanic_sim.R
 \name{run_oceanic_sim}
 \alias{run_oceanic_sim}
-\title{Runs original oceanic DAISIE simulation}
+\title{Runs original clade-specific oceanic DAISIE simulation}
 \usage{
 run_oceanic_sim(ml, sim_pars)
 }
@@ -12,11 +12,11 @@ run_oceanic_sim(ml, sim_pars)
 \item{sim_pars}{A list of simulation parameters.}
 }
 \value{
-Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()}
+Output from \code{\link[DAISIE]{DAISIE_sim_cr}()}
 }
 \description{
-Runs original oceanic DAISIE simulation
+Runs original clade-specific oceanic DAISIE simulation
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }

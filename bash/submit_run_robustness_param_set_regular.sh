@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH --time=9-23:05:00
+#SBATCH --time=9-23:55:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --job-name=robustness
 #SBATCH --output=logs/robustness-%j.log
-#SBATCH --mem=2GB
+#SBATCH --mem=9GB
 #SBATCH --partition=regular
 
 # DAISIErobustness: Test the Robustness of DAISIE to Geodynamics and Traits
-# Copyright (C) 2020 Joshua W. Lambert, Pedro Neves, Shu Xie
+# Copyright (C) 2022 Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,12 +34,8 @@
 param_space_name=$1
 param_set=$2
 replicates=$3
-distance_method=$4
 
 ml R
-Rscript DAISIErobustness/scripts/analysis/run_robustness_peregrine.R ${param_space_name} \
-                                                                     ${param_set} \
-                                                                     ${replicates} \
-                                                                     ${distance_method}
-
-
+Rscript scripts/analysis/run_robustness_peregrine.R ${param_space_name} \
+                                                    ${param_set} \
+                                                    ${replicates}

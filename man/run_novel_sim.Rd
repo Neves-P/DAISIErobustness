@@ -7,26 +7,21 @@
 run_novel_sim(param_space_name, sim_pars)
 }
 \arguments{
-\item{param_space_name}{A string with the parameter space to run. Can
-be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-\code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
-\code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
-\code{"oceanic"} is used as a null simulation to test for bias in the
-pipeline.}
+\item{param_space_name}{A string with the parameter space to run. See
+\code{\link{is_param_space_name}()} for options.}
 
 \item{sim_pars}{A list of simulation parameters.}
 }
 \value{
-A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.
+A list output from \code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.
 }
 \description{
 Runs DAISIE simulation with a novel model
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}

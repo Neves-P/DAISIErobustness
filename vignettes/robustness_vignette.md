@@ -22,7 +22,7 @@ The full pipeline can be called by the external function `run_robustness()` and 
 ```r
 library(DAISIErobustness)
 run_robustness(
-  param_space_name = "nonoceanic",
+  param_space_name = "continental",
   param_set = 1,
   replicates = 2,
   pipeline = "full",
@@ -37,7 +37,7 @@ The DAISIErobustness pipeline is divided in two sections. The first one, handled
 
 ```r
 run_robustness(
-  param_space_name = "nonoceanic",
+  param_space_name = "continental",
   param_set = 1,
   replicates = 2,
   pipeline = "novel_sim",
@@ -52,11 +52,11 @@ To run just the second half of the pipeline one can again resort to the `run_rob
 
 ```r
 run_robustness(
-  param_space_name = "nonoceanic",
+  param_space_name = "continental",
   param_set = 1,
   replicates = 2,
   pipeline = "analysis",
-  novel_sim = "novel_sim_output/nonoceanic_1.RData",
+  novel_sim = "novel_sim_output/continental_1.RData",
   save_output = FALSE
 )
 ```

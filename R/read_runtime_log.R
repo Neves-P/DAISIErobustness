@@ -7,14 +7,18 @@
 #'
 #' @return An atomic numeric vector with the elapsed run time of the associated
 #'   job in seconds.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' runtime <- read_runtime_log(log_file_path = "logs/robustness-20596511.log")
+#' log_lines <- read_log_file("logs/robustness-22353751.log")
+#' runtime <- read_runtime_log(
+#'   log_lines = log_lines,
+#'   log_file_path = "logs/robustness-22353751.log"
+#' )
 #' }
-read_runtime_log <- function(log_file_path) {
+read_runtime_log <- function(log_lines, log_file_path) {
   log_lines <- readLines(con = log_file_path, n = 2000)
   starttime_line_bools <- grepl("Start               : ", log_lines)
   starttime_line <- log_lines[starttime_line_bools]

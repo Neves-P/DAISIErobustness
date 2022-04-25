@@ -1,10 +1,8 @@
-context("extract_param_set")
-
 test_that("test extract_param_set extracts correct param set from
           oceanic_ontogeny", {
-  param_space <- load_param_space("oceanic_ontogeny")
+  param_space <- load_param_space("oceanic_ontogeny_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny",
+    param_space_name = "oceanic_ontogeny_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
@@ -26,9 +24,9 @@ test_that("test extract_param_set extracts correct param set from
 
 test_that("test extract_param_set extracts correct param set from
           oceanic_sea_level", {
-  param_space <- load_param_space("oceanic_sea_level")
+  param_space <- load_param_space("oceanic_sea_level_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "oceanic_sea_level",
+    param_space_name = "oceanic_sea_level_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
@@ -50,9 +48,9 @@ test_that("test extract_param_set extracts correct param set from
 
 test_that("test extract_param_set extracts correct param set from
           oceanic_ontogeny_sea_level", {
-  param_space <- load_param_space("oceanic_ontogeny_sea_level")
+  param_space <- load_param_space("oceanic_ontogeny_sea_level_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "oceanic_ontogeny_sea_level",
+    param_space_name = "oceanic_ontogeny_sea_level_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
@@ -73,29 +71,28 @@ test_that("test extract_param_set extracts correct param set from
 })
 
 test_that("test extract_param_set extracts correct param set from
-          nonoceanic", {
-  param_space <- load_param_space("nonoceanic")
+          continental", {
+  param_space <- load_param_space("continental_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic",
+    param_space_name = "continental_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.5, 0.5, 10, 0.01, 1))
+  expect_equal(sim_pars$pars, c(0.25, 0.25, 5, 0.01, 0.25))
   expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.10))
 })
 
 test_that("test extract_param_set extracts correct param set from
-          nonoceanic_land_bridge", {
-  param_space <- load_param_space("nonoceanic_land_bridge")
+          continental_land_bridge_cs", {
+  param_space <- load_param_space("continental_land_bridge_cs")
   sim_pars <- extract_param_set(
-    param_space_name = "nonoceanic_land_bridge",
+    param_space_name = "continental_land_bridge_cs",
     param_space = param_space,
     param_set = 1)
   expect_equal(sim_pars$time, 2.55)
   expect_equal(sim_pars$M, 1000)
-  expect_equal(sim_pars$pars, c(0.5, 0.5, Inf, 0.01, 1, 0.25,
-                                       0.25, Inf, 0.02, 0))
+  expect_equal(sim_pars$pars, c(0.5, 0.5, 10, 0.01, 1, 0.5, 0.5, 10, 0.02, 0))
   expect_equal(sim_pars$nonoceanic_pars, c(0.01, 0.1))
   expect_equal(sim_pars$shift_times, c(1.225, 1.325))
 })
@@ -109,12 +106,12 @@ test_that("test extract_param_set extracts correct param set from
     param_set = 1)
   expect_equal(sim_pars$time, 5)
   expect_equal(sim_pars$M, 500)
-  expect_equal(sim_pars$pars, c(0.15, 0.08, 40, 0.005, 0.05))
-  expect_equal(sim_pars$trait_pars, list(trans_rate = 0.05,
-                                         immig_rate2 = 0.011,
-                                         ext_rate2 = 0.12,
-                                         ana_rate2 = 0.15,
-                                         clado_rate2 = 0.25,
-                                         trans_rate2 = 0.05,
+  expect_equal(sim_pars$pars, c(0.2, 0.1, 20, 0.008, 0.4))
+  expect_equal(sim_pars$trait_pars, list(trans_rate = 0.02,
+                                         immig_rate2 = 0.008,
+                                         ext_rate2 = 0.1,
+                                         ana_rate2 = 0.4,
+                                         clado_rate2 = 0.2,
+                                         trans_rate2 = 0.02,
                                          M2 = 500))
 })

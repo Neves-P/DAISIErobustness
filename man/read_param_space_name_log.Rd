@@ -4,9 +4,12 @@
 \alias{read_param_space_name_log}
 \title{Reads parameter space name written in log file}
 \usage{
-read_param_space_name_log(log_file_path)
+read_param_space_name_log(log_lines, log_file_path)
 }
 \arguments{
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_file}()}.}
+
 \item{log_file_path}{A string with the path for a standard Peregrine HPCC log
 file.}
 }
@@ -18,11 +21,13 @@ Obtains the parameter space name from a standard Peregrine HPCC log file.
 }
 \examples{
 \dontrun{
-param_space_name <- read_param_space_name_log(
+log_lines <- read_log_file(log_file_path = "logs/robustness-20596511.log")
+param_space_name <- read_param_space_name_log(,
+  log_lines = log_lines,
   log_file_path = "logs/robustness-20596511.log"
 )
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

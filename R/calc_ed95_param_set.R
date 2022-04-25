@@ -17,7 +17,7 @@
 #'   \item{\code{$ed95_num_spec}}
 #'   \item{\code{$ed95_num_col}}
 #' }
-#' @author Pedro Neves, Joshua W. Lambert
+#' @author Pedro Santos Neves, Joshua W. Lambert
 #' @keywords internal
 #' @export
 calc_ed95_param_set <- function(folder_path) {
@@ -29,10 +29,10 @@ calc_ed95_param_set <- function(folder_path) {
   files <- list.files(folder_path, recursive = TRUE)
 
 
-  param_sets <- as.numeric(gsub(".*_param_set_\\s*|.RData.*", "\\1", files))
+  param_sets <- as.numeric(gsub(".*_param_set_\\s*|.rds.*", "\\1", files))
   n_files <- length(param_sets)
   testit::assert(
-    ".RData files exist",
+    ".rds files exist",
     n_files > 0
   )
 
@@ -55,8 +55,7 @@ calc_ed95_param_set <- function(folder_path) {
   row_number <- 1
   for (file_to_load in files) {
 
-    output <- NULL; rm(output) # nolint ; hack around global var
-    load(file.path(folder_path, file_to_load))
+    output <- readRDS(file.path(folder_path, file_to_load))
 
     param_space_name <- sub(
       "/.*\\_param_set_.*",

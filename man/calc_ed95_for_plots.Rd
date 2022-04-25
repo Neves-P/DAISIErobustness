@@ -4,24 +4,20 @@
 \alias{calc_ed95_for_plots}
 \title{Calculate ED95 statistic for all parameter sets of a parameter space}
 \usage{
-calc_ed95_for_plots(folder_path, param_set_range = NULL)
+calc_ed95_for_plots(folder_path, param_space)
 }
 \arguments{
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 
-\item{param_set_range}{Defaults to \code{NULL}, which computes the ED95
-statistic for all parameter sets in the file of the parameter space located
-in \code{folder_path}. Otherwise, a numeric vector of length 2, where the
-first element must be lower than the second. This specifies the range of
-parameter sets to load compute ED95 for, i.e \code{c(1, 20)} will attempt
-to compute and load parameter sets 1 to 20. If there are gaps in this
-range, the function works regardless, and will return ED95 for the
-parameter set results within the 1 to 20 range.}
+\item{param_space}{A data frame of the parameter space.}
 }
 \value{
-A list with numeric vectors of ED95 statistic for:
+A data frame which is identical to each scenarios' parameter spaces
+  as as read by \code{\link{load_param_space}()}. In addition to the columns
+  in the parameter spaces, 5 columns are appended with the ed95 statistic
+  obtained for each set parameter set:
 \itemize{
   \item{\code{$ed95_spec_nltt}}
   \item{\code{$ed95_endemic_nltt}}
@@ -38,5 +34,5 @@ sets of the parameter space must be in the same folder, located in
 functions.
 }
 \author{
-Pedro Neves, Joshua W. Lambert
+Pedro Santos Neves, Joshua W. Lambert
 }

@@ -9,7 +9,7 @@ calc_ed95_param_set(folder_path)
 \arguments{
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 }
 \value{
 A data frame with ED95 statistics containing 7 columns:
@@ -30,6 +30,6 @@ sets must be inside named sub folders inside \code{folder_path}. Return type
 is appropriate for functions dealing with run time vs ED95 correlations.
 }
 \author{
-Pedro Neves, Joshua W. Lambert
+Pedro Santos Neves, Joshua W. Lambert
 }
 \keyword{internal}

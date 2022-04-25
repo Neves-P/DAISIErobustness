@@ -4,9 +4,12 @@
 \alias{read_runtime_log}
 \title{Calculate job elapsed time from log file}
 \usage{
-read_runtime_log(log_file_path)
+read_runtime_log(log_lines, log_file_path)
 }
 \arguments{
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_file}()}.}
+
 \item{log_file_path}{A string with the path for a standard Peregrine HPCC log
 file.}
 }
@@ -20,9 +23,13 @@ file
 }
 \examples{
 \dontrun{
-runtime <- read_runtime_log(log_file_path = "logs/robustness-20596511.log")
+log_lines <- read_log_file("logs/robustness-22353751.log")
+runtime <- read_runtime_log(
+  log_lines = log_lines,
+  log_file_path = "logs/robustness-22353751.log"
+)
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }

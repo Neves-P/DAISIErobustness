@@ -18,6 +18,7 @@ A data frame with three columns:
   \item{\code{param_set}}{Atomic numeric vector with parameter space number.}
   \item{\code{runtime}}{Atomic numeric vector with Peregrine job run time in
   seconds.}
+  \item{\code{status}}{character with job status upon conclusion.}
   \item{\code{log_name}}{Character vector with name of corresponding log file
   to facilitate debugging.}
 }
@@ -31,6 +32,6 @@ runtimes_data_frame <- get_runtime_params("logs/")
 }
 }
 \author{
-Pedro Neves
+Pedro Santos Neves
 }
 \keyword{internal}

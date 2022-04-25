@@ -1,20 +1,21 @@
 test_that("get_runtime_params works", {
   skip_if(Sys.getenv("CI") == "", message = "Run only on CI")
 
-  runtime_params <- get_runtime_params(file.path(getwd(), "testdata/logs"))
+  runtime_params <- get_runtime_params(file.path("testdata", "logs"))
   expected <- data.frame(
-    "param_space_name" = c(
-      rep("nonoceanic_land_bridge", 2), rep("oceanic_sea_level", 4)
-    ),
-    "param_set" = c(92, 123, 237, 279, 473, 569),
-    "runtime" = c(137675, 83973, 272609, 211851, 348261, 369715),
+    "param_space_name" = rep("continental_cs", 8),
+    "param_set" = 1:8,
+    "runtime" = c(91, 119, 50, 83, 88, 88, 85, 127),
+    "status" = rep("COMPLETED", 8),
     "log_name" = c(
-      "robustness-20595773.log",
-      "robustness-20595804.log",
-      "robustness-20596177.log",
-      "robustness-20596219.log",
-      "robustness-20596414.log",
-      "robustness-20596511.log"
+      "robustness-22891156.log",
+      "robustness-22891157.log",
+      "robustness-22891158.log",
+      "robustness-22891159.log",
+      "robustness-22891160.log",
+      "robustness-22891161.log",
+      "robustness-22891162.log",
+      "robustness-22891163.log"
     )
   )
   expect_equal(runtime_params, expected)

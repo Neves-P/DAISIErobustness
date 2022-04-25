@@ -7,13 +7,8 @@
 create_output_file_name(param_space_name, param_set)
 }
 \arguments{
-\item{param_space_name}{A string with the parameter space to run. Can
-be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-\code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
-\code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
-\code{"oceanic"} is used as a null simulation to test for bias in the
-pipeline.}
+\item{param_space_name}{A string with the parameter space to run. See
+\code{\link{is_param_space_name}()} for options.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
@@ -28,19 +23,18 @@ Generated name for saving output of \code{run_robustness()}
 \examples{
 testit::assert(
   DAISIErobustness:::create_output_file_name(
-    param_space_name = "oceanic_ontogeny",
+    param_space_name = "oceanic_ontogeny_cs",
     param_set = 1
-  ) == "oceanic_ontogeny_param_set_1.RData"
+  ) == "oceanic_ontogeny_cs_param_set_1.rds"
 )
 }
 \seealso{
 Other I/O: 
 \code{\link{check_create_folders}()},
-\code{\link{load_novel_section}()},
 \code{\link{save_output}()}
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \concept{I/O}
 \keyword{internal}

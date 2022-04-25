@@ -4,10 +4,11 @@
 #'
 #' @return
 #' Saves runtime vs ED95 correlation plot to working directory as .png file.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
-plot_cor <- function(param_space_data_frame) {
+plot_cor <- function(param_space_data_frame,
+                     folder_path = ".") {
 
   metrics <- c(
     "ed95_spec_nltt",
@@ -36,7 +37,8 @@ plot_cor <- function(param_space_data_frame) {
     plots[[i]] <- ggplot2::ggplot(
       data = param_space_data_frame,
       ggplot2::aes(x = runtime, y = .data[[metrics[i]]])) +
-      ggplot2::theme_bw() +
+      ggplot2::theme_classic() +
+      ggplot2::scale_x_continuous() +
       ggplot2::geom_point(size = 0.3) +
       ggplot2::geom_smooth(method = "lm",
                            formula = y ~ x,
@@ -64,7 +66,7 @@ plot_cor <- function(param_space_data_frame) {
 
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr.png"),
+    filename = file.path(folder_path, "runtime_ed95_corr.png"),
     device = "png",
     width = 168,
     height = 100,
@@ -73,7 +75,7 @@ plot_cor <- function(param_space_data_frame) {
   )
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = paste0("runtime_ed95_corr.pdf"),
+    filename = file.path(folder_path, "runtime_ed95_corr.pdf"),
     device = "pdf",
     width = 168,
     height = 100,

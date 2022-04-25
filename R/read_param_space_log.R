@@ -5,33 +5,31 @@
 #' @inheritParams default_params_doc
 #'
 #' @return A character atomic vector with the parameter space name
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' param_space_name <- read_param_space_name_log(
+#' log_lines <- read_log_file(log_file_path = "logs/robustness-20596511.log")
+#' param_space_name <- read_param_space_name_log(,
+#'   log_lines = log_lines,
 #'   log_file_path = "logs/robustness-20596511.log"
 #' )
 #' }
-read_param_space_name_log <- function(log_file_path) {
-  log_lines <- readLines(con = log_file_path, n = 300)
+read_param_space_name_log <- function(log_lines, log_file_path) {
 
   param_space_line_bools <- grepl("Param space name: ", log_lines)
   param_space_line <- log_lines[param_space_line_bools]
-  testit::assert(
-    length(param_space_line) == 1 && is.character(param_space_line)
-  )
+
+  if (!(length(param_space_line) == 1 && is.character(param_space_line))) {
+    warning("Corrupted log file: ", basename(log_file_path))
+    return(paste0("corrupted_", basename(log_file_path)))
+  }
+
   param_space_name <- sub(".*: ", replacement = "", x = param_space_line)
 
-
   testit::assert(length(param_space_name) == 1)
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+  testit::assert(is_param_space_name(param_space_name) ||
+                   grepl("corrupted_", param_space_name))
   param_space_name
 }

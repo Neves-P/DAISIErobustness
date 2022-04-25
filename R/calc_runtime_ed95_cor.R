@@ -4,18 +4,30 @@
 #'
 #' @return A data frame with the Pearson correlation coefficient between runtime
 #'   and each of the ED95 metrics.
-#' @author Pedro Neves
+#' @author Pedro Santos Neves
 #' @export
 calc_runtime_ed95_cor <- function(runtime_params, ed95_param_sets) {
   merged_data_frame <- merge(
     x = runtime_params, ed95_param_sets,
     by = c("param_space_name", "param_set")
   )
-  param_space_names <- c("oceanic_ontogeny",
-                         "oceanic_sea_level",
-                         "oceanic_ontogeny_sea_level",
-                         "nonoceanic",
-                         "nonoceanic_land_bridge")
+  param_space_names <- c("oceanic_ontogeny_cs",
+                         "oceanic_ontogeny_di",
+                         "oceanic_ontogeny_iw",
+                         "oceanic_sea_level_cs",
+                         "oceanic_sea_level_di",
+                         "oceanic_sea_level_iw",
+                         "oceanic_ontogeny_sea_level_cs",
+                         "oceanic_ontogeny_sea_level_di",
+                         "oceanic_ontogeny_sea_level_iw",
+                         "continental_cs",
+                         "continental_di",
+                         "continental_iw",
+                         "continental_land_bridge_cs",
+                         "continental_land_bridge_di",
+                         "continental_land_bridge_iw",
+                         "trait_CES",
+                         "oceanic")
   out <- list()
 
   spec_nltt_cor <- stats::cor(

@@ -1,7 +1,7 @@
 Package: DAISIErobustness
 Title: Test the Robustness of DAISIE to Geodynamics and Traits
-Version: 2.2.1
-Date: 2021-08-09
+Version: 2.3.0
+Date: 2022-04-25
 Authors@R: c(
     person(given = "Joshua W.",
            family = "Lambert",
@@ -9,7 +9,7 @@ Authors@R: c(
            email = "j.w.l.lambert@rug.nl",
            comment = c(ORCID = "0000-0001-5218-3046")),
     person(given = "Pedro",
-           family = "Neves",
+           family = "Santos Neves",
            role = c("aut"),
            email = "p.m.santos.neves@rug.nl",
            comment = c(ORCID = "0000-0003-2561-4677")),
@@ -52,15 +52,15 @@ Suggests:
     glue
 Imports: 
     sessioninfo,
-    DAISIE (>= 4.0.2),
+    DAISIE (>= 4.1.1),
     nLTT,
     testit,
     ggplot2,
     cowplot
 Remotes: 
-    rsetienne/DAISIE@v4.0.2,
+    rsetienne/DAISIE@v4.1.1,
     thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr

@@ -6,10 +6,10 @@
 #'   \code{param_space_name} within the current directory. The \code{/results/}
 #'   directory and subfolders are created if they don't exist. The status of
 #'   saving is printed as a message if successful, a warning if unsuccessful.
-#' @return .RData file named by \code{\link{create_output_file_name}()} in
+#' @return .rds file named by \code{\link{create_output_file_name}()} in
 #' default location. See details for more information on filesystem. This
 #'
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @family I/O
 save_output <- function(output,
                         param_space_name,
@@ -31,7 +31,7 @@ save_output <- function(output,
   message(
     paste0("Trying to save ", output_file_name, " to ", output_file_path, "\n")
   )
-  save(output, file = output_file_path)
+  saveRDS(output, file = output_file_path)
 
   if (file.exists(output_file_path)) {
     message(paste0("Saved ", output_file_name, " to ", output_file_path, "\n"))
@@ -51,33 +51,27 @@ save_output <- function(output,
 #' @return Character with name indicating the name of the parameter space,
 #'   the numeric id of the param_set and whether the run passed constraints.
 #'
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @family I/O
 #' @keywords internal
 #' @examples
 #' testit::assert(
 #'   DAISIErobustness:::create_output_file_name(
-#'     param_space_name = "oceanic_ontogeny",
+#'     param_space_name = "oceanic_ontogeny_cs",
 #'     param_set = 1
-#'   ) == "oceanic_ontogeny_param_set_1.RData"
+#'   ) == "oceanic_ontogeny_cs_param_set_1.rds"
 #' )
 create_output_file_name <- function(param_space_name,
                                     param_set) {
 
   testit::assert(is.numeric(param_set) && is.finite(param_set))
-  testit::assert(param_space_name %in% c("oceanic_ontogeny",
-                                         "oceanic_sea_level",
-                                         "oceanic_ontogeny_sea_level",
-                                         "nonoceanic",
-                                         "nonoceanic_land_bridge",
-                                         "trait_CES",
-                                         "trait_trans"))
+  testit::assert(is_param_space_name(param_space_name))
 
     output_file_name <- paste0(
       param_space_name,
       "_param_set_",
       param_set,
-      ".RData"
+      ".rds"
     )
 
   testit::assert(is.character(output_file_name))
@@ -88,7 +82,7 @@ create_output_file_name <- function(param_space_name,
 #'
 #' @inheritParams default_params_doc
 #'
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
+#' @author Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 #' @return Helpful messages with info on folder status. Tries to create
 #'   folder if needed.
 #' @keywords internal
@@ -123,55 +117,4 @@ check_create_folders <- function(param_space_name,
   } else {
     message(output_folder, " folder found. No creation needed.\n")
   }
-}
-
-
-#' Load intermediate novel sim results to continue pipeline
-#'
-#' @inheritParams default_params_doc
-#'
-#' @return List with output from \code{\link{run_novel_sim}()}.
-#' @author Joshua Lambert, Pedro Neves, Shu Xie
-#' @family I/O
-load_novel_section <- function(param_space_name,
-                               param_set) {
-
-  data_folder <- file.path(
-    getwd(),
-    "sims",
-    param_space_name
-  )
-  if (!dir.exists(data_folder)) {
-    stop(paste0(
-      data_folder,
-      " folder not found.\n")
-    )
-  } else {
-    message(paste0("Found ", data_folder, " folder."))
-  }
-  found_files <- list.files(path = data_folder)
-  message(paste0("Found ", length(found_files), " files.\n"))
-  file_code_to_load <- paste0(
-    "novel_",
-    param_space_name,
-    "_param_set_",
-    param_set,
-    ".RData"
-  )
-  name_file_to_load <- found_files[grepl(pattern = file_code_to_load,
-                                         x = found_files, fixed = TRUE)]
-
-  message(paste0("Trying to load ", name_file_to_load, ".\n"))
-  if (!file.exists(file.path(data_folder, name_file_to_load))) {
-    stop(paste0("File ", name_file_to_load,  " not found.\n"))
-  }
-  output <- NULL # Suppress global variable note
-  load(file.path(data_folder, name_file_to_load))
-
-  if (exists(x = "output")) {
-    testit::assert(all(c("island_age", "not_present", "stt_all") %in%
-                         names(output[[1]][[1]][[1]])))
-    message(paste0("Successfully loaded ", name_file_to_load, ".\n"))
-  }
-  return(output)
 }

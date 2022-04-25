@@ -45,17 +45,15 @@ default_params_doc(
   logs_folder_path,
   runtime_params,
   ed95_param_sets,
-  param_space_data_frame
+  param_space_data_frame,
+  log_lines,
+  partition_by,
+  scenario_res
 )
 }
 \arguments{
-\item{param_space_name}{A string with the parameter space to run. Can
-be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
-\code{"oceanic_ontogeny_sea_level"},
-\code{"nonoceanic"}, \code{"nonoceanic_land_bridge"},
-\code{"trait_CES"}, \code{"trait_trans"}, or \code{"oceanic"}.
-\code{"oceanic"} is used as a null simulation to test for bias in the
-pipeline.}
+\item{param_space_name}{A string with the parameter space to run. See
+\code{\link{is_param_space_name}()} for options.}
 
 \item{param_set}{A numeric with the line corresponding to parameter set to
 run, as found in the file named in \code{param_space}.}
@@ -66,7 +64,7 @@ simulations}
 \item{save_output}{A boolean to determine whether to save or return output.}
 
 \item{output}{List. Contains all the pipeline output that was able to
-run up to a given point. Will be saved into .RData file by
+run up to a given point. Will be saved into .rds file by
 \code{\link{save_output}()} if the \code{\link{run_robustness}()} argument
 \code{save_output} is \code{TRUE}.}
 
@@ -75,10 +73,10 @@ run up to a given point. Will be saved into .RData file by
 \item{sim_pars}{A list of simulation parameters.}
 
 \item{sim}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()},
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()} or other input simulation
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()},
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()} or other input simulation
 in the DAISIE sim format.}
 
 \item{novel_sim}{A list of simulation output in the DAISIE simulation format
@@ -106,16 +104,16 @@ parameters for the MLE routine. The same as \code{initparsopt}
 from \code{\link[DAISIE]{DAISIE_ML}()}.}
 
 \item{sim_1}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()},
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()},
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{sim_2}{A list of simulation output from
-\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
-\code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
-\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}, or
-\code{\link[DAISIE]{DAISIE_sim_trait_dependent}()}.}
+\code{\link[DAISIE]{DAISIE_sim_cr}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dep}()} or
+\code{\link[DAISIE]{DAISIE_sim_cr_shift}()}, or
+\code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{spec_error}{A list with three elements each with a numeric
 vector.}
@@ -179,7 +177,7 @@ the non-endemic species from the oceanic DAISIE simulations.}
 
 \item{folder_path}{A file path (use \code{file.path()} for formatting
 convenience) where all the parameter sets results of a given parameter
-space are stored in .RData format.}
+space are stored in .rds format.}
 
 \item{param_set_range}{Defaults to \code{NULL}, which computes the ED95
 statistic for all parameter sets in the file of the parameter space located
@@ -210,6 +208,31 @@ parameter set in each parameter space as returned by
 parameter spaces, together with associated runtime. Used for plotting
 correlation between runtime and ED95. Obtained by running
 \code{\link{calc_ed95_param_set}()}.}
+
+\item{log_lines}{Character vector containing the contents of the log files
+as read by \code{\link{read_log_file}()}.}
+
+\item{partition_by}{String with the feature by which the results should be
+  grouped for plotting. Options are:
+\itemize{
+  \item{\code{"hyperparameters"}}
+  \item{\code{"gradient"}}
+  \item{\code{"sample_parameters"}}
+  \item{\code{"land_bridge_multiplier"}}
+}}
+
+\item{scenario_res}{Data frame as returned by
+  \code{\link{load_param_space}()}which is identical to a scenarios'
+  parameter space as as read by \code{\link{calc_ed95_for_plots}()}. In
+  addition to the columns in the parameter spaces, 5 columns are appended
+  with the ed95 statistic obtained for each set parameter set:
+\itemize{
+  \item{\code{$ed95_spec_nltt}}
+  \item{\code{$ed95_endemic_nltt}}
+  \item{\code{$ed95_nonendemic_nltt}}
+  \item{\code{$ed95_num_spec}}
+  \item{\code{$ed95_num_col}}
+}}
 }
 \value{
 Nothing
@@ -218,6 +241,6 @@ Nothing
 Default parameter documentation
 }
 \author{
-Joshua Lambert, Pedro Neves, Shu Xie
+Joshua W. Lambert, Pedro Santos Neves, Shu Xie
 }
 \keyword{internal}
