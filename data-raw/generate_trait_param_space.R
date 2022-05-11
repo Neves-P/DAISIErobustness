@@ -27,7 +27,8 @@ g1_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g1_sym <- cbind(
   g1_sym,
   lac2 = 2*mean_lac - g1_sym[, 4],
@@ -52,7 +53,8 @@ g1_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g1_asym_lac <- cbind(
   g1_asym_lac,
   lac2 = 2*mean_lac - g1_asym_lac[, 4],
@@ -78,7 +80,8 @@ g1_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g1_asym_mu <- cbind(
   g1_asym_mu,
   lac2 = 2*mean_lac - g1_asym_mu[, 4],
@@ -103,7 +106,8 @@ g1_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g1_asym_gam <- cbind(
   g1_asym_gam,
   lac2 = 2*mean_lac - g1_asym_gam[, 4],
@@ -128,7 +132,8 @@ g1_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g1_asym_laa <- cbind(
   g1_asym_laa,
   lac2 = 2*mean_lac - g1_asym_laa[, 4],
@@ -164,7 +169,8 @@ g2_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g2_sym <- cbind(
   g2_sym,
   lac2 = 2*mean_lac - g2_sym[, 4],
@@ -189,7 +195,8 @@ g2_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g2_asym_lac <- cbind(
   g2_asym_lac,
   lac2 = 2*mean_lac - g2_asym_lac[, 4],
@@ -215,7 +222,8 @@ g2_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g2_asym_mu <- cbind(
   g2_asym_mu,
   lac2 = 2*mean_lac - g2_asym_mu[, 4],
@@ -241,7 +249,8 @@ g2_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g2_asym_gam <- cbind(
   g2_asym_gam,
   lac2 = 2*mean_lac - g2_asym_gam[, 4],
@@ -267,7 +276,8 @@ g2_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g2_asym_laa <- cbind(
   g2_asym_laa,
   lac2 = 2*mean_lac - g2_asym_laa[, 4],
@@ -301,7 +311,8 @@ g3_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g3_sym <- cbind(
   g3_sym,
   lac2 = 2*mean_lac - g3_sym[, 4],
@@ -326,7 +337,8 @@ g3_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g3_asym_lac <- cbind(
   g3_asym_lac,
   lac2 = 2*mean_lac - g3_asym_lac[, 4],
@@ -352,7 +364,8 @@ g3_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g3_asym_mu <- cbind(
   g3_asym_mu,
   lac2 = 2*mean_lac - g3_asym_mu[, 4],
@@ -378,7 +391,8 @@ g3_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g3_asym_gam <- cbind(
   g3_asym_gam,
   lac2 = 2*mean_lac - g3_asym_gam[, 4],
@@ -404,7 +418,8 @@ g3_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g3_asym_laa <- cbind(
   g3_asym_laa,
   lac2 = 2*mean_lac - g3_asym_laa[, 4],
@@ -439,7 +454,8 @@ g4_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g4_sym <- cbind(
   g4_sym,
   lac2 = 2*mean_lac - g4_sym[, 4],
@@ -464,7 +480,8 @@ g4_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g4_asym_lac <- cbind(
   g4_asym_lac,
   lac2 = 2*mean_lac - g4_asym_lac[, 4],
@@ -490,7 +507,8 @@ g4_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g4_asym_mu <- cbind(
   g4_asym_mu,
   lac2 = 2*mean_lac - g4_asym_mu[, 4],
@@ -516,7 +534,8 @@ g4_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g4_asym_gam <- cbind(
   g4_asym_gam,
   lac2 = 2*mean_lac - g4_asym_gam[, 4],
@@ -542,7 +561,8 @@ g4_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g4_asym_laa <- cbind(
   g4_asym_laa,
   lac2 = 2*mean_lac - g4_asym_laa[, 4],
@@ -576,7 +596,8 @@ g5_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g5_sym <- cbind(
   g5_sym,
   lac2 = 2*mean_lac - g5_sym[, 4],
@@ -601,7 +622,8 @@ g5_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g5_asym_lac <- cbind(
   g5_asym_lac,
   lac2 = 2*mean_lac - g5_asym_lac[, 4],
@@ -627,7 +649,8 @@ g5_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g5_asym_mu <- cbind(
   g5_asym_mu,
   lac2 = 2*mean_lac - g5_asym_mu[, 4],
@@ -653,7 +676,8 @@ g5_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g5_asym_gam <- cbind(
   g5_asym_gam,
   lac2 = 2*mean_lac - g5_asym_gam[, 4],
@@ -679,7 +703,8 @@ g5_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g5_asym_laa <- cbind(
   g5_asym_laa,
   lac2 = 2*mean_lac - g5_asym_laa[, 4],
@@ -716,7 +741,8 @@ g6_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g6_sym <- cbind(
   g6_sym,
   lac2 = 2*mean_lac - g6_sym[, 4],
@@ -741,7 +767,8 @@ g6_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g6_asym_lac <- cbind(
   g6_asym_lac,
   lac2 = 2*mean_lac - g6_asym_lac[, 4],
@@ -767,7 +794,8 @@ g6_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g6_asym_mu <- cbind(
   g6_asym_mu,
   lac2 = 2*mean_lac - g6_asym_mu[, 4],
@@ -793,7 +821,8 @@ g6_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g6_asym_gam <- cbind(
   g6_asym_gam,
   lac2 = 2*mean_lac - g6_asym_gam[, 4],
@@ -819,7 +848,8 @@ g6_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g6_asym_laa <- cbind(
   g6_asym_laa,
   lac2 = 2*mean_lac - g6_asym_laa[, 4],
@@ -854,7 +884,8 @@ g7_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g7_sym <- cbind(
   g7_sym,
   lac2 = 2*mean_lac - g7_sym[, 4],
@@ -879,7 +910,8 @@ g7_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g7_asym_lac <- cbind(
   g7_asym_lac,
   lac2 = 2*mean_lac - g7_asym_lac[, 4],
@@ -905,7 +937,8 @@ g7_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g7_asym_mu <- cbind(
   g7_asym_mu,
   lac2 = 2*mean_lac - g7_asym_mu[, 4],
@@ -931,7 +964,8 @@ g7_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g7_asym_gam <- cbind(
   g7_asym_gam,
   lac2 = 2*mean_lac - g7_asym_gam[, 4],
@@ -957,7 +991,8 @@ g7_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g7_asym_laa <- cbind(
   g7_asym_laa,
   lac2 = 2*mean_lac - g7_asym_laa[, 4],
@@ -992,7 +1027,8 @@ g8_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g8_sym <- cbind(
   g8_sym,
   lac2 = 2*mean_lac - g8_sym[, 4],
@@ -1017,7 +1053,8 @@ g8_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g8_asym_lac <- cbind(
   g8_asym_lac,
   lac2 = 2*mean_lac - g8_asym_lac[, 4],
@@ -1043,7 +1080,8 @@ g8_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g8_asym_mu <- cbind(
   g8_asym_mu,
   lac2 = 2*mean_lac - g8_asym_mu[, 4],
@@ -1069,7 +1107,8 @@ g8_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g8_asym_gam <- cbind(
   g8_asym_gam,
   lac2 = 2*mean_lac - g8_asym_gam[, 4],
@@ -1095,7 +1134,8 @@ g8_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g8_asym_laa <- cbind(
   g8_asym_laa,
   lac2 = 2*mean_lac - g8_asym_laa[, 4],
@@ -1129,7 +1169,8 @@ g9_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g9_sym <- cbind(
   g9_sym,
   lac2 = 2*mean_lac - g9_sym[, 4],
@@ -1154,7 +1195,8 @@ g9_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g9_asym_lac <- cbind(
   g9_asym_lac,
   lac2 = 2*mean_lac - g9_asym_lac[, 4],
@@ -1180,7 +1222,8 @@ g9_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g9_asym_mu <- cbind(
   g9_asym_mu,
   lac2 = 2*mean_lac - g9_asym_mu[, 4],
@@ -1206,7 +1249,8 @@ g9_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g9_asym_gam <- cbind(
   g9_asym_gam,
   lac2 = 2*mean_lac - g9_asym_gam[, 4],
@@ -1232,7 +1276,8 @@ g9_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g9_asym_laa <- cbind(
   g9_asym_laa,
   lac2 = 2*mean_lac - g9_asym_laa[, 4],
@@ -1266,7 +1311,8 @@ g10_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g10_sym <- cbind(
   g10_sym,
   lac2 = 2*mean_lac - g10_sym[, 4],
@@ -1291,7 +1337,8 @@ g10_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g10_asym_lac <- cbind(
   g10_asym_lac,
   lac2 = 2*mean_lac - g10_asym_lac[, 4],
@@ -1317,7 +1364,8 @@ g10_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g10_asym_mu <- cbind(
   g10_asym_mu,
   lac2 = 2*mean_lac - g10_asym_mu[, 4],
@@ -1342,7 +1390,8 @@ g10_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g10_asym_gam <- cbind(
   g10_asym_gam,
   lac2 = 2*mean_lac - g10_asym_gam[, 4],
@@ -1367,7 +1416,8 @@ g10_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g10_asym_laa <- cbind(
   g10_asym_laa,
   lac2 = 2*mean_lac - g10_asym_laa[, 4],
@@ -1401,7 +1451,8 @@ g11_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g11_sym <- cbind(
   g11_sym,
   lac2 = 2*mean_lac - g11_sym[, 4],
@@ -1426,7 +1477,8 @@ g11_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g11_asym_lac <- cbind(
   g11_asym_lac,
   lac2 = 2*mean_lac - g11_asym_lac[, 4],
@@ -1452,7 +1504,8 @@ g11_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g11_asym_mu <- cbind(
   g11_asym_mu,
   lac2 = 2*mean_lac - g11_asym_mu[, 4],
@@ -1477,7 +1530,8 @@ g11_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g11_asym_gam <- cbind(
   g11_asym_gam,
   lac2 = 2*mean_lac - g11_asym_gam[, 4],
@@ -1502,7 +1556,8 @@ g11_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g11_asym_laa <- cbind(
   g11_asym_laa,
   lac2 = 2*mean_lac - g11_asym_laa[, 4],
@@ -1537,7 +1592,8 @@ g12_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g12_sym <- cbind(
   g12_sym,
   lac2 = 2*mean_lac - g12_sym[, 4],
@@ -1562,7 +1618,8 @@ g12_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g12_asym_lac <- cbind(
   g12_asym_lac,
   lac2 = 2*mean_lac - g12_asym_lac[, 4],
@@ -1588,7 +1645,8 @@ g12_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g12_asym_mu <- cbind(
   g12_asym_mu,
   lac2 = 2*mean_lac - g12_asym_mu[, 4],
@@ -1613,7 +1671,8 @@ g12_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g12_asym_gam <- cbind(
   g12_asym_gam,
   lac2 = 2*mean_lac - g12_asym_gam[, 4],
@@ -1638,7 +1697,8 @@ g12_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g12_asym_laa <- cbind(
   g12_asym_laa,
   lac2 = 2*mean_lac - g12_asym_laa[, 4],
@@ -1672,7 +1732,8 @@ g13_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g13_sym <- cbind(
   g13_sym,
   lac2 = 2*mean_lac - g13_sym[, 4],
@@ -1697,7 +1758,8 @@ g13_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g13_asym_lac <- cbind(
   g13_asym_lac,
   lac2 = 2*mean_lac - g13_asym_lac[, 4],
@@ -1723,7 +1785,8 @@ g13_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g13_asym_mu <- cbind(
   g13_asym_mu,
   lac2 = 2*mean_lac - g13_asym_mu[, 4],
@@ -1748,7 +1811,8 @@ g13_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g13_asym_gam <- cbind(
   g13_asym_gam,
   lac2 = 2*mean_lac - g13_asym_gam[, 4],
@@ -1773,7 +1837,8 @@ g13_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g13_asym_laa <- cbind(
   g13_asym_laa,
   lac2 = 2*mean_lac - g13_asym_laa[, 4],
@@ -1808,7 +1873,8 @@ g14_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g14_sym <- cbind(
   g14_sym,
   lac2 = 2*mean_lac - g14_sym[, 4],
@@ -1833,7 +1899,8 @@ g14_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g14_asym_lac <- cbind(
   g14_asym_lac,
   lac2 = 2*mean_lac - g14_asym_lac[, 4],
@@ -1859,7 +1926,8 @@ g14_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g14_asym_mu <- cbind(
   g14_asym_mu,
   lac2 = 2*mean_lac - g14_asym_mu[, 4],
@@ -1884,7 +1952,8 @@ g14_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g14_asym_gam <- cbind(
   g14_asym_gam,
   lac2 = 2*mean_lac - g14_asym_gam[, 4],
@@ -1909,7 +1978,8 @@ g14_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g14_asym_laa <- cbind(
   g14_asym_laa,
   lac2 = 2*mean_lac - g14_asym_laa[, 4],
@@ -1943,7 +2013,8 @@ g15_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g15_sym <- cbind(
   g15_sym,
   lac2 = 2*mean_lac - g15_sym[, 4],
@@ -1968,7 +2039,8 @@ g15_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g15_asym_lac <- cbind(
   g15_asym_lac,
   lac2 = 2*mean_lac - g15_asym_lac[, 4],
@@ -1994,7 +2066,8 @@ g15_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g15_asym_mu <- cbind(
   g15_asym_mu,
   lac2 = 2*mean_lac - g15_asym_mu[, 4],
@@ -2019,7 +2092,8 @@ g15_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g15_asym_gam <- cbind(
   g15_asym_gam,
   lac2 = 2*mean_lac - g15_asym_gam[, 4],
@@ -2044,7 +2118,8 @@ g15_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g15_asym_laa <- cbind(
   g15_asym_laa,
   lac2 = 2*mean_lac - g15_asym_laa[, 4],
@@ -2078,7 +2153,8 @@ g16_sym <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g16_sym <- cbind(
   g16_sym,
   lac2 = 2*mean_lac - g16_sym[, 4],
@@ -2103,7 +2179,8 @@ g16_asym_lac <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g16_asym_lac <- cbind(
   g16_asym_lac,
   lac2 = 2*mean_lac - g16_asym_lac[, 4],
@@ -2129,7 +2206,8 @@ g16_asym_mu <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g16_asym_mu <- cbind(
   g16_asym_mu,
   lac2 = 2*mean_lac - g16_asym_mu[, 4],
@@ -2154,7 +2232,8 @@ g16_asym_gam <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g16_asym_gam <- cbind(
   g16_asym_gam,
   lac2 = 2*mean_lac - g16_asym_gam[, 4],
@@ -2179,7 +2258,8 @@ g16_asym_laa <- expand.grid(
   laa = laa,
   trans = trans,
   trans2 = trans2,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 g16_asym_laa <- cbind(
   g16_asym_laa,
   lac2 = 2*mean_lac - g16_asym_laa[, 4],
@@ -2289,7 +2369,8 @@ oceanic <- expand.grid(
   mu = mu,
   gam = gam,
   laa = laa,
-  K = K)
+  K = K,
+  divdepmodel = "CS")
 
 save(oceanic, file = "inst/extdata/oceanic.rda")
 
