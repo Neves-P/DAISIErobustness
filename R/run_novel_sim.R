@@ -76,6 +76,7 @@ run_novel_sim <- function(param_space_name,
     novel_sim <- DAISIE::DAISIE_sim_trait_dep(
       time = sim_pars$time,
       M = sim_pars$M,
+      divdepmodel = "CS",
       pars = sim_pars$pars,
       replicates = 1,
       sample_freq  = Inf,

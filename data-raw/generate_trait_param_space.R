@@ -2370,7 +2370,9 @@ oceanic <- expand.grid(
   gam = gam,
   laa = laa,
   K = K,
-  divdepmodel = "CS")
+  divdepmodel = "CS",
+  x_s = 0,
+  x_nonend = 0)
 
 save(oceanic, file = "inst/extdata/oceanic.rda")
 
