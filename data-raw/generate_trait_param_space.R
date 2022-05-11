@@ -2269,4 +2269,27 @@ trait_CES <- rbind(
   g16_asym_gam,
   g16_asym_laa)
 
-usethis::use_data(trait_CES, overwrite = TRUE)
+# usethis::use_data(trait_CES, overwrite = TRUE)
+save(trait_CES, file = "inst/extdata/trait_CES.rda")
+
+
+
+### OCEANIC SCENARIO FOR DAISIE check
+time <- 5
+M <- 1000
+lac <- c(0.2, 0.4)
+mu <- c(0.1, 0.2)
+gam <- c(0.008, 0.012)
+laa <- c(0.2, 0.4)
+K <- c(20, Inf)
+oceanic <- expand.grid(
+  time = time,
+  M = M,
+  lac = lac,
+  mu = mu,
+  gam = gam,
+  laa = laa,
+  K = K)
+
+save(oceanic, file = "inst/extdata/oceanic.rda")
+
