@@ -25,7 +25,8 @@ is_param_space_name <- function(param_space_name) {
                               "continental_land_bridge_di",
                               "continental_land_bridge_iw",
                               "trait_CES",
-                              "oceanic")) {
+                              "oceanic",
+                              "trait_CES_2K")) {
     return(TRUE)
   } else {
     return(FALSE)
