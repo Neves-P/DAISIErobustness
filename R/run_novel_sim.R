@@ -73,7 +73,8 @@ run_novel_sim <- function(param_space_name,
 
   }
   if (param_space_name %in% c("trait_CES",
-                              "trait_CES_2K")) {
+                              "trait_CES_2K",
+                              "trait_no_trans")) {
     novel_sim <- DAISIE::DAISIE_sim_trait_dep(
       time = sim_pars$time,
       M = sim_pars$M,
