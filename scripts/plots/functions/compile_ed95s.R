@@ -4,7 +4,7 @@ compile_ed95s <- function(param_space_name) {
     folder_path <- file.path(
       "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\results\\", param_space_name
     )
-  } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "Pedro"))) {
+  } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
     folder_path <- file.path(
       "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results", param_space_name
     )
