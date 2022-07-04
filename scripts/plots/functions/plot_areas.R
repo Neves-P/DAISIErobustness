@@ -159,10 +159,10 @@ plot_areas <- function(totaltime_1,
     ggplot2::theme_classic() +
     ggplot2::geom_line(size = 0.7, color = "black") +
     ggplot2::geom_line(data = island_area_time_2, size = 0.7, color = "black") +
-    ggplot2::theme(axis.title.y = ggplot2::element_text(size = 12)) +
-    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
-    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
+    ggplot2::theme(axis.title.y = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
     ggplot2::xlab("Time (mya)") + ggplot2::ylab(bquote('Area '~(km^2)))
 
 

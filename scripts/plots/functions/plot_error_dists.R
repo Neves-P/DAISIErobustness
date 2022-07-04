@@ -54,8 +54,8 @@ plot_error_dists <- function(output_file,
       size = 0.5) +
     ggplot2::xlab("Error") +
     ggplot2::theme(axis.title.y = ggplot2::element_blank()) +
-    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 12)) +
-    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 10)) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10)) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 5, 6, 5))
 }

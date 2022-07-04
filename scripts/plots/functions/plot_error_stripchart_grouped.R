@@ -91,7 +91,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     ggplot2::theme(legend.text.align = 0)
   if (add_plot_title) {
     p <- p + ggplot2::ggtitle(plot_title) +
-      ggplot2::theme(plot.title = ggplot2::element_text(size = 10, hjust = 0.5))
+      ggplot2::theme(plot.title = ggplot2::element_text(size = 9, hjust = 0.5))
   }
   p
 }
