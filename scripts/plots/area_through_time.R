@@ -1,8 +1,8 @@
 # Area and sea-level plots for Neves et al 2022
 # Fig 1
 source("scripts/plots/functions/plot_areas.R")
-
 param_space <- load_param_space("oceanic_ontogeny_sea_level_cs")
+
 area_pars_1 <- DAISIE::create_area_pars(
   max_area = param_space$max_area[nrow(param_space) / 2 + 1],
   current_area = param_space$current_area[nrow(param_space) / 2 + 1],
@@ -79,29 +79,30 @@ steep <- plot_areas(
   overlay_sea_level = overlay_sea_level
 )
 
-side_by_side_plot <- cowplot::plot_grid(
+stacked_plot <- cowplot::plot_grid(
   steep,
   shallow,
-  ncol = 2,
+  ncol = 1,
   labels = c("(a)", "(b)"),
-  label_size = 10.5
+  label_size = 8
 )
 
 
 ggplot2::ggsave(
-  plot = side_by_side_plot,
-  filename = "area.pdf",
+  plot = stacked_plot,
+  filename = "JBI-21-0508_Fig1.pdf",
   device = "pdf",
-  width = 5.2,
-  height = 2.7,
-  dpi = 300
+  width = 7.9,
+  height = 13,
+  units = "cm"
 )
 ggplot2::ggsave(
-  plot = side_by_side_plot,
-  filename = "area.png",
+  plot = stacked_plot,
+  filename = "JBI-21-0508_Fig1.png",
   device = "png",
-  width = 5.2,
-  height = 2.7,
-  dpi = 600
+  width = 7.9,
+  height = 13.0,
+  dpi = 600,
+  units = "cm"
 )
 
