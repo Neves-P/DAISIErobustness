@@ -2,6 +2,7 @@
 #### trait_CES
 # Low and same transition rates
 # G1
+# nolint start
 time <- 5
 M <- 500
 M2 <- 500
@@ -2270,3 +2271,4 @@ trait_CES <- rbind(
   g16_asym_laa)
 
 usethis::use_data(trait_CES, overwrite = TRUE)
+# nolint end
