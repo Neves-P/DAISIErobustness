@@ -24,7 +24,6 @@ saved_faceted <- function(plot_list_1,
     ))
     if (identical_y_title) {
       axis_title_y <- "ggplot2::element_blank()"
-
     } else {
       axis_title_y <- "ggplot2::element_text()"
     }
@@ -39,31 +38,32 @@ saved_faceted <- function(plot_list_1,
     plot_list_2[[i]] + ggplot2::theme(
       legend.position = "none",
       axis.title.y = eval(parse(text = as.character(axis_title_y))),
+      axis.text.y = ggplot2::element_blank(),
       axis.title.x = ggplot2::element_blank()) +
       ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     plot_list_3[[i]] + ggplot2::theme(
       legend.position = "none",
       axis.title.y = eval(parse(text = as.character(axis_title_y))),
-      axis.title.x = ggplot2::element_blank()
-    ) + ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
+      axis.text.y = ggplot2::element_blank(),
+      axis.title.x = ggplot2::element_blank()) +
+      ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     align = 'vh',
     labels = c("(a)", "(b)", "(c)"),
-    label_size = 10.5,
-    hjust = -0.2,
+    label_size = 9,
+    # hjust = -0.2,
     nrow = 1
   )
 
   legend <- cowplot::get_legend(
     # create some space to the left of the legend
-    plot_list_1[[1]] + ggplot2::theme(
-      legend.box.margin = ggplot2::margin(0, 0, 0, 4)
-    )
+    plot_list_1[[1]] + ggplot2::theme(legend.direction = "horizontal", legend.box = "horizontal")
   )
 
   prow_legend <- cowplot::plot_grid(
     prow,
     legend,
-    rel_widths = c(3, 0.4)
+    ncol = 1,
+    rel_heights = c(1, 0.08)
   )
 
   final_plot <- cowplot::add_sub(
@@ -72,8 +72,8 @@ saved_faceted <- function(plot_list_1,
     vpadding = grid::unit(0, "lines"),
     y = 5,
     x = 0.5,
-    vjust = 4.5,
-    size = 10
+    vjust = 1,
+    size = 9
   )
 
   name_suffix <- switch(
