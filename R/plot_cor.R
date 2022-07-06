@@ -47,10 +47,10 @@ plot_cor <- function(param_space_data_frame,
       ggplot2::coord_cartesian(ylim = c(0, 1)) +
       ggplot2::ylab(error_label) +
       ggplot2::xlab("Run time in seconds") +
-      ggplot2::theme(axis.title.y = ggplot2::element_text(size = 7)) +
-      ggplot2::theme(axis.title.x = ggplot2::element_text(size = 7)) +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7)) +
-      ggplot2::theme(axis.text.y = ggplot2::element_text(size = 7)) +
+      ggplot2::theme(axis.title.y = ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.title.x = ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
       ggplot2::theme(plot.margin = ggplot2::margin(6, 0.3, 6, 0.3))
   }
 
@@ -58,7 +58,7 @@ plot_cor <- function(param_space_data_frame,
     plots[[1]], plots[[2]], plots[[3]], plots[[4]], plots[[5]],
         align = "vh",
     labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
-    label_size = 9,
+    label_size = 8,
     hjust = -0.10,
     nrow = 2
   )
@@ -66,7 +66,7 @@ plot_cor <- function(param_space_data_frame,
 
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = file.path(folder_path, "runtime_ed95_corr.png"),
+    filename = file.path(folder_path, "JBI-21-0508_FigS1.png"),
     device = "png",
     width = 168,
     height = 100,
@@ -75,7 +75,7 @@ plot_cor <- function(param_space_data_frame,
   )
   ggplot2::ggsave(
     plot = faceted_plot,
-    filename = file.path(folder_path, "runtime_ed95_corr.pdf"),
+    filename = file.path(folder_path, "JBI-21-0508_FigS1.pdf"),
     device = "pdf",
     width = 168,
     height = 100,

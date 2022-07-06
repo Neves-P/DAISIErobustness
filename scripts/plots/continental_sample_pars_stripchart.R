@@ -38,16 +38,18 @@ prow <- cowplot::plot_grid(
     ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[2]] + ggplot2::theme(
-    legend.position = "none", axis.title.x = ggplot2::element_blank()) +
+    legend.position = "none", axis.title.x = ggplot2::element_blank(),
+    axis.text.y = ggplot2::element_blank()) +
     ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[3]] + ggplot2::theme(
-    legend.position = "none", axis.title.x = ggplot2::element_blank()) +
+    legend.position = "none", axis.title.x = ggplot2::element_blank(),
+    axis.text.y = ggplot2::element_blank()) +
     ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
   labels = c("(a)", "(b)", "(c)"),
-  label_size = 10.5,
+  label_size = 8,
   hjust = -0.2,
   nrow = 1
 )
@@ -61,30 +63,36 @@ prow_spec_col <- cowplot::plot_grid(
     ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   continental_plots[[5]] + ggplot2::theme(
-    legend.position = "none", axis.title.x = ggplot2::element_blank()) +
+    legend.position = "none", axis.title.x = ggplot2::element_blank(),
+    axis.text.y = ggplot2::element_blank()) +
     ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)) +
     ggplot2::theme(plot.margin = ggplot2::margin(6, 2, 6, 2)),
   align = 'vh',
   labels = c("(a)", "(b)"),
-  label_size = 10.5,
+  label_size = 8,
   hjust = -0.2,
   nrow = 1
 )
 
 legend <- cowplot::get_legend(
   # create some space to the left of the legend
-  continental_plots[[1]] + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 4))
+  continental_plots[[1]] + ggplot2::theme(
+    legend.direction = "horizontal",
+    legend.box = "horizontal"
+  )
 )
 
 continental_facet <- cowplot::plot_grid(
   prow,
   legend,
-  rel_widths = c(3, 0.4)
+  ncol = 1,
+  rel_heights = c(1, 0.08)
 )
 continental_spec_col_facet <- cowplot::plot_grid(
   prow_spec_col,
   legend,
-  rel_widths = c(3, 0.4)
+  ncol = 1,
+  rel_heights = c(1, 0.08)
 )
 
 final_continental_facet <- cowplot::add_sub(

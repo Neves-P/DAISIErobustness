@@ -49,14 +49,17 @@ saved_faceted <- function(plot_list_1,
       ggplot2::coord_cartesian(ylim = c(0, faceted_ylim)),
     align = 'vh',
     labels = c("(a)", "(b)", "(c)"),
-    label_size = 9,
+    label_size = 8,
     # hjust = -0.2,
     nrow = 1
   )
 
   legend <- cowplot::get_legend(
     # create some space to the left of the legend
-    plot_list_1[[1]] + ggplot2::theme(legend.direction = "horizontal", legend.box = "horizontal")
+    plot_list_1[[1]] + ggplot2::theme(
+      legend.direction = "horizontal",
+      legend.box = "horizontal"
+    )
   )
 
   prow_legend <- cowplot::plot_grid(
