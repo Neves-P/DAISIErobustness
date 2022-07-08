@@ -8,7 +8,7 @@ if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
 
 } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
   folder_path <-
-    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results\\continental_land_bridge_cs\\"
+    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results\\resubmission\\continental_land_bridge_cs\\"
 
 } else {
   folder_path <- choose.dir(caption = "Select 'results/continental_land_bridge_cs' folder")
