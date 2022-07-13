@@ -50,7 +50,7 @@ saved_faceted <- function(plot_list_1,
     align = 'vh',
     labels = c("(a)", "(b)", "(c)"),
     label_size = 8,
-    # hjust = -0.2,
+    hjust = -2.5,
     nrow = 1
   )
 
@@ -63,10 +63,10 @@ saved_faceted <- function(plot_list_1,
   )
 
   prow_legend <- cowplot::plot_grid(
-    prow,
     legend,
+    prow,
     ncol = 1,
-    rel_heights = c(1, 0.08)
+    rel_heights = c(0.08, 1)
   )
 
   final_plot <- cowplot::add_sub(
@@ -75,7 +75,7 @@ saved_faceted <- function(plot_list_1,
     vpadding = grid::unit(0, "lines"),
     y = 5,
     x = 0.5,
-    vjust = 1,
+    vjust = 4.2,
     size = 9
   )
 
