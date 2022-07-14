@@ -1,4 +1,8 @@
-# DAISIErobustness (development version)
+# DAISIErobustness 2.5.0
+
+* Suggest `'patchwork'` to assist in figure layout. Used in conjunction with
+previous package `'cowplot'` for generating publication ready figures.
+* Update layout of faceted plots to comply with journal requirements.
 
 # DAISIErobustness 2.4.0
 
