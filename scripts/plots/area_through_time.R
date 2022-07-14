@@ -93,7 +93,7 @@ ggplot2::ggsave(
   filename = "JBI-21-0508_Fig1.pdf",
   device = "pdf",
   width = 7.9,
-  height = 13,
+  height = 9,
   units = "cm"
 )
 ggplot2::ggsave(
@@ -101,7 +101,7 @@ ggplot2::ggsave(
   filename = "JBI-21-0508_Fig1.png",
   device = "png",
   width = 7.9,
-  height = 13.0,
+  height = 9,
   dpi = 600,
   units = "cm"
 )

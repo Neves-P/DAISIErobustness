@@ -25,7 +25,8 @@ barplot_61 <- plot_error_dists(res_61, "spec_nltt")
 
 # Arrange in grid, hide legends
 stacked_plot <- cowplot::plot_grid(
-  barplot_2 + ggplot2::theme(legend.position = "none"),
+  barplot_2 + ggplot2::theme(
+    legend.position = c(0.9, 0.8)),
   barplot_61 +  ggplot2::theme(legend.position = "none"),
   ncol = 1,
   labels = c("(a)", "(b)"),
@@ -33,33 +34,25 @@ stacked_plot <- cowplot::plot_grid(
 )
 
 ## Make legend
-legend <- cowplot::get_legend(
-  # create some space to the left of the legend
-  barplot_2 + ggplot2::theme(legend.box.margin = ggplot2::margin(0, 0, 0, 12))
-)
 
-## Add legend
-stacked_plot_legend <- cowplot::plot_grid(
-  stacked_plot,
-  legend,
-  rel_widths = c(1.5, 0.5)
-)
+
 
 # Save plot
 ggplot2::ggsave(
-  plot = stacked_plot_legend,
-  filename = "JBI-21-0508_Fig3.pdf",
-  device = "pdf",
-  width = 79,
-  height = 130,
-  units = "mm"
-)
-ggplot2::ggsave(
-  plot = stacked_plot_legend,
+  plot = stacked_plot,
   filename = "JBI-21-0508_Fig3.png",
   device = "png",
   width = 79,
-  height = 130,
+  height = 90,
   units = "mm",
   dpi = 600
 )
+ggplot2::ggsave(
+  plot = stacked_plot,
+  filename = "JBI-21-0508_Fig3.pdf",
+  device = "pdf",
+  width = 79,
+  height = 90,
+  units = "mm"
+)
+

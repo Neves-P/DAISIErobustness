@@ -49,16 +49,17 @@ Suggests:
     rmarkdown,
     dplyr,
     ggtext,
-    glue
+    glue,
+    patchwork
 Imports: 
     sessioninfo,
-    DAISIE (>= 4.1.1),
+    DAISIE (>= 4.2.1),
     nLTT,
     testit,
     ggplot2,
     cowplot
 Remotes: 
-    rsetienne/DAISIE@v4.1.1,
+    rsetienne/DAISIE@v4.2.1,
     thijsjanzen/nltt
 URL: https://github.com/Neves-P/DAISIErobustness
 BugReports: https://github.com/Neves-P/DAISIErobustness/issues

@@ -87,7 +87,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
-    ggplot2::theme(plot.margin = ggplot2::margin(6, 0.05, 6, 0.05)) +
+    ggplot2::theme(plot.margin = ggplot2::margin(6, 3, 6, 3)) +
     ggplot2::theme(legend.text.align = 0)
   if (add_plot_title) {
     p <- p + ggplot2::ggtitle(plot_title) +
