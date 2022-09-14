@@ -88,7 +88,7 @@ calc_error <- function(sim_1,
   sim_2_endemic_spec <-
     sim_2[[1]][[1]]$stt_all[, "nA"] +
     sim_2[[1]][[1]]$stt_all[, "nC"]
-  endemic_nltt_error <- nLTT::nltt_diff_exact_extinct(
+  endemic_nltt_error <- nLTT::nltt_diff_exact_brts(
     event_times = sim_1_event_times,
     species_number = sim_1_endemic_spec,
     event_times2 = sim_2_event_times,
