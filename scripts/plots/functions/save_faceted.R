@@ -71,7 +71,7 @@ saved_faceted <- function(plot_list_1,
       vpadding = grid::unit(0, "lines"),
       y = 5,
       x = 0.5,
-      vjust = 6.2,
+      vjust = 6,
       size = 8
     )
 
@@ -95,7 +95,7 @@ saved_faceted <- function(plot_list_1,
       filename = paste0(filename, ".png"),
       device = "png",
       width = 168,
-      height = 100,
+      height = 60,
       units = "mm",
       dpi = 600
     )
@@ -105,7 +105,7 @@ saved_faceted <- function(plot_list_1,
       filename = paste0(filename, ".pdf"),
       device = "pdf",
       width = 168,
-      height = 100,
+      height = 60,
       units = "mm"
     )
   }

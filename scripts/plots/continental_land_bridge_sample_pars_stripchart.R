@@ -128,7 +128,7 @@ ggplot2::ggsave(
   filename = "continental_land_bridge_sample_facet.png",
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -137,7 +137,7 @@ ggplot2::ggsave(
   filename = "continental_land_bridge_sample_facet.pdf",
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )
 ggplot2::ggsave(
@@ -145,7 +145,7 @@ ggplot2::ggsave(
   filename = "continental_land_bridge_sample_spec_col_facet.png",
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -154,7 +154,7 @@ ggplot2::ggsave(
   filename = "continental_land_bridge_sample_spec_col_facet.pdf",
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )
 

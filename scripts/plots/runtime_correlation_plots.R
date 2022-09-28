@@ -1,11 +1,11 @@
 # Fig S1
 
 if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
-  folder_path <- "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\"
+  folder_path <- "G:\\Shared drives\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\"
 
 } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
   folder_path <-
-    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\resubmission\\"
+    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\"
 
 } else {
   folder_path <- choose.dir(

@@ -2,7 +2,7 @@
 compile_ed95s <- function(param_space_name) {
   if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
     folder_path <- file.path(
-      "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\results\\", param_space_name
+      "G:\\Shared drives\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\results\\", param_space_name
     )
   } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
     folder_path <- file.path(

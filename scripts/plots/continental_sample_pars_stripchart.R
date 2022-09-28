@@ -123,7 +123,7 @@ ggplot2::ggsave(
   filename = "continental_facet.png",
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -132,7 +132,7 @@ ggplot2::ggsave(
   filename = "continental_facet.pdf",
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )
 ggplot2::ggsave(
@@ -140,7 +140,7 @@ ggplot2::ggsave(
   filename = "continental_spec_col_facet_.png",
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -149,6 +149,6 @@ ggplot2::ggsave(
   filename = "continental_spec_col_facet.pdf",
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )

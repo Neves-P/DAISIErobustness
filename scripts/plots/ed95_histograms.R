@@ -4,11 +4,11 @@ source("scripts/plots/functions/plot_error_dists.R")
 # Nonoceanic 13 - hide legend
 if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
   folder_path <-
-    "G:\\Shared drives\\DAISIE-RUG\\Robustness\\resubmission\\results\\\\continental_land_bridge_cs\\"
+    "G:\\Shared drives\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\results\\continental_land_bridge_cs\\"
 
 } else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
   folder_path <-
-    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results\\resubmission\\continental_land_bridge_cs\\"
+    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\results\\data_neves_lambert_et_al_2022\\continental_land_bridge_cs\\"
 
 } else {
   folder_path <- choose.dir(caption = "Select 'results/continental_land_bridge_cs' folder")

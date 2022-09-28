@@ -69,7 +69,7 @@ plot_cor <- function(param_space_data_frame,
     filename = file.path(folder_path, "JBI-21-0508_FigS1.png"),
     device = "png",
     width = 168,
-    height = 100,
+    height = 60,
     units = "mm",
     dpi = 600
   )
@@ -78,7 +78,7 @@ plot_cor <- function(param_space_data_frame,
     filename = file.path(folder_path, "JBI-21-0508_FigS1.pdf"),
     device = "pdf",
     width = 168,
-    height = 100,
+    height = 60,
     units = "mm"
   )
 }

@@ -47,7 +47,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
       label_ns[i] <- glue::glue(
         paste0(
           xlabels[i],
-          "  \nN<sub>M</sub> = {matched_n_y}  \nN<sub>K</sub> = {matched_n_o}"
+          "  \nN<sub>M</sub>={matched_n_y}  \nN<sub>K</sub>={matched_n_o}"
         )
       )
       colours <- c("#8DA0CB", "#E78AC3")
@@ -55,7 +55,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
       label_ns[i] <- glue::glue(
         paste0(
           xlabels[i],
-          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}  \nN<sub>A</sub> = {matched_n_a}"
+          "  \nN<sub>Y</sub>={matched_n_y}  \nN<sub>O</sub>={matched_n_o}  \nN<sub>A</sub>={matched_n_a}"
         )
       )
       colours <- c("#A6D854", "#FFD92F", "#E5C494")
@@ -64,7 +64,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
       label_ns[i] <- glue::glue(
         paste0(
           xlabels[i],
-          "  \nN<sub>Y</sub> = {matched_n_y}  \nN<sub>O</sub> = {matched_n_o}"
+          "  \nN<sub>Y</sub>={matched_n_y}  \nN<sub>O</sub>={matched_n_o}"
         )
       )
       colours <- c("#A6D854", "#FFD92F")
@@ -74,7 +74,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
   # Generate plot
   p <- ggplot2::ggplot(data = scenario_res, ggplot2::aes(y = get(error), x = key, color = Island)) +
     ggplot2::theme_classic() +
-    ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2)) +
+    ggplot2::geom_jitter(position = ggplot2::position_jitterdodge(0.2), size = 0.8) +
     ggplot2::scale_colour_manual(values = colours) +
     ggplot2::scale_x_discrete(labels = xlabels) +
     ggplot2::geom_hline(yintercept = 0.05, linetype = "dashed", size = 0.5) +
@@ -83,7 +83,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     ggplot2::theme(axis.title.y = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.title.x = ggplot2::element_text(size = 8)) +
     ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8)) +
-    ggplot2::theme(axis.text.x = ggtext::element_markdown(size = 6)) +
+    ggplot2::theme(axis.text.x = ggtext::element_markdown(size = 8)) +
     ggplot2::theme(legend.text = ggplot2::element_text(size = 8)) +
     ggplot2::theme(legend.title = ggplot2::element_text(size = 8)) +
     ggplot2::guides(fill = ggplot2::guide_legend(title = "Island")) +
@@ -91,7 +91,7 @@ plot_error_stripchart_grouped <- function(scenario_res,
     ggplot2::theme(legend.text.align = 0)
   if (add_plot_title) {
     p <- p + ggplot2::ggtitle(plot_title) +
-      ggplot2::theme(plot.title = ggplot2::element_text(size = 9, hjust = 0.5))
+      ggplot2::theme(plot.title = ggplot2::element_text(size = 8, hjust = 0.5))
   }
   p
 }
