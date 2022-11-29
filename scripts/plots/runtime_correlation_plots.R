@@ -1,11 +1,25 @@
 # Fig S1
+
+if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "P282067"))) {
+  folder_path <- "G:\\Shared drives\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\"
+
+} else if (isTRUE(identical(Sys.getenv()[["USERNAME"]], "pedro"))) {
+  folder_path <-
+    "G:\\Discos partilhados\\DAISIE-RUG\\Robustness\\data_neves_lambert_et_al_2022\\"
+
+} else {
+  folder_path <- choose.dir(
+    caption = "Select root of 'results' and 'logs' folders."
+  )
+}
+testit::assert("Chosen directory exists", dir.exists(folder_path))
+
 runtime_params <- get_runtime_params(
-  "G:/Shared drives/DAISIE-RUG/Robustness/resubmission/logs/"
+  file.path(folder_path, "logs")
 )
 
-
 results_total <- calc_ed95_param_set(
-  "G:/Shared drives/DAISIE-RUG/Robustness/resubmission/results"
+  file.path(folder_path, "results")
 )
 
 runtime_cors <- calc_runtime_ed95_cor(

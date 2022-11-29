@@ -14,16 +14,16 @@ test_that("Plot works", {
 
   temp_dir_path <- tempdir()
 
-  expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.png")))
-  expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.pdf")))
+  expect_false(file.exists(file.path(temp_dir_path, "JBI-21-0508_FigS1.png")))
+  expect_false(file.exists(file.path(temp_dir_path, "JBI-21-0508_FigS1.pdf")))
 
 
   expect_silent(
     plot_cor(param_space_data_frame = runtime_pars, folder_path = temp_dir_path)
   )
 
-  file.remove(file.path(temp_dir_path, "runtime_ed95_corr.png"))
-  file.remove(file.path(temp_dir_path, "runtime_ed95_corr.pdf"))
-  expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.png")))
-  expect_false(file.exists(file.path(temp_dir_path, "runtime_ed95_corr.pdf")))
+  file.remove(file.path(temp_dir_path, "JBI-21-0508_FigS1.png"))
+  file.remove(file.path(temp_dir_path, "JBI-21-0508_FigS1.pdf"))
+  expect_false(file.exists(file.path(temp_dir_path, "JBI-21-0508_FigS1.png")))
+  expect_false(file.exists(file.path(temp_dir_path, "JBI-21-0508_FigS1.pdf")))
 })

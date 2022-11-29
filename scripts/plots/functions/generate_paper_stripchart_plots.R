@@ -36,7 +36,7 @@ generate_paper_stripchart_plots <- function(scenario_res,
         filename = paste0(scenario, "_", metric_to_plot[i], ".pdf"),
         device = "pdf",
         width = 168,
-        height = 100,
+        height = 60,
         units = "mm"
       )
       ggplot2::ggsave(
@@ -44,7 +44,7 @@ generate_paper_stripchart_plots <- function(scenario_res,
         filename = paste0(scenario, "_", metric_to_plot[i], ".png"),
         device = "png",
         width = 168,
-        height = 100,
+        height = 60,
         units = "mm",
         dpi = 600
       )

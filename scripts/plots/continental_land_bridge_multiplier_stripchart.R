@@ -25,8 +25,6 @@ continental_land_bridge_plots <- generate_paper_stripchart_plots(
   alt_colours = TRUE
 )
 
-
-
 # Save individual plots
 generate_paper_stripchart_plots(
   scenario_res = continental_land_bridge_ed95,
@@ -38,7 +36,6 @@ generate_paper_stripchart_plots(
   add_plot_title = FALSE,
   alt_colours = TRUE
 )
-
 
 saved_faceted(
   continental_land_bridge_plots[1],

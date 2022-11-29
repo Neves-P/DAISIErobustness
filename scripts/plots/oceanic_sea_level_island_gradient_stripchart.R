@@ -63,7 +63,7 @@ ggplot2::ggsave(
   filename = paste0("Island_gradient_ontogeny_sea_level_num_spec.png"),
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -72,7 +72,7 @@ ggplot2::ggsave(
   filename = paste0("Island_gradient_ontogeny_sea_level_num_spec.pdf"),
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )
 
@@ -89,7 +89,7 @@ ggplot2::ggsave(
   filename = paste0("Island_gradient_sea_level_num_spec.png"),
   device = "png",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm",
   dpi = 600
 )
@@ -98,7 +98,7 @@ ggplot2::ggsave(
   filename = paste0("Island_gradient_sea_level_num_spec.pdf"),
   device = "pdf",
   width = 168,
-  height = 100,
+  height = 60,
   units = "mm"
 )
 
