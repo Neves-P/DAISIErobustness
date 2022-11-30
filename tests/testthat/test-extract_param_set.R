@@ -115,3 +115,55 @@ test_that("test extract_param_set extracts correct param set from
                                          trans_rate2 = 0.02,
                                          M2 = 500))
 })
+
+test_that("test extract_param_set extracts correct param set from
+          trait with 2 Ks", {
+            param_space <- load_param_space("trait_CES_2K")
+            sim_pars <- extract_param_set(
+              param_space_name = "trait_CES_2K",
+              param_space = param_space,
+              param_set = 1)
+            expect_equal(sim_pars$time, 5)
+            expect_equal(sim_pars$M, 500)
+            expect_equal(sim_pars$pars, c(0.2, 0.1, 2, 0.008, 0.2))
+            expect_equal(sim_pars$trait_pars, list(trans_rate = 0.02,
+                                                   immig_rate2 = 0.008,
+                                                   ext_rate2 = 0.1,
+                                                   ana_rate2 = 0.2,
+                                                   clado_rate2 = 0.2,
+                                                   trans_rate2 = 0.02,
+                                                   M2 = 500,
+                                                   K2 = 18))
+})
+
+test_that("test extract_param_set extracts correct param set from
+          trait without transitions between states", {
+            param_space <- load_param_space("trait_no_trans")
+            sim_pars <- extract_param_set(
+              param_space_name = "trait_no_trans",
+              param_space = param_space,
+              param_set = 1)
+            expect_equal(sim_pars$time, 5)
+            expect_equal(sim_pars$M, 500)
+            expect_equal(sim_pars$pars, c(0.2, 0.1, 20, 0.008, 0.2))
+            expect_equal(sim_pars$trait_pars, list(trans_rate = 0,
+                                                   immig_rate2 = 0.008,
+                                                   ext_rate2 = 0.1,
+                                                   ana_rate2 = 0.2,
+                                                   clado_rate2 = 0.2,
+                                                   trans_rate2 = 0,
+                                                   M2 = 500))
+})
+
+test_that("test extract_param_set extracts correct param set from
+          trait-independent DAISIE", {
+            param_space <- load_param_space("oceanic")
+            sim_pars <- extract_param_set(
+              param_space_name = "oceanic",
+              param_space = param_space,
+              param_set = 1)
+            expect_equal(sim_pars$time, 5)
+            expect_equal(sim_pars$M, 1000)
+            expect_equal(sim_pars$pars, c(0.2, 0.1, 20, 0.008, 0.2))
+            expect_equal(sim_pars$nonoceanic_pars, c(0, 0))
+})
