@@ -5,7 +5,7 @@ calc_stat_diff_trait <- function(folder_path, param_set_range = NULL) {
   start_time <- Sys.time()
   message("Start time: ", start_time)
   files <- list.files(folder_path)
-  data_file_indices <- grep(x = files, pattern = ".rds")  ### .rds/.RData
+  data_file_indices <- grep(x = files, pattern = ".RData")  ### .rds/.RData
   n_files <- length(data_file_indices)
   testit::assert(
     ".rds files exist",
@@ -33,14 +33,14 @@ calc_stat_diff_trait <- function(folder_path, param_set_range = NULL) {
   stat_diff_colon_time <- c()
 
   for (i in param_set_range) {
-    file_to_load <- grep(paste0("_", i, ".rds"),  ### .rds
+    file_to_load <- grep(paste0("_", i, ".RData"),  ### .rds/.RData
                          files,
                          value = TRUE,
                          fixed = TRUE)
 
     if (!identical(file_to_load, character())) {
-      output <- readRDS(file.path(folder_path, file_to_load))   ## load
-      # load(file.path(folder_path, file_to_load))
+      # output <- readRDS(file.path(folder_path, file_to_load))   ## load
+      load(file.path(folder_path, file_to_load))
       trait_error_spec_nltt <- output$spec_nltt_error
       baseline_error_spec_nltt <- output$spec_baseline_nltt_error
 

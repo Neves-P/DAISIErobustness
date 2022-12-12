@@ -1,24 +1,24 @@
 ### The expected number of endemics and non-endemics under the DAISIE model
-source("scripts/shu/calc_stat_diff_trait.R")
-source("scripts/shu/calc_cssd_ctsd.R")
-source("scripts/shu/calc_tip_rates.R")
-source("scripts/shu/calc_clade_size_sd.R")
-source("scripts/shu/plot_est_rate_error.R")
-source("scripts/shu/calc_hellinger_dist.R")
+source("scripts/trait/calc_stat_diff_trait.R")
+source("scripts/trait/calc_cssd_ctsd.R")
+source("scripts/trait/calc_tip_rates.R")
+source("scripts/trait/calc_clade_size_sd.R")
+source("scripts/trait/plot_est_rate_error.R")
+source("scripts/trait/calc_hellinger_dist.R")
 
 folder_path <- "G:/R/DAISIErobustness/results/final_all/trait_CES"
 CES <- calc_stat_diff_trait(folder_path, 1:1664)
-save(CES,file = "G:/R/DAISIErobustness/plots/paper_final_all.RData")
+# save(CES,file = "G:/R/DAISIErobustness/plots/paper_final_all.RData")
 CES_est_error <- calc_est_error(folder_path,1:1664)
-save(CES_est_error,file = "G:/R/DAISIErobustness/plots/CES_est_error.RData")
+# save(CES_est_error,file = "G:/R/DAISIErobustness/plots/CES_est_error.RData")
 rates_ed95_abs <- calc_est_ed95_abs(folder_path,1:1664)
-save(rates_ed95_abs,file = "G:/R/DAISIErobustness/plots/rates_ed95_abs.RData")
+# save(rates_ed95_abs,file = "G:/R/DAISIErobustness/plots/rates_ed95_abs.RData")
 hellinger <- calc_hellinger_dist_trait(folder_path, 1:1664)
-save(hellinger,file = "G:/R/DAISIErobustness/plots/hellinger_dist.RData")
+# save(hellinger,file = "G:/R/DAISIErobustness/plots/hellinger_dist.RData")
 tip_ratio <- calc_tip_ratios(folder_path, 1:1664)
-save(tip_ratio,file = "G:/R/DAISIErobustness/plots/paper_final_all_tip_ratio.RData")
+# save(tip_ratio,file = "G:/R/DAISIErobustness/plots/paper_final_all_tip_ratio.RData")
 clade_size_sd <- calc_novel_cs_sd(folder_path, 1:1664)
-save(clade_size_sd,file = "G:/R/DAISIErobustness/plots/paper_final_all_clade_size_sd.RData")
+# save(clade_size_sd,file = "G:/R/DAISIErobustness/plots/paper_final_all_clade_size_sd.RData")
 
 #### START
 #### step1: create whole dataframe for all the statitsics and inference
