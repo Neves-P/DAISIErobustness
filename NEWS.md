@@ -1,4 +1,4 @@
-# DAISIErobustness (development version)
+# DAISIErobustness 2.6.0
 
 # DAISIErobustness 2.5.0
 
