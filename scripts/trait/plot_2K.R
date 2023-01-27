@@ -1,15 +1,15 @@
 ## plot 2K scenarios
-source("scripts/shu/calc_stat_diff_trait.R")
-source("scripts/shu/calc_cssd_ctsd.R")
+source("scripts/trait/calc_stat_diff_trait.R")
+source("scripts/trait/calc_cssd_ctsd.R")
 
-folder_path <- "G:/results/project 1/2K/trait_CES_2K"
+folder_path <- "data_shu_et_al/Two Ks"
 CES <- calc_stat_diff_trait(folder_path, 1:192)
-save(CES,file = "G:/results/project 1/2K/CES_2K.RData")
+save(CES,file = "CES_2K.RData")
 
 #### START
 #### step1: create whole dataframe to do anova test and to make plots
-load("G:/results/project 1/2K/CES_2K.RData")
-load("G:/R/DAISIErobustness/inst/extdata/trait_CES_2K.rda")
+load("CES_2K.RData")
+load("DAISIErobustness/inst/extdata/trait_CES_2K.rda")
 CES_data <- trait_CES_2K
 
 ss1 <- c(CES$stat_diff_spec_nltt)
@@ -33,13 +33,13 @@ whole_df$transition[whole_df$trans == "0.02" & whole_df$trans2 == "0.02"] <- "ll
 whole_df$transition[whole_df$trans == "0.2" & whole_df$trans2 == "0.02"] <- "hl"
 whole_df$transition[whole_df$trans == "0.02" & whole_df$trans2 == "0.2"] <- "lh"
 whole_df$transition[whole_df$trans == "0.2" & whole_df$trans2 == "0.2"] <- "hh"
-save(whole_df,file = "G:/results/project 1/2K/whole_df.RData")
+save(whole_df,file = "2K/whole_df.RData")
 
 #### plots:
-load("G:/results/project 1/2K/whole_df.RData")
+load("2K/whole_df.RData")
 whole_df_2K <- whole_df
 whole_df_2K <- whole_df_2K[, -c(11,16)]
-load("G:/R/DAISIErobustness/plots/paper_final_whole_df.RData")
+load("whole_df.RData")
 sym <- subset(whole_df, Asymmetry == "Symmetric")
 
 whole_with_2K <-rbind(whole_df_2K[,1:21],
@@ -55,10 +55,10 @@ whole_with_2K$K_diff[whole_with_2K$K == "2"] <- "Large"
 whole_with_2K$K_diff[whole_with_2K$K == "5"] <- "Small"
 whole_with_2K$K_diff[whole_with_2K$K == "10"] <- "Same"
 
-save(whole_with_2K,file = "G:/results/project 1/2K/whole_with_2K.RData")
+save(whole_with_2K,file = "whole_with_2K.RData")
 
 #### make plots
-load("G:/results/project 1/2K/whole_with_2K.RData")
+load("whole_with_2K.RData")
 
 trans_type <-  c(expression(atop("high"~italic(q)[12],"high"~italic(q)[21])),
                  expression(atop("high"~italic(q)[12],"low"~italic(q)[21])),
@@ -404,7 +404,7 @@ p7 <- ggplot2::ggplot(whole_with_2K, ggplot2::aes(x=transition, y=ss7, color = K
 library(ggplot2)
 library(cowplot)
 legend <- get_legend(p7)
-tiff(paste0("G:/results/project 1/2K/ED95_2K.tiff"),
+tiff(paste0("ED95_2K.tiff"),
      units="px", width=5000, height=2500,res = 300,compression="lzw")
 p_grid <- ggdraw(plot_grid(plot_grid(p1, p2,p3,p4,p5,p6,
                            p7 + ggplot2::theme(legend.position="none"),legend, nrow = 2,align = "h"),

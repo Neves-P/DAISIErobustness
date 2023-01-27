@@ -1,7 +1,7 @@
 # plot the estimation distributions for each parameter set
 library(ggplot2)
 plot_est <- function(est_df, param_set) {
-  load("G:/R/DAISIErobustness/inst/extdata/trait_CES.rda")
+  load("DAISIErobustness/inst/extdata/trait_CES.rda")
   real_rates <- trait_CES[param_set,]
   color_values <-c("SII 1" = "#EF7A6D", "SII 2" = "#5F97D2")
   p_lac <-ggplot2::ggplot(data = est_df) +
@@ -117,7 +117,7 @@ plot_est <- function(est_df, param_set) {
                                labels = c("SII 1", "SII 2"))
 
 
-  tiff(paste0("G:/results/project 1/Figures_estimation/",param_set,".tiff"),
+  tiff(paste0("Figures_estimation/",param_set,".tiff"),
        units="px", width=3000, height=2000,res = 300,compression="lzw")
   param_estimates <- cowplot::plot_grid(
     p_lac,p_mu,p_gam,p_laa,

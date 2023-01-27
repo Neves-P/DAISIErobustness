@@ -1,4 +1,4 @@
-load("G:/R/DAISIErobustness/plots/paper_final_whole_df.RData")
+load("whole_df.RData")
 
 ss = 1
 if (ss == 1) {
@@ -299,7 +299,7 @@ p7 <- ggplot2::ggplot(whole_df, ggplot2::aes(x=RRD, y=ss7, color = Asymmetry)) +
 library(ggplot2)
 library(cowplot)
 legend <- get_legend(p7)
-tiff(paste0("G:/results/project 1/paper_plots/ss_all.tiff"),
+tiff(paste0("ss_all.tiff"),
      units="px", width=5000, height=2500,res = 250,compression="lzw")
 p_ed95 <- ggdraw(plot_grid(plot_grid(p1, p2,p3,p4,p5,p6,
                                      p7 + ggplot2::theme(legend.position="none"),legend, nrow = 2,align = "h"),

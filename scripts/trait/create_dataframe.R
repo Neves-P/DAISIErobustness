@@ -3,32 +3,32 @@ source("scripts/trait/calc_stat_diff_trait.R")
 source("scripts/trait/calc_cssd_ctsd.R")
 source("scripts/trait/calc_tip_rates.R")
 source("scripts/trait/calc_clade_size_sd.R")
-source("scripts/trait/plot_est_rate_error.R")
+source("scripts/trait/plot_est_error.R")
 source("scripts/trait/calc_hellinger_dist.R")
 
-folder_path <- "G:/R/DAISIErobustness/results/final_all/trait_CES"
+folder_path <- "data_shu_et_al/Trait dependent"
 CES <- calc_stat_diff_trait(folder_path, 1:1664)
-# save(CES,file = "G:/R/DAISIErobustness/plots/paper_final_all.RData")
+# save(CES,file = "paper.RData")
 CES_est_error <- calc_est_error(folder_path,1:1664)
-# save(CES_est_error,file = "G:/R/DAISIErobustness/plots/CES_est_error.RData")
+# save(CES_est_error,file = "CES_est_error.RData")
 rates_ed95_abs <- calc_est_ed95_abs(folder_path,1:1664)
-# save(rates_ed95_abs,file = "G:/R/DAISIErobustness/plots/rates_ed95_abs.RData")
+# save(rates_ed95_abs,file = "rates_ed95_abs.RData")
 hellinger <- calc_hellinger_dist_trait(folder_path, 1:1664)
-# save(hellinger,file = "G:/R/DAISIErobustness/plots/hellinger_dist.RData")
+# save(hellinger,file = "hellinger_dist.RData")
 tip_ratio <- calc_tip_ratios(folder_path, 1:1664)
-# save(tip_ratio,file = "G:/R/DAISIErobustness/plots/paper_final_all_tip_ratio.RData")
+# save(tip_ratio,file = "paper_tip_ratio.RData")
 clade_size_sd <- calc_novel_cs_sd(folder_path, 1:1664)
-# save(clade_size_sd,file = "G:/R/DAISIErobustness/plots/paper_final_all_clade_size_sd.RData")
+# save(clade_size_sd,file = "paper_clade_size_sd.RData")
 
 #### START
 #### step1: create whole dataframe for all the statitsics and inference
-load("G:/R/DAISIErobustness/plots/paper_final_all.RData")
-load("G:/R/DAISIErobustness/inst/extdata/trait_CES.rda")
+load("paper.RData")
+load("DAISIErobustness/inst/extdata/trait_CES.rda")
 CES_data <- trait_CES
-load("G:/R/DAISIErobustness/plots/paper_final_all_tip_ratio.RData")
-load("G:/R/DAISIErobustness/plots/paper_final_all_clade_size_sd.RData")
-load("G:/R/DAISIErobustness/plots/CES_est_error.RData")
-load("G:/R/DAISIErobustness/plots/rates_ed95_abs.RData")
+load("paper_tip_ratio.RData")
+load("paper_clade_size_sd.RData")
+load("CES_est_error.RData")
+load("rates_ed95_abs.RData")
 tip_ratio[tip_ratio<1 & !is.na(tip_ratio)]<- 1/tip_ratio[tip_ratio<1 & !is.na(tip_ratio)]
 
 ss1 <- c(CES$stat_diff_spec_nltt)
@@ -81,8 +81,9 @@ whole_df$RRD <-factor(rep(c(rep(0,8),rep(c(1.5,1,0.5),32)),16))
 
 colnames(rates_ed95_abs) <- c("lac_ed95","mu_ed95","gam_ed95","laa_ed95")
 whole_df <- cbind(whole_df,rates_ed95_abs)
+save(whole_df,file = "whole_df.RData")
 
-load("G:/R/DAISIErobustness/plots/hellinger_dist.RData")
+load("hellinger_dist.RData")
 hd_ss1 <- hellinger$hellinger_dist_spec_nltt
 hd_ss2 <- hellinger$hellinger_dist_endemic_nltt
 hd_ss3 <- hellinger$hellinger_dist_nonendemic_nltt
@@ -92,4 +93,4 @@ hd_ss6 <- hellinger$hellinger_dist_clade_size
 hd_ss7 <- hellinger$hellinger_dist_colon_time
 whole_df <- cbind(whole_df,hd_ss1,hd_ss2,hd_ss3,hd_ss4,
                                  hd_ss5,hd_ss6,hd_ss7)
-save(whole_df,file = "G:/R/DAISIErobustness/plots/whole_df_hellinger_dist.RData")
+save(whole_df,file = "whole_df_hellinger_dist.RData")

@@ -1,4 +1,4 @@
-load("G:/R/DAISIErobustness/plots/whole_df_hellinger_dist.RData")
+load("whole_df_hellinger_dist.RData")
 ss = 1
 if (ss == 1) {
   x_error_label <- expression(ED[95] ~ (Delta * "SRTT"))
@@ -377,7 +377,7 @@ ss_vs_hdss_7 <- ggplot2::ggplot(data = whole_df) +  #,ggplot2::aes(color = RRD)
 
 library(ggplot2)
 library(cowplot)
-tiff(paste0("G:/results/project 1/hellinger_dist/ss_vs_hdss1.tiff"),
+tiff(paste0("ss_vs_hdss1.tiff"),
      units="px", width=4000, height=2000,res = 300,compression="lzw")
 p_hellinger <- ggdraw(plot_grid(plot_grid(ss_vs_hdss_1, ss_vs_hdss_2,ss_vs_hdss_3,
                            ss_vs_hdss_4,ss_vs_hdss_5,ss_vs_hdss_6,

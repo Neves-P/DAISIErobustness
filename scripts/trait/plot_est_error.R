@@ -12,7 +12,7 @@ get_rates_error <- function(output, param_set) {
   gam_baseline <- est_rates_DAISIE[,4] - est_rates_TraiSIE[,4]
   laa_baseline <- est_rates_DAISIE[,5] - est_rates_TraiSIE[,5]
 
-  load("G:/R/DAISIErobustness/inst/extdata/trait_CES.rda")
+  load("DAISIErobustness/inst/extdata/trait_CES.rda")
   real_rates <- trait_CES[param_set,]
 
   real_rates$mean_lac <- (real_rates$lac + real_rates$lac2)/2
@@ -158,7 +158,7 @@ plot_error <- function(error_df, param_set) {
                                labels = c("Baseline error", "Error"))
 
 
-  tiff(paste0("G:/results/project 1/plot_rate_error/",param_set,".tiff"),
+  tiff(paste0("plot_rate_error/",param_set,".tiff"),
        units="px", width=3000, height=2000,res = 300,compression="lzw")
   param_estimates <- cowplot::plot_grid(
     p_lac,p_mu,p_gam,p_laa,

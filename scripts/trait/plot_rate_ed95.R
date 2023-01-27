@@ -1,5 +1,5 @@
 ## plot est ed95 for each scenario
-load("G:/R/DAISIErobustness/plots/whole_df_est_rates_with_ed95_abs.RData")
+load("whole_df.RData")
 library(ggplot2)
 library(cowplot)
 lac <- subset(whole_df, RRD_mu == 0 & RRD_gam == 0 & RRD_laa == 0)
@@ -89,7 +89,7 @@ p_laa <- ggplot2::ggplot(gam, ggplot2::aes(x=transition, y=laa_ed95, color = RRD
   ggplot2::theme(plot.title = ggplot2::element_text(size = 12, hjust = 0.5))
 
 
-tiff(paste0("G:/results/project 1/plot_rate_error/laa_scenario_est_rate_ed95.tiff"),
+tiff(paste0("laa_scenario_est_rate_ed95.tiff"),
      units="px", width=3000, height=1800,res = 300,compression="lzw")
 legend <- get_legend(p_lac)
 ## Cladogenesis/Extinction/Colonization/Anagenesis
@@ -112,7 +112,7 @@ param_est_final_mu <- plot_grid(title,param_est_final_mu,ncol=1, rel_heights=c(0
 param_est_final_gam <- plot_grid(title,param_est_final_gam,ncol=1, rel_heights=c(0.1, 1))
 param_est_final_laa <- plot_grid(title,param_est_final_laa,ncol=1, rel_heights=c(0.1, 1))
 
-tiff(paste0("G:/results/project 1/plot_rate_error/all_est_rate_ed95.tiff"),
+tiff(paste0("all_est_rate_ed95.tiff"),
      units="px", width=5000, height=3000,res = 300,compression="lzw")
 param_ed95_all <- cowplot::plot_grid(
   param_est_final_lac +ggplot2::theme(legend.position = "none"),
