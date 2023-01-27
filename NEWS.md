@@ -1,5 +1,11 @@
 # DAISIErobustness 2.6.0
 
+* Depend on DAISIE v4.3.0.
+* New traits parameter space considering different carrying capacity among 
+states, as well as the case without asymmetric transitions. The parameter sets 
+are recorded in two files called `trait_CES_2K.csv` and `trait_no_trans.csv`. 
+* Update data analysis files for trait-dependent simulations.
+
 # DAISIErobustness 2.5.0
 
 * Suggest `'patchwork'` to assist in figure layout. Used in conjunction with
