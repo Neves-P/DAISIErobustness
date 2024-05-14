@@ -4,7 +4,7 @@
 \alias{calc_error}
 \title{Calculates error metrics between two simulations}
 \usage{
-calc_error(sim_1, sim_2, sim_pars, replicates, distance_method)
+calc_error(sim_1, sim_2, sim_pars, distance_method)
 }
 \arguments{
 \item{sim_1}{A list of simulation output from
@@ -20,9 +20,6 @@ calc_error(sim_1, sim_2, sim_pars, replicates, distance_method)
 \code{\link[DAISIE]{DAISIE_sim_trait_dep}()}.}
 
 \item{sim_pars}{A list of simulation parameters.}
-
-\item{replicates}{A numeric for the number of replicates for the
-simulations}
 
 \item{distance_method}{From the nLTT package.
 How the difference between the two nLTTs is summed:
