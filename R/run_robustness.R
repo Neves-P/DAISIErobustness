@@ -230,7 +230,6 @@ run_robustness <- function(param_space_name,
         sim_1 = novel_sim,
         sim_2 = oceanic_sim_1,
         sim_pars = sim_pars,
-        replicates = replicates,
         distance_method = distance_method)
 
       oceanic_ml <- calc_ml(
@@ -261,7 +260,6 @@ run_robustness <- function(param_space_name,
           sim_1 = oceanic_sim_1,
           sim_2 = oceanic_sim_2,
           sim_pars = sim_pars,
-          replicates = replicates,
           distance_method = distance_method)
 
         spec_nltt_error <- append(

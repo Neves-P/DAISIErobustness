@@ -25,7 +25,6 @@
 calc_error <- function(sim_1,
                        sim_2,
                        sim_pars,
-                       replicates,
                        distance_method) {
   spec_nltt_error <- c()
   num_spec_error <- c()
