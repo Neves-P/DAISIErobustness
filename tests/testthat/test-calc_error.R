@@ -32,7 +32,6 @@ test_that("test calc_error output is correct", {
     sim_1 = novel_sim,
     sim_2 = oceanic_sim,
     sim_pars = sim_pars,
-    replicates = 2,
     distance_method = "abs"
   )
   expect_length(error, 5)
