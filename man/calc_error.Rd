@@ -23,7 +23,7 @@ calc_error(sim_1, sim_2, sim_pars, distance_method)
 
 \item{distance_method}{From the nLTT package.
 How the difference between the two nLTTs is summed:
-\itemize{
+\describe{
  \item{\code{"abs"}: }{the absolute distance between the two nLTTs is
    summed}
  \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}

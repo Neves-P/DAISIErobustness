@@ -1,6 +1,7 @@
 # DAISIErobustness (development version)
 
 * Remove unused argument `replicates` from `calc_error()`. #68, thanks @Yangshen0325
+* Depend on production version of `DAISIE`, not on v4.3.0 installed from rsetienne/DAISIE@v4.3.0.
 
 # DAISIErobustness 2.6.0
 

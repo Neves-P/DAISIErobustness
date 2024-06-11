@@ -59,7 +59,7 @@
 #'  from \code{\link[DAISIE]{DAISIE_ML}()}.
 #' @param distance_method From the nLTT package.
 #'  How the difference between the two nLTTs is summed:
-#'  \itemize{
+#'  \describe{
 #'   \item{\code{"abs"}: }{the absolute distance between the two nLTTs is
 #'     summed}
 #'   \item{\code{"squ"}: }{the squared distance between the two nLTTs is summed}
